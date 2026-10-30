@@ -6,7 +6,7 @@ and The Exit Lab, the program she offers after it. Plain HTML, CSS and JavaScrip
 
 ## The pages
 
-Once this repo is imported into Vercel as the project `2026-ana-calin`, the links are:
+The project `2026-ana-calin` serves them on https://exitplan.howwegrowtoday.com. Below, the same paths on the project address:
 
 | page | link |
 |---|---|
@@ -28,9 +28,12 @@ or closed, the VIP deadline.
 
 1. Vercel, Add New, Project, import `seeeadd/2026-ana-calin`. Framework preset: Other. No build command, no output
    directory.
-2. Settings, Environment Variables: `KIT_API_KEY` (a Kit v4 API key) and `KIT_TAG_ID` (the id of the `ep_registered`
-   tag). These feed the live sign-up count and first names on the registration page (`api/ana-feed.js`). Without them
-   the page simply shows no count and no names.
+2. Settings, Environment Variables, ticked for Production: `KIT_API_KEY` (a Kit v4 API key), `KIT_SEQUENCE_ID` (the
+   "EP · Confirmation" sequence) and `KIT_TAG_ID` (the id of the `ep_registered` tag). The sign-up popup posts to
+   `api/ana-register.js`, which adds the person to Kit through the API; without `KIT_API_KEY` it falls back to Kit's
+   own form address, which Kit's bot check can park. `KIT_SEQUENCE_ID` puts someone who signs up again back into the
+   confirmation sequence. `KIT_TAG_ID` feeds the live sign-up count and first names (`api/ana-feed.js`). A changed
+   variable only reaches the site on the next deployment.
 3. If the project gets another name or a custom domain, change the address in these four places, which need a full
    link: `index.html` (the `og:image` share picture) and the three calendar files in `assets/*.ics` (the sheet link).
 
