@@ -1,0 +1,155 @@
+/* Registration refresh. Keep Ana's illustrations and palette; give the form its own rail. */
+:root{--action:#d91069}
+html{scroll-padding-top:104px}
+body{overflow-x:clip}
+[hidden]{display:none!important}
+.btn{background:var(--action);min-height:52px;height:auto;padding:17px 24px;line-height:1.2;white-space:normal;text-align:center}
+.btn:hover{background:#be0b59}
+.btn:disabled{cursor:wait;opacity:.7;transform:none}
+.btn:focus-visible{outline:3px solid var(--ink);outline-offset:4px}
+.fb-bar{width:min(1320px,100%);padding:10px 12px;gap:26px}
+.fb .btn{min-height:44px;padding:13px 22px}
+.fb-cd{margin-left:auto}
+.registration-layout{max-width:1400px;margin:0 auto;padding:44px 40px 0;display:grid;grid-template-columns:minmax(0,1fr) 370px;column-gap:36px;align-items:start}
+.hero-heading{grid-column:1/-1;margin:0 0 32px;max-width:1140px}
+.hero-heading .eyebrow{color:var(--ink2);font-size:11px;letter-spacing:.15em;margin-bottom:18px}
+.hero-heading h1{font-size:clamp(48px,5.7vw,78px);line-height:.99;max-width:1080px;margin:0;text-wrap:balance}
+.hero-intro{font-size:17px;line-height:1.65;max-width:790px;margin:22px 0 0;color:var(--ink2)}
+.hero-media{grid-column:1;grid-row:2;min-width:0}
+.hero-media .tstrip{margin:0 0 18px;gap:14px;min-width:0}
+.hero-media .award{gap:9px}
+.hero-media .award small{font-size:9px}
+.hero-media .award b{font-size:17px}
+.hero-media .stats{gap:14px;flex:1;justify-content:flex-end}
+.hero-media .stat b{font-size:24px}
+.hero-media .stat small{font-size:10px}
+.hero-media .iph{margin:0;width:100%}
+.video-pending .scr{cursor:default}
+.video-pending .scrub{display:none}
+.video-pending .vplay{font-size:13px;padding:12px 18px;cursor:default;background:var(--cream);color:var(--ink);box-shadow:0 2px 10px #0002;opacity:1}
+.hero-media .book{display:grid;grid-template-columns:108px minmax(0,1fr);gap:12px 18px;padding:20px;margin:20px 0 0;border-radius:22px}
+.book .mini{width:108px;align-self:center;transform:rotate(-3deg)}
+.book .k{font-size:10px;letter-spacing:.13em}
+.book h3{font-size:28px;white-space:normal;line-height:1.05;margin:5px 0 7px}
+.book .d{font-size:14px}.book .t{font-size:12px}
+.book .go{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;border-left:0;border-top:1px dashed #1a141244;padding:14px 0 0;gap:16px}
+.book .go .btn{font-size:15px;min-height:48px;padding:14px 22px}
+.book .go small{font-size:10px;margin:0;white-space:nowrap}
+.registration-rail{grid-column:2;grid-row:2/4;align-self:stretch;min-width:0}
+.signup-shell{position:sticky;top:96px;max-height:calc(100dvh - 116px);overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;padding:25px 26px 22px;border:1px solid #1a1412;border-radius:24px;background:#fffdf8;box-shadow:5px 6px 0 var(--sun);scroll-margin-top:104px}
+.signup-top{display:flex;gap:7px;align-items:center;font-size:10px;font-weight:800;letter-spacing:.08em;color:var(--ink2)}
+.live-dot{background:var(--action);width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.signup-shell h2{font-size:42px;line-height:1;margin:17px 0 12px;text-wrap:initial}
+.signup-summary{font-size:14px;line-height:1.6;color:var(--ink2)}
+.signup-time{display:flex;flex-direction:column;font-size:12px;padding:13px 0 15px;margin-bottom:15px;border-bottom:1px dashed #1a141233;line-height:1.7}
+.signup-time span{color:var(--ink3)}
+.signup-shell .field{margin-bottom:13px}
+.field label{display:block;font-size:12px;font-weight:800;margin:0 0 5px}
+.signup-shell .field input{height:48px;border-radius:10px;font-size:14px;padding:0 12px}
+.signup-shell .field input::placeholder{color:#76675e}
+.signup-shell .send{width:100%;font-size:16px;min-height:52px;margin-top:4px}
+.signup-consent{font-size:11px;line-height:1.6;color:#6a5a50;margin:12px 0 0}
+.signup-signature{display:flex;align-items:center;gap:12px;border-top:1px dashed #1a141233;margin-top:17px;padding-top:15px}
+.signup-signature img{width:40px;height:40px;border-radius:50%;object-fit:cover}
+.signup-signature p{font-size:11px;line-height:1.2;color:var(--ink3)}
+.signup-signature p span{display:block;font-family:var(--serif);font-style:italic;color:var(--action);font-size:27px;margin-top:3px}
+.small-flower{margin-left:auto;font-size:36px;color:#b79700;line-height:1}
+.honeypot{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.submit-status{font-size:13px;line-height:1.4;color:var(--action);margin-top:8px}
+.submit-status:empty{display:none}.feed-proof{font-size:12px;margin-top:10px}
+.page-story{grid-column:1;grid-row:3;min-width:0}
+.page-story>section{padding:64px 0;border-bottom:1px solid var(--line)}
+.page-story h2{font-size:clamp(36px,3.5vw,49px);line-height:1.05;margin:12px 0 24px;text-wrap:initial}
+.page-story .eyebrow{font-size:10px;letter-spacing:.15em;color:var(--action)}
+.page-story p{font-size:16px;line-height:1.7}
+.page-story p+p{margin-top:16px}
+.page-story .head{text-align:left;margin:0;max-width:none}
+.page-story .head>p{max-width:630px;color:var(--ink2)}
+.opening-note>p{max-width:660px}
+.return-note{font-size:14px;line-height:1.65;background:var(--ysoft);border-left:3px solid var(--sun);padding:17px 20px;margin:26px 0}
+.return-note b{display:block}
+.situ{margin:24px 0 18px}.situ .lbl{font-size:15px}.chips{margin-top:12px;gap:8px;flex-wrap:wrap}
+.chip{font-size:13px;padding:11px 14px;min-height:44px}
+.page-story .micro{font-size:11px;margin:9px 0 0;color:var(--ink3);line-height:1.6}
+.days .rows{margin-top:36px}
+.days .drow,.days .drow:last-child{grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:20px 26px;padding:32px 0;border-top:1px solid #1a14122b;align-items:center}
+.lesson-label{grid-column:1/-1;display:flex;align-items:center;gap:12px;font-size:11px;font-weight:700;color:var(--ink2)}
+.lesson-label>span{padding:5px 10px;border:1px solid #1a1412;border-radius:6px;background:var(--sun);color:var(--ink);font-size:10px;letter-spacing:.08em;white-space:nowrap}
+.dtext h3{font-size:33px;line-height:1.06;margin:0 0 14px;text-wrap:initial}
+.dtext p.body{font-size:14px;line-height:1.65;margin-top:0}
+.dtext ul{gap:12px;margin-top:17px}
+.dtext li{font-size:13px;line-height:1.6;grid-template-columns:18px 1fr;gap:8px}
+.dtext li svg{width:18px;height:19px;margin-top:1px}
+.days .drow .art{grid-column:2;grid-row:2;max-width:none;margin:0;align-self:center;order:0;border-radius:20px}
+.lesson-bottom{grid-column:1/-1;margin-top:0;background:var(--ysoft);border-radius:12px;padding:16px 19px}
+.lesson-bottom .out{font-size:14px;line-height:1.5;font-weight:500}
+.lesson-bottom .out b{display:block;color:var(--ink);font-size:10px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:5px}
+.lesson-bottom p.bridge{font-size:12px;line-height:1.5;color:var(--ink2);margin-top:9px}
+.days .after{margin-top:27px;text-align:left}
+.days .after p{font-size:30px;line-height:1.2;margin-bottom:20px}
+.days .after p span{font-family:var(--sans);font-size:14px}
+.page-story .exit-gift{padding:34px;margin:32px 0 0;background:var(--sun);border-radius:24px;border:1px solid var(--ink);position:relative}
+.exit-gift h2 em,.exit-gift .eyebrow{color:var(--ink)}
+.exit-gift p{max-width:620px}.exit-gift small{font-size:12px;line-height:1.6;display:block;margin-top:20px}
+.fit ul{margin-top:24px}.fit li button{padding:18px 0;grid-template-columns:26px 1fr;gap:12px}
+.fit .pain{font-size:17px;line-height:1.4}.fit .fix{grid-column:2;font-size:14px;line-height:1.5}
+.fit .fix span{font-size:14px}.fit .tip{font-size:13px}
+#fit-action{margin-top:24px}#fit-action .btn{display:inline-flex;width:auto;padding:17px 24px;background:var(--action);color:white;min-height:52px;font-size:16px}
+.fit .fit-foot{font-size:13px;line-height:1.7;margin-top:24px;color:var(--ink2)}
+.page-story .host-note{display:grid;grid-template-columns:170px minmax(0,1fr);gap:28px;overflow:visible}
+.host-note>img{border:1px solid var(--ink);width:100%;border-radius:90px 90px 14px 14px;transform:rotate(-3deg);margin-top:25px;box-shadow:5px 5px 0 var(--sun)}
+.host-note h2{font-size:35px}.host-note p{font-size:14px}
+.host-note p.sig{font-size:38px;margin-top:18px}
+.review-list{display:grid;grid-template-columns:1fr;gap:0;margin-top:20px}
+.review-list figure{border-top:1px solid var(--line);padding:22px 0;display:grid;grid-template-columns:1fr 155px;gap:28px;align-items:center}
+.review-list blockquote{font-family:var(--serif);font-size:26px;line-height:1.2}
+.review-list figcaption{display:flex;align-items:center;gap:9px;font-size:11px;font-weight:700;line-height:1.5}
+.review-list figcaption img{width:36px;height:36px;border-radius:50%;object-fit:cover}
+.question-section .faqs{display:block;margin:25px 0 0}.faq summary{font-size:17px;padding:20px 32px 20px 0}.faq .a{font-size:14px;line-height:1.7}
+.prize-note{padding:24px;background:var(--sand);border-radius:16px;margin-top:32px;font-size:15px}.prize-note p{font-size:13px;margin-top:7px}
+.page-story .recap-new{padding:36px;margin-top:32px;background:var(--ink);color:var(--cream);border-radius:24px}
+.recap-new .eyebrow{color:var(--sun)}.recap-new h2 em{color:var(--sun)}.recap-new p{font-size:13px;margin-bottom:24px}
+.page-story .final-new{border:0;padding-bottom:80px}.final-new>img{margin-bottom:20px}.final-new>p{max-width:570px;margin-bottom:23px}
+footer{border-top:1px solid var(--line)}
+@media(min-width:1200px){.hero-media .book{grid-template-columns:100px minmax(0,1fr) auto;padding:20px 16px;gap:14px}.book .go{grid-column:auto;display:block;border-top:0;border-left:1px dashed #1a141244;padding:0 0 0 16px}.book .go .btn{font-size:13px;padding:14px}.book .go small{text-align:center;margin-top:10px}.book h3{font-size:25px}}
+@media(min-width:1024px) and (max-height:760px){.signup-shell{padding:20px}.signup-shell h2{font-size:34px}.signup-summary{font-size:13px}.signup-time{padding:9px 0;margin-bottom:10px}.signup-signature{display:none}}
+@media(max-width:1100px) and (min-width:1024px){.registration-layout{padding:32px 24px 0;grid-template-columns:minmax(0,1fr) 340px;gap:28px}.signup-shell{padding:22px}.hero-media .award{display:none}.days .drow{grid-template-columns:1fr}.days .drow .art{grid-column:1;grid-row:auto;width:min(100%,400px);justify-self:center}.lesson-bottom{grid-column:1}}
+@media(max-width:1023px){
+ .registration-layout{grid-template-columns:minmax(0,1fr);max-width:850px;padding:30px 24px 0;gap:0}
+ .hero-heading{grid-column:1;grid-row:1;margin-bottom:28px}.hero-heading h1{font-size:clamp(43px,7.6vw,67px)}.hero-intro{font-size:16px}
+ .hero-media{grid-row:2}.registration-rail{grid-column:1;grid-row:3;margin-top:30px;align-self:start}
+ .signup-shell{position:static;max-height:none;overflow:visible;max-width:600px;margin:0 auto;padding:28px}
+ .signup-shell h2 br{display:none}.signup-shell h2{font-size:40px}.signup-summary{max-width:430px}
+ .page-story{grid-column:1;grid-row:4}.page-story h2{font-size:44px}
+ .fb-cd{display:none}.fb-bar{width:100%}.fb-t b{font-size:20px}
+ .hero-media .stats{gap:22px}.hero-media .stat b{font-size:27px}
+ .hero-media .book{grid-template-columns:124px minmax(0,1fr)}.book .mini{width:124px}.book h3{font-size:31px}
+ .mbar{padding-bottom:max(12px,env(safe-area-inset-bottom));z-index:60}.mbar .btn{font-size:14px;min-height:48px;padding:12px 18px}
+ .ltoast{display:none}
+}
+@media(max-width:600px){
+ .fb{display:none}.registration-layout{padding:26px 18px 0}
+ .hero-heading .eyebrow{font-size:9px;line-height:1.7;letter-spacing:.11em;max-width:290px;margin-bottom:15px}
+ .hero-heading h1{font-size:46px;line-height:1.01;letter-spacing:-.025em;text-wrap:initial}
+ .hero-intro{font-size:14px;line-height:1.65;margin-top:17px}
+ .hero-media .award{display:none}.hero-media .stats{width:100%;justify-content:space-between;gap:10px}.hero-media .stat b{font-size:23px}.hero-media .stat small{font-size:9px}.hero-media .tstrip{margin-bottom:14px}
+ .hero-media .iph{border-radius:30px;padding:12px 8px 16px}.iph .bz{border-radius:20px;padding:5px}.iph .scr{border-radius:15px}.iph .isl{width:65px;height:12px}.iph .mkv{width:30px}
+ .video-pending .vplay{font-size:10px;padding:10px 12px;bottom:18px}.hero-media .book{padding:17px 15px;grid-template-columns:90px minmax(0,1fr);gap:12px;margin-top:16px}.book .mini{width:90px}.book h3{font-size:25px}.book .k{font-size:8px}.book .d{font-size:12px}.book .t{font-size:10px}.book .go{display:block}.book .go .btn{width:100%;font-size:14px}.book .go small{display:none}
+ .signup-shell{padding:23px 22px;border-radius:20px}.signup-shell h2{font-size:38px}.signup-shell .field input{font-size:16px;height:52px}.signup-top{font-size:9px}.signup-summary{font-size:14px}
+ .page-story>section{padding:44px 0}.page-story h2{font-size:38px}.page-story p{font-size:14px}.page-story .eyebrow{font-size:9px}
+ .chips{display:flex;flex-direction:column;align-items:stretch}.chip{text-align:left;font-size:13px}.page-story .btn{font-size:15px}.return-note{font-size:13px;padding:16px}
+ .days .drow,.days .drow:last-child{grid-template-columns:minmax(0,1fr);gap:18px;padding:28px 0}.days .drow .art{grid-column:1;grid-row:3;max-width:380px;justify-self:center}.lesson-label{font-size:10px;gap:9px}.dtext h3{font-size:32px}.dtext li{font-size:13px}.lesson-bottom{grid-column:1;grid-row:4}.lesson-bottom .out{font-size:14px}.lesson-bottom p.bridge{font-size:12px}.days .after p{font-size:29px}
+ .page-story .exit-gift,.page-story .recap-new{padding:26px 23px;margin-top:24px;border-radius:20px}.exit-gift small{font-size:11px}
+ .fit .pain{font-size:15px}.fit .fix span{font-size:13px}.fit .fit-foot{font-size:12px}.fit .tk{width:24px;height:24px}
+ .page-story .host-note{grid-template-columns:minmax(0,1fr);gap:28px}.host-note>img{width:140px;margin-top:0}.host-note h2{font-size:37px}
+ .review-list figure{grid-template-columns:1fr;gap:14px;padding:24px 0}.review-list blockquote{font-size:27px}.review-list figcaption{font-size:12px}
+ .faq summary{font-size:15px}.question-section .faq .a{font-size:13px}.prize-note{padding:20px}.prize-note p{font-size:12px}
+ .recap-new p{font-size:12px}.page-story .final-new{padding-bottom:50px}.final-new h2{font-size:40px}
+ footer{padding-bottom:110px}.mbar .mcd{font-size:10px}.mbar .md{font-size:11px}
+}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+/* Start the form beside the headline, then keep it in view down the page. */
+@media(min-width:1024px){.hero-heading{grid-column:1}.hero-heading h1{font-size:clamp(52px,4.8vw,67px)}.hero-intro{font-size:15px;line-height:1.6;margin-top:19px}.registration-rail{grid-row:1/4}.hero-media .tstrip{padding:10px 12px}.hero-heading{margin-bottom:25px}}
+
+@media(max-width:600px){.hero-media .tstrip{display:flex;padding:12px}.hero-media .stat b{font-size:21px}.hero-media .stat small{font-size:8px}}
+@media(max-width:1023px){html{overflow-x:clip}}
