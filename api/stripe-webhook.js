@@ -11,8 +11,11 @@
 //                       found (or made) by name: ep_vip (its automation sends "You're VIP"), ep_lab_full (the program
 //                       paid in full), ep_lab_2pay (2 payments) and ep_registered (every buyer, so someone who paid with
 //                       a different email from the one they registered with still gets the workshop emails)
-//   STRIPE_PLINK_VIP, STRIPE_PLINK_FULL, STRIPE_PLINK_PLAN  optional: the payment link ids (plink_...), to tell the three
-//                       links apart for certain. Without them: a line item named with "VIP" is VIP, a subscription is the plan.
+//   STRIPE_PLINK_VIP, STRIPE_PLINK_FULL, STRIPE_PLINK_PLAN  optional: the payment link ids (plink_...). Without them the
+//                       link is looked up (the key needs "Payment Links: Read") and matched against the three links below.
+//
+// Only the three Exit Plan payment links count. Ana's Stripe also sells Money Rewrite, Brand Deals Bootcamp and more;
+// those payments reach this endpoint too and are answered "ignored" without touching Kit or the Sheet.
 //
 // Nothing in the request body is trusted: the event is fetched again from Stripe with the secret key, so a forged call
 // can't tag anyone. Kit tags are idempotent, so Stripe's retries are harmless there.
@@ -24,15 +27,23 @@ async function stripe(path, key) {
   return r.json();
 }
 
-function kind(session) {
+// the three Exit Plan payment links (the same as in vip/index.html and assets/offer-settings.js), by the code at the end
+// of their buy.stripe.com address
+var LINKS = { '28EcN57sQcyC54k6vBc7u0G': 'vip', '6oU7sL14s42654kg6bc7u0H': 'lab_full', '4gMaEX4gEgOS8gwbPVc7u0I': 'lab_plan' };
+var seen = {};   // payment link id -> what it sells, while the function stays warm
+
+async function kind(session, key) {
   var pl = session.payment_link || '';
-  if (pl && pl === process.env.STRIPE_PLINK_VIP) return 'vip';
-  if (pl && pl === process.env.STRIPE_PLINK_FULL) return 'lab_full';
-  if (pl && pl === process.env.STRIPE_PLINK_PLAN) return 'lab_plan';
-  var items = (session.line_items && session.line_items.data) || [];
-  var names = items.map(function (i) { return (i.description || '') + ' ' + ((i.price && i.price.nickname) || '') }).join(' ');
-  if (/\bvip\b/i.test(names)) return 'vip';
-  return session.mode === 'subscription' ? 'lab_plan' : 'lab_full';
+  if (!pl) return null;   // not from a payment link: not one of ours
+  if (pl === process.env.STRIPE_PLINK_VIP) return 'vip';
+  if (pl === process.env.STRIPE_PLINK_FULL) return 'lab_full';
+  if (pl === process.env.STRIPE_PLINK_PLAN) return 'lab_plan';
+  if (!(pl in seen)) {
+    var link = await stripe('/payment_links/' + pl, key);
+    var code = String(link.url || '').replace(/\/+$/, '').split('/').pop();
+    seen[pl] = LINKS[code] || null;
+  }
+  return seen[pl];
 }
 
 module.exports = async function handler(req, res) {
@@ -58,7 +69,11 @@ module.exports = async function handler(req, res) {
     var cd = s.customer_details || {};
     var email = String(cd.email || s.customer_email || '').trim().toLowerCase();
     var first = String(cd.name || '').trim().split(/\s+/)[0].slice(0, 60);
-    var what = kind(s);
+    var what;
+    try { what = await kind(s, key) } catch (e) {
+      return res.status(200).json({ ok: true, ignored: 'cannot_read_payment_link', fix: 'give the Stripe key Payment Links: Read' });
+    }
+    if (!what) return res.status(200).json({ ok: true, ignored: 'not_exit_plan' });
     var amount = typeof s.amount_total === 'number' ? (s.amount_total / 100).toFixed(2) : '';
     var out = { ok: true, kind: what };
 
