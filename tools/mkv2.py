@@ -1,11 +1,13 @@
 """Ana's registration page, layout trial: /v2/ (the live page at / is untouched).
 
-Two columns: the page on the left (the video big, then every section), and on the right a slim column with the headline
-and a compact sign-up card that stays frozen below the top bar while you scroll (desktop, 1280 px and wider). The
-sign-up form is the popup's own form, moved into that card on desktop and back into the popup on phones, so the
-hidden fields, the situation chips and the Kit sending all work as they do on the live page.
+The hero is the live page's own two columns: the video big on the left with a drawing of the three days under it, and on
+the right the headline and a seat ticket that holds the sign-up form. Once that ticket scrolls away, the form moves into
+a slim copy of the ticket that stays frozen on the right of the page (desktop, 1280 px and wider). The form is the
+popup's own form, moved between the two tickets and the popup, so the hidden fields, the situation chips and the Kit
+sending all work as they do on the live page.
 
-Copy: the Google Doc "Registration page copy" (Oct 31). Built from index.html; run it again after the live page changes:
+Copy: Sean's updated registration copy (Oct 31, second version), with no em dashes. Built from index.html; run it again
+after the live page changes:
     python3 mkv2.py /home/user/2026-ana-calin
 """
 import sys, os, re
@@ -34,11 +36,12 @@ R("var VIP_URL     = 'vip/';", "var VIP_URL     = '../vip/';")
 R("var PARTNERS    = 'partners.json';", "var PARTNERS    = '../partners.json';")
 R('<meta name="theme-color"', '<meta name="robots" content="noindex">\n<meta name="theme-color"')
 
-# ---------- the hero: the right column becomes the rail; the left gets the big video and the rest of the hero copy ----------
+LI = '<li><svg aria-hidden="true"><use href="#li"/></svg><span>%s</span></li>'
+ARR = '<svg><use href="#arr"/></svg>'
+
+# ---------- the hero ----------
 hero = between('<section class="hero" id="hero">', '<main>')
-pill = re.search(r'<span class="hpill">.*?</span>\n', hero, re.S).group(0)
 h1 = re.search(r'<h1 id="h1".*?</h1>', hero, re.S).group(0)
-situ = re.search(r'<div class="situ".*?</div>\s*</div>', hero, re.S).group(0)
 proof = re.search(r'<div class="proof">.*?</div>\s*\n', hero, re.S).group(0)
 just = re.search(r'<p class="just" id="just" hidden>.*?</p>', hero, re.S).group(0)
 tstrip = re.search(r'<div class="tstrip">.*?</div>\s*</div>\s*</div>', hero, re.S).group(0)
@@ -47,25 +50,17 @@ tstrip = tstrip.replace('<div class="stat"><b>0</b><small>sales calls</small></d
                         '<div class="stat"><b>0</b><small>sales calls</small></div><i></i>\n          <div class="stat"><b>16,907</b><small>buyers</small></div>')
 assert '16,907' in tstrip
 
-LI = '<li><svg aria-hidden="true"><use href="#li"/></svg>'
-BYTH = ('<ul class="byth">\n'
-        '            <li class="bt">By the end of Day 3, you\'ll have:</li>\n'
-        '            ' + LI + 'found the thing your readers would actually pay you for</li>\n'
-        '            ' + LI + 'a first offer that isn\'t a course, a paid tier, or a year away</li>\n'
-        '            ' + LI + 'a price you can say out loud without wincing</li>\n'
-        '            ' + LI + 'the email that finally asks people to buy. You\'ll write it with me on Nov 19.</li>\n'
-        '          </ul>')
-# the seat ticket: the hero has one (the form starts there, so it is on the first screen) and the frozen column has one;
-# the form moves into the frozen one once the hero's ticket has scrolled away
+# the seat ticket: the hero has one (the form starts there, on the first screen) and the frozen column has a slim one
 bars = ''.join('<rect x="%d" y="0" width="%d" height="40"/>' % (x, w) for x, w in [(0,2),(4,1),(7,3),(12,1),(15,2),(19,1),(22,3),(27,1),(30,2),(34,1),(37,2),(41,3),(46,1)])
-def ticket(tid, slot):
+def ticket(tid, slot, sub):
     return ("""<div class="tkshell">
       <div class="tkt" id="%s">
-        <div class="tk-top"><img src="../img/mark.png" alt="" width="34" height="34"><span><small>The Exit Plan</small><b>Your free seat</b></span><em>Admit one</em></div>
+        <div class="tk-top"><img src="../img/mark.png" alt="" width="34" height="34"><span><small>Free · Nov 17 to 19 · Live on Zoom</small><b>The Exit Plan</b></span><em>Admit one</em></div>
         <div class="tk-body">
-          <div class="rdates">
+          <h3 class="tk-h"><span class="l">Let’s put what you</span> <span class="l">know to work.</span></h3>
+          """ + ('<p class="tk-sub">Three days with me to find an offer idea, put a price on it, and write the email that asks people to buy.</p>\n          ' if sub else '') + """<div class="rdates">
             <div class="mt" aria-hidden="true"><span><b>17</b><small>Tue</small></span><span><b>18</b><small>Wed</small></span><span><b>19</b><small>Thu</small></span></div>
-            <p class="when"><b>Three live sessions</b>12:00 pm New York / 7:00 pm Greece</p>
+            <p class="when"><b>12:00 pm New York, each day</b>About 90 minutes per session</p>
           </div>
           <div class="rslot" id="%s"></div>
         </div>
@@ -78,8 +73,59 @@ def ticket(tid, slot):
       </div>
     </div>""") % (tid, slot)
 
-# the hero: the live page's two columns. Left: the stats, the phone video, then the rest of the copy in two columns.
-# Right: the headline and the pink line, bigger, and straight under them the testimonial bar and the ticket with the form.
+# the drawing under the video: what you make on each of the three days, the same example writer as in the day rows
+INK, SUN, PINK = '#1A1412', '#FFD400', '#F72585'
+def card(x, y, rot, title, day, body, title_x=16):
+    cx, cy = x + 103, y + 98
+    return ('<g transform="rotate(%s %d %d)">' % (rot, cx, cy)
+            + '<rect x="%d" y="%d" width="206" height="196" rx="16" fill="%s" stroke="%s" stroke-width="2.6"/>' % (x + 6, y + 7, SUN, INK)
+            + '<rect x="%d" y="%d" width="206" height="196" rx="16" fill="#fff" stroke="%s" stroke-width="2.6"/>' % (x, y, INK)
+            + ('<text x="%d" y="%d" font-family="Instrument Serif,Georgia,serif" font-size="21" fill="%s">%s</text>' % (x + title_x, y + 31, INK, title) if title else '')
+            + '<rect x="%d" y="%d" width="50" height="21" rx="10.5" fill="%s"/>' % (x + 142, y + 14, PINK)
+            + '<text x="%d" y="%d" text-anchor="middle" font-family="Manrope,sans-serif" font-weight="800" font-size="10" letter-spacing="1.4" fill="#fff">%s</text>' % (x + 167, y + 28.5, day)
+            + '<path d="M%d %dh178" stroke="%s" stroke-opacity=".12" stroke-width="1.5"/>' % (x + 14, y + 44, INK)
+            + body + '</g>')
+
+def t(x, y, txt, size=12.5, weight=700, fill=INK, serif=False, ls=None, anchor=None):
+    fam = 'Instrument Serif,Georgia,serif' if serif else 'Manrope,sans-serif'
+    return '<text x="%s" y="%s" font-family="%s"%s font-size="%s" fill="%s"%s%s>%s</text>' % (
+        x, y, fam, '' if serif else ' font-weight="%d"' % weight, size, fill,
+        ' letter-spacing="%s"' % ls if ls else '', ' text-anchor="%s"' % anchor if anchor else '', txt)
+
+X1, Y1, X2, Y2, X3, Y3 = 12, 40, 284, 30, 544, 42
+c1 = (  # Day 1: the reader file
+    '<g transform="translate(%d %d) scale(.36)"><circle r="50" fill="%s" stroke="%s" stroke-width="6"/><path d="M-50 -6C-44-48 44-48 50-6C40-26 22-34 0-34S-40-26-50-6Z" fill="#6B4E3A" stroke="%s" stroke-width="6" stroke-linejoin="round"/><ellipse cx="-16" cy="2" rx="5" ry="7" fill="%s"/><ellipse cx="16" cy="2" rx="5" ry="7" fill="%s"/><path d="M-20 18c4 16 36 16 40 0Z" fill="%s"/></g>' % (X1 + 34, Y1 + 76, SUN, INK, INK, INK, INK, INK)
+    + t(X1 + 62, Y1 + 70, 'READER', 9, 800, PINK, ls=1.4) + t(X1 + 62, Y1 + 88, 'Mother of two,', 13)
+    + t(X1 + 16, Y1 + 113, 'four years out of work.', 13)
+    + t(X1 + 16, Y1 + 139, 'SHE’D PAY FOR', 9, 800, PINK, ls=1.4)
+    + '<rect x="%d" y="%d" width="96" height="22" fill="%s"/><rect x="%d" y="%d" width="106" height="22" fill="%s"/>' % (X1 + 14, Y1 + 145, SUN, X1 + 14, Y1 + 169, SUN)
+    + t(X1 + 17, Y1 + 162, 'A clear plan', 21, serif=True) + t(X1 + 17, Y1 + 186, 'back to work.', 21, serif=True))
+c2 = (  # Day 2: the offer sentence and its price
+    t(X2 + 16, Y2 + 74, 'I help mothers after a', 19, serif=True) + t(X2 + 16, Y2 + 98, 'career break get back', 19, serif=True)
+    + t(X2 + 16, Y2 + 122, 'to work in six weeks.', 19, serif=True)
+    + '<path d="M%d %dc22-4 46-4 68 0" fill="none" stroke="%s" stroke-width="3.4" stroke-linecap="round"/>' % (X2 + 86, Y2 + 130, PINK)
+    + t(X2 + 16, Y2 + 162, 'PRICE', 9, 800, '#7A6A60', ls=1.4)
+    + '<g transform="rotate(-9 %d %d)"><path d="M%d %dh74a9 9 0 0 1 9 9v34a9 9 0 0 1-9 9h-74l-20-26Z" fill="%s" stroke="%s" stroke-width="3" stroke-linejoin="round"/><circle cx="%d" cy="%d" r="5" fill="#EADFCF" stroke="%s" stroke-width="2.6"/>' % (X2 + 140, Y2 + 168, X2 + 98, Y2 + 142, PINK, INK, X2 + 92, Y2 + 168, INK)
+    + t(X2 + 140, Y2 + 180, '$149', 27, 800, '#fff', anchor='middle', ls=-.5) + '</g>')
+c3 = (  # Day 3: the email that asks
+    t(X3 + 16, Y3 + 78, 'Back to work,', 23, serif=True) + t(X3 + 16, Y3 + 103, 'by spring.', 23, serif=True)
+    + '<rect x="%d" y="%d" width="160" height="7" rx="3.5" fill="%s" fill-opacity=".12"/><rect x="%d" y="%d" width="120" height="7" rx="3.5" fill="%s" fill-opacity=".12"/>' % (X3 + 16, Y3 + 118, INK, X3 + 16, Y3 + 132, INK)
+    + '<rect x="%d" y="%d" width="124" height="28" rx="14" fill="%s"/>' % (X3 + 16, Y3 + 150, PINK)
+    + t(X3 + 78, Y3 + 168.5, 'see what’s inside', 11.5, 700, '#fff', anchor='middle'))
+toast = ('<g transform="rotate(-2 %d %d)"><rect x="%d" y="%d" width="190" height="36" rx="18" fill="#fff" stroke="%s" stroke-width="2.4"/>' % (X3 + 130, Y3 + 198, X3 + 30, Y3 + 180, INK)
+         + '<circle cx="%d" cy="%d" r="11" fill="%s" stroke="%s" stroke-width="2"/><path d="m%d %d 4 4 7-8" fill="none" stroke="%s" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>' % (X3 + 50, Y3 + 198, SUN, INK, X3 + 44, Y3 + 198, INK)
+         + t(X3 + 68, Y3 + 202.5, 'Sent to her ten readers', 11.5, 700) + '</g>')
+arrow = lambda x1, y1, x2, y2: ('<path d="M%d %d Q %d %d %d %d" fill="none" stroke="%s" stroke-width="3" stroke-linecap="round" stroke-dasharray="1 7"/>' % (x1, y1, (x1 + x2) / 2, min(y1, y2) - 24, x2, y2, PINK)
+                                + '<path d="M%d %dl10 3-7 8" fill="none" stroke="%s" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>' % (x2 - 8, y2 - 6, PINK))
+HMAP = ('<div class="hmap" aria-hidden="true"><svg viewBox="0 0 760 270" role="presentation">'
+        + arrow(206, 30, 288, 22) + arrow(478, 22, 548, 34)
+        + card(X1, Y1, -2.2, 'Reader file', 'DAY 1', c1)
+        + card(X2, Y2, 1.6, 'Your offer', 'DAY 2', c2)
+        + card(X3, Y3, -1.4, None, 'DAY 3',
+               '<use href="#sf" x="%d" y="%d" width="26" height="26"/>' % (X3 + 12, Y3 + 10)
+               + t(X3 + 44, Y3 + 23, 'You', 13, 800) + t(X3 + 44, Y3 + 37, 'your newsletter', 10.5, 600, '#7A6A60') + c3)
+        + toast + '</svg></div>')
+
 new_hero = """<section class="hero" id="hero">
   <svg class="bgflower" aria-hidden="true"><use href="#sfo"/></svg>
   <svg class="bgflower b" aria-hidden="true"><use href="#sfo"/></svg>
@@ -90,27 +136,17 @@ new_hero = """<section class="hero" id="hero">
       <!-- the VSL: set VSL_SRC in the script when Ana's video is ready. Click to play; this still is the cover. -->
       """ + vsl + """
 
-      <div class="hcopy">
-        <div class="hc1">
-          <p class="lede">If nothing's selling yet, it isn't your list and it isn't your writing. <b>It's the order you were taught to do things in.</b></p>
-          <p class="lede">Your first paid offer doesn't have to be a course, a paid tier, or finished. Your readers have probably already asked you for it. AI changed one step in that order, and on Day 1 I'll show you which one, on my own Substack.</p>
-          <p class="when2"><b>Tue Nov 17 to Thu Nov 19</b>12:00 pm New York <i>/</i> 9:00 am Los Angeles <i>/</i> 5:00 pm London <i>/</i> 7:00 pm Greece</p>
-        </div>
-        <div class="hc2">
-          """ + BYTH + """
-          <p class="obj"><b>You don't need a bigger list, a paywall or a sales call for any of this.</b> It's free and live on Zoom, three New York lunchtimes in a row (dinner time for me, here in Greece).</p>
-          <p class="april">If you did my April challenge: back then I had you build it first. I'd tell you something different now.</p>
-        </div>
-      </div>
+      <!-- what you make on each of the three days -->
+      """ + HMAP + """
     </div>
 
     <div class="hright">
-      """ + pill + """      """ + h1 + """
-      <p class="hkick" id="hk"><span class="l">Already work for yourself? Then your "job" is the client hours. Same plan.</span></p>
+      <span class="hpill"><span class="dot"></span>The Exit Plan <i>·</i> <span class="hide-s">A free 3-day live workshop with Ana Calin</span></span>
+      """ + h1 + """
+      <p class="hsub2" id="hk">You’ve spent years getting good at something. Maybe you write about it, and people thank you for helping them. <em>But what could you sell, and could it earn enough to give you more choice about work?</em></p>
       <div class="htk">
         """ + proof + """        """ + just + """
-        """ + ticket('hcard', 'hslot') + """
-        <p class="xnote">Sign up and answer seven quick questions, and I'll give you your <b>exit number.</b></p>
+        """ + ticket('hcard', 'hslot', True) + """
       </div>
     </div>
   </div>
@@ -118,121 +154,111 @@ new_hero = """<section class="hero" id="hero">
 
 """
 R(hero, new_hero)
-# the testimonial bar for the frozen ticket: a copy without the live-feed id
 proof_t = proof.replace(' id="proofTxt"', '')
 rail = """<!-- the frozen column: the seat ticket the form moves into once the hero's ticket has scrolled away (1280 px and wider) -->
   <aside class="v2rail" id="v2rail" aria-label="Save your seat">
     <div class="tksticky">
-      """ + proof_t + """      """ + ticket('rcard', 'rslot') + """
-      <p class="xnote">Sign up and answer seven quick questions, and I'll give you your <b>exit number.</b></p>
+      """ + proof_t + """      """ + ticket('rcard', 'rslot', False) + """
     </div>
   </aside>
 """
 R('<main>\n', '<main class="v2page">\n<div class="v2body">\n' + rail)
-R('</main>\n', '')
-R('<!-- 9. final CTA: claim your seat -->', '</div>\n</main>\n\n<!-- 9. final CTA: claim your seat -->')
 
-# ---------- your host ----------
-R('<h2 class="hname">Ana Calin.</h2>', '<h2 class="hname">I\'m Ana Calin.</h2>')
-R('<p class="hsub">I believed the wrong thing about money <em>for ten years.</em></p>',
-  '<p class="hsub">For ten years, I believed <em>the wrong thing about money.</em></p>')
-bio = re.search(r'<p class="bio drop">.*?</p>', s, re.S).group(0)
-R(bio, '<p class="bio drop"><span class="dc">I</span> write How We Grow, a newsletter read by about 80,000 people who want to get paid for their writing. It has made $1.4M so far, on about two hours a day from a village in Greece, and I\'ve never taken a sales call.</p>\n'
-  '        <p class="bio">It didn\'t start that way. My first workshop sold two copies, at $47, because I built what I wanted to teach instead of what my readers kept asking me for. I built a whole stadium and forgot to sell tickets. Or hot dogs.</p>\n'
-  '        <p class="bio">I\'ve run a lot of workshops on offers since then, and here\'s the thing I keep seeing. People almost always have something worth paying for. What stops them is the little voice asking, "Who would pay for this?" These three days are me showing you what I do instead, on my own screen, with my own numbers.</p>')
-R('<p><b>"I wish"</b> tells your brain: fantasy, file it. <b>"I want"</b> tells your brain: start looking for the next step.</p>',
-  '<p>Say <b>"I wish"</b> and your brain files it under fantasy. Say <b>"I want"</b> and it starts looking for the next step.</p>')
-R('<h3>Senior executive. Big salary. <em>I felt poor.</em></h3><p>I earned more than my parents earned in their whole lives. My belief was "I should be grateful for what I have." It sounds like wisdom. It means: don\'t want more, don\'t ask, don\'t leave.</p>',
-  '<h3>Senior executive, big salary, <em>and I still felt poor.</em></h3><p>I was earning more than my parents had earned in their whole lives, and I kept telling myself, "I should be grateful for what I have." It sounds wise, doesn\'t it? What it really meant was don\'t want more, don\'t ask, and definitely don\'t leave.</p>')
-R('<p>4 AM on a hotel bathroom floor in Singapore, I said out loud for the first time: "I wish I could do my own thing."</p><p><b>Wish. Not want.</b> It took five more years to hear the difference.</p>',
-  '<p>At 4 in the morning, on a hotel bathroom floor in Singapore, I said it out loud for the first time: "I wish I could do my own thing."</p><p><b>I said wish, not want.</b> It took me five more years to hear the difference.</p>')
-R('<h3>First four-figure months. <em>Then a six-figure year.</em></h3><p>First six-figure year, baby on my hip, in my forties.</p>',
-  '<h3>My first four-figure months, <em>then a six-figure year.</em></h3><p>I had my first six-figure year in my forties, with a baby on my hip.</p>')
-R('<p>$1.4M from the newsletter, on two hours a day.</p><p><b>Same skills the whole time.</b> The beliefs changed. The actions followed. The money followed the actions.</p>',
-  '<p>$1.4M from the newsletter, and I still work on it about two hours a day.</p><p><b>Honestly, I didn\'t learn some big new skill along the way.</b> I had the same skills back in 2015. What changed was what I believed I was allowed to ask for, and everything else followed from there.</p>')
+# the Day 3 prize tickets: the new copy gives no dollar value, so the tickets carry none
+R('<text x="88" y="50" font-family="Instrument Serif,serif" font-size="30" fill="#1A1412">1:1 with Ana</text>\n      <text x="89" y="78" font-family="Manrope,sans-serif" font-weight="800" font-size="13" letter-spacing="2" fill="#F72585">WORTH $3,000</text>',
+  '<text x="88" y="65" font-family="Instrument Serif,serif" font-size="30" fill="#1A1412">1:1 with Ana</text>')
 
-# ---------- new: what you won't hear from me (after the host) ----------
-NOPE = '''
-<!-- 2b. what you won't hear from me -->
-<section class="nope" id="nope">
+# ---------- 2. a little context (replaces the host letter and her story) ----------
+CHIPS = ('<div class="situ" role="group" aria-labelledby="situ-l">\n'
+         '        <span class="lbl" id="situ-l">Where are you right now?</span>\n'
+         '        <div class="chips">\n'
+         '          <button class="chip" type="button" data-v="job" aria-pressed="false">I have a job and write on the side</button>\n'
+         '          <button class="chip" type="button" data-v="self" aria-pressed="false">I work for myself</button>\n'
+         '          <button class="chip" type="button" data-v="both" aria-pressed="false">A bit of both</button>\n'
+         '        </div>\n'
+         '      </div>')
+CTX = """<!-- 2. a little context, if we haven't met -->
+<section class="ctx who" id="who">
   <div class="wrap">
-    <div class="head" data-r>
-      <span class="eyebrow">What you won't hear from me</span>
-      <h2>No "grow your list first" <em>this time.</em></h2>
-    </div>
-    <div class="ngrid" data-r>
-      <ul class="nolist" aria-label="What you won't hear">
-        <li><span>post every day for months and wait</span></li>
-        <li><span>build a whole course, then hope somebody buys it</span></li>
-        <li><span>a launch plan that looks like a NASA schedule</span></li>
-        <li><span>"let AI do it for you"</span></li>
-      </ul>
-      <div class="ntx">
-        <p>You won't hear me tell you to post every day for months and wait, or to build a whole course and then hope somebody buys it. You won't get a launch plan that looks like a NASA schedule either, or "let AI do it for you". AI is just the reason the order changed. You've heard the rest already, and some of you paid good money for it.</p>
-        <p class="inst"><b>What you get instead</b> is the exact thing I do, on my own screen, with my own replies, my own Substack dashboard and my own numbers. Then we do it on yours, live, while I'm there.</p>
+    <div class="cgrid">
+      <div class="pol" data-r>
+        <figure><img src="../img/ana-hat.webp" alt="Ana Calin" width="520" height="520" loading="lazy"></figure>
       </div>
+      <div class="ctx-tx" data-r>
+        <p class="partner"><span id="pname"></span> sent you here. Here's who I am.</p>
+        <span class="eyebrow">A little context, if we haven’t met</span>
+        <h2><span class="l">I’m Ana. I turn what I know</span> <span class="l"><em>into things my readers pay for.</em></span></h2>
+        <p class="lead">I write How We Grow on Substack. My newsletter business has made <b>$1.4M</b> selling workshops and programs to readers, without sales calls.</p>
+        <p>The advice you usually hear is to grow your audience and keep creating until the money follows. AI has changed a practical part of that process, and it changes the order I’d recommend today. On Day 1, I’ll show you what changed, using my own business.</p>
+        <div class="cnotes">
+          <p><b>Already self-employed?</b> Your goal might be to stop depending on client work you’d rather turn down. These three days are for you too.</p>
+          <p><b>Been to one of my workshops before?</b> What you learned about your readers still matters. Come see what I now do differently with it.</p>
+        </div>
+      </div>
+    </div>
+    <div class="cplan" data-r>
+      """ + CHIPS + """
+      <div class="cgo"><button class="btn open" type="button">I want the plan""" + ARR + """</button><small>free · live on Zoom</small></div>
     </div>
   </div>
 </section>
-'''
-R('<!-- 3. the three days,', NOPE + '\n<!-- 3. the three days,')
 
-# ---------- the three days ----------
-R('<h2>Three sessions. <em>Each one ends with something you made.</em></h2>',
-  '<h2>Every day, you write something while I\'m there, <em>so you don\'t log off with just a page of notes.</em></h2>')
+"""
+R(between('<!-- 2. who\'s Ana:', '<!-- 3. the three days,'), CTX)
 
+# ---------- 3. the three days ----------
+R(between('    <div class="head" data-r>\n      <span class="eyebrow">Tue Nov 17 to Thu Nov 19', '    <div class="rows">'),
+  """    <div class="head" data-r>
+      <span class="eyebrow">Your three days · Nov 17 to 19</span>
+      <h2><span class="l">Open my screen.</span> <span class="l"><em>Then work on yours.</em></span></h2>
+      <p class="dlede">Bring somewhere to write. Each day, I’ll show you a real example, then give you time to work on your own. I’ll review some of your work live.</p>
+    </div>
 
-def day(old_sub, new_sub, old_out, new_out, old_body, new_body, old_ul, new_lis, nxt):
-    R('<p class="body"><b>%s</b></p>' % old_sub, '<p class="body"><b>%s</b></p>' % new_sub)
-    R('<p class="out"><span>You leave with:</span> %s</p>' % old_out, '<p class="out">%s</p>' % new_out)
-    R('<p class="body">%s</p>' % old_body, '<p class="body">%s</p>' % new_body)
-    R(old_ul, '<ul>\n' + ''.join('            <li><svg><use href="#li"/></svg><span>' + li + '</span></li>\n' for li in new_lis) + '          </ul>' + ('\n          <p class="next">%s</p>' % nxt if nxt else ''))
+""")
+DAYS = [
+    ('17', 'Tuesday, Nov 17', 'Find the idea worth asking people to pay for.',
+     'You might already have the answer buried in a reply, a comment, or a message you answered without thinking. I’ll open my own and show you what I look for.',
+     ['The change AI made to my process, and why I’d start in a different order today.',
+      'My three-step process for narrowing what readers ask about to one idea worth testing.',
+      'Why the thing that feels too obvious to you can still be useful enough to sell.'],
+     'One reader, one problem, and an offer idea to test.',
+     'Tomorrow, we turn that idea into something you can put a price on.'),
+    ('18', 'Wednesday, Nov 18', 'Put your offer into one sentence. Then give it a price.',
+     '“I could help with that” isn’t quite an offer yet. We’ll make it clear who it’s for, what you’ll help them do, and what they’re being asked to buy.',
+     ['The one sentence every offer needs. I’ll work through examples and fix some of yours live.',
+      'The one-question price test I use when a pricing formula won’t help.',
+      'The four words I used when a client asked for my best price, and what happened next.'],
+     'Your offer sentence and a starting price to test.',
+     'Then comes the part that’s easy to leave for “later”: actually asking.'),
+    ('19', 'Thursday, Nov 19', 'Write the email that puts your offer in front of people.',
+     'One of my posts got 771 likes and made nothing. Another got 82 likes and made $120. I’ll show you the sentence that made the difference, then we’ll write your ask together.',
+     ['Why I approached 300 readers instead of my whole list, and how I chose them.',
+      'Where I look in my Substack dashboard to find the first people to approach.',
+      'How to explain what’s for sale in your own voice, without burying the invitation.'],
+     'A drafted sales email, your first audience, and a date to send it.',
+     'You’ll have the draft in front of you. I’ll read some out and work on them live.'),
+]
+dtexts = re.findall(r'<div class="dtext">.*?</div>\s*(?=<div class="art")', s, re.S)
+assert len(dtexts) == 3, len(dtexts)
+for old, (dd, dname, h3, body, lis, out, nxt) in zip(dtexts, DAYS):
+    new = ('<div class="dtext">\n'
+           '          <div class="dwhen"><span class="dcal" aria-hidden="true"><small>NOV</small><b>%s</b></span><span class="dtx"><b>%s</b><span class="dtm"><span class="pill">12:00 pm New York</span></span></span></div>\n'
+           '          <h3>%s</h3>\n'
+           '          <p class="body">%s</p>\n'
+           '          <ul>\n%s\n          </ul>\n'
+           '          <p class="out"><span>You leave with</span>%s</p>\n'
+           '          <p class="next">%s</p>\n'
+           '        </div>\n        ') % (dd, dname, h3, body, '\n'.join('            ' + LI % li for li in lis), out, nxt)
+    R(old, new)
+R(between('    <div class="after" data-r>\n      <p>Come to all three.', '  </div>\n</section>\n\n<!-- 4. is this for you? -->'),
+  """    <div class="after" data-r>
+      <p><span class="l">Come to all three.</span> <span class="l">Each day builds on the one before.</span></p>
+      <button class="btn open" type="button">I’m in for all three (free)""" + ARR + """</button>
+    </div>
+""")
 
-
-def ul_of(items):
-    return '<ul>\n' + ''.join('            <li><svg><use href="#li"/></svg>%s</li>\n' % i for i in items) + '          </ul>'
-
-
-day("What it is, why AI flipped the order, and where to find yours.",
-    "Why AI flipped the order, and the three steps I use to find what readers have already told me they'd pay for.",
-    "your one reader, and the problem she'd pay you to fix.",
-    "<span>By the end of Day 1,</span> you'll know who your one reader is and what she'd pay you to fix, and you'll have said it in the chat.",
-    "You're writing for everyone, which is why nobody pays. So we pick one reader and name her. Then we find the problem she'd pay you to fix, in what you already know.",
-    "Your readers have usually told you already. It's sitting in your replies and comments, and it sounds so obvious you've walked straight past it.",
-    ul_of(["Why AI flipped the order, and what that means for you", "Who your one reader is, and how to name her", "The problem she'd pay you to fix, written in her words"]),
-    ["<b>Copy, count, pick:</b> the three steps I use on my own replies, comments and DMs to find what people would pay for. I'll do it live, on mine.",
-     "Why the right idea usually feels too obvious to sell, and why that's exactly how you know it's the one",
-     "Why your list size was never the real problem, small or big",
-     "Who your one reader is, and how to name her"],
-    "Tomorrow, we put a price on her problem.")
-day('The one sentence that turns it into something people pay for, and the price question that ends "am I charging too much?"',
-    'How to say what you\'re selling so people get it the first time, and the price test that finally ends "am I charging too much?"',
-    "your offer, in one sentence, priced.",
-    "<span>By the end of Day 2,</span> your offer and its price are written down, and you'll have said both out loud in the chat.",
-    "Ten thousand readers and no offer is a hobby with analytics. A few dozen readers and one priced offer is a business. We turn her problem into one offer you can say in a sentence, and we put a price on it.",
-    "Please don't price it low just because you're scared. If you're afraid to ask for five dollars, nobody will give you five thousand.",
-    ul_of(["The one sentence that says who it's for, what changes and how long it runs", "How to price it, and how to say the price out loud", "At the end, my program, for anyone who wants to keep going with me. You can leave before it."]),
-    ["The sentence every offer needs before it goes anywhere near your readers. I'll fix some of yours live.",
-     "The one-question price test I use instead of a pricing formula",
-     "Why your first price is a proof price, not your final one, and why that makes it so much easier to say out loud",
-     "The four words I said when a client asked for my best price (they said yes)"],
-    "Tomorrow, you write the email that asks.")
-day("The step almost everyone gets wrong, and how to get your first yeses without a sales page or a call.",
-    "The step almost everyone gets wrong, and how to get your first yeses without a sales page or a call.",
-    "your first ask, written, ready to send.",
-    "<span>By the end of Day 3,</span> the email asking your readers to buy is written, and you've picked the day you'll send it.",
-    "Readers can't buy what they don't know you sell. So you write the ask that tells them what it is and how to get it, and you leave with it ready to send.",
-    "If something is only for you, perfect, keep it to yourself. But if you want people to buy it, you have to tell them it exists. You write that email with me, live, so it doesn't end up in your drafts with everything else.",
-    ul_of(["How to ask in your own voice, without apologising for it", "Who to send it to first, and when", "Stay to the end: five people there live win a 1:1 with me"]),
-    ["Why one of my posts got 771 likes and made nothing, and another got 82 likes and made $120 (it came down to one sentence)",
-     "Why I sent my first ask to 300 of my most consistent readers instead of my whole list, and why 47 of them said yes",
-     "How to find your own most consistent readers in your Substack dashboard (about two minutes), and how to ask them without apologizing"],
-    None)
-R('<p>Come to all three. Each day builds on the one before.</p>', '<p>Please come to all three. Each day builds on the one before.</p>')
-
-# ---------- new: your gift, the exit number (after the days) ----------
-GIFT = '''
-<!-- 3b. your gift: the exit number -->
+# ---------- 4 to 10: gift, fit, host, reviews, questions, the Day 3 prize, the recap, then the final ----------
+GIFT = """<!-- 4. your gift when you join: the exit number -->
 <section class="gift" id="gift">
   <div class="wrap">
     <div class="gcard" data-r>
@@ -240,74 +266,160 @@ GIFT = '''
         <svg viewBox="0 0 220 260"><rect x="20" y="16" width="180" height="228" rx="24" fill="#FFD400" stroke="#1A1412" stroke-width="5"/><rect x="40" y="38" width="140" height="58" rx="10" fill="#FFF8EE" stroke="#1A1412" stroke-width="4"/><path d="M58 76h70" stroke="#1A1412" stroke-width="5" stroke-linecap="round"/><path d="M146 76h16" stroke="#F72585" stroke-width="5" stroke-linecap="round"/><g fill="#FFF8EE" stroke="#1A1412" stroke-width="4"><rect x="40" y="112" width="38" height="30" rx="8"/><rect x="91" y="112" width="38" height="30" rx="8"/><rect x="142" y="112" width="38" height="30" rx="8"/><rect x="40" y="152" width="38" height="30" rx="8"/><rect x="91" y="152" width="38" height="30" rx="8"/><rect x="40" y="192" width="38" height="30" rx="8"/><rect x="91" y="192" width="38" height="30" rx="8"/></g><rect x="142" y="152" width="38" height="70" rx="8" fill="#F72585" stroke="#1A1412" stroke-width="4"/><use href="#sf" x="128" y="-8" width="84" height="84"/></svg>
       </div>
       <div class="gtx">
-        <span class="eyebrow">Your gift</span>
-        <h2>The exit <em>number.</em></h2>
-        <p>Sign up, answer seven quick questions, and I'll give you your exit number. It's a little calculator I built that shows how many people would need to say yes for you to leave your job, or to drop the clients you'd rather not have. It also shows the same money the usual way, through paid subscriptions alone. <b>That second number is usually when people stop waiting for a bigger list.</b> There's a pen-and-paper version too, if AI isn't your thing.</p>
-        <p class="gnext"><span class="gd">From Nov 4</span>I'll send you a small task most days, about 15 minutes each, so you show up on the 17th with your material ready.</p>
+        <span class="eyebrow">Your gift when you join</span>
+        <h2><span class="l">How much would</span> <span class="l"><em>“enough” actually take?</em></span></h2>
+        <p>Answer seven quick questions and get your <b>exit number</b>: how many people would need to buy at a given price to reach your income goal. That might mean replacing your salary, or letting go of a client.</p>
+        <p>You’ll also see what the same goal would take through paid subscriptions alone. It’s a way to put numbers to the plan, so you can see what you’re working towards.</p>
+        <p class="gnext"><b>From Nov 4,</b> I’ll send a small task most days, about 15 minutes, to help you bring useful material to the workshop.</p>
       </div>
     </div>
   </div>
 </section>
-'''
-R('<!-- 4. is this for you? -->', GIFT + '\n<!-- 4. is this for you? -->')
 
-# ---------- fit check ----------
-fit_ul = re.search(r'(<section class="sand fit">.*?)(<ul data-r>.*?</ul>)', s, re.S).group(2)
+"""
 TK = '<span class="tk"><svg viewBox="0 0 20 20"><path d="m5 10.5 3.4 3.4L15 6.8"/></svg></span>'
-FIT = [("You write every week and it pays you nothing.", "Then you're exactly who I made this for."),
-       ("Readers say lovely things, then never buy.", "They will, once you ask properly. That's Day 3."),
-       ("You keep thinking you need more subscribers first.", "You don't. A few dozen readers and one priced offer is already a business."),
-       ("You have thousands of subscribers and almost nobody buys.", "Then you've already proved the list isn't the problem. Same fix, and you have more people to ask."),
-       ("You already work for yourself.", "Me too. For a while I'd just hired the worst boss I'd ever had: me. If your \"job\" is client hours, it works the same."),
-       ("You don't know what you'd even sell.", "Your readers probably do. We'll find it on Day 1."),
-       ("You have a job, and no time.", "It's three lunchtimes, about 90 minutes each. I built this whole business on two hours a day, so I get it.")]
-R(fit_ul, '<ul data-r>\n' + ''.join('      <li><button type="button" aria-pressed="false">%s<span class="pain">%s</span><span class="fix"><span>%s</span></span></button></li>\n' % (TK, a, b) for a, b in FIT) + '    </ul>')
-R('<p class="not" data-r>For writers with something they could teach and at least a few people who read them, from a brand-new newsletter to a few thousand subscribers, but nothing those readers are buying yet.<br>Not for you if you want to grow your list first, or want someone to do it for you.</p>',
-  '<p class="not" data-r><b>This is for you</b> if you have something you could teach and at least a few people who read you. A brand-new newsletter is fine, and so is a list of ten thousand, as long as not much is selling yet.<br><b>It\'s not for you</b> if you\'d rather grow your list first, or you want someone to do it for you. Either is fine. Just decide on purpose.</p>')
+FIT_ITEMS = [("You write every week and it pays you nothing.", "Let’s find something useful you could offer those readers."),
+             ("People thank you for your help. You don’t know what to sell.", "We’ll look for the specific problem behind those thank‑yous."),
+             ("You know your subject. Putting a price on it feels awkward.", "Bring that doubt. We’ll work through a starting price together."),
+             ("You earn from clients, but every extra sale costs you more hours.", "Explore an offer built around what you know."),
+             ("You have a job, and very little spare time.", "Three sessions of about 90 minutes, with the writing done during them.")]
+FIT = """<!-- 5. does this sound familiar? -->
+<section class="sand fit">
+  <div class="wrap narrow">
+    <div class="head" data-r>
+      <span class="eyebrow">Does this sound familiar?</span>
+      <h2><span class="l">There’s something here.</span> <span class="l"><em>You just haven’t sold it yet.</em></span></h2>
+      <p class="tip">Tap the ones that sound like you.</p>
+    </div>
+    <ul data-r>
+""" + ''.join('      <li><button type="button" aria-pressed="false">%s<span class="pain">%s</span><span class="fix"><span>%s</span></span></button></li>\n' % (TK, a, b) for a, b in FIT_ITEMS) + """    </ul>
+    <p class="not" data-r>For people with something useful to teach or help others with. You’ll do the work during these sessions, so bring your ideas and a willingness to try.</p>
+  </div>
+</section>
 
-# ---------- proof ----------
-R('<q>Likes are not buyers. <mark>An offer is how you get paid.</mark></q>', '<q>Likes are lovely. <mark>You just can\'t pay the rent with them.</mark></q>')
-R('<h2>It works with <em>the list you have,</em> whatever its size.</h2>', '<h2>And this works with <em>the list you have right now,</em> whatever its size.</h2>')
-R('<h3 class="wins-t" data-r>Almost none of them happened because of a tactic. <em>They happened the week a belief changed.</em></h3>',
-  '<h3 class="wins-t" data-r>Most of these didn\'t happen because of some clever tactic. <em>They happened the week someone stopped asking "who would pay for this?" and made the offer anyway.</em></h3>')
+"""
+HOST = """<!-- 6. your host -->
+<section class="host" id="host">
+  <div class="wrap">
+    <div class="hostg">
+      <div class="hst-tx" data-r>
+        <span class="eyebrow">Your host · Ana Calin</span>
+        <h2><span class="l">It can feel obvious</span> <span class="l"><em>when you’re the one who knows.</em></span></h2>
+        <p class="big">If you’ve painted for years, mixing a colour or holding a brush feels ordinary. To someone picking one up for the first time, it isn’t.</p>
+        <p>That’s easy to forget about your own work. You see what’s simple to you, and wonder who would pay for it.</p>
+        <p>My first workshop sold two copies. I’d built what I wanted to teach instead of what my readers kept asking me for. I learned to pay more attention to the asking.</p>
+        <p>Now I run How We Grow from a village in Greece, on about two hours a day. For three days, I’ll show you what that looks like in practice.</p>
+        <div class="sig">Ana</div>
+      </div>
+      <div class="hst-pic" data-r>
+        <figure><img src="../img/ana-paris.webp" alt="Ana Calin" width="1000" height="671" loading="lazy"></figure>
+        <svg class="brush" viewBox="0 0 230 70" aria-hidden="true"><g transform="rotate(-16 115 35)"><path d="M6 35c16-15 40-19 62-12l7 12-7 12c-22 7-46 3-62-12Z" fill="#FFD400" stroke="#1A1412" stroke-width="4" stroke-linejoin="round"/><path d="M20 35h30" stroke="#1A1412" stroke-width="2.6" stroke-linecap="round" opacity=".5"/><rect x="74" y="23" width="36" height="24" rx="4" fill="#EADFCF" stroke="#1A1412" stroke-width="4"/><path d="M110 26h104a9 9 0 0 1 0 18H110Z" fill="#F72585" stroke="#1A1412" stroke-width="4" stroke-linejoin="round"/></g></svg>
+      </div>
+    </div>
+  </div>
+</section>
 
-# ---------- the live prize ----------
-R('<p>Stay until the end of Day 3. Five people who are there live win a 1:1 with me, <span class="hl">worth $3,000.</span></p>',
-  '<p>Stay with me until the end of Day 3. Five people who are still there live win a 1:1 with me, <span class="hl">worth $3,000.</span></p>')
-R('<small>Free to enter. Live attendees only. Five names picked at random at the end of Day 3.</small>',
-  '<small>Free to enter, live attendees only. I pick the five names at random at the end of Day 3.</small>')
+"""
+STAR = '<svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg>'
+REVS = [("gustavo", "Gustavo Karakey", "Can I just say that you have over delivered. Wow! It's nice to have a clear map. Still work to do, but much more satisfying, and less wheel spinning. :)"),
+        ("jeanette", "Jeanette Martin", "What a brilliant, actionable, organised, inspiring bootcamp. Thank you, Ana."),
+        ("adora", "Adora Lee", "I finally see the possibility of monetizing here!")]
+REVIEWS = """<!-- 7. what readers say -->
+<section class="sand revs" id="reviews">
+  <div class="wrap">
+    <div class="head" data-r>
+      <span class="eyebrow">From previous workshops</span>
+      <h2><span class="l">What readers say</span> <span class="l"><em>about working with me.</em></span></h2>
+    </div>
+    <div class="rgrid" data-r>
+""" + ''.join('      <figure class="rq"><blockquote>%s</blockquote><figcaption><img src="../img/av/%s.webp" alt="" width="80" height="80" loading="lazy"><span><b>%s</b><span class="stars" aria-label="5 stars">%s</span></span></figcaption></figure>\n' % (q, img, n, STAR * 5) for img, n, q in REVS) + """    </div>
+    <p class="wall-src">Reviews from Ana’s readers and students, published on her Substack.</p>
+  </div>
+</section>
 
-# ---------- questions ----------
-faqs = re.search(r'(<div class="faqs">\s*<h2 data-r>Questions</h2>\s*<div data-r>)(.*?)(</div>\s*</div>)', s, re.S)
-Q = [("Is it really free?", "Yes, really. All three sessions are free and live, everything you write is yours to keep, and you never have to buy a thing."),
-     ("I'm busy. How much time is this really?", "Three sessions of about 90 minutes, and you do the writing during them, so nothing's waiting for you after. From Nov 4 I'll send a small task most days, about 15 minutes each. Skip one and nothing breaks."),
-     ("Do I need a big list?", "No. Most of the readers who answered my October survey have fewer than 100 subscribers, or no newsletter yet. That's a normal place to start, I promise you."),
-     ("What if my list is already big?", "Then I really want you there. A big list with nothing to sell is one of the most common things I see, and in a way it's the better problem to have, because you have more people to ask. On Day 3 I'll show you why I'd still start with a few hundred of them, not all of them."),
-     ("Will this work for my topic?", "If people read you to get better at something, or to get through something, there's usually an offer in it. Most of my readers are teachers, coaches, marketers and health people. The topics are all different, and the step is the same. And if lots of people already write about yours, good. There's room for everyone, even on the same topic. Your readers picked you."),
-     ("Will I really be able to leave my job by 2027?", "I can't promise that, and I'd be careful with anyone who does. What I can tell you is that by the end of Day 3 you'll know what you'd sell, for how much and to whom, and your exit number will show you how far that is from your job.")]
-R(faqs.group(2), '\n' + ''.join('        <details class="faq"%s><summary>%s<i aria-hidden="true"></i></summary><p class="a">%s</p></details>\n' % (' open' if i == 0 else '', q, a) for i, (q, a) in enumerate(Q)) + '      ')
+"""
+QS = [("Is it really free?", "Yes. All three sessions are free and live, everything you write is yours to keep, and you never have to buy a thing."),
+      ("Do I need a big list or an idea ready?", "No. A small readership is welcome, and you don’t need an offer idea ready. If you haven’t started writing yet, bring a topic you know and the questions people already ask you. You’ll still need to find people to test your idea with."),
+      ("How much time should I set aside?", "About 90 minutes a day, Nov 17 to 19. We do the writing during the sessions. From Nov 4, I’ll also send a small task most days, about 15 minutes. Skip one and nothing breaks."),
+      ("Do I need to be on Substack?", "No. I’ll demonstrate on mine because that’s where my readers are. The work (choosing a problem, shaping an offer, and asking people to buy) applies wherever people read you."),
+      ("Will this work for my topic?", "If people come to you to get better at something, or to get through something, you may have something useful to offer. We’ll work on a specific problem you can help with, rather than trying to sell your whole subject."),
+      ("Will I really be able to leave my job in 2027?", "I can’t promise that. These three days give you an offer idea, a starting price, and an email to test it. Your exit number helps you see the distance between that first offer and the income you want.")]
+FAQ = """<!-- 8. a few practical things -->
+<section class="qa" id="faq">
+  <div class="wrap">
+    <div class="faqs">
+      <div class="fhead" data-r>
+        <span class="eyebrow">A few practical things</span>
+        <h2>Before you join.</h2>
+      </div>
+      <div data-r>
+""" + ''.join('        <details class="faq"%s><summary>%s<i aria-hidden="true"></i></summary><p class="a">%s</p></details>\n' % (' open' if i == 0 else '', q, a) for i, (q, a) in enumerate(QS)) + """      </div>
+    </div>
+  </div>
+</section>
 
-# ---------- quick recap ----------
-R('<p>A free 3-day live workshop with me on how to build the income that lets you leave your job in 2027. You leave with one offer, one price, and your first ask, written.</p>',
-  '<p>A free 3-day live workshop with me on how to build the income that lets you leave your job in 2027. We find what your readers would pay for, put a price on it, and write the email that asks them to buy.</p>')
-R('<p><b class="big">Tue Nov 17 to Thu Nov 19</b>12:00 pm New York / 7:00 pm Greece, all three days<span class="lt"></span>.</p>',
-  '<p><b class="big">Tue Nov 17 to Thu Nov 19</b>12:00 pm New York / 9:00 am Los Angeles / 5:00 pm London / 7:00 pm Greece, all three days<span class="lt"></span>.</p>')
-R("<p>Live on Zoom, from anywhere. Come live if you can: that's where we do the work together.</p>",
-  "<p>Live on Zoom, from anywhere. I once ran a workshop on a fancy all-in-one platform and spent half of it fixing broken links, so it's Zoom, nothing fancy. Come live if you can, because that's where we do the work together.</p>")
+"""
+PRIZE = """<!-- 9. one more reason to stay for Day 3 -->
+<section class="prize">
+  <div class="wrap">
+    <div class="stay" id="stay">
+      <div>
+        <h2>One more reason to stay <em>for Day 3.</em></h2>
+        <p>At the end, I’ll pick five names at random from the people still there live. Each gets a 1:1 with me.</p>
+        <small>Free to enter; live attendees only.</small>
+      </div>
+      <!-- five seats: five 1:1 tickets fanning out -->
+      <div class="tix" aria-hidden="true">
+        <div class="t"><svg viewBox="0 0 240 110"><use href="#tk"/></svg></div>
+        <div class="t"><svg viewBox="0 0 240 110"><use href="#tk"/></svg></div>
+        <div class="t"><svg viewBox="0 0 240 110"><use href="#tk"/></svg></div>
+        <div class="t"><svg viewBox="0 0 240 110"><use href="#tk"/></svg></div>
+        <div class="t"><svg viewBox="0 0 240 110"><use href="#tk"/></svg></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-# ---------- final ----------
-R('<p class="line">Free. Three live sessions with me. You leave with your offer, your price and your first ask.</p>',
-  '<p class="line">Three free lunchtimes with me. Bring the thing you keep meaning to sell, and we\'ll get it ready.</p>')
-conf = re.search(r'<p class="conf">.*?</p>\n\s*', s, re.S).group(0)
-R(conf, '')
-R("<p class=\"note\">After you sign up, you'll get the link to my WhatsApp channel. Your exit number is waiting there, with the voice notes and reminders I don't post anywhere else.</p>",
-  "<p class=\"note\">Once you're signed up, join my WhatsApp community so you don't miss my reminders, then answer seven quick questions and I'll give you your exit number.</p>")
+"""
+RECAP = """<!-- 10. the recap: one offer idea, one starting price, one email -->
+<section class="sum">
+  <div class="wrap">
+    <div class="recap" data-r>
+      <svg class="fl" style="left:-70px;top:-60px;width:230px;height:230px" aria-hidden="true"><use href="#sfo"/></svg>
+      <svg class="fl" style="right:-80px;bottom:-90px;width:260px;height:260px" aria-hidden="true"><use href="#sfo"/></svg>
+      <span class="eyebrow">The Exit Plan · Free 3-day live workshop</span>
+      <div class="rc three">
+        <div><span class="ic"><svg aria-hidden="true"><use href="#sf"/></svg></span><h3>One offer idea.</h3></div>
+        <div><span class="ic"><svg viewBox="0 0 52 52" aria-hidden="true"><g transform="rotate(-12 26 26)"><path d="M14 16h26a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H14l-8-10Z" fill="#F72585" stroke="#1A1412" stroke-width="3" stroke-linejoin="round"/><circle cx="14" cy="26" r="3" fill="#fff" stroke="#1A1412" stroke-width="2.2"/><path d="M24 22h12M24 30h8" stroke="#fff" stroke-width="3" stroke-linecap="round"/></g></svg></span><h3>One starting price.</h3></div>
+        <div><span class="ic"><svg viewBox="0 0 52 52" aria-hidden="true"><rect x="7" y="13" width="38" height="27" rx="5" fill="#fff" stroke="#1A1412" stroke-width="3"/><path d="M8 15l18 13 18-13" fill="none" stroke="#1A1412" stroke-width="3" stroke-linejoin="round"/><circle cx="40" cy="14" r="7" fill="#FFD400" stroke="#1A1412" stroke-width="2.4"/><path d="m37 14 2 2 4-4" fill="none" stroke="#1A1412" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h3>One email, written.</h3></div>
+      </div>
+      <p class="rtime"><b><span class="nw">Tue Nov 17 to Thu Nov 19</span> · <span class="nw">12:00 pm New York</span></b><span class="nw">9:00 am Los Angeles</span> · <span class="nw">5:00 pm London</span> · <span class="nw">7:00 pm Greece</span></p>
+      <div class="go"><button class="btn open" type="button">Yes, I’m coming, free""" + ARR + """</button></div>
+    </div>
+  </div>
+</section>
+</div>
+</main>
 
-# ---------- popup ----------
+"""
+tail = between('<!-- 4. is this for you? -->', '<!-- 9. final CTA')
+R(tail, GIFT + FIT + HOST + REVIEWS + FAQ + PRIZE + RECAP)
+R('</main>\n\n<footer>', '\n<footer>')
+
+# ---------- the final ----------
+R('<h2>See you <em class="nw">Tuesday, Nov 17.</em></h2>\n        <p class="line">Free. Three live sessions with me. You leave with your offer, your price and your first ask.</p>',
+  '<h2>See you <em class="nw">Tuesday, Nov 17.</em></h2>\n        <p class="line">Bring the thing you keep meaning to sell. Or just the questions people keep asking you. We’ll start there.</p>')
+R('<button class="btn open shine" type="button" id="finalBtn">save my seat (free)', '<button class="btn open shine" type="button" id="finalBtn">See you Tuesday, Ana!')
+fin = between('<p class="conf">', '      </div>\n    </div>\n  </div>\n</section>\n\n<footer>')
+R(fin, '<p class="note">free · live on Zoom</p>\n')
+
+# ---------- the form: the hero card's button and note ----------
+R('<button class="btn big send" type="submit">save my seat (free)<svg><use href="#arr"/></svg></button>',
+  '<button class="btn big send" type="submit">I’m in, Ana (it’s free)<svg><use href="#arr"/></svg></button>')
 R("<p class=\"note\">You'll get my emails about the workshop and my program. Unsubscribe anytime. No hard feelings, no guilt email.</p>",
-  "<p class=\"note\">You'll get my emails, including the workshop reminders. Unsubscribe anytime. No hard feelings, no guilt email.</p>")
+  "<p class=\"note\">You’ll get my emails, including workshop reminders. Unsubscribe anytime. No hard feelings.</p>")
 
-# ---------- script: the form lives in the rail on desktop; buttons there focus it instead of opening the popup ----------
+# ---------- script: the form lives in the hero ticket, then the frozen one; buttons focus it instead of opening the popup ----------
 R("var mbar = document.getElementById('mbar'), hb = document.getElementById('heroBtn')", "var mbar = document.getElementById('mbar'), hb = document.getElementById('hcard')")
 R("  function openM(e){\n    if (e) e.preventDefault();",
   """  /* v2: the form sits in the hero's ticket, and moves into the frozen ticket once the hero's has scrolled away (desktop).
@@ -345,6 +457,12 @@ R("""  function closeM(){
   """  function closeM(){
     modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); document.body.classList.remove('noscroll');
     placeForm();""")
+
+# ---------- checks: no em dashes in what a reader sees, nothing from the dropped sections ----------
+body = s[s.index('<body'):]
+assert '—' not in re.sub(r'<script.*?</script>|<!--.*?-->', '', body, flags=re.S), 'em dash in the page'
+for gone in ('class="band"', 'class="nope"', 'class="story"', 'class="wall"', 'heroBtn', 'Quick <em>recap'):
+    assert gone not in body, gone
 
 # ---------- styles ----------
 CSS = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'v2.css')).read()

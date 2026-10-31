@@ -810,13 +810,10 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
 }
 
 /* ================= v2 (layout trial) =================
-   The hero is the live page's own. Below it, the page runs on the left and a slim seat ticket with the sign-up form
-   stays frozen on the right (1280 px and wider), with the testimonial bar on top of it. */
+   The hero is the live page's two columns (video 1.44, text 1). Below it, the page runs on the left and a slim seat
+   ticket with the sign-up form stays frozen on the right (1280 px and wider), with the testimonial bar on top of it. */
 
-/* the hero: the live layout, one small addition */
-.hero .april{margin-top:12px;padding:10px 14px;border-radius:14px;background:var(--ysoft);font-size:14px;line-height:1.45;color:var(--ink2)}
-
-/* the seat ticket */
+/* ---------- the seat ticket ---------- */
 .tkshell{filter:drop-shadow(1.6px 0 0 var(--ink)) drop-shadow(-1.6px 0 0 var(--ink)) drop-shadow(0 1.6px 0 var(--ink)) drop-shadow(0 -1.6px 0 var(--ink)) drop-shadow(7px 8px 0 var(--sun))}
 .tkt{position:relative;--py:300px;background:#FFF8EE;border-radius:16px;overflow:hidden;
   -webkit-mask:radial-gradient(circle 11px at 0 var(--py),#0000 96%,#000 100%) 0 0/51% 100% no-repeat,radial-gradient(circle 11px at 100% var(--py),#0000 96%,#000 100%) 100% 0/51% 100% no-repeat;
@@ -826,25 +823,27 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
 .tk-top{display:flex;align-items:center;gap:8px;background:var(--ink);color:var(--cream);padding:9px 10px 9px 9px}
 .tk-top img{width:30px;height:30px;flex:none}
 .tk-top span{display:flex;flex-direction:column;gap:3px;min-width:0}
-.tk-top small{font-weight:800;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--sun);line-height:1}
+.tk-top small{font-weight:800;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--sun);line-height:1.15}
 .tk-top b{font-family:var(--serif);font-weight:400;font-size:19px;line-height:1}
 .tk-top em{margin-left:auto;flex:none;font-style:normal;font-weight:800;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);background:var(--sun);border-radius:6px;padding:4px 6px;transform:rotate(3deg)}
-.tk-body{padding:11px 12px 12px}
-.rdates{display:flex;align-items:center;gap:7px;padding-bottom:10px;margin-bottom:2px;border-bottom:1.5px solid rgba(26,20,18,.1)}
+.tk-body{padding:12px 12px 12px}
+.tk-h{font-size:21px;line-height:1.02;letter-spacing:-.01em;margin:0 0 10px}
+.tk-h .l{display:block;white-space:nowrap}
+.tk-sub{font-size:13.5px;line-height:1.45;color:var(--ink2);margin:0 0 10px;text-wrap:pretty}
+.rdates{display:flex;align-items:center;gap:8px;padding:7px 0;border-top:1.5px solid rgba(26,20,18,.1);border-bottom:1.5px solid rgba(26,20,18,.1)}
 .rdates .mt{display:flex;gap:3px;flex:none}
 .rdates .mt span{width:28px;padding:3px 0 2px;border-radius:7px}
 .rdates .mt b{font-size:14.5px}
 .rdates .mt small{font-size:7px;letter-spacing:.08em;margin-top:1px}
-.rdates .when{font-size:10.5px;line-height:1.3;color:var(--ink3)}
+.rdates .when{font-size:11px;line-height:1.3;color:var(--ink3)}
 .rdates .when b{display:block;color:var(--ink);font-weight:800;font-size:12px}
 .tkt form{margin-top:10px}
-.tkt form .ey,.tkt form .bye{display:none}
-.tkt form h3{font-size:19px;line-height:1.05;margin:0 0 8px;text-align:left}
+.tkt form .ey,.tkt form .bye,.tkt form h3{display:none}
 .tkt form .field{margin-bottom:6px}
 .tkt form .field input{height:40px;border-radius:11px;font-size:13.5px;padding:0 12px}
 .tkt form .field .err{font-size:11.5px}
-.tkt form .btn.big{height:44px;font-size:14.5px;margin-top:2px}
-.tkt form .note{margin-top:7px;font-size:10.5px;line-height:1.35;color:var(--ink3);text-align:left}
+.tkt form .btn.big{height:44px;font-size:14px;margin-top:2px;padding:0 14px}
+.tkt form .note{margin-top:8px;font-size:10.5px;line-height:1.4;color:var(--ink3);text-align:left}
 .tkt form .note + .note{display:none}
 .tk-perf{height:0;margin:0 14px;border-top:2px dashed rgba(26,20,18,.28)}
 .tk-stub{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 10px;align-items:center;padding:9px 12px 11px;background:#FFF1B3}
@@ -857,43 +856,152 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
 .tk-meta b{display:inline;font-weight:800;font-size:9.5px;letter-spacing:.06em;white-space:nowrap}
 .tk-meta small{display:inline;margin:0 0 0 6px;font-size:8px;color:var(--ink3);letter-spacing:.08em}
 .tk-code{grid-column:2;grid-row:1 / span 2;width:22px;height:36px;fill:var(--ink)}
-.xnote{margin:14px 2px 0;font-size:12.5px;line-height:1.4;color:var(--ink2)}
-.xnote b{color:var(--pink)}
-.htk .proof,.v2rail .proof{margin:0 0 14px;padding:6px 12px 6px 6px;gap:8px;background:#fff;border:1.5px solid var(--ink);border-radius:999px;font-size:11.5px;line-height:1.2;box-shadow:0 4px 0 var(--ink)}
+.htk .proof,.v2rail .proof{margin:0 0 12px;padding:6px 12px 6px 6px;gap:8px;background:#fff;border:1.5px solid var(--ink);border-radius:999px;font-size:11.5px;line-height:1.2;box-shadow:0 4px 0 var(--ink)}
 .htk .proof .faces img,.v2rail .proof .faces img{width:24px;height:24px;margin-left:-8px;border-width:1.5px}
 .htk .proof .faces img:first-child,.v2rail .proof .faces img:first-child{margin-left:0}
 .htk .proof .faces img:nth-child(n+4),.v2rail .proof .faces img:nth-child(n+4){display:none}
 .htk .proof .stars svg,.v2rail .proof .stars svg{width:10px;height:10px}
 
-/* new: what you won't hear from me */
-.nope .head{max-width:760px}
-.nope h2{font-size:clamp(40px,4.4vw,62px);line-height:1.02;margin-top:12px}
-.nope h2 em{color:var(--pink)}
-.ngrid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:48px;margin-top:40px;align-items:center}
-.nolist{list-style:none;margin:0;padding:0;display:grid;gap:12px}
-.nolist li{position:relative;justify-self:start;background:#fff;border:2px solid var(--ink);border-radius:999px;padding:11px 20px;font-weight:700;font-size:16px;white-space:nowrap;box-shadow:0 5px 0 var(--ink)}
-.nolist li:nth-child(1){transform:rotate(-1.5deg)}.nolist li:nth-child(2){transform:rotate(1deg);margin-left:28px}.nolist li:nth-child(3){transform:rotate(-.6deg);margin-left:8px}.nolist li:nth-child(4){transform:rotate(1.6deg);margin-left:40px}
-.nolist li:after{content:"";position:absolute;left:12px;right:12px;top:50%;height:4px;border-radius:4px;background:var(--ink);transform:rotate(-2deg)}
-.ntx p{font-size:17.5px;line-height:1.6;color:var(--ink2)}
-.ntx .inst{margin-top:18px;padding:18px 20px;border-radius:18px;background:#fff;border:1.6px solid var(--ink);color:var(--ink);box-shadow:6px 6px 0 var(--sun),6px 6px 0 1.6px var(--ink)}
+/* ---------- the hero: the live page's columns, the headline and the ticket on the right, the drawing under the video ---------- */
+.v2h .hright .hpill{margin-bottom:2px}
+.v2h .hright h1,.v2h .hright h1.long{font-size:min(10.4cqi,62px);line-height:.99;margin:14px 0 0}
+.v2h .hright h1 .l{white-space:nowrap}
+.hsub2{font-family:var(--serif);font-size:min(4.25cqi,22.5px);line-height:1.28;color:var(--ink2);margin:14px 0 0;text-wrap:pretty}
+.hsub2 em{color:var(--pink)}
+.htk{margin-top:18px;max-width:420px}
+.htk .proof{display:inline-flex}
+.htk .just{margin:-6px 0 12px}
+.htk .tk-top b{font-size:20px}
+.htk .tk-body{padding:12px 16px 13px}
+.htk .tk-h{font-size:25px}
+.htk .rdates .mt span{width:31px}
+.htk .rdates .mt b{font-size:16px}
+.htk .rdates .when{font-size:12px}
+.htk .rdates .when b{font-size:13px}
+.htk .tkt form .field input{height:44px;font-size:14.5px;padding:0 14px}
+.htk .tkt form .btn.big{height:48px;font-size:15.5px}
+.htk .tkt form .note{font-size:11px}
+.htk .tk-stub{padding:9px 16px 11px}
+.htk .tk-holder b{font-size:22px}
+.htk .tk-meta b{font-size:10px}
+.hmap{position:relative;margin:10px 0 0}
+.v2h .tstrip{gap:16px;padding-right:18px}
+.v2h .stats{gap:10px}
+.v2h .stat b{white-space:nowrap;font-size:20px}
+.hmap svg{display:block;width:100%;height:auto;overflow:visible}
+@media (max-width:1060px){
+  .hero .hsub2{order:3;font-size:clamp(20px,4.6vw,24px)}
+  .hero .htk{order:4;max-width:460px;width:100%;margin:20px auto 0}
+  .hero .iph{order:5;margin-top:30px}
+  .hero .hmap{order:6;margin:0 0 20px}
+  .hero .tstrip{order:7}
+}
+@media (max-width:640px){
+  .hero .hmap{display:none}
+  .v2h .hright h1 .l{white-space:normal}
+}
 
-/* new: your gift, the exit number */
+/* ---------- 2. a little context ---------- */
+.ctx{padding:110px 0 100px}
+.cgrid{display:grid;grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr);gap:64px;align-items:center}
+.ctx .pol figure{padding:14px;transform:rotate(-2.5deg)}
+.ctx h2{font-size:clamp(36px,3.6vw,52px);line-height:1.03;margin:14px 0 22px}
+.ctx h2 .l{display:block}
+.ctx .lead{font-family:var(--serif);font-size:clamp(22px,1.9vw,27px);line-height:1.3;color:var(--ink);margin-bottom:14px}
+.ctx .lead b{font-weight:400;background:var(--sun);padding:0 .1em}
+.ctx-tx > p:not(.lead):not(.partner){font-size:17px;line-height:1.62;color:var(--ink2)}
+.cnotes{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px}
+.cnotes p{background:#fff;border:1.6px solid var(--ink);border-radius:18px;padding:16px 18px;font-size:15px;line-height:1.5;color:var(--ink2)}
+.cnotes p:nth-child(2){background:var(--ysoft)}
+.cnotes b{display:block;color:var(--ink);font-weight:800;margin-bottom:4px}
+.cplan{margin-top:52px;display:flex;align-items:center;justify-content:space-between;gap:20px 32px;flex-wrap:wrap;background:var(--ink);color:var(--cream);border-radius:24px;padding:22px 24px 22px 28px}
+.cplan .situ{margin:0;min-width:0;order:0}
+.cplan .situ .lbl{color:var(--sun)}
+.cplan .chip{background:transparent;color:var(--cream);border-color:rgba(255,248,238,.45)}
+.cplan .chip:hover{border-color:var(--cream)}
+.cplan .chip[aria-pressed=true]{background:var(--sun);color:var(--ink);border-color:var(--sun)}
+.cgo{display:flex;flex-direction:column;align-items:center;gap:7px;flex:none}
+.cgo small{font-size:12.5px;color:rgba(255,248,238,.7);font-weight:600}
+
+/* ---------- 3. the three days ---------- */
+.days .head h2 .l{display:block}
+.days .dlede{margin:18px auto 0;max-width:600px;font-size:18px;line-height:1.55;color:var(--ink2);text-wrap:balance}
+.dtext p.body{margin-top:0}
+.dtext .out{margin-top:22px;display:flex;flex-direction:column;gap:3px;background:var(--ysoft);border-radius:16px;padding:14px 18px;font-weight:800;font-size:17px;line-height:1.4}
+.dtext .out span{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--pink)}
+.days .next{margin-top:14px;font-family:var(--serif);font-style:italic;font-size:22px;line-height:1.25;color:var(--ink2);text-wrap:pretty}
+.days .after p .l{display:block}
+
+/* ---------- 4. your gift ---------- */
 .gift{padding-top:0}
 .gcard{display:grid;grid-template-columns:200px minmax(0,1fr);gap:40px;align-items:center;background:var(--sand);border-radius:28px;padding:36px 40px}
 .gart svg{width:200px;height:auto;display:block;transform:rotate(-4deg)}
-.gtx h2{font-size:clamp(40px,4vw,56px);line-height:1;margin:10px 0 14px}
-.gtx h2 em{color:var(--pink)}
+.gtx h2{font-size:clamp(36px,3.6vw,52px);line-height:1.02;margin:10px 0 16px}
+.gtx h2 .l{display:block}
 .gtx p{font-size:17px;line-height:1.6;color:var(--ink2)}
+.gtx p{max-width:640px}
+.gtx p + p{margin-top:12px}
 .gtx p b{color:var(--ink)}
-.gnext{margin-top:14px;display:flex;gap:12px;align-items:baseline}
-.gnext .gd{flex:none;background:var(--ink);color:var(--cream);border-radius:999px;padding:4px 12px;font-weight:800;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.gtx .gnext{padding:12px 16px;border-radius:14px;background:var(--cream);font-size:15.5px}
 
-/* the three days and the host, new copy */
-.days .next{margin-top:12px;font-family:var(--serif);font-style:italic;font-size:22px;color:var(--pink)}
-.days .out span{font-weight:800;color:var(--ink)}
-.letter .bio + .bio{margin-top:16px;font-size:clamp(20px,1.7vw,24px);line-height:1.45;color:var(--ink2)}
+/* ---------- 5. fit ---------- */
+.fit h2 .l{display:block}
+.fit .not{font-size:16px}
 
-/* desktop: the page beside the frozen ticket */
+/* ---------- 6. your host ---------- */
+.host{padding:120px 0 110px;overflow:hidden}
+.hostg{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:64px;align-items:center}
+.host h2{font-size:clamp(36px,3.6vw,52px);line-height:1.03;margin:14px 0 24px}
+.host h2 .l{display:block}
+.hst-tx p{font-size:17.5px;line-height:1.65;color:var(--ink2);margin-top:14px}
+.hst-tx p.big{font-family:var(--serif);font-size:clamp(23px,2vw,28px);line-height:1.3;color:var(--ink);margin-top:0}
+.host .sig{font-family:var(--serif);font-style:italic;font-size:50px;color:var(--pink);margin-top:16px;line-height:1}
+.hst-pic{position:relative;padding-bottom:30px}
+.hst-pic figure{margin:0;background:#fff;padding:14px;border:2px solid var(--ink);box-shadow:12px 12px 0 var(--sun),12px 12px 0 2px var(--ink);transform:rotate(2deg)}
+.hst-pic img{display:block;width:100%;height:auto;aspect-ratio:1000/671;object-fit:cover}
+.hst-pic .brush{position:absolute;left:-36px;bottom:-4px;width:210px;height:auto;filter:drop-shadow(0 8px 12px rgba(70,45,25,.2))}
+
+/* ---------- 7. what readers say ---------- */
+.revs{padding:110px 0 100px}
+.revs .head h2 .l{display:block}
+.rgrid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) minmax(0,1fr);gap:22px;margin-top:50px;align-items:stretch}
+.rq{margin:0;background:#fff;border-radius:22px;padding:24px 24px 20px;border:1.6px solid var(--ink);display:flex;flex-direction:column;justify-content:space-between;gap:20px;box-shadow:6px 6px 0 var(--ink)}
+.rq:nth-child(1){transform:rotate(-1deg)}
+.rq:nth-child(2){transform:rotate(.8deg);background:var(--sun)}
+.rq:nth-child(3){transform:rotate(-.6deg)}
+.rq blockquote{font-family:var(--serif);font-size:23px;line-height:1.28;text-wrap:pretty}
+.rq blockquote:before{content:"\201C";display:block;font-size:66px;line-height:.62;height:30px;color:var(--pink)}
+.rq:nth-child(2) blockquote:before{color:var(--ink)}
+.rq figcaption{display:flex;align-items:center;gap:12px}
+.rq img{width:44px;height:44px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 2px #fff,0 0 0 3.5px var(--ink)}
+.rq b{display:block;font-weight:800;font-size:15px;line-height:1.2}
+.rq .stars svg{width:12px;height:12px}
+.rq:nth-child(2) .stars svg{fill:#fff}
+.revs .wall-src{margin-top:36px}
+
+/* ---------- 8. questions ---------- */
+.qa{padding:110px 0 30px}
+.qa .faqs{margin:0 auto}
+.fhead{margin-bottom:26px}
+.fhead h2{margin-top:10px}
+
+/* ---------- 9. the Day 3 prize ---------- */
+.prize{padding:60px 0 100px}
+.stay h2{font-size:clamp(32px,3.2vw,44px);line-height:1.06;margin:0 0 14px;text-wrap:balance}
+.stay p{font-family:var(--sans);font-size:18px;line-height:1.55;color:var(--ink2);letter-spacing:0}
+.stay small{font-weight:700}
+
+/* ---------- 10. the recap ---------- */
+.sum{padding:0 0 120px}
+.recap .eyebrow{position:relative;text-align:center;margin-bottom:30px}
+.rc.three > div{display:flex;flex-direction:column;align-items:center;text-align:center;padding:30px 24px 32px}
+.rc.three .ic{margin-bottom:18px}
+.rc.three h3{font-family:var(--serif);font-weight:400;font-size:clamp(28px,2.6vw,36px);letter-spacing:-.01em;line-height:1.05;margin:0}
+.rtime{position:relative;text-align:center;margin-top:30px;font-size:15px;color:var(--ink2);line-height:1.6}
+.rtime b{display:block;font-size:19px;color:var(--ink)}
+.rtime .nw{white-space:nowrap}
+
+/* ---------- desktop: the page beside the frozen ticket ---------- */
 @media (min-width:1280px){
   .v2page{--edge:max(28px,calc((100vw - 1640px) / 2));--rw:256px;--rg:44px;--rightc:calc(var(--edge) + var(--rw) + var(--rg))}
   .v2body{position:relative}
@@ -901,62 +1009,39 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
   .tksticky{position:sticky;top:92px}
   .v2body .wrap{max-width:none;margin-left:var(--edge);margin-right:var(--rightc);padding:0}
   .v2body .wrap.narrow > *{max-width:none}
-  .v2body .wall,.v2body .wall-src{margin-right:var(--rightc)}
-  .v2body .wall{-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 88%,transparent)}
+  /* the frozen ticket shows once the form has moved into it, so two tickets are never on screen with one empty */
+  .v2rail .rdates .mt{display:none}
+  .v2rail .rdates .when{font-size:11.5px}
+  .v2rail .tksticky{opacity:0;transform:translateY(14px);visibility:hidden;transition:opacity .35s var(--ease),transform .35s var(--ease),visibility 0s .35s}
+  .v2rail.on .tksticky{opacity:1;transform:none;visibility:visible;transition:opacity .35s var(--ease),transform .35s var(--ease)}
 }
 @media (max-width:1279px){
   .v2rail{display:none}
-  .ngrid,.gcard{grid-template-columns:1fr}
+  .gcard{grid-template-columns:1fr}
   .gart svg{width:150px}
 }
-@media (max-width:640px){
-  .nolist li{font-size:15px;white-space:normal}
-  .gcard{padding:26px 22px}
-}
-
-/* the hero: a wider right column for a bigger headline and pink line, the ticket with the form straight under them */
-.v2h .hright .hpill{margin-bottom:4px}
-.v2h .hright h1,.v2h .hright h1.long{font-size:min(11cqi,68px);line-height:.98;margin:16px 0 0}
-.v2h .hright .hkick{font-size:min(6.9cqi,42px);line-height:1.06;margin:14px 0 0}
-.htk{margin-top:22px;max-width:520px}
-.htk .proof{justify-self:start;display:inline-flex}
-.htk .just{margin:-6px 0 12px}
-.htk .tk-top b{font-size:22px}
-.htk .tk-body{padding:12px 16px 14px}
-.htk .rdates .mt span{width:34px}
-.htk .rdates .mt b{font-size:17px}
-.htk .rdates .when{font-size:12px}
-.htk .rdates .when b{font-size:14px}
-.htk .tkt form h3{font-size:24px}
-.htk .tkt form .field input{height:48px;font-size:15px;padding:0 14px}
-.htk .tkt form .btn.big{height:52px;font-size:16px}
-.htk .tkt form .note{font-size:11.5px}
-.htk .tk-stub{padding:10px 16px 12px}
-.htk .tk-holder b{font-size:24px}
-.htk .tk-meta b{font-size:10.5px}
-.hcopy{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:30px;margin-top:30px;align-items:start}
-.hcopy .lede{font-size:16px;line-height:1.6;margin:0 0 12px;color:var(--ink2)}
-.hcopy .lede b{color:var(--ink)}
-.hcopy .byth{margin-top:0;font-size:15.5px}
-.hcopy .obj{font-size:15px}
-.hcopy .april{margin-top:12px}
-.when2{margin:2px 0 0;font-size:13.5px;line-height:1.5;color:var(--ink3)}
-.when2 b{display:block;font-weight:800;font-size:15px;color:var(--ink)}
-.when2 i{font-style:normal;opacity:.4}
-@media (min-width:1061px){
-  .v2h.hgrid{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:48px}
-}
 @media (max-width:1060px){
-  .v2h .hright .hkick{order:3;font-size:clamp(26px,5.6vw,38px)}
-  .hero .htk{order:4;max-width:none;margin-top:18px}
-  .hero .iph{order:5;margin-top:26px}
-  .hcopy{order:6;grid-template-columns:1fr;gap:4px}
-  .hero .tstrip{order:7}
+  .cgrid,.hostg{grid-template-columns:1fr;gap:40px}
+  .ctx .pol{max-width:360px;margin:0 auto}
+  .hst-pic{max-width:520px;margin:0 auto;width:100%}
+  .rgrid{grid-template-columns:1fr;max-width:620px;margin-left:auto;margin-right:auto}
+  .cplan{flex-direction:column;align-items:stretch}
+  .cgo .btn{width:100%}
 }
-/* the frozen ticket shows once the form has moved into it, so two tickets are never on screen with one empty */
-@media (min-width:1280px){
-  .v2rail .tksticky{opacity:0;transform:translateY(14px);visibility:hidden;transition:opacity .35s var(--ease),transform .35s var(--ease),visibility 0s .35s}
-  .v2rail.on .tksticky{opacity:1;transform:none;visibility:visible;transition:opacity .35s var(--ease),transform .35s var(--ease)}
+@media (max-width:640px){
+  .ctx,.host,.revs{padding:80px 0 72px}
+  .qa{padding-top:80px}
+  .cnotes{grid-template-columns:1fr}
+  .cplan{padding:20px 18px;margin-top:40px}
+  .gcard{padding:26px 22px}
+  .rq blockquote{font-size:21px}
+  .hst-pic .brush{left:-10px;width:160px}
+  .rc.three > div{flex-direction:row;text-align:left;gap:16px;padding:14px 18px}
+  .rc.three .ic{margin:0;width:58px;height:58px;flex:none}
+  .rc.three .ic svg{width:40px;height:40px}
+  .rc.three h3{font-size:26px}
+  .cplan .chips{flex-wrap:wrap;overflow:visible;margin:0;padding:0}
+  .rtime{text-wrap:balance}
 }
 
 </style>
@@ -980,8 +1065,7 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
       <path d="M4 38a17 17 0 0 1 0 34V96a10 10 0 0 0 10 10h58V4H14A10 10 0 0 0 4 14Z" fill="#FFD400" stroke="#1A1412" stroke-width="3.5"/>
       <path d="M72 10v90" stroke="#1A1412" stroke-width="2.5" stroke-dasharray="5 5"/>
       <use href="#sf" x="14" y="31" width="48" height="48"/>
-      <text x="88" y="50" font-family="Instrument Serif,serif" font-size="30" fill="#1A1412">1:1 with Ana</text>
-      <text x="89" y="78" font-family="Manrope,sans-serif" font-weight="800" font-size="13" letter-spacing="2" fill="#F72585">WORTH $3,000</text>
+      <text x="88" y="65" font-family="Instrument Serif,serif" font-size="30" fill="#1A1412">1:1 with Ana</text>
     </symbol>
   </defs>
 </svg>
@@ -1032,40 +1116,26 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
         </div>
       </div>
 
-      <div class="hcopy">
-        <div class="hc1">
-          <p class="lede">If nothing's selling yet, it isn't your list and it isn't your writing. <b>It's the order you were taught to do things in.</b></p>
-          <p class="lede">Your first paid offer doesn't have to be a course, a paid tier, or finished. Your readers have probably already asked you for it. AI changed one step in that order, and on Day 1 I'll show you which one, on my own Substack.</p>
-          <p class="when2"><b>Tue Nov 17 to Thu Nov 19</b>12:00 pm New York <i>/</i> 9:00 am Los Angeles <i>/</i> 5:00 pm London <i>/</i> 7:00 pm Greece</p>
-        </div>
-        <div class="hc2">
-          <ul class="byth">
-            <li class="bt">By the end of Day 3, you'll have:</li>
-            <li><svg aria-hidden="true"><use href="#li"/></svg>found the thing your readers would actually pay you for</li>
-            <li><svg aria-hidden="true"><use href="#li"/></svg>a first offer that isn't a course, a paid tier, or a year away</li>
-            <li><svg aria-hidden="true"><use href="#li"/></svg>a price you can say out loud without wincing</li>
-            <li><svg aria-hidden="true"><use href="#li"/></svg>the email that finally asks people to buy. You'll write it with me on Nov 19.</li>
-          </ul>
-          <p class="obj"><b>You don't need a bigger list, a paywall or a sales call for any of this.</b> It's free and live on Zoom, three New York lunchtimes in a row (dinner time for me, here in Greece).</p>
-          <p class="april">If you did my April challenge: back then I had you build it first. I'd tell you something different now.</p>
-        </div>
-      </div>
+      <!-- what you make on each of the three days -->
+      <div class="hmap" aria-hidden="true"><svg viewBox="0 0 760 270" role="presentation"><path d="M206 30 Q 247 -2 288 22" fill="none" stroke="#F72585" stroke-width="3" stroke-linecap="round" stroke-dasharray="1 7"/><path d="M280 16l10 3-7 8" fill="none" stroke="#F72585" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M478 22 Q 513 -2 548 34" fill="none" stroke="#F72585" stroke-width="3" stroke-linecap="round" stroke-dasharray="1 7"/><path d="M540 28l10 3-7 8" fill="none" stroke="#F72585" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><g transform="rotate(-2.2 115 138)"><rect x="18" y="47" width="206" height="196" rx="16" fill="#FFD400" stroke="#1A1412" stroke-width="2.6"/><rect x="12" y="40" width="206" height="196" rx="16" fill="#fff" stroke="#1A1412" stroke-width="2.6"/><text x="28" y="71" font-family="Instrument Serif,Georgia,serif" font-size="21" fill="#1A1412">Reader file</text><rect x="154" y="54" width="50" height="21" rx="10.5" fill="#F72585"/><text x="179" y="68" text-anchor="middle" font-family="Manrope,sans-serif" font-weight="800" font-size="10" letter-spacing="1.4" fill="#fff">DAY 1</text><path d="M26 84h178" stroke="#1A1412" stroke-opacity=".12" stroke-width="1.5"/><g transform="translate(46 116) scale(.36)"><circle r="50" fill="#FFD400" stroke="#1A1412" stroke-width="6"/><path d="M-50 -6C-44-48 44-48 50-6C40-26 22-34 0-34S-40-26-50-6Z" fill="#6B4E3A" stroke="#1A1412" stroke-width="6" stroke-linejoin="round"/><ellipse cx="-16" cy="2" rx="5" ry="7" fill="#1A1412"/><ellipse cx="16" cy="2" rx="5" ry="7" fill="#1A1412"/><path d="M-20 18c4 16 36 16 40 0Z" fill="#1A1412"/></g><text x="74" y="110" font-family="Manrope,sans-serif" font-weight="800" font-size="9" fill="#F72585" letter-spacing="1.4">READER</text><text x="74" y="128" font-family="Manrope,sans-serif" font-weight="700" font-size="13" fill="#1A1412">Mother of two,</text><text x="28" y="153" font-family="Manrope,sans-serif" font-weight="700" font-size="13" fill="#1A1412">four years out of work.</text><text x="28" y="179" font-family="Manrope,sans-serif" font-weight="800" font-size="9" fill="#F72585" letter-spacing="1.4">SHE’D PAY FOR</text><rect x="26" y="185" width="96" height="22" fill="#FFD400"/><rect x="26" y="209" width="106" height="22" fill="#FFD400"/><text x="29" y="202" font-family="Instrument Serif,Georgia,serif" font-size="21" fill="#1A1412">A clear plan</text><text x="29" y="226" font-family="Instrument Serif,Georgia,serif" font-size="21" fill="#1A1412">back to work.</text></g><g transform="rotate(1.6 387 128)"><rect x="290" y="37" width="206" height="196" rx="16" fill="#FFD400" stroke="#1A1412" stroke-width="2.6"/><rect x="284" y="30" width="206" height="196" rx="16" fill="#fff" stroke="#1A1412" stroke-width="2.6"/><text x="300" y="61" font-family="Instrument Serif,Georgia,serif" font-size="21" fill="#1A1412">Your offer</text><rect x="426" y="44" width="50" height="21" rx="10.5" fill="#F72585"/><text x="451" y="58" text-anchor="middle" font-family="Manrope,sans-serif" font-weight="800" font-size="10" letter-spacing="1.4" fill="#fff">DAY 2</text><path d="M298 74h178" stroke="#1A1412" stroke-opacity=".12" stroke-width="1.5"/><text x="300" y="104" font-family="Instrument Serif,Georgia,serif" font-size="19" fill="#1A1412">I help mothers after a</text><text x="300" y="128" font-family="Instrument Serif,Georgia,serif" font-size="19" fill="#1A1412">career break get back</text><text x="300" y="152" font-family="Instrument Serif,Georgia,serif" font-size="19" fill="#1A1412">to work in six weeks.</text><path d="M370 160c22-4 46-4 68 0" fill="none" stroke="#F72585" stroke-width="3.4" stroke-linecap="round"/><text x="300" y="192" font-family="Manrope,sans-serif" font-weight="800" font-size="9" fill="#7A6A60" letter-spacing="1.4">PRICE</text><g transform="rotate(-9 424 198)"><path d="M382 172h74a9 9 0 0 1 9 9v34a9 9 0 0 1-9 9h-74l-20-26Z" fill="#F72585" stroke="#1A1412" stroke-width="3" stroke-linejoin="round"/><circle cx="376" cy="198" r="5" fill="#EADFCF" stroke="#1A1412" stroke-width="2.6"/><text x="424" y="210" font-family="Manrope,sans-serif" font-weight="800" font-size="27" fill="#fff" letter-spacing="-0.5" text-anchor="middle">$149</text></g></g><g transform="rotate(-1.4 647 140)"><rect x="550" y="49" width="206" height="196" rx="16" fill="#FFD400" stroke="#1A1412" stroke-width="2.6"/><rect x="544" y="42" width="206" height="196" rx="16" fill="#fff" stroke="#1A1412" stroke-width="2.6"/><rect x="686" y="56" width="50" height="21" rx="10.5" fill="#F72585"/><text x="711" y="70" text-anchor="middle" font-family="Manrope,sans-serif" font-weight="800" font-size="10" letter-spacing="1.4" fill="#fff">DAY 3</text><path d="M558 86h178" stroke="#1A1412" stroke-opacity=".12" stroke-width="1.5"/><use href="#sf" x="556" y="52" width="26" height="26"/><text x="588" y="65" font-family="Manrope,sans-serif" font-weight="800" font-size="13" fill="#1A1412">You</text><text x="588" y="79" font-family="Manrope,sans-serif" font-weight="600" font-size="10.5" fill="#7A6A60">your newsletter</text><text x="560" y="120" font-family="Instrument Serif,Georgia,serif" font-size="23" fill="#1A1412">Back to work,</text><text x="560" y="145" font-family="Instrument Serif,Georgia,serif" font-size="23" fill="#1A1412">by spring.</text><rect x="560" y="160" width="160" height="7" rx="3.5" fill="#1A1412" fill-opacity=".12"/><rect x="560" y="174" width="120" height="7" rx="3.5" fill="#1A1412" fill-opacity=".12"/><rect x="560" y="192" width="124" height="28" rx="14" fill="#F72585"/><text x="622" y="210.5" font-family="Manrope,sans-serif" font-weight="700" font-size="11.5" fill="#fff" text-anchor="middle">see what’s inside</text></g><g transform="rotate(-2 674 240)"><rect x="574" y="222" width="190" height="36" rx="18" fill="#fff" stroke="#1A1412" stroke-width="2.4"/><circle cx="594" cy="240" r="11" fill="#FFD400" stroke="#1A1412" stroke-width="2"/><path d="m588 240 4 4 7-8" fill="none" stroke="#1A1412" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><text x="612" y="244.5" font-family="Manrope,sans-serif" font-weight="700" font-size="11.5" fill="#1A1412">Sent to her ten readers</text></g></svg></div>
     </div>
 
     <div class="hright">
-      <span class="hpill"><span class="dot"></span>The Exit Plan <i>/</i> <span class="hide-s">free 3-day live workshop <i>/</i></span> <span class="dchip">Nov 17 to 19</span></span>
+      <span class="hpill"><span class="dot"></span>The Exit Plan <i>·</i> <span class="hide-s">A free 3-day live workshop with Ana Calin</span></span>
       <h1 id="h1" class="long"><span class="l">How to Build the Income</span> <span class="l">That Lets You Leave</span> <span class="l">Your Job <span class="hl">in 2027</span></span></h1>
-      <p class="hkick" id="hk"><span class="l">Already work for yourself? Then your "job" is the client hours. Same plan.</span></p>
+      <p class="hsub2" id="hk">You’ve spent years getting good at something. Maybe you write about it, and people thank you for helping them. <em>But what could you sell, and could it earn enough to give you more choice about work?</em></p>
       <div class="htk">
         <div class="proof"><span class="faces"><img src="../img/av/gustavo.webp" alt=""><img src="../img/av/jeanette.webp" alt=""><img src="../img/av/adora.webp" alt=""><img src="../img/av/hilde.webp" alt=""><img src="../img/av/stacie.webp" alt=""></span><span id="proofTxt"><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span> <b>800+</b> student wins</span></div>
         <p class="just" id="just" hidden><i></i><span id="justTxt"></span></p>
         <div class="tkshell">
       <div class="tkt" id="hcard">
-        <div class="tk-top"><img src="../img/mark.png" alt="" width="34" height="34"><span><small>The Exit Plan</small><b>Your free seat</b></span><em>Admit one</em></div>
+        <div class="tk-top"><img src="../img/mark.png" alt="" width="34" height="34"><span><small>Free · Nov 17 to 19 · Live on Zoom</small><b>The Exit Plan</b></span><em>Admit one</em></div>
         <div class="tk-body">
+          <h3 class="tk-h"><span class="l">Let’s put what you</span> <span class="l">know to work.</span></h3>
+          <p class="tk-sub">Three days with me to find an offer idea, put a price on it, and write the email that asks people to buy.</p>
           <div class="rdates">
             <div class="mt" aria-hidden="true"><span><b>17</b><small>Tue</small></span><span><b>18</b><small>Wed</small></span><span><b>19</b><small>Thu</small></span></div>
-            <p class="when"><b>Three live sessions</b>12:00 pm New York / 7:00 pm Greece</p>
+            <p class="when"><b>12:00 pm New York, each day</b>About 90 minutes per session</p>
           </div>
           <div class="rslot" id="hslot"></div>
         </div>
@@ -1077,7 +1147,6 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
         </div>
       </div>
     </div>
-        <p class="xnote">Sign up and answer seven quick questions, and I'll give you your <b>exit number.</b></p>
       </div>
     </div>
   </div>
@@ -1091,11 +1160,12 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
       <div class="proof"><span class="faces"><img src="../img/av/gustavo.webp" alt=""><img src="../img/av/jeanette.webp" alt=""><img src="../img/av/adora.webp" alt=""><img src="../img/av/hilde.webp" alt=""><img src="../img/av/stacie.webp" alt=""></span><span><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span> <b>800+</b> student wins</span></div>
       <div class="tkshell">
       <div class="tkt" id="rcard">
-        <div class="tk-top"><img src="../img/mark.png" alt="" width="34" height="34"><span><small>The Exit Plan</small><b>Your free seat</b></span><em>Admit one</em></div>
+        <div class="tk-top"><img src="../img/mark.png" alt="" width="34" height="34"><span><small>Free · Nov 17 to 19 · Live on Zoom</small><b>The Exit Plan</b></span><em>Admit one</em></div>
         <div class="tk-body">
+          <h3 class="tk-h"><span class="l">Let’s put what you</span> <span class="l">know to work.</span></h3>
           <div class="rdates">
             <div class="mt" aria-hidden="true"><span><b>17</b><small>Tue</small></span><span><b>18</b><small>Wed</small></span><span><b>19</b><small>Thu</small></span></div>
-            <p class="when"><b>Three live sessions</b>12:00 pm New York / 7:00 pm Greece</p>
+            <p class="when"><b>12:00 pm New York, each day</b>About 90 minutes per session</p>
           </div>
           <div class="rslot" id="rslot"></div>
         </div>
@@ -1107,105 +1177,37 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
         </div>
       </div>
     </div>
-      <p class="xnote">Sign up and answer seven quick questions, and I'll give you your <b>exit number.</b></p>
     </div>
   </aside>
-<!-- 2. who's Ana: the host letter, then her story in four chapters, word for word from howwegrowtoday.com -->
-<section class="sand who" id="who">
+<!-- 2. a little context, if we haven't met -->
+<section class="ctx who" id="who">
   <div class="wrap">
-    <div class="hh" data-r>
-      <span class="eyebrow">Your host</span>
-      <h2 class="hname">I'm Ana Calin.</h2>
-      <p class="hsub">For ten years, I believed <em>the wrong thing about money.</em></p>
-    </div>
-    <div class="hg">
+    <div class="cgrid">
       <div class="pol" data-r>
-        <figure><img src="../img/ana-hat.webp" alt="Ana Calin" width="520" height="520" loading="lazy"><figcaption>Ana, How We Grow</figcaption></figure>
+        <figure><img src="../img/ana-hat.webp" alt="Ana Calin" width="520" height="520" loading="lazy"></figure>
       </div>
-      <div class="letter" data-r>
+      <div class="ctx-tx" data-r>
         <p class="partner"><span id="pname"></span> sent you here. Here's who I am.</p>
-        <p class="bio drop"><span class="dc">I</span> write How We Grow, a newsletter read by about 80,000 people who want to get paid for their writing. It has made $1.4M so far, on about two hours a day from a village in Greece, and I've never taken a sales call.</p>
-        <p class="bio">It didn't start that way. My first workshop sold two copies, at $47, because I built what I wanted to teach instead of what my readers kept asking me for. I built a whole stadium and forgot to sell tickets. Or hot dogs.</p>
-        <p class="bio">I've run a lot of workshops on offers since then, and here's the thing I keep seeing. People almost always have something worth paying for. What stops them is the little voice asking, "Who would pay for this?" These three days are me showing you what I do instead, on my own screen, with my own numbers.</p>
-        <blockquote class="pull"><span class="qm2">&ldquo;</span><p>Say <b>"I wish"</b> and your brain files it under fantasy. Say <b>"I want"</b> and it starts looking for the next step.</p></blockquote>
-        <div class="sigrow"><div class="sig">Ana</div>
-          <div class="note2"><b>how we grow</b><span>a newsletter about getting paid for your writing</span><span class="pk">800+ student wins</span></div>
+        <span class="eyebrow">A little context, if we haven’t met</span>
+        <h2><span class="l">I’m Ana. I turn what I know</span> <span class="l"><em>into things my readers pay for.</em></span></h2>
+        <p class="lead">I write How We Grow on Substack. My newsletter business has made <b>$1.4M</b> selling workshops and programs to readers, without sales calls.</p>
+        <p>The advice you usually hear is to grow your audience and keep creating until the money follows. AI has changed a practical part of that process, and it changes the order I’d recommend today. On Day 1, I’ll show you what changed, using my own business.</p>
+        <div class="cnotes">
+          <p><b>Already self-employed?</b> Your goal might be to stop depending on client work you’d rather turn down. These three days are for you too.</p>
+          <p><b>Been to one of my workshops before?</b> What you learned about your readers still matters. Come see what I now do differently with it.</p>
         </div>
       </div>
     </div>
-
-    <div class="story">
-      <span class="rail2" aria-hidden="true"></span>
-      <div class="ch" data-r>
-        <div class="vis"><figure class="ph1"><img src="../img/ana-paris.webp" alt="Ana Calin" width="1000" height="671" loading="lazy"></figure></div>
-        <span class="node" aria-hidden="true"><svg><use href="#sf"/></svg></span>
-        <div class="tx"><span class="yr">2015</span><h3>Senior executive, big salary, <em>and I still felt poor.</em></h3><p>I was earning more than my parents had earned in their whole lives, and I kept telling myself, "I should be grateful for what I have." It sounds wise, doesn't it? What it really meant was don't want more, don't ask, and definitely don't leave.</p></div>
-      </div>
-      <div class="ch flip" data-r>
-        <div class="vis">
-          <div class="am4" aria-hidden="true">
-            <span class="isl2"></span>
-            <span class="tm">4:00</span><span class="pl2">Singapore</span>
-            <div class="nt"><span class="ap"><svg><use href="#sf"/></svg></span><span class="nb"><small>NOTES · now</small>I <s class="wish">wish</s><em class="want">want</em> I could do my own thing.</span></div>
-          </div>
+    <div class="cplan" data-r>
+      <div class="situ" role="group" aria-labelledby="situ-l">
+        <span class="lbl" id="situ-l">Where are you right now?</span>
+        <div class="chips">
+          <button class="chip" type="button" data-v="job" aria-pressed="false">I have a job and write on the side</button>
+          <button class="chip" type="button" data-v="self" aria-pressed="false">I work for myself</button>
+          <button class="chip" type="button" data-v="both" aria-pressed="false">A bit of both</button>
         </div>
-        <span class="node" aria-hidden="true"><svg><use href="#sf"/></svg></span>
-        <div class="tx"><span class="yr">2017</span><h3>The company collapsed.</h3><p>At 4 in the morning, on a hotel bathroom floor in Singapore, I said it out loud for the first time: "I wish I could do my own thing."</p><p><b>I said wish, not want.</b> It took me five more years to hear the difference.</p></div>
       </div>
-      <div class="ch" data-r>
-        <div class="vis">
-          <!-- how we grow: one sunflower per milestone, each taller -->
-          <svg class="grow" viewBox="0 0 420 320" aria-hidden="true">
-            <path d="M14 270h392" stroke="#1A1412" stroke-width="4" stroke-linecap="round"/>
-            <g class="g1"><path class="st" d="M80 268c0-20 2-40 0-62" stroke="#1A1412" stroke-width="4" fill="none" stroke-linecap="round"/><path class="lf" d="M80 246c-16-2-26-12-28-24 14 0 26 8 28 24Z" fill="#7BAE5A" stroke="#1A1412" stroke-width="3"/><g class="hd"><circle cx="80" cy="196" r="12" fill="#FFD400" stroke="#1A1412" stroke-width="4"/></g></g>
-            <g class="g2"><path class="st" d="M210 268c-4-40 4-80 0-122" stroke="#1A1412" stroke-width="4" fill="none" stroke-linecap="round"/><path class="lf" d="M209 228c18-4 30-18 30-32-16 2-28 14-30 32Z" fill="#7BAE5A" stroke="#1A1412" stroke-width="3"/><path class="lf" d="M208 196c-18-2-30-14-32-28 16 0 30 10 32 28Z" fill="#7BAE5A" stroke="#1A1412" stroke-width="3"/><g class="hd"><use href="#sf" x="180" y="96" width="60" height="60"/></g></g>
-            <g class="g3"><path class="st" d="M340 268c4-60-6-120 0-176" stroke="#1A1412" stroke-width="5" fill="none" stroke-linecap="round"/><path class="lf" d="M341 222c20-4 34-20 34-36-18 2-32 16-34 36Z" fill="#7BAE5A" stroke="#1A1412" stroke-width="3"/><path class="lf" d="M339 172c-20-2-34-16-36-32 18 0 34 12 36 32Z" fill="#7BAE5A" stroke="#1A1412" stroke-width="3"/><g class="hd"><use href="#sf" x="290" y="10" width="100" height="100"/></g></g>
-            <text x="80" y="300" text-anchor="middle" font-family="Instrument Serif,serif" font-size="24" fill="#1A1412">2023</text>
-            <text x="210" y="300" text-anchor="middle" font-family="Instrument Serif,serif" font-size="24" fill="#1A1412">2025</text>
-            <text x="340" y="300" text-anchor="middle" font-family="Instrument Serif,serif" font-size="24" fill="#F72585">2026</text>
-          </svg>
-        </div>
-        <span class="node" aria-hidden="true"><svg><use href="#sf"/></svg></span>
-        <div class="tx"><span class="yr">2023 to 2025</span><h3>My first four-figure months, <em>then a six-figure year.</em></h3><p>I had my first six-figure year in my forties, with a baby on my hip.</p></div>
-      </div>
-      <div class="ch flip" data-r>
-        <div class="vis">
-          <div class="proofs">
-            <button class="vcard" type="button" data-yt="vxGJ8TjtnC4" aria-label="Watch Ana: Most people make offers that get ignored">
-              <span class="vi"><img src="../img/yt-offers.webp" alt="" width="405" height="720" loading="lazy"></span>
-              <span class="pl"><svg width="20" height="20" viewBox="0 0 26 26"><path d="M8.6 5.6v14.8c0 .9 1 1.4 1.7 1l11.6-7.4c.7-.4.7-1.4 0-1.9L10.3 4.6c-.7-.5-1.7 0-1.7 1z" fill="#fff"/></svg></span>
-              <span class="vt"><small>WATCH · 14 MIN</small>Most people make offers that get ignored.</span>
-            </button>
-            <div class="pc p-a"><b><span>$1.4M</span></b><small>from the newsletter, on about two hours a day, from Greece</small></div>
-            <div class="pc p-b"><b>Top 10</b><small>Substack on turning what you know into income</small></div>
-          </div>
-        </div>
-        <span class="node" aria-hidden="true"><svg><use href="#sf"/></svg></span>
-        <div class="tx"><span class="yr">2026</span><h3>The business passed <em>a million.</em></h3><p>$1.4M from the newsletter, and I still work on it about two hours a day.</p><p><b>Honestly, I didn't learn some big new skill along the way.</b> I had the same skills back in 2015. What changed was what I believed I was allowed to ask for, and everything else followed from there.</p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- 2b. what you won't hear from me -->
-<section class="nope" id="nope">
-  <div class="wrap">
-    <div class="head" data-r>
-      <span class="eyebrow">What you won't hear from me</span>
-      <h2>No "grow your list first" <em>this time.</em></h2>
-    </div>
-    <div class="ngrid" data-r>
-      <ul class="nolist" aria-label="What you won't hear">
-        <li><span>post every day for months and wait</span></li>
-        <li><span>build a whole course, then hope somebody buys it</span></li>
-        <li><span>a launch plan that looks like a NASA schedule</span></li>
-        <li><span>"let AI do it for you"</span></li>
-      </ul>
-      <div class="ntx">
-        <p>You won't hear me tell you to post every day for months and wait, or to build a whole course and then hope somebody buys it. You won't get a launch plan that looks like a NASA schedule either, or "let AI do it for you". AI is just the reason the order changed. You've heard the rest already, and some of you paid good money for it.</p>
-        <p class="inst"><b>What you get instead</b> is the exact thing I do, on my own screen, with my own replies, my own Substack dashboard and my own numbers. Then we do it on yours, live, while I'm there.</p>
-      </div>
+      <div class="cgo"><button class="btn open" type="button">I want the plan<svg><use href="#arr"/></svg></button><small>free · live on Zoom</small></div>
     </div>
   </div>
 </section>
@@ -1214,8 +1216,9 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
 <section class="days" id="days">
   <div class="wrap">
     <div class="head" data-r>
-      <span class="eyebrow">Tue Nov 17 to Thu Nov 19<span class="hide-s"> · live, 12:00 pm New York</span></span>
-      <h2>Every day, you write something while I'm there, <em>so you don't log off with just a page of notes.</em></h2>
+      <span class="eyebrow">Your three days · Nov 17 to 19</span>
+      <h2><span class="l">Open my screen.</span> <span class="l"><em>Then work on yours.</em></span></h2>
+      <p class="dlede">Bring somewhere to write. Each day, I’ll show you a real example, then give you time to work on your own. I’ll review some of your work live.</p>
     </div>
 
     <div class="rows">
@@ -1224,18 +1227,16 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
         <span class="rail"></span>
         <div class="dbadge"><small>DAY</small><b>1</b></div>
         <div class="dtext">
-          <div class="dwhen"><span class="dcal" aria-hidden="true"><small>NOV</small><b>17</b></span><span class="dtx"><b>Tuesday, Nov 17</b><span class="dtm"><span class="pill">12:00 pm New York</span><span class="gr">7:00 pm Greece</span><span class="dlt" data-t="2026-11-17T17:00:00Z"></span></span></span></div>
-          <h3>Find what your readers would pay for.</h3>
-          <p class="body"><b>Why AI flipped the order, and the three steps I use to find what readers have already told me they'd pay for.</b></p>
-          <p class="out"><span>By the end of Day 1,</span> you'll know who your one reader is and what she'd pay you to fix, and you'll have said it in the chat.</p>
-          <p class="body">Your readers have usually told you already. It's sitting in your replies and comments, and it sounds so obvious you've walked straight past it.</p>
+          <div class="dwhen"><span class="dcal" aria-hidden="true"><small>NOV</small><b>17</b></span><span class="dtx"><b>Tuesday, Nov 17</b><span class="dtm"><span class="pill">12:00 pm New York</span></span></span></div>
+          <h3>Find the idea worth asking people to pay for.</h3>
+          <p class="body">You might already have the answer buried in a reply, a comment, or a message you answered without thinking. I’ll open my own and show you what I look for.</p>
           <ul>
-            <li><svg><use href="#li"/></svg><span><b>Copy, count, pick:</b> the three steps I use on my own replies, comments and DMs to find what people would pay for. I'll do it live, on mine.</span></li>
-            <li><svg><use href="#li"/></svg><span>Why the right idea usually feels too obvious to sell, and why that's exactly how you know it's the one</span></li>
-            <li><svg><use href="#li"/></svg><span>Why your list size was never the real problem, small or big</span></li>
-            <li><svg><use href="#li"/></svg><span>Who your one reader is, and how to name her</span></li>
+            <li><svg aria-hidden="true"><use href="#li"/></svg><span>The change AI made to my process, and why I’d start in a different order today.</span></li>
+            <li><svg aria-hidden="true"><use href="#li"/></svg><span>My three-step process for narrowing what readers ask about to one idea worth testing.</span></li>
+            <li><svg aria-hidden="true"><use href="#li"/></svg><span>Why the thing that feels too obvious to you can still be useful enough to sell.</span></li>
           </ul>
-          <p class="next">Tomorrow, we put a price on her problem.</p>
+          <p class="out"><span>You leave with</span>One reader, one problem, and an offer idea to test.</p>
+          <p class="next">Tomorrow, we turn that idea into something you can put a price on.</p>
         </div>
         <div class="art" id="art1" aria-hidden="true"><div class="stage">
           <svg class="fl" style="left:420px;top:-70px;width:250px;height:250px"><use href="#sfo"/></svg>
@@ -1274,18 +1275,16 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
         <span class="rail"></span>
         <div class="dbadge"><small>DAY</small><b>2</b></div>
         <div class="dtext">
-          <div class="dwhen"><span class="dcal" aria-hidden="true"><small>NOV</small><b>18</b></span><span class="dtx"><b>Wednesday, Nov 18</b><span class="dtm"><span class="pill">12:00 pm New York</span><span class="gr">7:00 pm Greece</span><span class="dlt" data-t="2026-11-18T17:00:00Z"></span></span></span></div>
-          <h3>Turn it into an offer, with a price.</h3>
-          <p class="body"><b>How to say what you're selling so people get it the first time, and the price test that finally ends "am I charging too much?"</b></p>
-          <p class="out"><span>By the end of Day 2,</span> your offer and its price are written down, and you'll have said both out loud in the chat.</p>
-          <p class="body">Please don't price it low just because you're scared. If you're afraid to ask for five dollars, nobody will give you five thousand.</p>
+          <div class="dwhen"><span class="dcal" aria-hidden="true"><small>NOV</small><b>18</b></span><span class="dtx"><b>Wednesday, Nov 18</b><span class="dtm"><span class="pill">12:00 pm New York</span></span></span></div>
+          <h3>Put your offer into one sentence. Then give it a price.</h3>
+          <p class="body">“I could help with that” isn’t quite an offer yet. We’ll make it clear who it’s for, what you’ll help them do, and what they’re being asked to buy.</p>
           <ul>
-            <li><svg><use href="#li"/></svg><span>The sentence every offer needs before it goes anywhere near your readers. I'll fix some of yours live.</span></li>
-            <li><svg><use href="#li"/></svg><span>The one-question price test I use instead of a pricing formula</span></li>
-            <li><svg><use href="#li"/></svg><span>Why your first price is a proof price, not your final one, and why that makes it so much easier to say out loud</span></li>
-            <li><svg><use href="#li"/></svg><span>The four words I said when a client asked for my best price (they said yes)</span></li>
+            <li><svg aria-hidden="true"><use href="#li"/></svg><span>The one sentence every offer needs. I’ll work through examples and fix some of yours live.</span></li>
+            <li><svg aria-hidden="true"><use href="#li"/></svg><span>The one-question price test I use when a pricing formula won’t help.</span></li>
+            <li><svg aria-hidden="true"><use href="#li"/></svg><span>The four words I used when a client asked for my best price, and what happened next.</span></li>
           </ul>
-          <p class="next">Tomorrow, you write the email that asks.</p>
+          <p class="out"><span>You leave with</span>Your offer sentence and a starting price to test.</p>
+          <p class="next">Then comes the part that’s easy to leave for “later”: actually asking.</p>
         </div>
         <div class="art" id="art2" aria-hidden="true"><div class="stage">
           <svg class="fl" style="left:-70px;top:-60px;width:230px;height:230px"><use href="#sfo"/></svg>
@@ -1323,16 +1322,16 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
       <div class="drow" data-r>
         <div class="dbadge"><small>DAY</small><b>3</b></div>
         <div class="dtext">
-          <div class="dwhen"><span class="dcal" aria-hidden="true"><small>NOV</small><b>19</b></span><span class="dtx"><b>Thursday, Nov 19</b><span class="dtm"><span class="pill">12:00 pm New York</span><span class="gr">7:00 pm Greece</span><span class="dlt" data-t="2026-11-19T17:00:00Z"></span></span></span></div>
-          <h3>Write the ask.</h3>
-          <p class="body"><b>The step almost everyone gets wrong, and how to get your first yeses without a sales page or a call.</b></p>
-          <p class="out"><span>By the end of Day 3,</span> the email asking your readers to buy is written, and you've picked the day you'll send it.</p>
-          <p class="body">If something is only for you, perfect, keep it to yourself. But if you want people to buy it, you have to tell them it exists. You write that email with me, live, so it doesn't end up in your drafts with everything else.</p>
+          <div class="dwhen"><span class="dcal" aria-hidden="true"><small>NOV</small><b>19</b></span><span class="dtx"><b>Thursday, Nov 19</b><span class="dtm"><span class="pill">12:00 pm New York</span></span></span></div>
+          <h3>Write the email that puts your offer in front of people.</h3>
+          <p class="body">One of my posts got 771 likes and made nothing. Another got 82 likes and made $120. I’ll show you the sentence that made the difference, then we’ll write your ask together.</p>
           <ul>
-            <li><svg><use href="#li"/></svg><span>Why one of my posts got 771 likes and made nothing, and another got 82 likes and made $120 (it came down to one sentence)</span></li>
-            <li><svg><use href="#li"/></svg><span>Why I sent my first ask to 300 of my most consistent readers instead of my whole list, and why 47 of them said yes</span></li>
-            <li><svg><use href="#li"/></svg><span>How to find your own most consistent readers in your Substack dashboard (about two minutes), and how to ask them without apologizing</span></li>
+            <li><svg aria-hidden="true"><use href="#li"/></svg><span>Why I approached 300 readers instead of my whole list, and how I chose them.</span></li>
+            <li><svg aria-hidden="true"><use href="#li"/></svg><span>Where I look in my Substack dashboard to find the first people to approach.</span></li>
+            <li><svg aria-hidden="true"><use href="#li"/></svg><span>How to explain what’s for sale in your own voice, without burying the invitation.</span></li>
           </ul>
+          <p class="out"><span>You leave with</span>A drafted sales email, your first audience, and a date to send it.</p>
+          <p class="next">You’ll have the draft in front of you. I’ll read some out and work on them live.</p>
         </div>
         <div class="art" id="art3" aria-hidden="true"><div class="stage">
           <svg class="fl" style="left:430px;top:-60px;width:230px;height:230px"><use href="#sfo"/></svg>
@@ -1366,14 +1365,13 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
     </div>
 
     <div class="after" data-r>
-      <p>Please come to all three. Each day builds on the one before.</p>
-      <button class="btn open" type="button">save my seat (free)<svg><use href="#arr"/></svg></button>
+      <p><span class="l">Come to all three.</span> <span class="l">Each day builds on the one before.</span></p>
+      <button class="btn open" type="button">I’m in for all three (free)<svg><use href="#arr"/></svg></button>
     </div>
   </div>
 </section>
 
-
-<!-- 3b. your gift: the exit number -->
+<!-- 4. your gift when you join: the exit number -->
 <section class="gift" id="gift">
   <div class="wrap">
     <div class="gcard" data-r>
@@ -1381,80 +1379,100 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
         <svg viewBox="0 0 220 260"><rect x="20" y="16" width="180" height="228" rx="24" fill="#FFD400" stroke="#1A1412" stroke-width="5"/><rect x="40" y="38" width="140" height="58" rx="10" fill="#FFF8EE" stroke="#1A1412" stroke-width="4"/><path d="M58 76h70" stroke="#1A1412" stroke-width="5" stroke-linecap="round"/><path d="M146 76h16" stroke="#F72585" stroke-width="5" stroke-linecap="round"/><g fill="#FFF8EE" stroke="#1A1412" stroke-width="4"><rect x="40" y="112" width="38" height="30" rx="8"/><rect x="91" y="112" width="38" height="30" rx="8"/><rect x="142" y="112" width="38" height="30" rx="8"/><rect x="40" y="152" width="38" height="30" rx="8"/><rect x="91" y="152" width="38" height="30" rx="8"/><rect x="40" y="192" width="38" height="30" rx="8"/><rect x="91" y="192" width="38" height="30" rx="8"/></g><rect x="142" y="152" width="38" height="70" rx="8" fill="#F72585" stroke="#1A1412" stroke-width="4"/><use href="#sf" x="128" y="-8" width="84" height="84"/></svg>
       </div>
       <div class="gtx">
-        <span class="eyebrow">Your gift</span>
-        <h2>The exit <em>number.</em></h2>
-        <p>Sign up, answer seven quick questions, and I'll give you your exit number. It's a little calculator I built that shows how many people would need to say yes for you to leave your job, or to drop the clients you'd rather not have. It also shows the same money the usual way, through paid subscriptions alone. <b>That second number is usually when people stop waiting for a bigger list.</b> There's a pen-and-paper version too, if AI isn't your thing.</p>
-        <p class="gnext"><span class="gd">From Nov 4</span>I'll send you a small task most days, about 15 minutes each, so you show up on the 17th with your material ready.</p>
+        <span class="eyebrow">Your gift when you join</span>
+        <h2><span class="l">How much would</span> <span class="l"><em>“enough” actually take?</em></span></h2>
+        <p>Answer seven quick questions and get your <b>exit number</b>: how many people would need to buy at a given price to reach your income goal. That might mean replacing your salary, or letting go of a client.</p>
+        <p>You’ll also see what the same goal would take through paid subscriptions alone. It’s a way to put numbers to the plan, so you can see what you’re working towards.</p>
+        <p class="gnext"><b>From Nov 4,</b> I’ll send a small task most days, about 15 minutes, to help you bring useful material to the workshop.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 4. is this for you? -->
+<!-- 5. does this sound familiar? -->
 <section class="sand fit">
   <div class="wrap narrow">
     <div class="head" data-r>
-      <span class="eyebrow">Honest fit check</span>
-      <h2>Is this <em>for you?</em></h2>
+      <span class="eyebrow">Does this sound familiar?</span>
+      <h2><span class="l">There’s something here.</span> <span class="l"><em>You just haven’t sold it yet.</em></span></h2>
       <p class="tip">Tap the ones that sound like you.</p>
     </div>
     <ul data-r>
-      <li><button type="button" aria-pressed="false"><span class="tk"><svg viewBox="0 0 20 20"><path d="m5 10.5 3.4 3.4L15 6.8"/></svg></span><span class="pain">You write every week and it pays you nothing.</span><span class="fix"><span>Then you're exactly who I made this for.</span></span></button></li>
-      <li><button type="button" aria-pressed="false"><span class="tk"><svg viewBox="0 0 20 20"><path d="m5 10.5 3.4 3.4L15 6.8"/></svg></span><span class="pain">Readers say lovely things, then never buy.</span><span class="fix"><span>They will, once you ask properly. That's Day 3.</span></span></button></li>
-      <li><button type="button" aria-pressed="false"><span class="tk"><svg viewBox="0 0 20 20"><path d="m5 10.5 3.4 3.4L15 6.8"/></svg></span><span class="pain">You keep thinking you need more subscribers first.</span><span class="fix"><span>You don't. A few dozen readers and one priced offer is already a business.</span></span></button></li>
-      <li><button type="button" aria-pressed="false"><span class="tk"><svg viewBox="0 0 20 20"><path d="m5 10.5 3.4 3.4L15 6.8"/></svg></span><span class="pain">You have thousands of subscribers and almost nobody buys.</span><span class="fix"><span>Then you've already proved the list isn't the problem. Same fix, and you have more people to ask.</span></span></button></li>
-      <li><button type="button" aria-pressed="false"><span class="tk"><svg viewBox="0 0 20 20"><path d="m5 10.5 3.4 3.4L15 6.8"/></svg></span><span class="pain">You already work for yourself.</span><span class="fix"><span>Me too. For a while I'd just hired the worst boss I'd ever had: me. If your "job" is client hours, it works the same.</span></span></button></li>
-      <li><button type="button" aria-pressed="false"><span class="tk"><svg viewBox="0 0 20 20"><path d="m5 10.5 3.4 3.4L15 6.8"/></svg></span><span class="pain">You don't know what you'd even sell.</span><span class="fix"><span>Your readers probably do. We'll find it on Day 1.</span></span></button></li>
-      <li><button type="button" aria-pressed="false"><span class="tk"><svg viewBox="0 0 20 20"><path d="m5 10.5 3.4 3.4L15 6.8"/></svg></span><span class="pain">You have a job, and no time.</span><span class="fix"><span>It's three lunchtimes, about 90 minutes each. I built this whole business on two hours a day, so I get it.</span></span></button></li>
+      <li><button type="button" aria-pressed="false"><span class="tk"><svg viewBox="0 0 20 20"><path d="m5 10.5 3.4 3.4L15 6.8"/></svg></span><span class="pain">You write every week and it pays you nothing.</span><span class="fix"><span>Let’s find something useful you could offer those readers.</span></span></button></li>
+      <li><button type="button" aria-pressed="false"><span class="tk"><svg viewBox="0 0 20 20"><path d="m5 10.5 3.4 3.4L15 6.8"/></svg></span><span class="pain">People thank you for your help. You don’t know what to sell.</span><span class="fix"><span>We’ll look for the specific problem behind those thank‑yous.</span></span></button></li>
+      <li><button type="button" aria-pressed="false"><span class="tk"><svg viewBox="0 0 20 20"><path d="m5 10.5 3.4 3.4L15 6.8"/></svg></span><span class="pain">You know your subject. Putting a price on it feels awkward.</span><span class="fix"><span>Bring that doubt. We’ll work through a starting price together.</span></span></button></li>
+      <li><button type="button" aria-pressed="false"><span class="tk"><svg viewBox="0 0 20 20"><path d="m5 10.5 3.4 3.4L15 6.8"/></svg></span><span class="pain">You earn from clients, but every extra sale costs you more hours.</span><span class="fix"><span>Explore an offer built around what you know.</span></span></button></li>
+      <li><button type="button" aria-pressed="false"><span class="tk"><svg viewBox="0 0 20 20"><path d="m5 10.5 3.4 3.4L15 6.8"/></svg></span><span class="pain">You have a job, and very little spare time.</span><span class="fix"><span>Three sessions of about 90 minutes, with the writing done during them.</span></span></button></li>
     </ul>
-    <p class="not" data-r><b>This is for you</b> if you have something you could teach and at least a few people who read you. A brand-new newsletter is fine, and so is a list of ten thousand, as long as not much is selling yet.<br><b>It's not for you</b> if you'd rather grow your list first, or you want someone to do it for you. Either is fine. Just decide on purpose.</p>
+    <p class="not" data-r>For people with something useful to teach or help others with. You’ll do the work during these sessions, so bring your ideas and a willingness to try.</p>
   </div>
 </section>
 
-<!-- 5. quote band: the one ink section -->
-<section class="band" id="band">
-  <svg class="fl" aria-hidden="true"><use href="#sfo"/></svg>
-  <div class="wrap"><q>Likes are lovely. <mark>You just can't pay the rent with them.</mark></q></div>
+<!-- 6. your host -->
+<section class="host" id="host">
+  <div class="wrap">
+    <div class="hostg">
+      <div class="hst-tx" data-r>
+        <span class="eyebrow">Your host · Ana Calin</span>
+        <h2><span class="l">It can feel obvious</span> <span class="l"><em>when you’re the one who knows.</em></span></h2>
+        <p class="big">If you’ve painted for years, mixing a colour or holding a brush feels ordinary. To someone picking one up for the first time, it isn’t.</p>
+        <p>That’s easy to forget about your own work. You see what’s simple to you, and wonder who would pay for it.</p>
+        <p>My first workshop sold two copies. I’d built what I wanted to teach instead of what my readers kept asking me for. I learned to pay more attention to the asking.</p>
+        <p>Now I run How We Grow from a village in Greece, on about two hours a day. For three days, I’ll show you what that looks like in practice.</p>
+        <div class="sig">Ana</div>
+      </div>
+      <div class="hst-pic" data-r>
+        <figure><img src="../img/ana-paris.webp" alt="Ana Calin" width="1000" height="671" loading="lazy"></figure>
+        <svg class="brush" viewBox="0 0 230 70" aria-hidden="true"><g transform="rotate(-16 115 35)"><path d="M6 35c16-15 40-19 62-12l7 12-7 12c-22 7-46 3-62-12Z" fill="#FFD400" stroke="#1A1412" stroke-width="4" stroke-linejoin="round"/><path d="M20 35h30" stroke="#1A1412" stroke-width="2.6" stroke-linecap="round" opacity=".5"/><rect x="74" y="23" width="36" height="24" rx="4" fill="#EADFCF" stroke="#1A1412" stroke-width="4"/><path d="M110 26h104a9 9 0 0 1 0 18H110Z" fill="#F72585" stroke="#1A1412" stroke-width="4" stroke-linejoin="round"/></g></svg>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- 6. proof: one featured quote with her bootcamp video, three wins (word for word from howwegrowtoday.com),
-     and the review wall (word for word, with their photos, from howwegrowtoday.substack.com/about). Needs Ana's OK on the names. -->
-<section class="sand result">
+<!-- 7. what readers say -->
+<section class="sand revs" id="reviews">
   <div class="wrap">
     <div class="head" data-r>
-      <span class="eyebrow">800+ student wins</span>
-      <h2>And this works with <em>the list you have right now,</em> whatever its size.</h2>
+      <span class="eyebrow">From previous workshops</span>
+      <h2><span class="l">What readers say</span> <span class="l"><em>about working with me.</em></span></h2>
     </div>
-    <div class="feat" data-r>
-      <button class="vcard" type="button" data-yt="6AV65yCJNzU" aria-label="Watch Ana: The money map bootcamp and everything growth">
-        <span class="vi"><img src="../img/yt-moneymap.webp" alt="" width="405" height="720" loading="lazy"></span>
-        <span class="pl"><svg width="24" height="24" viewBox="0 0 26 26"><path d="M8.6 5.6v14.8c0 .9 1 1.4 1.7 1l11.6-7.4c.7-.4.7-1.4 0-1.9L10.3 4.6c-.7-.5-1.7 0-1.7 1z" fill="#fff"/></svg></span>
-        <span class="vt"><small>WATCH</small>The money map bootcamp and everything growth</span>
-      </button>
-      <figure>
-        <span class="qm" aria-hidden="true">&ldquo;</span>
-        <blockquote>"I finally see the possibility of monetizing here!"</blockquote>
-        <figcaption><span class="ini" aria-hidden="true">AL</span><span><b>Adora Lee</b><small>Apr 23, 2025</small></span></figcaption>
-      </figure>
+    <div class="rgrid" data-r>
+      <figure class="rq"><blockquote>Can I just say that you have over delivered. Wow! It's nice to have a clear map. Still work to do, but much more satisfying, and less wheel spinning. :)</blockquote><figcaption><img src="../img/av/gustavo.webp" alt="" width="80" height="80" loading="lazy"><span><b>Gustavo Karakey</b><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span></span></figcaption></figure>
+      <figure class="rq"><blockquote>What a brilliant, actionable, organised, inspiring bootcamp. Thank you, Ana.</blockquote><figcaption><img src="../img/av/jeanette.webp" alt="" width="80" height="80" loading="lazy"><span><b>Jeanette Martin</b><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span></span></figcaption></figure>
+      <figure class="rq"><blockquote>I finally see the possibility of monetizing here!</blockquote><figcaption><img src="../img/av/adora.webp" alt="" width="80" height="80" loading="lazy"><span><b>Adora Lee</b><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span></span></figcaption></figure>
     </div>
-
-    <h3 class="wins-t" data-r>Most of these didn't happen because of some clever tactic. <em>They happened the week someone stopped asking "who would pay for this?" and made the offer anyway.</em></h3>
-    <!-- the three Notes cards are off until Ana picks the true version of each (PAGE_CHANGES v5, item 3) -->
+    <p class="wall-src">Reviews from Ana’s readers and students, published on her Substack.</p>
   </div>
-  <div class="wall" aria-label="Reviews from Ana's readers and students">
-    <div class="lane"><article class="rv"><div class="who2"><img src="../img/av/gustavo.webp" alt="" width="80" height="80" loading="lazy"><span><b>Gustavo Karakey</b><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span></span></div><q>Can I just say that you have over delivered. Wow! It's nice to have a clear map. Still work to do, but much more satisfying, and less wheel spinning. :)</q><small>Apr 21, 2025</small></article><article class="rv"><div class="who2"><img src="../img/av/jeanette.webp" alt="" width="80" height="80" loading="lazy"><span><b>Jeanette Martin</b><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span></span></div><q>What a brilliant, actionable, organised, inspiring bootcamp. Thank you, Ana.</q><small>Apr 21, 2025</small></article><article class="rv"><div class="who2"><img src="../img/av/shahidah.webp" alt="" width="80" height="80" loading="lazy"><span><b>Shahidah Al-Amin</b><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span></span></div><q>I love the way you get straight to the point about growth and how to communicate value to your audience so they WANT to pay you. It is a priority of mine to grow my audience and get paid for my offers & I'm really confident that your roadmap will help me achieve that.</q><small>Apr 23, 2025</small></article><article class="rv"><div class="who2"><img src="../img/av/adora.webp" alt="" width="80" height="80" loading="lazy"><span><b>Adora Lee</b><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span></span></div><q>I finally see the possibility of monetizing here!</q><small>Apr 23, 2025</small></article><article class="rv"><div class="who2"><img src="../img/av/hilde.webp" alt="" width="80" height="80" loading="lazy"><span><b>Hilde Palladino</b><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span></span></div><q>Thank you so much, this was so worth my time and money</q><small>May 26, 2025</small></article><article class="rv" aria-hidden="true"><div class="who2"><img src="../img/av/gustavo.webp" alt="" width="80" height="80" loading="lazy"><span><b>Gustavo Karakey</b><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span></span></div><q>Can I just say that you have over delivered. Wow! It's nice to have a clear map. Still work to do, but much more satisfying, and less wheel spinning. :)</q><small>Apr 21, 2025</small></article><article class="rv" aria-hidden="true"><div class="who2"><img src="../img/av/jeanette.webp" alt="" width="80" height="80" loading="lazy"><span><b>Jeanette Martin</b><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span></span></div><q>What a brilliant, actionable, organised, inspiring bootcamp. Thank you, Ana.</q><small>Apr 21, 2025</small></article><article class="rv" aria-hidden="true"><div class="who2"><img src="../img/av/shahidah.webp" alt="" width="80" height="80" loading="lazy"><span><b>Shahidah Al-Amin</b><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span></span></div><q>I love the way you get straight to the point about growth and how to communicate value to your audience so they WANT to pay you. It is a priority of mine to grow my audience and get paid for my offers & I'm really confident that your roadmap will help me achieve that.</q><small>Apr 23, 2025</small></article><article class="rv" aria-hidden="true"><div class="who2"><img src="../img/av/adora.webp" alt="" width="80" height="80" loading="lazy"><span><b>Adora Lee</b><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span></span></div><q>I finally see the possibility of monetizing here!</q><small>Apr 23, 2025</small></article><article class="rv" aria-hidden="true"><div class="who2"><img src="../img/av/hilde.webp" alt="" width="80" height="80" loading="lazy"><span><b>Hilde Palladino</b><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span></span></div><q>Thank you so much, this was so worth my time and money</q><small>May 26, 2025</small></article></div>
-    <div class="lane r"><article class="rv"><div class="who2"><img src="../img/av/michael.webp" alt="" width="80" height="80" loading="lazy"><span><b>Michael Wallace</b><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span></span></div><q>Ana provides clear advice and actionable steps on how to grow your Substack.</q><small>Apr 23, 2025</small></article><article class="rv"><div class="who2"><img src="../img/av/annemarie.webp" alt="" width="80" height="80" loading="lazy"><span><b>Anne-Marie Duchene</b><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span></span></div><q>I support your work because you are wicked smart and share such valuable information for someone getting started on this platform. I have a full grown 20+ year business and have been on SM for years but want to write better content for my audience and you are helping me do just that. I am so grateful to have found you!</q><small>Apr 23, 2025</small></article><article class="rv"><div class="who2"><img src="../img/av/sue.webp" alt="" width="80" height="80" loading="lazy"><span><b>Sue Bolton</b><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span></span></div><q>Everything was fabulous but I was particularly thrilled about the content strategy and how that was all interrelated with the paywall strategy, plus the promotional calendars, etc. I have to go back and review all of it. Thank you.</q><small>Apr 26, 2025</small></article><article class="rv"><div class="who2"><img src="../img/av/stacie.webp" alt="" width="80" height="80" loading="lazy"><span><b>Stacie Whitney</b><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span></span></div><q>One thing I notice and admire about you Ana, is you are an action taker. You don't sit around for months trying to decide on what to offer, or what colour to make your background. You ask the question, do what you need to get clear, and then act on it.</q><small>Apr 26, 2025</small></article><article class="rv"><div class="who2"><img src="../img/av/alyssa.webp" alt="" width="80" height="80" loading="lazy"><span><b>Alyssa Zander</b><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span></span></div><q>Thank you so much Ana for the support, guidance, and tools!</q><small>May 26, 2025</small></article><article class="rv" aria-hidden="true"><div class="who2"><img src="../img/av/michael.webp" alt="" width="80" height="80" loading="lazy"><span><b>Michael Wallace</b><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span></span></div><q>Ana provides clear advice and actionable steps on how to grow your Substack.</q><small>Apr 23, 2025</small></article><article class="rv" aria-hidden="true"><div class="who2"><img src="../img/av/annemarie.webp" alt="" width="80" height="80" loading="lazy"><span><b>Anne-Marie Duchene</b><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span></span></div><q>I support your work because you are wicked smart and share such valuable information for someone getting started on this platform. I have a full grown 20+ year business and have been on SM for years but want to write better content for my audience and you are helping me do just that. I am so grateful to have found you!</q><small>Apr 23, 2025</small></article><article class="rv" aria-hidden="true"><div class="who2"><img src="../img/av/sue.webp" alt="" width="80" height="80" loading="lazy"><span><b>Sue Bolton</b><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span></span></div><q>Everything was fabulous but I was particularly thrilled about the content strategy and how that was all interrelated with the paywall strategy, plus the promotional calendars, etc. I have to go back and review all of it. Thank you.</q><small>Apr 26, 2025</small></article><article class="rv" aria-hidden="true"><div class="who2"><img src="../img/av/stacie.webp" alt="" width="80" height="80" loading="lazy"><span><b>Stacie Whitney</b><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span></span></div><q>One thing I notice and admire about you Ana, is you are an action taker. You don't sit around for months trying to decide on what to offer, or what colour to make your background. You ask the question, do what you need to get clear, and then act on it.</q><small>Apr 26, 2025</small></article><article class="rv" aria-hidden="true"><div class="who2"><img src="../img/av/alyssa.webp" alt="" width="80" height="80" loading="lazy"><span><b>Alyssa Zander</b><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span></span></div><q>Thank you so much Ana for the support, guidance, and tools!</q><small>May 26, 2025</small></article></div>
-  </div>
-  <p class="wall-src">Reviews from Ana's readers and students, as published on her Substack.</p>
 </section>
 
-<!-- 7. stay until the end + FAQ -->
-<section>
+<!-- 8. a few practical things -->
+<section class="qa" id="faq">
+  <div class="wrap">
+    <div class="faqs">
+      <div class="fhead" data-r>
+        <span class="eyebrow">A few practical things</span>
+        <h2>Before you join.</h2>
+      </div>
+      <div data-r>
+        <details class="faq" open><summary>Is it really free?<i aria-hidden="true"></i></summary><p class="a">Yes. All three sessions are free and live, everything you write is yours to keep, and you never have to buy a thing.</p></details>
+        <details class="faq"><summary>Do I need a big list or an idea ready?<i aria-hidden="true"></i></summary><p class="a">No. A small readership is welcome, and you don’t need an offer idea ready. If you haven’t started writing yet, bring a topic you know and the questions people already ask you. You’ll still need to find people to test your idea with.</p></details>
+        <details class="faq"><summary>How much time should I set aside?<i aria-hidden="true"></i></summary><p class="a">About 90 minutes a day, Nov 17 to 19. We do the writing during the sessions. From Nov 4, I’ll also send a small task most days, about 15 minutes. Skip one and nothing breaks.</p></details>
+        <details class="faq"><summary>Do I need to be on Substack?<i aria-hidden="true"></i></summary><p class="a">No. I’ll demonstrate on mine because that’s where my readers are. The work (choosing a problem, shaping an offer, and asking people to buy) applies wherever people read you.</p></details>
+        <details class="faq"><summary>Will this work for my topic?<i aria-hidden="true"></i></summary><p class="a">If people come to you to get better at something, or to get through something, you may have something useful to offer. We’ll work on a specific problem you can help with, rather than trying to sell your whole subject.</p></details>
+        <details class="faq"><summary>Will I really be able to leave my job in 2027?<i aria-hidden="true"></i></summary><p class="a">I can’t promise that. These three days give you an offer idea, a starting price, and an email to test it. Your exit number helps you see the distance between that first offer and the income you want.</p></details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 9. one more reason to stay for Day 3 -->
+<section class="prize">
   <div class="wrap">
     <div class="stay" id="stay">
       <div>
-        <p>Stay with me until the end of Day 3. Five people who are still there live win a 1:1 with me, <span class="hl">worth $3,000.</span></p>
-        <small>Free to enter, live attendees only. I pick the five names at random at the end of Day 3.</small>
+        <h2>One more reason to stay <em>for Day 3.</em></h2>
+        <p>At the end, I’ll pick five names at random from the people still there live. Each gets a 1:1 with me.</p>
+        <small>Free to enter; live attendees only.</small>
       </div>
       <!-- five seats: five 1:1 tickets fanning out -->
       <div class="tix" aria-hidden="true">
@@ -1465,50 +1483,26 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
         <div class="t"><svg viewBox="0 0 240 110"><use href="#tk"/></svg></div>
       </div>
     </div>
-
-    <div class="faqs">
-      <h2 data-r>Questions</h2>
-      <div data-r>
-        <details class="faq" open><summary>Is it really free?<i aria-hidden="true"></i></summary><p class="a">Yes, really. All three sessions are free and live, everything you write is yours to keep, and you never have to buy a thing.</p></details>
-        <details class="faq"><summary>I'm busy. How much time is this really?<i aria-hidden="true"></i></summary><p class="a">Three sessions of about 90 minutes, and you do the writing during them, so nothing's waiting for you after. From Nov 4 I'll send a small task most days, about 15 minutes each. Skip one and nothing breaks.</p></details>
-        <details class="faq"><summary>Do I need a big list?<i aria-hidden="true"></i></summary><p class="a">No. Most of the readers who answered my October survey have fewer than 100 subscribers, or no newsletter yet. That's a normal place to start, I promise you.</p></details>
-        <details class="faq"><summary>What if my list is already big?<i aria-hidden="true"></i></summary><p class="a">Then I really want you there. A big list with nothing to sell is one of the most common things I see, and in a way it's the better problem to have, because you have more people to ask. On Day 3 I'll show you why I'd still start with a few hundred of them, not all of them.</p></details>
-        <details class="faq"><summary>Will this work for my topic?<i aria-hidden="true"></i></summary><p class="a">If people read you to get better at something, or to get through something, there's usually an offer in it. Most of my readers are teachers, coaches, marketers and health people. The topics are all different, and the step is the same. And if lots of people already write about yours, good. There's room for everyone, even on the same topic. Your readers picked you.</p></details>
-        <details class="faq"><summary>Will I really be able to leave my job by 2027?<i aria-hidden="true"></i></summary><p class="a">I can't promise that, and I'd be careful with anyone who does. What I can tell you is that by the end of Day 3 you'll know what you'd sell, for how much and to whom, and your exit number will show you how far that is from your job.</p></details>
-      </div>
-    </div>
   </div>
 </section>
 
-<!-- 8. quick recap -->
-<section style="padding-top:0">
+<!-- 10. the recap: one offer idea, one starting price, one email -->
+<section class="sum">
   <div class="wrap">
     <div class="recap" data-r>
       <svg class="fl" style="left:-70px;top:-60px;width:230px;height:230px" aria-hidden="true"><use href="#sfo"/></svg>
       <svg class="fl" style="right:-80px;bottom:-90px;width:260px;height:260px" aria-hidden="true"><use href="#sfo"/></svg>
-      <h2>Quick <em>recap.</em></h2>
-      <div class="rc">
-        <div>
-          <span class="ic"><svg aria-hidden="true"><use href="#sf"/></svg></span>
-          <h3>WHAT</h3>
-          <p>A free 3-day live workshop with me on how to build the income that lets you leave your job in 2027. We find what your readers would pay for, put a price on it, and write the email that asks them to buy.</p>
-        </div>
-        <div>
-          <span class="ic"><svg viewBox="0 0 52 52" aria-hidden="true"><rect x="7" y="10" width="38" height="34" rx="6" fill="#fff" stroke="#1A1412" stroke-width="3"/><path d="M7 16a6 6 0 0 1 6-6h26a6 6 0 0 1 6 6v5H7Z" fill="#F72585" stroke="#1A1412" stroke-width="3"/><path d="M17 6v8M35 6v8" stroke="#1A1412" stroke-width="3" stroke-linecap="round"/><text x="26" y="39.5" text-anchor="middle" font-family="Instrument Serif,serif" font-size="17" fill="#1A1412">17</text></svg></span>
-          <h3>WHEN</h3>
-          <p><b class="big">Tue Nov 17 to Thu Nov 19</b>12:00 pm New York / 9:00 am Los Angeles / 5:00 pm London / 7:00 pm Greece, all three days<span class="lt"></span>.</p>
-        </div>
-        <div>
-          <span class="ic"><svg viewBox="0 0 52 52" aria-hidden="true"><rect x="8" y="11" width="36" height="24" rx="4" fill="#fff" stroke="#1A1412" stroke-width="3"/><circle cx="26" cy="21" r="4" fill="#FFD400" stroke="#1A1412" stroke-width="2.4"/><path d="M19 31c1.5-4 4-5.5 7-5.5s5.5 1.5 7 5.5" fill="#FFD400" stroke="#1A1412" stroke-width="2.4"/><path d="M4 40h44l-3 4H7Z" fill="#FFD400" stroke="#1A1412" stroke-width="3" stroke-linejoin="round"/></svg></span>
-          <h3>WHERE</h3>
-          <p>Live on Zoom, from anywhere. I once ran a workshop on a fancy all-in-one platform and spent half of it fixing broken links, so it's Zoom, nothing fancy. Come live if you can, because that's where we do the work together.</p>
-        </div>
+      <span class="eyebrow">The Exit Plan · Free 3-day live workshop</span>
+      <div class="rc three">
+        <div><span class="ic"><svg aria-hidden="true"><use href="#sf"/></svg></span><h3>One offer idea.</h3></div>
+        <div><span class="ic"><svg viewBox="0 0 52 52" aria-hidden="true"><g transform="rotate(-12 26 26)"><path d="M14 16h26a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H14l-8-10Z" fill="#F72585" stroke="#1A1412" stroke-width="3" stroke-linejoin="round"/><circle cx="14" cy="26" r="3" fill="#fff" stroke="#1A1412" stroke-width="2.2"/><path d="M24 22h12M24 30h8" stroke="#fff" stroke-width="3" stroke-linecap="round"/></g></svg></span><h3>One starting price.</h3></div>
+        <div><span class="ic"><svg viewBox="0 0 52 52" aria-hidden="true"><rect x="7" y="13" width="38" height="27" rx="5" fill="#fff" stroke="#1A1412" stroke-width="3"/><path d="M8 15l18 13 18-13" fill="none" stroke="#1A1412" stroke-width="3" stroke-linejoin="round"/><circle cx="40" cy="14" r="7" fill="#FFD400" stroke="#1A1412" stroke-width="2.4"/><path d="m37 14 2 2 4-4" fill="none" stroke="#1A1412" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h3>One email, written.</h3></div>
       </div>
-      <div class="go"><button class="btn open" type="button">save my seat (free)<svg><use href="#arr"/></svg></button></div>
+      <p class="rtime"><b><span class="nw">Tue Nov 17 to Thu Nov 19</span> · <span class="nw">12:00 pm New York</span></b><span class="nw">9:00 am Los Angeles</span> · <span class="nw">5:00 pm London</span> · <span class="nw">7:00 pm Greece</span></p>
+      <div class="go"><button class="btn open" type="button">Yes, I’m coming, free<svg><use href="#arr"/></svg></button></div>
     </div>
   </div>
 </section>
-
 </div>
 </main>
 
@@ -1526,10 +1520,9 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
           <div><b>17</b><small>Tue</small></div><div><b>18</b><small>Wed</small></div><div><b>19</b><small>Thu</small></div>
         </div>
         <h2>See you <em class="nw">Tuesday, Nov 17.</em></h2>
-        <p class="line">Three free lunchtimes with me. Bring the thing you keep meaning to sell, and we'll get it ready.</p>
-        <button class="btn open shine" type="button" id="finalBtn">save my seat (free)<svg><use href="#arr"/></svg></button>
-        <p class="note">Once you're signed up, join my WhatsApp community so you don't miss my reminders, then answer seven quick questions and I'll give you your exit number.</p>
-        <p class="note">free · live on Zoom · 12:00 pm New York / 7:00 pm Greece<span class="lt"></span></p>
+        <p class="line">Bring the thing you keep meaning to sell. Or just the questions people keep asking you. We’ll start there.</p>
+        <button class="btn open shine" type="button" id="finalBtn">See you Tuesday, Ana!<svg><use href="#arr"/></svg></button>
+        <p class="note">free · live on Zoom</p>
       </div>
     </div>
   </div>
@@ -1564,8 +1557,8 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
       <div class="field"><input type="text" name="first_name" placeholder="What your readers call you" autocomplete="given-name" aria-label="First name" required><span class="err">add your first name</span></div>
       <div class="field"><input type="email" name="email_address" placeholder="The email you actually check" autocomplete="email" inputmode="email" aria-label="Email" required><span class="err">Almost. Check that email once more.</span></div>
       <input type="text" name="ep_check" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-      <button class="btn big send" type="submit">save my seat (free)<svg><use href="#arr"/></svg></button>
-      <p class="note">You'll get my emails, including the workshop reminders. Unsubscribe anytime. No hard feelings, no guilt email.</p>
+      <button class="btn big send" type="submit">I’m in, Ana (it’s free)<svg><use href="#arr"/></svg></button>
+      <p class="note">You’ll get my emails, including workshop reminders. Unsubscribe anytime. No hard feelings.</p>
       <p class="note">free · live on Zoom<span class="lt"></span></p>
       <div class="bye"><img src="../img/ana-sea.webp" alt="" width="52" height="52" loading="lazy"><p>See you there,<b>Ana</b></p></div>
     </form>
