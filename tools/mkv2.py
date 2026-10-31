@@ -141,7 +141,7 @@ new_hero = """<section class="hero" id="hero">
     </div>
 
     <div class="hright">
-      <span class="hpill"><span class="dot"></span>The Exit Plan <i>·</i> <span class="hide-s">A free 3-day live workshop with Ana Calin</span></span>
+      <span class="hpill"><span class="dot"></span>The Exit Plan<span class="hide-s"> <i>·</i> A free 3-day live workshop with Ana Calin</span></span>
       """ + h1 + """
       <p class="hsub2" id="hk">You’ve spent years getting good at something. Maybe you write about it, and people thank you for helping them. <em>But what could you sell, and could it earn enough to give you more choice about work?</em></p>
       <div class="htk">
