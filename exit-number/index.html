@@ -238,6 +238,7 @@ body.xlocked .xgrid{filter:blur(7px);opacity:.55;pointer-events:none;user-select
 
   /* what they told me in the 7 quick questions (the confirmation page keeps it in this browser) */
   var sv = null; try { sv = JSON.parse(localStorage.getItem('ana_survey2') || 'null') } catch (e) {}
+  if (sv && email && (sv.email || '').toLowerCase() !== email.toLowerCase()) sv = null;   /* someone else's answers on this browser */
   var SUBS = ['no newsletter yet', 'under 100 subscribers', '100 to 1,000 subscribers', '1,000 to 10,000 subscribers', 'more than 10,000 subscribers'];
   /* the 7 quick questions power the calculator: question 4 sets what "enough" means, question 2 sits beside the result */
   var w = sv && sv.a ? sv.a.q4 : null, hint = document.querySelector('#goal').closest('.xq').querySelector('.hint');

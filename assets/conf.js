@@ -78,6 +78,9 @@
      first 40%; WhatsApp, the inbox, the calendar and the 7 quick questions are 15% each. The smaller things below tick their own cards. */
   var STEPS = C.STEPS || ['wa', 'mail', 'cal', 'survey'], ALL = STEPS.concat(['sheet', 'hi']), st = {}, ST_KEY = 'ana_ready_' + (C.PAGE || 'reg');
   try { st = JSON.parse(localStorage.getItem(ST_KEY) || '{}') } catch (e) {}
+  /* the ticks belong to the person who registered, like the survey: another email on this browser starts at the beginning */
+  if (email && (st.owner || '') !== email.toLowerCase()) st = {owner: email.toLowerCase()};
+  if (qs.get('reset') === 'survey') st = {owner: email.toLowerCase()};
   var ticket = document.querySelector('.cxa, .tkt, .pcard'), wasReady = null;
   var CAPS = C.PAGE === 'vip'
     ? ['Your VIP seat is saved. 4 quick steps to go.', '3 steps to go.', '2 steps to go.', 'One step to go: your exit number.', 'All set. See you Tue Nov 17.']
@@ -237,7 +240,16 @@
      o:['know what I’d sell', 'have a price I can say without wincing', 'have my first ask written', 'actually send it to someone', 'all of the above, obviously']}
   ];
   var SV_KEY = 'ana_survey2', sv = {a:{}, i:1, done:false};
-  try { var sv0 = JSON.parse(localStorage.getItem(SV_KEY) || 'null'); if (sv0 && sv0.a) sv = sv0 } catch (e) {}
+  /* the answers belong to the person who registered: another email on this browser starts a fresh, locked survey.
+     ?reset=survey clears them (for testing). */
+  if (qs.get('reset') === 'survey') { try { localStorage.removeItem(SV_KEY) } catch (e) {} }
+  var svOwner = email.toLowerCase();
+  try {
+    var sv0 = JSON.parse(localStorage.getItem(SV_KEY) || 'null');
+    if (sv0 && sv0.a && (!svOwner || (sv0.email || '').toLowerCase() === svOwner)) sv = sv0;
+  } catch (e) {}
+  sv.email = svOwner || sv.email || '';
+  if (!sv.done && st.survey) { st.survey = false; try { localStorage.setItem(ST_KEY, JSON.stringify(st)) } catch (e) {} renderReady() }
   function saveSv(){ try { localStorage.setItem(SV_KEY, JSON.stringify(sv)) } catch (e) {} }
   function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c] }) }
   function answers(){
@@ -379,7 +391,7 @@
   /* step 4's calculator preview: example numbers in turn, the result counting to its new value; only while it's on screen */
   var cxt = document.getElementById('cxt');
   if (cxt) {
-    try { if (JSON.parse(localStorage.getItem('ana_survey2') || '{}').done) cxt.classList.add('open') } catch (e) {}
+    if (sv.done) cxt.classList.add('open');
     if (first) { var cxl0 = cxt.querySelector('.lab'); if (cxl0) cxl0.textContent = first + '’s exit number' }
     var PRE = [[4000, 149, 8], [6000, 299, 5], [10000, 500, 10], [3000, 97, 8]], pi = 1, cxtOn = false;
     var nfmt = function(n){ return Math.round(n).toLocaleString('en-US') };
