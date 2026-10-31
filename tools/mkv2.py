@@ -101,6 +101,7 @@ bars = ''.join('<rect x="%d" y="0" width="%d" height="40"/>' % (x, w) for x, w i
 rail = """<!-- the frozen column: a seat ticket with the sign-up form in it. Phones and tablets use the popup instead. -->
   <aside class="v2rail" id="v2rail" aria-label="Save your seat">
     <div class="tksticky">
+      """ + proof + """      """ + just + """
     <div class="tkshell">
       <div class="tkt" id="rcard">
         <div class="tk-top"><img src="../img/mark.png" alt="" width="34" height="34"><span><small>The Exit Plan</small><b>Your free seat</b></span><em>Admit one</em></div>
@@ -121,7 +122,6 @@ rail = """<!-- the frozen column: a seat ticket with the sign-up form in it. Pho
       </div>
     </div>
       <p class="xnote">Sign up and answer seven quick questions, and I'll give you your <b>exit number.</b></p>
-      """ + proof + """      """ + just + """
     </div>
   </aside>
 """

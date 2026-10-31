@@ -1000,6 +1000,36 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
   .hside{margin-top:22px}
 }
 @media (min-width:1280px){.hhead{margin-right:calc(var(--rw) + var(--rg))}}
+/* a narrower ticket (256 px) with the testimonial bar on top of it (Sean) */
+@media (min-width:1280px){
+  .v2page{--rw:256px;--rg:40px}
+  .v2rail .proof{margin:0 0 14px;padding:6px 12px 6px 6px;gap:8px;background:#fff;border:1.5px solid var(--ink);border-radius:999px;font-size:11.5px;line-height:1.2;box-shadow:0 4px 0 var(--ink)}
+  .v2rail .proof .faces img{width:24px;height:24px;margin-left:-8px}
+  .v2rail .proof .faces img:nth-child(n+4){display:none}
+  .v2rail .proof .stars svg{width:10px;height:10px}
+  .v2rail .just{margin:-6px 0 12px;font-size:11.5px}
+}
+.tk-top{gap:8px;padding:9px 10px 9px 9px}
+.tk-top img{width:30px;height:30px}
+.tk-top b{font-size:19px}
+.tk-top em{font-size:8px;padding:4px 6px}
+.tk-body{padding:11px 12px 12px}
+.rdates{gap:7px}
+.rdates .mt span{width:28px}
+.rdates .mt b{font-size:14.5px}
+.rdates .when{font-size:10.5px}
+.rdates .when b{font-size:12px}
+.tkt .chip{height:25px;padding:0 8px;font-size:11px}
+.tkt form h3{font-size:19px}
+.tkt form .field input{height:40px;font-size:13.5px;padding:0 12px}
+.tkt form .btn.big{height:44px;font-size:14.5px}
+.tk-perf{margin:0 14px}
+.tk-stub{grid-template-columns:minmax(0,1fr) auto;gap:2px 10px;padding:9px 12px 11px}
+.tk-holder{grid-column:1;grid-row:1}
+.tk-meta{grid-column:1;grid-row:2;text-align:left}
+.tk-meta b{display:inline;font-size:9.5px}
+.tk-meta small{display:inline;margin:0 0 0 6px;font-size:8px}
+.tk-code{grid-column:2;grid-row:1 / span 2}
 
 </style>
 </head>
@@ -1049,6 +1079,8 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
 <!-- the frozen column: a seat ticket with the sign-up form in it. Phones and tablets use the popup instead. -->
   <aside class="v2rail" id="v2rail" aria-label="Save your seat">
     <div class="tksticky">
+      <div class="proof"><span class="faces"><img src="../img/av/gustavo.webp" alt=""><img src="../img/av/jeanette.webp" alt=""><img src="../img/av/adora.webp" alt=""><img src="../img/av/hilde.webp" alt=""><img src="../img/av/stacie.webp" alt=""></span><span id="proofTxt"><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span> <b>800+</b> student wins</span></div>
+      <p class="just" id="just" hidden><i></i><span id="justTxt"></span></p>
     <div class="tkshell">
       <div class="tkt" id="rcard">
         <div class="tk-top"><img src="../img/mark.png" alt="" width="34" height="34"><span><small>The Exit Plan</small><b>Your free seat</b></span><em>Admit one</em></div>
@@ -1076,8 +1108,6 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
       </div>
     </div>
       <p class="xnote">Sign up and answer seven quick questions, and I'll give you your <b>exit number.</b></p>
-      <div class="proof"><span class="faces"><img src="../img/av/gustavo.webp" alt=""><img src="../img/av/jeanette.webp" alt=""><img src="../img/av/adora.webp" alt=""><img src="../img/av/hilde.webp" alt=""><img src="../img/av/stacie.webp" alt=""></span><span id="proofTxt"><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span> <b>800+</b> student wins</span></div>
-      <p class="just" id="just" hidden><i></i><span id="justTxt"></span></p>
     </div>
   </aside>
 <section class="hero" id="hero">
