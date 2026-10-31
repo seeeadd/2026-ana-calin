@@ -98,9 +98,11 @@
       <div class="cx-step imp" data-card="mail">
         <span class="n">2</span><span class="dn"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ck"/></svg>done</span>
         <span class="cx-imp">Most important</span>
-        <h3>Get my emails out of Spam.</h3>
-        <p>Your Zoom link, the VIP reminders and the prep tasks all come by email, from <b>anacalin@howwegrowtoday.com</b>. If they land in Spam, you’ll miss them.</p>
+        <h3>Get my emails out of Spam and Promotions.</h3>
+        <p>Your Zoom link, the VIP reminders and the prep tasks all come by email, from <b>anacalin@howwegrowtoday.com</b>. If they land in Spam or Promotions, you’ll miss them.</p>
+        <div class="gx-pick" role="group" aria-label="Where did my email land?"><span>Found it in</span><button type="button" data-gx="a" aria-pressed="true">Spam</button><button type="button" data-gx="b" aria-pressed="false">Promotions</button></div>
         <div class="gx" aria-hidden="true">
+          <div class="gx-s gx-sa">
           <div class="gx-cam">
             <div class="gx-side">
               <span class="gx-menu"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></span>
@@ -136,8 +138,39 @@
           <span class="gx-toast">Conversation marked as not spam. <b>Undo</b></span>
           <span class="gx-ok"><svg viewBox="0 0 16 16"><use href="#ck"/></svg>In your inbox</span>
           <span class="gx-cur"><i></i><svg viewBox="0 0 30 36"><path d="M3 2l22 16-10 2 6 12-5 2-6-12-7 7Z" fill="#fff" stroke="#1A1412" stroke-width="2.6" stroke-linejoin="round"/></svg></span>
+          </div>
+          <div class="gx-s gx-sb">
+          <div class="gy-cam">
+            <div class="gx-side">
+              <span class="gx-menu"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></span>
+              <span class="gx-cmp"><svg viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16Z"/></svg> Compose</span>
+              <span class="gx-sel gy-sel"></span>
+              <span class="gx-nav gy-in" style="top:calc(74*var(--u))"><svg viewBox="0 0 24 24"><rect x="3.5" y="4" width="17" height="16" rx="2"/><path d="M3.5 13.5H8l1.5 2.5h5l1.5-2.5h4.5"/></svg> Inbox<i>1</i></span>
+              <span class="gx-nav" style="top:calc(94*var(--u))"><svg viewBox="0 0 24 24"><path d="m12 3.5 2.6 5.6 6 .7-4.5 4.1 1.2 6-5.3-3-5.3 3 1.2-6L3.4 9.8l6-.7Z"/></svg> Starred</span>
+              <span class="gx-nav" style="top:calc(114*var(--u))"><svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="7.5"/><path d="M12 9v4l2.5 1.5M5 4 2.5 6.5M19 4l2.5 2.5"/></svg> Snoozed</span>
+              <span class="gx-nav" style="top:calc(134*var(--u))"><svg viewBox="0 0 24 24"><path d="M3 20 21 12 3 4l2 8Zm2-8h8"/></svg> Sent</span>
+              <span class="gx-nav" style="top:calc(154*var(--u))"><svg viewBox="0 0 24 24"><path d="M8.2 3h7.6L21 8.2v7.6L15.8 21H8.2L3 15.8V8.2Z"/><path d="M12 7.5v5.5"/><circle cx="12" cy="16.3" r="1.1" class="f"/></svg> Spam</span>
+            </div>
+            <div class="gx-main">
+              <div class="gx-tb"><svg viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14" rx="2"/></svg><svg viewBox="0 0 24 24"><path d="M19 12a7 7 0 1 1-2-4.9M19 4v4h-4"/></svg><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="1.6" class="f"/><circle cx="12" cy="12" r="1.6" class="f"/><circle cx="12" cy="19" r="1.6" class="f"/></svg></div>
+              <div class="gx-tabs gy-tabs"><span class="gy-pri"><svg viewBox="0 0 24 24"><rect x="3.5" y="4" width="17" height="16" rx="2"/><path d="M3.5 13.5H8l1.5 2.5h5l1.5-2.5h4.5"/></svg> Primary</span><span class="gy-pro"><svg viewBox="0 0 24 24"><path d="M4 12V5h7l9 9-7 7Z"/><circle cx="8" cy="9" r="1.2" class="f"/></svg> Promotions<em class="gy-new1">1 new</em></span><span><svg viewBox="0 0 24 24"><circle cx="9" cy="9" r="3.2"/><path d="M3.5 19a5.5 5.5 0 0 1 11 0M15.5 6.2a3 3 0 0 1 0 5.6M17 14a5 5 0 0 1 3.5 5"/></svg> Social</span><b class="gy-u"></b></div>
+              <div class="gy-l gy-lpro">
+                <span class="gx-row gy-ana"><i class="gx-cb"></i><svg viewBox="0 0 24 24"><path d="m12 3.5 2.6 5.6 6 .7-4.5 4.1 1.2 6-5.3-3-5.3 3 1.2-6L3.4 9.8l6-.7Z"/></svg><b class="gx-who">Ana Calin</b><span class="gx-sub"><b>You’re in. See you Tue Nov 17.</b> - Your Zoom link and reminders will come from this address.</span><b class="gx-t">7:34 AM</b></span>
+                <span class="gx-row gx-old"><i class="gx-cb"></i><i class="gx-st"></i><i class="gx-bar" style="width:calc(60*var(--u))"></i><i class="gx-bar gx-bar2"></i><i class="gx-bar gx-bar3"></i></span><span class="gx-row gx-old"><i class="gx-cb"></i><i class="gx-st"></i><i class="gx-bar" style="width:calc(74*var(--u))"></i><i class="gx-bar gx-bar2"></i><i class="gx-bar gx-bar3"></i></span><span class="gx-row gx-old"><i class="gx-cb"></i><i class="gx-st"></i><i class="gx-bar" style="width:calc(52*var(--u))"></i><i class="gx-bar gx-bar2"></i><i class="gx-bar gx-bar3"></i></span><span class="gx-row gx-old"><i class="gx-cb"></i><i class="gx-st"></i><i class="gx-bar" style="width:calc(66*var(--u))"></i><i class="gx-bar gx-bar2"></i><i class="gx-bar gx-bar3"></i></span>
+              </div>
+              <div class="gy-l gy-lpri">
+                <span class="gx-row gy-ana2"><i class="gx-cb"></i><svg viewBox="0 0 24 24"><path d="m12 3.5 2.6 5.6 6 .7-4.5 4.1 1.2 6-5.3-3-5.3 3 1.2-6L3.4 9.8l6-.7Z"/></svg><b class="gx-who">Ana Calin</b><span class="gx-sub"><b>You’re in. See you Tue Nov 17.</b> - Your Zoom link and reminders will come from this address.</span><b class="gx-t">7:34 AM</b></span>
+                <span class="gx-row gx-old"><i class="gx-cb"></i><i class="gx-st"></i><i class="gx-bar" style="width:calc(60*var(--u))"></i><i class="gx-bar gx-bar2"></i><i class="gx-bar gx-bar3"></i></span><span class="gx-row gx-old"><i class="gx-cb"></i><i class="gx-st"></i><i class="gx-bar" style="width:calc(74*var(--u))"></i><i class="gx-bar gx-bar2"></i><i class="gx-bar gx-bar3"></i></span><span class="gx-row gx-old"><i class="gx-cb"></i><i class="gx-st"></i><i class="gx-bar" style="width:calc(52*var(--u))"></i><i class="gx-bar gx-bar2"></i><i class="gx-bar gx-bar3"></i></span><span class="gx-row gx-old"><i class="gx-cb"></i><i class="gx-st"></i><i class="gx-bar" style="width:calc(66*var(--u))"></i><i class="gx-bar gx-bar2"></i><i class="gx-bar gx-bar3"></i></span>
+              </div>
+              <div class="gy-toast"><span>Conversation moved to “Primary”.<small>Do this for future messages from anacalin@howwegrowtoday.com?</small></span><b class="gy-yes">Yes</b><b>Undo</b></div>
+            </div>
+          </div>
+          <span class="gy-ghost"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/><circle cx="19" cy="5" r="2.4" class="f"/></svg>Move 1 conversation</span>
+          <span class="gx-ok gy-ok"><svg viewBox="0 0 16 16"><use href="#ck"/></svg>In your inbox</span>
+          <span class="gx-cur gy-cur"><i></i><svg viewBox="0 0 30 36"><path d="M3 2l22 16-10 2 6 12-5 2-6-12-7 7Z" fill="#fff" stroke="#1A1412" stroke-width="2.6" stroke-linejoin="round"/></svg></span>
+          </div>
         </div>
-        <p class="cx-how">Check Spam and Promotions now. Open my email and tap <b>“Report not spam”</b> (or move it to your main inbox), then reply “in”.</p>
+        <p class="cx-how"><b>In Spam:</b> open my email and tap “Report not spam”.<br><b>In Promotions:</b> drag it to Primary and tap “Yes”, so the next ones land there too.<br>Then reply “in”.</p>
         <div class="cx-go"><button class="btn ghost" type="button" data-step="mail" aria-pressed="false"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ck"/></svg>I moved it to my inbox</button></div>
         <p class="cx-mail">Open <a href="https://mail.google.com/mail/u/0/#search/anacalin%40howwegrowtoday.com" target="_blank" rel="noopener" data-mail="gmail">Gmail</a> · <a href="https://outlook.live.com/mail/0/" target="_blank" rel="noopener">Outlook</a> · <a href="https://mail.yahoo.com/" target="_blank" rel="noopener">Yahoo</a></p>
       </div>

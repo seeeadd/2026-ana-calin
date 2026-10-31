@@ -346,6 +346,17 @@
   document.querySelectorAll('a[href="#survey"]').forEach(function(a){ a.addEventListener('click', function(){ track('survey_jump') }) });
   if (C.SENDER) document.querySelectorAll('a[data-mail="gmail"]').forEach(function(a){ a.href = 'https://mail.google.com/mail/u/0/#search/' + encodeURIComponent(C.SENDER) });
 
+  /* step 2's Gmail picture: "Spam" and "Promotions" take turns every 11 s (one loop each); a tap on either keeps that one */
+  var gxEl = document.querySelector('.gx'), gxPick = document.querySelectorAll('[data-gx]'), gxPinned = false;
+  if (gxEl) {
+    var gxShow = function(b){
+      gxEl.classList.toggle('b', b);
+      gxPick.forEach(function(x){ x.setAttribute('aria-pressed', String((x.getAttribute('data-gx') === 'b') === b)) });
+    };
+    gxPick.forEach(function(x){ x.addEventListener('click', function(){ gxPinned = true; gxShow(x.getAttribute('data-gx') === 'b'); track('mail_demo_' + x.getAttribute('data-gx')) }) });
+    if (!reduce) setInterval(function(){ if (!gxPinned) gxShow(!gxEl.classList.contains('b')) }, 11000);
+  }
+
   /* second chance at VIP: back to the VIP page with the name and email, gone after Tue Nov 17, 11:59 pm New York */
   var now0 = qs.get('now') ? Date.parse(qs.get('now')) : Date.now();
   if (C.CLOSES && now0 >= C.CLOSES) document.body.classList.add('vip-closed');
