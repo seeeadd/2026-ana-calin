@@ -1,3 +1,25 @@
 {
-  "trailingSlash": true
+  "trailingSlash": true,
+  "redirects": [
+    {
+      "source": "/whatsapp",
+      "destination": "https://chat.whatsapp.com/GYmbu9IGrZYAUUEMZRC9ZE?mode=gi_t",
+      "permanent": false
+    },
+    {
+      "source": "/whatsapp/",
+      "destination": "https://chat.whatsapp.com/GYmbu9IGrZYAUUEMZRC9ZE?mode=gi_t",
+      "permanent": false
+    },
+    {
+      "source": "/vip-whatsapp",
+      "destination": "https://chat.whatsapp.com/JwtqO7BLaLR5n4SZkO0COd?mode=gi_t",
+      "permanent": false
+    },
+    {
+      "source": "/vip-whatsapp/",
+      "destination": "https://chat.whatsapp.com/JwtqO7BLaLR5n4SZkO0COd?mode=gi_t",
+      "permanent": false
+    }
+  ]
 }
