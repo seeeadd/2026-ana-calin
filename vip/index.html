@@ -732,7 +732,7 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
     <!-- headline A/B: ?h=A or ?h=B previews one -->
     <h1 id="h1">Before you send it to anyone, <em>send it to me.</em></h1>
     <!-- [bonus name] in the guide: the Offer Clarity Sprint, as on the rest of this page -->
-    <p class="hsub">By Thursday night, you’ll have an offer, a price and an ask in a doc. That’s where most people stop, waiting to feel ready. I charged $97 for three years doing exactly that.</p>
+    <p class="hsub">By Thursday night, you’ll have an offer, a price and an ask in a doc. <span class="hs-mid">That’s where most people stop, waiting to feel ready. </span>I charged $97 for three years doing exactly that.</p>
     <div class="hv">
       <div class="hvv">
         <div class="iph" id="vsl">
@@ -1095,7 +1095,10 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
     v = cookie('ana_vip_h');
     if (v !== 'A' && v !== 'B') { v = Math.random() < .5 ? 'A' : 'B'; document.cookie = 'ana_vip_h=' + v + '; max-age=' + 60*60*24*90 + '; path=/; SameSite=Lax' }
   }
-  if (v === 'B') document.getElementById('h1').innerHTML = 'Most people stop on Thursday and wait to feel ready. <em>VIPs get Friday.</em>';
+  if (v === 'B') {
+    document.getElementById('h1').innerHTML = 'Most people stop on Thursday and wait to feel ready. <em>VIPs get Friday.</em>';
+    var hm = document.querySelector('.hs-mid'); if (hm) hm.remove();   /* that headline already says it */
+  }
   document.documentElement.setAttribute('data-vip-headline', v);
 
   /* closed after the deadline (?now=2026-11-18T05:00:00Z tests it) */
