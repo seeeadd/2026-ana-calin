@@ -871,6 +871,7 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
 /* ---------- the hero: the live page's columns, the headline and the card on the right; the booking card and a small drawing of the days under the video ---------- */
 .v2h .hright .hpill{margin-bottom:2px}
 .v2h .hright h1,.v2h .hright h1.long{font-size:min(10.4cqi,62px);line-height:.99;margin:14px 0 0}
+.v2h .hright h1.big4{font-size:min(15cqi,92px);line-height:.92;letter-spacing:-.012em}
 .v2h .hright h1 .l{white-space:nowrap}
 .hsub2{font-family:var(--sans);font-size:min(3.4cqi,18px);line-height:1.55;color:var(--ink2);margin:16px 0 0;text-wrap:pretty}
 .hsub2 em{font-style:normal;font-weight:700;color:var(--pink)}
@@ -878,8 +879,8 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
 .htk{margin-top:20px;max-width:none}
 .htk .tkt{padding:22px 26px 24px}
 .htk .tk-k{font-size:13.5px}
-.htk .tk-h{font-size:min(12.5cqi,64px);line-height:.95;letter-spacing:-.045em;margin:6px 0 10px}
-.htk .tk-h .tk-and{font-size:min(5.4cqi,27px);margin-top:10px}
+.htk .tk-h{font-size:38px;line-height:1;letter-spacing:-.035em;margin:4px 0 10px;white-space:nowrap}
+.htk .tk-h .tk-and{font-size:23px;margin-top:8px;white-space:normal}
 .htk .tk-meta{font-size:13.5px}
 .htk .tkt .proof{font-size:14.5px}
 .htk .tkt .proof .faces img{width:36px;height:36px}
@@ -894,6 +895,8 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
 .htk .tkt form .fmeta{font-size:14.5px}
 .htk .tkt form .note{font-size:12.5px;padding-left:20px}
 @media (max-width:640px){
+  .v2h .hright h1.big4{font-size:min(13.6vw,60px)}
+  .htk .tk-h{font-size:32px}
   .htk .tkt{padding:20px 18px 22px}
   .htk .tkt form .field input{height:56px;font-size:16.5px;padding:0 14px 0 44px;background-position:14px 50%;background-size:18px 18px}
   .htk .tkt form .btn.big{height:62px;font-size:17.5px;padding:0 18px 0 7px}
@@ -1344,7 +1347,7 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
 
     <div class="hright">
       <span class="hpill"><span class="dot"></span>The Exit Plan<span class="hide-s"> <i>·</i> A free 3-day live workshop with Ana Calin</span></span>
-      <h1 id="h1" class="long"><span class="l">How to Build the Income</span> <span class="l">That Lets You Leave</span> <span class="l">Your Job <span class="hl">in 2027</span></span></h1>
+      <h1 id="h1" class="long big4"><span class="l">How to Build</span> <span class="l">the Income That</span> <span class="l">Lets You Leave</span> <span class="l">Your Job <span class="hl">in 2027</span></span></h1>
       <p class="hsub2" id="hk">You’ve spent years getting good at something. Now you’d like to build something of your own with it. <em>Something that could eventually let you hand in your notice, turn down a client, or have a Tuesday that belongs to you.</em></p>
       <div class="htk">
         <div class="tkshell">

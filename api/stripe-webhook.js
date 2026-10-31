@@ -7,11 +7,10 @@
 // Vercel environment variables (Production):
 //   STRIPE_SECRET_KEY   a restricted key with read access to Events and Checkout Sessions (rk_live_...)
 //   KIT_API_KEY         already set for the registration page
-//   KIT_TAG_VIP         the Kit tag id of ep_vip: its automation sends "You're VIP"
-//   KIT_TAG_LAB_FULL    the Kit tag id of ep_lab_full (the program, paid in full): its automation starts the Lab onboarding
-//   KIT_TAG_LAB_2PAY    the Kit tag id of ep_lab_2pay (the program, 2 payments)
-//   KIT_TAG_ID          already set (ep_registered): every buyer also gets it, so someone who paid with a different
-//                       email from the one they registered with still gets the workshop emails
+//   KIT_TAG_VIP, KIT_TAG_LAB_FULL, KIT_TAG_LAB_2PAY, KIT_TAG_ID   optional: the Kit tag ids. Without them the tags are
+//                       found (or made) by name: ep_vip (its automation sends "You're VIP"), ep_lab_full (the program
+//                       paid in full), ep_lab_2pay (2 payments) and ep_registered (every buyer, so someone who paid with
+//                       a different email from the one they registered with still gets the workshop emails)
 //   STRIPE_PLINK_VIP, STRIPE_PLINK_FULL, STRIPE_PLINK_PLAN  optional: the payment link ids (plink_...), to tell the three
 //                       links apart for certain. Without them: a line item named with "VIP" is VIP, a subscription is the plan.
 //
@@ -65,8 +64,6 @@ module.exports = async function handler(req, res) {
 
     // Kit: the buyer as a subscriber, then the tag whose automation sends the welcome email
     var kitKey = process.env.KIT_API_KEY;
-    var tags = [what === 'vip' ? process.env.KIT_TAG_VIP : what === 'lab_plan' ? process.env.KIT_TAG_LAB_2PAY : process.env.KIT_TAG_LAB_FULL, process.env.KIT_TAG_ID];
-    tags = tags.filter(Boolean);
     if (kitKey && email) {
       var kit = function (path, body) {
         return fetch('https://api.kit.com/v4' + path, {
@@ -77,6 +74,17 @@ module.exports = async function handler(req, res) {
       };
       var sub = await kit('/subscribers', { email_address: email, first_name: first || null });
       if (!sub.ok) throw new Error('kit_subscriber_' + sub.status);
+      // the tag ids: from the settings, else by name (Kit hands back the existing tag when the name is taken)
+      var byName = async function (envId, name) {
+        if (envId) return envId;
+        var t = await kit('/tags', { name: name });
+        if (!t.ok) throw new Error('kit_tag_lookup_' + t.status);
+        return (await t.json()).tag.id;
+      };
+      var tags = [
+        what === 'vip' ? await byName(process.env.KIT_TAG_VIP, 'ep_vip') : what === 'lab_plan' ? await byName(process.env.KIT_TAG_LAB_2PAY, 'ep_lab_2pay') : await byName(process.env.KIT_TAG_LAB_FULL, 'ep_lab_full'),
+        await byName(process.env.KIT_TAG_ID, 'ep_registered')
+      ];
       for (var i = 0; i < tags.length; i++) {
         var t = await kit('/tags/' + tags[i] + '/subscribers', { email_address: email });
         if (!t.ok) throw new Error('kit_tag_' + t.status);

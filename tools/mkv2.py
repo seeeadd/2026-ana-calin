@@ -38,6 +38,9 @@ R("var PARTNERS    = 'partners.json';", "var PARTNERS    = '../partners.json';")
 R('<meta name="theme-color"', '<meta name="robots" content="noindex">\n<meta name="theme-color"')
 R('</head>', '<link rel="stylesheet" href="../assets/wins.css">\n</head>')
 
+# the headline in four shorter lines, so it can be set much bigger (Sean, Oct 31: "the bigger it is, the better")
+R('<h1 id="h1" class="long"><span class="l">How to Build the Income</span> <span class="l">That Lets You Leave</span> <span class="l">Your Job <span class="hl">in 2027</span></span></h1>',
+  '<h1 id="h1" class="long big4"><span class="l">How to Build</span> <span class="l">the Income That</span> <span class="l">Lets You Leave</span> <span class="l">Your Job <span class="hl">in 2027</span></span></h1>')
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from wins import html as wins_html
 
