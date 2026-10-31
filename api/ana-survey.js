@@ -106,7 +106,13 @@ module.exports = async function handler(req, res) {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ key: key, row: row }),
     redirect: 'follow'
-  }).then(function (r) { return r.ok ? 'ok' : 'sheet_' + r.status }, function () { return 'sheet_unreachable' }) : Promise.resolve('skipped');
+  }).then(function (r) {
+    if (!r.ok) return 'sheet_' + r.status;
+    // the script answers 200 even when it refuses a row: read what it said ({ok:true}, or {ok:false, error:"key"})
+    return r.text().then(function (t) {
+      try { var j = JSON.parse(t); return j && j.ok ? 'ok' : 'sheet_' + ((j && j.error) || 'refused') } catch (e) { return 'sheet_not_json' }
+    });
+  }, function () { return 'sheet_unreachable' }) : Promise.resolve('skipped');
   var kit = toKit(kind, email, plain, row.page).catch(function (e) { return String(e.message || e) });
   var out = await Promise.all([sheet, kit]);
   var ok = out[0] === 'ok' || out[1] === 'ok' || out[1] === 'not_in_kit';
