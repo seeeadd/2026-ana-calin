@@ -230,17 +230,30 @@
       </div>
     </div>
     <div class="cxs-g">
-      <!-- a ring light beside the questions (wide screens), and a glow around them -->
-      <div class="rlight" aria-hidden="true"><svg viewBox="0 0 150 300">
-          <path d="M75 134V268M75 268 38 296M75 268l37 28M75 268v28" fill="none" stroke="#1A1412" stroke-width="5" stroke-linecap="round"/>
-          <circle class="rl-glow" cx="75" cy="72" r="58" fill="none" stroke="#FFD400" stroke-width="22"/>
-          <circle cx="75" cy="72" r="58" fill="none" stroke="#FFFBEA" stroke-width="16"/>
-          <circle cx="75" cy="72" r="67" fill="none" stroke="#1A1412" stroke-width="3.5"/>
-          <circle cx="75" cy="72" r="49" fill="none" stroke="#1A1412" stroke-width="3.5"/>
-          <rect x="66" y="56" width="18" height="32" rx="4" fill="#1A1412"/><rect x="69" y="60" width="12" height="22" rx="2" fill="#F72585"/>
-          <path d="M75 88v46" stroke="#1A1412" stroke-width="3.5"/>
-        </svg></div>
-      <div class="svx" id="svx"><noscript><p>The questions need JavaScript. Your seat is saved either way.</p></noscript></div>
+      <!-- the questions, with a ring light standing beside them on wide screens -->
+      <div class="svxw">
+        <div class="rlight" aria-hidden="true"><svg viewBox="0 0 160 320">
+            <defs>
+              <linearGradient id="rlb" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#FFF1C4" stop-opacity=".55"/><stop offset="1" stop-color="#FFF1C4" stop-opacity="0"/></linearGradient>
+              <linearGradient id="rlf" x1="0" x2="1"><stop offset="0" stop-color="#F3E3B8"/><stop offset=".55" stop-color="#FFFDF3"/><stop offset="1" stop-color="#FFFFFF"/></linearGradient>
+              <filter id="rlblur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="7"/></filter>
+            </defs>
+            <path class="rl-beam" d="M86 14L330 -70V250L86 132Z" fill="url(#rlb)" filter="url(#rlblur)"/>
+            <ellipse cx="74" cy="73" rx="27" ry="61" fill="none" stroke="#2A211D" stroke-width="13"/>
+            <ellipse cx="74" cy="73" rx="27" ry="61" fill="none" stroke="#1A1412" stroke-width="2.2" transform="translate(-6 0)" opacity=".9"/>
+            <ellipse class="rl-led" cx="79" cy="73" rx="26" ry="60" fill="none" stroke="#FFE7A0" stroke-width="12" filter="url(#rlblur)"/>
+            <ellipse cx="79" cy="73" rx="26" ry="60" fill="none" stroke="url(#rlf)" stroke-width="7"/>
+            <ellipse cx="79" cy="73" rx="26" ry="60" fill="none" stroke="#1A1412" stroke-width="1.6" opacity=".55"/>
+            <path d="M79 133V84" stroke="#1A1412" stroke-width="3" stroke-linecap="round"/>
+            <rect x="74" y="58" width="9" height="30" rx="2.5" fill="#1A1412"/>
+            <rect x="81" y="61" width="2.4" height="24" rx="1" fill="#F72585"/>
+            <circle cx="79" cy="140" r="5" fill="#1A1412"/>
+            <path d="M79 140V262" stroke="#1A1412" stroke-width="4" stroke-linecap="round"/>
+            <path d="M79 262 48 300M79 262l34 36M79 262l6 28" fill="none" stroke="#1A1412" stroke-width="3.6" stroke-linecap="round"/>
+            <path d="M79 236h10" stroke="#1A1412" stroke-width="3" stroke-linecap="round"/>
+          </svg></div>
+        <div class="svx" id="svx"><noscript><p>The questions need JavaScript. Your seat is saved either way.</p></noscript></div>
+      </div>
       <aside class="cxl" id="cxl" aria-label="Your exit number calculator">
         <div class="cxl-card">
           <div class="cxl-hd"><b>Your exit number calculator</b><span class="cxl-st">locked</span></div>

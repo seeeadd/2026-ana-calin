@@ -689,22 +689,16 @@ body.vipc .cxs-g .svx{box-shadow:9px 10px 0 var(--pk2),9px 10px 0 1.6px var(--in
   .cxs-ht p{font-size:16px;margin-top:8px}
 }
 
-/* a ring light on the questions (Sean): a turning yellow and pink glow around the card, and on wide screens a ring
-   light on its stand to the left, shining at it */
-@property --rla{syntax:'<angle>';inherits:false;initial-value:0deg}
+/* a ring light on the questions (Sean): on wide screens a ring light on its stand to the left, turned toward the card,
+   its beam falling on the card's left edge; everywhere a faint, still warm light on that side of the card */
 .cxs-g{position:relative;isolation:isolate}
-.cxs-g .svx::before{content:"";position:absolute;inset:-16px;border-radius:40px;background:conic-gradient(from var(--rla),#FFD400,#FFF1B3,#F72585,#FFD400,#FFF6D6,#FFD400);filter:blur(22px);opacity:.75;z-index:-1;pointer-events:none}
+.svxw{position:relative;min-width:0;align-self:start}
+.cxs{overflow-x:clip}
+.cxs-g .svx::before{content:"";position:absolute;left:-90px;top:-40px;bottom:-40px;width:60%;background:radial-gradient(closest-side,rgba(255,224,130,.45),rgba(255,224,130,0));z-index:-1;pointer-events:none}
+@media (max-width:640px){.cxs-g .svx::before{left:-40px;width:70%}}
 .rlight{display:none}
 @media (min-width:1400px){
-  .rlight{display:block;position:absolute;left:-168px;top:30px;width:132px;pointer-events:none}
+  .rlight{display:block;position:absolute;left:-158px;bottom:0;width:132px;pointer-events:none;opacity:.92;z-index:-1}
   .rlight svg{display:block;width:100%;height:auto;overflow:visible}
-  .rlight .rl-glow{filter:blur(9px)}
-  .rlight:after{content:"";position:absolute;left:60px;top:-40px;width:340px;height:300px;background:radial-gradient(closest-side,rgba(255,236,150,.6),rgba(255,236,150,0));z-index:-1}
 }
-@media (prefers-reduced-motion:no-preference){
-  .cxs-g .svx::before{animation:rlspin 9s linear infinite,rlpulse 3.2s ease-in-out infinite}
-  .rlight .rl-glow{animation:rlpulse 3.2s ease-in-out infinite}
-  @keyframes rlspin{to{--rla:360deg}}
-  @keyframes rlpulse{0%,100%{opacity:.6}50%{opacity:1}}
-}
-@media (max-width:640px){.cxs-g .svx::before{inset:-10px;filter:blur(16px)}}
+
