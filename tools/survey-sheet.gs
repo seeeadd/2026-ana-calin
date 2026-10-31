@@ -12,7 +12,7 @@
        SURVEY_SHEET_KEY = the same secret word as KEY
      Then redeploy (a changed variable only reaches the site on the next deployment).
 
-  The tabs "Survey", "Exit numbers" and "Summary" make themselves on the first answer.
+  The tabs "Survey", "Exit numbers", "Sales" and "Summary" make themselves on the first row.
   If you change this script later: Deploy > Manage deployments > edit > Version: New version (the URL stays the same).
 */
 var KEY = 'change-me';
@@ -29,6 +29,11 @@ var TABS = {
     head: ['Time', 'Page', 'First name', 'Email', 'Ref', 'Time zone',
            'Goal per month ($)', 'Offer price ($)', 'Buyers per month', 'Buyers per year', 'Paid sub price ($/month)', 'Paid subscribers needed', 'Free readers needed (at 5%)'],
     keys: ['goal_month', 'price', 'buyers_month', 'buyers_year', 'sub_price', 'subs_needed', 'free_needed']
+  },
+  sale: {  // from api/stripe-webhook.js, one row per payment
+    name: 'Sales',
+    head: ['Time', 'Product', 'First name', 'Email', 'Ref (partner)', 'Time zone', 'Product', 'Amount', 'Discount', 'Currency', 'Stripe checkout session'],
+    keys: ['product', 'amount', 'discount', 'currency', 'session']
   }
 };
 
