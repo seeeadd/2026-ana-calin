@@ -35,6 +35,7 @@ s = s.replace('src="img/', 'src="../img/').replace('href="img/', 'href="../img/'
 R("var VIP_URL     = 'vip/';", "var VIP_URL     = '../vip/';")
 R("var PARTNERS    = 'partners.json';", "var PARTNERS    = '../partners.json';")
 R('<meta name="theme-color"', '<meta name="robots" content="noindex">\n<meta name="theme-color"')
+R('</head>', '<link rel="stylesheet" href="../assets/wins.css">\n</head>')
 
 LI = '<li><svg aria-hidden="true"><use href="#li"/></svg><span>%s</span></li>'
 ARR = '<svg><use href="#arr"/></svg>'
@@ -302,6 +303,9 @@ HOST = """<!-- 6. your host -->
 </section>
 
 """
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from wins import html as wins_html
+WINS_HTML = wins_html('../').replace('\n', '\n    ')
 STAR = '<svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg>'
 REVS = [("gustavo", "Gustavo Karakey", "Can I just say that you have over delivered. Wow! It's nice to have a clear map. Still work to do, but much more satisfying, and less wheel spinning. :)"),
         ("jeanette", "Jeanette Martin", "What a brilliant, actionable, organised, inspiring bootcamp. Thank you, Ana."),
@@ -315,6 +319,7 @@ REVIEWS = """<!-- 7. what readers say -->
     </div>
     <div class="rgrid" data-r>
 """ + ''.join('      <figure class="rq"><blockquote>%s</blockquote><figcaption><img src="../img/av/%s.webp" alt="" width="80" height="80" loading="lazy"><span><b>%s</b><span class="stars" aria-label="5 stars">%s</span></span></figcaption></figure>\n' % (q, img, n, STAR * 5) for img, n, q in REVS) + """    </div>
+    """ + WINS_HTML + """
     <p class="wall-src">Reviews from Ana’s readers and students, published on her Substack.</p>
   </div>
 </section>

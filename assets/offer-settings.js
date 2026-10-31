@@ -1,8 +1,9 @@
 /* ---- the offer pages' settings, one place for both /join and /program. Theia fills these in. ---- */
 window.OFFER = {
   PROGRAM:       'The Exit Lab',  // working name; Ana may rename it after the survey (agreed Oct 23). Changes it everywhere.
-  CHECKOUT_FULL: '',              // Stripe (or ThriveCart) link, $1,500 paid in full. Empty = demo.
-  CHECKOUT_PLAN: '',              // the link for 2 payments of $850
+  CHECKOUT_FULL: 'https://buy.stripe.com/6oU7sL14s42654kg6bc7u0H',  // Stripe Payment Link, $1,500 paid in full. "After payment" redirects to /welcome/
+  CHECKOUT_PLAN: 'https://buy.stripe.com/4gMaEX4gEgOS8gwbPVc7u0I',  // Stripe Payment Link, 2 payments of $850. "After payment" redirects to /welcome/
+  PROMO_CODE:    '',              // optional: a Stripe promotion code applied on the checkout (ExitPlan99 or ExitPlan100). The links need "Allow promotion codes" on. Empty = none.
   PAY2_DATE:     '',              // e.g. 'Thu Dec 31'. Empty = "in 30 days".
   LIVE_CALLS:    'A live call with me every week, except Christmas week',  // spine v28, approved by Ana Oct 29. Empty = no live calls shown anywhere.
   HOURS:         '',              // e.g. 'about 4 hours a week'. Empty = "built for the evenings you have".

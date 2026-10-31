@@ -134,6 +134,7 @@
       var p = [];
       if (email) p.push('prefilled_email=' + encodeURIComponent(email));
       if (ref) p.push('client_reference_id=' + encodeURIComponent(ref.replace(/[^\w-]/g, '_').slice(0, 200)));
+      if (C.PROMO_CODE) p.push('prefilled_promo_code=' + encodeURIComponent(C.PROMO_CODE));
       p.push('utm_content=' + (window.OFFER_PAGE || 'offer') + '_' + phase);
       location.href = u + (u.indexOf('?') < 0 ? '?' : '&') + p.join('&');
     });

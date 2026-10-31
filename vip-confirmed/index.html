@@ -139,10 +139,9 @@
         <span class="chip"><i></i>Yours now</span>
         <span class="k">02 · Bonus</span>
         <h3>The Offer Clarity Sprint.</h3>
-        <!-- [link pending from Ana: BONUS_URL] -->
-        <p>Yours now. Seven chapters to get your offer into one plain sentence, so you bring a clear version to Fri Nov 20.</p>
-        <!-- BONUS_URL in the settings: the delivery link or login -->
-        <a class="btn" href="#" data-link="BONUS_URL" target="_blank" rel="noopener">open it<svg aria-hidden="true"><use href="#arr"/></svg></a>
+        <p>Yours now. Seven chapters to get your offer into one plain sentence, so you bring a clear version to Fri Nov 20. It lives in my school on Teachable: the button opens the checkout with your VIP code <b>EXITPLAN</b> already on it, so it’s $0. The code works until Fri Nov 20.</p>
+        <!-- BONUS_URL in the settings: the Teachable checkout with the 100% code applied -->
+        <a class="btn" href="#" data-link="BONUS_URL" target="_blank" rel="noopener" data-track="action_bonus">claim it, free<svg aria-hidden="true"><use href="#arr"/></svg></a>
       </div>
       <div class="get" data-r>
         <span class="unl">YOURS</span>
@@ -347,7 +346,8 @@
     PAGE:         'vip',
     SENDER:       '',  // the address Ana's emails come from. Empty = "Ana Calin".
     META_PIXEL_ID: '', // Meta pixel: fires Purchase ($67) here. Skip it if the checkout already reports the purchase.
-    BONUS_URL:    '',  // the Offer Clarity Sprint: delivery link or login
+    BONUS_URL:    'https://checkout.teachable.com/secure/2640701/checkout/order_tf58f6wh?coupon_code=EXITPLAN',  // the Offer Clarity Sprint: the Teachable checkout with EXITPLAN (100% off until Fri Nov 20) applied.
+                       // Without the code: https://ana-calin-s-school.teachable.com/l/pdp/the-offer-clarity-sprint
     VIP_GROUP_URL: '', // the VIP WhatsApp group (a normal group, open chat). Turn on "approve new members"; Theia approves each
                        // join against the ep_vip list in Kit. Admins: Ana and AH. Reminders and Zoom links are posted here too.
                        // Pinned description: "VIP group for [event name]. Ask Ana anything about your offer, your price or your ask.
