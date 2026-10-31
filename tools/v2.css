@@ -3,17 +3,25 @@
    The hero in two columns: the video big on the left, the headline big on the right. Below the hero, the page runs on
    the left and a slim seat ticket with the sign-up form stays frozen on the right (1280 px and wider). */
 
-/* the hero: video and headline side by side, then the stats strip and the rest of the copy in two columns */
+/* the hero: the headline big and bold across the top, the video big below it beside the ticket */
 .v2page .iph{border-radius:26px;padding:0;margin:0 16px 16px 0}
 .v2page .iph:before{inset:16px -16px -16px 16px;border-radius:26px;transform:rotate(.8deg)}
 .v2page .iph .sb,.v2page .iph .isl{display:none}
 .v2page .iph .bz{background:none;border-radius:26px;padding:0}
 .v2page .iph .scr{border-radius:24px;aspect-ratio:16/9;box-shadow:0 0 0 2px var(--ink)}
-.v2hero .hright .hpill{margin-bottom:2px}
-.hkick2{margin:14px 0 0;font-family:var(--serif);font-style:italic;font-size:24px;line-height:1.2;color:var(--ink2)}
+.v2hero .hpill{margin-bottom:6px}
+.v2hero h1,.v2hero h1.long{font-family:'Bonny','Instrument Serif',Georgia,serif;font-weight:700;letter-spacing:-.025em;line-height:.94;font-size:clamp(42px,5.7vw,96px);margin:14px 0 0;color:var(--ink)}
+.v2hero h1 .l{display:block;width:fit-content;white-space:nowrap}
+.v2hero h1 .hl{background:none;position:relative;z-index:0;padding:0 .06em}
+.v2hero h1 .hl:before{content:"";position:absolute;left:-.04em;right:-.06em;top:.18em;bottom:.02em;z-index:-1;background:var(--sun);transform:rotate(-1.2deg);border-radius:3px 8px 4px 9px}
+.hkick2{margin:0;font-family:var(--serif);font-style:italic;font-size:24px;line-height:1.2;color:var(--ink2)}
 .hkick2 b{font-weight:400;color:var(--pink)}
-.v2hero .lede.first{margin-top:14px;font-size:17px;line-height:1.55;color:var(--ink2)}
+.v2hero .lede.first{margin-top:12px;font-size:16px;line-height:1.55;color:var(--ink2)}
 .v2hero .lede.first b{color:var(--ink);font-weight:700}
+.hstage{position:relative;margin-top:30px}
+.stk{position:absolute;width:132px;height:132px;right:-14px;top:-74px;z-index:3;filter:drop-shadow(0 10px 16px rgba(26,20,18,.25))}
+.stk-r{transform-origin:100px 100px;animation:stkspin 28s linear infinite}
+@keyframes stkspin{to{transform:rotate(360deg)}}
 .v2page .tstrip{margin:34px 0 0}
 .hunder{margin-top:30px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:start}
 .hunder .lede{font-size:16.5px;line-height:1.6;margin:0 0 14px}
@@ -106,18 +114,18 @@
 
 /* desktop: the two-column hero, and the page beside the frozen ticket */
 @media (min-width:1280px){
-  .v2page{--edge:max(28px,calc((100vw - 1640px) / 2));--rw:296px;--rg:44px;--rightc:calc(var(--edge) + var(--rw) + var(--rg))}
+  .v2page{--edge:max(28px,calc((100vw - 1680px) / 2));--rw:296px;--rg:44px;--rightc:calc(var(--edge) + var(--rw) + var(--rg))}
   .v2body{position:relative}
-  .v2rail{position:absolute;top:26px;bottom:80px;right:var(--edge);width:var(--rw);z-index:20}
+  .v2rail{position:absolute;top:360px;bottom:80px;right:var(--edge);width:var(--rw);z-index:20}
   .tksticky{position:sticky;top:92px}
-  .v2page .hwrap,.v2body .wrap{max-width:none;margin-left:var(--edge);margin-right:var(--rightc);padding:0}
-  .v2hero{grid-template-columns:minmax(0,1.32fr) minmax(0,1fr);gap:40px;align-items:center}
-  .v2hero .hright h1,.v2hero .hright h1.long{font-size:min(11.6cqi,60px);line-height:.98;margin-top:14px}
+  .v2body .wrap{max-width:none;margin-left:var(--edge);margin-right:var(--rightc);padding:0}
+  .v2page .hero .hwrap{max-width:none;margin:0 var(--edge);padding:0}
+  .hhead{display:grid;grid-template-columns:minmax(0,1fr) var(--rw);gap:var(--rg);align-items:end}
+  .hh-r{padding-bottom:6px}
+  .hstage,.v2page .tstrip,.hunder{margin-right:calc(var(--rw) + var(--rg))}
   .v2page .hero{padding:26px 0 80px}
-  .v2page .iph .vplay{left:26px;bottom:70px;height:50px;font-size:15px}
-  .v2page .iph .scrub{left:26px;right:26px;bottom:18px;padding:8px 16px}
-  .situ.mob,.hcta{display:none}
   .v2hero .hpill .hide-s{display:none}
+  .situ.mob,.hcta{display:none}
   .v2body .wrap.narrow > *{max-width:none}
   .v2body .wall,.v2body .wall-src{margin-right:var(--rightc)}
   .v2body .wall{-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 88%,transparent)}
@@ -128,13 +136,12 @@
   .ngrid,.gcard{grid-template-columns:1fr}
   .gart svg{width:150px}
 }
-@media (max-width:1060px){
-  .hkick2{order:3}
-  .v2hero .lede.first{order:5}
-  .situ.mob{order:6}
-  .hcta{order:7}
+@media (max-width:1279px){
+  .v2page .hero .hwrap{max-width:720px}
+  .hhead .hh-r{margin-top:16px}
+  .v2hero h1 .l{white-space:normal}
+  .stk{width:96px;height:96px;right:-6px;top:-40px}
   .hcta .btn.big{width:100%}
-  .v2page .tstrip{margin-top:28px}
   .hunder{grid-template-columns:1fr;gap:4px}
 }
 @media (max-width:640px){
@@ -143,3 +150,23 @@
   .gcard{padding:26px 22px}
 }
 .v2page .hwrap{position:relative;z-index:1}
+.v2page .iph .scr img.mkv{display:none}
+.v2page .stk{right:30px;top:20px;width:118px;height:118px}
+@media (max-width:1279px){.v2page .stk{right:12px;top:10px;width:78px;height:78px}}
+.hcta .btn{position:relative;overflow:hidden}
+@media (max-width:1279px){.v2hero h1 .l{display:inline;white-space:normal;width:auto}.v2hero h1,.v2hero h1.long{font-size:clamp(40px,10.4vw,72px);line-height:.98}}
+/* the video a size smaller, with the stats stacked beside it (Sean: the video was a little too big) */
+@media (min-width:1280px){
+  .hstage{display:grid;grid-template-columns:minmax(0,1fr) 196px;gap:30px;align-items:start}
+  .hstage .iph{grid-column:1;grid-row:1}
+  .hstage .stk{grid-column:1;grid-row:1}
+  .hstage .tstrip{grid-column:2;grid-row:1;flex-direction:column;align-items:stretch;gap:0;padding:10px;margin:0;border-radius:20px}
+  .hstage .award{justify-content:flex-start;padding:10px 12px 10px 10px}
+  .hstage .award b{font-size:20px}
+  .hstage .stats{flex-direction:column;gap:0;justify-content:flex-start;margin-top:6px}
+  .hstage .stats i{width:auto;height:1px;align-self:stretch;margin:0 6px}
+  .hstage .stat{padding:13px 8px 12px;text-align:left}
+  .v2page .stk{right:44px}
+}
+.hunder{margin-top:34px}
+@media (min-width:1280px){.v2page .hstage .stk{right:calc(196px + 30px + 42px);top:20px}}

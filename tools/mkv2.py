@@ -32,7 +32,7 @@ def between(a, b):
 s = s.replace('src="img/', 'src="../img/').replace('href="img/', 'href="../img/')
 R("var VIP_URL     = 'vip/';", "var VIP_URL     = '../vip/';")
 R("var PARTNERS    = 'partners.json';", "var PARTNERS    = '../partners.json';")
-R('<meta name="theme-color"', '<meta name="robots" content="noindex">\n<meta name="theme-color"')
+R('<meta name="theme-color"', '<meta name="robots" content="noindex">\n<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f%5B%5D=bonny@700&display=swap">\n<meta name="theme-color"')
 
 # ---------- the hero: the right column becomes the rail; the left gets the big video and the rest of the hero copy ----------
 hero = between('<section class="hero" id="hero">', '<main>')
@@ -55,28 +55,32 @@ BYTH = ('<ul class="byth">\n'
         '            ' + LI + 'a price you can say out loud without wincing</li>\n'
         '            ' + LI + 'the email that finally asks people to buy. You\'ll write it with me on Nov 19.</li>\n'
         '          </ul>')
-# the hero (left of the frozen ticket): the video and the headline side by side, then the stats and the rest of the copy
+# the hero: the headline big and bold across the top (the form column too), then the video big beside the ticket
+STICKER = """<svg class="stk" viewBox="0 0 200 200" aria-hidden="true"><defs><path id="stkc" d="M100,100 m-72,0 a72,72 0 1,1 144,0 a72,72 0 1,1 -144,0"/></defs><circle cx="100" cy="100" r="96" fill="#F72585" stroke="#1A1412" stroke-width="4"/><g class="stk-r"><text font-family="Manrope,sans-serif" font-weight="800" font-size="14" letter-spacing="2.6" fill="#fff"><textPath href="#stkc">FREE · LIVE ON ZOOM · NOV 17 TO 19 ·</textPath></text></g><circle cx="100" cy="100" r="47" fill="#FFF8EE" stroke="#1A1412" stroke-width="4"/><use href="#sf" x="61" y="61" width="78" height="78"/></svg>"""
 new_hero = """<section class="hero" id="hero">
   <svg class="bgflower" aria-hidden="true"><use href="#sfo"/></svg>
-  <div class="hwrap">
-    <div class="hgrid v2hero">
-      <div class="hleft">
-        <!-- the VSL: set VSL_SRC in the script when Ana's video is ready. Click to play; this still is the cover. -->
-        """ + vsl + """
+  <div class="hwrap v2hero">
+    <div class="hhead">
+      <div class="hh-l">
+        """ + pill + """        <h1 id="h1" class="long"><span class="l">How to Build the Income That</span> <span class="l">Lets You Leave Your Job <span class="hl">in 2027</span></span></h1>
       </div>
-      <div class="hright">
-        """ + pill + """        """ + h1 + """
+      <div class="hh-r">
         <p class="hkick2">Already work for yourself? Then your "job" is the client hours. <b>Same plan.</b></p>
         <p class="lede first">If nothing's selling yet, it isn't your list and it isn't your writing. <b>It's the order you were taught to do things in.</b></p>
-        """ + situ.replace('class="situ"', 'class="situ mob"').replace('id="situ-l"', 'id="situ-m"').replace('aria-labelledby="situ-l"', 'aria-labelledby="situ-m"') + """
-        <div class="hcta">
-          <button class="btn big open shine" type="button" id="heroBtn">save my seat (free)<svg><use href="#arr"/></svg></button>
-          <p class="note">free · live on Zoom<span class="lt"></span></p>
-        </div>
       </div>
     </div>
 
-    """ + tstrip + """
+    <div class="hstage">
+      <!-- the VSL, big: set VSL_SRC in the script when Ana's video is ready. Click to play; this still is the cover. -->
+      """ + vsl + """
+      """ + STICKER + """
+      """ + tstrip + """
+    </div>
+    """ + situ.replace('class="situ"', 'class="situ mob"').replace('id="situ-l"', 'id="situ-m"').replace('aria-labelledby="situ-l"', 'aria-labelledby="situ-m"') + """
+    <div class="hcta">
+      <button class="btn big open shine" type="button" id="heroBtn">save my seat (free)<svg><use href="#arr"/></svg></button>
+      <p class="note">free · live on Zoom<span class="lt"></span></p>
+    </div>
 
     <div class="hunder">
       <div class="hu1">
@@ -315,6 +319,13 @@ R("  function openM(e){\n    if (e) e.preventDefault();",
   tkIn.addEventListener('input', function(){ var v = tkIn.value.trim(); tkName.textContent = v || 'Your name'; tkName.classList.toggle('set', !!v) });
   function perf(){ var t = document.getElementById('rcard'), pf = t.querySelector('.tk-perf'); t.style.setProperty('--py', (pf.offsetTop) + 'px') }
   perf(); addEventListener('resize', perf); if (document.fonts) document.fonts.ready.then(perf);
+  function railTop(){ var r = document.getElementById('v2rail'), st = document.querySelector('.hstage'), bd = document.querySelector('.v2body'); if (r && st && bd && wide.matches) r.style.top = Math.round(st.getBoundingClientRect().top - bd.getBoundingClientRect().top) + 'px' }
+  /* the headline fills the width of the page column: two lines, sized so the longer one meets the edge */
+  function fitH(){ var h = document.getElementById('h1'), box = h.parentNode; if (!wide.matches) { h.style.fontSize = ''; return }
+    h.style.fontSize = '100px'; var w = 0; h.querySelectorAll('.l').forEach(function(l){ w = Math.max(w, l.scrollWidth) });
+    h.style.fontSize = Math.min(138, 100 * box.clientWidth / w).toFixed(1) + 'px'; railTop() }
+  fitH(); addEventListener('resize', fitH); if (document.fonts) document.fonts.ready.then(fitH);
+  railTop(); addEventListener('resize', railTop); if (document.fonts) document.fonts.ready.then(railTop);
   function openM(e){
     if (e) e.preventDefault();
     if (wide.matches) {
