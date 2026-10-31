@@ -1,58 +1,40 @@
 
 /* ================= v2 (layout trial) =================
-   The hero is the live page's two columns (video 1.44, text 1). Below it, the page runs on the left and a slim seat
-   ticket with the sign-up form stays frozen on the right (1280 px and wider), with the testimonial bar on top of it. */
+   The hero is the live page's two columns (video 1.44, text 1). Below it, the page runs on the left and a slim sign-up
+   card with the form stays frozen on the right (1280 px and wider), with the testimonial bar on top of it. */
 
-/* ---------- the seat ticket ---------- */
-.tkshell{filter:drop-shadow(1.6px 0 0 var(--ink)) drop-shadow(-1.6px 0 0 var(--ink)) drop-shadow(0 1.6px 0 var(--ink)) drop-shadow(0 -1.6px 0 var(--ink)) drop-shadow(7px 8px 0 var(--sun))}
-.tkt{position:relative;--py:300px;background:#FFF8EE;border-radius:16px;overflow:hidden;
-  -webkit-mask:radial-gradient(circle 11px at 0 var(--py),#0000 96%,#000 100%) 0 0/51% 100% no-repeat,radial-gradient(circle 11px at 100% var(--py),#0000 96%,#000 100%) 100% 0/51% 100% no-repeat;
-  mask:radial-gradient(circle 11px at 0 var(--py),#0000 96%,#000 100%) 0 0/51% 100% no-repeat,radial-gradient(circle 11px at 100% var(--py),#0000 96%,#000 100%) 100% 0/51% 100% no-repeat}
+/* ---------- the sign-up card (hero and frozen column): kept minimal ---------- */
+.tkt{position:relative;background:#FFF8EE;border:1.6px solid var(--ink);border-radius:18px;overflow:hidden;box-shadow:7px 8px 0 var(--sun),7px 8px 0 1.6px var(--ink)}
 .tkt.pulse{animation:rpulse .9s var(--ease)}
 @keyframes rpulse{0%{transform:none}25%{transform:translateY(-6px) rotate(-.8deg)}60%{transform:translateY(2px)}100%{transform:none}}
-.tk-top{display:flex;align-items:center;gap:8px;background:var(--ink);color:var(--cream);padding:9px 10px 9px 9px}
-.tk-top img{width:30px;height:30px;flex:none}
+.tk-top{display:flex;align-items:center;gap:9px;background:var(--ink);color:var(--cream);padding:9px 12px 9px 10px}
+.tk-top img{width:28px;height:28px;flex:none}
 .tk-top span{display:flex;flex-direction:column;gap:3px;min-width:0}
-.tk-top small{font-weight:800;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--sun);line-height:1.15}
+.tk-top small{font-weight:800;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--sun);line-height:1.15}
 .tk-top b{font-family:var(--serif);font-weight:400;font-size:19px;line-height:1}
-.tk-top em{margin-left:auto;flex:none;font-style:normal;font-weight:800;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);background:var(--sun);border-radius:6px;padding:4px 6px;transform:rotate(3deg)}
-.tk-body{padding:12px 12px 12px}
-.tk-h{font-size:21px;line-height:1.02;letter-spacing:-.01em;margin:0 0 10px}
+.tk-body{padding:14px 14px 15px}
+.tk-h{font-size:23px;line-height:1.02;letter-spacing:-.01em;margin:0 0 9px}
 .tk-h .l{display:block;white-space:nowrap}
 .tk-sub{font-size:13.5px;line-height:1.45;color:var(--ink2);margin:0 0 10px;text-wrap:pretty}
-.rdates{display:flex;align-items:center;gap:8px;padding:7px 0;border-top:1.5px solid rgba(26,20,18,.1);border-bottom:1.5px solid rgba(26,20,18,.1)}
-.rdates .mt{display:flex;gap:3px;flex:none}
-.rdates .mt span{width:28px;padding:3px 0 2px;border-radius:7px}
-.rdates .mt b{font-size:14.5px}
-.rdates .mt small{font-size:7px;letter-spacing:.08em;margin-top:1px}
-.rdates .when{font-size:11px;line-height:1.3;color:var(--ink3)}
-.rdates .when b{display:block;color:var(--ink);font-weight:800;font-size:12px}
-.tkt form{margin-top:10px}
+.tk-when{display:flex;align-items:flex-start;gap:7px;margin:0;font-size:12px;line-height:1.4;color:var(--ink3)}
+.tk-when svg{width:15px;height:15px;flex:none;margin-top:1px}
+.tk-when b{display:block;color:var(--ink);font-weight:800}
+.tk-when > span > span{white-space:nowrap}
+.tkt form{margin-top:13px}
 .tkt form .ey,.tkt form .bye,.tkt form h3{display:none}
-.tkt form .field{margin-bottom:6px}
-.tkt form .field input{height:40px;border-radius:11px;font-size:13.5px;padding:0 12px}
+.tkt form .field{margin-bottom:7px}
+.tkt form .field input{height:43px;border-radius:12px;font-size:14px;padding:0 13px}
 .tkt form .field .err{font-size:11.5px}
-.tkt form .btn.big{height:44px;font-size:14px;margin-top:2px;padding:0 14px}
-.tkt form .note{margin-top:8px;font-size:10.5px;line-height:1.4;color:var(--ink3);text-align:left}
+.tkt form .btn.big{height:47px;font-size:15px;margin-top:2px;padding:0 14px}
+.tkt form .note{margin-top:9px;font-size:10.5px;line-height:1.4;color:var(--ink3);text-align:left}
 .tkt form .note + .note{display:none}
-.tk-perf{height:0;margin:0 14px;border-top:2px dashed rgba(26,20,18,.28)}
-.tk-stub{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 10px;align-items:center;padding:9px 12px 11px;background:#FFF1B3}
-.tk-holder{grid-column:1;grid-row:1}
-.tk-holder small,.tk-meta small{font-weight:800;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--pink)}
-.tk-holder small{display:block}
-.tk-holder b{display:block;margin-top:3px;font-family:var(--serif);font-style:italic;font-weight:400;font-size:21px;line-height:1;color:#a4927f;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.tk-holder b.set{color:var(--ink)}
-.tk-meta{grid-column:1;grid-row:2;text-align:left}
-.tk-meta b{display:inline;font-weight:800;font-size:9.5px;letter-spacing:.06em;white-space:nowrap}
-.tk-meta small{display:inline;margin:0 0 0 6px;font-size:8px;color:var(--ink3);letter-spacing:.08em}
-.tk-code{grid-column:2;grid-row:1 / span 2;width:22px;height:36px;fill:var(--ink)}
 .htk .proof,.v2rail .proof{margin:0 0 12px;padding:6px 12px 6px 6px;gap:8px;background:#fff;border:1.5px solid var(--ink);border-radius:999px;font-size:11.5px;line-height:1.2;box-shadow:0 4px 0 var(--ink)}
 .htk .proof .faces img,.v2rail .proof .faces img{width:24px;height:24px;margin-left:-8px;border-width:1.5px}
 .htk .proof .faces img:first-child,.v2rail .proof .faces img:first-child{margin-left:0}
 .htk .proof .faces img:nth-child(n+4),.v2rail .proof .faces img:nth-child(n+4){display:none}
 .htk .proof .stars svg,.v2rail .proof .stars svg{width:10px;height:10px}
 
-/* ---------- the hero: the live page's columns, the headline and the ticket on the right, the booking card under the video ---------- */
+/* ---------- the hero: the live page's columns, the headline and the card on the right; the booking card and a small drawing of the days under the video ---------- */
 .v2h .hright .hpill{margin-bottom:2px}
 .v2h .hright h1,.v2h .hright h1.long{font-size:min(10.4cqi,62px);line-height:.99;margin:14px 0 0}
 .v2h .hright h1 .l{white-space:nowrap}
@@ -62,29 +44,28 @@
 .htk .proof{display:inline-flex}
 .htk .just{margin:-6px 0 12px}
 .htk .tk-top b{font-size:20px}
-.htk .tk-body{padding:12px 16px 13px}
-.htk .tk-h{font-size:25px}
-.htk .rdates .mt span{width:31px}
-.htk .rdates .mt b{font-size:16px}
-.htk .rdates .when{font-size:12px}
-.htk .rdates .when b{font-size:13px}
-.htk .tkt form .field input{height:44px;font-size:14.5px;padding:0 14px}
-.htk .tkt form .btn.big{height:48px;font-size:15.5px}
+.htk .tk-body{padding:15px 18px 16px}
+.htk .tk-h{font-size:26px}
+.htk .tk-when{font-size:12.5px}
+.htk .tk-when b{display:inline;margin-right:6px}
+.htk .tkt form .field input{height:46px;font-size:15px;padding:0 15px}
+.htk .tkt form .btn.big{height:50px;font-size:16px}
 .htk .tkt form .note{font-size:11px}
-.htk .tk-stub{padding:9px 16px 11px}
-.htk .tk-holder b{font-size:22px}
-.htk .tk-meta b{font-size:10px}
 .v2h .tstrip{gap:16px;padding-right:18px}
 .v2h .stats{gap:10px}
 .v2h .stat b{white-space:nowrap;font-size:20px}
+.hmap{position:relative;margin:16px 0 0}
+.hmap svg{display:block;width:100%;height:auto;overflow:visible}
 @media (max-width:1060px){
   .hero .hsub2{order:3;font-size:clamp(20px,4.6vw,24px)}
   .hero .htk{order:4;max-width:460px;width:100%;margin:20px auto 0}
   .hero .iph{order:5;margin-top:30px}
+  .hero .hmap{order:6;margin:0 0 24px}
   .hero .tstrip{order:7}
 }
 @media (max-width:640px){
   .v2h .hright h1 .l{white-space:normal}
+  .hero .hmap{display:none}
 }
 
 /* ---------- 2. a little context ---------- */
@@ -189,15 +170,13 @@
 
 /* ---------- desktop: the page beside the frozen ticket ---------- */
 @media (min-width:1280px){
-  .v2page{--edge:max(28px,calc((100vw - 1640px) / 2));--rw:256px;--rg:44px;--rightc:calc(var(--edge) + var(--rw) + var(--rg))}
+  .v2page{--edge:max(28px,calc((100vw - 1640px) / 2));--rw:284px;--rg:44px;--rightc:calc(var(--edge) + var(--rw) + var(--rg))}
   .v2body{position:relative}
   .v2rail{position:absolute;top:120px;bottom:80px;right:var(--edge);width:var(--rw);z-index:20}
   .tksticky{position:sticky;top:92px}
   .v2body .wrap{max-width:none;margin-left:var(--edge);margin-right:var(--rightc);padding:0}
   .v2body .wrap.narrow > *{max-width:none}
   /* the frozen ticket shows once the form has moved into it, so two tickets are never on screen with one empty */
-  .v2rail .rdates .mt{display:none}
-  .v2rail .rdates .when{font-size:11.5px}
   .v2rail .tksticky{opacity:0;transform:translateY(14px);visibility:hidden;transition:opacity .35s var(--ease),transform .35s var(--ease),visibility 0s .35s}
   .v2rail.on .tksticky{opacity:1;transform:none;visibility:visible;transition:opacity .35s var(--ease),transform .35s var(--ease)}
 }

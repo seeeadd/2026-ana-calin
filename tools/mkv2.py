@@ -1,6 +1,6 @@
 """Ana's registration page, layout trial: /v2/ (the live page at / is untouched).
 
-The hero is the live page's own two columns: the video big on the left with the booking card under it, and on
+The hero is the live page's own two columns: the video big on the left with the booking card and a small drawing of the three days under it, and on
 the right the headline and a seat ticket that holds the sign-up form. Once that ticket scrolls away, the form moves into
 a slim copy of the ticket that stays frozen on the right of the page (desktop, 1280 px and wider). The form is the
 popup's own form, moved between the two tickets and the popup, so the hidden fields, the situation chips and the Kit
@@ -52,28 +52,58 @@ tstrip = tstrip.replace('<div class="stat"><b>0</b><small>sales calls</small></d
                         '<div class="stat"><b>0</b><small>sales calls</small></div><i></i>\n          <div class="stat"><b>16,907</b><small>buyers</small></div>')
 assert '16,907' in tstrip
 
-# the seat ticket: the hero has one (the form starts there, on the first screen) and the frozen column has a slim one
-bars = ''.join('<rect x="%d" y="0" width="%d" height="40"/>' % (x, w) for x, w in [(0,2),(4,1),(7,3),(12,1),(15,2),(19,1),(22,3),(27,1),(30,2),(34,1),(37,2),(41,3),(46,1)])
+# the sign-up card: the hero has one (the form starts there, on the first screen) and the frozen column has a copy.
+# Kept minimal: the dates line, the heading, the copy's one sentence (hero only), the time, then name, email and the button.
+CLOCK = '<svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.4" fill="#FFD400" stroke="#1A1412" stroke-width="1.6"/><path d="M8 4.6V8l2.3 1.5" fill="none" stroke="#1A1412" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>'
 def ticket(tid, slot, sub):
     return ("""<div class="tkshell">
       <div class="tkt" id="%s">
-        <div class="tk-top"><img src="../img/mark.png" alt="" width="34" height="34"><span><small>Free · Nov 17 to 19 · Live on Zoom</small><b>The Exit Plan</b></span><em>Admit one</em></div>
+        <div class="tk-top"><img src="../img/mark.png" alt="" width="34" height="34"><span><small>Free · Nov 17 to 19 · Live on Zoom</small><b>The Exit Plan</b></span></div>
         <div class="tk-body">
           <h3 class="tk-h"><span class="l">Let’s put what you</span> <span class="l">know to work.</span></h3>
-          """ + ('<p class="tk-sub">Three days with me to find an offer idea, put a price on it, and write the email that asks people to buy.</p>\n          ' if sub else '') + """<div class="rdates">
-            <div class="mt" aria-hidden="true"><span><b>17</b><small>Tue</small></span><span><b>18</b><small>Wed</small></span><span><b>19</b><small>Thu</small></span></div>
-            <p class="when"><b>12:00 pm New York, each day</b>About 90 minutes per session</p>
-          </div>
+          """ + ('<p class="tk-sub">Three days with me to find an offer idea, put a price on it, and write the email that asks people to buy.</p>\n          ' if sub else '') + """<p class="tk-when">""" + CLOCK + """<span><b>12:00 pm New York, each day</b> <span>About 90 minutes per session</span></span></p>
           <div class="rslot" id="%s"></div>
-        </div>
-        <div class="tk-perf" aria-hidden="true"></div>
-        <div class="tk-stub">
-          <div class="tk-holder"><small>Seat holder</small><b class="tk-name">Your name</b></div>
-          <div class="tk-meta"><b>Nov 17 + 18 + 19</b><small>Live on Zoom</small></div>
-          <svg class="tk-code" viewBox="0 0 48 40" aria-hidden="true">""" + bars + """</svg>
         </div>
       </div>
     </div>""") % (tid, slot)
+
+# the drawing under the booking card, small: what you make on each day, the same example writer as in the day rows
+INK, SUN, PINK, INK3 = '#1A1412', '#FFD400', '#F72585', '#7A6A60'
+def t(x, y, txt, size=12, weight=700, fill=INK, serif=False, ls=None, anchor=None):
+    fam = 'Instrument Serif,Georgia,serif' if serif else 'Manrope,sans-serif'
+    return '<text x="%s" y="%s" font-family="%s"%s font-size="%s" fill="%s"%s%s>%s</text>' % (
+        x, y, fam, '' if serif else ' font-weight="%d"' % weight, size, fill,
+        ' letter-spacing="%s"' % ls if ls else '', ' text-anchor="%s"' % anchor if anchor else '', txt)
+CW, CH = 230, 116
+def card(x, y, rot, title, day, body):
+    return ('<g transform="rotate(%s %d %d)">' % (rot, x + CW // 2, y + CH // 2)
+            + '<rect x="%d" y="%d" width="%d" height="%d" rx="14" fill="%s" stroke="%s" stroke-width="2.4"/>' % (x + 5, y + 6, CW, CH, SUN, INK)
+            + '<rect x="%d" y="%d" width="%d" height="%d" rx="14" fill="#fff" stroke="%s" stroke-width="2.4"/>' % (x, y, CW, CH, INK)
+            + (t(x + 14, y + 26, title, 18, serif=True) if title else '')
+            + '<rect x="%d" y="%d" width="46" height="19" rx="9.5" fill="%s"/>' % (x + CW - 58, y + 11, PINK)
+            + t(x + CW - 35, y + 24, day, 9, 800, '#fff', ls=1.3, anchor='middle')
+            + '<path d="M%d %dh%d" stroke="%s" stroke-opacity=".12" stroke-width="1.4"/>' % (x + 12, y + 38, CW - 24, INK)
+            + body + '</g>')
+X1, X2, X3, Y = 8, 265, 522, 18
+c1 = ('<g transform="translate(%d %d) scale(.3)"><circle r="50" fill="%s" stroke="%s" stroke-width="7"/><path d="M-50 -6C-44-48 44-48 50-6C40-26 22-34 0-34S-40-26-50-6Z" fill="#6B4E3A" stroke="%s" stroke-width="7" stroke-linejoin="round"/><ellipse cx="-16" cy="2" rx="5" ry="7" fill="%s"/><ellipse cx="16" cy="2" rx="5" ry="7" fill="%s"/><path d="M-20 18c4 16 36 16 40 0Z" fill="%s"/></g>' % (X1 + 30, Y + 72, SUN, INK, INK, INK, INK, INK)
+      + t(X1 + 56, Y + 58, 'SHE’D PAY FOR', 8.5, 800, PINK, ls=1.3)
+      + '<rect x="%d" y="%d" width="84" height="20" fill="%s"/><rect x="%d" y="%d" width="94" height="20" fill="%s"/>' % (X1 + 54, Y + 64, SUN, X1 + 54, Y + 86, SUN)
+      + t(X1 + 57, Y + 79, 'A clear plan', 18, serif=True) + t(X1 + 57, Y + 101, 'back to work.', 18, serif=True))
+c2 = (t(X2 + 14, Y + 59, 'I help mothers after a career', 15, serif=True) + t(X2 + 14, Y + 78, 'break get back to work', 15, serif=True)
+      + t(X2 + 14, Y + 97, 'in six weeks.', 15, serif=True)
+      + '<path d="M%d %dc14-3 30-3 44 0" fill="none" stroke="%s" stroke-width="2.6" stroke-linecap="round"/>' % (X2 + 32, Y + 103, PINK)
+      + '<g transform="rotate(-8 %d %d)"><path d="M%d %dh52a7 7 0 0 1 7 7v22a7 7 0 0 1-7 7h-52l-14-18Z" fill="%s" stroke="%s" stroke-width="2.4" stroke-linejoin="round"/><circle cx="%d" cy="%d" r="3.6" fill="#EADFCF" stroke="%s" stroke-width="2"/>' % (X2 + 186, Y + 98, X2 + 160, Y + 80, PINK, INK, X2 + 155, Y + 98, INK)
+      + t(X2 + 188, Y + 106, '$149', 19, 800, '#fff', anchor='middle', ls=-.4) + '</g>')
+c3 = ('<use href="#sf" x="%d" y="%d" width="22" height="22"/>' % (X3 + 11, Y + 9)
+      + t(X3 + 38, Y + 21, 'You', 11.5, 800) + t(X3 + 38, Y + 33, 'your newsletter', 9.5, 600, INK3)
+      + t(X3 + 14, Y + 66, 'Back to work, by spring.', 19, serif=True)
+      + '<circle cx="%d" cy="%d" r="8.5" fill="%s" stroke="%s" stroke-width="1.8"/><path d="m%d %d 3 3 5.5-6" fill="none" stroke="%s" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>' % (X3 + 23, Y + 92, SUN, INK, X3 + 18.5, Y + 92, INK)
+      + t(X3 + 38, Y + 96, 'Sent to her ten readers', 10.5, 700))
+arrow = lambda x, y: ('<path d="M%d %dh13" stroke="%s" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="1 5"/><path d="M%d %dl5 4-5 4" fill="none" stroke="%s" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>' % (x, y, PINK, x + 14, y - 4, PINK))
+HMAP = ('<div class="hmap" aria-hidden="true"><svg viewBox="0 0 760 146" role="presentation">'
+        + card(X1, Y, -1.4, 'Reader file', 'DAY 1', c1) + card(X2, Y - 4, 1, 'Your offer', 'DAY 2', c2)
+        + card(X3, Y, -1, None, 'DAY 3', c3)
+        + arrow(X2 - 21, Y + 62) + arrow(X3 - 21, Y + 62) + '</svg></div>')
 
 
 new_hero = """<section class="hero" id="hero">
@@ -87,6 +117,9 @@ new_hero = """<section class="hero" id="hero">
       """ + vsl + """
 
       """ + book + """
+
+      <!-- what you make on each of the three days -->
+      """ + HMAP + """
     </div>
 
     <div class="hright">
@@ -376,25 +409,21 @@ R("  function openM(e){\n    if (e) e.preventDefault();",
   var wide = matchMedia('(min-width: 1280px)'), hslot = document.getElementById('hslot'), rslot = document.getElementById('rslot'),
       hcard = document.getElementById('hcard'), rcard = document.getElementById('rcard'), thanksEl = dlg.querySelector('.thanks');
   function homeSlot(){ return (wide.matches && hcard.getBoundingClientRect().bottom < 110) ? rslot : hslot }
-  function perf(){ [hcard, rcard].forEach(function(t){ var pf = t.querySelector('.tk-perf'); if (t.offsetParent) t.style.setProperty('--py', pf.offsetTop + 'px') }) }
   function placeForm(){
     if (modal.classList.contains('open') || (form.contains(document.activeElement) && form.parentNode !== dlg)) return;
     var h = homeSlot(); if (form.parentNode === h) return;
     if (form.parentNode === hslot || form.parentNode === rslot) form.parentNode.style.minHeight = form.offsetHeight + 'px';
-    h.style.minHeight = ''; h.appendChild(form); perf(); railOn();
+    h.style.minHeight = ''; h.appendChild(form); railOn();
   }
   function railOn(){ document.getElementById('v2rail').classList.toggle('on', form.parentNode === rslot) }
   var pfRaf = 0; addEventListener('scroll', function(){ if (!pfRaf) pfRaf = requestAnimationFrame(function(){ pfRaf = 0; placeForm() }) }, {passive:true});
   if (wide.addEventListener) wide.addEventListener('change', placeForm); else wide.addListener(placeForm);
   placeForm();
-  var tkIn = form.querySelector('[name=first_name]');
-  tkIn.addEventListener('input', function(){ var v = tkIn.value.trim(); document.querySelectorAll('.tk-name').forEach(function(n){ n.textContent = v || 'Your name'; n.classList.toggle('set', !!v) }) });
-  perf(); addEventListener('resize', perf); if (document.fonts) document.fonts.ready.then(perf);
   function openM(e){
     if (e) e.preventDefault();
     var home = homeSlot(), card = home === rslot ? rcard : hcard, rr = card.getBoundingClientRect();
     if (card.offsetParent && rr.bottom > 120 && rr.top < innerHeight - 120) {
-      if (form.parentNode !== home) { home.style.minHeight = ''; home.appendChild(form); perf(); railOn() }
+      if (form.parentNode !== home) { home.style.minHeight = ''; home.appendChild(form); railOn() }
       if (rr.top < 90 || rr.bottom > innerHeight) card.scrollIntoView({block:'center', behavior: reduce ? 'auto' : 'smooth'});
       var f1 = form.querySelector('[name=first_name]'); f1.focus({preventScroll:true});
       card.classList.remove('pulse'); void card.offsetWidth; card.classList.add('pulse');

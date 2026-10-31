@@ -810,59 +810,41 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
 }
 
 /* ================= v2 (layout trial) =================
-   The hero is the live page's two columns (video 1.44, text 1). Below it, the page runs on the left and a slim seat
-   ticket with the sign-up form stays frozen on the right (1280 px and wider), with the testimonial bar on top of it. */
+   The hero is the live page's two columns (video 1.44, text 1). Below it, the page runs on the left and a slim sign-up
+   card with the form stays frozen on the right (1280 px and wider), with the testimonial bar on top of it. */
 
-/* ---------- the seat ticket ---------- */
-.tkshell{filter:drop-shadow(1.6px 0 0 var(--ink)) drop-shadow(-1.6px 0 0 var(--ink)) drop-shadow(0 1.6px 0 var(--ink)) drop-shadow(0 -1.6px 0 var(--ink)) drop-shadow(7px 8px 0 var(--sun))}
-.tkt{position:relative;--py:300px;background:#FFF8EE;border-radius:16px;overflow:hidden;
-  -webkit-mask:radial-gradient(circle 11px at 0 var(--py),#0000 96%,#000 100%) 0 0/51% 100% no-repeat,radial-gradient(circle 11px at 100% var(--py),#0000 96%,#000 100%) 100% 0/51% 100% no-repeat;
-  mask:radial-gradient(circle 11px at 0 var(--py),#0000 96%,#000 100%) 0 0/51% 100% no-repeat,radial-gradient(circle 11px at 100% var(--py),#0000 96%,#000 100%) 100% 0/51% 100% no-repeat}
+/* ---------- the sign-up card (hero and frozen column): kept minimal ---------- */
+.tkt{position:relative;background:#FFF8EE;border:1.6px solid var(--ink);border-radius:18px;overflow:hidden;box-shadow:7px 8px 0 var(--sun),7px 8px 0 1.6px var(--ink)}
 .tkt.pulse{animation:rpulse .9s var(--ease)}
 @keyframes rpulse{0%{transform:none}25%{transform:translateY(-6px) rotate(-.8deg)}60%{transform:translateY(2px)}100%{transform:none}}
-.tk-top{display:flex;align-items:center;gap:8px;background:var(--ink);color:var(--cream);padding:9px 10px 9px 9px}
-.tk-top img{width:30px;height:30px;flex:none}
+.tk-top{display:flex;align-items:center;gap:9px;background:var(--ink);color:var(--cream);padding:9px 12px 9px 10px}
+.tk-top img{width:28px;height:28px;flex:none}
 .tk-top span{display:flex;flex-direction:column;gap:3px;min-width:0}
-.tk-top small{font-weight:800;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--sun);line-height:1.15}
+.tk-top small{font-weight:800;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--sun);line-height:1.15}
 .tk-top b{font-family:var(--serif);font-weight:400;font-size:19px;line-height:1}
-.tk-top em{margin-left:auto;flex:none;font-style:normal;font-weight:800;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);background:var(--sun);border-radius:6px;padding:4px 6px;transform:rotate(3deg)}
-.tk-body{padding:12px 12px 12px}
-.tk-h{font-size:21px;line-height:1.02;letter-spacing:-.01em;margin:0 0 10px}
+.tk-body{padding:14px 14px 15px}
+.tk-h{font-size:23px;line-height:1.02;letter-spacing:-.01em;margin:0 0 9px}
 .tk-h .l{display:block;white-space:nowrap}
 .tk-sub{font-size:13.5px;line-height:1.45;color:var(--ink2);margin:0 0 10px;text-wrap:pretty}
-.rdates{display:flex;align-items:center;gap:8px;padding:7px 0;border-top:1.5px solid rgba(26,20,18,.1);border-bottom:1.5px solid rgba(26,20,18,.1)}
-.rdates .mt{display:flex;gap:3px;flex:none}
-.rdates .mt span{width:28px;padding:3px 0 2px;border-radius:7px}
-.rdates .mt b{font-size:14.5px}
-.rdates .mt small{font-size:7px;letter-spacing:.08em;margin-top:1px}
-.rdates .when{font-size:11px;line-height:1.3;color:var(--ink3)}
-.rdates .when b{display:block;color:var(--ink);font-weight:800;font-size:12px}
-.tkt form{margin-top:10px}
+.tk-when{display:flex;align-items:flex-start;gap:7px;margin:0;font-size:12px;line-height:1.4;color:var(--ink3)}
+.tk-when svg{width:15px;height:15px;flex:none;margin-top:1px}
+.tk-when b{display:block;color:var(--ink);font-weight:800}
+.tk-when > span > span{white-space:nowrap}
+.tkt form{margin-top:13px}
 .tkt form .ey,.tkt form .bye,.tkt form h3{display:none}
-.tkt form .field{margin-bottom:6px}
-.tkt form .field input{height:40px;border-radius:11px;font-size:13.5px;padding:0 12px}
+.tkt form .field{margin-bottom:7px}
+.tkt form .field input{height:43px;border-radius:12px;font-size:14px;padding:0 13px}
 .tkt form .field .err{font-size:11.5px}
-.tkt form .btn.big{height:44px;font-size:14px;margin-top:2px;padding:0 14px}
-.tkt form .note{margin-top:8px;font-size:10.5px;line-height:1.4;color:var(--ink3);text-align:left}
+.tkt form .btn.big{height:47px;font-size:15px;margin-top:2px;padding:0 14px}
+.tkt form .note{margin-top:9px;font-size:10.5px;line-height:1.4;color:var(--ink3);text-align:left}
 .tkt form .note + .note{display:none}
-.tk-perf{height:0;margin:0 14px;border-top:2px dashed rgba(26,20,18,.28)}
-.tk-stub{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 10px;align-items:center;padding:9px 12px 11px;background:#FFF1B3}
-.tk-holder{grid-column:1;grid-row:1}
-.tk-holder small,.tk-meta small{font-weight:800;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--pink)}
-.tk-holder small{display:block}
-.tk-holder b{display:block;margin-top:3px;font-family:var(--serif);font-style:italic;font-weight:400;font-size:21px;line-height:1;color:#a4927f;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.tk-holder b.set{color:var(--ink)}
-.tk-meta{grid-column:1;grid-row:2;text-align:left}
-.tk-meta b{display:inline;font-weight:800;font-size:9.5px;letter-spacing:.06em;white-space:nowrap}
-.tk-meta small{display:inline;margin:0 0 0 6px;font-size:8px;color:var(--ink3);letter-spacing:.08em}
-.tk-code{grid-column:2;grid-row:1 / span 2;width:22px;height:36px;fill:var(--ink)}
 .htk .proof,.v2rail .proof{margin:0 0 12px;padding:6px 12px 6px 6px;gap:8px;background:#fff;border:1.5px solid var(--ink);border-radius:999px;font-size:11.5px;line-height:1.2;box-shadow:0 4px 0 var(--ink)}
 .htk .proof .faces img,.v2rail .proof .faces img{width:24px;height:24px;margin-left:-8px;border-width:1.5px}
 .htk .proof .faces img:first-child,.v2rail .proof .faces img:first-child{margin-left:0}
 .htk .proof .faces img:nth-child(n+4),.v2rail .proof .faces img:nth-child(n+4){display:none}
 .htk .proof .stars svg,.v2rail .proof .stars svg{width:10px;height:10px}
 
-/* ---------- the hero: the live page's columns, the headline and the ticket on the right, the booking card under the video ---------- */
+/* ---------- the hero: the live page's columns, the headline and the card on the right; the booking card and a small drawing of the days under the video ---------- */
 .v2h .hright .hpill{margin-bottom:2px}
 .v2h .hright h1,.v2h .hright h1.long{font-size:min(10.4cqi,62px);line-height:.99;margin:14px 0 0}
 .v2h .hright h1 .l{white-space:nowrap}
@@ -872,29 +854,28 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
 .htk .proof{display:inline-flex}
 .htk .just{margin:-6px 0 12px}
 .htk .tk-top b{font-size:20px}
-.htk .tk-body{padding:12px 16px 13px}
-.htk .tk-h{font-size:25px}
-.htk .rdates .mt span{width:31px}
-.htk .rdates .mt b{font-size:16px}
-.htk .rdates .when{font-size:12px}
-.htk .rdates .when b{font-size:13px}
-.htk .tkt form .field input{height:44px;font-size:14.5px;padding:0 14px}
-.htk .tkt form .btn.big{height:48px;font-size:15.5px}
+.htk .tk-body{padding:15px 18px 16px}
+.htk .tk-h{font-size:26px}
+.htk .tk-when{font-size:12.5px}
+.htk .tk-when b{display:inline;margin-right:6px}
+.htk .tkt form .field input{height:46px;font-size:15px;padding:0 15px}
+.htk .tkt form .btn.big{height:50px;font-size:16px}
 .htk .tkt form .note{font-size:11px}
-.htk .tk-stub{padding:9px 16px 11px}
-.htk .tk-holder b{font-size:22px}
-.htk .tk-meta b{font-size:10px}
 .v2h .tstrip{gap:16px;padding-right:18px}
 .v2h .stats{gap:10px}
 .v2h .stat b{white-space:nowrap;font-size:20px}
+.hmap{position:relative;margin:16px 0 0}
+.hmap svg{display:block;width:100%;height:auto;overflow:visible}
 @media (max-width:1060px){
   .hero .hsub2{order:3;font-size:clamp(20px,4.6vw,24px)}
   .hero .htk{order:4;max-width:460px;width:100%;margin:20px auto 0}
   .hero .iph{order:5;margin-top:30px}
+  .hero .hmap{order:6;margin:0 0 24px}
   .hero .tstrip{order:7}
 }
 @media (max-width:640px){
   .v2h .hright h1 .l{white-space:normal}
+  .hero .hmap{display:none}
 }
 
 /* ---------- 2. a little context ---------- */
@@ -999,15 +980,13 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
 
 /* ---------- desktop: the page beside the frozen ticket ---------- */
 @media (min-width:1280px){
-  .v2page{--edge:max(28px,calc((100vw - 1640px) / 2));--rw:256px;--rg:44px;--rightc:calc(var(--edge) + var(--rw) + var(--rg))}
+  .v2page{--edge:max(28px,calc((100vw - 1640px) / 2));--rw:284px;--rg:44px;--rightc:calc(var(--edge) + var(--rw) + var(--rg))}
   .v2body{position:relative}
   .v2rail{position:absolute;top:120px;bottom:80px;right:var(--edge);width:var(--rw);z-index:20}
   .tksticky{position:sticky;top:92px}
   .v2body .wrap{max-width:none;margin-left:var(--edge);margin-right:var(--rightc);padding:0}
   .v2body .wrap.narrow > *{max-width:none}
   /* the frozen ticket shows once the form has moved into it, so two tickets are never on screen with one empty */
-  .v2rail .rdates .mt{display:none}
-  .v2rail .rdates .when{font-size:11.5px}
   .v2rail .tksticky{opacity:0;transform:translateY(14px);visibility:hidden;transition:opacity .35s var(--ease),transform .35s var(--ease),visibility 0s .35s}
   .v2rail.on .tksticky{opacity:1;transform:none;visibility:visible;transition:opacity .35s var(--ease),transform .35s var(--ease)}
 }
@@ -1122,6 +1101,9 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
         </div>
         <div class="go"><button class="btn open" type="button">save my seat (free)<svg><use href="#arr"/></svg></button><small>3 days live</small></div>
       </div>
+
+      <!-- what you make on each of the three days -->
+      <div class="hmap" aria-hidden="true"><svg viewBox="0 0 760 146" role="presentation"><g transform="rotate(-1.4 123 76)"><rect x="13" y="24" width="230" height="116" rx="14" fill="#FFD400" stroke="#1A1412" stroke-width="2.4"/><rect x="8" y="18" width="230" height="116" rx="14" fill="#fff" stroke="#1A1412" stroke-width="2.4"/><text x="22" y="44" font-family="Instrument Serif,Georgia,serif" font-size="18" fill="#1A1412">Reader file</text><rect x="180" y="29" width="46" height="19" rx="9.5" fill="#F72585"/><text x="203" y="42" font-family="Manrope,sans-serif" font-weight="800" font-size="9" fill="#fff" letter-spacing="1.3" text-anchor="middle">DAY 1</text><path d="M20 56h206" stroke="#1A1412" stroke-opacity=".12" stroke-width="1.4"/><g transform="translate(38 90) scale(.3)"><circle r="50" fill="#FFD400" stroke="#1A1412" stroke-width="7"/><path d="M-50 -6C-44-48 44-48 50-6C40-26 22-34 0-34S-40-26-50-6Z" fill="#6B4E3A" stroke="#1A1412" stroke-width="7" stroke-linejoin="round"/><ellipse cx="-16" cy="2" rx="5" ry="7" fill="#1A1412"/><ellipse cx="16" cy="2" rx="5" ry="7" fill="#1A1412"/><path d="M-20 18c4 16 36 16 40 0Z" fill="#1A1412"/></g><text x="64" y="76" font-family="Manrope,sans-serif" font-weight="800" font-size="8.5" fill="#F72585" letter-spacing="1.3">SHE’D PAY FOR</text><rect x="62" y="82" width="84" height="20" fill="#FFD400"/><rect x="62" y="104" width="94" height="20" fill="#FFD400"/><text x="65" y="97" font-family="Instrument Serif,Georgia,serif" font-size="18" fill="#1A1412">A clear plan</text><text x="65" y="119" font-family="Instrument Serif,Georgia,serif" font-size="18" fill="#1A1412">back to work.</text></g><g transform="rotate(1 380 72)"><rect x="270" y="20" width="230" height="116" rx="14" fill="#FFD400" stroke="#1A1412" stroke-width="2.4"/><rect x="265" y="14" width="230" height="116" rx="14" fill="#fff" stroke="#1A1412" stroke-width="2.4"/><text x="279" y="40" font-family="Instrument Serif,Georgia,serif" font-size="18" fill="#1A1412">Your offer</text><rect x="437" y="25" width="46" height="19" rx="9.5" fill="#F72585"/><text x="460" y="38" font-family="Manrope,sans-serif" font-weight="800" font-size="9" fill="#fff" letter-spacing="1.3" text-anchor="middle">DAY 2</text><path d="M277 52h206" stroke="#1A1412" stroke-opacity=".12" stroke-width="1.4"/><text x="279" y="77" font-family="Instrument Serif,Georgia,serif" font-size="15" fill="#1A1412">I help mothers after a career</text><text x="279" y="96" font-family="Instrument Serif,Georgia,serif" font-size="15" fill="#1A1412">break get back to work</text><text x="279" y="115" font-family="Instrument Serif,Georgia,serif" font-size="15" fill="#1A1412">in six weeks.</text><path d="M297 121c14-3 30-3 44 0" fill="none" stroke="#F72585" stroke-width="2.6" stroke-linecap="round"/><g transform="rotate(-8 451 116)"><path d="M425 98h52a7 7 0 0 1 7 7v22a7 7 0 0 1-7 7h-52l-14-18Z" fill="#F72585" stroke="#1A1412" stroke-width="2.4" stroke-linejoin="round"/><circle cx="420" cy="116" r="3.6" fill="#EADFCF" stroke="#1A1412" stroke-width="2"/><text x="453" y="124" font-family="Manrope,sans-serif" font-weight="800" font-size="19" fill="#fff" letter-spacing="-0.4" text-anchor="middle">$149</text></g></g><g transform="rotate(-1 637 76)"><rect x="527" y="24" width="230" height="116" rx="14" fill="#FFD400" stroke="#1A1412" stroke-width="2.4"/><rect x="522" y="18" width="230" height="116" rx="14" fill="#fff" stroke="#1A1412" stroke-width="2.4"/><rect x="694" y="29" width="46" height="19" rx="9.5" fill="#F72585"/><text x="717" y="42" font-family="Manrope,sans-serif" font-weight="800" font-size="9" fill="#fff" letter-spacing="1.3" text-anchor="middle">DAY 3</text><path d="M534 56h206" stroke="#1A1412" stroke-opacity=".12" stroke-width="1.4"/><use href="#sf" x="533" y="27" width="22" height="22"/><text x="560" y="39" font-family="Manrope,sans-serif" font-weight="800" font-size="11.5" fill="#1A1412">You</text><text x="560" y="51" font-family="Manrope,sans-serif" font-weight="600" font-size="9.5" fill="#7A6A60">your newsletter</text><text x="536" y="84" font-family="Instrument Serif,Georgia,serif" font-size="19" fill="#1A1412">Back to work, by spring.</text><circle cx="545" cy="110" r="8.5" fill="#FFD400" stroke="#1A1412" stroke-width="1.8"/><path d="m540 110 3 3 5.5-6" fill="none" stroke="#1A1412" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><text x="560" y="114" font-family="Manrope,sans-serif" font-weight="700" font-size="10.5" fill="#1A1412">Sent to her ten readers</text></g><path d="M244 80h13" stroke="#F72585" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="1 5"/><path d="M258 76l5 4-5 4" fill="none" stroke="#F72585" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M501 80h13" stroke="#F72585" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="1 5"/><path d="M515 76l5 4-5 4" fill="none" stroke="#F72585" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
     </div>
 
     <div class="hright">
@@ -1133,21 +1115,12 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
         <p class="just" id="just" hidden><i></i><span id="justTxt"></span></p>
         <div class="tkshell">
       <div class="tkt" id="hcard">
-        <div class="tk-top"><img src="../img/mark.png" alt="" width="34" height="34"><span><small>Free · Nov 17 to 19 · Live on Zoom</small><b>The Exit Plan</b></span><em>Admit one</em></div>
+        <div class="tk-top"><img src="../img/mark.png" alt="" width="34" height="34"><span><small>Free · Nov 17 to 19 · Live on Zoom</small><b>The Exit Plan</b></span></div>
         <div class="tk-body">
           <h3 class="tk-h"><span class="l">Let’s put what you</span> <span class="l">know to work.</span></h3>
           <p class="tk-sub">Three days with me to find an offer idea, put a price on it, and write the email that asks people to buy.</p>
-          <div class="rdates">
-            <div class="mt" aria-hidden="true"><span><b>17</b><small>Tue</small></span><span><b>18</b><small>Wed</small></span><span><b>19</b><small>Thu</small></span></div>
-            <p class="when"><b>12:00 pm New York, each day</b>About 90 minutes per session</p>
-          </div>
+          <p class="tk-when"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.4" fill="#FFD400" stroke="#1A1412" stroke-width="1.6"/><path d="M8 4.6V8l2.3 1.5" fill="none" stroke="#1A1412" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>12:00 pm New York, each day</b> <span>About 90 minutes per session</span></span></p>
           <div class="rslot" id="hslot"></div>
-        </div>
-        <div class="tk-perf" aria-hidden="true"></div>
-        <div class="tk-stub">
-          <div class="tk-holder"><small>Seat holder</small><b class="tk-name">Your name</b></div>
-          <div class="tk-meta"><b>Nov 17 + 18 + 19</b><small>Live on Zoom</small></div>
-          <svg class="tk-code" viewBox="0 0 48 40" aria-hidden="true"><rect x="0" y="0" width="2" height="40"/><rect x="4" y="0" width="1" height="40"/><rect x="7" y="0" width="3" height="40"/><rect x="12" y="0" width="1" height="40"/><rect x="15" y="0" width="2" height="40"/><rect x="19" y="0" width="1" height="40"/><rect x="22" y="0" width="3" height="40"/><rect x="27" y="0" width="1" height="40"/><rect x="30" y="0" width="2" height="40"/><rect x="34" y="0" width="1" height="40"/><rect x="37" y="0" width="2" height="40"/><rect x="41" y="0" width="3" height="40"/><rect x="46" y="0" width="1" height="40"/></svg>
         </div>
       </div>
     </div>
@@ -1164,20 +1137,11 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
       <div class="proof"><span class="faces"><img src="../img/av/gustavo.webp" alt=""><img src="../img/av/jeanette.webp" alt=""><img src="../img/av/adora.webp" alt=""><img src="../img/av/hilde.webp" alt=""><img src="../img/av/stacie.webp" alt=""></span><span><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span> <b>800+</b> student wins</span></div>
       <div class="tkshell">
       <div class="tkt" id="rcard">
-        <div class="tk-top"><img src="../img/mark.png" alt="" width="34" height="34"><span><small>Free · Nov 17 to 19 · Live on Zoom</small><b>The Exit Plan</b></span><em>Admit one</em></div>
+        <div class="tk-top"><img src="../img/mark.png" alt="" width="34" height="34"><span><small>Free · Nov 17 to 19 · Live on Zoom</small><b>The Exit Plan</b></span></div>
         <div class="tk-body">
           <h3 class="tk-h"><span class="l">Let’s put what you</span> <span class="l">know to work.</span></h3>
-          <div class="rdates">
-            <div class="mt" aria-hidden="true"><span><b>17</b><small>Tue</small></span><span><b>18</b><small>Wed</small></span><span><b>19</b><small>Thu</small></span></div>
-            <p class="when"><b>12:00 pm New York, each day</b>About 90 minutes per session</p>
-          </div>
+          <p class="tk-when"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.4" fill="#FFD400" stroke="#1A1412" stroke-width="1.6"/><path d="M8 4.6V8l2.3 1.5" fill="none" stroke="#1A1412" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>12:00 pm New York, each day</b> <span>About 90 minutes per session</span></span></p>
           <div class="rslot" id="rslot"></div>
-        </div>
-        <div class="tk-perf" aria-hidden="true"></div>
-        <div class="tk-stub">
-          <div class="tk-holder"><small>Seat holder</small><b class="tk-name">Your name</b></div>
-          <div class="tk-meta"><b>Nov 17 + 18 + 19</b><small>Live on Zoom</small></div>
-          <svg class="tk-code" viewBox="0 0 48 40" aria-hidden="true"><rect x="0" y="0" width="2" height="40"/><rect x="4" y="0" width="1" height="40"/><rect x="7" y="0" width="3" height="40"/><rect x="12" y="0" width="1" height="40"/><rect x="15" y="0" width="2" height="40"/><rect x="19" y="0" width="1" height="40"/><rect x="22" y="0" width="3" height="40"/><rect x="27" y="0" width="1" height="40"/><rect x="30" y="0" width="2" height="40"/><rect x="34" y="0" width="1" height="40"/><rect x="37" y="0" width="2" height="40"/><rect x="41" y="0" width="3" height="40"/><rect x="46" y="0" width="1" height="40"/></svg>
         </div>
       </div>
     </div>
@@ -1689,25 +1653,21 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
   var wide = matchMedia('(min-width: 1280px)'), hslot = document.getElementById('hslot'), rslot = document.getElementById('rslot'),
       hcard = document.getElementById('hcard'), rcard = document.getElementById('rcard'), thanksEl = dlg.querySelector('.thanks');
   function homeSlot(){ return (wide.matches && hcard.getBoundingClientRect().bottom < 110) ? rslot : hslot }
-  function perf(){ [hcard, rcard].forEach(function(t){ var pf = t.querySelector('.tk-perf'); if (t.offsetParent) t.style.setProperty('--py', pf.offsetTop + 'px') }) }
   function placeForm(){
     if (modal.classList.contains('open') || (form.contains(document.activeElement) && form.parentNode !== dlg)) return;
     var h = homeSlot(); if (form.parentNode === h) return;
     if (form.parentNode === hslot || form.parentNode === rslot) form.parentNode.style.minHeight = form.offsetHeight + 'px';
-    h.style.minHeight = ''; h.appendChild(form); perf(); railOn();
+    h.style.minHeight = ''; h.appendChild(form); railOn();
   }
   function railOn(){ document.getElementById('v2rail').classList.toggle('on', form.parentNode === rslot) }
   var pfRaf = 0; addEventListener('scroll', function(){ if (!pfRaf) pfRaf = requestAnimationFrame(function(){ pfRaf = 0; placeForm() }) }, {passive:true});
   if (wide.addEventListener) wide.addEventListener('change', placeForm); else wide.addListener(placeForm);
   placeForm();
-  var tkIn = form.querySelector('[name=first_name]');
-  tkIn.addEventListener('input', function(){ var v = tkIn.value.trim(); document.querySelectorAll('.tk-name').forEach(function(n){ n.textContent = v || 'Your name'; n.classList.toggle('set', !!v) }) });
-  perf(); addEventListener('resize', perf); if (document.fonts) document.fonts.ready.then(perf);
   function openM(e){
     if (e) e.preventDefault();
     var home = homeSlot(), card = home === rslot ? rcard : hcard, rr = card.getBoundingClientRect();
     if (card.offsetParent && rr.bottom > 120 && rr.top < innerHeight - 120) {
-      if (form.parentNode !== home) { home.style.minHeight = ''; home.appendChild(form); perf(); railOn() }
+      if (form.parentNode !== home) { home.style.minHeight = ''; home.appendChild(form); railOn() }
       if (rr.top < 90 || rr.bottom > innerHeight) card.scrollIntoView({block:'center', behavior: reduce ? 'auto' : 'smooth'});
       var f1 = form.querySelector('[name=first_name]'); f1.focus({preventScroll:true});
       card.classList.remove('pulse'); void card.offsetWidth; card.classList.add('pulse');
