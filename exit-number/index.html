@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Your exit number · The Exit Plan with Ana Calin</title>
+<!-- Ana Calin, the exit number (/exit-number/). The gift for the 7 quick questions on the confirmation pages: how many people
+     would need to buy, at your price, to reach the monthly number that gives you more choice about work, and what the same goal
+     takes through paid subscriptions alone. "Save my number" downloads a picture of it; the numbers go to the Google Sheet
+     (api/ana-survey.js, tools/survey-sheet.gs). Built Oct 31, 2026. -->
+<meta name="theme-color" content="#FFF8EE">
+<link rel="icon" href="../img/fav/favicon.ico?v=dc986e96" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../img/fav/favicon-32.png?v=dc986e96">
+<link rel="icon" type="image/png" sizes="192x192" href="../img/fav/favicon-192.png?v=dc986e96">
+<link rel="apple-touch-icon" href="../img/fav/apple-touch-icon.png?v=dc986e96">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="../assets/conf.css">
+<style>
+.xtop{padding:18px 0 0}
+.xtop .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.xbrand{display:flex;align-items:center;gap:12px;font-weight:800;font-size:20px;letter-spacing:-.02em;color:var(--ink);text-decoration:none}
+.xbrand img{width:42px;height:42px}
+.xpill{display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 14px;border-radius:999px;background:#fff;border:1.5px solid var(--ink);font-weight:800;font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+.xpill i{width:8px;height:8px;border-radius:50%;background:var(--pink)}
+.xmain{position:relative;padding:48px 0 100px;overflow:hidden}
+.xhead{max-width:760px;margin:0 auto;text-align:center}
+.xhead h1{font-size:clamp(44px,5.6vw,78px);line-height:.98;margin-top:14px}
+.xhead h1 em{display:block}
+.xhead p{max-width:600px;margin:16px auto 0;font-size:18.5px;line-height:1.55;color:var(--ink2);text-wrap:balance}
+.xgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.92fr);gap:34px;align-items:start;max-width:1080px;margin:46px auto 0}
+.xin{display:grid;grid-template-columns:minmax(0,1fr);gap:18px;min-width:0}
+.xq{background:#fff;border:1.6px solid var(--ink);border-radius:22px;padding:22px 24px 24px}
+.xq h2{display:flex;gap:12px;align-items:baseline;font-size:27px;line-height:1.1}
+.xq h2 .n{flex:none;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:var(--ink);color:var(--sun);font-size:19px;transform:translateY(-3px)}
+.xq .hint{margin:6px 0 14px 44px;font-size:15px;line-height:1.5;color:var(--ink3)}
+.xmoney{display:flex;align-items:center;height:60px;margin-left:44px;border:1.6px solid #d9cab6;border-radius:16px;background:var(--cream);padding:0 16px;transition:border-color .15s,box-shadow .15s}
+.xmoney:focus-within{border-color:var(--ink);box-shadow:0 0 0 4px rgba(255,212,0,.6)}
+.xmoney span{font-family:var(--serif);font-size:30px;color:var(--ink3)}
+.xmoney input{flex:1;width:0;min-width:0;border:0;background:none;font-family:var(--serif);font-size:34px;color:var(--ink);padding:0 6px;outline:0}
+.xmoney small{font-weight:700;font-size:14px;color:var(--ink3);white-space:nowrap}
+.xchips{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 0 44px}
+.xchips button{height:36px;padding:0 14px;border-radius:999px;border:1.5px solid rgba(26,20,18,.3);background:#fff;font:inherit;font-weight:700;font-size:14px;cursor:pointer;transition:background .15s,border-color .15s}
+.xchips button:hover{border-color:var(--ink)}
+.xchips button.on{background:var(--ink);border-color:var(--ink);color:var(--sun)}
+.xout{position:sticky;top:24px}
+.xcard{position:relative;background:var(--cream);border:1.6px solid var(--ink);border-radius:26px;padding:28px 28px 26px;box-shadow:9px 10px 0 var(--sun),9px 10px 0 1.6px var(--ink);overflow:hidden}
+.xcard .fl{position:absolute;right:-60px;top:-60px;width:220px;height:220px;opacity:.12;pointer-events:none}
+.xcard small.lab{display:block;font-weight:800;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--pink)}
+.xbig{display:flex;align-items:flex-end;gap:14px;margin-top:6px}
+.xbig b{font-family:var(--serif);font-weight:400;font-size:clamp(96px,11vw,148px);line-height:.82;letter-spacing:-.03em;background:linear-gradient(transparent 58%,var(--sun) 58%,var(--sun) 92%,transparent 92%);padding:0 .06em}
+.xbig span{padding-bottom:8px;font-weight:800;font-size:18px;line-height:1.25}
+.xeq{margin-top:14px;font-size:15.5px;line-height:1.5;color:var(--ink2)}
+.xeq b{color:var(--ink)}
+.xvs{margin-top:20px;padding-top:18px;border-top:2px dashed rgba(26,20,18,.2)}
+.xvs small{display:block;font-weight:800;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
+.xvs .row{display:flex;align-items:baseline;gap:10px;margin-top:6px}
+.xvs .row b{font-family:var(--serif);font-weight:400;font-size:52px;line-height:1}
+.xvs .row span{font-weight:700;font-size:15px;line-height:1.35}
+.xvs p{margin-top:8px;font-size:14.5px;line-height:1.5;color:var(--ink2)}
+.xvs p b{color:var(--ink)}
+.xyou{margin-top:14px;padding:10px 14px;border-radius:12px;background:#fff;font-size:14.5px;line-height:1.45;color:var(--ink2)}
+.xyou[hidden]{display:none}
+.xsave{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;margin-top:22px}
+.xsave .btn{height:54px}
+.xsave .ok{font-weight:700;font-size:14px;color:#1f7a45}
+.xnote{margin-top:16px;font-size:13.5px;line-height:1.5;color:var(--ink3)}
+.xback{margin-top:26px;text-align:center;font-weight:700;font-size:15px}
+.xback a{color:var(--ink2);text-underline-offset:3px}
+.xmain .bgf.a{left:-160px;top:40px;width:420px;height:420px;opacity:.1}
+.xmain .bgf.b{right:-180px;bottom:-120px;width:380px;height:380px;opacity:.08}
+@media (max-width:900px){
+  .xgrid{grid-template-columns:minmax(0,1fr)}
+  .xout{position:static}
+}
+@media (max-width:640px){
+  .xpill{display:none}
+  .xmain{padding:30px 0 72px}
+  .xhead h1{font-size:44px}
+  .xhead p{font-size:17px}
+  .xq{padding:18px 16px 20px}
+  .xq h2{font-size:23px}
+  .xq .hint,.xmoney,.xchips{margin-left:0}
+  .xcard{padding:22px 20px}
+  .xsave .btn{width:100%}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="sf" viewBox="-60 -60 120 120">
+      <path d="M16.8 58.3C14.6 58.0 13.0 57.5 11.0 56.2C8.3 54.5 6.1 52.1 4.3 48.7C3.2 46.7 2.9 45.9 2.3 43.8C1.5 41.2 1.2 40.7 0.4 40.7C-0.2 40.7 -0.5 41.0 -1.2 42.5C-3.0 46.4 -5.9 50.1 -8.8 52.5C-12.2 55.2 -15.7 56.7 -20.3 57.1C-22.8 57.3 -25.6 56.7 -27.4 55.4C-29.4 54.0 -31.7 50.8 -32.5 48.4C-33.4 45.9 -33.6 42.6 -33.1 39.6C-32.8 37.8 -32.8 37.3 -33.3 36.9C-33.6 36.6 -34.4 36.4 -34.9 36.5C-36.4 36.8 -39.3 36.8 -40.9 36.4C-43.5 35.7 -45.8 33.8 -47.1 31.1C-48.1 29.0 -48.4 27.8 -48.4 25.4C-48.4 22.4 -47.5 19.1 -45.9 16.8C-45.4 16.1 -45.3 15.8 -45.3 15.4C-45.2 14.2 -45.8 13.8 -48.4 12.8C-49.4 12.4 -50.9 11.6 -52.5 10.5C-53.4 9.9 -55.3 8.2 -55.9 7.3C-56.5 6.6 -57.3 4.9 -57.7 3.8C-58.1 2.7 -58.1 0.1 -57.7 -1.2C-56.6 -4.5 -55.1 -6.9 -52.7 -9.2C-51.3 -10.5 -50.9 -10.8 -49.2 -11.8C-47.7 -12.7 -47.1 -13.0 -45.2 -13.4C-43.1 -14.0 -42.7 -14.3 -42.7 -15.3C-42.7 -16.0 -42.8 -16.3 -43.6 -17.2C-44.2 -17.8 -45.4 -19.6 -46.1 -20.8C-46.6 -21.7 -47.8 -25.0 -48.0 -26.1C-48.3 -27.6 -48.3 -30.8 -48.0 -32.0C-47.0 -35.4 -44.8 -37.8 -41.5 -39.0C-37.2 -40.5 -33.9 -40.6 -29.1 -39.2C-26.9 -38.6 -26.4 -38.4 -25.4 -37.8C-24.2 -37.1 -23.5 -36.9 -22.9 -37.2C-22.2 -37.5 -22.0 -37.9 -21.9 -39.6C-21.8 -42.9 -20.9 -45.9 -19.5 -48.6C-17.5 -52.4 -14.5 -55.4 -10.9 -57.0C-8.5 -58.1 -8.0 -58.2 -5.6 -58.2C-2.9 -58.2 -2.5 -58.1 0.0 -56.9C4.0 -54.9 7.1 -51.4 9.2 -46.4C10.2 -43.9 10.4 -43.4 10.9 -40.7C11.3 -38.4 11.5 -37.8 12.1 -37.6C12.9 -37.3 13.4 -37.5 15.2 -39.1C17.2 -41.0 19.0 -42.1 22.1 -43.5C26.1 -45.3 31.7 -45.7 35.8 -44.5C37.0 -44.1 39.0 -43.0 40.0 -42.1C41.8 -40.5 43.4 -37.8 43.9 -35.2C44.1 -34.3 44.1 -30.9 43.9 -29.8C43.6 -27.9 42.3 -24.4 41.5 -23.0C39.8 -20.2 40.0 -19.5 43.1 -19.0C47.5 -18.3 51.7 -15.7 54.6 -12.0C56.0 -10.1 57.4 -7.6 57.8 -5.9C58.1 -4.6 58.2 -1.3 57.9 -0.2C57.4 1.5 56.0 3.8 54.4 5.3C53.5 6.2 51.3 7.7 50.2 8.3C49.6 8.6 46.2 9.8 45.0 10.2C43.8 10.5 43.4 10.7 43.1 11.0C42.6 11.6 42.9 12.1 44.5 13.6C47.0 15.9 49.1 19.4 49.8 22.2C50.1 23.4 50.1 26.7 49.8 27.8C48.8 31.4 45.1 35.1 41.3 36.2C38.9 36.9 35.8 37.1 33.3 36.7C31.6 36.4 31.1 36.4 30.7 36.9C30.2 37.4 30.2 37.8 30.6 39.5C30.8 40.9 30.9 41.3 30.9 43.2C30.9 46.6 30.5 48.3 29.0 51.2C27.1 55.1 24.5 57.5 21.5 58.1C20.6 58.3 18.0 58.4 16.8 58.3Z" fill="#FFD400"/><path d="M16.8 58.3C14.6 58.0 13.0 57.5 11.0 56.2C8.3 54.5 6.1 52.1 4.3 48.7C3.2 46.7 2.9 45.9 2.3 43.8C1.5 41.2 1.2 40.7 0.4 40.7C-0.2 40.7 -0.5 41.0 -1.2 42.5C-3.0 46.4 -5.9 50.1 -8.8 52.5C-12.2 55.2 -15.7 56.7 -20.3 57.1C-22.8 57.3 -25.6 56.7 -27.4 55.4C-29.4 54.0 -31.7 50.8 -32.5 48.4C-33.4 45.9 -33.6 42.6 -33.1 39.6C-32.8 37.8 -32.8 37.3 -33.3 36.9C-33.6 36.6 -34.4 36.4 -34.9 36.5C-36.4 36.8 -39.3 36.8 -40.9 36.4C-43.5 35.7 -45.8 33.8 -47.1 31.1C-48.1 29.0 -48.4 27.8 -48.4 25.4C-48.4 22.4 -47.5 19.1 -45.9 16.8C-45.4 16.1 -45.3 15.8 -45.3 15.4C-45.2 14.2 -45.8 13.8 -48.4 12.8C-49.4 12.4 -50.9 11.6 -52.5 10.5C-53.4 9.9 -55.3 8.2 -55.9 7.3C-56.5 6.6 -57.3 4.9 -57.7 3.8C-58.1 2.7 -58.1 0.1 -57.7 -1.2C-56.6 -4.5 -55.1 -6.9 -52.7 -9.2C-51.3 -10.5 -50.9 -10.8 -49.2 -11.8C-47.7 -12.7 -47.1 -13.0 -45.2 -13.4C-43.1 -14.0 -42.7 -14.3 -42.7 -15.3C-42.7 -16.0 -42.8 -16.3 -43.6 -17.2C-44.2 -17.8 -45.4 -19.6 -46.1 -20.8C-46.6 -21.7 -47.8 -25.0 -48.0 -26.1C-48.3 -27.6 -48.3 -30.8 -48.0 -32.0C-47.0 -35.4 -44.8 -37.8 -41.5 -39.0C-37.2 -40.5 -33.9 -40.6 -29.1 -39.2C-26.9 -38.6 -26.4 -38.4 -25.4 -37.8C-24.2 -37.1 -23.5 -36.9 -22.9 -37.2C-22.2 -37.5 -22.0 -37.9 -21.9 -39.6C-21.8 -42.9 -20.9 -45.9 -19.5 -48.6C-17.5 -52.4 -14.5 -55.4 -10.9 -57.0C-8.5 -58.1 -8.0 -58.2 -5.6 -58.2C-2.9 -58.2 -2.5 -58.1 0.0 -56.9C4.0 -54.9 7.1 -51.4 9.2 -46.4C10.2 -43.9 10.4 -43.4 10.9 -40.7C11.3 -38.4 11.5 -37.8 12.1 -37.6C12.9 -37.3 13.4 -37.5 15.2 -39.1C17.2 -41.0 19.0 -42.1 22.1 -43.5C26.1 -45.3 31.7 -45.7 35.8 -44.5C37.0 -44.1 39.0 -43.0 40.0 -42.1C41.8 -40.5 43.4 -37.8 43.9 -35.2C44.1 -34.3 44.1 -30.9 43.9 -29.8C43.6 -27.9 42.3 -24.4 41.5 -23.0C39.8 -20.2 40.0 -19.5 43.1 -19.0C47.5 -18.3 51.7 -15.7 54.6 -12.0C56.0 -10.1 57.4 -7.6 57.8 -5.9C58.1 -4.6 58.2 -1.3 57.9 -0.2C57.4 1.5 56.0 3.8 54.4 5.3C53.5 6.2 51.3 7.7 50.2 8.3C49.6 8.6 46.2 9.8 45.0 10.2C43.8 10.5 43.4 10.7 43.1 11.0C42.6 11.6 42.9 12.1 44.5 13.6C47.0 15.9 49.1 19.4 49.8 22.2C50.1 23.4 50.1 26.7 49.8 27.8C48.8 31.4 45.1 35.1 41.3 36.2C38.9 36.9 35.8 37.1 33.3 36.7C31.6 36.4 31.1 36.4 30.7 36.9C30.2 37.4 30.2 37.8 30.6 39.5C30.8 40.9 30.9 41.3 30.9 43.2C30.9 46.6 30.5 48.3 29.0 51.2C27.1 55.1 24.5 57.5 21.5 58.1C20.6 58.3 18.0 58.4 16.8 58.3ZM20.3 51.7C21.8 51.1 23.7 48.4 24.2 45.9C24.4 44.8 24.4 42.6 24.2 41.2C24.0 40.0 22.3 35.0 21.9 34.1C21.2 32.8 19.9 32.6 18.4 33.6C18.0 33.9 17.3 34.3 16.9 34.4C16.4 34.6 15.5 35.1 14.7 35.4C13.7 35.9 13.0 36.1 11.7 36.5C9.8 36.9 9.5 37.1 9.0 37.6C8.1 38.7 8.1 39.4 8.7 41.8C9.8 45.2 11.9 48.5 14.0 50.0C16.6 51.9 18.5 52.4 20.3 51.7ZM-19.3 50.5C-14.9 49.6 -11.7 47.3 -8.5 42.5C-6.8 40.0 -6.6 39.2 -7.0 38.2C-7.4 37.3 -7.9 37.0 -10.0 36.5C-12.7 35.8 -17.4 33.4 -19.8 31.6C-20.9 30.7 -21.8 30.6 -22.5 31.0C-23.3 31.5 -25.7 36.5 -26.4 38.8C-27.1 41.5 -26.9 45.1 -25.9 47.1C-24.3 50.3 -22.6 51.1 -19.3 50.5ZM4.8 35.7C5.5 35.6 6.5 35.4 7.0 35.2C12.7 33.8 12.0 34.0 16.3 31.9C17.6 31.3 19.6 30.1 21.2 28.8C22.6 27.7 25.7 24.6 26.5 23.4C26.8 23.1 27.2 22.5 27.4 22.2C27.7 21.9 28.1 21.3 28.3 20.8C28.6 20.4 29.0 19.8 29.2 19.4C29.7 18.7 30.0 18.1 30.4 17.1C30.5 16.6 30.9 15.8 31.2 15.2C32.4 12.5 33.3 6.8 33.0 2.9C32.7 -1.6 32.1 -4.7 31.1 -6.6C31.0 -6.9 30.7 -7.7 30.4 -8.3C30.0 -9.6 29.7 -10.2 29.2 -10.8C29.1 -11.1 28.7 -11.8 28.3 -12.4C27.9 -13.0 27.5 -13.8 27.3 -14.0C27.0 -14.3 26.5 -15.0 26.1 -15.5C24.2 -18.0 20.2 -21.5 17.6 -22.9C17.1 -23.2 16.4 -23.6 16.0 -23.8C15.2 -24.4 15.1 -24.5 12.5 -25.5C9.4 -26.7 8.4 -26.9 5.1 -27.4C0.3 -28.0 -7.4 -27.2 -10.2 -25.8C-10.6 -25.6 -11.5 -25.2 -12.3 -24.9C-14.9 -23.8 -18.5 -21.5 -20.5 -19.7C-20.9 -19.3 -21.5 -18.7 -21.8 -18.5C-22.5 -17.8 -24.2 -15.9 -24.5 -15.4C-24.7 -15.2 -25.2 -14.6 -25.6 -14.0C-26.1 -13.5 -26.7 -12.6 -27.0 -12.0C-27.3 -11.4 -27.8 -10.5 -28.0 -10.0C-28.3 -9.5 -28.7 -8.6 -29.0 -7.9C-29.2 -7.2 -29.6 -6.2 -29.8 -5.7C-31.6 -1.4 -31.7 8.3 -30.0 13.2C-28.9 16.2 -28.3 17.7 -27.6 18.8C-27.3 19.4 -26.8 20.2 -26.6 20.6C-25.5 22.6 -22.0 26.6 -19.8 28.3C-19.4 28.6 -18.8 29.1 -18.5 29.3C-18.2 29.5 -17.7 29.9 -17.3 30.1C-16.9 30.4 -16.1 30.8 -15.7 31.2C-15.2 31.5 -14.3 32.0 -13.8 32.2C-13.2 32.5 -12.2 32.9 -11.5 33.3C-10.6 33.7 -10.0 34.0 -8.7 34.3C-7.8 34.5 -6.7 34.9 -6.2 35.0C-3.3 35.9 1.1 36.1 4.8 35.7ZM-35.8 30.3C-34.5 30.1 -33.9 29.9 -32.0 29.1C-27.8 27.3 -26.8 26.6 -26.8 25.3C-26.8 24.7 -27.1 24.2 -27.9 23.0C-28.3 22.5 -28.8 21.8 -29.0 21.4C-29.2 21.0 -29.6 20.2 -30.0 19.7C-30.3 19.2 -30.7 18.4 -30.9 17.9C-31.1 17.4 -31.4 16.8 -31.5 16.6C-32.1 15.8 -33.2 15.2 -34.2 15.4C-34.7 15.5 -37.1 16.7 -37.8 17.2C-41.1 19.8 -42.8 25.0 -41.4 27.9C-40.3 30.1 -38.8 30.8 -35.8 30.3ZM38.8 30.2C41.8 29.4 43.8 26.9 43.4 24.6C43.3 23.6 42.4 21.7 41.7 20.6C40.6 19.0 36.7 15.7 35.6 15.5C34.3 15.2 33.4 16.1 32.5 18.4C32.2 19.0 31.8 19.8 31.5 20.2C31.3 20.7 30.8 21.4 30.5 21.9C30.2 22.4 29.7 23.3 29.3 23.8C27.9 25.5 27.6 26.7 28.3 27.6C28.9 28.4 32.6 30.0 34.5 30.3C35.5 30.5 38.1 30.4 38.8 30.2ZM-3.2 20.7C-6.0 20.5 -7.3 20.2 -9.5 19.0C-14.3 16.7 -17.9 12.0 -19.3 6.4C-20.4 1.9 -20.5 -3.5 -19.4 -5.1C-18.8 -6.0 -18.1 -6.2 -16.5 -5.5C-12.3 -3.8 -10.5 -3.3 -5.4 -2.5C-0.2 -1.6 5.5 -1.5 10.0 -2.2C12.3 -2.5 15.3 -3.1 16.8 -3.5C19.5 -4.2 20.1 -4.0 20.5 -2.1C20.6 -1.0 20.3 2.4 19.9 4.2C18.7 8.7 16.1 12.9 12.8 15.8C10.7 17.6 7.3 19.5 4.9 20.1C2.9 20.6 -0.8 20.9 -3.2 20.7ZM-35.5 8.4C-34.8 8.2 -34.3 7.8 -34.0 7.3C-33.8 6.9 -33.8 6.7 -33.7 4.2C-33.6 1.3 -33.2 -2.5 -32.7 -4.5C-32.3 -6.4 -32.5 -7.4 -33.5 -8.0C-34.0 -8.3 -34.0 -8.3 -36.0 -8.3C-39.1 -8.3 -42.6 -7.7 -44.8 -6.8C-48.3 -5.3 -51.5 -1.2 -51.3 1.4C-51.2 2.7 -50.4 3.9 -48.6 5.1C-46.6 6.6 -43.8 7.7 -41.1 8.2C-39.3 8.5 -36.3 8.6 -35.5 8.4ZM40.3 4.5C42.7 4.2 45.7 3.3 47.5 2.3C49.8 1.1 51.5 -0.9 51.6 -2.6C51.7 -4.7 49.4 -8.5 46.7 -10.4C46.0 -11.0 44.0 -12.0 42.9 -12.3C41.3 -12.9 38.3 -13.2 35.3 -13.1C31.8 -12.9 31.4 -12.1 33.1 -8.4C33.4 -7.7 33.8 -6.9 33.9 -6.5C34.2 -5.7 35.3 0.1 35.4 1.8C35.6 3.1 35.7 3.6 36.3 4.1C37.0 4.8 37.8 4.9 40.3 4.5ZM8.6 -7.9C6.4 -8.6 5.0 -10.8 5.5 -12.7C6.1 -15.0 8.5 -16.6 10.6 -16.0C13.1 -15.3 14.6 -12.7 13.6 -10.5C12.7 -8.6 10.3 -7.3 8.6 -7.9ZM-10.2 -9.4C-10.7 -9.5 -11.5 -9.9 -12.0 -10.4C-14.7 -12.8 -13.3 -17.1 -9.8 -17.7C-8.1 -18.0 -6.2 -16.9 -5.4 -15.3C-5.0 -14.5 -4.9 -12.8 -5.3 -11.9C-5.7 -11.2 -6.9 -10.0 -7.7 -9.6C-8.3 -9.3 -9.5 -9.2 -10.2 -9.4ZM-29.0 -14.4C-28.4 -14.7 -27.6 -15.4 -27.1 -16.1C-26.2 -17.6 -24.0 -19.8 -21.4 -22.1C-20.0 -23.3 -19.7 -23.8 -19.8 -24.5C-20.1 -26.3 -24.9 -30.6 -28.6 -32.3C-32.1 -34.0 -36.4 -34.3 -39.0 -33.2C-41.6 -32.1 -42.2 -29.5 -40.8 -25.5C-39.8 -22.6 -37.2 -19.3 -33.4 -16.3C-30.8 -14.2 -30.0 -13.8 -29.0 -14.4ZM29.0 -19.0C31.0 -19.9 34.6 -23.8 35.9 -26.3C36.4 -27.3 37.1 -29.7 37.3 -30.8C38.0 -34.6 36.3 -37.6 33.1 -38.4C31.6 -38.7 28.5 -38.5 26.8 -37.9C22.6 -36.5 19.4 -34.2 16.3 -30.2C15.1 -28.6 14.9 -27.9 15.6 -27.2C16.0 -26.8 17.9 -25.6 19.1 -25.0C19.5 -24.8 20.2 -24.4 20.6 -24.1C20.9 -23.8 21.5 -23.4 21.8 -23.2C22.5 -22.7 23.9 -21.5 25.3 -20.2C27.1 -18.6 27.7 -18.4 29.0 -19.0ZM-10.4 -28.2C-9.4 -28.6 -9.0 -28.7 -5.6 -29.3C-2.3 -30.0 -0.5 -30.1 2.3 -30.0C3.6 -30.0 4.1 -30.2 4.6 -31.0C5.1 -31.8 5.2 -32.2 5.0 -35.0C4.6 -39.8 4.1 -42.1 2.3 -45.5C0.9 -48.3 -1.9 -51.0 -4.1 -51.8C-7.5 -52.9 -12.6 -49.2 -14.5 -44.2C-16.3 -39.8 -15.0 -29.4 -12.5 -28.1C-11.9 -27.8 -11.5 -27.8 -10.4 -28.2Z" fill="#1A1412"/>
+    </symbol>
+<symbol id="sfo" viewBox="-60 -60 120 120">
+      <path d="M16.8 58.3C14.6 58.0 13.0 57.5 11.0 56.2C8.3 54.5 6.1 52.1 4.3 48.7C3.2 46.7 2.9 45.9 2.3 43.8C1.5 41.2 1.2 40.7 0.4 40.7C-0.2 40.7 -0.5 41.0 -1.2 42.5C-3.0 46.4 -5.9 50.1 -8.8 52.5C-12.2 55.2 -15.7 56.7 -20.3 57.1C-22.8 57.3 -25.6 56.7 -27.4 55.4C-29.4 54.0 -31.7 50.8 -32.5 48.4C-33.4 45.9 -33.6 42.6 -33.1 39.6C-32.8 37.8 -32.8 37.3 -33.3 36.9C-33.6 36.6 -34.4 36.4 -34.9 36.5C-36.4 36.8 -39.3 36.8 -40.9 36.4C-43.5 35.7 -45.8 33.8 -47.1 31.1C-48.1 29.0 -48.4 27.8 -48.4 25.4C-48.4 22.4 -47.5 19.1 -45.9 16.8C-45.4 16.1 -45.3 15.8 -45.3 15.4C-45.2 14.2 -45.8 13.8 -48.4 12.8C-49.4 12.4 -50.9 11.6 -52.5 10.5C-53.4 9.9 -55.3 8.2 -55.9 7.3C-56.5 6.6 -57.3 4.9 -57.7 3.8C-58.1 2.7 -58.1 0.1 -57.7 -1.2C-56.6 -4.5 -55.1 -6.9 -52.7 -9.2C-51.3 -10.5 -50.9 -10.8 -49.2 -11.8C-47.7 -12.7 -47.1 -13.0 -45.2 -13.4C-43.1 -14.0 -42.7 -14.3 -42.7 -15.3C-42.7 -16.0 -42.8 -16.3 -43.6 -17.2C-44.2 -17.8 -45.4 -19.6 -46.1 -20.8C-46.6 -21.7 -47.8 -25.0 -48.0 -26.1C-48.3 -27.6 -48.3 -30.8 -48.0 -32.0C-47.0 -35.4 -44.8 -37.8 -41.5 -39.0C-37.2 -40.5 -33.9 -40.6 -29.1 -39.2C-26.9 -38.6 -26.4 -38.4 -25.4 -37.8C-24.2 -37.1 -23.5 -36.9 -22.9 -37.2C-22.2 -37.5 -22.0 -37.9 -21.9 -39.6C-21.8 -42.9 -20.9 -45.9 -19.5 -48.6C-17.5 -52.4 -14.5 -55.4 -10.9 -57.0C-8.5 -58.1 -8.0 -58.2 -5.6 -58.2C-2.9 -58.2 -2.5 -58.1 0.0 -56.9C4.0 -54.9 7.1 -51.4 9.2 -46.4C10.2 -43.9 10.4 -43.4 10.9 -40.7C11.3 -38.4 11.5 -37.8 12.1 -37.6C12.9 -37.3 13.4 -37.5 15.2 -39.1C17.2 -41.0 19.0 -42.1 22.1 -43.5C26.1 -45.3 31.7 -45.7 35.8 -44.5C37.0 -44.1 39.0 -43.0 40.0 -42.1C41.8 -40.5 43.4 -37.8 43.9 -35.2C44.1 -34.3 44.1 -30.9 43.9 -29.8C43.6 -27.9 42.3 -24.4 41.5 -23.0C39.8 -20.2 40.0 -19.5 43.1 -19.0C47.5 -18.3 51.7 -15.7 54.6 -12.0C56.0 -10.1 57.4 -7.6 57.8 -5.9C58.1 -4.6 58.2 -1.3 57.9 -0.2C57.4 1.5 56.0 3.8 54.4 5.3C53.5 6.2 51.3 7.7 50.2 8.3C49.6 8.6 46.2 9.8 45.0 10.2C43.8 10.5 43.4 10.7 43.1 11.0C42.6 11.6 42.9 12.1 44.5 13.6C47.0 15.9 49.1 19.4 49.8 22.2C50.1 23.4 50.1 26.7 49.8 27.8C48.8 31.4 45.1 35.1 41.3 36.2C38.9 36.9 35.8 37.1 33.3 36.7C31.6 36.4 31.1 36.4 30.7 36.9C30.2 37.4 30.2 37.8 30.6 39.5C30.8 40.9 30.9 41.3 30.9 43.2C30.9 46.6 30.5 48.3 29.0 51.2C27.1 55.1 24.5 57.5 21.5 58.1C20.6 58.3 18.0 58.4 16.8 58.3Z" fill="#F2C94C"/><path d="M16.8 58.3C14.6 58.0 13.0 57.5 11.0 56.2C8.3 54.5 6.1 52.1 4.3 48.7C3.2 46.7 2.9 45.9 2.3 43.8C1.5 41.2 1.2 40.7 0.4 40.7C-0.2 40.7 -0.5 41.0 -1.2 42.5C-3.0 46.4 -5.9 50.1 -8.8 52.5C-12.2 55.2 -15.7 56.7 -20.3 57.1C-22.8 57.3 -25.6 56.7 -27.4 55.4C-29.4 54.0 -31.7 50.8 -32.5 48.4C-33.4 45.9 -33.6 42.6 -33.1 39.6C-32.8 37.8 -32.8 37.3 -33.3 36.9C-33.6 36.6 -34.4 36.4 -34.9 36.5C-36.4 36.8 -39.3 36.8 -40.9 36.4C-43.5 35.7 -45.8 33.8 -47.1 31.1C-48.1 29.0 -48.4 27.8 -48.4 25.4C-48.4 22.4 -47.5 19.1 -45.9 16.8C-45.4 16.1 -45.3 15.8 -45.3 15.4C-45.2 14.2 -45.8 13.8 -48.4 12.8C-49.4 12.4 -50.9 11.6 -52.5 10.5C-53.4 9.9 -55.3 8.2 -55.9 7.3C-56.5 6.6 -57.3 4.9 -57.7 3.8C-58.1 2.7 -58.1 0.1 -57.7 -1.2C-56.6 -4.5 -55.1 -6.9 -52.7 -9.2C-51.3 -10.5 -50.9 -10.8 -49.2 -11.8C-47.7 -12.7 -47.1 -13.0 -45.2 -13.4C-43.1 -14.0 -42.7 -14.3 -42.7 -15.3C-42.7 -16.0 -42.8 -16.3 -43.6 -17.2C-44.2 -17.8 -45.4 -19.6 -46.1 -20.8C-46.6 -21.7 -47.8 -25.0 -48.0 -26.1C-48.3 -27.6 -48.3 -30.8 -48.0 -32.0C-47.0 -35.4 -44.8 -37.8 -41.5 -39.0C-37.2 -40.5 -33.9 -40.6 -29.1 -39.2C-26.9 -38.6 -26.4 -38.4 -25.4 -37.8C-24.2 -37.1 -23.5 -36.9 -22.9 -37.2C-22.2 -37.5 -22.0 -37.9 -21.9 -39.6C-21.8 -42.9 -20.9 -45.9 -19.5 -48.6C-17.5 -52.4 -14.5 -55.4 -10.9 -57.0C-8.5 -58.1 -8.0 -58.2 -5.6 -58.2C-2.9 -58.2 -2.5 -58.1 0.0 -56.9C4.0 -54.9 7.1 -51.4 9.2 -46.4C10.2 -43.9 10.4 -43.4 10.9 -40.7C11.3 -38.4 11.5 -37.8 12.1 -37.6C12.9 -37.3 13.4 -37.5 15.2 -39.1C17.2 -41.0 19.0 -42.1 22.1 -43.5C26.1 -45.3 31.7 -45.7 35.8 -44.5C37.0 -44.1 39.0 -43.0 40.0 -42.1C41.8 -40.5 43.4 -37.8 43.9 -35.2C44.1 -34.3 44.1 -30.9 43.9 -29.8C43.6 -27.9 42.3 -24.4 41.5 -23.0C39.8 -20.2 40.0 -19.5 43.1 -19.0C47.5 -18.3 51.7 -15.7 54.6 -12.0C56.0 -10.1 57.4 -7.6 57.8 -5.9C58.1 -4.6 58.2 -1.3 57.9 -0.2C57.4 1.5 56.0 3.8 54.4 5.3C53.5 6.2 51.3 7.7 50.2 8.3C49.6 8.6 46.2 9.8 45.0 10.2C43.8 10.5 43.4 10.7 43.1 11.0C42.6 11.6 42.9 12.1 44.5 13.6C47.0 15.9 49.1 19.4 49.8 22.2C50.1 23.4 50.1 26.7 49.8 27.8C48.8 31.4 45.1 35.1 41.3 36.2C38.9 36.9 35.8 37.1 33.3 36.7C31.6 36.4 31.1 36.4 30.7 36.9C30.2 37.4 30.2 37.8 30.6 39.5C30.8 40.9 30.9 41.3 30.9 43.2C30.9 46.6 30.5 48.3 29.0 51.2C27.1 55.1 24.5 57.5 21.5 58.1C20.6 58.3 18.0 58.4 16.8 58.3ZM20.3 51.7C21.8 51.1 23.7 48.4 24.2 45.9C24.4 44.8 24.4 42.6 24.2 41.2C24.0 40.0 22.3 35.0 21.9 34.1C21.2 32.8 19.9 32.6 18.4 33.6C18.0 33.9 17.3 34.3 16.9 34.4C16.4 34.6 15.5 35.1 14.7 35.4C13.7 35.9 13.0 36.1 11.7 36.5C9.8 36.9 9.5 37.1 9.0 37.6C8.1 38.7 8.1 39.4 8.7 41.8C9.8 45.2 11.9 48.5 14.0 50.0C16.6 51.9 18.5 52.4 20.3 51.7ZM-19.3 50.5C-14.9 49.6 -11.7 47.3 -8.5 42.5C-6.8 40.0 -6.6 39.2 -7.0 38.2C-7.4 37.3 -7.9 37.0 -10.0 36.5C-12.7 35.8 -17.4 33.4 -19.8 31.6C-20.9 30.7 -21.8 30.6 -22.5 31.0C-23.3 31.5 -25.7 36.5 -26.4 38.8C-27.1 41.5 -26.9 45.1 -25.9 47.1C-24.3 50.3 -22.6 51.1 -19.3 50.5ZM4.8 35.7C5.5 35.6 6.5 35.4 7.0 35.2C12.7 33.8 12.0 34.0 16.3 31.9C17.6 31.3 19.6 30.1 21.2 28.8C22.6 27.7 25.7 24.6 26.5 23.4C26.8 23.1 27.2 22.5 27.4 22.2C27.7 21.9 28.1 21.3 28.3 20.8C28.6 20.4 29.0 19.8 29.2 19.4C29.7 18.7 30.0 18.1 30.4 17.1C30.5 16.6 30.9 15.8 31.2 15.2C32.4 12.5 33.3 6.8 33.0 2.9C32.7 -1.6 32.1 -4.7 31.1 -6.6C31.0 -6.9 30.7 -7.7 30.4 -8.3C30.0 -9.6 29.7 -10.2 29.2 -10.8C29.1 -11.1 28.7 -11.8 28.3 -12.4C27.9 -13.0 27.5 -13.8 27.3 -14.0C27.0 -14.3 26.5 -15.0 26.1 -15.5C24.2 -18.0 20.2 -21.5 17.6 -22.9C17.1 -23.2 16.4 -23.6 16.0 -23.8C15.2 -24.4 15.1 -24.5 12.5 -25.5C9.4 -26.7 8.4 -26.9 5.1 -27.4C0.3 -28.0 -7.4 -27.2 -10.2 -25.8C-10.6 -25.6 -11.5 -25.2 -12.3 -24.9C-14.9 -23.8 -18.5 -21.5 -20.5 -19.7C-20.9 -19.3 -21.5 -18.7 -21.8 -18.5C-22.5 -17.8 -24.2 -15.9 -24.5 -15.4C-24.7 -15.2 -25.2 -14.6 -25.6 -14.0C-26.1 -13.5 -26.7 -12.6 -27.0 -12.0C-27.3 -11.4 -27.8 -10.5 -28.0 -10.0C-28.3 -9.5 -28.7 -8.6 -29.0 -7.9C-29.2 -7.2 -29.6 -6.2 -29.8 -5.7C-31.6 -1.4 -31.7 8.3 -30.0 13.2C-28.9 16.2 -28.3 17.7 -27.6 18.8C-27.3 19.4 -26.8 20.2 -26.6 20.6C-25.5 22.6 -22.0 26.6 -19.8 28.3C-19.4 28.6 -18.8 29.1 -18.5 29.3C-18.2 29.5 -17.7 29.9 -17.3 30.1C-16.9 30.4 -16.1 30.8 -15.7 31.2C-15.2 31.5 -14.3 32.0 -13.8 32.2C-13.2 32.5 -12.2 32.9 -11.5 33.3C-10.6 33.7 -10.0 34.0 -8.7 34.3C-7.8 34.5 -6.7 34.9 -6.2 35.0C-3.3 35.9 1.1 36.1 4.8 35.7ZM-35.8 30.3C-34.5 30.1 -33.9 29.9 -32.0 29.1C-27.8 27.3 -26.8 26.6 -26.8 25.3C-26.8 24.7 -27.1 24.2 -27.9 23.0C-28.3 22.5 -28.8 21.8 -29.0 21.4C-29.2 21.0 -29.6 20.2 -30.0 19.7C-30.3 19.2 -30.7 18.4 -30.9 17.9C-31.1 17.4 -31.4 16.8 -31.5 16.6C-32.1 15.8 -33.2 15.2 -34.2 15.4C-34.7 15.5 -37.1 16.7 -37.8 17.2C-41.1 19.8 -42.8 25.0 -41.4 27.9C-40.3 30.1 -38.8 30.8 -35.8 30.3ZM38.8 30.2C41.8 29.4 43.8 26.9 43.4 24.6C43.3 23.6 42.4 21.7 41.7 20.6C40.6 19.0 36.7 15.7 35.6 15.5C34.3 15.2 33.4 16.1 32.5 18.4C32.2 19.0 31.8 19.8 31.5 20.2C31.3 20.7 30.8 21.4 30.5 21.9C30.2 22.4 29.7 23.3 29.3 23.8C27.9 25.5 27.6 26.7 28.3 27.6C28.9 28.4 32.6 30.0 34.5 30.3C35.5 30.5 38.1 30.4 38.8 30.2ZM-3.2 20.7C-6.0 20.5 -7.3 20.2 -9.5 19.0C-14.3 16.7 -17.9 12.0 -19.3 6.4C-20.4 1.9 -20.5 -3.5 -19.4 -5.1C-18.8 -6.0 -18.1 -6.2 -16.5 -5.5C-12.3 -3.8 -10.5 -3.3 -5.4 -2.5C-0.2 -1.6 5.5 -1.5 10.0 -2.2C12.3 -2.5 15.3 -3.1 16.8 -3.5C19.5 -4.2 20.1 -4.0 20.5 -2.1C20.6 -1.0 20.3 2.4 19.9 4.2C18.7 8.7 16.1 12.9 12.8 15.8C10.7 17.6 7.3 19.5 4.9 20.1C2.9 20.6 -0.8 20.9 -3.2 20.7ZM-35.5 8.4C-34.8 8.2 -34.3 7.8 -34.0 7.3C-33.8 6.9 -33.8 6.7 -33.7 4.2C-33.6 1.3 -33.2 -2.5 -32.7 -4.5C-32.3 -6.4 -32.5 -7.4 -33.5 -8.0C-34.0 -8.3 -34.0 -8.3 -36.0 -8.3C-39.1 -8.3 -42.6 -7.7 -44.8 -6.8C-48.3 -5.3 -51.5 -1.2 -51.3 1.4C-51.2 2.7 -50.4 3.9 -48.6 5.1C-46.6 6.6 -43.8 7.7 -41.1 8.2C-39.3 8.5 -36.3 8.6 -35.5 8.4ZM40.3 4.5C42.7 4.2 45.7 3.3 47.5 2.3C49.8 1.1 51.5 -0.9 51.6 -2.6C51.7 -4.7 49.4 -8.5 46.7 -10.4C46.0 -11.0 44.0 -12.0 42.9 -12.3C41.3 -12.9 38.3 -13.2 35.3 -13.1C31.8 -12.9 31.4 -12.1 33.1 -8.4C33.4 -7.7 33.8 -6.9 33.9 -6.5C34.2 -5.7 35.3 0.1 35.4 1.8C35.6 3.1 35.7 3.6 36.3 4.1C37.0 4.8 37.8 4.9 40.3 4.5ZM8.6 -7.9C6.4 -8.6 5.0 -10.8 5.5 -12.7C6.1 -15.0 8.5 -16.6 10.6 -16.0C13.1 -15.3 14.6 -12.7 13.6 -10.5C12.7 -8.6 10.3 -7.3 8.6 -7.9ZM-10.2 -9.4C-10.7 -9.5 -11.5 -9.9 -12.0 -10.4C-14.7 -12.8 -13.3 -17.1 -9.8 -17.7C-8.1 -18.0 -6.2 -16.9 -5.4 -15.3C-5.0 -14.5 -4.9 -12.8 -5.3 -11.9C-5.7 -11.2 -6.9 -10.0 -7.7 -9.6C-8.3 -9.3 -9.5 -9.2 -10.2 -9.4ZM-29.0 -14.4C-28.4 -14.7 -27.6 -15.4 -27.1 -16.1C-26.2 -17.6 -24.0 -19.8 -21.4 -22.1C-20.0 -23.3 -19.7 -23.8 -19.8 -24.5C-20.1 -26.3 -24.9 -30.6 -28.6 -32.3C-32.1 -34.0 -36.4 -34.3 -39.0 -33.2C-41.6 -32.1 -42.2 -29.5 -40.8 -25.5C-39.8 -22.6 -37.2 -19.3 -33.4 -16.3C-30.8 -14.2 -30.0 -13.8 -29.0 -14.4ZM29.0 -19.0C31.0 -19.9 34.6 -23.8 35.9 -26.3C36.4 -27.3 37.1 -29.7 37.3 -30.8C38.0 -34.6 36.3 -37.6 33.1 -38.4C31.6 -38.7 28.5 -38.5 26.8 -37.9C22.6 -36.5 19.4 -34.2 16.3 -30.2C15.1 -28.6 14.9 -27.9 15.6 -27.2C16.0 -26.8 17.9 -25.6 19.1 -25.0C19.5 -24.8 20.2 -24.4 20.6 -24.1C20.9 -23.8 21.5 -23.4 21.8 -23.2C22.5 -22.7 23.9 -21.5 25.3 -20.2C27.1 -18.6 27.7 -18.4 29.0 -19.0ZM-10.4 -28.2C-9.4 -28.6 -9.0 -28.7 -5.6 -29.3C-2.3 -30.0 -0.5 -30.1 2.3 -30.0C3.6 -30.0 4.1 -30.2 4.6 -31.0C5.1 -31.8 5.2 -32.2 5.0 -35.0C4.6 -39.8 4.1 -42.1 2.3 -45.5C0.9 -48.3 -1.9 -51.0 -4.1 -51.8C-7.5 -52.9 -12.6 -49.2 -14.5 -44.2C-16.3 -39.8 -15.0 -29.4 -12.5 -28.1C-11.9 -27.8 -11.5 -27.8 -10.4 -28.2Z" fill="#7A6A60"/>
+    </symbol>
+<symbol id="arr" viewBox="0 0 16 16"><path d="M4.5 11.5 11.5 4.5M5.5 4.5h6v6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="ck" viewBox="0 0 16 16"><path d="m3.5 8.5 3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</defs></svg>
+
+<header class="xtop">
+  <div class="wrap">
+    <a class="xbrand" href="../"><img src="../img/mark.png" alt="" width="42" height="42">how we grow</a>
+    <span class="xpill"><i></i>The Exit Plan · Nov 17 to 19</span>
+  </div>
+</header>
+
+<main class="xmain">
+  <svg class="bgf a" aria-hidden="true"><use href="#sfo"/></svg>
+  <svg class="bgf b" aria-hidden="true"><use href="#sfo"/></svg>
+  <div class="wrap">
+    <div class="xhead">
+      <span class="eyebrow">Your exit number<span data-for></span></span>
+      <h1>How many people <em>would it take?</em></h1>
+      <p>Put in the monthly number that would give you more choice about work, and a price for your offer. A guess is fine. We’ll work on the real price on Day 2.</p>
+    </div>
+
+    <div class="xgrid">
+      <form class="xin" id="xform" novalidate onsubmit="return false">
+        <div class="xq">
+          <h2><span class="n">1</span><label for="goal">What would “enough” be, each month?</label></h2>
+          <p class="hint">The salary you’d replace, or the client income you’d let go of.</p>
+          <div class="xmoney"><span>$</span><input id="goal" name="goal" inputmode="numeric" autocomplete="off" value="4,000" aria-describedby="goal-u"><small id="goal-u">a month</small></div>
+          <div class="xchips" data-for="goal"><button type="button" data-v="2000">$2,000</button><button type="button" data-v="4000">$4,000</button><button type="button" data-v="6000">$6,000</button><button type="button" data-v="10000">$10,000</button></div>
+        </div>
+        <div class="xq">
+          <h2><span class="n">2</span><label for="price">What might your offer cost?</label></h2>
+          <p class="hint">One workshop, course or program, paid once.</p>
+          <div class="xmoney"><span>$</span><input id="price" name="price" inputmode="numeric" autocomplete="off" value="149"><small>each</small></div>
+          <div class="xchips" data-for="price"><button type="button" data-v="49">$49</button><button type="button" data-v="149">$149</button><button type="button" data-v="299">$299</button><button type="button" data-v="500">$500</button><button type="button" data-v="1000">$1,000</button></div>
+        </div>
+        <div class="xq">
+          <h2><span class="n">3</span><label for="sub">And if it all came from paid subscriptions?</label></h2>
+          <p class="hint">What a paid subscription to you would cost each month. Substack’s lowest is $5.</p>
+          <div class="xmoney"><span>$</span><input id="sub" name="sub" inputmode="numeric" autocomplete="off" value="8"><small>a month</small></div>
+          <div class="xchips" data-for="sub"><button type="button" data-v="5">$5</button><button type="button" data-v="8">$8</button><button type="button" data-v="10">$10</button></div>
+        </div>
+      </form>
+
+      <div class="xout">
+        <div class="xcard" id="xcard" aria-live="polite">
+          <svg class="fl" aria-hidden="true"><use href="#sfo"/></svg>
+          <small class="lab"><span data-own>Your</span> exit number</small>
+          <div class="xbig"><b id="oBuyers">27</b><span>people a month,<br>at <span id="oPrice">$149</span></span></div>
+          <p class="xeq" id="oEq"></p>
+          <div class="xvs">
+            <small>The same goal through paid subscriptions alone</small>
+            <div class="row"><b id="oSubs">500</b><span>paid subscribers<br>at <span id="oSub">$8</span> a month</span></div>
+            <p id="oFree"></p>
+          </div>
+          <p class="xyou" id="oYou" hidden></p>
+          <div class="xsave">
+            <button class="btn" type="button" id="xsave">save my number<svg aria-hidden="true"><use href="#arr"/></svg></button>
+            <span class="ok" id="xok" role="status"></span>
+          </div>
+          <p class="xnote">Saves a picture of your number. Bring it to Day 1, Tue Nov 17 at 12:00 pm New York. Before platform and card fees.</p>
+        </div>
+        <p class="xback"><a href="../confirmed/" id="xback">&larr; back to your confirmation page</a></p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="brand"><img src="../img/mark.png" alt="" width="48" height="48">how we grow</div>
+    <div class="links"><span>@ANACALIN</span><a href="https://substack.com/privacy" rel="noopener">privacy</a></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var API = '/api/ana-survey';
+  var qs = new URLSearchParams(location.search), reg = {};
+  try { reg = JSON.parse(sessionStorage.getItem('ana_reg') || localStorage.getItem('ana_reg') || '{}') } catch (e) {}
+  var first = (qs.get('first') || reg.first_name || '').trim().split(/\s+/)[0]; if (first.length > 30) first = '';
+  var email = (qs.get('email') || reg.email || '').trim(), ref = (qs.get('ref') || reg.ref || '').trim();
+  var page = qs.get('p') === 'vip' ? 'vip' : 'reg';
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (first) {
+    document.querySelectorAll('[data-for]').forEach(function(e){ if (e.tagName === 'SPAN') e.textContent = ', ' + first });
+    document.querySelectorAll('[data-own]').forEach(function(e){ e.textContent = first + '’s' });
+  }
+  document.getElementById('xback').href = page === 'vip' ? '../vip-confirmed/' : '../confirmed/';
+
+  /* what they told me in the 7 quick questions (the confirmation page keeps it in this browser) */
+  var sv = null; try { sv = JSON.parse(localStorage.getItem('ana_survey2') || 'null') } catch (e) {}
+  var SUBS = ['no newsletter yet', 'under 100 subscribers', '100 to 1,000 subscribers', '1,000 to 10,000 subscribers', 'more than 10,000 subscribers'];
+
+  var $ = function(id){ return document.getElementById(id) };
+  var inp = {goal: $('goal'), price: $('price'), sub: $('sub')}, LIM = {goal: 1000000, price: 100000, sub: 1000};
+  var fmt = function(n){ return Math.round(n).toLocaleString('en-US') };
+  var num = function(k){ var v = parseInt(String(inp[k].value).replace(/[^0-9]/g, ''), 10); return isFinite(v) && v > 0 ? Math.min(v, LIM[k]) : 0 };
+  var state = {};
+  try { var saved = JSON.parse(localStorage.getItem('ana_exit') || 'null'), SK = {goal:'goal_month', price:'price', sub:'sub_price'}; if (saved) ['goal', 'price', 'sub'].forEach(function(k){ if (saved[SK[k]]) inp[k].value = fmt(saved[SK[k]]) }) } catch (e) {}
+
+  function calc(){
+    var g = num('goal'), p = num('price'), s = num('sub');
+    var bm = g && p ? Math.ceil(g / p) : 0, by = g && p ? Math.ceil(g * 12 / p) : 0;
+    var subs = g && s ? Math.ceil(g / s) : 0, free = subs ? Math.ceil(subs / 0.05) : 0;
+    if (free > 1000) free = Math.round(free / 100) * 100;
+    state = {goal_month: g, price: p, buyers_month: bm, buyers_year: by, sub_price: s, subs_needed: subs, free_needed: free};
+    $('oBuyers').textContent = bm ? fmt(bm) : '?';
+    $('oPrice').textContent = p ? '$' + fmt(p) : 'your price';
+    $('oEq').innerHTML = bm ? fmt(bm) + ' × $' + fmt(p) + ' = <b>$' + fmt(bm * p) + ' a month</b>, about <b>' + fmt(by) + ' people a year</b>.' : 'Put in a monthly number and a price.';
+    $('oSubs').textContent = subs ? fmt(subs) : '?';
+    $('oSub').textContent = s ? '$' + fmt(s) : 'your price';
+    $('oFree').innerHTML = subs ? 'If about 1 in 20 free readers pay (5%, a common rule of thumb), that’s a list of about <b>' + fmt(free) + '</b>.' : '';
+    document.querySelectorAll('.xchips').forEach(function(c){ var v = num(c.getAttribute('data-for')); c.querySelectorAll('button').forEach(function(b){ b.classList.toggle('on', +b.getAttribute('data-v') === v) }) });
+    var a = sv && sv.a && sv.a.q2;
+    if (a != null && SUBS[a]) { $('oYou').hidden = false; $('oYou').innerHTML = 'You told me you have <b>' + SUBS[a] + '</b>' + '.' }
+    try { localStorage.setItem('ana_exit', JSON.stringify(state)) } catch (e) {}
+  }
+  Object.keys(inp).forEach(function(k){
+    inp[k].addEventListener('input', function(){ dirty = true; calc() });
+    inp[k].addEventListener('blur', function(){ var v = num(k); if (v) inp[k].value = fmt(v) });
+  });
+  document.querySelectorAll('.xchips').forEach(function(c){
+    c.addEventListener('click', function(e){ var b = e.target.closest('button'); if (!b) return; inp[c.getAttribute('data-for')].value = fmt(+b.getAttribute('data-v')); dirty = true; calc() });
+  });
+  calc();
+
+  /* the numbers go to the sheet once they save, or when they leave after changing something */
+  var dirty = false, sent = '';
+  function send(){
+    var key = JSON.stringify(state); if (key === sent || !state.buyers_month) return; sent = key; dirty = false;
+    var tz = ''; try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '' } catch (e) {}
+    try { fetch(API, {method:'POST', keepalive:true, headers:{'Content-Type':'application/json'}, body: JSON.stringify({kind:'exit', page:page, first:first, email:email, ref:ref, tz:tz, answers:state})}).catch(function(){}) } catch (e) {}
+  }
+  addEventListener('pagehide', function(){ if (dirty) send() });
+
+  /* save my number: a picture of the card, 1080 x 1350 */
+  function card(){
+    var W = 1080, H = 1350, c = document.createElement('canvas'); c.width = W; c.height = H;
+    var x = c.getContext('2d'), INK = '#1A1412', SUN = '#FFD400', PINK = '#F72585', CREAM = '#FFF8EE', SER = '"Instrument Serif", Georgia, serif', SAN = 'Manrope, system-ui, sans-serif';
+    function rr(X, Y, w, h, r){ x.beginPath(); x.moveTo(X + r, Y); x.arcTo(X + w, Y, X + w, Y + h, r); x.arcTo(X + w, Y + h, X, Y + h, r); x.arcTo(X, Y + h, X, Y, r); x.arcTo(X, Y, X + w, Y, r); x.closePath() }
+    x.fillStyle = SUN; x.fillRect(0, 0, W, H);
+    x.fillStyle = INK; rr(72, 80, W - 128, H - 150, 48); x.fill();
+    x.fillStyle = CREAM; rr(60, 66, W - 128, H - 150, 48); x.fill(); x.lineWidth = 4; x.strokeStyle = INK; x.stroke();
+    var mk = document.querySelector('.xbrand img');
+    if (mk && mk.complete) x.drawImage(mk, 120, 118, 92, 92);
+    x.fillStyle = INK; x.font = '800 30px ' + SAN; x.fillText('THE EXIT PLAN', 232, 158);
+    x.fillStyle = '#7A6A60'; x.font = '600 26px ' + SAN; x.fillText('with Ana Calin · Nov 17 to 19', 232, 196);
+    x.fillStyle = PINK; x.font = '800 28px ' + SAN; x.fillText((first ? first.toUpperCase() + '’S' : 'MY') + ' EXIT NUMBER', 120, 320);
+    var big = fmt(state.buyers_month || 0); x.font = '400 300px ' + SER; var bw = x.measureText(big).width;
+    x.fillStyle = SUN; x.fillRect(110, 470, bw + 30, 110);
+    x.fillStyle = INK; x.fillText(big, 124, 560);
+    x.font = '800 46px ' + SAN; x.fillText('people a month, at $' + fmt(state.price), 120, 650);
+    x.fillStyle = '#3D332E'; x.font = '600 32px ' + SAN; x.fillText('= $' + fmt(state.buyers_month * state.price) + ' a month · about ' + fmt(state.buyers_year) + ' people a year', 120, 712);
+    x.setLineDash([14, 12]); x.strokeStyle = 'rgba(26,20,18,.3)'; x.lineWidth = 4; x.beginPath(); x.moveTo(120, 790); x.lineTo(W - 180, 790); x.stroke(); x.setLineDash([]);
+    x.fillStyle = '#7A6A60'; x.font = '800 24px ' + SAN; x.fillText('THROUGH PAID SUBSCRIPTIONS ALONE', 120, 862);
+    x.fillStyle = INK; x.font = '400 120px ' + SER; x.fillText(fmt(state.subs_needed), 120, 990);
+    var sw = x.measureText(fmt(state.subs_needed)).width;
+    x.font = '700 32px ' + SAN; x.fillText('paid subscribers', 150 + sw, 950); x.fillText('at $' + fmt(state.sub_price) + ' a month', 150 + sw, 992);
+    x.fillStyle = '#3D332E'; x.font = '600 28px ' + SAN; x.fillText('At 5% paying, a list of about ' + fmt(state.free_needed) + '.', 120, 1050);
+    x.fillStyle = PINK; x.font = 'italic 400 44px ' + SER; x.fillText('Bring it to Day 1, Tue Nov 17.', 120, 1150);
+    return c;
+  }
+  $('xsave').addEventListener('click', function(){
+    calc(); send();
+    var go = function(){
+      var c = card(), name = 'my-exit-number.png';
+      c.toBlob(function(b){
+        if (!b) return;
+        var f = window.File ? new File([b], name, {type:'image/png'}) : null;
+        if (f && navigator.canShare && navigator.canShare({files:[f]}) && matchMedia('(pointer: coarse)').matches) {
+          navigator.share({files:[f], title:'My exit number'}).catch(function(){});
+        } else {
+          var a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = name; document.body.appendChild(a); a.click();
+          setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove() }, 1500);
+        }
+        $('xok').textContent = 'Saved. See you Tue Nov 17.';
+      }, 'image/png');
+    };
+    if (document.fonts && document.fonts.load) Promise.all([document.fonts.load('400 120px "Instrument Serif"'), document.fonts.load('italic 400 44px "Instrument Serif"'), document.fonts.load('800 30px Manrope')]).then(go, go); else go();
+  });
+})();
+</script>
+</body>
+</html>

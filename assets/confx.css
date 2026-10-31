@@ -1,0 +1,160 @@
+/* Ana Calin, the two confirmation pages: the top (progress, headline, the picture, steps 1 and 2) and step 3, the
+   7 quick questions inline (Oct 31). Order of importance: WhatsApp, the calendar, the survey; everything else after. */
+
+/* ---------- the top ---------- */
+.cx{position:relative;padding:34px 0 30px;overflow:hidden}
+.cx .bgf.a{top:220px}
+.cx-prog{--p:40;position:relative;max-width:980px;height:28px;margin:0 auto;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1.6px var(--ink)}
+.cx-prog i{position:absolute;left:4px;top:4px;bottom:4px;width:calc((100% - 8px) * var(--p) / 100);min-width:60px;border-radius:999px;background:var(--sun);box-shadow:inset 0 0 0 1.4px var(--ink);transition:width .9s var(--ease)}
+.cx-prog b{position:absolute;right:10px;top:50%;transform:translateY(-50%);font-style:normal;font-weight:800;font-size:13px;line-height:1;color:var(--ink)}
+.cx-cap{margin:10px auto 0;text-align:center;font-weight:700;font-size:14px;color:var(--ink3)}
+body.is-ready .cx-cap{color:var(--ink)}
+.cx h1{max-width:900px;margin:30px auto 0;text-align:center;font-size:clamp(40px,5.2vw,72px);line-height:1}
+.cx h1 em{display:block}
+.cx-lead{max-width:640px;margin:16px auto 0;text-align:center;font-size:19px;line-height:1.55;color:var(--ink2);text-wrap:balance}
+.cx-steps{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:980px;margin:34px auto 0}
+.cx-step{position:relative;display:flex;flex-direction:column;align-items:flex-start;background:#fff;border:1.6px solid var(--ink);border-radius:22px;padding:22px 24px 24px 76px;box-shadow:6px 7px 0 var(--acc),6px 7px 0 1.6px var(--ink);transition:background .3s}
+.cx-step .n{position:absolute;left:20px;top:20px;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--ink);color:var(--sun);font-family:var(--serif);font-size:24px;line-height:1}
+.cx-step .dn{position:absolute;right:16px;top:16px;display:none;align-items:center;gap:5px;font-weight:800;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#1f7a45;background:#DDF5E5;border-radius:999px;padding:5px 10px}
+.cx-step .dn svg{width:12px;height:12px}
+.cx-step.done .dn{display:inline-flex}
+.cx-step.done{background:#FBFFF8}
+.cx-step.done .n{background:var(--green);color:#fff}
+.cx-step h3{font-size:28px;line-height:1.05;margin:2px 0 8px}
+.cx-step p{font-size:15.5px;line-height:1.5;color:var(--ink2);margin-bottom:16px}
+.cx-step .btn{height:52px;font-size:16px;padding:0 22px}
+.cx-step .btn svg{width:16px;height:16px}
+.btn.btn-wa{background:#25D366;color:#06301a;font-weight:800;box-shadow:0 0 0 1.8px var(--ink),0 5px 0 1.8px var(--ink)}
+.btn.btn-wa:hover{background:#2fe072}
+.btn.btn-wa .wa{width:20px;height:20px}
+body.vipc .btn.btn-wa{background:#25D366;color:#06301a;box-shadow:0 0 0 1.8px var(--ink),0 5px 0 1.8px var(--ink)}
+.cx-go{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin-top:auto}
+.cx-ics{font-weight:700;font-size:14px;color:var(--ink2);text-underline-offset:3px}
+.cx-step .cx-go .btn{margin:0}
+.cx-pill{display:inline-flex;align-items:center;height:30px;padding:0 14px;border-radius:999px;background:var(--ink);color:var(--sun);font-weight:800;font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+body.vipc .cx{background:linear-gradient(180deg,var(--pk3) 0%,var(--cream) 70%)}
+body.vipc .cx-step .n{color:var(--pk2)}
+
+/* ---------- the picture, in place of a video: the saved seat, and the three steps around it ---------- */
+.cxa{position:relative;max-width:980px;margin:34px auto 0;aspect-ratio:16/9;border-radius:28px;overflow:hidden;container-type:inline-size;
+  background:radial-gradient(60% 70% at 30% 35%,#3a2a12 0%,rgba(58,42,18,0) 70%),radial-gradient(50% 60% at 85% 20%,#3b1430 0%,rgba(59,20,48,0) 70%),var(--ink);
+  box-shadow:0 0 0 1.6px var(--ink),9px 10px 0 var(--acc),9px 10px 0 1.6px var(--ink)}
+.cxa-fl{position:absolute;opacity:.08;color:var(--sun)}
+.cxa-fl.a{width:46cqw;height:46cqw;left:-12cqw;top:-14cqw}
+.cxa-fl.b{width:30cqw;height:30cqw;right:-9cqw;bottom:-12cqw}
+.cxa .bdg{position:absolute;width:5.2cqw;height:5.2cqw;border-radius:50%;display:grid;place-items:center;background:var(--pink);color:#fff;font-family:var(--serif);font-size:3.2cqw;line-height:1;box-shadow:0 0 0 .35cqw var(--ink),0 .5cqw 1.2cqw rgba(0,0,0,.35);z-index:3}
+/* the ticket */
+.cxa-tk{position:absolute;left:4.5cqw;top:6cqw;width:40cqw;border-radius:1.8cqw;background:var(--cream);color:var(--ink);transform:rotate(-5deg);box-shadow:0 1.6cqw 3cqw rgba(0,0,0,.45);overflow:hidden;z-index:2}
+.cxa-tk .t1{display:flex;align-items:center;gap:1.2cqw;background:var(--sun);padding:1.4cqw 1.8cqw;border-bottom:.25cqw dashed rgba(26,20,18,.35)}
+.cxa-tk .t1 svg{width:4.2cqw;height:4.2cqw;flex:none}
+.cxa-tk .t1 span{display:flex;flex-direction:column;font-family:var(--serif);font-size:2.9cqw;line-height:1}
+.cxa-tk .t1 small{font-family:var(--sans);font-weight:800;font-size:1.05cqw;letter-spacing:.16em;text-transform:uppercase;margin-top:.5cqw}
+.cxa-tk .t1 em{margin-left:auto;font-style:normal;font-weight:800;font-size:1cqw;letter-spacing:.14em;text-transform:uppercase;background:var(--ink);color:var(--sun);border-radius:.6cqw;padding:.5cqw .8cqw}
+.cxa-tk .t2{padding:1.6cqw 1.8cqw .6cqw}
+.cxa-tk .t2 small,.cxa-tk .t3 small{display:block;font-weight:800;font-size:1.05cqw;letter-spacing:.16em;text-transform:uppercase;color:var(--pink)}
+.cxa-tk .t2 b{display:block;font-family:var(--serif);font-style:italic;font-weight:400;font-size:6.2cqw;line-height:1;margin-top:.4cqw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cxa-tk .t3{display:flex;gap:2.4cqw;padding:1.2cqw 1.8cqw 1.8cqw}
+.cxa-tk .t3 b{display:block;font-weight:800;font-size:1.7cqw;line-height:1.2;margin-top:.3cqw}
+.cxa-stamp{position:absolute;right:2.4cqw;top:7.6cqw;border:.4cqw solid var(--pink);color:var(--pink);border-radius:1cqw;padding:.5cqw 1.4cqw;font-weight:800;font-size:2.7cqw;letter-spacing:.14em;text-transform:uppercase;transform:rotate(-12deg);background:rgba(255,248,238,.6);mix-blend-mode:multiply}
+/* 1: the WhatsApp group on a phone */
+.cxa-ph{position:absolute;left:49cqw;top:3.4cqw;width:19.5cqw;height:35.5cqw;border-radius:3cqw;background:#0b0b0b;padding:.9cqw;transform:rotate(3deg);box-shadow:0 0 0 .3cqw #333,0 2cqw 4cqw rgba(0,0,0,.55);z-index:2}
+.cxa-ph .sc{position:relative;height:100%;border-radius:2.3cqw;overflow:hidden;background:#EFE7DC}
+.cxa-ph .hd{display:flex;align-items:center;gap:.9cqw;background:#0F5A4A;color:#fff;padding:2.4cqw 1.2cqw 1cqw}
+.cxa-ph .av{width:3.6cqw;height:3.6cqw;border-radius:50%;background:var(--sun);display:grid;place-items:center;flex:none}
+.cxa-ph .av svg{width:3cqw;height:3cqw}
+.cxa-ph .hd b{display:block;font-weight:800;font-size:1.45cqw;line-height:1.15}
+.cxa-ph .hd small{display:block;font-size:1.05cqw;opacity:.8}
+.cxa-ph .bd{display:flex;flex-direction:column;gap:.8cqw;padding:1.2cqw 1cqw}
+.cxa-ph .m{align-self:flex-start;max-width:92%;background:#fff;border-radius:0 1.2cqw 1.2cqw 1.2cqw;padding:.8cqw 1cqw;font-size:1.25cqw;line-height:1.35;color:#1c1c1c;box-shadow:0 .15cqw .2cqw rgba(0,0,0,.08)}
+.cxa-ph .m small{display:block;font-weight:800;font-size:1.05cqw;color:#c4105f;margin-bottom:.2cqw}
+.cxa-ph .vn{display:flex;align-items:center;gap:.7cqw;width:92%}
+.cxa-ph .vn i{width:2.6cqw;height:2.6cqw;border-radius:50%;background:#0F5A4A;display:grid;place-items:center;flex:none}
+.cxa-ph .vn i:before{content:"";border-left:1cqw solid #fff;border-top:.65cqw solid transparent;border-bottom:.65cqw solid transparent;margin-left:.25cqw}
+.cxa-ph .wv{display:flex;align-items:center;gap:.22cqw;height:2.4cqw;flex:1;min-width:0;overflow:hidden}
+.cxa-ph .wv b{flex:none;width:.28cqw;border-radius:.2cqw;background:#7c8a86}
+.cxa-ph .vn em{flex:none;font-style:normal;font-size:1cqw;color:#667;margin-left:.2cqw}
+.cxa-ph .bdg{left:-2.6cqw;top:3cqw}
+/* 2: the calendar */
+.cxa-cal{position:absolute;left:73cqw;top:5cqw;width:20.5cqw;border-radius:1.6cqw;background:#fff;transform:rotate(4deg);box-shadow:0 1.4cqw 2.6cqw rgba(0,0,0,.45);z-index:1}
+.cxa-cal .hd{border-radius:1.6cqw 1.6cqw 0 0;background:var(--pink);color:#fff;font-weight:800;font-size:1.2cqw;letter-spacing:.16em;text-transform:uppercase;padding:1cqw 1.4cqw}
+.cxa-cal .g{display:flex;justify-content:space-between;padding:1.4cqw 1.2cqw .6cqw}
+.cxa-cal .g span{width:3cqw;height:3cqw;border-radius:50%;display:grid;place-items:center;font-family:var(--serif);font-size:2cqw;color:var(--ink3)}
+.cxa-cal .g span.on{background:var(--sun);color:var(--ink);box-shadow:0 0 0 .25cqw var(--ink)}
+.cxa-cal .g span.v{background:var(--pink);color:#fff}
+.cxa-cal small{display:block;padding:0 1.4cqw 1.3cqw;font-weight:700;font-size:1.15cqw;color:var(--ink2)}
+.cxa-cal .bdg{right:-2cqw;top:-2cqw}
+/* 3: the exit number */
+.cxa-num{position:absolute;left:75cqw;top:21.5cqw;width:16.5cqw;border-radius:1.6cqw;background:var(--sun);padding:1.3cqw 1.4cqw 1.4cqw;transform:rotate(-4deg);box-shadow:0 1.4cqw 2.6cqw rgba(0,0,0,.45);z-index:1}
+.cxa-num small{display:block;font-weight:800;font-size:1.05cqw;letter-spacing:.14em;text-transform:uppercase}
+.cxa-num b{display:block;font-family:var(--serif);font-weight:400;font-size:8cqw;line-height:.9;margin:.3cqw 0 .2cqw}
+.cxa-num em{display:block;font-style:normal;font-weight:700;font-size:1.1cqw}
+.cxa-num .bdg{right:-2.2cqw;top:-2cqw}
+/* the words */
+.cxa-tx{position:absolute;left:0;right:0;bottom:3.4cqw;text-align:center;z-index:4;pointer-events:none}
+.cxa-tx b{display:block;font-family:var(--sans);font-weight:800;font-size:6.6cqw;line-height:1;letter-spacing:-.02em;text-transform:uppercase;color:var(--cream);text-shadow:0 .4cqw 2cqw rgba(0,0,0,.6)}
+.cxa-tx em{display:block;margin-top:.6cqw;font-family:var(--serif);font-size:3.2cqw;line-height:1;color:var(--sun);text-shadow:0 0 1.6cqw rgba(255,212,0,.45)}
+body.vipc .cxa{background:radial-gradient(60% 70% at 30% 35%,#4a1236 0%,rgba(74,18,54,0) 70%),radial-gradient(50% 60% at 85% 20%,#3a2a12 0%,rgba(58,42,18,0) 70%),var(--ink)}
+body.vipc .cxa-tk .t1{background:var(--pink);color:#fff}
+body.vipc .cxa-tk .t1 em{background:var(--sun);color:var(--ink)}
+body.vipc .cxa-tk .t1 svg{filter:drop-shadow(0 0 0 #fff)}
+
+/* ---------- step 3: the 7 quick questions ---------- */
+.cxs{padding:64px 0 100px}
+.cxs-h{max-width:720px;margin:0 auto;text-align:center}
+.cxs-h h2{font-size:clamp(36px,4.2vw,56px);line-height:1.02;margin-top:14px}
+.cxs-h p{margin-top:12px;font-size:17.5px;line-height:1.55;color:var(--ink2)}
+.svx{position:relative;max-width:760px;margin:34px auto 0;background:#fff;border:1.6px solid var(--ink);border-radius:24px;padding:26px 32px 32px;box-shadow:7px 8px 0 var(--acc),7px 8px 0 1.6px var(--ink);scroll-margin-top:110px}
+.svx-top{display:flex;align-items:center;gap:12px;font-weight:700;font-size:13px;color:var(--ink3)}
+.svx-back{border:0;background:none;font:inherit;font-weight:800;color:var(--ink);cursor:pointer;padding:4px 0}
+.svx-back[hidden]{display:none}
+.svx-n{font-weight:800;color:var(--ink)}
+.svx-t{margin-left:auto}
+.svx-bar{height:6px;border-radius:6px;background:var(--sand);margin:12px 0 24px;overflow:hidden}
+.svx-bar i{display:block;height:100%;border-radius:6px;background:var(--pink);transition:width .4s var(--ease)}
+.svx h3{font-size:clamp(26px,2.6vw,34px);line-height:1.1;outline:0}
+.svx-note{margin-top:8px;font-size:15px;line-height:1.5;color:var(--ink3)}
+.svx-opts{display:grid;gap:10px;margin-top:20px}
+.svx-o{display:flex;align-items:center;gap:14px;width:100%;text-align:left;padding:13px 16px;border-radius:14px;border:1.6px solid #d9cab6;background:var(--cream);font:inherit;font-weight:600;font-size:16.5px;line-height:1.35;color:var(--ink);cursor:pointer;transition:border-color .15s,background .15s,transform .15s}
+.svx-o:hover{border-color:var(--ink);transform:translateY(-1px)}
+.svx-o .k{flex:none;width:28px;height:28px;border-radius:8px;display:grid;place-items:center;border:1.5px solid rgba(26,20,18,.35);background:#fff;font-weight:800;font-size:13px;color:var(--ink2)}
+.svx-o .k svg{width:14px;height:14px;opacity:0}
+.svx-o.on{background:var(--ysoft);border-color:var(--ink)}
+.svx-o.on .k{background:var(--ink);border-color:var(--ink);color:var(--sun)}
+.svx-o.on .k svg{opacity:1;color:var(--sun)}
+.svx-act{margin-top:20px}
+.svx-act .btn[disabled]{opacity:.4;pointer-events:none}
+.svx-end{text-align:center;padding:10px 0 0}
+.svx-ok{display:grid;place-items:center;width:58px;height:58px;margin:0 auto 16px;border-radius:50%;background:var(--sun);border:2px solid var(--ink)}
+.svx-ok svg{width:26px;height:26px;color:var(--ink)}
+.svx-end h3 em{display:block;font-style:italic;color:var(--pink)}
+.svx-end p{max-width:520px;margin:14px auto 0;font-size:16.5px;line-height:1.55;color:var(--ink2)}
+.svx-end .svx-act{margin-top:22px}
+.svx-redo{margin-top:16px;border:0;background:none;font:inherit;font-weight:700;font-size:14px;color:var(--ink3);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+body.vipc .svx-o.on{background:var(--pk3)}
+body.vipc .svx-bar i{background:var(--pink)}
+
+/* the date bar's button is WhatsApp now */
+.db .bwa .j2{display:none}
+body.did-wa .db .bwa .j1{display:none}
+body.did-wa .db .bwa .j2{display:inline}
+
+@media (max-width:860px){
+  .cx-steps{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .cx{padding:22px 0 18px}
+  .cx-prog{height:24px}
+  .cx h1{margin-top:22px;font-size:40px}
+  .cx-lead{font-size:17px}
+  .cxa{margin-top:24px;border-radius:18px}
+  .cx-steps{margin-top:26px;gap:16px}
+  .cx-step{padding:18px 18px 20px 64px}
+  .cx-step .n{left:16px;top:18px;width:34px;height:34px;font-size:21px}
+  .cx-step h3{font-size:25px}
+  .cx-step .btn{width:100%}
+  .cx-go{width:100%}
+  .cxs{padding:48px 0 72px}
+  .svx{padding:20px 18px 24px;border-radius:20px}
+  .svx-t{display:none}
+  .svx-o{font-size:15.5px;padding:12px 13px;gap:11px}
+}

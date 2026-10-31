@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
 <title>You're in · Free 3-day live workshop with Ana Calin</title>
-<!-- Ana Calin, registered confirmation (/confirmed). From "Ana: confirmation pages build guide" v3 (Oct 24, 2026). Job: get them to show up live on Tue Nov 17. Jeremy Haynes' framework: headline, one main video, before-the-live block, what you'll make, short breakouts. No testimonials, no pitch, no countdowns. -->
+<!-- Ana Calin, registered confirmation (/confirmed). Top rebuilt Oct 31 in order of importance: 1 WhatsApp, 2 calendar, 3 the 7 quick questions (then the exit number calculator); the rest after. Before that: "Ana: confirmation pages build guide" v3 (Oct 24, 2026). Job: get them to show up live on Tue Nov 17. Jeremy Haynes' framework: headline, one main video, before-the-live block, what you'll make, short breakouts. No testimonials, no pitch, no countdowns. -->
 <meta name="theme-color" content="#FFF8EE">
 <link rel="icon" href="../img/fav/favicon.ico?v=dc986e96" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="../img/fav/favicon-32.png?v=dc986e96">
@@ -14,8 +14,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap">
-<link rel="preload" as="image" href="../img/real/ana-live-a.webp">
 <link rel="stylesheet" href="../assets/conf.css">
+<link rel="stylesheet" href="../assets/confx.css">
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -36,61 +36,69 @@
     <span class="db-days"><span class="dp">Tue Nov 17</span><span class="dp">Wed Nov 18</span><span class="dp">Thu Nov 19</span></span>
     <span class="db-tm">12:00 pm New York</span>
     <span class="db-ph">Nov 17, 18, 19 · 12 pm NY</span>
-    <!-- the exit number (the 7 quick questions, then the WhatsApp channel where it's pinned) -->
-    <a class="btn bwa" href="#before" data-survey data-track="action_survey_open"><svg class="wa" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.5-.3Z"/></svg><span class="j1">get your exit number</span><span class="j2">get your exit number</span></a>
+    <!-- step 1, always in reach: the WhatsApp group -->
+    <a class="btn bwa" href="#" data-link="CHANNEL_URL" target="_blank" rel="noopener" data-step="wa" data-track="action_whatsapp"><svg class="wa" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.5-.3Z"/></svg><span class="j1">join the WhatsApp group</span><span class="j2">open the WhatsApp group</span></a>
 
   </div>
 </header>
 
-<!-- 1. headline -->
-<section class="hero">
+<!-- 1. the top, in order of importance: the progress, the headline, the picture, then 1 WhatsApp and 2 the calendar -->
+<section class="cx" id="top">
   <svg class="bgf a" aria-hidden="true"><use href="#sfo"/></svg>
   <svg class="bgf b" aria-hidden="true"><use href="#sfo"/></svg>
-  <div class="wrap hg">
-    <div class="htx">
-      <span class="hp"><i><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ck"/></svg></i>you're registered</span>
-      <h1>You're in<span data-first></span>. <em>Tuesday, Nov 17 at 12:00 pm New York.</em></h1>
-      <p class="lead">Here's what to do next. Start with my video.</p>
-      <div class="tiles" aria-label="Tuesday to Thursday, November 17 to 19"><div class="dt"><b>17</b><small>Tue</small></div><div class="dt"><b>18</b><small>Wed</small></div><div class="dt"><b>19</b><small>Thu</small></div></div>
-      <p class="tline">Every day at <b>12:00 pm New York</b> · 7:00 pm Greece<span class="lt"></span></p>
+  <div class="wrap">
+    <div class="cx-prog" role="progressbar" aria-label="Getting ready" aria-valuemin="0" aria-valuemax="100" aria-valuenow="40"><i><b><span data-pct>40</span>%</b></i></div>
+    <p class="cx-cap" data-cap>Your seat is saved. 3 quick steps to go.</p>
+    <h1>Your seat is saved<span data-first></span>. <em>Three quick steps before you go.</em></h1>
+    <p class="cx-lead">Join my WhatsApp group, add the three days to your calendar, then answer seven quick questions for your exit number. Two minutes, all of it.</p>
+    <!-- the picture, in place of a video: the saved seat, and the three steps around it (1 WhatsApp, 2 calendar, 3 exit number) -->
+    <div class="cxa" aria-hidden="true">
+      <svg class="cxa-fl a"><use href="#sfo"/></svg><svg class="cxa-fl b"><use href="#sfo"/></svg>
+      <div class="cxa-tk">
+        <div class="t1"><svg><use href="#sf"/></svg><span>The Exit Plan<small>Free seat · live on Zoom</small></span><em>Admit one</em></div>
+        <div class="t2"><small>Seat holder</small><b data-name>Your seat</b></div>
+        <div class="t3"><span><small>Day 1</small><b>Tue Nov 17</b></span><span><small>Time</small><b>12:00 pm NY</b></span><span><small>Where</small><b>Zoom</b></span></div>
+        <span class="cxa-stamp">Saved</span>
+      </div>
+      <div class="cxa-ph"><div class="sc">
+        <div class="hd"><span class="av"><svg><use href="#sf"/></svg></span><span><b>The Exit Plan</b><small>Ana Calin · WhatsApp</small></span></div>
+        <div class="bd">
+          <div class="m"><small>Ana</small>Welcome in<span data-first></span>! I’m so glad you’re here.</div>
+          <div class="m vn"><i></i><span class="wv"><b style="height:30%"></b><b style="height:55%"></b><b style="height:80%"></b><b style="height:45%"></b><b style="height:95%"></b><b style="height:60%"></b><b style="height:35%"></b><b style="height:70%"></b><b style="height:50%"></b><b style="height:85%"></b><b style="height:40%"></b><b style="height:65%"></b><b style="height:30%"></b><b style="height:55%"></b><b style="height:75%"></b><b style="height:45%"></b><b style="height:30%"></b></span><em>0:42</em></div>
+          <div class="m"><small>Ana</small>Day 1 is Tue Nov 17, 12:00 pm New York. I’ll remind you here.</div>
+        </div>
+      </div><span class="bdg">1</span></div>
+      <div class="cxa-cal"><div class="hd">Nov 2026</div><div class="g"><span>16</span><span class="on">17</span><span class="on">18</span><span class="on">19</span><span>20</span></div><small>12:00 pm New York</small><span class="bdg">2</span></div>
+      <div class="cxa-num"><small>Your exit number</small><b>?</b><em>7 quick questions</em><span class="bdg">3</span></div>
+      <div class="cxa-tx"><b>Don’t close this page</b><em>your seat is saved, your reminders aren’t set yet</em></div>
     </div>
-    <div class="hpass"><div class="tkw" aria-label="Your ticket"><div class="tkt">
-        <div class="tm">
-          <div class="tt"><svg aria-hidden="true"><use href="#sf"/></svg><span>how we grow<small>LIVE ON ZOOM</small></span><b>FREE SEAT</b></div>
-          <small class="ad">ADMIT ONE</small>
-          <b class="nm" data-name>Your seat</b>
-          <div class="tw"><div><small>DAY 1</small><b>Tue Nov 17</b></div><div><small>TIME</small><b>12:00 pm</b><em>New York</em></div></div>
-          <div class="td"><span>17</span><span>18</span><span>19</span><em>NOV 2026</em></div>
-        </div>
-        <div class="ts">
-          <small>GET READY</small>
-          <ul><li data-ph="group"><i><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ck"/></svg></i>exit number</li><li data-ph="cal"><i><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ck"/></svg></i>calendar</li><li data-ph="mail"><i><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ck"/></svg></i>reply "in"</li><li data-ph="sheet"><i><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ck"/></svg></i>Head start page</li></ul>
-          <b><span data-done>0</span>/4</b>
-        </div>
-        <span class="stamp">READY</span>
-      </div></div></div>
-    <!-- 2. main video, about 3 minutes: due diligence first (who Ana is, her real numbers, the $47 story), then why live, then the steps. Autoplay muted, tap for sound. Not launched without it. -->
-    <div class="vwrap">
-      <div class="iph" data-src="MAIN_SRC" data-auto>
-          <div class="bz">
-            <button class="scr" type="button" aria-label="Play Ana's video with sound">
-              <span class="isl"></span>
-              <img class="cv" src="../img/real/ana-live-a.webp" alt="Ana Calin" width="1280" height="720" fetchpriority="high">
-              <video playsinline preload="none"></video>
-              <span class="ctext">If you don't know me, <em>start here.</em></span>
-              <img class="mk" src="../img/mark.png" alt="" width="52" height="52">
-              <span class="vplay"><i><svg width="18" height="18" viewBox="0 0 26 26" aria-hidden="true"><path d="M8.6 5.6v14.8c0 .9 1 1.4 1.7 1l11.6-7.4c.7-.4.7-1.4 0-1.9L10.3 4.6c-.7-.5-1.7 0-1.7 1z" fill="#F72585"/></svg></i>tap for sound</span>
-            </button>
-          </div>
-        </div>
-      <div class="chap" aria-label="Chapters">
-        <button type="button" data-t="0"><b>0:00</b>You're in</button>
-        <button type="button" data-t="15"><b>0:15</b>If you don't know me</button>
-        <button type="button" data-t="55"><b>0:55</b>The three days</button>
-        <button type="button" data-t="95"><b>1:35</b>Why live beats the replay</button>
-        <button type="button" data-t="120"><b>2:00</b>What to do next</button>
+    <div class="cx-steps">
+      <div class="cx-step" data-card="wa">
+        <span class="n">1</span><span class="dn"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ck"/></svg>done</span>
+        <h3>Join my WhatsApp group.</h3>
+        <p>My reminders and voice notes go here, so Day 1 doesn’t slip past you.</p>
+        <a class="btn btn-wa" href="#" data-link="CHANNEL_URL" target="_blank" rel="noopener" data-step="wa" data-track="action_whatsapp"><svg class="wa" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.5-.3Z"/></svg>join the WhatsApp group</a>
+      </div>
+      <div class="cx-step" id="actcal" data-card="cal">
+        <span class="n">2</span><span class="dn"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ck"/></svg>done</span>
+        <h3>Add the three days to your calendar.</h3>
+        <p>Tue Nov 17 to Thu Nov 19, 12:00 pm New York<span class="lt"></span>.</p>
+        <div class="cx-go"><a class="btn" href="#actcal" data-gall data-step="cal" data-track="action_calendar"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="2.5" y="4" width="15" height="13.5" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M2.5 8.5h15M6.5 2v4M13.5 2v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>add to Google Calendar</a><a class="cx-ics" href="../assets/ana-calin-workshop.ics" download data-step="cal" data-track="action_calendar">Apple, Outlook or other</a></div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- 2. step 3: the 7 quick questions, inline (conf.js builds the card; the answers go to the Google Sheet through
+     /api/ana-survey). The last screen opens the exit number calculator, /exit-number/. -->
+<section class="cxs" id="survey">
+  <div class="wrap">
+    <div class="cxs-h">
+      <span class="cx-pill">Step 3</span>
+      <h2>Seven quick questions, <em>then your exit number.</em></h2>
+      <p>All taps, about a minute. I read every answer before Day 1, and answer the most common ones live.</p>
+    </div>
+    <div class="svx" id="svx"><noscript><p>The questions need JavaScript. Your seat is saved either way.</p></noscript></div>
   </div>
 </section>
 
@@ -103,40 +111,16 @@
   </div></div>
 </div>
 
-<!-- 3. before Tue Nov 17, do these 4 things -->
+<!-- then the small things -->
 <section class="sand" id="before">
   <div class="wrap">
     <div class="shead" data-r>
       <span class="eyebrow">Before Tue Nov 17</span>
-      <h2>Do these <em>4 things.</em></h2>
+      <h2>Then two <em>small things.</em></h2>
     </div>
     <div class="acts">
-      <div class="act" data-card="group" data-r>
-        <span class="n">1</span><span class="dn"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ck"/></svg>done</span>
-        <span class="req">About a minute · your exit number is waiting</span>
-        <h3>Get your exit number: 7 quick questions, about a minute.</h3>
-        <p>Seven quick taps, and your exit number is yours: a short AI calculator that shows how many people it takes to reach the monthly number that would let you leave your job, and how big your audience really needs to be. It's pinned in my WhatsApp channel, which is also where the workshop runs between sessions: my voice notes, short videos and reminders. Tap the bell so you don't miss a message.</p>
-        <div class="vis"><div class="chat" aria-hidden="true">
-          <div class="hd"><span class="wai"><svg class="wa" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.5-.3Z"/></svg></span><span>Ana Calin · live workshop<small>WhatsApp Channel · from Nov 2</small></span></div>
-          <div class="b pin"><small>Ana · pinned</small>Your exit number</div>
-          <div class="b poll"><small>Ana · poll for Day 1</small>What's your offer about?<span class="po on"><i></i>Something I already teach</span><span class="po"><i></i>Something people ask me</span></div>
-          <div class="b"><small>Ana · Tue Nov 17</small>Day 1 starts at 12:00 pm New York. Your link is in your email.</div>
-        </div></div>
-        <!-- the button opens the 7 quick questions (conf.js). CHANNEL_URL in the settings: the free WhatsApp Channel, shown only here and in the confirmation email. -->
-        <div class="go"><a class="btn" href="#before" data-survey data-track="action_survey_open"><svg class="wa" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.5-.3Z"/></svg>get my exit number</a></div>
-        <p class="alt"><a href="#" data-link="CHANNEL_URL" target="_blank" rel="noopener" data-step="group" data-track="action_whatsapp">skip the questions, just join the channel</a> · <a href="#" data-exit-email>Not on WhatsApp? Send it to my email instead</a></p>
-        <p class="alt-ok" role="status" hidden></p>
-      </div>
-      <div class="act" id="actcal" data-card="cal" data-r>
-        <span class="n">2</span><span class="dn"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ck"/></svg>done</span>
-        <h3>Add all three days to your calendar.</h3>
-        <p>Tue Nov 17, Wed Nov 18, Thu Nov 19, 12:00 pm New York.</p>
-        <div class="vis"><div class="cal" aria-hidden="true"><div class="t">NOV 2026<em>12 PM NEW YORK</em></div><div class="g"><span class="h">S</span><span class="h">M</span><span class="h">T</span><span class="h">W</span><span class="h">T</span><span class="h">F</span><span class="h">S</span><span class="">8</span><span class="">9</span><span class="">10</span><span class="">11</span><span class="">12</span><span class="">13</span><span class="">14</span><span class="">15</span><span class="">16</span><span class="on">17</span><span class="on">18</span><span class="on">19</span><span class="">20</span><span class="">21</span><span class="">22</span><span class="">23</span><span class="">24</span><span class="">25</span><span class="">26</span><span class="">27</span><span class="">28</span></div></div></div>
-        <div class="go"><a class="btn" href="#actcal" data-gall data-step="cal" data-track="action_calendar"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="2.5" y="4" width="15" height="13.5" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M2.5 8.5h15M6.5 2v4M13.5 2v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>add to Google Calendar</a><a class="btn ghost" href="../assets/ana-calin-workshop.ics" download data-step="cal" data-track="action_calendar">Apple, Outlook or any other calendar</a></div>
-        <p class="gnote">One click adds all three days, with each day's notes in the event.</p>
-      </div>
       <div class="act" data-card="mail" data-r>
-        <span class="n">3</span><span class="dn"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ck"/></svg>done</span>
+        <span class="n">4</span><span class="dn"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ck"/></svg>done</span>
         <h3>Find my email and reply "in".</h3>
         <p>I just sent your confirmation. If it's not in your inbox, check Promotions or spam, move it to your main inbox, and reply "in". That one word makes sure the reminders reach you.</p>
         <div class="vis"><div class="mail" aria-hidden="true">
@@ -149,14 +133,13 @@
         <div class="gc mail-open"><span>Open</span><a href="https://mail.google.com/mail/u/0/#search/Ana+Calin" target="_blank" rel="noopener" data-mail="gmail">Gmail</a><a href="https://outlook.live.com/mail/0/" target="_blank" rel="noopener">Outlook</a><a href="https://mail.yahoo.com/" target="_blank" rel="noopener">Yahoo</a></div>
       </div>
       <div class="act" data-card="sheet" data-r>
-        <span class="n">4</span><span class="dn"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ck"/></svg>done</span>
+        <span class="n">5</span><span class="dn"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ck"/></svg>done</span>
         <h3>Print your Head start page.</h3>
         <p>One page. It has the by-hand version of your exit number and a few starting points for Day 1. Fill it in before Tue Nov 17. Each day's page opens with a word I say live.</p>
         <div class="vis"><div class="sheetp"><img src="../assets/sheet-preview.webp" alt="The Head start page: one page to fill in before Day 1" width="620" height="510" loading="lazy"></div></div>
         <div class="go"><a class="btn" href="../assets/sheet.pdf" download="Ana Calin - Head start page.pdf" data-step="sheet" data-track="action_sheet">download the Head start page (PDF)<svg aria-hidden="true"><use href="#arr"/></svg></a></div>
       </div>
     </div>
-    <p class="readyline" data-r><span class="r1">Your ticket: <b><span data-done>0</span> of 4</b> done.</span><span class="r2">You're ready. <em>See you Tuesday, Nov 17 at 12:00 pm New York.</em></span></p>
   </div>
 </section>
 
@@ -181,7 +164,7 @@
     <div class="shead" data-r>
       <span class="eyebrow">Your week, growing</span>
       <h2>What happens between <em>now and Thu Nov 19.</em></h2>
-      <p class="sub">You don't have to remember any of this. I'll email you and post it in the WhatsApp channel. But here's the map.</p>
+      <p class="sub">You don't have to remember any of this. I'll email you and post it in the WhatsApp group. But here's the map.</p>
     </div>
     <ol class="gm four" data-r>
       <li style="--i:0">
@@ -280,12 +263,12 @@
     PAGE:         'reg',
     SENDER:       '',            // the address Ana's emails come from (shown in the inbox notice). Empty = "Ana Calin".
     META_PIXEL_ID: '',           // Meta pixel for show-up ads: fires CompleteRegistration here, so ads can target registrants.
-    MAIN_SRC:     '',            // main video (mp4 from Wistia/Vidalytics), about 3 min. Required for launch.
     BREAKOUTS:    ['', '', ''],  // the three quick-answer videos (mp4 from Wistia/Vidalytics), in page order, 60 to 90 sec each
-    CHANNEL_URL:  '',            // the free WhatsApp Channel (not a group): no member limit, numbers hidden, only admins post.
-                                 // The exit number is pinned here from Mon Nov 2. Voice-note reminders, short videos, the Zoom link each day, polls. Runs to Mon Nov 30.
+    CHANNEL_URL:  '',            // step 1: the free WhatsApp group (or channel) link. The big green buttons and the date bar use it.
+                                 // Voice-note reminders, short videos, the Zoom link each day, polls. Runs to Mon Nov 30.
                                  // Fallback: a WhatsApp Community announcement group. VIPs don't join this, they get the VIP group.
-    KIT_SURVEY_FORM: '',         // Kit form "Workshop survey" (numeric id): the 7 quick questions + the email version of the exit number. Empty = demo, nothing is sent.
+    SURVEY_API:   '/api/ana-survey', // step 3: the 7 quick questions post here; the answers land in the Google Sheet (tools/survey-sheet.gs)
+    EXIT_URL:     '../exit-number/', // the exit number calculator the last question opens
     CLOSES:       Date.UTC(2026, 10, 18, 4, 59)  // VIP closes Tue Nov 17, 11:59 pm New York (?now=2026-11-18T05:00:00Z tests it)
   };
 </script>

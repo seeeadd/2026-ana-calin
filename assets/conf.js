@@ -2,25 +2,6 @@
 (function(){
   var C = window.CONF || {};
 
-  /* ---- the 7 quick questions (the survey) and the exit number ----
-     Kit is a stub until Theia sets the form id (KIT_SURVEY_FORM in the page settings): with no id, nothing is sent.
-     Each answer also becomes a tag name in fields[ep_tags], so a Kit automation can tag from it. */
-  var KIT_SURVEY = {
-    formId: C.KIT_SURVEY_FORM || '',
-    endpoint: function(id){ return 'https://app.kit.com/forms/' + id + '/subscriptions' },
-    tagAll: 'ep_survey',
-    tagMap: {
-      q1: ['ep_live_all', 'ep_live_some', 'ep_live_replay'],
-      q2: ['ep_subs_none', 'ep_subs_under100', 'ep_subs_100_1k', 'ep_subs_1k_10k', 'ep_subs_10k_plus'],
-      q3: ['ep_bought_course', 'ep_bought_paidsub', 'ep_bought_notyet'],
-      q4: ['ep_work_wayout', 'ep_work_side', 'ep_work_self', 'ep_work_between', 'ep_work_other'],
-      q5: ['ep_belief_easy', 'ep_belief_whattosell', 'ep_belief_subsfirst', 'ep_belief_pushy', 'ep_belief_time', 'ep_belief_notme'],
-      q6: ['ep_topic_career', 'ep_topic_writing', 'ep_topic_health', 'ep_topic_money', 'ep_topic_family', 'ep_topic_other'],
-      q7: ['ep_worth_sell', 'ep_worth_price', 'ep_worth_ask', 'ep_worth_send', 'ep_worth_all']
-    }
-  };
-  /* where the exit number is pinned: the free channel, or the VIP group on /vip-confirmed */
-  var EXIT_LINK_PLACEHOLDER = '#';
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   var qs = new URLSearchParams(location.search), reg = {};
   try { reg = JSON.parse(sessionStorage.getItem('ana_reg') || localStorage.getItem('ana_reg') || '{}') } catch (e) {}
@@ -28,6 +9,8 @@
   var email = (qs.get('email') || reg.email || '').trim();
   var ref = (qs.get('ref') || reg.ref || '').trim();
   if (first.length > 30) first = '';
+  /* keep who they are in this browser, so the exit number page (/exit-number/) can put their name on it and file it under their email */
+  if ((first || email) && (!reg.email || reg.email !== email)) { try { localStorage.setItem('ana_reg', JSON.stringify({first_name: first || reg.first_name || '', email: email || reg.email || '', ref: ref || reg.ref || ''})) } catch (e) {} }
 
   /* the first name in the headline (never the email) */
   if (first) document.querySelectorAll('[data-first]').forEach(function(e){ e.textContent = ', ' + first });
@@ -91,19 +74,27 @@
     a.target = '_blank'; a.rel = 'noopener';
   });
 
-  /* getting ready: the four things punch their ticket (saved in this browser only) */
-  var STEPS = C.STEPS || ['cal', 'mail', 'group', 'sheet'], st = {};
-  try { st = JSON.parse(localStorage.getItem('ana_ready') || '{}') } catch (e) {}
-  var ticket = document.querySelector('.tkt, .pcard'), wasReady = null;
+  /* getting ready: the three steps at the top fill the progress bar (saved in this browser only). The seat counts as the
+     first 40%; WhatsApp, the calendar and the 7 quick questions are 20% each. The smaller things below tick their own cards. */
+  var STEPS = C.STEPS || ['wa', 'cal', 'survey'], ALL = STEPS.concat(['mail', 'sheet', 'hi']), st = {}, ST_KEY = 'ana_ready_' + (C.PAGE || 'reg');
+  try { st = JSON.parse(localStorage.getItem(ST_KEY) || '{}') } catch (e) {}
+  var ticket = document.querySelector('.cxa, .tkt, .pcard'), wasReady = null;
+  var CAPS = C.PAGE === 'vip'
+    ? ['Your VIP seat is saved. 3 quick steps to go.', '2 steps to go.', 'One step to go: your exit number.', 'All set. See you Tue Nov 17.']
+    : ['Your seat is saved. 3 quick steps to go.', '2 steps to go.', 'One step to go: your exit number.', 'All set. See you Tue Nov 17.'];
   function renderReady(){
     var n = 0;
-    STEPS.forEach(function(s){
-      var on = !!st[s]; if (on) n++;
+    ALL.forEach(function(s){
+      var on = !!st[s]; if (on && STEPS.indexOf(s) > -1) n++;
       document.body.classList.toggle('did-' + s, on);
       document.querySelectorAll('[data-card="' + s + '"],[data-ph="' + s + '"]').forEach(function(e){ e.classList.toggle('done', on) });
       document.querySelectorAll('button[data-step="' + s + '"]').forEach(function(b){ b.setAttribute('aria-pressed', on ? 'true' : 'false') });
     });
+    var pct = 40 + Math.round(60 * n / STEPS.length);
     document.querySelectorAll('[data-done]').forEach(function(e){ e.textContent = n });
+    document.querySelectorAll('[data-pct]').forEach(function(e){ e.textContent = pct });
+    document.querySelectorAll('.cx-prog').forEach(function(e){ e.style.setProperty('--p', pct); e.setAttribute('aria-valuenow', pct) });
+    document.querySelectorAll('[data-cap]').forEach(function(e){ e.textContent = CAPS[n] || CAPS[CAPS.length - 1] });
     var ready = n === STEPS.length;
     document.body.classList.toggle('is-ready', ready);
     if (ready && wasReady === false && ticket) burst(ticket, 46);
@@ -111,11 +102,14 @@
   }
   function mark(s, toggle){
     st[s] = toggle ? !st[s] : true;
-    try { localStorage.setItem('ana_ready', JSON.stringify(st)) } catch (e) {}
+    try { localStorage.setItem(ST_KEY, JSON.stringify(st)) } catch (e) {}
     renderReady();
   }
   document.querySelectorAll('[data-step]').forEach(function(el){
-    el.addEventListener('click', function(){ mark(el.getAttribute('data-step'), el.tagName === 'BUTTON') });
+    el.addEventListener('click', function(e){
+      if (el.tagName === 'A' && el.getAttribute('href') === '#') e.preventDefault(); /* a link that isn't set yet (demo) */
+      mark(el.getAttribute('data-step'), el.tagName === 'BUTTON');
+    });
   });
 
   /* a burst of her sunflowers and confetti: on arrival, and when the ticket is ready */
@@ -214,9 +208,9 @@
   });
 
 
-  /* ---- the survey: opening screen, 7 tap-only questions, last screen ---- */
+  /* ---- step 3: the 7 quick questions, inline on the page, all taps. Then the exit number calculator (/exit-number/).
+     The answers post to /api/ana-survey, which adds a row to the Google Sheet (tools/survey-sheet.gs). ---- */
   var isVip = C.PAGE === 'vip';
-  var exitLink = (isVip ? C.VIP_GROUP_URL : C.CHANNEL_URL) || EXIT_LINK_PLACEHOLDER;
   var localTime = '';
   try {
     var tz2 = Intl.DateTimeFormat().resolvedOptions().timeZone;
@@ -228,7 +222,7 @@
   } catch (e) {}
   var QS = [
     {id:'q1', q:'Can you be there live, 12:00 to 1:30 pm New York, Tue Nov 17 to Thu Nov 19?', note: localTime,
-     o:['Yes, all three days', 'Some of it, around work', 'Probably not, I’ll watch the replays']},
+     o:['Yes, all three days', 'Some of it, around work', 'Probably not']},
     {id:'q2', q:'How many subscribers do you have right now?', note:'No newsletter? Pick “None yet.” Every answer here is a normal place to start.',
      o:['None yet', 'Under 100', '100 to 1,000', '1,000 to 10,000', 'More than 10,000']},
     {id:'q3', q:'Have you bought something from me before?', note:'Pick all that fit.', multi:true, only:2,
@@ -239,145 +233,100 @@
      o:['“It feels wrong to charge for something that comes easy to me.”', '“I wouldn’t know what to sell.”', '“I need more subscribers first.”', '“Asking for money feels pushy.”', '“I don’t have the time.”', '“This works for other people, not for people like me.”']},
     {id:'q6', q:'What do people come to you for help with?', note:'Pick the closest.',
      o:['Work and career', 'Writing and creativity', 'Health, food or fitness', 'Money and business', 'Family, home and relationships', 'Something else']},
-    {id:'q7', q:'By Thursday, these three days were worth it if I...',
+    {id:'q7', q:'By Nov 19, these three days were worth it if I...',
      o:['know what I’d sell', 'have a price I can say without wincing', 'have my first ask written', 'actually send it to someone', 'all of the above, obviously']}
   ];
-  var sv = {a:{}, i:0, done:false};
-  try { var sv0 = JSON.parse(localStorage.getItem('ana_survey') || 'null'); if (sv0 && sv0.a) sv = sv0 } catch (e) {}
-  function saveSv(){ try { localStorage.setItem('ana_survey', JSON.stringify(sv)) } catch (e) {} }
+  var SV_KEY = 'ana_survey2', sv = {a:{}, i:1, done:false};
+  try { var sv0 = JSON.parse(localStorage.getItem(SV_KEY) || 'null'); if (sv0 && sv0.a) sv = sv0 } catch (e) {}
+  function saveSv(){ try { localStorage.setItem(SV_KEY, JSON.stringify(sv)) } catch (e) {} }
   function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c] }) }
-
-  function payload(delivery, em){
-    var d = new URLSearchParams(), tags = [KIT_SURVEY.tagAll];
-    d.append('email_address', em || email);
-    if (first) d.append('first_name', first);
-    QS.forEach(function(s){
-      var v = sv.a[s.id]; if (v == null) return;
-      var idx = [].concat(v);
-      d.append('fields[survey_' + s.id + ']', idx.map(function(k){ return s.o[k] }).join(' | '));
-      idx.forEach(function(k){ var tg = (KIT_SURVEY.tagMap[s.id] || [])[k]; if (tg) tags.push(tg) });
-    });
-    d.append('fields[exit_delivery]', delivery);
-    d.append('fields[ep_tags]', tags.join(','));
-    return d;
+  function answers(){
+    var a = {};
+    QS.forEach(function(s){ var v = sv.a[s.id]; if (v != null) a[s.id] = [].concat(v).map(function(k){ return s.o[k] }).join(' | ') });
+    return a;
   }
-  /* the stub: posts only when the form id is set */
-  function sendSurvey(delivery, em){
-    track('survey_' + delivery);
-    if (!KIT_SURVEY.formId || !(em || email)) return Promise.resolve('demo');
-    return fetch(KIT_SURVEY.endpoint(KIT_SURVEY.formId), {method:'POST', body: payload(delivery, em), headers:{'Accept':'application/json'}}).then(function(){ return 'sent' }, function(){ return 'failed' });
+  function sendSurvey(){
+    track('survey_done');
+    var tz = ''; try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '' } catch (e) {}
+    try {
+      return fetch(C.SURVEY_API || '/api/ana-survey', {method:'POST', headers:{'Content-Type':'application/json'}, keepalive:true,
+        body: JSON.stringify({kind:'survey', page:isVip ? 'vip' : 'reg', first:first, email:email, ref:ref, tz:tz, answers:answers()})}).catch(function(){});
+    } catch (e) {}
   }
-
-  var box = document.createElement('div');
-  box.className = 'sv' + (isVip ? ' vip' : '');
-  box.setAttribute('role', 'dialog'); box.setAttribute('aria-modal', 'true'); box.setAttribute('aria-labelledby', 'sv-t'); box.hidden = true;
-  box.innerHTML = '<div class="sv-card"><div class="sv-top"><button type="button" class="sv-back">&larr; back</button><span class="sv-prog" aria-live="polite"></span><button type="button" class="sv-x" aria-label="Close">&times;</button></div><div class="sv-bar" aria-hidden="true"><i></i></div><div class="sv-body"></div></div>';
-  document.body.appendChild(box);
-  var body = box.querySelector('.sv-body'), prog = box.querySelector('.sv-prog'), bar = box.querySelector('.sv-bar i'), back = box.querySelector('.sv-back'), lastFocus = null;
-  var LAST = QS.length + 1;
-
-  function render(){
-    var i = sv.i;
-    box.setAttribute('data-screen', i === 0 ? 'open' : (i === LAST ? 'last' : (i === 'email' ? 'email' : 'q')));
-    back.style.visibility = (i === 0 || i === LAST) ? 'hidden' : 'visible';
-    if (i === 'email') { back.style.visibility = 'hidden' }
-    if (typeof i === 'number' && i >= 1 && i <= QS.length) { prog.textContent = i + ' of ' + QS.length; bar.style.width = (i / QS.length * 100) + '%' }
-    else { prog.textContent = ''; bar.style.width = i === LAST ? '100%' : '0%' }
-    var h = '';
-    if (i === 0) {
-      h = '<h2 id="sv-t">Your seat is saved.</h2>'
-        + '<p>Seven short questions, about a minute, and your exit number is yours. It’s waiting in the ' + (isVip ? 'VIP group' : 'WhatsApp channel') + '.</p>'
-        + '<p>I read through these before Day 1 and answer the most common ones live.</p>'
-        + '<div class="sv-act"><button type="button" class="btn" data-sv="start">Start</button><button type="button" class="sv-skip" data-sv="close">skip for now</button></div>';
-    } else if (i === LAST) {
-      h = '<h2 id="sv-t">Thank you' + (first ? ', ' + esc(first) : '') + '.</h2>'
-        + '<p>' + (isVip ? 'Your exit number is pinned in the VIP group.' : 'Your exit number is the pinned post in the WhatsApp channel.') + '</p>'
-        + '<div class="sv-act"><a class="btn" href="' + esc(exitLink) + '" target="_blank" rel="noopener" data-sv="join">' + (isVip ? 'Join the VIP group and get it' : 'Join the channel and get it') + '</a></div>'
-        + '<p class="sv-alt">Not on WhatsApp? <a href="#" data-sv="email">Send it to my email instead</a></p>'
-        + '<p class="sv-ok" role="status" hidden></p>';
-    } else if (i === 'email') {
-      h = '<h2 id="sv-t">Where should I send it?</h2>'
-        + '<p>Your exit number comes as an email called “Your exit number.”</p>'
-        + '<form class="sv-em" novalidate><label for="sv-em">Your email <small>(the one you registered with)</small></label><input type="email" id="sv-em" required autocomplete="email" value="' + esc(email) + '"><button class="btn" type="submit">send it to me</button></form>'
-        + '<p class="sv-ok" role="status" hidden></p>';
-    } else {
-      var s = QS[i - 1], v = sv.a[s.id], sel = [].concat(v == null ? [] : v);
-      h = '<h2 id="sv-t">' + esc(s.q) + '</h2>' + (s.note ? '<p class="sv-note">' + esc(s.note) + '</p>' : '')
-        + '<div class="sv-opts' + (s.multi ? ' multi' : '') + '" role="' + (s.multi ? 'group' : 'radiogroup') + '" aria-labelledby="sv-t">'
-        + s.o.map(function(o, k){ var on = sel.indexOf(k) > -1; return '<button type="button" class="sv-o' + (on ? ' on' : '') + '" role="' + (s.multi ? 'checkbox' : 'radio') + '" aria-checked="' + on + '" data-k="' + k + '">' + esc(o) + '</button>' }).join('')
-        + '</div>' + (s.multi ? '<div class="sv-act"><button type="button" class="btn" data-sv="next"' + (sel.length ? '' : ' disabled') + '>next</button></div>' : '');
-    }
-    body.innerHTML = h;
-    var f = body.querySelector('.sv-o.on') || body.querySelector('.sv-o, [data-sv="start"], [data-sv="join"], #sv-em');
-    if (f) try { f.focus({preventScroll:true}) } catch (e) { f.focus() }
+  function exitHref(){
+    var p = ['p=' + (isVip ? 'vip' : 'reg')];
+    if (first) p.push('first=' + encodeURIComponent(first));
+    return (C.EXIT_URL || '../exit-number/') + '?' + p.join('&');
   }
-  function go(i){ sv.i = i; saveSv(); render(); body.scrollTop = 0 }
-  function finish(){
-    sv.done = true; saveSv(); mark('group');
-    sendSurvey(isVip ? 'vip_group' : 'whatsapp');
-    go(LAST);
-  }
-  function open(at){
-    lastFocus = document.activeElement;
-    if (at === 'email' && sv.i !== 'email') sv.prev = sv.i;
-    if (at) sv.i = at; else if (sv.done) sv.i = LAST; else if (sv.i === 'email') sv.i = sv.prev || 0;
-    box.hidden = false; document.documentElement.classList.add('sv-on');
-    render(); track('survey_open');
-  }
-  function close(){ box.hidden = true; document.documentElement.classList.remove('sv-on'); if (sv.i === 'email') sv.i = sv.done ? LAST : (sv.prev || 0); saveSv(); if (lastFocus && lastFocus.focus) lastFocus.focus() }
-  function emailDone(where, okEl){
-    sv.mailed = true; saveSv(); mark('group');
-    okEl.hidden = false; okEl.textContent = 'On its way. Look for “Your exit number.” in your inbox.';
-  }
-
-  box.addEventListener('click', function(e){
-    if (e.target === box) return close();
-    var o = e.target.closest('.sv-o'), b = e.target.closest('[data-sv]');
-    if (o) {
-      var s = QS[sv.i - 1], k = +o.getAttribute('data-k');
-      if (s.multi) {
-        var cur = [].concat(sv.a[s.id] == null ? [] : sv.a[s.id]), at = cur.indexOf(k);
-        if (at > -1) cur.splice(at, 1); else if (k === s.only) cur = [k]; else { cur = cur.filter(function(x){ return x !== s.only }); cur.push(k) }
-        sv.a[s.id] = cur; saveSv(); render();
+  var root = document.getElementById('svx');
+  if (root) {
+    var LETTERS = 'ABCDEF';
+    var render = function(focus){
+      var h, i = sv.i;
+      root.classList.toggle('end', !!sv.done && i > QS.length);
+      if (i > QS.length) {
+        h = '<div class="svx-end"><span class="svx-ok" aria-hidden="true"><svg viewBox="0 0 16 16"><use href="#ck"/></svg></span>'
+          + '<h3 id="svx-q" tabindex="-1">Thank you' + (first ? ', ' + esc(first) : '') + '. <em>Your exit number is ready.</em></h3>'
+          + '<p>Put in the monthly number that would give you more choice about work, and a price for your offer. You’ll see how many people it takes, and what the same goal would take through paid subscriptions alone.</p>'
+          + '<div class="svx-act"><a class="btn" href="' + esc(exitHref()) + '" data-track="exit_open">work out my exit number<svg aria-hidden="true"><use href="#arr"/></svg></a></div>'
+          + '<button type="button" class="svx-redo">change my answers</button></div>';
       } else {
-        sv.a[s.id] = k; saveSv();
-        o.classList.add('on');
-        setTimeout(function(){ if (sv.i < QS.length) go(sv.i + 1); else finish() }, reduce ? 0 : 160);
+        var s = QS[i - 1], v = sv.a[s.id], sel = [].concat(v == null ? [] : v);
+        h = '<div class="svx-top"><button type="button" class="svx-back"' + (i === 1 ? ' hidden' : '') + '>&larr; back</button><span class="svx-n" aria-live="polite">Question ' + i + ' of ' + QS.length + '</span><span class="svx-t">about a minute</span></div>'
+          + '<div class="svx-bar" aria-hidden="true"><i style="width:' + ((i - 1) / QS.length * 100) + '%"></i></div>'
+          + '<h3 id="svx-q" tabindex="-1">' + esc(s.q) + '</h3>' + (s.note ? '<p class="svx-note">' + esc(s.note) + '</p>' : '')
+          + '<div class="svx-opts' + (s.multi ? ' multi' : '') + '" role="' + (s.multi ? 'group' : 'radiogroup') + '" aria-labelledby="svx-q">'
+          + s.o.map(function(o, k){ var on = sel.indexOf(k) > -1; return '<button type="button" class="svx-o' + (on ? ' on' : '') + '" role="' + (s.multi ? 'checkbox' : 'radio') + '" aria-checked="' + on + '" data-k="' + k + '"><span class="k" aria-hidden="true">' + (s.multi ? '<svg viewBox="0 0 16 16"><use href="#ck"/></svg>' : LETTERS[k]) + '</span><span class="t">' + esc(o) + '</span></button>' }).join('')
+          + '</div>' + (s.multi ? '<div class="svx-act"><button type="button" class="btn svx-next"' + (sel.length ? '' : ' disabled') + '>next<svg aria-hidden="true"><use href="#arr"/></svg></button></div>' : '');
       }
-      return;
-    }
-    if (!b) return;
-    var a = b.getAttribute('data-sv');
-    if (a === 'start') go(1);
-    else if (a === 'close') close();
-    else if (a === 'next') { if (sv.i < QS.length) go(sv.i + 1); else finish() }
-    else if (a === 'join') { mark('group'); track('action_whatsapp') }
-    else if (a === 'email') {
-      e.preventDefault();
-      if (email) sendSurvey('email').then(function(){ emailDone('last', body.querySelector('.sv-ok')) });
-      else go('email');
-    }
-  });
-  box.addEventListener('submit', function(e){
-    var f = e.target; if (!f.classList.contains('sv-em')) return;
-    e.preventDefault();
-    var inp = f.querySelector('input'); if (!inp.reportValidity()) return;
-    email = inp.value.trim(); f.querySelector('button').disabled = true;
-    sendSurvey('email', email).then(function(){ emailDone('email', body.querySelector('.sv-ok')) });
-  });
-  back.addEventListener('click', function(){ if (typeof sv.i === 'number' && sv.i > 0) go(sv.i - 1) });
-  box.querySelector('.sv-x').addEventListener('click', close);
-  document.addEventListener('keydown', function(e){ if (!box.hidden && e.key === 'Escape') close() });
-  document.querySelectorAll('[data-survey]').forEach(function(a){ a.addEventListener('click', function(e){ e.preventDefault(); open() }) });
-  /* "Not on WhatsApp? Send it to my email instead", under step 1 */
-  document.querySelectorAll('[data-exit-email]').forEach(function(a){
-    a.addEventListener('click', function(e){
-      e.preventDefault();
-      var ok = a.closest('.act') && a.closest('.act').querySelector('.alt-ok');
-      if (email && ok) sendSurvey('email').then(function(){ emailDone('page', ok) });
-      else open('email');
+      root.innerHTML = h;
+      if (focus) {
+        var hq = root.querySelector('#svx-q'); if (hq) try { hq.focus({preventScroll:true}) } catch (e) { hq.focus() }
+        var r = root.getBoundingClientRect(); if (r.top < 70) root.scrollIntoView({block:'start', behavior: reduce ? 'auto' : 'smooth'});
+      }
+    };
+    var go = function(i){ sv.i = i; saveSv(); render(true) };
+    var finish = function(){
+      var first_time = !sv.done;
+      sv.done = true; sv.i = QS.length + 1; saveSv(); mark('survey');
+      if (first_time || sv.changed) sendSurvey();
+      sv.changed = false; saveSv();
+      render(true);
+      if (first_time) burst(root, 36);
+    };
+    root.addEventListener('click', function(e){
+      var o = e.target.closest('.svx-o');
+      if (o) {
+        var s = QS[sv.i - 1], k = +o.getAttribute('data-k');
+        sv.changed = sv.done;
+        if (s.multi) {
+          var cur = [].concat(sv.a[s.id] == null ? [] : sv.a[s.id]), at = cur.indexOf(k);
+          if (at > -1) cur.splice(at, 1); else if (k === s.only) cur = [k]; else { cur = cur.filter(function(x){ return x !== s.only }); cur.push(k) }
+          sv.a[s.id] = cur; saveSv(); render(false);
+          var nb = root.querySelector('.svx-o[data-k="' + k + '"]'); if (nb) nb.focus();
+        } else {
+          sv.a[s.id] = k; saveSv();
+          root.querySelectorAll('.svx-o').forEach(function(x){ x.classList.toggle('on', x === o); x.setAttribute('aria-checked', x === o) });
+          var bar = root.querySelector('.svx-bar i'); if (bar) bar.style.width = (sv.i / QS.length * 100) + '%';
+          setTimeout(function(){ if (sv.i < QS.length) go(sv.i + 1); else finish() }, reduce ? 0 : 220);
+        }
+        return;
+      }
+      if (e.target.closest('.svx-next')) { if (sv.i < QS.length) go(sv.i + 1); else finish(); return }
+      if (e.target.closest('.svx-back')) { if (sv.i > 1) go(sv.i - 1); return }
+      if (e.target.closest('.svx-redo')) { go(1); return }
+      var tr = e.target.closest('[data-track]'); if (tr) track(tr.getAttribute('data-track'));
     });
-  });
+    /* A to F picks an answer, Enter moves on from the multi-pick question */
+    root.addEventListener('keydown', function(e){
+      if (sv.i > QS.length || e.metaKey || e.ctrlKey || e.altKey) return;
+      var k = LETTERS.indexOf(String(e.key).toUpperCase());
+      if (k > -1 && k < QS[sv.i - 1].o.length) { var b = root.querySelector('.svx-o[data-k="' + k + '"]'); if (b) { e.preventDefault(); b.click() } }
+    });
+    if (sv.done) sv.i = QS.length + 1;
+    render(false);
+  }
+  document.querySelectorAll('a[href="#survey"]').forEach(function(a){ a.addEventListener('click', function(){ track('survey_jump') }) });
   if (C.SENDER) document.querySelectorAll('a[data-mail="gmail"]').forEach(function(a){ a.href = 'https://mail.google.com/mail/u/0/#search/' + encodeURIComponent(C.SENDER) });
 
   /* second chance at VIP: back to the VIP page with the name and email, gone after Tue Nov 17, 11:59 pm New York */
