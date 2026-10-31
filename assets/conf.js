@@ -271,6 +271,7 @@
       lockEl.querySelectorAll('.cxl-seg i').forEach(function(e, k){ e.classList.toggle('on', k < n); e.classList.toggle('new', lastPow > -1 && k === n - 1 && n > lastPow) });
       for (var k = 0; k <= QS.length; k++) lockEl.classList.toggle('p' + k, k === n);
       lockEl.classList.toggle('open', !!sv.done);
+      var cxtEl = document.getElementById('cxt'); if (cxtEl) cxtEl.classList.toggle('open', !!sv.done);
       var st = lockEl.querySelector('.cxl-st'); if (st) st.textContent = sv.done ? 'open' : 'locked';
       var go2 = lockEl.querySelector('.cxl-go'); if (go2) go2.href = exitHref();
       lastPow = n;
@@ -345,6 +346,34 @@
   }
   document.querySelectorAll('a[href="#survey"]').forEach(function(a){ a.addEventListener('click', function(){ track('survey_jump') }) });
   if (C.SENDER) document.querySelectorAll('a[data-mail="gmail"]').forEach(function(a){ a.href = 'https://mail.google.com/mail/u/0/#search/' + encodeURIComponent(C.SENDER) });
+
+  /* step 4's calculator preview: example numbers in turn, the result counting to its new value; only while it's on screen */
+  var cxt = document.getElementById('cxt');
+  if (cxt) {
+    try { if (JSON.parse(localStorage.getItem('ana_survey2') || '{}').done) cxt.classList.add('open') } catch (e) {}
+    if (first) { var cxl0 = cxt.querySelector('.lab'); if (cxl0) cxl0.textContent = first + '’s exit number' }
+    var PRE = [[4000, 149, 8], [6000, 299, 5], [10000, 500, 10], [3000, 97, 8]], pi = 1, cxtOn = false;
+    var nfmt = function(n){ return Math.round(n).toLocaleString('en-US') };
+    var setT = function(k, v){ cxt.querySelectorAll('[data-t="' + k + '"]').forEach(function(e){ e.textContent = v }) };
+    var countTo = function(k, to){
+      var el = cxt.querySelector('[data-t="' + k + '"]'); if (!el) return;
+      var from = parseInt(el.textContent.replace(/,/g, ''), 10) || 0, t0 = performance.now();
+      var step = function(t){ var q = Math.min(1, (t - t0) / 700); el.textContent = nfmt(from + (to - from) * (1 - Math.pow(1 - q, 3))); if (q < 1) requestAnimationFrame(step) };
+      requestAnimationFrame(step);
+    };
+    var cxtTick = function(){
+      if (!cxtOn || document.hidden) return;
+      var v = PRE[pi % PRE.length]; pi++;
+      setT('goal', nfmt(v[0])); setT('price', nfmt(v[1])); setT('sub', nfmt(v[2]));
+      setT('price2', '$' + nfmt(v[1])); setT('sub2', '$' + nfmt(v[2]));
+      cxt.classList.remove('flip'); void cxt.offsetWidth; cxt.classList.add('flip');
+      countTo('buyers', Math.ceil(v[0] / v[1])); countTo('subs', Math.ceil(v[0] / v[2]));
+    };
+    if (!reduce) {
+      if ('IntersectionObserver' in window) new IntersectionObserver(function(es){ cxtOn = es[0].isIntersecting }, {threshold: 0.3}).observe(cxt); else cxtOn = true;
+      setInterval(cxtTick, 2800);
+    }
+  }
 
   /* step 2's Gmail picture: "Spam" and "Promotions" take turns every 11 s (one loop each); a tap on either keeps that one */
   var gxEl = document.querySelector('.gx'), gxPick = document.querySelectorAll('[data-gx]'), gxPinned = false;
