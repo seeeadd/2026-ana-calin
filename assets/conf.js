@@ -272,6 +272,7 @@
       for (var k = 0; k <= QS.length; k++) lockEl.classList.toggle('p' + k, k === n);
       lockEl.classList.toggle('open', !!sv.done);
       var cxtEl = document.getElementById('cxt'); if (cxtEl) cxtEl.classList.toggle('open', !!sv.done);
+      document.querySelectorAll('.cxlogo').forEach(function(l){ l.classList.toggle('open', !!sv.done) });
       var st = lockEl.querySelector('.cxl-st'); if (st) st.textContent = sv.done ? 'open' : 'locked';
       var go2 = lockEl.querySelector('.cxl-go'); if (go2) go2.href = exitHref();
       lastPow = n;

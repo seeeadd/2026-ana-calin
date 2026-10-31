@@ -593,3 +593,14 @@ body.vipc .cxs-g .svx{box-shadow:9px 10px 0 var(--pk2),9px 10px 0 1.6px var(--in
   .cxt-big b{font-size:84px}
 }
 @media (prefers-reduced-motion:reduce){.cxt.flip *{animation:none!important}}
+
+/* the exit number calculator's logo, above step 4 */
+.cxlogo{display:block;overflow:visible}
+.cxlogo-sh{transform-box:view-box;transform-origin:214px 214px;transition:transform .6s cubic-bezier(.3,1.6,.5,1)}
+.cxlogo.open .cxlogo-sh,.cxlogo-on .cxlogo .cxlogo-sh{transform:translateY(-9px) rotate(-32deg)}
+@media (prefers-reduced-motion:no-preference){
+  .cxlogo-calc{transform-box:view-box;transform-origin:160px 160px;animation:cxlogofloat 4.5s ease-in-out infinite}
+  @keyframes cxlogofloat{0%,100%{transform:none}50%{transform:translateY(-5px) rotate(1.2deg)}}
+}
+.cxs-h .cxlogo{width:200px;height:200px;margin:0 auto 18px}
+@media (max-width:640px){.cxs-h .cxlogo{width:160px;height:160px;margin-bottom:14px}}
