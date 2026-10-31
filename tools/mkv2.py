@@ -70,43 +70,42 @@ def ticket(tid, slot, hero):
       </div>
     </div>""") % (tid, slot)
 
-# the drawing under the booking card, small: what you make on each day, the same example writer as in the day rows
-INK, SUN, PINK, INK3 = '#1A1412', '#FFD400', '#F72585', '#7A6A60'
+# the drawing under the booking card, small and quiet: what you make on each day, the same example writer as in the
+# day rows. Thin lines, no shadows, no tilt, soft colours, so it sits behind the video and the form.
+INK, PINK, INK3, YSOFT = '#1A1412', '#F72585', '#7A6A60', '#FFF1B3'
 def t(x, y, txt, size=12, weight=700, fill=INK, serif=False, ls=None, anchor=None):
     fam = 'Instrument Serif,Georgia,serif' if serif else 'Manrope,sans-serif'
     return '<text x="%s" y="%s" font-family="%s"%s font-size="%s" fill="%s"%s%s>%s</text>' % (
         x, y, fam, '' if serif else ' font-weight="%d"' % weight, size, fill,
         ' letter-spacing="%s"' % ls if ls else '', ' text-anchor="%s"' % anchor if anchor else '', txt)
-CW, CH = 230, 116
-def card(x, y, rot, title, day, body):
-    return ('<g transform="rotate(%s %d %d)">' % (rot, x + CW // 2, y + CH // 2)
-            + '<rect x="%d" y="%d" width="%d" height="%d" rx="14" fill="%s" stroke="%s" stroke-width="2.4"/>' % (x + 5, y + 6, CW, CH, SUN, INK)
-            + '<rect x="%d" y="%d" width="%d" height="%d" rx="14" fill="#fff" stroke="%s" stroke-width="2.4"/>' % (x, y, CW, CH, INK)
-            + (t(x + 14, y + 26, title, 18, serif=True) if title else '')
-            + '<rect x="%d" y="%d" width="46" height="19" rx="9.5" fill="%s"/>' % (x + CW - 58, y + 11, PINK)
-            + t(x + CW - 35, y + 24, day, 9, 800, '#fff', ls=1.3, anchor='middle')
-            + '<path d="M%d %dh%d" stroke="%s" stroke-opacity=".12" stroke-width="1.4"/>' % (x + 12, y + 38, CW - 24, INK)
+CW, CH = 232, 108
+def card(x, y, title, day, body):
+    return ('<g>'
+            + '<rect x="%d" y="%d" width="%d" height="%d" rx="14" fill="#fff" fill-opacity=".72" stroke="%s" stroke-opacity=".16" stroke-width="1.4"/>' % (x, y, CW, CH, INK)
+            + (t(x + 14, y + 25, title, 17, fill='#3D332E', serif=True) if title else '')
+            + t(x + CW - 14, y + 23, day, 8.5, 800, PINK, ls=1.4, anchor='end')
+            + '<path d="M%d %dh%d" stroke="%s" stroke-opacity=".08" stroke-width="1.2"/>' % (x + 12, y + 35, CW - 24, INK)
             + body + '</g>')
-X1, X2, X3, Y = 8, 265, 522, 18
-c1 = ('<g transform="translate(%d %d) scale(.3)"><circle r="50" fill="%s" stroke="%s" stroke-width="7"/><path d="M-50 -6C-44-48 44-48 50-6C40-26 22-34 0-34S-40-26-50-6Z" fill="#6B4E3A" stroke="%s" stroke-width="7" stroke-linejoin="round"/><ellipse cx="-16" cy="2" rx="5" ry="7" fill="%s"/><ellipse cx="16" cy="2" rx="5" ry="7" fill="%s"/><path d="M-20 18c4 16 36 16 40 0Z" fill="%s"/></g>' % (X1 + 30, Y + 72, SUN, INK, INK, INK, INK, INK)
-      + t(X1 + 56, Y + 58, 'SHE’D PAY FOR', 8.5, 800, PINK, ls=1.3)
-      + '<rect x="%d" y="%d" width="84" height="20" fill="%s"/><rect x="%d" y="%d" width="94" height="20" fill="%s"/>' % (X1 + 54, Y + 64, SUN, X1 + 54, Y + 86, SUN)
-      + t(X1 + 57, Y + 79, 'A clear plan', 18, serif=True) + t(X1 + 57, Y + 101, 'back to work.', 18, serif=True))
-c2 = (t(X2 + 14, Y + 59, 'I help mothers after a career', 15, serif=True) + t(X2 + 14, Y + 78, 'break get back to work', 15, serif=True)
-      + t(X2 + 14, Y + 97, 'in six weeks.', 15, serif=True)
-      + '<path d="M%d %dc14-3 30-3 44 0" fill="none" stroke="%s" stroke-width="2.6" stroke-linecap="round"/>' % (X2 + 32, Y + 103, PINK)
-      + '<g transform="rotate(-8 %d %d)"><path d="M%d %dh52a7 7 0 0 1 7 7v22a7 7 0 0 1-7 7h-52l-14-18Z" fill="%s" stroke="%s" stroke-width="2.4" stroke-linejoin="round"/><circle cx="%d" cy="%d" r="3.6" fill="#EADFCF" stroke="%s" stroke-width="2"/>' % (X2 + 186, Y + 98, X2 + 160, Y + 80, PINK, INK, X2 + 155, Y + 98, INK)
-      + t(X2 + 188, Y + 106, '$149', 19, 800, '#fff', anchor='middle', ls=-.4) + '</g>')
-c3 = ('<use href="#sf" x="%d" y="%d" width="22" height="22"/>' % (X3 + 11, Y + 9)
-      + t(X3 + 38, Y + 21, 'You', 11.5, 800) + t(X3 + 38, Y + 33, 'your newsletter', 9.5, 600, INK3)
-      + t(X3 + 14, Y + 66, 'Back to work, by spring.', 19, serif=True)
-      + '<circle cx="%d" cy="%d" r="8.5" fill="%s" stroke="%s" stroke-width="1.8"/><path d="m%d %d 3 3 5.5-6" fill="none" stroke="%s" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>' % (X3 + 23, Y + 92, SUN, INK, X3 + 18.5, Y + 92, INK)
-      + t(X3 + 38, Y + 96, 'Sent to her ten readers', 10.5, 700))
-arrow = lambda x, y: ('<path d="M%d %dh13" stroke="%s" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="1 5"/><path d="M%d %dl5 4-5 4" fill="none" stroke="%s" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>' % (x, y, PINK, x + 14, y - 4, PINK))
-HMAP = ('<div class="hmap" aria-hidden="true"><svg viewBox="0 0 760 146" role="presentation">'
-        + card(X1, Y, -1.4, 'Reader file', 'DAY 1', c1) + card(X2, Y - 4, 1, 'Your offer', 'DAY 2', c2)
-        + card(X3, Y, -1, None, 'DAY 3', c3)
-        + arrow(X2 - 21, Y + 62) + arrow(X3 - 21, Y + 62) + '</svg></div>')
+X1, X2, X3, Y = 6, 264, 522, 10
+c1 = ('<g transform="translate(%d %d) scale(.24)" opacity=".9"><circle r="50" fill="%s" stroke="%s" stroke-width="5"/><path d="M-50 -6C-44-48 44-48 50-6C40-26 22-34 0-34S-40-26-50-6Z" fill="#6B4E3A" stroke="%s" stroke-width="5" stroke-linejoin="round"/><ellipse cx="-16" cy="2" rx="5" ry="7" fill="%s"/><ellipse cx="16" cy="2" rx="5" ry="7" fill="%s"/><path d="M-20 18c4 16 36 16 40 0Z" fill="%s"/></g>' % (X1 + 27, Y + 70, YSOFT, INK, INK, INK, INK, INK)
+      + t(X1 + 50, Y + 56, 'SHE’D PAY FOR', 8, 800, INK3, ls=1.3)
+      + '<rect x="%d" y="%d" width="80" height="18" fill="%s"/><rect x="%d" y="%d" width="90" height="18" fill="%s"/>' % (X1 + 48, Y + 62, YSOFT, X1 + 48, Y + 82, YSOFT)
+      + t(X1 + 51, Y + 76, 'A clear plan', 16.5, fill='#3D332E', serif=True) + t(X1 + 51, Y + 96, 'back to work.', 16.5, fill='#3D332E', serif=True))
+c2 = (t(X2 + 14, Y + 56, 'I help mothers after a career', 14.5, fill='#3D332E', serif=True) + t(X2 + 14, Y + 74, 'break get back to work', 14.5, fill='#3D332E', serif=True)
+      + t(X2 + 14, Y + 92, 'in six weeks.', 14.5, fill='#3D332E', serif=True)
+      + '<path d="M%d %dc13-2 28-2 42 0" fill="none" stroke="%s" stroke-opacity=".55" stroke-width="1.6" stroke-linecap="round"/>' % (X2 + 31, Y + 97, PINK)
+      + '<path d="M%d %dh44a6 6 0 0 1 6 6v16a6 6 0 0 1-6 6h-44l-10-14Z" fill="#fff" stroke="%s" stroke-opacity=".6" stroke-width="1.4" stroke-linejoin="round"/><circle cx="%d" cy="%d" r="2.4" fill="none" stroke="%s" stroke-opacity=".6" stroke-width="1.2"/>' % (X2 + 172, Y + 70, PINK, X2 + 170, Y + 84, PINK)
+      + t(X2 + 197, Y + 89, '$149', 14, 800, PINK, anchor='middle'))
+c3 = ('<use href="#sf" x="%d" y="%d" width="18" height="18" opacity=".85"/>' % (X3 + 12, Y + 10)
+      + t(X3 + 35, Y + 19, 'You', 10.5, 800, '#3D332E') + t(X3 + 35, Y + 30, 'your newsletter', 8.5, 600, INK3)
+      + t(X3 + 14, Y + 64, 'Back to work, by spring.', 18, fill='#3D332E', serif=True)
+      + '<circle cx="%d" cy="%d" r="7" fill="%s" stroke="%s" stroke-opacity=".5" stroke-width="1.2"/><path d="m%d %d 2.5 2.5 4.5-5" fill="none" stroke="%s" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>' % (X3 + 21, Y + 87, YSOFT, INK, X3 + 17.5, Y + 87, INK)
+      + t(X3 + 34, Y + 91, 'Sent to her ten readers', 10, 600, INK3))
+arrow = lambda x, y: ('<path d="M%d %dh12" stroke="%s" stroke-opacity=".45" stroke-width="1.6" stroke-linecap="round" stroke-dasharray="1 4"/><path d="M%d %dl4 3.5-4 3.5" fill="none" stroke="%s" stroke-opacity=".45" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>' % (x, y, PINK, x + 13, y - 3.5, PINK))
+HMAP = ('<div class="hmap" aria-hidden="true"><svg viewBox="0 0 760 128" role="presentation">'
+        + card(X1, Y, 'Reader file', 'DAY 1', c1) + card(X2, Y, 'Your offer', 'DAY 2', c2)
+        + card(X3, Y, None, 'DAY 3', c3)
+        + arrow(X2 - 20, Y + 56) + arrow(X3 - 20, Y + 56) + '</svg></div>')
 
 
 new_hero = """<section class="hero" id="hero">
@@ -420,17 +419,20 @@ R("  function openM(e){\n    if (e) e.preventDefault();",
     if (modal.classList.contains('open') || (form.contains(document.activeElement) && form.parentNode !== dlg)) return;
     var h = homeSlot(); if (form.parentNode === h) return;
     if (form.parentNode === hslot || form.parentNode === rslot) form.parentNode.style.minHeight = form.offsetHeight + 'px';
-    h.style.minHeight = ''; h.appendChild(form); railOn();
+    h.style.minHeight = ''; h.appendChild(form); perf(); railOn();
   }
+  function perf(){ [hcard, rcard].forEach(function(t){ var hd = t.querySelector('.tk-head'); if (t.offsetParent) t.style.setProperty('--py', (hd.offsetTop + hd.offsetHeight - 1) + 'px') }) }
+  if (window.ResizeObserver) { var tro = new ResizeObserver(function(){ perf() }); [hcard, rcard].forEach(function(t){ tro.observe(t.querySelector('.tk-head')) }) }
   function railOn(){ document.getElementById('v2rail').classList.toggle('on', form.parentNode === rslot) }
   var pfRaf = 0; addEventListener('scroll', function(){ if (!pfRaf) pfRaf = requestAnimationFrame(function(){ pfRaf = 0; placeForm() }) }, {passive:true});
   if (wide.addEventListener) wide.addEventListener('change', placeForm); else wide.addListener(placeForm);
   placeForm();
+  perf(); addEventListener('resize', perf); if (document.fonts) document.fonts.ready.then(perf);
   function openM(e){
     if (e) e.preventDefault();
     var home = homeSlot(), card = home === rslot ? rcard : hcard, rr = card.getBoundingClientRect();
     if (card.offsetParent && rr.bottom > 120 && rr.top < innerHeight - 120) {
-      if (form.parentNode !== home) { home.style.minHeight = ''; home.appendChild(form); railOn() }
+      if (form.parentNode !== home) { home.style.minHeight = ''; home.appendChild(form); perf(); railOn() }
       if (rr.top < 90 || rr.bottom > innerHeight) card.scrollIntoView({block:'center', behavior: reduce ? 'auto' : 'smooth'});
       var f1 = form.querySelector('[name=first_name]'); f1.focus({preventScroll:true});
       card.classList.remove('pulse'); void card.offsetWidth; card.classList.add('pulse');

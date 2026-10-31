@@ -4,10 +4,15 @@
    card with the form stays frozen on the right (1280 px and wider), with the testimonial bar on top of it. */
 
 /* ---------- the sign-up card (hero and frozen column): kept minimal ---------- */
-.tkt{position:relative;background:#FFF8EE;border:1.6px solid var(--ink);border-radius:20px;box-shadow:7px 8px 0 var(--sun),7px 8px 0 1.6px var(--ink);padding:16px 16px 16px}
+/* the card is a ticket: two notches on the dashed tear line under the testimonial row; the shell draws the ink outline
+   and the yellow offset around the notched shape */
+.tkshell{filter:drop-shadow(1.5px 0 0 var(--ink)) drop-shadow(-1.5px 0 0 var(--ink)) drop-shadow(0 1.5px 0 var(--ink)) drop-shadow(0 -1.5px 0 var(--ink)) drop-shadow(7px 8px 0 var(--sun))}
+.tkt{position:relative;--py:62px;background:#FFF8EE;border-radius:20px;padding:16px 16px 16px;
+  -webkit-mask:radial-gradient(circle 12px at 0 var(--py),#0000 96%,#000 100%) 0 0/51% 100% no-repeat,radial-gradient(circle 12px at 100% var(--py),#0000 96%,#000 100%) 100% 0/51% 100% no-repeat;
+  mask:radial-gradient(circle 12px at 0 var(--py),#0000 96%,#000 100%) 0 0/51% 100% no-repeat,radial-gradient(circle 12px at 100% var(--py),#0000 96%,#000 100%) 100% 0/51% 100% no-repeat}
 .tkt.pulse{animation:rpulse .9s var(--ease)}
 @keyframes rpulse{0%{transform:none}25%{transform:translateY(-6px) rotate(-.8deg)}60%{transform:translateY(2px)}100%{transform:none}}
-.tk-head{padding-bottom:13px;margin-bottom:14px;border-bottom:1.5px solid rgba(26,20,18,.1)}
+.tk-head{padding-bottom:13px;margin:0 2px 14px;border-bottom:2px dashed rgba(26,20,18,.22)}
 .tkt .proof{display:flex;flex-wrap:wrap;align-items:center;gap:6px 9px;margin:0;padding:0;border:0;font-size:12.5px;line-height:1.25;color:var(--ink2)}
 .tkt .proof .faces{flex:none}
 .tkt .proof .faces img{width:28px;height:28px;margin-left:-9px;border-width:2px}
@@ -56,7 +61,7 @@
 .v2h .tstrip{gap:16px;padding-right:18px}
 .v2h .stats{gap:10px}
 .v2h .stat b{white-space:nowrap;font-size:20px}
-.hmap{position:relative;margin:16px 0 0}
+.hmap{position:relative;margin:14px 0 0}
 .hmap svg{display:block;width:100%;height:auto;overflow:visible}
 @media (max-width:1060px){
   .hero .hsub2{order:3;font-size:clamp(20px,4.6vw,24px)}
