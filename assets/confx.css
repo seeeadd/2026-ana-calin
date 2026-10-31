@@ -721,3 +721,60 @@ body.vipc .cxs-g .svx{box-shadow:9px 10px 0 var(--pk2),9px 10px 0 1.6px var(--in
 .cxtb-pad{position:absolute;left:50%;bottom:7px;width:54px;height:8px;margin-left:-27px;border-radius:5px;background:var(--sun);border:1.4px solid var(--ink);transition:left .25s cubic-bezier(.3,.8,.4,1)}
 .cxtb-ball{position:absolute;left:0;top:0;width:10px;height:10px;border-radius:50%;background:#fff;border:1.6px solid var(--ink);box-shadow:0 0 8px rgba(255,212,0,.9);opacity:0}
 .cxt.open .cxtb{display:none}
+
+/* step 4's calculator, drawn as one: pink body with a 3D edge, a plate and a solar panel, an LCD in segment digits,
+   the three inputs as function keys, a keypad with the sunflower as "=", a paper tape printing out of the top */
+@font-face{font-family:"DSEG7";src:url("fonts/DSEG7Classic-Bold.woff2") format("woff2");font-display:swap}
+.cxl .cxt{position:relative;background:none;border:0;border-radius:0;box-shadow:none;overflow:visible;margin:0}
+.cxl .cxt-lock{position:absolute;left:6px;top:34px;z-index:4;margin:0;height:26px;padding:0 11px;font-size:10.5px;box-shadow:0 0 0 1.5px var(--ink)}
+.calc{position:relative;padding-top:90px}
+.calc-tape{position:absolute;right:24px;top:0;width:170px;height:140px;padding:12px 12px 0;background:#fff;border:1.4px solid rgba(26,20,18,.35);border-bottom:0;font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;color:#3b322d;clip-path:polygon(0 6px,6% 0,12% 6px,18% 0,24% 6px,30% 0,36% 6px,42% 0,48% 6px,54% 0,60% 6px,66% 0,72% 6px,78% 0,84% 6px,90% 0,96% 6px,100% 0,100% 100%,0 100%);transform:rotate(2deg);transform-origin:50% 100%}
+.calc-tape small{display:block;margin-top:4px;font-size:9px;letter-spacing:.06em;color:#7a6a60}
+.calc-tape p{margin:2px 0 0;font-size:11.5px;line-height:1.35}
+.calc-tape .tp-n{font-size:17px;font-weight:700;line-height:1.2}
+.calc-tape .rd{position:relative;display:inline-block;min-width:3ch;color:transparent}
+.calc-tape .rd:after{content:"";position:absolute;inset:1px -2px;background:#1A1412;border-radius:2px}
+.cxt.open .calc-tape .rd{color:inherit}.cxt.open .calc-tape .rd:after{display:none}
+.cxl .calc-tape .cxt-stamp{position:absolute;right:12px;top:31px;display:block;margin:0;padding:3px 8px 2px;font-size:10.5px;border-width:2px;transform:rotate(-8deg);background:rgba(255,255,255,.75)}
+.cxt.open .calc-tape .cxt-stamp{display:none}
+.cxl .calc-tape .cxt-stamp br{display:inline}
+.calc-body{position:relative;z-index:1;padding:14px 14px 12px;border-radius:26px;background:linear-gradient(165deg,#FF5CA8,#F72585 45%,#DE1675);border:2px solid var(--ink);box-shadow:inset 0 2px 0 rgba(255,255,255,.35),inset 0 -6px 0 rgba(120,0,50,.25),0 9px 0 -1px #A80F55,0 9px 0 1px var(--ink),0 22px 30px -18px rgba(70,20,40,.6)}
+.calc-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.calc-brand{display:inline-flex;align-items:center;gap:6px;font-weight:800;font-size:12px;letter-spacing:-.01em;color:#fff}
+.calc-brand svg{width:20px;height:20px}
+.calc-solar{display:flex;gap:2px;padding:3px;border-radius:5px;background:#2A1A22;box-shadow:inset 0 1px 2px rgba(0,0,0,.6)}
+.calc-solar i{width:15px;height:13px;border-radius:2px;background:linear-gradient(160deg,#4B3A55,#251827);box-shadow:inset 0 0 0 1px rgba(255,255,255,.06)}
+.calc-lcd{position:relative;padding:8px 12px 9px;border-radius:10px;background:linear-gradient(180deg,#C9D3A6,#B9C596);border:3px solid #2A1A22;box-shadow:inset 0 3px 6px rgba(30,40,20,.35),0 1px 0 rgba(255,255,255,.3);color:#25301D;overflow:hidden}
+.calc-lcd:after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,rgba(255,255,255,.22) 0 30%,transparent 30%);pointer-events:none}
+.calc-ind{display:flex;justify-content:space-between;align-items:center;font-weight:800;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#3A4630}
+.calc-lk{padding:1px 4px;border:1.2px solid currentColor;border-radius:3px;font-size:8px}
+.cxt.open .calc-lk{visibility:hidden}
+.calc-row{position:relative;display:flex;justify-content:flex-end;height:58px;align-items:center;margin-top:2px}
+.calc-ghost,.calc-big{font-family:"DSEG7",ui-monospace,monospace;font-weight:700;font-size:44px;line-height:1;letter-spacing:.04em}
+.calc-ghost{position:absolute;right:0;color:rgba(37,48,29,.08)}
+.calc-big{position:relative}
+.cxt:not(.open) .calc-big{color:transparent;text-shadow:0 0 9px rgba(37,48,29,.85)}
+.cxt:not(.open) .calc-big.scr{color:#25301D;text-shadow:none}
+.calc-unit{text-align:right;font-weight:800;font-size:11px;color:#3A4630}
+.calc-fn{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:12px}
+.calc .k{display:grid;place-items:center;height:36px;border-radius:9px;background:#FFF8EE;border:1.4px solid var(--ink);box-shadow:0 3px 0 var(--ink);font-weight:800;font-size:15px;color:var(--ink);line-height:1}
+.calc .k.f{height:42px;align-content:center;gap:2px;background:var(--sun)}
+.calc .k.f small{font-size:8.5px;letter-spacing:.08em;text-transform:uppercase;color:#5a4a20}
+.calc .k.f b{font-family:var(--serif);font-weight:400;font-size:17px}
+.calc .k.op{background:#FFD3E7}
+.calc .k.eq{background:var(--sun)}
+.calc .k.eq svg{width:24px;height:24px}
+.calc-pad{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-top:10px}
+.calc-model{margin-top:10px;text-align:center;font-weight:800;font-size:9px;letter-spacing:.24em;color:rgba(255,255,255,.75)}
+.calc-model b{color:#fff}
+/* a calculation on each change of example: the three function keys, then "=" */
+@keyframes keypress{0%,100%{transform:none;box-shadow:0 3px 0 var(--ink)}40%{transform:translateY(3px);box-shadow:0 0 0 var(--ink)}}
+.cxt.flip .calc-fn .k:nth-child(1){animation:keypress .28s ease}
+.cxt.flip .calc-fn .k:nth-child(2){animation:keypress .28s ease .16s}
+.cxt.flip .calc-fn .k:nth-child(3){animation:keypress .28s ease .32s}
+.cxt.flip .calc .k.eq{animation:keypress .28s ease .5s}
+.cxt.flip .calc-fn b{animation:none}
+/* the brick wall over the calculator's face */
+.calc-body .cxtb{top:8px;left:8px;right:8px;bottom:8px;border-radius:20px;overflow:hidden}
+.calc-body .cxtb-floor{background:linear-gradient(transparent,rgba(26,20,18,.85) 45%)}
+@media (prefers-reduced-motion:reduce){.cxt.flip .calc .k{animation:none!important}}
