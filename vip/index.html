@@ -1048,7 +1048,7 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
 (function(){
   /* ---- settings Theia fills in ---- */
   var CHECKOUT_URL = 'https://buy.stripe.com/28EcN57sQcyC54k6vBc7u0G';  // Stripe Payment Link, VIP access, $67 one-time. In Stripe, "After payment" redirects to https://exitplan.howwegrowtoday.com/vip-confirmed/
-  var PROMO_CODE   = '';  // optional: a Stripe promotion code to apply on the checkout (e.g. ExitPlan100). The link needs "Allow promotion codes" on. Empty = none.
+  var PROMO_CODE   = '';  // keep empty. ExitPlan99 and ExitPlan100 are test codes: type them on the Stripe checkout to test the payment (the link needs "Allow promotion codes" on).
   var CONFIRM_URL  = '../confirmed/';  // the registered confirmation page (after the decline). After paying, Stripe sends them to /vip-confirmed/ (the page knows their name from this browser)
   var VSL_SRC      = '';  // Ana's VIP video (mp4), 60 to 90 seconds. Required for launch.
   var CLOSES       = Date.UTC(2026, 10, 18, 4, 59); // Tue Nov 17, 11:59 pm New York

@@ -44,7 +44,7 @@ or closed, the VIP deadline.
    `checkout.session.completed` and `checkout.session.async_payment_succeeded`.
 5. Each Stripe payment link, "After payment" > "Don't show confirmation page" > redirect to:
    VIP `https://exitplan.howwegrowtoday.com/vip-confirmed/`, pay in full `https://exitplan.howwegrowtoday.com/welcome/`,
-   2 payments `https://exitplan.howwegrowtoday.com/welcome/?plan=2`. Turn on "Allow promotion codes" for the coupons.
+   2 payments `https://exitplan.howwegrowtoday.com/welcome/?plan=2`. Turn on "Allow promotion codes" so the test codes ExitPlan99 and ExitPlan100 can be typed at checkout.
 6. If the project gets another name or a custom domain, change the address in these four places, which need a full
    link: `index.html` (the `og:image` share picture) and the three calendar files in `assets/*.ics` (the sheet link).
 
