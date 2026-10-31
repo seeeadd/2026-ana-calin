@@ -32,7 +32,7 @@ def between(a, b):
 s = s.replace('src="img/', 'src="../img/').replace('href="img/', 'href="../img/')
 R("var VIP_URL     = 'vip/';", "var VIP_URL     = '../vip/';")
 R("var PARTNERS    = 'partners.json';", "var PARTNERS    = '../partners.json';")
-R('<meta name="theme-color"', '<meta name="robots" content="noindex">\n<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f%5B%5D=bonny@700&display=swap">\n<meta name="theme-color"')
+R('<meta name="theme-color"', '<meta name="robots" content="noindex">\n<meta name="theme-color"')
 
 # ---------- the hero: the right column becomes the rail; the left gets the big video and the rest of the hero copy ----------
 hero = between('<section class="hero" id="hero">', '<main>')
@@ -55,54 +55,35 @@ BYTH = ('<ul class="byth">\n'
         '            ' + LI + 'a price you can say out loud without wincing</li>\n'
         '            ' + LI + 'the email that finally asks people to buy. You\'ll write it with me on Nov 19.</li>\n'
         '          </ul>')
-# the hero: the headline big and bold across the top (the form column too), then the video big beside the ticket
-STICKER = """<svg class="stk" viewBox="0 0 200 200" aria-hidden="true"><defs><path id="stkc" d="M100,100 m-72,0 a72,72 0 1,1 144,0 a72,72 0 1,1 -144,0"/></defs><circle cx="100" cy="100" r="96" fill="#F72585" stroke="#1A1412" stroke-width="4"/><g class="stk-r"><text font-family="Manrope,sans-serif" font-weight="800" font-size="14" letter-spacing="2.6" fill="#fff"><textPath href="#stkc">FREE · LIVE ON ZOOM · NOV 17 TO 19 ·</textPath></text></g><circle cx="100" cy="100" r="47" fill="#FFF8EE" stroke="#1A1412" stroke-width="4"/><use href="#sf" x="61" y="61" width="78" height="78"/></svg>"""
-new_hero = """<section class="hero" id="hero">
-  <svg class="bgflower" aria-hidden="true"><use href="#sfo"/></svg>
-  <div class="hwrap v2hero">
-    <div class="hhead">
-      """ + pill + """      <h1 id="h1" class="long"><span class="l">How to Build the Income That</span> <span class="l">Lets You Leave Your Job <span class="hl">in 2027</span></span></h1>
-    </div>
+# the hero: the live page's own layout (phone video and stats left, headline, copy and the sign-up card right), with the Oct 31 copy
+R('<div class="stat"><b>0</b><small>sales calls</small></div>',
+  '<div class="stat"><b>0</b><small>sales calls</small></div><i></i>\n          <div class="stat"><b>16,907</b><small>buyers</small></div>')
+R('<p class="hkick" id="hk"><span class="l">There\'s a new way the writers who actually earn are getting paid.</span></p>',
+  '<p class="hkick" id="hk"><span class="l">Already work for yourself? Then your "job" is the client hours. Same plan.</span></p>')
+lede = re.search(r'<p class="lede">The usual road takes years:.*?</p>', s).group(0)
+R(lede, '<p class="lede">If nothing\'s selling yet, it isn\'t your list and it isn\'t your writing. <b>It\'s the order you were taught to do things in.</b></p>\n'
+        '      <p class="lede">Your first paid offer doesn\'t have to be a course, a paid tier, or finished. Your readers have probably already asked you for it. AI changed one step in that order, and on Day 1 I\'ll show you which one, on my own Substack.</p>')
+byth_old = re.search(r'<ul class="byth">.*?</ul>', s, re.S).group(0)
+R(byth_old, BYTH)
+R('<p class="obj"><b>You don\'t need a big list, a paywall or a sales call.</b> Free, live, three lunchtimes on Zoom.</p>',
+  '<p class="obj"><b>You don\'t need a bigger list, a paywall or a sales call for any of this.</b> It\'s free and live on Zoom, three New York lunchtimes in a row (dinner time for me, here in Greece).</p>\n'
+  '      <p class="april">If you did my April challenge: back then I had you build it first. I\'d tell you something different now.</p>')
+R('<p class="note">After you sign up, your exit number is waiting: a short AI calculator that shows how many people it takes to reach your number.</p>',
+  '<p class="note">Sign up and answer seven quick questions, and I\'ll give you your exit number.</p>')
+# the chips: one choice, shown pressed in both places (the hero card and the ticket)
+R("    c.setAttribute('aria-pressed', on ? 'true' : 'false');",
+  "    chips.forEach(function(x){ if (x.dataset.v === c.dataset.v) x.setAttribute('aria-pressed', on ? 'true' : 'false') });")
+# no "where are you right now?" choices on this version (Sean)
+R(situ, '')
+# the testimonial bar for the ticket: the hero card keeps its own proof line, so the ticket gets a copy without the live-feed id
+proof_t = proof.replace(' id="proofTxt"', '')
 
-    <div class="hstage">
-      <!-- the VSL: set VSL_SRC in the script when Ana's video is ready. Click to play; this still is the cover. -->
-      """ + vsl + """
-      """ + STICKER + """
-      <div class="hside">
-        <p class="hkick2">Already work for yourself? Then your "job" is the client hours. <b>Same plan.</b></p>
-        <p class="lede first">If nothing's selling yet, it isn't your list and it isn't your writing. <b>It's the order you were taught to do things in.</b></p>
-        <p class="lede">Your first paid offer doesn't have to be a course, a paid tier, or finished. Your readers have probably already asked you for it. AI changed one step in that order, and on Day 1 I'll show you which one, on my own Substack.</p>
-        <p class="when2"><b>Tue Nov 17 to Thu Nov 19</b>12:00 pm New York <i>/</i> 9:00 am Los Angeles <i>/</i> 5:00 pm London <i>/</i> 7:00 pm Greece</p>
-      </div>
-    </div>
-    """ + situ.replace('class="situ"', 'class="situ mob"').replace('id="situ-l"', 'id="situ-m"').replace('aria-labelledby="situ-l"', 'aria-labelledby="situ-m"') + """
-    <div class="hcta">
-      <button class="btn big open shine" type="button" id="heroBtn">save my seat (free)<svg><use href="#arr"/></svg></button>
-      <p class="note">free · live on Zoom<span class="lt"></span></p>
-    </div>
-
-    """ + tstrip + """
-
-    <div class="hunder">
-      <div class="hu1">
-        """ + BYTH + """
-      </div>
-      <div class="hu2">
-        <p class="obj"><b>You don't need a bigger list, a paywall or a sales call for any of this.</b> It's free and live on Zoom, three New York lunchtimes in a row (dinner time for me, here in Greece).</p>
-        <p class="april">If you did my April challenge: back then I had you build it first. I'd tell you something different now.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-"""
 # the frozen column beside the page below the hero: a seat ticket that holds the sign-up form (desktop, 1280 px and wider)
 bars = ''.join('<rect x="%d" y="0" width="%d" height="40"/>' % (x, w) for x, w in [(0,2),(4,1),(7,3),(12,1),(15,2),(19,1),(22,3),(27,1),(30,2),(34,1),(37,2),(41,3),(46,1)])
 rail = """<!-- the frozen column: a seat ticket with the sign-up form in it. Phones and tablets use the popup instead. -->
   <aside class="v2rail" id="v2rail" aria-label="Save your seat">
     <div class="tksticky">
-      """ + proof + """      """ + just + """
-    <div class="tkshell">
+      """ + proof_t + """    <div class="tkshell">
       <div class="tkt" id="rcard">
         <div class="tk-top"><img src="../img/mark.png" alt="" width="34" height="34"><span><small>The Exit Plan</small><b>Your free seat</b></span><em>Admit one</em></div>
         <div class="tk-body">
@@ -110,7 +91,6 @@ rail = """<!-- the frozen column: a seat ticket with the sign-up form in it. Pho
             <div class="mt" aria-hidden="true"><span><b>17</b><small>Tue</small></span><span><b>18</b><small>Wed</small></span><span><b>19</b><small>Thu</small></span></div>
             <p class="when"><b>Three live sessions</b>12:00 pm New York / 7:00 pm Greece</p>
           </div>
-          """ + situ + """
           <div class="rslot" id="rslot"></div>
         </div>
         <div class="tk-perf" aria-hidden="true"></div>
@@ -125,10 +105,9 @@ rail = """<!-- the frozen column: a seat ticket with the sign-up form in it. Pho
     </div>
   </aside>
 """
-assert 'id="h1"' in new_hero and 'class="chip"' in rail and 'proofTxt' in rail
-R(hero, '')
+assert 'rslot' in rail
 # hero, then the body: the frozen column rides along the sections up to the recap. The final call to action and the footer sit below.
-R('<main>\n', '<main class="v2page">\n<div class="v2body">\n' + rail + new_hero)
+R('<main>\n', '<main class="v2page">\n<div class="v2body">\n' + rail)
 R('</main>\n', '')
 R('<!-- 9. final CTA: claim your seat -->', '</div>\n</main>\n\n<!-- 9. final CTA: claim your seat -->')
 
@@ -318,13 +297,6 @@ R("  function openM(e){\n    if (e) e.preventDefault();",
   tkIn.addEventListener('input', function(){ var v = tkIn.value.trim(); tkName.textContent = v || 'Your name'; tkName.classList.toggle('set', !!v) });
   function perf(){ var t = document.getElementById('rcard'), pf = t.querySelector('.tk-perf'); t.style.setProperty('--py', (pf.offsetTop) + 'px') }
   perf(); addEventListener('resize', perf); if (document.fonts) document.fonts.ready.then(perf);
-  function railTop(){ var r = document.getElementById('v2rail'), st = document.querySelector('.hhead'), bd = document.querySelector('.v2body'); if (r && st && bd && wide.matches) r.style.top = Math.round(st.getBoundingClientRect().top - bd.getBoundingClientRect().top) + 'px' }
-  /* the headline fills the width of the page column: two lines, sized so the longer one meets the edge */
-  function fitH(){ var h = document.getElementById('h1'), box = h.parentNode; if (!wide.matches) { h.style.fontSize = ''; return }
-    h.style.fontSize = '100px'; var w = 0; h.querySelectorAll('.l').forEach(function(l){ w = Math.max(w, l.scrollWidth) });
-    h.style.fontSize = Math.min(92, 86 * box.clientWidth / w).toFixed(1) + 'px'; railTop() }
-  fitH(); addEventListener('resize', fitH); if (document.fonts) document.fonts.ready.then(fitH);
-  railTop(); addEventListener('resize', railTop); if (document.fonts) document.fonts.ready.then(railTop);
   function openM(e){
     if (e) e.preventDefault();
     if (wide.matches) {

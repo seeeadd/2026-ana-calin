@@ -1,88 +1,59 @@
 
 /* ================= v2 (layout trial) =================
-   The hero in two columns: the video big on the left, the headline big on the right. Below the hero, the page runs on
-   the left and a slim seat ticket with the sign-up form stays frozen on the right (1280 px and wider). */
+   The hero is the live page's own. Below it, the page runs on the left and a slim seat ticket with the sign-up form
+   stays frozen on the right (1280 px and wider), with the testimonial bar on top of it. */
 
-/* the hero: the headline big and bold across the top, the video big below it beside the ticket */
-.v2page .iph{border-radius:26px;padding:0;margin:0 16px 16px 0}
-.v2page .iph:before{inset:16px -16px -16px 16px;border-radius:26px;transform:rotate(.8deg)}
-.v2page .iph .sb,.v2page .iph .isl{display:none}
-.v2page .iph .bz{background:none;border-radius:26px;padding:0}
-.v2page .iph .scr{border-radius:24px;aspect-ratio:16/9;box-shadow:0 0 0 2px var(--ink)}
-.v2hero .hpill{margin-bottom:6px}
-.v2hero h1,.v2hero h1.long{font-family:'Bonny','Instrument Serif',Georgia,serif;font-weight:700;letter-spacing:-.025em;line-height:.94;font-size:clamp(42px,5.7vw,96px);margin:14px 0 0;color:var(--ink)}
-.v2hero h1 .l{display:block;width:fit-content;white-space:nowrap}
-.v2hero h1 .hl{background:none;position:relative;z-index:0;padding:0 .06em}
-.v2hero h1 .hl:before{content:"";position:absolute;left:-.04em;right:-.06em;top:.18em;bottom:.02em;z-index:-1;background:var(--sun);transform:rotate(-1.2deg);border-radius:3px 8px 4px 9px}
-.hkick2{margin:0;font-family:var(--serif);font-style:italic;font-size:24px;line-height:1.2;color:var(--ink2)}
-.hkick2 b{font-weight:400;color:var(--pink)}
-.v2hero .lede.first{margin-top:12px;font-size:16px;line-height:1.55;color:var(--ink2)}
-.v2hero .lede.first b{color:var(--ink);font-weight:700}
-.hstage{position:relative;margin-top:30px}
-.stk{position:absolute;width:132px;height:132px;right:-14px;top:-74px;z-index:3;filter:drop-shadow(0 10px 16px rgba(26,20,18,.25))}
-.stk-r{transform-origin:100px 100px;animation:stkspin 28s linear infinite}
-@keyframes stkspin{to{transform:rotate(360deg)}}
-.v2page .tstrip{margin:34px 0 0}
-.hunder{margin-top:30px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:start}
-.hunder .lede{font-size:16.5px;line-height:1.6;margin:0 0 14px}
-.hunder .byth{margin-top:0}
-.hunder .obj{margin-top:4px}
-.when2{margin:0 0 14px;font-size:14px;line-height:1.5;color:var(--ink3)}
-.when2 b{display:block;font-weight:800;font-size:15.5px;color:var(--ink)}
-.when2 i{font-style:normal;opacity:.4}
-.hcta{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:18px}
-.hcta .note{font-size:13.5px;color:var(--ink3)}
-.xnote{margin:14px 2px 0;font-size:12.5px;line-height:1.4;color:var(--ink2)}
-.xnote b{color:var(--pink)}
-.april{padding:11px 14px;border-radius:14px;background:var(--ysoft);font-size:14px;line-height:1.45;color:var(--ink2)}
+/* the hero: the live layout, one small addition */
+.hero .april{margin-top:12px;padding:10px 14px;border-radius:14px;background:var(--ysoft);font-size:14px;line-height:1.45;color:var(--ink2)}
 
 /* the seat ticket */
 .tkshell{filter:drop-shadow(1.6px 0 0 var(--ink)) drop-shadow(-1.6px 0 0 var(--ink)) drop-shadow(0 1.6px 0 var(--ink)) drop-shadow(0 -1.6px 0 var(--ink)) drop-shadow(7px 8px 0 var(--sun))}
-.tkt{position:relative;--py:330px;background:#FFF8EE;border-radius:16px;overflow:hidden;
+.tkt{position:relative;--py:300px;background:#FFF8EE;border-radius:16px;overflow:hidden;
   -webkit-mask:radial-gradient(circle 11px at 0 var(--py),#0000 96%,#000 100%) 0 0/51% 100% no-repeat,radial-gradient(circle 11px at 100% var(--py),#0000 96%,#000 100%) 100% 0/51% 100% no-repeat;
   mask:radial-gradient(circle 11px at 0 var(--py),#0000 96%,#000 100%) 0 0/51% 100% no-repeat,radial-gradient(circle 11px at 100% var(--py),#0000 96%,#000 100%) 100% 0/51% 100% no-repeat}
 .tkt.pulse{animation:rpulse .9s var(--ease)}
 @keyframes rpulse{0%{transform:none}25%{transform:translateY(-6px) rotate(-.8deg)}60%{transform:translateY(2px)}100%{transform:none}}
-.tk-top{display:flex;align-items:center;gap:10px;background:var(--ink);color:var(--cream);padding:10px 12px 10px 10px}
-.tk-top img{width:34px;height:34px;flex:none}
+.tk-top{display:flex;align-items:center;gap:8px;background:var(--ink);color:var(--cream);padding:9px 10px 9px 9px}
+.tk-top img{width:30px;height:30px;flex:none}
 .tk-top span{display:flex;flex-direction:column;gap:3px;min-width:0}
 .tk-top small{font-weight:800;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--sun);line-height:1}
-.tk-top b{font-family:var(--serif);font-weight:400;font-size:21px;line-height:1}
-.tk-top em{margin-left:auto;flex:none;font-style:normal;font-weight:800;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);background:var(--sun);border-radius:6px;padding:5px 7px;transform:rotate(3deg)}
-.tk-body{padding:12px 14px 14px}
-.rdates{display:flex;align-items:center;gap:9px;padding-bottom:10px;margin-bottom:10px;border-bottom:1.5px solid rgba(26,20,18,.1)}
+.tk-top b{font-family:var(--serif);font-weight:400;font-size:19px;line-height:1}
+.tk-top em{margin-left:auto;flex:none;font-style:normal;font-weight:800;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);background:var(--sun);border-radius:6px;padding:4px 6px;transform:rotate(3deg)}
+.tk-body{padding:11px 12px 12px}
+.rdates{display:flex;align-items:center;gap:7px;padding-bottom:10px;margin-bottom:2px;border-bottom:1.5px solid rgba(26,20,18,.1)}
 .rdates .mt{display:flex;gap:3px;flex:none}
-.rdates .mt span{width:31px;padding:3px 0 2px;border-radius:7px}
-.rdates .mt b{font-size:16px}
+.rdates .mt span{width:28px;padding:3px 0 2px;border-radius:7px}
+.rdates .mt b{font-size:14.5px}
 .rdates .mt small{font-size:7px;letter-spacing:.08em;margin-top:1px}
-.rdates .when{font-size:11.5px;line-height:1.3;color:var(--ink3)}
-.rdates .when b{display:block;color:var(--ink);font-weight:800;font-size:13px}
-.tkt .situ{margin-top:0}
-.tkt .situ .lbl{font-size:9.5px;letter-spacing:.14em;margin-bottom:6px}
-.tkt .chips{gap:4px;flex-wrap:wrap;overflow:visible;margin:0;padding:0;-webkit-mask-image:none;mask-image:none}
-.tkt .chip{height:26px;padding:0 9px;font-size:11.5px;border-width:1.2px}
+.rdates .when{font-size:10.5px;line-height:1.3;color:var(--ink3)}
+.rdates .when b{display:block;color:var(--ink);font-weight:800;font-size:12px}
 .tkt form{margin-top:10px}
 .tkt form .ey,.tkt form .bye{display:none}
-.tkt form h3{font-size:20px;line-height:1.05;margin:0 0 8px;text-align:left}
+.tkt form h3{font-size:19px;line-height:1.05;margin:0 0 8px;text-align:left}
 .tkt form .field{margin-bottom:6px}
-.tkt form .field input{height:42px;border-radius:11px;font-size:14px;padding:0 13px}
+.tkt form .field input{height:40px;border-radius:11px;font-size:13.5px;padding:0 12px}
 .tkt form .field .err{font-size:11.5px}
-.tkt form .btn.big{height:46px;font-size:15px;margin-top:2px}
+.tkt form .btn.big{height:44px;font-size:14.5px;margin-top:2px}
 .tkt form .note{margin-top:7px;font-size:10.5px;line-height:1.35;color:var(--ink3);text-align:left}
 .tkt form .note + .note{display:none}
-.tk-perf{height:0;margin:0 16px;border-top:2px dashed rgba(26,20,18,.28)}
-.tk-stub{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:10px;align-items:center;padding:10px 14px 12px;background:#FFF1B3}
-.tk-holder small,.tk-meta small{display:block;font-weight:800;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--pink)}
+.tk-perf{height:0;margin:0 14px;border-top:2px dashed rgba(26,20,18,.28)}
+.tk-stub{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 10px;align-items:center;padding:9px 12px 11px;background:#FFF1B3}
+.tk-holder{grid-column:1;grid-row:1}
+.tk-holder small,.tk-meta small{font-weight:800;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--pink)}
+.tk-holder small{display:block}
 .tk-holder b{display:block;margin-top:3px;font-family:var(--serif);font-style:italic;font-weight:400;font-size:21px;line-height:1;color:#a4927f;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .tk-holder b.set{color:var(--ink)}
-.tk-meta{text-align:right}
-.tk-meta b{display:block;font-weight:800;font-size:10.5px;letter-spacing:.06em;white-space:nowrap}
-.tk-meta small{color:var(--ink3);letter-spacing:.08em;margin-top:2px}
-.tk-code{width:22px;height:36px;fill:var(--ink)}
-.v2rail .proof{margin:16px 2px 0;padding-top:0;border-top:0;font-size:12px;gap:8px}
-.v2rail .proof .faces img{width:24px;height:24px;margin-left:-7px;border-width:1.5px}
+.tk-meta{grid-column:1;grid-row:2;text-align:left}
+.tk-meta b{display:inline;font-weight:800;font-size:9.5px;letter-spacing:.06em;white-space:nowrap}
+.tk-meta small{display:inline;margin:0 0 0 6px;font-size:8px;color:var(--ink3);letter-spacing:.08em}
+.tk-code{grid-column:2;grid-row:1 / span 2;width:22px;height:36px;fill:var(--ink)}
+.xnote{margin:14px 2px 0;font-size:12.5px;line-height:1.4;color:var(--ink2)}
+.xnote b{color:var(--pink)}
+.v2rail .proof{margin:0 0 14px;padding:6px 12px 6px 6px;gap:8px;background:#fff;border:1.5px solid var(--ink);border-radius:999px;font-size:11.5px;line-height:1.2;box-shadow:0 4px 0 var(--ink)}
+.v2rail .proof .faces img{width:24px;height:24px;margin-left:-8px;border-width:1.5px}
 .v2rail .proof .faces img:first-child{margin-left:0}
-.v2rail .just{font-size:12px;padding:6px 9px;margin-top:8px}
+.v2rail .proof .faces img:nth-child(n+4){display:none}
+.v2rail .proof .stars svg{width:10px;height:10px}
 
 /* new: what you won't hear from me */
 .nope .head{max-width:760px}
@@ -112,110 +83,27 @@
 .days .out span{font-weight:800;color:var(--ink)}
 .letter .bio + .bio{margin-top:16px;font-size:clamp(20px,1.7vw,24px);line-height:1.45;color:var(--ink2)}
 
-/* desktop: the two-column hero, and the page beside the frozen ticket */
+/* desktop: the page beside the frozen ticket */
 @media (min-width:1280px){
-  .v2page{--edge:max(28px,calc((100vw - 1680px) / 2));--rw:296px;--rg:44px;--rightc:calc(var(--edge) + var(--rw) + var(--rg))}
+  .v2page{--edge:max(28px,calc((100vw - 1640px) / 2));--rw:256px;--rg:44px;--rightc:calc(var(--edge) + var(--rw) + var(--rg))}
   .v2body{position:relative}
-  .v2rail{position:absolute;top:360px;bottom:80px;right:var(--edge);width:var(--rw);z-index:20}
+  .v2rail{position:absolute;top:120px;bottom:80px;right:var(--edge);width:var(--rw);z-index:20}
   .tksticky{position:sticky;top:92px}
   .v2body .wrap{max-width:none;margin-left:var(--edge);margin-right:var(--rightc);padding:0}
-  .v2page .hero .hwrap{max-width:none;margin:0 var(--edge);padding:0}
-  .hhead{display:grid;grid-template-columns:minmax(0,1fr) var(--rw);gap:var(--rg);align-items:end}
-  .hh-r{padding-bottom:6px}
-  .hstage,.v2page .tstrip,.hunder{margin-right:calc(var(--rw) + var(--rg))}
-  .v2page .hero{padding:26px 0 80px}
-  .v2hero .hpill .hide-s{display:none}
-  .situ.mob,.hcta{display:none}
   .v2body .wrap.narrow > *{max-width:none}
   .v2body .wall,.v2body .wall-src{margin-right:var(--rightc)}
   .v2body .wall{-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 88%,transparent)}
 }
 @media (max-width:1279px){
   .v2rail{display:none}
-  .hunder{grid-template-columns:1fr;gap:6px}
   .ngrid,.gcard{grid-template-columns:1fr}
   .gart svg{width:150px}
 }
-@media (max-width:1279px){
-  .v2page .hero .hwrap{max-width:720px}
-  .hhead .hh-r{margin-top:16px}
-  .v2hero h1 .l{white-space:normal}
-  .stk{width:96px;height:96px;right:-6px;top:-40px}
-  .hcta .btn.big{width:100%}
-  .hunder{grid-template-columns:1fr;gap:4px}
-}
 @media (max-width:640px){
-  .hkick2{font-size:22px}
   .nolist li{font-size:15px;white-space:normal}
   .gcard{padding:26px 22px}
 }
-.v2page .hwrap{position:relative;z-index:1}
-.v2page .iph .scr img.mkv{display:none}
-.v2page .stk{right:30px;top:20px;width:118px;height:118px}
-@media (max-width:1279px){.v2page .stk{right:12px;top:10px;width:78px;height:78px}}
-.hcta .btn{position:relative;overflow:hidden}
-@media (max-width:1279px){.v2hero h1 .l{display:inline;white-space:normal;width:auto}.v2hero h1,.v2hero h1.long{font-size:clamp(40px,10.4vw,72px);line-height:.98}}
-/* the video a size smaller, with the stats stacked beside it (Sean: the video was a little too big) */
-@media (min-width:1280px){
-  .hstage{display:grid;grid-template-columns:minmax(0,1fr) 196px;gap:30px;align-items:start}
-  .hstage .iph{grid-column:1;grid-row:1}
-  .hstage .stk{grid-column:1;grid-row:1}
-  .hstage .tstrip{grid-column:2;grid-row:1;flex-direction:column;align-items:stretch;gap:0;padding:10px;margin:0;border-radius:20px}
-  .hstage .award{justify-content:flex-start;padding:10px 12px 10px 10px}
-  .hstage .award b{font-size:20px}
-  .hstage .stats{flex-direction:column;gap:0;justify-content:flex-start;margin-top:6px}
-  .hstage .stats i{width:auto;height:1px;align-self:stretch;margin:0 6px}
-  .hstage .stat{padding:13px 8px 12px;text-align:left}
-  .v2page .stk{right:44px}
-}
-.hunder{margin-top:34px}
-@media (min-width:1280px){.v2page .hstage .stk{right:calc(196px + 30px + 42px);top:20px}}
-/* text beside the video; the stats back to a strip under it; the headline a size smaller (Sean) */
-.hside .hkick2{margin:0}
-.hside .lede.first{margin-top:12px;font-size:16px;line-height:1.55;color:var(--ink2)}
-.hside .lede.first b{color:var(--ink);font-weight:700}
-.hside .lede{font-size:15px;line-height:1.55;margin:0 0 12px;color:var(--ink2)}
-.hside .when2{margin:0}
-.hunder .hu2 .obj{margin-top:0}
-.hunder .hu2 .april{margin-top:14px}
-@media (min-width:1280px){
-  .hhead{display:block}
-  .hstage{grid-template-columns:minmax(0,1fr) 316px;gap:36px;align-items:center}
-  .hstage .hside{grid-column:2;grid-row:1}
-  .v2page .hstage .stk{right:calc(316px + 36px + 40px);top:20px}
-  .v2page .tstrip{margin:30px calc(var(--rw) + var(--rg)) 0 0;flex-direction:row;padding:12px 24px 12px 12px}
-}
-@media (max-width:1279px){
-  .hside{margin-top:22px}
-}
-@media (min-width:1280px){.hhead{margin-right:calc(var(--rw) + var(--rg))}}
-/* a narrower ticket (256 px) with the testimonial bar on top of it (Sean) */
-@media (min-width:1280px){
-  .v2page{--rw:256px;--rg:40px}
-  .v2rail .proof{margin:0 0 14px;padding:6px 12px 6px 6px;gap:8px;background:#fff;border:1.5px solid var(--ink);border-radius:999px;font-size:11.5px;line-height:1.2;box-shadow:0 4px 0 var(--ink)}
-  .v2rail .proof .faces img{width:24px;height:24px;margin-left:-8px}
-  .v2rail .proof .faces img:nth-child(n+4){display:none}
-  .v2rail .proof .stars svg{width:10px;height:10px}
-  .v2rail .just{margin:-6px 0 12px;font-size:11.5px}
-}
-.tk-top{gap:8px;padding:9px 10px 9px 9px}
-.tk-top img{width:30px;height:30px}
-.tk-top b{font-size:19px}
-.tk-top em{font-size:8px;padding:4px 6px}
-.tk-body{padding:11px 12px 12px}
-.rdates{gap:7px}
-.rdates .mt span{width:28px}
-.rdates .mt b{font-size:14.5px}
-.rdates .when{font-size:10.5px}
-.rdates .when b{font-size:12px}
-.tkt .chip{height:25px;padding:0 8px;font-size:11px}
-.tkt form h3{font-size:19px}
-.tkt form .field input{height:40px;font-size:13.5px;padding:0 12px}
-.tkt form .btn.big{height:44px;font-size:14.5px}
-.tk-perf{margin:0 14px}
-.tk-stub{grid-template-columns:minmax(0,1fr) auto;gap:2px 10px;padding:9px 12px 11px}
-.tk-holder{grid-column:1;grid-row:1}
-.tk-meta{grid-column:1;grid-row:2;text-align:left}
-.tk-meta b{display:inline;font-size:9.5px}
-.tk-meta small{display:inline;margin:0 0 0 6px;font-size:8px}
-.tk-code{grid-column:2;grid-row:1 / span 2}
+/* the new pink line is longer than the old one: a size smaller so it stays two lines */
+.hero .hright .hkick{font-size:min(5.6cqi,32px);line-height:1.15;margin-bottom:14px}
+.hero .hright .lede + .lede{margin-top:10px}
+@media (max-width:1060px){.hero .hright .hkick{font-size:clamp(24px,5vw,30px)}}
