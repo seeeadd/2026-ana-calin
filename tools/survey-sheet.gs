@@ -1,5 +1,5 @@
 /*
-  Ana Calin, The Exit Plan: the survey answers and exit numbers, into a Google Sheet.
+  Ana Calin, The Exit Plan: sign-ups, the survey answers, exit numbers and sales, into one Google Sheet.
 
   Set up once (about 5 minutes):
   1. Make a new Google Sheet, for example "The Exit Plan · survey".
@@ -12,7 +12,7 @@
        SURVEY_SHEET_KEY = the same secret word as KEY
      Then redeploy (a changed variable only reaches the site on the next deployment).
 
-  The tabs "Survey", "Exit numbers", "Sales" and "Summary" make themselves on the first row.
+  The tabs "Registrants", "Survey", "Exit numbers", "Sales" and "Summary" make themselves on the first row.
   If you change this script later: Deploy > Manage deployments > edit > Version: New version (the URL stays the same).
 */
 var KEY = 'change-me';
@@ -29,6 +29,11 @@ var TABS = {
     head: ['Time', 'Page', 'First name', 'Email', 'Ref', 'Time zone',
            'Goal per month ($)', 'Offer price ($)', 'Buyers per month', 'Buyers per year', 'Paid sub price ($/month)', 'Paid subscribers needed', 'Free readers needed (at 5%)'],
     keys: ['goal_month', 'price', 'buyers_month', 'buyers_year', 'sub_price', 'subs_needed', 'free_needed']
+  },
+  register: {  // from api/ana-register.js, one row per sign-up (a second sign-up with the same email is marked "yes")
+    name: 'Registrants',
+    head: ['Time', 'Page', 'First name', 'Email', 'Ref (partner)', 'Time zone', 'Where they are now', 'Signed up before', 'Source', 'Medium', 'Campaign', 'Headline version', 'Kit'],
+    keys: ['situation', 'again', 'utm_source', 'utm_medium', 'utm_campaign', 'sticky_variant', 'kit']
   },
   sale: {  // from api/stripe-webhook.js, one row per payment
     name: 'Sales',
