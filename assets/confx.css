@@ -449,7 +449,7 @@ body.did-wa .db .bwa .j2{display:inline}
 
 /* step 4, the survey, as the step that unlocks the calculator: an arrow down from the three cards, the questions
    bigger, a locked calculator beside them that charges one segment per answer and opens at 7 of 7 */
-.cx-down{display:flex;flex-direction:column;align-items:center;gap:2px;width:max-content;max-width:100%;margin:46px auto -30px;color:var(--ink);text-decoration:none}
+.cx-down{display:flex;flex-direction:column;align-items:center;gap:2px;width:max-content;max-width:100%;margin:40px auto 0;color:var(--ink);text-decoration:none}
 .cx-down-t{font-family:var(--serif);font-size:clamp(24px,2.4vw,32px);line-height:1.1;text-align:center}
 .cx-down-t em{color:var(--pink)}
 .cx-down svg{width:96px;height:120px;fill:none;stroke:var(--pink);stroke-width:8;stroke-linecap:round;stroke-linejoin:round}
@@ -459,7 +459,7 @@ body.did-wa .db .bwa .j2{display:inline}
 }
 .cx-req{display:inline-flex;align-items:center;gap:7px;height:30px;margin-left:8px;padding:0 14px;border-radius:999px;background:var(--pink);color:#fff;font-weight:800;font-size:12px;letter-spacing:.14em;text-transform:uppercase;vertical-align:top}
 .cx-req:before{content:"!";display:grid;place-items:center;width:16px;height:16px;border-radius:50%;background:#fff;color:var(--pink);font-size:11px;letter-spacing:0}
-.cxs{padding:84px 0 110px}
+.cxs{padding:34px 0 110px}
 .cxs-h{max-width:820px}
 .cxs-h h2{font-size:clamp(40px,4.8vw,64px)}
 .cxs-h h2 em{display:block}
@@ -518,9 +518,9 @@ body.vipc .cxs-g .svx{box-shadow:9px 10px 0 var(--pk2),9px 10px 0 1.6px var(--in
   .cxl.open .cxl-go{display:none}
 }
 @media (max-width:640px){
-  .cx-down{margin:34px auto -24px}
+  .cx-down{margin:30px auto 0}
   .cx-down svg{width:76px;height:96px}
-  .cxs{padding:62px 0 80px}
+  .cxs{padding:28px 0 80px}
   .cx-req{margin:8px 0 0;font-size:11px}
   .cxs-g .svx{padding:22px 18px 26px;border-radius:22px;box-shadow:6px 7px 0 var(--pink),6px 7px 0 1.6px var(--ink)}
   .cxs-g .svx-o{min-height:56px;padding:13px 14px;font-size:16px}
@@ -602,5 +602,13 @@ body.vipc .cxs-g .svx{box-shadow:9px 10px 0 var(--pk2),9px 10px 0 1.6px var(--in
   .cxlogo-calc{transform-box:view-box;transform-origin:160px 160px;animation:cxlogofloat 4.5s ease-in-out infinite}
   @keyframes cxlogofloat{0%,100%{transform:none}50%{transform:translateY(-5px) rotate(1.2deg)}}
 }
-.cxs-h .cxlogo{width:200px;height:200px;margin:0 auto 18px}
-@media (max-width:640px){.cxs-h .cxlogo{width:160px;height:160px;margin-bottom:14px}}
+/* the logo beside the heading: two columns, the words left-aligned */
+.cxs-h:has(.cxs-ht){display:grid;grid-template-columns:168px minmax(0,1fr);gap:34px;align-items:center;max-width:900px;text-align:left}
+.cxs-h .cxlogo{width:168px;height:168px;margin:0}
+.cxs-ht h2{margin-top:12px}
+.cxs-ht p{margin-left:0;max-width:600px}
+@media (max-width:760px){
+  .cxs-h:has(.cxs-ht){grid-template-columns:1fr;gap:14px;text-align:center;justify-items:center}
+  .cxs-h .cxlogo{width:128px;height:128px}
+  .cxs-ht p{margin-left:auto;margin-right:auto}
+}
