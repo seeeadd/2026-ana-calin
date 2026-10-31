@@ -55,36 +55,39 @@ BYTH = ('<ul class="byth">\n'
         '            ' + LI + 'a price you can say out loud without wincing</li>\n'
         '            ' + LI + 'the email that finally asks people to buy. You\'ll write it with me on Nov 19.</li>\n'
         '          </ul>')
-# the hero: two columns. The video big on the left, the headline big on the right with its copy and the button.
+# the hero (left of the frozen ticket): the video and the headline side by side, then the stats and the rest of the copy
 new_hero = """<section class="hero" id="hero">
   <svg class="bgflower" aria-hidden="true"><use href="#sfo"/></svg>
-  <svg class="bgflower b" aria-hidden="true"><use href="#sfo"/></svg>
-  <div class="hwrap hgrid v2hero">
-    <div class="hleft">
-      """ + tstrip + """
-
-      <!-- the VSL, big: set VSL_SRC in the script when Ana's video is ready. Click to play; this still is the cover. -->
-      """ + vsl + """
-
-      <div class="hunder">
-          """ + BYTH + """
-          <p class="obj"><b>You don't need a bigger list, a paywall or a sales call for any of this.</b> It's free and live on Zoom, three New York lunchtimes in a row (dinner time for me, here in Greece).</p>
+  <div class="hwrap">
+    <div class="hgrid v2hero">
+      <div class="hleft">
+        <!-- the VSL: set VSL_SRC in the script when Ana's video is ready. Click to play; this still is the cover. -->
+        """ + vsl + """
+      </div>
+      <div class="hright">
+        """ + pill + """        """ + h1 + """
+        <p class="hkick2">Already work for yourself? Then your "job" is the client hours. <b>Same plan.</b></p>
+        <p class="lede first">If nothing's selling yet, it isn't your list and it isn't your writing. <b>It's the order you were taught to do things in.</b></p>
+        """ + situ.replace('class="situ"', 'class="situ mob"').replace('id="situ-l"', 'id="situ-m"').replace('aria-labelledby="situ-l"', 'aria-labelledby="situ-m"') + """
+        <div class="hcta">
+          <button class="btn big open shine" type="button" id="heroBtn">save my seat (free)<svg><use href="#arr"/></svg></button>
+          <p class="note">free · live on Zoom<span class="lt"></span></p>
+        </div>
       </div>
     </div>
 
-    <div class="hright">
-      """ + pill + """      """ + h1 + """
-      <p class="hkick2">Already work for yourself? Then your "job" is the client hours. <b>Same plan.</b></p>
-      <p class="lede first">If nothing's selling yet, it isn't your list and it isn't your writing. <b>It's the order you were taught to do things in.</b></p>
-      <p class="lede">Your first paid offer doesn't have to be a course, a paid tier, or finished. Your readers have probably already asked you for it. AI changed one step in that order, and on Day 1 I'll show you which one, on my own Substack.</p>
-      <p class="when2"><b>Tue Nov 17 to Thu Nov 19</b>12:00 pm New York <i>/</i> 9:00 am Los Angeles <i>/</i> 5:00 pm London <i>/</i> 7:00 pm Greece</p>
-      """ + situ.replace('class="situ"', 'class="situ mob"').replace('id="situ-l"', 'id="situ-m"').replace('aria-labelledby="situ-l"', 'aria-labelledby="situ-m"') + """
-      <div class="hcta">
-        <button class="btn big open shine" type="button" id="heroBtn">save my seat (free)<svg><use href="#arr"/></svg></button>
-        <p class="note">free · live on Zoom<span class="lt"></span></p>
+    """ + tstrip + """
+
+    <div class="hunder">
+      <div class="hu1">
+        <p class="lede">Your first paid offer doesn't have to be a course, a paid tier, or finished. Your readers have probably already asked you for it. AI changed one step in that order, and on Day 1 I'll show you which one, on my own Substack.</p>
+        <p class="when2"><b>Tue Nov 17 to Thu Nov 19</b>12:00 pm New York <i>/</i> 9:00 am Los Angeles <i>/</i> 5:00 pm London <i>/</i> 7:00 pm Greece</p>
+        <p class="april">If you did my April challenge: back then I had you build it first. I'd tell you something different now.</p>
       </div>
-      <p class="xnote">Sign up and answer seven quick questions, and I'll give you your <b>exit number.</b></p>
-      <p class="april">If you did my April challenge: back then I had you build it first. I'd tell you something different now.</p>
+      <div class="hu2">
+        """ + BYTH + """
+        <p class="obj"><b>You don't need a bigger list, a paywall or a sales call for any of this.</b> It's free and live on Zoom, three New York lunchtimes in a row (dinner time for me, here in Greece).</p>
+      </div>
     </div>
   </div>
 </section>
@@ -114,6 +117,7 @@ rail = """<!-- the frozen column: a seat ticket with the sign-up form in it. Pho
         </div>
       </div>
     </div>
+      <p class="xnote">Sign up and answer seven quick questions, and I'll give you your <b>exit number.</b></p>
       """ + proof + """      """ + just + """
     </div>
   </aside>
@@ -121,7 +125,7 @@ rail = """<!-- the frozen column: a seat ticket with the sign-up form in it. Pho
 assert 'id="h1"' in new_hero and 'class="chip"' in rail and 'proofTxt' in rail
 R(hero, '')
 # hero, then the body: the frozen column rides along the sections up to the recap. The final call to action and the footer sit below.
-R('<main>\n', '<main class="v2page">\n' + new_hero + '<div class="v2body">\n' + rail)
+R('<main>\n', '<main class="v2page">\n<div class="v2body">\n' + rail + new_hero)
 R('</main>\n', '')
 R('<!-- 9. final CTA: claim your seat -->', '</div>\n</main>\n\n<!-- 9. final CTA: claim your seat -->')
 
