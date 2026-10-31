@@ -48,62 +48,82 @@ tstrip = tstrip.replace('<div class="stat"><b>0</b><small>sales calls</small></d
 assert '16,907' in tstrip
 
 LI = '<li><svg aria-hidden="true"><use href="#li"/></svg>'
-new_hero = '''<section class="hero" id="hero">
+BYTH = ('<ul class="byth">\n'
+        '            <li class="bt">By the end of Day 3, you\'ll have:</li>\n'
+        '            ' + LI + 'found the thing your readers would actually pay you for</li>\n'
+        '            ' + LI + 'a first offer that isn\'t a course, a paid tier, or a year away</li>\n'
+        '            ' + LI + 'a price you can say out loud without wincing</li>\n'
+        '            ' + LI + 'the email that finally asks people to buy. You\'ll write it with me on Nov 19.</li>\n'
+        '          </ul>')
+# the hero: two columns. The video big on the left, the headline big on the right with its copy and the button.
+new_hero = """<section class="hero" id="hero">
   <svg class="bgflower" aria-hidden="true"><use href="#sfo"/></svg>
-  <div class="hwrap">
-      ''' + tstrip + '''
+  <svg class="bgflower b" aria-hidden="true"><use href="#sfo"/></svg>
+  <div class="hwrap hgrid v2hero">
+    <div class="hleft">
+      """ + tstrip + """
 
       <!-- the VSL, big: set VSL_SRC in the script when Ana's video is ready. Click to play; this still is the cover. -->
-      ''' + vsl + '''
+      """ + vsl + """
 
-      <div class="hcopy">
-        <div class="hc1">
-          <p class="lede big">If nothing's selling yet, it isn't your list and it isn't your writing. <b>It's the order you were taught to do things in.</b></p>
-          <p class="lede">Your first paid offer doesn't have to be a course, a paid tier, or finished. Your readers have probably already asked you for it. AI changed one step in that order, and on Day 1 I'll show you which one, on my own Substack.</p>
-          <p class="when2"><b>Tue Nov 17 to Thu Nov 19</b>12:00 pm New York <i>/</i> 9:00 am Los Angeles <i>/</i> 5:00 pm London <i>/</i> 7:00 pm Greece</p>
-        </div>
-        <div class="hc2">
-          <ul class="byth">
-            <li class="bt">By the end of Day 3, you'll have:</li>
-            ''' + LI + '''found the thing your readers would actually pay you for</li>
-            ''' + LI + '''a first offer that isn't a course, a paid tier, or a year away</li>
-            ''' + LI + '''a price you can say out loud without wincing</li>
-            ''' + LI + '''the email that finally asks people to buy. You'll write it with me on Nov 19.</li>
-          </ul>
+      <div class="hunder">
+          """ + BYTH + """
           <p class="obj"><b>You don't need a bigger list, a paywall or a sales call for any of this.</b> It's free and live on Zoom, three New York lunchtimes in a row (dinner time for me, here in Greece).</p>
-          <p class="april">If you did my April challenge: back then I had you build it first. I'd tell you something different now.</p>
-        </div>
       </div>
+    </div>
+
+    <div class="hright">
+      """ + pill + """      """ + h1 + """
+      <p class="hkick2">Already work for yourself? Then your "job" is the client hours. <b>Same plan.</b></p>
+      <p class="lede first">If nothing's selling yet, it isn't your list and it isn't your writing. <b>It's the order you were taught to do things in.</b></p>
+      <p class="lede">Your first paid offer doesn't have to be a course, a paid tier, or finished. Your readers have probably already asked you for it. AI changed one step in that order, and on Day 1 I'll show you which one, on my own Substack.</p>
+      <p class="when2"><b>Tue Nov 17 to Thu Nov 19</b>12:00 pm New York <i>/</i> 9:00 am Los Angeles <i>/</i> 5:00 pm London <i>/</i> 7:00 pm Greece</p>
+      """ + situ.replace('class="situ"', 'class="situ mob"').replace('id="situ-l"', 'id="situ-m"').replace('aria-labelledby="situ-l"', 'aria-labelledby="situ-m"') + """
+      <div class="hcta">
+        <button class="btn big open shine" type="button" id="heroBtn">save my seat (free)<svg><use href="#arr"/></svg></button>
+        <p class="note">free · live on Zoom<span class="lt"></span></p>
+      </div>
+      <p class="xnote">Sign up and answer seven quick questions, and I'll give you your <b>exit number.</b></p>
+      <p class="april">If you did my April challenge: back then I had you build it first. I'd tell you something different now.</p>
+    </div>
   </div>
 </section>
 
-'''
-rail = '''<!-- the rail: headline and the frozen sign-up card (desktop). On phones it is the top of the page and the form lives in the popup. -->
-<aside class="rail" id="rail">
-  <div class="rhead">
-    ''' + pill + '''    ''' + h1 + '''
-    <p class="rkick">Already work for yourself? Then your "job" is the client hours. <b>Same plan.</b></p>
-  </div>
-  <div class="rcard" id="rcard">
-    <div class="rdates">
-      <div class="mt" aria-hidden="true"><span><b>17</b><small>Tue</small></span><span><b>18</b><small>Wed</small></span><span><b>19</b><small>Thu</small></span></div>
-      <p class="when"><b>Three live sessions</b>12:00 pm New York / 7:00 pm Greece<span class="lt"></span></p>
+"""
+# the frozen column beside the page below the hero: a seat ticket that holds the sign-up form (desktop, 1280 px and wider)
+bars = ''.join('<rect x="%d" y="0" width="%d" height="40"/>' % (x, w) for x, w in [(0,2),(4,1),(7,3),(12,1),(15,2),(19,1),(22,3),(27,1),(30,2),(34,1),(37,2),(41,3),(46,1)])
+rail = """<!-- the frozen column: a seat ticket with the sign-up form in it. Phones and tablets use the popup instead. -->
+  <aside class="v2rail" id="v2rail" aria-label="Save your seat">
+    <div class="tksticky">
+    <div class="tkshell">
+      <div class="tkt" id="rcard">
+        <div class="tk-top"><img src="../img/mark.png" alt="" width="34" height="34"><span><small>The Exit Plan</small><b>Your free seat</b></span><em>Admit one</em></div>
+        <div class="tk-body">
+          <div class="rdates">
+            <div class="mt" aria-hidden="true"><span><b>17</b><small>Tue</small></span><span><b>18</b><small>Wed</small></span><span><b>19</b><small>Thu</small></span></div>
+            <p class="when"><b>Three live sessions</b>12:00 pm New York / 7:00 pm Greece</p>
+          </div>
+          """ + situ + """
+          <div class="rslot" id="rslot"></div>
+        </div>
+        <div class="tk-perf" aria-hidden="true"></div>
+        <div class="tk-stub">
+          <div class="tk-holder"><small>Seat holder</small><b id="tkName">Your name</b></div>
+          <div class="tk-meta"><b>Nov 17 + 18 + 19</b><small>Live on Zoom</small></div>
+          <svg class="tk-code" viewBox="0 0 48 40" aria-hidden="true">""" + bars + """</svg>
+        </div>
+      </div>
     </div>
-    ''' + situ + '''
-    <div class="rslot" id="rslot"></div>
-    <button class="btn big open shine rmob" type="button" id="heroBtn">save my seat (free)<svg><use href="#arr"/></svg></button>
-    <p class="rnote">Sign up and answer seven quick questions, and I'll give you your <b>exit number.</b></p>
-    ''' + proof + '''    ''' + just + '''
-  </div>
-</aside>
-
-'''
-assert 'id="h1"' in rail and 'class="chip"' in rail and 'proofTxt' in rail
+      """ + proof + """      """ + just + """
+    </div>
+  </aside>
+"""
+assert 'id="h1"' in new_hero and 'class="chip"' in rail and 'proofTxt' in rail
 R(hero, '')
-# one wrapper for the rail and the page it rides along: hero to recap. The final call to action and the footer sit below it.
-R('<main>\n', '<main class="v2page">\n' + rail + new_hero)
+# hero, then the body: the frozen column rides along the sections up to the recap. The final call to action and the footer sit below.
+R('<main>\n', '<main class="v2page">\n' + new_hero + '<div class="v2body">\n' + rail)
 R('</main>\n', '')
-R('<!-- 9. final CTA: claim your seat -->', '</main>\n\n<!-- 9. final CTA: claim your seat -->')
+R('<!-- 9. final CTA: claim your seat -->', '</div>\n</main>\n\n<!-- 9. final CTA: claim your seat -->')
 
 # ---------- your host ----------
 R('<h2 class="hname">Ana Calin.</h2>', '<h2 class="hname">I\'m Ana Calin.</h2>')
@@ -287,6 +307,10 @@ R("  function openM(e){\n    if (e) e.preventDefault();",
   function placeForm(){ if (wide.matches) { if (!modal.classList.contains('open')) rslot.appendChild(form) } else dlg.insertBefore(form, thanksEl) }
   if (wide.addEventListener) wide.addEventListener('change', placeForm); else wide.addListener(placeForm);
   placeForm();
+  var tkName = document.getElementById('tkName'), tkIn = form.querySelector('[name=first_name]');
+  tkIn.addEventListener('input', function(){ var v = tkIn.value.trim(); tkName.textContent = v || 'Your name'; tkName.classList.toggle('set', !!v) });
+  function perf(){ var t = document.getElementById('rcard'), pf = t.querySelector('.tk-perf'); t.style.setProperty('--py', (pf.offsetTop) + 'px') }
+  perf(); addEventListener('resize', perf); if (document.fonts) document.fonts.ready.then(perf);
   function openM(e){
     if (e) e.preventDefault();
     if (wide.matches) {
