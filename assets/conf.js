@@ -362,13 +362,22 @@
       var step = function(t){ var q = Math.min(1, (t - t0) / 700); el.textContent = nfmt(from + (to - from) * (1 - Math.pow(1 - q, 3))); if (q < 1) requestAnimationFrame(step) };
       requestAnimationFrame(step);
     };
+    var scramble = function(k, to){
+      var el = cxt.querySelector('[data-t="' + k + '"]'); if (!el) return;
+      var n = 0; el.classList.add('scr');
+      var iv = setInterval(function(){
+        if (++n > 11) { clearInterval(iv); el.textContent = nfmt(to); el.classList.remove('scr'); return }
+        el.textContent = String(10 + Math.floor(Math.random() * 89));
+      }, 65);
+    };
     var cxtTick = function(){
       if (!cxtOn || document.hidden) return;
       var v = PRE[pi % PRE.length]; pi++;
       setT('goal', nfmt(v[0])); setT('price', nfmt(v[1])); setT('sub', nfmt(v[2]));
       setT('price2', '$' + nfmt(v[1])); setT('sub2', '$' + nfmt(v[2]));
       cxt.classList.remove('flip'); void cxt.offsetWidth; cxt.classList.add('flip');
-      countTo('buyers', Math.ceil(v[0] / v[1])); countTo('subs', Math.ceil(v[0] / v[2]));
+      if (cxt.classList.contains('open')) { countTo('buyers', Math.ceil(v[0] / v[1])); countTo('subs', Math.ceil(v[0] / v[2])) }
+      else scramble('buyers', Math.ceil(v[0] / v[1]));   /* locked: the answer spins like a slot machine, then hides under the blur */
     };
     if (!reduce) {
       if ('IntersectionObserver' in window) new IntersectionObserver(function(es){ cxtOn = es[0].isIntersecting }, {threshold: 0.3}).observe(cxt); else cxtOn = true;

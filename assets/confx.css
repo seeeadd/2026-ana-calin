@@ -612,3 +612,38 @@ body.vipc .cxs-g .svx{box-shadow:9px 10px 0 var(--pk2),9px 10px 0 1.6px var(--in
   .cxs-h .cxlogo{width:128px;height:128px}
   .cxs-ht p{margin-left:auto;margin-right:auto}
 }
+
+/* the preview as a vault (Sean: "more secret saucy"): dark window, the answer scrambled, blurred and stamped until
+   the 7 questions are done; the subscription number blacked out */
+.cxt{background:#1A1412;box-shadow:9px 10px 0 var(--pink),9px 10px 0 1.6px var(--ink)}
+.cxt-bar{background:#241B17;border-bottom-color:rgba(255,248,238,.12)}
+.cxt-bar i{opacity:.85}
+.cxt-bar span{background:#0F0B09;color:#CDBFAE;display:flex;align-items:center;gap:7px}
+.cxt-pl{width:12px;height:12px;flex:none;color:var(--sun)}
+.cxt-lock{background:var(--sun);color:var(--ink)}
+.cxt-in{background:#1A1412 radial-gradient(rgba(255,248,238,.07) 1.2px,transparent 1.3px) 0 0/16px 16px}
+.cxt-f small{color:#F3E9DC}
+.cxt-f .n{background:var(--sun);color:var(--ink)}
+.cxt-m{background:#241B17;border-color:#4A3B33}
+.cxt-m span{color:var(--sun)}
+.cxt-m b{color:#FFF8EE}
+.cxt-m i{color:#A8988A}
+.cxt-card{box-shadow:6px 7px 0 var(--sun),6px 7px 0 1.6px var(--ink);overflow:hidden}
+.cxt-big b{transition:color .4s,text-shadow .4s}
+.cxt:not(.open) .cxt-big b{color:transparent;text-shadow:0 0 16px rgba(26,20,18,.9)}
+.cxt:not(.open) .cxt-big b.scr{color:var(--ink);text-shadow:none}
+.cxt-vs b.rd{position:relative;color:transparent;min-width:2.6ch}
+.cxt-vs b.rd:after{content:"";position:absolute;left:-2px;right:-2px;top:16%;bottom:10%;background:repeating-linear-gradient(-45deg,#1A1412 0 7px,#2E2420 7px 10px);border-radius:3px}
+.cxt.open .cxt-vs b.rd{color:inherit}.cxt.open .cxt-vs b.rd:after{display:none}
+.cxt-stamp{position:absolute;right:14px;top:44px;z-index:2;padding:7px 12px 6px;border:3px double var(--pink);border-radius:8px;color:var(--pink);font-weight:800;font-size:13px;line-height:1.05;letter-spacing:.12em;text-transform:uppercase;text-align:center;transform:rotate(-9deg);background:rgba(255,255,255,.82);mix-blend-mode:multiply;box-shadow:inset 0 0 0 1px rgba(247,37,133,.25)}
+.cxt.open .cxt-stamp{display:none}
+@media (max-width:760px){.cxt-stamp{position:relative;top:auto;right:auto;display:inline-block;margin:0 0 10px;font-size:10.5px;padding:5px 10px 4px;border-width:2.5px;transform:rotate(-3deg)}.cxt-stamp br{display:none}.cxt-bar span{display:none}}
+.cxt.flip .cxt-m b{animation:cxtflashd .8s var(--ease)}
+.cxt.flip [data-t=price2],.cxt.flip [data-t=sub2]{animation:cxtflashl .8s var(--ease)}
+@keyframes cxtflashd{0%{color:var(--sun)}100%{color:#FFF8EE}}
+@keyframes cxtflashl{0%{background:var(--ysoft)}100%{background:transparent}}
+
+/* step 4's heading: the second line in bold sans, ink, with a yellow marker on the calculator's name (Sean: easier to
+   read than the pink italic) */
+.cxs-k{display:block;margin-top:10px;font-family:var(--sans);font-weight:800;font-style:normal;font-size:.6em;line-height:1.12;letter-spacing:-.025em;color:var(--ink)}
+.cxs-k mark{color:inherit;background:linear-gradient(transparent 52%,var(--sun) 52%,var(--sun) 94%,transparent 94%);padding:0 .06em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
