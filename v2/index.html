@@ -939,6 +939,37 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
 .nolist li{white-space:nowrap;font-size:16px;padding:11px 20px}
 @media (max-width:640px){.nolist li{white-space:normal}}
 @media (min-width:1280px){ .v2page .wall{-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 88%,transparent)} }
+/* ---- slimmer rail (Sean, Oct 31: thinner and narrower, the form doesn't have much in it) ---- */
+@media (min-width:1280px){
+  .v2page{--rw:292px;--rg:48px}
+  .rail h1{font-size:35px;line-height:1.03;margin-top:10px}
+  .rail .hpill{font-size:10.5px;padding:5px 6px 5px 12px;gap:8px}
+  .rail .hpill .dchip{padding:6px 10px}
+  .rkick{font-size:14px;line-height:1.4;margin-top:8px}
+  .rcard{padding:12px 13px 11px;border-radius:18px;box-shadow:6px 6px 0 var(--sun),6px 6px 0 1.5px var(--ink),0 24px 50px -30px rgba(70,45,25,.45)}
+  .rdates{gap:8px;padding-bottom:9px;margin-bottom:9px}
+  .rdates .mt{gap:3px}
+  .rdates .mt span{width:30px;padding:3px 0 2px;border-radius:7px}
+  .rdates .mt b{font-size:15px}
+  .rdates .mt small{font-size:7px;letter-spacing:.08em;margin-top:1px}
+  .rdates .when{font-size:11.5px;line-height:1.3}
+  .rdates .when b{font-size:13px}
+  .rcard .situ .lbl{font-size:9.5px;letter-spacing:.14em;margin-bottom:5px}
+  .rcard .chips{gap:4px}
+  .rcard .chip{height:26px;padding:0 9px;font-size:11.5px;border-width:1.2px}
+  .rcard form{margin-top:9px}
+  .rcard form h3{font-size:20px;margin-bottom:7px}
+  .rcard form .field{margin-bottom:6px}
+  .rcard form .field input{height:42px;border-radius:11px;font-size:14px;padding:0 13px}
+  .rcard form .field .err{font-size:11.5px}
+  .rcard form .btn.big{height:46px;font-size:15px;margin-top:1px}
+  .rcard form .note{font-size:10.5px;line-height:1.35;margin-top:6px}
+  .rnote{font-size:11.5px;line-height:1.35;margin-top:6px}
+  .rcard .proof{gap:8px;margin-top:7px;padding-top:7px;font-size:11.5px}
+  .rcard .proof .faces img{width:22px;height:22px;margin-left:-7px;border-width:1.5px}
+  .rcard .proof .stars svg{width:10px;height:10px}
+  .rcard .just{font-size:11.5px;padding:6px 9px;margin-top:7px}
+}
 
 </style>
 </head>
