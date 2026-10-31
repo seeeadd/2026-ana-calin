@@ -170,3 +170,22 @@
 }
 .hunder{margin-top:34px}
 @media (min-width:1280px){.v2page .hstage .stk{right:calc(196px + 30px + 42px);top:20px}}
+/* text beside the video; the stats back to a strip under it; the headline a size smaller (Sean) */
+.hside .hkick2{margin:0}
+.hside .lede.first{margin-top:12px;font-size:16px;line-height:1.55;color:var(--ink2)}
+.hside .lede.first b{color:var(--ink);font-weight:700}
+.hside .lede{font-size:15px;line-height:1.55;margin:0 0 12px;color:var(--ink2)}
+.hside .when2{margin:0}
+.hunder .hu2 .obj{margin-top:0}
+.hunder .hu2 .april{margin-top:14px}
+@media (min-width:1280px){
+  .hhead{display:block}
+  .hstage{grid-template-columns:minmax(0,1fr) 316px;gap:36px;align-items:center}
+  .hstage .hside{grid-column:2;grid-row:1}
+  .v2page .hstage .stk{right:calc(316px + 36px + 40px);top:20px}
+  .v2page .tstrip{margin:30px calc(var(--rw) + var(--rg)) 0 0;flex-direction:row;padding:12px 24px 12px 12px}
+}
+@media (max-width:1279px){
+  .hside{margin-top:22px}
+}
+@media (min-width:1280px){.hhead{margin-right:calc(var(--rw) + var(--rg))}}

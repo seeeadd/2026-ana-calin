@@ -981,6 +981,25 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
 }
 .hunder{margin-top:34px}
 @media (min-width:1280px){.v2page .hstage .stk{right:calc(196px + 30px + 42px);top:20px}}
+/* text beside the video; the stats back to a strip under it; the headline a size smaller (Sean) */
+.hside .hkick2{margin:0}
+.hside .lede.first{margin-top:12px;font-size:16px;line-height:1.55;color:var(--ink2)}
+.hside .lede.first b{color:var(--ink);font-weight:700}
+.hside .lede{font-size:15px;line-height:1.55;margin:0 0 12px;color:var(--ink2)}
+.hside .when2{margin:0}
+.hunder .hu2 .obj{margin-top:0}
+.hunder .hu2 .april{margin-top:14px}
+@media (min-width:1280px){
+  .hhead{display:block}
+  .hstage{grid-template-columns:minmax(0,1fr) 316px;gap:36px;align-items:center}
+  .hstage .hside{grid-column:2;grid-row:1}
+  .v2page .hstage .stk{right:calc(316px + 36px + 40px);top:20px}
+  .v2page .tstrip{margin:30px calc(var(--rw) + var(--rg)) 0 0;flex-direction:row;padding:12px 24px 12px 12px}
+}
+@media (max-width:1279px){
+  .hside{margin-top:22px}
+}
+@media (min-width:1280px){.hhead{margin-right:calc(var(--rw) + var(--rg))}}
 
 </style>
 </head>
@@ -1065,18 +1084,12 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
   <svg class="bgflower" aria-hidden="true"><use href="#sfo"/></svg>
   <div class="hwrap v2hero">
     <div class="hhead">
-      <div class="hh-l">
-        <span class="hpill"><span class="dot"></span>The Exit Plan <i>/</i> <span class="hide-s">free 3-day live workshop <i>/</i></span> <span class="dchip">Nov 17 to 19</span></span>
-        <h1 id="h1" class="long"><span class="l">How to Build the Income That</span> <span class="l">Lets You Leave Your Job <span class="hl">in 2027</span></span></h1>
-      </div>
-      <div class="hh-r">
-        <p class="hkick2">Already work for yourself? Then your "job" is the client hours. <b>Same plan.</b></p>
-        <p class="lede first">If nothing's selling yet, it isn't your list and it isn't your writing. <b>It's the order you were taught to do things in.</b></p>
-      </div>
+      <span class="hpill"><span class="dot"></span>The Exit Plan <i>/</i> <span class="hide-s">free 3-day live workshop <i>/</i></span> <span class="dchip">Nov 17 to 19</span></span>
+      <h1 id="h1" class="long"><span class="l">How to Build the Income That</span> <span class="l">Lets You Leave Your Job <span class="hl">in 2027</span></span></h1>
     </div>
 
     <div class="hstage">
-      <!-- the VSL, big: set VSL_SRC in the script when Ana's video is ready. Click to play; this still is the cover. -->
+      <!-- the VSL: set VSL_SRC in the script when Ana's video is ready. Click to play; this still is the cover. -->
       <div class="iph" id="vsl">
         <span class="sb" style="left:18%;width:9%"></span><span class="sb" style="left:30%;width:5%"></span><span class="sb" style="left:37%;width:5%"></span><span class="sb b" style="left:60%;width:14%"></span>
         <div class="bz">
@@ -1091,14 +1104,11 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
         </div>
       </div>
       <svg class="stk" viewBox="0 0 200 200" aria-hidden="true"><defs><path id="stkc" d="M100,100 m-72,0 a72,72 0 1,1 144,0 a72,72 0 1,1 -144,0"/></defs><circle cx="100" cy="100" r="96" fill="#F72585" stroke="#1A1412" stroke-width="4"/><g class="stk-r"><text font-family="Manrope,sans-serif" font-weight="800" font-size="14" letter-spacing="2.6" fill="#fff"><textPath href="#stkc">FREE · LIVE ON ZOOM · NOV 17 TO 19 ·</textPath></text></g><circle cx="100" cy="100" r="47" fill="#FFF8EE" stroke="#1A1412" stroke-width="4"/><use href="#sf" x="61" y="61" width="78" height="78"/></svg>
-      <div class="tstrip">
-        <div class="award"><img src="../img/mark.png" alt="" width="46" height="46"><span><small>HOW WE GROW</small><b>with Ana Calin</b></span></div>
-        <div class="stats">
-          <div class="stat"><b>$1.4M</b><small>from the newsletter</small></div><i></i>
-          <div class="stat"><b>about 80,000</b><small>readers</small></div><i></i>
-          <div class="stat"><b>0</b><small>sales calls</small></div><i></i>
-          <div class="stat"><b>16,907</b><small>buyers</small></div>
-        </div>
+      <div class="hside">
+        <p class="hkick2">Already work for yourself? Then your "job" is the client hours. <b>Same plan.</b></p>
+        <p class="lede first">If nothing's selling yet, it isn't your list and it isn't your writing. <b>It's the order you were taught to do things in.</b></p>
+        <p class="lede">Your first paid offer doesn't have to be a course, a paid tier, or finished. Your readers have probably already asked you for it. AI changed one step in that order, and on Day 1 I'll show you which one, on my own Substack.</p>
+        <p class="when2"><b>Tue Nov 17 to Thu Nov 19</b>12:00 pm New York <i>/</i> 9:00 am Los Angeles <i>/</i> 5:00 pm London <i>/</i> 7:00 pm Greece</p>
       </div>
     </div>
     <div class="situ mob" role="group" aria-labelledby="situ-m">
@@ -1114,13 +1124,18 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
       <p class="note">free · live on Zoom<span class="lt"></span></p>
     </div>
 
+    <div class="tstrip">
+        <div class="award"><img src="../img/mark.png" alt="" width="46" height="46"><span><small>HOW WE GROW</small><b>with Ana Calin</b></span></div>
+        <div class="stats">
+          <div class="stat"><b>$1.4M</b><small>from the newsletter</small></div><i></i>
+          <div class="stat"><b>about 80,000</b><small>readers</small></div><i></i>
+          <div class="stat"><b>0</b><small>sales calls</small></div><i></i>
+          <div class="stat"><b>16,907</b><small>buyers</small></div>
+        </div>
+      </div>
+
     <div class="hunder">
       <div class="hu1">
-        <p class="lede">Your first paid offer doesn't have to be a course, a paid tier, or finished. Your readers have probably already asked you for it. AI changed one step in that order, and on Day 1 I'll show you which one, on my own Substack.</p>
-        <p class="when2"><b>Tue Nov 17 to Thu Nov 19</b>12:00 pm New York <i>/</i> 9:00 am Los Angeles <i>/</i> 5:00 pm London <i>/</i> 7:00 pm Greece</p>
-        <p class="april">If you did my April challenge: back then I had you build it first. I'd tell you something different now.</p>
-      </div>
-      <div class="hu2">
         <ul class="byth">
             <li class="bt">By the end of Day 3, you'll have:</li>
             <li><svg aria-hidden="true"><use href="#li"/></svg>found the thing your readers would actually pay you for</li>
@@ -1128,7 +1143,10 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
             <li><svg aria-hidden="true"><use href="#li"/></svg>a price you can say out loud without wincing</li>
             <li><svg aria-hidden="true"><use href="#li"/></svg>the email that finally asks people to buy. You'll write it with me on Nov 19.</li>
           </ul>
+      </div>
+      <div class="hu2">
         <p class="obj"><b>You don't need a bigger list, a paywall or a sales call for any of this.</b> It's free and live on Zoom, three New York lunchtimes in a row (dinner time for me, here in Greece).</p>
+        <p class="april">If you did my April challenge: back then I had you build it first. I'd tell you something different now.</p>
       </div>
     </div>
   </div>
@@ -1720,11 +1738,11 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
   tkIn.addEventListener('input', function(){ var v = tkIn.value.trim(); tkName.textContent = v || 'Your name'; tkName.classList.toggle('set', !!v) });
   function perf(){ var t = document.getElementById('rcard'), pf = t.querySelector('.tk-perf'); t.style.setProperty('--py', (pf.offsetTop) + 'px') }
   perf(); addEventListener('resize', perf); if (document.fonts) document.fonts.ready.then(perf);
-  function railTop(){ var r = document.getElementById('v2rail'), st = document.querySelector('.hstage'), bd = document.querySelector('.v2body'); if (r && st && bd && wide.matches) r.style.top = Math.round(st.getBoundingClientRect().top - bd.getBoundingClientRect().top) + 'px' }
+  function railTop(){ var r = document.getElementById('v2rail'), st = document.querySelector('.hhead'), bd = document.querySelector('.v2body'); if (r && st && bd && wide.matches) r.style.top = Math.round(st.getBoundingClientRect().top - bd.getBoundingClientRect().top) + 'px' }
   /* the headline fills the width of the page column: two lines, sized so the longer one meets the edge */
   function fitH(){ var h = document.getElementById('h1'), box = h.parentNode; if (!wide.matches) { h.style.fontSize = ''; return }
     h.style.fontSize = '100px'; var w = 0; h.querySelectorAll('.l').forEach(function(l){ w = Math.max(w, l.scrollWidth) });
-    h.style.fontSize = Math.min(138, 100 * box.clientWidth / w).toFixed(1) + 'px'; railTop() }
+    h.style.fontSize = Math.min(92, 86 * box.clientWidth / w).toFixed(1) + 'px'; railTop() }
   fitH(); addEventListener('resize', fitH); if (document.fonts) document.fonts.ready.then(fitH);
   railTop(); addEventListener('resize', railTop); if (document.fonts) document.fonts.ready.then(railTop);
   function openM(e){

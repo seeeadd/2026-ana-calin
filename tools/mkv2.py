@@ -61,20 +61,19 @@ new_hero = """<section class="hero" id="hero">
   <svg class="bgflower" aria-hidden="true"><use href="#sfo"/></svg>
   <div class="hwrap v2hero">
     <div class="hhead">
-      <div class="hh-l">
-        """ + pill + """        <h1 id="h1" class="long"><span class="l">How to Build the Income That</span> <span class="l">Lets You Leave Your Job <span class="hl">in 2027</span></span></h1>
-      </div>
-      <div class="hh-r">
-        <p class="hkick2">Already work for yourself? Then your "job" is the client hours. <b>Same plan.</b></p>
-        <p class="lede first">If nothing's selling yet, it isn't your list and it isn't your writing. <b>It's the order you were taught to do things in.</b></p>
-      </div>
+      """ + pill + """      <h1 id="h1" class="long"><span class="l">How to Build the Income That</span> <span class="l">Lets You Leave Your Job <span class="hl">in 2027</span></span></h1>
     </div>
 
     <div class="hstage">
-      <!-- the VSL, big: set VSL_SRC in the script when Ana's video is ready. Click to play; this still is the cover. -->
+      <!-- the VSL: set VSL_SRC in the script when Ana's video is ready. Click to play; this still is the cover. -->
       """ + vsl + """
       """ + STICKER + """
-      """ + tstrip + """
+      <div class="hside">
+        <p class="hkick2">Already work for yourself? Then your "job" is the client hours. <b>Same plan.</b></p>
+        <p class="lede first">If nothing's selling yet, it isn't your list and it isn't your writing. <b>It's the order you were taught to do things in.</b></p>
+        <p class="lede">Your first paid offer doesn't have to be a course, a paid tier, or finished. Your readers have probably already asked you for it. AI changed one step in that order, and on Day 1 I'll show you which one, on my own Substack.</p>
+        <p class="when2"><b>Tue Nov 17 to Thu Nov 19</b>12:00 pm New York <i>/</i> 9:00 am Los Angeles <i>/</i> 5:00 pm London <i>/</i> 7:00 pm Greece</p>
+      </div>
     </div>
     """ + situ.replace('class="situ"', 'class="situ mob"').replace('id="situ-l"', 'id="situ-m"').replace('aria-labelledby="situ-l"', 'aria-labelledby="situ-m"') + """
     <div class="hcta">
@@ -82,15 +81,15 @@ new_hero = """<section class="hero" id="hero">
       <p class="note">free · live on Zoom<span class="lt"></span></p>
     </div>
 
+    """ + tstrip + """
+
     <div class="hunder">
       <div class="hu1">
-        <p class="lede">Your first paid offer doesn't have to be a course, a paid tier, or finished. Your readers have probably already asked you for it. AI changed one step in that order, and on Day 1 I'll show you which one, on my own Substack.</p>
-        <p class="when2"><b>Tue Nov 17 to Thu Nov 19</b>12:00 pm New York <i>/</i> 9:00 am Los Angeles <i>/</i> 5:00 pm London <i>/</i> 7:00 pm Greece</p>
-        <p class="april">If you did my April challenge: back then I had you build it first. I'd tell you something different now.</p>
+        """ + BYTH + """
       </div>
       <div class="hu2">
-        """ + BYTH + """
         <p class="obj"><b>You don't need a bigger list, a paywall or a sales call for any of this.</b> It's free and live on Zoom, three New York lunchtimes in a row (dinner time for me, here in Greece).</p>
+        <p class="april">If you did my April challenge: back then I had you build it first. I'd tell you something different now.</p>
       </div>
     </div>
   </div>
@@ -319,11 +318,11 @@ R("  function openM(e){\n    if (e) e.preventDefault();",
   tkIn.addEventListener('input', function(){ var v = tkIn.value.trim(); tkName.textContent = v || 'Your name'; tkName.classList.toggle('set', !!v) });
   function perf(){ var t = document.getElementById('rcard'), pf = t.querySelector('.tk-perf'); t.style.setProperty('--py', (pf.offsetTop) + 'px') }
   perf(); addEventListener('resize', perf); if (document.fonts) document.fonts.ready.then(perf);
-  function railTop(){ var r = document.getElementById('v2rail'), st = document.querySelector('.hstage'), bd = document.querySelector('.v2body'); if (r && st && bd && wide.matches) r.style.top = Math.round(st.getBoundingClientRect().top - bd.getBoundingClientRect().top) + 'px' }
+  function railTop(){ var r = document.getElementById('v2rail'), st = document.querySelector('.hhead'), bd = document.querySelector('.v2body'); if (r && st && bd && wide.matches) r.style.top = Math.round(st.getBoundingClientRect().top - bd.getBoundingClientRect().top) + 'px' }
   /* the headline fills the width of the page column: two lines, sized so the longer one meets the edge */
   function fitH(){ var h = document.getElementById('h1'), box = h.parentNode; if (!wide.matches) { h.style.fontSize = ''; return }
     h.style.fontSize = '100px'; var w = 0; h.querySelectorAll('.l').forEach(function(l){ w = Math.max(w, l.scrollWidth) });
-    h.style.fontSize = Math.min(138, 100 * box.clientWidth / w).toFixed(1) + 'px'; railTop() }
+    h.style.fontSize = Math.min(92, 86 * box.clientWidth / w).toFixed(1) + 'px'; railTop() }
   fitH(); addEventListener('resize', fitH); if (document.fonts) document.fonts.ready.then(fitH);
   railTop(); addEventListener('resize', railTop); if (document.fonts) document.fonts.ready.then(railTop);
   function openM(e){
