@@ -103,6 +103,16 @@ body.is-closed .tot2{display:none}
 .hv .order .ticks{margin:10px 0 12px;padding:10px 0 0;border-top:1.5px dashed rgba(26,20,18,.18);gap:7px}
 .hv .order .ticks li{font-size:15px;white-space:nowrap}
 .hv .under{margin-top:0;text-align:center;font-size:16.5px;line-height:1.5;color:var(--ink2);max-width:620px}
+.dl .decline{white-space:normal;text-wrap:balance;max-width:100%;line-height:1.4}
+.hv>.order{align-self:start}
+/* how VIP works, in Ana's words, under her video */
+.hiw{max-width:620px;margin:16px auto 0;text-align:left;background:#fff;border:1.6px solid var(--ink);border-radius:18px;padding:16px 18px 14px;box-shadow:5px 6px 0 var(--pink),5px 6px 0 1.6px var(--ink)}
+.hiw-k{font-weight:800;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--pink)}
+.hiw ol{list-style:none;counter-reset:h;display:grid;gap:9px;margin:10px 0 0;padding:0}
+.hiw li{counter-increment:h;position:relative;padding-left:38px;font-size:15.5px;line-height:1.45;color:var(--ink2)}
+.hiw li b{color:var(--ink)}
+.hiw li:before{content:counter(h);position:absolute;left:0;top:-1px;width:26px;height:26px;border-radius:50%;background:var(--ink);color:var(--sun);display:grid;place-items:center;font-family:var(--serif);font-size:16px;line-height:1}
+.hiw-lh{margin-top:12px;padding-top:10px;border-top:1.5px dashed rgba(26,20,18,.2);font-size:14.5px;line-height:1.5;color:var(--ink2)}
 .hv .under b{color:var(--ink)}
 /* the landscape video, in the same sand phone as the registration page */
 .iph{position:relative;margin:0 22px 22px 0;border-radius:52px;padding:5px;
@@ -715,14 +725,14 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
   <div class="wrap hwrap">
     <div class="toprow">
       <span class="saved"><i><svg width="14" height="14" style="color:#fff"><use href="#ck"/></svg></i><span><span id="hi">Your</span> seat is saved. <b>Day 1 is Tue, Nov 17.</b></span></span>
-      <span class="eyebrow" id="eyebrow">One optional upgrade, before you go</span>
+      <span class="eyebrow" id="eyebrow">One more thing before you go</span>
     </div>
     <!-- right after signing up: the confirmation often lands in Spam or Promotions -->
     <p class="inbx" role="note"><span class="ib-i" aria-hidden="true">!</span><span><b>Important: check your Spam and Promotions folders.</b> Your confirmation is on its way from <b>anacalin@howwegrowtoday.com</b>. If it’s there, tap “Not spam” or move it to your inbox, or you’ll miss your Zoom link and reminders.</span></p>
     <!-- headline A/B: ?h=A or ?h=B previews one -->
     <h1 id="h1">Before you send it to anyone, <em>send it to me.</em></h1>
     <!-- [bonus name] in the guide: the Offer Clarity Sprint, as on the rest of this page -->
-    <p class="hsub">Friday, Nov 20. 90 minutes live. I read what you wrote this week and tell you straight: it's ready, or here's the line to change.</p>
+    <p class="hsub">By Thursday night, you’ll have an offer, a price and an ask in a doc. That’s where most people stop, waiting to feel ready. I charged $97 for three years doing exactly that.</p>
     <div class="hv">
       <div class="hvv">
         <div class="iph" id="vsl">
@@ -738,6 +748,16 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
           </div>
         </div>
         <p class="under"><b>Watch this first.</b> It's a minute, and it covers who should skip VIP too.</p>
+        <!-- how VIP works, in Ana's words (from her video script) -->
+        <div class="hiw">
+          <p class="hiw-k">How it works</p>
+          <ol>
+            <li><b>Fri Nov 20, 90 minutes live.</b> You send me what you wrote, and I tell you straight: it’s ready, or here’s the line to change.</li>
+            <li><b>Tue to Fri, a private WhatsApp group with me.</b></li>
+            <li><b>You keep all three sessions</b> and my Offer Clarity Sprint.</li>
+          </ol>
+          <p class="hiw-lh">Life happens. A meeting runs late, and you miss Day 2. It’s still yours. Friday also gives you a date to finish by.</p>
+        </div>
       </div>
       <aside class="order" id="order">
         <div class="oh"><p class="ok">VIP · one payment</p><span class="op">$67</span></div>
@@ -752,7 +772,7 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
         <p class="closed">VIP is closed. <em>See you live.</em></p>
         <button class="btn add" type="button" id="addBtn">Yes, check mine on Friday ($67)<svg><use href="#arr"/></svg></button>
         <p class="meta2"><span><svg width="13" height="15" viewBox="0 0 13 15" fill="none" stroke="#7A6A60" stroke-width="1.7"><rect x="1.5" y="6.5" width="10" height="7" rx="2"/><path d="M3.8 6.5V4.6a2.7 2.7 0 0 1 5.4 0v1.9"/></svg>Secure checkout with Stripe. All sales are final.</span></p>
-        <p class="dl"><button class="decline" type="button">Free is perfect for me. See you Tuesday →</button></p>
+        <p class="dl"><button class="decline" type="button">Coming to see what it’s like? Keep your free seat. Either way, see you Tuesday →</button></p>
       </aside>
     </div>
   </div>
@@ -764,7 +784,7 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
   <div class="wrap">
     <div class="hd2" data-r>
       <div><span class="eyebrow">Your week, Nov 17 to 20</span><h2>Three days to write it. <em>Friday to check it.</em></h2></div>
-      <p>Thursday night, you'll have an offer, a price and an ask sitting in a doc. That's where most people stop. I did, for three years, at $97, waiting to feel ready. VIP is for that night, and the morning after.</p>
+      <p>The three free days get your offer, your price and your ask written. VIP is for Thursday night, and the morning after: the part where you send it.</p>
     </div>
     <div class="tl" data-r aria-label="Your week">
       <span class="brk f" aria-hidden="true"><span>Free, for everyone</span></span>
@@ -980,7 +1000,7 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
         <p class="closed">VIP is closed. <em>See you live.</em></p>
         <button class="btn add" type="button">Yes, check mine on Friday ($67)<svg><use href="#arr"/></svg></button>
         <p class="meta2"><span><svg width="13" height="15" viewBox="0 0 13 15" fill="none" stroke="#7A6A60" stroke-width="1.7"><rect x="1.5" y="6.5" width="10" height="7" rx="2"/><path d="M3.8 6.5V4.6a2.7 2.7 0 0 1 5.4 0v1.9"/></svg>Secure checkout with Stripe. All sales are final.</span><span>On sale until Tue, Nov 17 at 11:59 pm New York.</span></p>
-        <p class="dl"><button class="decline" type="button">Free is perfect for me. See you Tuesday →</button></p>
+        <p class="dl"><button class="decline" type="button">Coming to see what it’s like? Keep your free seat. Either way, see you Tuesday →</button></p>
       </div>
     </div>
 
