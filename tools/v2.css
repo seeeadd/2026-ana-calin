@@ -218,7 +218,9 @@
   .v2page{--edge:max(28px,calc((100vw - 1640px) / 2));--rw:284px;--rg:44px;--rightc:calc(var(--edge) + var(--rw) + var(--rg))}
   .v2body{position:relative}
   .v2rail{position:absolute;top:120px;bottom:80px;right:var(--edge);width:var(--rw);z-index:20}
-  .tksticky{position:sticky;top:92px}
+  /* the frozen ticket stays in the middle of the screen under the 74px floating bar, top to bottom (Sean); its height
+     (--tkh) comes from the page script */
+  .tksticky{position:sticky;top:max(92px,calc((100vh + 74px - var(--tkh,480px)) / 2))}
   .v2body .wrap{max-width:none;margin-left:var(--edge);margin-right:var(--rightc);padding:0}
   .v2body .wrap.narrow > *{max-width:none}
   /* the frozen ticket shows once the form has moved into it, so two tickets are never on screen with one empty */

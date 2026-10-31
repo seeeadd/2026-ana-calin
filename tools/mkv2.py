@@ -556,6 +556,10 @@ R("  function openM(e){\n    if (e) e.preventDefault();",
   function perf(){ [hcard, rcard].forEach(function(t){ var hd = t.querySelector('.tk-head'); if (t.offsetParent) t.style.setProperty('--py', (hd.offsetTop + hd.offsetHeight - 1) + 'px') }) }
   if (window.ResizeObserver) { var tro = new ResizeObserver(function(){ perf() }); [hcard, rcard].forEach(function(t){ tro.observe(t.querySelector('.tk-head')) }) }
   function railOn(){ document.getElementById('v2rail').classList.toggle('on', form.parentNode === rslot) }
+  /* the frozen ticket is centred on the screen top to bottom: its height sets its sticky top (v2.css .tksticky) */
+  var tks = rcard.closest ? rcard.closest('.tksticky') : null;
+  function tkh(){ if (tks) tks.style.setProperty('--tkh', tks.offsetHeight + 'px') }
+  if (window.ResizeObserver && tks) new ResizeObserver(tkh).observe(tks); tkh();
   var pfRaf = 0; addEventListener('scroll', function(){ if (!pfRaf) pfRaf = requestAnimationFrame(function(){ pfRaf = 0; placeForm() }) }, {passive:true});
   if (wide.addEventListener) wide.addEventListener('change', placeForm); else wide.addListener(placeForm);
   placeForm();
