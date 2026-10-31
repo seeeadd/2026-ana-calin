@@ -264,12 +264,40 @@
     var LETTERS = 'ABCDEF', dir = 'r';
     /* the locked calculator beside the questions: one segment per answered question, open at 7 of 7 */
     var lockEl = document.getElementById('cxl'), lastPow = -1;
+    /* the brick wall: 42 bricks in 7 scattered sets, one set per answered question */
+    var wall = document.getElementById('cxtb');
+    var wallSetup = function(){
+      if (!wall || wall.getAttribute('data-ready')) return;
+      var COLS = 6, ROWS = 7, ROW = ['#F9B4D3', '#FFE680', '#FFF3C9', '#F9B4D3', '#FFE680', '#FFF3C9', '#FFE680'], g = [], seed = 11, h = '';
+      for (var i = 0; i < COLS * ROWS; i++) g.push(i % 7);
+      for (var j = g.length - 1; j > 0; j--) { seed = (seed * 9301 + 49297) % 233280; var k = Math.floor(seed / 233280 * (j + 1)), t = g[j]; g[j] = g[k]; g[k] = t }
+      for (var r = 0; r < ROWS; r++) for (var c = 0; c < COLS; c++) h += '<i data-g="' + g[r * COLS + c] + '" style="background:' + ROW[r] + '"></i>';
+      wall.querySelector('.cxtb-w').innerHTML = h; wall.setAttribute('data-ready', '1');
+    };
+    var wallShow = function(n, play){
+      if (!wall) return; wallSetup();
+      var all = [].slice.call(wall.querySelectorAll('.cxtb-w i'));
+      all.forEach(function(b){ if (+b.getAttribute('data-g') >= n) b.classList.remove('gone', 'pop') });
+      var hit = all.filter(function(b){ return +b.getAttribute('data-g') < n && !b.classList.contains('gone') });
+      if (!hit.length) return;
+      if (!play || reduce || !wall.offsetWidth || !wall.animate) { hit.forEach(function(b){ b.classList.add('gone') }); return }
+      var box = wall.getBoundingClientRect(), pad = wall.querySelector('.cxtb-pad'), ball = wall.querySelector('.cxtb-ball');
+      var start = {x: box.width / 2 - 5, y: box.height - 26}, pts = [start], step = 110;
+      hit.forEach(function(b){ var r = b.getBoundingClientRect(); pts.push({x: r.left - box.left + r.width / 2 - 5, y: r.top - box.top + r.height / 2 - 5}) });
+      pts.push(start);
+      pad.style.left = Math.max(30, Math.min(box.width - 30, pts[1].x + 5)) + 'px';
+      ball.animate(pts.map(function(p, i){ return {transform: 'translate(' + p.x + 'px,' + p.y + 'px)', opacity: i === 0 || i === pts.length - 1 ? 0 : 1} }),
+        {duration: step * (pts.length - 1), easing: 'linear'});
+      hit.forEach(function(b, i){ setTimeout(function(){ b.classList.add('pop'); setTimeout(function(){ b.classList.add('gone'); b.classList.remove('pop') }, 160) }, step * (i + 1)) });
+      setTimeout(function(){ pad.style.left = '' }, step * (pts.length - 1) + 50);
+    };
     var power = function(){
       if (!lockEl) return;
       var n = QS.filter(function(s){ var v = sv.a[s.id]; return v != null && [].concat(v).length > 0 }).length;
       lockEl.querySelectorAll('[data-pow]').forEach(function(e){ e.textContent = n });
       lockEl.querySelectorAll('.cxl-seg i').forEach(function(e, k){ e.classList.toggle('on', k < n); e.classList.toggle('new', lastPow > -1 && k === n - 1 && n > lastPow) });
       for (var k = 0; k <= QS.length; k++) lockEl.classList.toggle('p' + k, k === n);
+      wallShow(n, lastPow > -1 && n > lastPow);
       lockEl.classList.toggle('open', !!sv.done);
       var cxtEl = document.getElementById('cxt'); if (cxtEl) cxtEl.classList.toggle('open', !!sv.done);
       document.querySelectorAll('.cxlogo').forEach(function(l){ l.classList.toggle('open', !!sv.done) });

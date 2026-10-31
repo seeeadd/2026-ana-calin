@@ -702,3 +702,22 @@ body.vipc .cxs-g .svx{box-shadow:9px 10px 0 var(--pk2),9px 10px 0 1.6px var(--in
   .rlight svg{display:block;width:100%;height:auto;overflow:visible}
 }
 
+/* wider questions (Sean): a wider section, the side panel a fixed 340px */
+@media (min-width:1000px){
+  .cxs .wrap{max-width:1160px}
+  .cxs-g{grid-template-columns:minmax(0,1fr) 340px;max-width:none}
+}
+@media (min-width:1400px) and (max-width:1439px){.rlight{display:none!important}}
+
+/* the brick wall over the calculator preview: rows of bricks in Ana's colours, a dark floor with a paddle; each answer
+   sends a ball up that knocks out about a seventh of the bricks; at 7 of 7 the wall is gone */
+.cxl .cxt{position:relative}
+.cxtb{position:absolute;left:0;right:0;top:32px;bottom:0;z-index:3;display:flex;flex-direction:column;pointer-events:none}
+.cxtb-w{flex:1;display:grid;grid-template-columns:repeat(6,1fr);grid-template-rows:repeat(7,1fr);gap:2px;padding:5px 5px 0}
+.cxtb-w i{border:1px solid rgba(26,20,18,.45);border-radius:4px;box-shadow:inset 0 -2px 0 rgba(26,20,18,.1);transition:opacity .28s,transform .28s}
+.cxtb-w i.pop{transform:scale(1.18);filter:brightness(1.15)}
+.cxtb-w i.gone{opacity:0;transform:scale(.5) translateY(8px)}
+.cxtb-floor{position:relative;height:30px;background:linear-gradient(transparent,rgba(26,20,18,.9) 40%)}
+.cxtb-pad{position:absolute;left:50%;bottom:7px;width:54px;height:8px;margin-left:-27px;border-radius:5px;background:var(--sun);border:1.4px solid var(--ink);transition:left .25s cubic-bezier(.3,.8,.4,1)}
+.cxtb-ball{position:absolute;left:0;top:0;width:10px;height:10px;border-radius:50%;background:#fff;border:1.6px solid var(--ink);box-shadow:0 0 8px rgba(255,212,0,.9);opacity:0}
+.cxt.open .cxtb{display:none}
