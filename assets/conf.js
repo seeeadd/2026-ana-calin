@@ -256,17 +256,31 @@
   function exitHref(){
     var p = ['p=' + (isVip ? 'vip' : 'reg')];
     if (first) p.push('first=' + encodeURIComponent(first));
+    if (sv.done) p.push('sv=1');   /* the calculator opens only after the 7 questions */
     return (C.EXIT_URL || '../exit-number/') + '?' + p.join('&');
   }
   var root = document.getElementById('svx');
   if (root) {
-    var LETTERS = 'ABCDEF';
+    var LETTERS = 'ABCDEF', dir = 'r';
+    /* the locked calculator beside the questions: one segment per answered question, open at 7 of 7 */
+    var lockEl = document.getElementById('cxl'), lastPow = -1;
+    var power = function(){
+      if (!lockEl) return;
+      var n = QS.filter(function(s){ var v = sv.a[s.id]; return v != null && [].concat(v).length > 0 }).length;
+      lockEl.querySelectorAll('[data-pow]').forEach(function(e){ e.textContent = n });
+      lockEl.querySelectorAll('.cxl-seg i').forEach(function(e, k){ e.classList.toggle('on', k < n); e.classList.toggle('new', lastPow > -1 && k === n - 1 && n > lastPow) });
+      for (var k = 0; k <= QS.length; k++) lockEl.classList.toggle('p' + k, k === n);
+      lockEl.classList.toggle('open', !!sv.done);
+      var st = lockEl.querySelector('.cxl-st'); if (st) st.textContent = sv.done ? 'open' : 'locked';
+      var go2 = lockEl.querySelector('.cxl-go'); if (go2) go2.href = exitHref();
+      lastPow = n;
+    };
     var render = function(focus){
       var h, i = sv.i;
       root.classList.toggle('end', !!sv.done && i > QS.length);
       if (i > QS.length) {
         h = '<div class="svx-end"><span class="svx-ok" aria-hidden="true"><svg viewBox="0 0 16 16"><use href="#ck"/></svg></span>'
-          + '<h3 id="svx-q" tabindex="-1">Thank you' + (first ? ', ' + esc(first) : '') + '. <em>Your calculator is ready.</em></h3>'
+          + '<h3 id="svx-q" tabindex="-1">Thank you' + (first ? ', ' + esc(first) : '') + '. <em>Your calculator is unlocked.</em></h3>'
           + '<p>Your answers set it up. Put in the monthly number that would give you more choice about work, and a price for your offer. You’ll see how many people it takes, and what the same goal would take through paid subscriptions alone.</p>'
           + '<div class="svx-act"><a class="btn" href="' + esc(exitHref()) + '" data-track="exit_open">open my exit number calculator<svg aria-hidden="true"><use href="#arr"/></svg></a></div>'
           + '<button type="button" class="svx-redo">change my answers</button></div>';
@@ -280,15 +294,18 @@
           + '</div>' + (s.multi ? '<div class="svx-act"><button type="button" class="btn svx-next"' + (sel.length ? '' : ' disabled') + '>next<svg aria-hidden="true"><use href="#arr"/></svg></button></div>' : '');
       }
       root.innerHTML = h;
+      power();
+      root.classList.remove('in-r', 'in-l');
+      if (focus && !reduce) { void root.offsetWidth; root.classList.add('in-' + dir) }
       if (focus) {
         var hq = root.querySelector('#svx-q'); if (hq) try { hq.focus({preventScroll:true}) } catch (e) { hq.focus() }
         var r = root.getBoundingClientRect(); if (r.top < 70) root.scrollIntoView({block:'start', behavior: reduce ? 'auto' : 'smooth'});
       }
     };
-    var go = function(i){ sv.i = i; saveSv(); render(true) };
+    var go = function(i){ dir = i >= sv.i ? 'r' : 'l'; sv.i = i; saveSv(); render(true) };
     var finish = function(){
       var first_time = !sv.done;
-      sv.done = true; sv.i = QS.length + 1; saveSv(); mark('survey');
+      sv.done = true; sv.i = QS.length + 1; saveSv(); mark('survey'); dir = 'r';
       if (first_time || sv.changed) sendSurvey();
       sv.changed = false; saveSv();
       render(true);
@@ -305,7 +322,7 @@
           sv.a[s.id] = cur; saveSv(); render(false);
           var nb = root.querySelector('.svx-o[data-k="' + k + '"]'); if (nb) nb.focus();
         } else {
-          sv.a[s.id] = k; saveSv();
+          sv.a[s.id] = k; saveSv(); power();
           root.querySelectorAll('.svx-o').forEach(function(x){ x.classList.toggle('on', x === o); x.setAttribute('aria-checked', x === o) });
           var bar = root.querySelector('.svx-bar i'); if (bar) bar.style.width = (sv.i / QS.length * 100) + '%';
           setTimeout(function(){ if (sv.i < QS.length) go(sv.i + 1); else finish() }, reduce ? 0 : 220);
