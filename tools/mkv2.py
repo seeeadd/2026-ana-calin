@@ -68,8 +68,7 @@ def ticket(tid, slot, hero):
         </div>
         <div class="tk-body">
           <p class="tk-k">Free · 3 days live · Nov 17 to 19</p>
-          <h3 class="tk-h">Let’s work on your exit plan.</h3>
-          <p class="tk-s">Save your seat for all three sessions with Ana.</p>
+          <h3 class="tk-h">Save your free seat<span class="tk-and">Let’s work on your exit plan.</span></h3>
           <div class="rslot" id="%s"></div>
         </div>
       </div>
