@@ -188,6 +188,12 @@
   /* what they told me in the 7 quick questions (the confirmation page keeps it in this browser) */
   var sv = null; try { sv = JSON.parse(localStorage.getItem('ana_survey2') || 'null') } catch (e) {}
   var SUBS = ['no newsletter yet', 'under 100 subscribers', '100 to 1,000 subscribers', '1,000 to 10,000 subscribers', 'more than 10,000 subscribers'];
+  /* the 7 quick questions power the calculator: question 4 sets what "enough" means, question 2 sits beside the result */
+  var w = sv && sv.a ? sv.a.q4 : null, hint = document.querySelector('#goal').closest('.xq').querySelector('.hint');
+  if (w === 0 || w === 1) hint.textContent = 'The salary you’d replace, so the job becomes a choice.';
+  else if (w === 2) hint.textContent = 'The client income you’d let go of, or the hours you’d stop selling.';
+  else if (w === 3) hint.textContent = 'What you’d want coming in each month, on your own terms.';
+  if (sv && sv.done) { var lead = document.querySelector('.xhead p'); lead.textContent = 'Set up from your answers to the seven quick questions. Put in the monthly number that would give you more choice about work, and a price for your offer. A guess is fine. We’ll work on the real price on Day 2.' }
 
   var $ = function(id){ return document.getElementById(id) };
   var inp = {goal: $('goal'), price: $('price'), sub: $('sub')}, LIM = {goal: 1000000, price: 100000, sub: 1000};

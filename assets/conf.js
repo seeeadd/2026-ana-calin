@@ -266,9 +266,9 @@
       root.classList.toggle('end', !!sv.done && i > QS.length);
       if (i > QS.length) {
         h = '<div class="svx-end"><span class="svx-ok" aria-hidden="true"><svg viewBox="0 0 16 16"><use href="#ck"/></svg></span>'
-          + '<h3 id="svx-q" tabindex="-1">Thank you' + (first ? ', ' + esc(first) : '') + '. <em>Your exit number is ready.</em></h3>'
-          + '<p>Put in the monthly number that would give you more choice about work, and a price for your offer. You’ll see how many people it takes, and what the same goal would take through paid subscriptions alone.</p>'
-          + '<div class="svx-act"><a class="btn" href="' + esc(exitHref()) + '" data-track="exit_open">work out my exit number<svg aria-hidden="true"><use href="#arr"/></svg></a></div>'
+          + '<h3 id="svx-q" tabindex="-1">Thank you' + (first ? ', ' + esc(first) : '') + '. <em>Your calculator is ready.</em></h3>'
+          + '<p>Your answers set it up. Put in the monthly number that would give you more choice about work, and a price for your offer. You’ll see how many people it takes, and what the same goal would take through paid subscriptions alone.</p>'
+          + '<div class="svx-act"><a class="btn" href="' + esc(exitHref()) + '" data-track="exit_open">open my exit number calculator<svg aria-hidden="true"><use href="#arr"/></svg></a></div>'
           + '<button type="button" class="svx-redo">change my answers</button></div>';
       } else {
         var s = QS[i - 1], v = sv.a[s.id], sel = [].concat(v == null ? [] : v);
