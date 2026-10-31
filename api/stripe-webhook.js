@@ -7,9 +7,11 @@
 // Vercel environment variables (Production):
 //   STRIPE_SECRET_KEY   a restricted key with read access to Events and Checkout Sessions (rk_live_...)
 //   KIT_API_KEY         already set for the registration page
-//   KIT_TAG_VIP         the Kit tag id for VIP buyers (ep_vip): its automation sends the VIP welcome email
-//   KIT_TAG_LAB         the Kit tag id for program buyers: its automation sends the program welcome email
-//   KIT_TAG_LAB_PLAN    optional: an extra tag for the 2-payment plan
+//   KIT_TAG_VIP         the Kit tag id of ep_vip: its automation sends "You're VIP"
+//   KIT_TAG_LAB_FULL    the Kit tag id of ep_lab_full (the program, paid in full): its automation starts the Lab onboarding
+//   KIT_TAG_LAB_2PAY    the Kit tag id of ep_lab_2pay (the program, 2 payments)
+//   KIT_TAG_ID          already set (ep_registered): every buyer also gets it, so someone who paid with a different
+//                       email from the one they registered with still gets the workshop emails
 //   STRIPE_PLINK_VIP, STRIPE_PLINK_FULL, STRIPE_PLINK_PLAN  optional: the payment link ids (plink_...), to tell the three
 //                       links apart for certain. Without them: a line item named with "VIP" is VIP, a subscription is the plan.
 //
@@ -63,7 +65,7 @@ module.exports = async function handler(req, res) {
 
     // Kit: the buyer as a subscriber, then the tag whose automation sends the welcome email
     var kitKey = process.env.KIT_API_KEY;
-    var tags = what === 'vip' ? [process.env.KIT_TAG_VIP] : [process.env.KIT_TAG_LAB].concat(what === 'lab_plan' ? [process.env.KIT_TAG_LAB_PLAN] : []);
+    var tags = [what === 'vip' ? process.env.KIT_TAG_VIP : what === 'lab_plan' ? process.env.KIT_TAG_LAB_2PAY : process.env.KIT_TAG_LAB_FULL, process.env.KIT_TAG_ID];
     tags = tags.filter(Boolean);
     if (kitKey && email) {
       var kit = function (path, body) {

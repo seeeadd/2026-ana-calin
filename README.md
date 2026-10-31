@@ -39,7 +39,8 @@ or closed, the VIP deadline.
 3. The survey, the exit numbers and the sales go to a Google Sheet: set it up with `tools/survey-sheet.gs` (the steps are at
    its top), then add `SURVEY_SHEET_URL` and `SURVEY_SHEET_KEY`.
 4. After a payment, `api/stripe-webhook.js` tags the buyer in Kit and adds a row to the sheet. Variables: `STRIPE_SECRET_KEY`
-   (restricted, read access to Events and Checkout Sessions), `KIT_TAG_VIP`, `KIT_TAG_LAB`, optional `KIT_TAG_LAB_PLAN`. In
+   (restricted, read access to Events and Checkout Sessions), and the Kit tag ids `KIT_TAG_VIP` (ep_vip), `KIT_TAG_LAB_FULL`
+   (ep_lab_full) and `KIT_TAG_LAB_2PAY` (ep_lab_2pay). Every buyer also gets `KIT_TAG_ID` (ep_registered). In
    Stripe, Developers > Webhooks: `https://exitplan.howwegrowtoday.com/api/stripe-webhook/` (with the slash: Stripe does not follow redirects), events
    `checkout.session.completed` and `checkout.session.async_payment_succeeded`.
 5. Each Stripe payment link, "After payment" > "Don't show confirmation page" > redirect to:
