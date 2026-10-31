@@ -859,11 +859,11 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
 .tk-code{grid-column:2;grid-row:1 / span 2;width:22px;height:36px;fill:var(--ink)}
 .xnote{margin:14px 2px 0;font-size:12.5px;line-height:1.4;color:var(--ink2)}
 .xnote b{color:var(--pink)}
-.v2rail .proof{margin:0 0 14px;padding:6px 12px 6px 6px;gap:8px;background:#fff;border:1.5px solid var(--ink);border-radius:999px;font-size:11.5px;line-height:1.2;box-shadow:0 4px 0 var(--ink)}
-.v2rail .proof .faces img{width:24px;height:24px;margin-left:-8px;border-width:1.5px}
-.v2rail .proof .faces img:first-child{margin-left:0}
-.v2rail .proof .faces img:nth-child(n+4){display:none}
-.v2rail .proof .stars svg{width:10px;height:10px}
+.htk .proof,.v2rail .proof{margin:0 0 14px;padding:6px 12px 6px 6px;gap:8px;background:#fff;border:1.5px solid var(--ink);border-radius:999px;font-size:11.5px;line-height:1.2;box-shadow:0 4px 0 var(--ink)}
+.htk .proof .faces img,.v2rail .proof .faces img{width:24px;height:24px;margin-left:-8px;border-width:1.5px}
+.htk .proof .faces img:first-child,.v2rail .proof .faces img:first-child{margin-left:0}
+.htk .proof .faces img:nth-child(n+4),.v2rail .proof .faces img:nth-child(n+4){display:none}
+.htk .proof .stars svg,.v2rail .proof .stars svg{width:10px;height:10px}
 
 /* new: what you won't hear from me */
 .nope .head{max-width:760px}
@@ -913,10 +913,51 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
   .nolist li{font-size:15px;white-space:normal}
   .gcard{padding:26px 22px}
 }
-/* the new pink line is longer than the old one: a size smaller so it stays two lines */
-.hero .hright .hkick{font-size:min(5.6cqi,32px);line-height:1.15;margin-bottom:14px}
-.hero .hright .lede + .lede{margin-top:10px}
-@media (max-width:1060px){.hero .hright .hkick{font-size:clamp(24px,5vw,30px)}}
+
+/* the hero: a wider right column for a bigger headline and pink line, the ticket with the form straight under them */
+.v2h .hright .hpill{margin-bottom:4px}
+.v2h .hright h1,.v2h .hright h1.long{font-size:min(11cqi,68px);line-height:.98;margin:16px 0 0}
+.v2h .hright .hkick{font-size:min(6.9cqi,42px);line-height:1.06;margin:14px 0 0}
+.htk{margin-top:22px;max-width:520px}
+.htk .proof{justify-self:start;display:inline-flex}
+.htk .just{margin:-6px 0 12px}
+.htk .tk-top b{font-size:22px}
+.htk .tk-body{padding:12px 16px 14px}
+.htk .rdates .mt span{width:34px}
+.htk .rdates .mt b{font-size:17px}
+.htk .rdates .when{font-size:12px}
+.htk .rdates .when b{font-size:14px}
+.htk .tkt form h3{font-size:24px}
+.htk .tkt form .field input{height:48px;font-size:15px;padding:0 14px}
+.htk .tkt form .btn.big{height:52px;font-size:16px}
+.htk .tkt form .note{font-size:11.5px}
+.htk .tk-stub{padding:10px 16px 12px}
+.htk .tk-holder b{font-size:24px}
+.htk .tk-meta b{font-size:10.5px}
+.hcopy{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:30px;margin-top:30px;align-items:start}
+.hcopy .lede{font-size:16px;line-height:1.6;margin:0 0 12px;color:var(--ink2)}
+.hcopy .lede b{color:var(--ink)}
+.hcopy .byth{margin-top:0;font-size:15.5px}
+.hcopy .obj{font-size:15px}
+.hcopy .april{margin-top:12px}
+.when2{margin:2px 0 0;font-size:13.5px;line-height:1.5;color:var(--ink3)}
+.when2 b{display:block;font-weight:800;font-size:15px;color:var(--ink)}
+.when2 i{font-style:normal;opacity:.4}
+@media (min-width:1061px){
+  .v2h.hgrid{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:48px}
+}
+@media (max-width:1060px){
+  .v2h .hright .hkick{order:3;font-size:clamp(26px,5.6vw,38px)}
+  .hero .htk{order:4;max-width:none;margin-top:18px}
+  .hero .iph{order:5;margin-top:26px}
+  .hcopy{order:6;grid-template-columns:1fr;gap:4px}
+  .hero .tstrip{order:7}
+}
+/* the frozen ticket shows once the form has moved into it, so two tickets are never on screen with one empty */
+@media (min-width:1280px){
+  .v2rail .tksticky{opacity:0;transform:translateY(14px);visibility:hidden;transition:opacity .35s var(--ease),transform .35s var(--ease),visibility 0s .35s}
+  .v2rail.on .tksticky{opacity:1;transform:none;visibility:visible;transition:opacity .35s var(--ease),transform .35s var(--ease)}
+}
 
 </style>
 </head>
@@ -964,7 +1005,7 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
 <section class="hero" id="hero">
   <svg class="bgflower" aria-hidden="true"><use href="#sfo"/></svg>
   <svg class="bgflower b" aria-hidden="true"><use href="#sfo"/></svg>
-  <div class="hwrap hgrid">
+  <div class="hwrap hgrid v2h">
     <div class="hleft">
       <div class="tstrip">
         <div class="award"><img src="../img/mark.png" alt="" width="46" height="46"><span><small>HOW WE GROW</small><b>with Ana Calin</b></span></div>
@@ -976,7 +1017,7 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
         </div>
       </div>
 
-      <!-- the VSL: set VSL_SRC in the script when Ana's video is ready. Click to play; this still is the cover; no autoplay with sound. -->
+      <!-- the VSL: set VSL_SRC in the script when Ana's video is ready. Click to play; this still is the cover. -->
       <div class="iph" id="vsl">
         <span class="sb" style="left:18%;width:9%"></span><span class="sb" style="left:30%;width:5%"></span><span class="sb" style="left:37%;width:5%"></span><span class="sb b" style="left:60%;width:14%"></span>
         <div class="bz">
@@ -991,46 +1032,52 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
         </div>
       </div>
 
-      <div class="book">
-        <div class="mini"><img src="../img/day1-slide.webp" alt="Day 1: Find what your readers would pay for" width="800" height="450"></div>
-        <div>
-          <p class="k">Free <b>/</b> live on Zoom</p>
-          <h3>Join The Exit Plan, free.</h3>
-          <p class="d">Tue Nov 17 to Thu Nov 19</p>
-          <p class="t">12:00 pm New York / 7:00 pm Greece</p>
+      <div class="hcopy">
+        <div class="hc1">
+          <p class="lede">If nothing's selling yet, it isn't your list and it isn't your writing. <b>It's the order you were taught to do things in.</b></p>
+          <p class="lede">Your first paid offer doesn't have to be a course, a paid tier, or finished. Your readers have probably already asked you for it. AI changed one step in that order, and on Day 1 I'll show you which one, on my own Substack.</p>
+          <p class="when2"><b>Tue Nov 17 to Thu Nov 19</b>12:00 pm New York <i>/</i> 9:00 am Los Angeles <i>/</i> 5:00 pm London <i>/</i> 7:00 pm Greece</p>
         </div>
-        <div class="go"><button class="btn open" type="button">save my seat (free)<svg><use href="#arr"/></svg></button><small>3 days live</small></div>
-      </div>
-    </div>
-
-    <div class="hright">
-      <span class="hpill"><span class="dot"></span>The Exit Plan <i>/</i> <span class="hide-s">free 3-day live workshop <i>/</i></span> <span class="dchip">Nov 17 to 19</span></span>
-      <!-- the headline Ana approved on Oct 29 (spine v28). The old ?h=2 / ?h=3 previews are retired. -->
-      <h1 id="h1" class="long"><span class="l">How to Build the Income</span> <span class="l">That Lets You Leave</span> <span class="l">Your Job <span class="hl">in 2027</span></span></h1>
-      <p class="hkick" id="hk"><span class="l">Already work for yourself? Then your "job" is the client hours. Same plan.</span></p>
-      <p class="lede">If nothing's selling yet, it isn't your list and it isn't your writing. <b>It's the order you were taught to do things in.</b></p>
-      <p class="lede">Your first paid offer doesn't have to be a course, a paid tier, or finished. Your readers have probably already asked you for it. AI changed one step in that order, and on Day 1 I'll show you which one, on my own Substack.</p>
-      <ul class="byth">
+        <div class="hc2">
+          <ul class="byth">
             <li class="bt">By the end of Day 3, you'll have:</li>
             <li><svg aria-hidden="true"><use href="#li"/></svg>found the thing your readers would actually pay you for</li>
             <li><svg aria-hidden="true"><use href="#li"/></svg>a first offer that isn't a course, a paid tier, or a year away</li>
             <li><svg aria-hidden="true"><use href="#li"/></svg>a price you can say out loud without wincing</li>
             <li><svg aria-hidden="true"><use href="#li"/></svg>the email that finally asks people to buy. You'll write it with me on Nov 19.</li>
           </ul>
-      <p class="obj"><b>You don't need a bigger list, a paywall or a sales call for any of this.</b> It's free and live on Zoom, three New York lunchtimes in a row (dinner time for me, here in Greece).</p>
-      <p class="april">If you did my April challenge: back then I had you build it first. I'd tell you something different now.</p>
-      
-      <div class="regc" id="regcard">
-        <div class="live" style="justify-content:flex-start;gap:6px"><span class="ld"><i></i>Registration is open ·</span><span class="cdm">Day 1 is <b>Tue, Nov 17</b></span></div>
-        <div class="row1">
-          <div class="mt" aria-hidden="true"><span><b>17</b><small>Tue</small></span><span><b>18</b><small>Wed</small></span><span><b>19</b><small>Thu</small></span></div>
-          <p class="when"><b>Three live sessions<span class="gr">, Nov 17 to 19</span></b>12:00 pm New York<span class="gr"> / 7:00 pm Greece</span></p>
+          <p class="obj"><b>You don't need a bigger list, a paywall or a sales call for any of this.</b> It's free and live on Zoom, three New York lunchtimes in a row (dinner time for me, here in Greece).</p>
+          <p class="april">If you did my April challenge: back then I had you build it first. I'd tell you something different now.</p>
         </div>
-        <button class="btn big open shine" type="button" id="heroBtn">save my seat (free)<svg><use href="#arr"/></svg></button>
-        <p class="note">free · live on Zoom<span class="lt"></span></p>
-        <p class="note">Sign up and answer seven quick questions, and I'll give you your exit number.</p>
+      </div>
+    </div>
+
+    <div class="hright">
+      <span class="hpill"><span class="dot"></span>The Exit Plan <i>/</i> <span class="hide-s">free 3-day live workshop <i>/</i></span> <span class="dchip">Nov 17 to 19</span></span>
+      <h1 id="h1" class="long"><span class="l">How to Build the Income</span> <span class="l">That Lets You Leave</span> <span class="l">Your Job <span class="hl">in 2027</span></span></h1>
+      <p class="hkick" id="hk"><span class="l">Already work for yourself? Then your "job" is the client hours. Same plan.</span></p>
+      <div class="htk">
         <div class="proof"><span class="faces"><img src="../img/av/gustavo.webp" alt=""><img src="../img/av/jeanette.webp" alt=""><img src="../img/av/adora.webp" alt=""><img src="../img/av/hilde.webp" alt=""><img src="../img/av/stacie.webp" alt=""></span><span id="proofTxt"><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span> <b>800+</b> student wins</span></div>
         <p class="just" id="just" hidden><i></i><span id="justTxt"></span></p>
+        <div class="tkshell">
+      <div class="tkt" id="hcard">
+        <div class="tk-top"><img src="../img/mark.png" alt="" width="34" height="34"><span><small>The Exit Plan</small><b>Your free seat</b></span><em>Admit one</em></div>
+        <div class="tk-body">
+          <div class="rdates">
+            <div class="mt" aria-hidden="true"><span><b>17</b><small>Tue</small></span><span><b>18</b><small>Wed</small></span><span><b>19</b><small>Thu</small></span></div>
+            <p class="when"><b>Three live sessions</b>12:00 pm New York / 7:00 pm Greece</p>
+          </div>
+          <div class="rslot" id="hslot"></div>
+        </div>
+        <div class="tk-perf" aria-hidden="true"></div>
+        <div class="tk-stub">
+          <div class="tk-holder"><small>Seat holder</small><b class="tk-name">Your name</b></div>
+          <div class="tk-meta"><b>Nov 17 + 18 + 19</b><small>Live on Zoom</small></div>
+          <svg class="tk-code" viewBox="0 0 48 40" aria-hidden="true"><rect x="0" y="0" width="2" height="40"/><rect x="4" y="0" width="1" height="40"/><rect x="7" y="0" width="3" height="40"/><rect x="12" y="0" width="1" height="40"/><rect x="15" y="0" width="2" height="40"/><rect x="19" y="0" width="1" height="40"/><rect x="22" y="0" width="3" height="40"/><rect x="27" y="0" width="1" height="40"/><rect x="30" y="0" width="2" height="40"/><rect x="34" y="0" width="1" height="40"/><rect x="37" y="0" width="2" height="40"/><rect x="41" y="0" width="3" height="40"/><rect x="46" y="0" width="1" height="40"/></svg>
+        </div>
+      </div>
+    </div>
+        <p class="xnote">Sign up and answer seven quick questions, and I'll give you your <b>exit number.</b></p>
       </div>
     </div>
   </div>
@@ -1038,11 +1085,11 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
 
 <main class="v2page">
 <div class="v2body">
-<!-- the frozen column: a seat ticket with the sign-up form in it. Phones and tablets use the popup instead. -->
+<!-- the frozen column: the seat ticket the form moves into once the hero's ticket has scrolled away (1280 px and wider) -->
   <aside class="v2rail" id="v2rail" aria-label="Save your seat">
     <div class="tksticky">
       <div class="proof"><span class="faces"><img src="../img/av/gustavo.webp" alt=""><img src="../img/av/jeanette.webp" alt=""><img src="../img/av/adora.webp" alt=""><img src="../img/av/hilde.webp" alt=""><img src="../img/av/stacie.webp" alt=""></span><span><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span> <b>800+</b> student wins</span></div>
-    <div class="tkshell">
+      <div class="tkshell">
       <div class="tkt" id="rcard">
         <div class="tk-top"><img src="../img/mark.png" alt="" width="34" height="34"><span><small>The Exit Plan</small><b>Your free seat</b></span><em>Admit one</em></div>
         <div class="tk-body">
@@ -1054,7 +1101,7 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
         </div>
         <div class="tk-perf" aria-hidden="true"></div>
         <div class="tk-stub">
-          <div class="tk-holder"><small>Seat holder</small><b id="tkName">Your name</b></div>
+          <div class="tk-holder"><small>Seat holder</small><b class="tk-name">Your name</b></div>
           <div class="tk-meta"><b>Nov 17 + 18 + 19</b><small>Live on Zoom</small></div>
           <svg class="tk-code" viewBox="0 0 48 40" aria-hidden="true"><rect x="0" y="0" width="2" height="40"/><rect x="4" y="0" width="1" height="40"/><rect x="7" y="0" width="3" height="40"/><rect x="12" y="0" width="1" height="40"/><rect x="15" y="0" width="2" height="40"/><rect x="19" y="0" width="1" height="40"/><rect x="22" y="0" width="3" height="40"/><rect x="27" y="0" width="1" height="40"/><rect x="30" y="0" width="2" height="40"/><rect x="34" y="0" width="1" height="40"/><rect x="37" y="0" width="2" height="40"/><rect x="41" y="0" width="3" height="40"/><rect x="46" y="0" width="1" height="40"/></svg>
         </div>
@@ -1569,7 +1616,7 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
   chips.forEach(function(c){c.addEventListener('click',function(){
     var on = c.getAttribute('aria-pressed') !== 'true';
     chips.forEach(function(x){x.setAttribute('aria-pressed','false')});
-    chips.forEach(function(x){ if (x.dataset.v === c.dataset.v) x.setAttribute('aria-pressed', on ? 'true' : 'false') });
+    c.setAttribute('aria-pressed', on ? 'true' : 'false');
     setHidden('situation', on ? c.dataset.v : '');
   })});
 
@@ -1640,26 +1687,36 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
 
   /* the popup */
   var modal = document.getElementById('modal'), dlg = modal.querySelector('.dlg'), lastBtn = null;
-  /* v2: on desktop the popup's form sits in the rail card; a button focuses it there (or opens the popup when the card is out of view) */
-  var wide = matchMedia('(min-width: 1280px)'), rslot = document.getElementById('rslot'), rcard = document.getElementById('rcard'), thanksEl = dlg.querySelector('.thanks');
-  function placeForm(){ if (wide.matches) { if (!modal.classList.contains('open')) rslot.appendChild(form) } else dlg.insertBefore(form, thanksEl) }
+  /* v2: the form sits in the hero's ticket, and moves into the frozen ticket once the hero's has scrolled away (desktop).
+     A button focuses it where it is, or opens the popup when no ticket is in view. */
+  var wide = matchMedia('(min-width: 1280px)'), hslot = document.getElementById('hslot'), rslot = document.getElementById('rslot'),
+      hcard = document.getElementById('hcard'), rcard = document.getElementById('rcard'), thanksEl = dlg.querySelector('.thanks');
+  function homeSlot(){ return (wide.matches && hcard.getBoundingClientRect().bottom < 110) ? rslot : hslot }
+  function perf(){ [hcard, rcard].forEach(function(t){ var pf = t.querySelector('.tk-perf'); if (t.offsetParent) t.style.setProperty('--py', pf.offsetTop + 'px') }) }
+  function placeForm(){
+    if (modal.classList.contains('open') || (form.contains(document.activeElement) && form.parentNode !== dlg)) return;
+    var h = homeSlot(); if (form.parentNode === h) return;
+    if (form.parentNode === hslot || form.parentNode === rslot) form.parentNode.style.minHeight = form.offsetHeight + 'px';
+    h.style.minHeight = ''; h.appendChild(form); perf(); railOn();
+  }
+  function railOn(){ document.getElementById('v2rail').classList.toggle('on', form.parentNode === rslot) }
+  var pfRaf = 0; addEventListener('scroll', function(){ if (!pfRaf) pfRaf = requestAnimationFrame(function(){ pfRaf = 0; placeForm() }) }, {passive:true});
   if (wide.addEventListener) wide.addEventListener('change', placeForm); else wide.addListener(placeForm);
   placeForm();
-  var tkName = document.getElementById('tkName'), tkIn = form.querySelector('[name=first_name]');
-  tkIn.addEventListener('input', function(){ var v = tkIn.value.trim(); tkName.textContent = v || 'Your name'; tkName.classList.toggle('set', !!v) });
-  function perf(){ var t = document.getElementById('rcard'), pf = t.querySelector('.tk-perf'); t.style.setProperty('--py', (pf.offsetTop) + 'px') }
+  var tkIn = form.querySelector('[name=first_name]');
+  tkIn.addEventListener('input', function(){ var v = tkIn.value.trim(); document.querySelectorAll('.tk-name').forEach(function(n){ n.textContent = v || 'Your name'; n.classList.toggle('set', !!v) }) });
   perf(); addEventListener('resize', perf); if (document.fonts) document.fonts.ready.then(perf);
   function openM(e){
     if (e) e.preventDefault();
-    if (wide.matches) {
-      var rr = rcard.getBoundingClientRect();
-      if (rr.top > -40 && rr.bottom < innerHeight + 80) {
-        var f1 = form.querySelector('[name=first_name]'); f1.focus({preventScroll:true});
-        rcard.classList.remove('pulse'); void rcard.offsetWidth; rcard.classList.add('pulse');
-        return;
-      }
-      dlg.insertBefore(form, thanksEl);
+    var home = homeSlot(), card = home === rslot ? rcard : hcard, rr = card.getBoundingClientRect();
+    if (card.offsetParent && rr.bottom > 120 && rr.top < innerHeight - 120) {
+      if (form.parentNode !== home) { home.style.minHeight = ''; home.appendChild(form); perf(); railOn() }
+      if (rr.top < 90 || rr.bottom > innerHeight) card.scrollIntoView({block:'center', behavior: reduce ? 'auto' : 'smooth'});
+      var f1 = form.querySelector('[name=first_name]'); f1.focus({preventScroll:true});
+      card.classList.remove('pulse'); void card.offsetWidth; card.classList.add('pulse');
+      return;
     }
+    dlg.insertBefore(form, thanksEl);
     lastBtn = e && e.currentTarget;
     modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); document.body.classList.add('noscroll');
     setTimeout(function(){ var f = form.querySelector('[name=first_name]'); if (f && !dlg.classList.contains('done')) f.focus({preventScroll:true}) }, reduce ? 0 : 260);
@@ -1712,7 +1769,7 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
   });
 
   /* phone, sticky "on" half only: the bottom button once the hero button scrolls away, out of the way of the final button */
-  var mbar = document.getElementById('mbar'), hb = document.getElementById('heroBtn'), fb2 = document.getElementById('finalBtn');
+  var mbar = document.getElementById('mbar'), hb = document.getElementById('hcard'), fb2 = document.getElementById('finalBtn');
   function onScroll(){
     var r = hb.getBoundingClientRect(), f = fb2.getBoundingClientRect();
     mbar.classList.toggle('on', r.bottom < 0 && !(f.top < innerHeight && f.bottom > 0));

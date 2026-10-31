@@ -49,11 +49,11 @@
 .tk-code{grid-column:2;grid-row:1 / span 2;width:22px;height:36px;fill:var(--ink)}
 .xnote{margin:14px 2px 0;font-size:12.5px;line-height:1.4;color:var(--ink2)}
 .xnote b{color:var(--pink)}
-.v2rail .proof{margin:0 0 14px;padding:6px 12px 6px 6px;gap:8px;background:#fff;border:1.5px solid var(--ink);border-radius:999px;font-size:11.5px;line-height:1.2;box-shadow:0 4px 0 var(--ink)}
-.v2rail .proof .faces img{width:24px;height:24px;margin-left:-8px;border-width:1.5px}
-.v2rail .proof .faces img:first-child{margin-left:0}
-.v2rail .proof .faces img:nth-child(n+4){display:none}
-.v2rail .proof .stars svg{width:10px;height:10px}
+.htk .proof,.v2rail .proof{margin:0 0 14px;padding:6px 12px 6px 6px;gap:8px;background:#fff;border:1.5px solid var(--ink);border-radius:999px;font-size:11.5px;line-height:1.2;box-shadow:0 4px 0 var(--ink)}
+.htk .proof .faces img,.v2rail .proof .faces img{width:24px;height:24px;margin-left:-8px;border-width:1.5px}
+.htk .proof .faces img:first-child,.v2rail .proof .faces img:first-child{margin-left:0}
+.htk .proof .faces img:nth-child(n+4),.v2rail .proof .faces img:nth-child(n+4){display:none}
+.htk .proof .stars svg,.v2rail .proof .stars svg{width:10px;height:10px}
 
 /* new: what you won't hear from me */
 .nope .head{max-width:760px}
@@ -103,7 +103,48 @@
   .nolist li{font-size:15px;white-space:normal}
   .gcard{padding:26px 22px}
 }
-/* the new pink line is longer than the old one: a size smaller so it stays two lines */
-.hero .hright .hkick{font-size:min(5.6cqi,32px);line-height:1.15;margin-bottom:14px}
-.hero .hright .lede + .lede{margin-top:10px}
-@media (max-width:1060px){.hero .hright .hkick{font-size:clamp(24px,5vw,30px)}}
+
+/* the hero: a wider right column for a bigger headline and pink line, the ticket with the form straight under them */
+.v2h .hright .hpill{margin-bottom:4px}
+.v2h .hright h1,.v2h .hright h1.long{font-size:min(11cqi,68px);line-height:.98;margin:16px 0 0}
+.v2h .hright .hkick{font-size:min(6.9cqi,42px);line-height:1.06;margin:14px 0 0}
+.htk{margin-top:22px;max-width:520px}
+.htk .proof{justify-self:start;display:inline-flex}
+.htk .just{margin:-6px 0 12px}
+.htk .tk-top b{font-size:22px}
+.htk .tk-body{padding:12px 16px 14px}
+.htk .rdates .mt span{width:34px}
+.htk .rdates .mt b{font-size:17px}
+.htk .rdates .when{font-size:12px}
+.htk .rdates .when b{font-size:14px}
+.htk .tkt form h3{font-size:24px}
+.htk .tkt form .field input{height:48px;font-size:15px;padding:0 14px}
+.htk .tkt form .btn.big{height:52px;font-size:16px}
+.htk .tkt form .note{font-size:11.5px}
+.htk .tk-stub{padding:10px 16px 12px}
+.htk .tk-holder b{font-size:24px}
+.htk .tk-meta b{font-size:10.5px}
+.hcopy{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:30px;margin-top:30px;align-items:start}
+.hcopy .lede{font-size:16px;line-height:1.6;margin:0 0 12px;color:var(--ink2)}
+.hcopy .lede b{color:var(--ink)}
+.hcopy .byth{margin-top:0;font-size:15.5px}
+.hcopy .obj{font-size:15px}
+.hcopy .april{margin-top:12px}
+.when2{margin:2px 0 0;font-size:13.5px;line-height:1.5;color:var(--ink3)}
+.when2 b{display:block;font-weight:800;font-size:15px;color:var(--ink)}
+.when2 i{font-style:normal;opacity:.4}
+@media (min-width:1061px){
+  .v2h.hgrid{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:48px}
+}
+@media (max-width:1060px){
+  .v2h .hright .hkick{order:3;font-size:clamp(26px,5.6vw,38px)}
+  .hero .htk{order:4;max-width:none;margin-top:18px}
+  .hero .iph{order:5;margin-top:26px}
+  .hcopy{order:6;grid-template-columns:1fr;gap:4px}
+  .hero .tstrip{order:7}
+}
+/* the frozen ticket shows once the form has moved into it, so two tickets are never on screen with one empty */
+@media (min-width:1280px){
+  .v2rail .tksticky{opacity:0;transform:translateY(14px);visibility:hidden;transition:opacity .35s var(--ease),transform .35s var(--ease),visibility 0s .35s}
+  .v2rail.on .tksticky{opacity:1;transform:none;visibility:visible;transition:opacity .35s var(--ease),transform .35s var(--ease)}
+}

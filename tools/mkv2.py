@@ -55,58 +55,79 @@ BYTH = ('<ul class="byth">\n'
         '            ' + LI + 'a price you can say out loud without wincing</li>\n'
         '            ' + LI + 'the email that finally asks people to buy. You\'ll write it with me on Nov 19.</li>\n'
         '          </ul>')
-# the hero: the live page's own layout (phone video and stats left, headline, copy and the sign-up card right), with the Oct 31 copy
-R('<div class="stat"><b>0</b><small>sales calls</small></div>',
-  '<div class="stat"><b>0</b><small>sales calls</small></div><i></i>\n          <div class="stat"><b>16,907</b><small>buyers</small></div>')
-R('<p class="hkick" id="hk"><span class="l">There\'s a new way the writers who actually earn are getting paid.</span></p>',
-  '<p class="hkick" id="hk"><span class="l">Already work for yourself? Then your "job" is the client hours. Same plan.</span></p>')
-lede = re.search(r'<p class="lede">The usual road takes years:.*?</p>', s).group(0)
-R(lede, '<p class="lede">If nothing\'s selling yet, it isn\'t your list and it isn\'t your writing. <b>It\'s the order you were taught to do things in.</b></p>\n'
-        '      <p class="lede">Your first paid offer doesn\'t have to be a course, a paid tier, or finished. Your readers have probably already asked you for it. AI changed one step in that order, and on Day 1 I\'ll show you which one, on my own Substack.</p>')
-byth_old = re.search(r'<ul class="byth">.*?</ul>', s, re.S).group(0)
-R(byth_old, BYTH)
-R('<p class="obj"><b>You don\'t need a big list, a paywall or a sales call.</b> Free, live, three lunchtimes on Zoom.</p>',
-  '<p class="obj"><b>You don\'t need a bigger list, a paywall or a sales call for any of this.</b> It\'s free and live on Zoom, three New York lunchtimes in a row (dinner time for me, here in Greece).</p>\n'
-  '      <p class="april">If you did my April challenge: back then I had you build it first. I\'d tell you something different now.</p>')
-R('<p class="note">After you sign up, your exit number is waiting: a short AI calculator that shows how many people it takes to reach your number.</p>',
-  '<p class="note">Sign up and answer seven quick questions, and I\'ll give you your exit number.</p>')
-# the chips: one choice, shown pressed in both places (the hero card and the ticket)
-R("    c.setAttribute('aria-pressed', on ? 'true' : 'false');",
-  "    chips.forEach(function(x){ if (x.dataset.v === c.dataset.v) x.setAttribute('aria-pressed', on ? 'true' : 'false') });")
-# no "where are you right now?" choices on this version (Sean)
-R(situ, '')
-# the testimonial bar for the ticket: the hero card keeps its own proof line, so the ticket gets a copy without the live-feed id
-proof_t = proof.replace(' id="proofTxt"', '')
-
-# the frozen column beside the page below the hero: a seat ticket that holds the sign-up form (desktop, 1280 px and wider)
+# the seat ticket: the hero has one (the form starts there, so it is on the first screen) and the frozen column has one;
+# the form moves into the frozen one once the hero's ticket has scrolled away
 bars = ''.join('<rect x="%d" y="0" width="%d" height="40"/>' % (x, w) for x, w in [(0,2),(4,1),(7,3),(12,1),(15,2),(19,1),(22,3),(27,1),(30,2),(34,1),(37,2),(41,3),(46,1)])
-rail = """<!-- the frozen column: a seat ticket with the sign-up form in it. Phones and tablets use the popup instead. -->
-  <aside class="v2rail" id="v2rail" aria-label="Save your seat">
-    <div class="tksticky">
-      """ + proof_t + """    <div class="tkshell">
-      <div class="tkt" id="rcard">
+def ticket(tid, slot):
+    return ("""<div class="tkshell">
+      <div class="tkt" id="%s">
         <div class="tk-top"><img src="../img/mark.png" alt="" width="34" height="34"><span><small>The Exit Plan</small><b>Your free seat</b></span><em>Admit one</em></div>
         <div class="tk-body">
           <div class="rdates">
             <div class="mt" aria-hidden="true"><span><b>17</b><small>Tue</small></span><span><b>18</b><small>Wed</small></span><span><b>19</b><small>Thu</small></span></div>
             <p class="when"><b>Three live sessions</b>12:00 pm New York / 7:00 pm Greece</p>
           </div>
-          <div class="rslot" id="rslot"></div>
+          <div class="rslot" id="%s"></div>
         </div>
         <div class="tk-perf" aria-hidden="true"></div>
         <div class="tk-stub">
-          <div class="tk-holder"><small>Seat holder</small><b id="tkName">Your name</b></div>
+          <div class="tk-holder"><small>Seat holder</small><b class="tk-name">Your name</b></div>
           <div class="tk-meta"><b>Nov 17 + 18 + 19</b><small>Live on Zoom</small></div>
           <svg class="tk-code" viewBox="0 0 48 40" aria-hidden="true">""" + bars + """</svg>
         </div>
       </div>
+    </div>""") % (tid, slot)
+
+# the hero: the live page's two columns. Left: the stats, the phone video, then the rest of the copy in two columns.
+# Right: the headline and the pink line, bigger, and straight under them the testimonial bar and the ticket with the form.
+new_hero = """<section class="hero" id="hero">
+  <svg class="bgflower" aria-hidden="true"><use href="#sfo"/></svg>
+  <svg class="bgflower b" aria-hidden="true"><use href="#sfo"/></svg>
+  <div class="hwrap hgrid v2h">
+    <div class="hleft">
+      """ + tstrip + """
+
+      <!-- the VSL: set VSL_SRC in the script when Ana's video is ready. Click to play; this still is the cover. -->
+      """ + vsl + """
+
+      <div class="hcopy">
+        <div class="hc1">
+          <p class="lede">If nothing's selling yet, it isn't your list and it isn't your writing. <b>It's the order you were taught to do things in.</b></p>
+          <p class="lede">Your first paid offer doesn't have to be a course, a paid tier, or finished. Your readers have probably already asked you for it. AI changed one step in that order, and on Day 1 I'll show you which one, on my own Substack.</p>
+          <p class="when2"><b>Tue Nov 17 to Thu Nov 19</b>12:00 pm New York <i>/</i> 9:00 am Los Angeles <i>/</i> 5:00 pm London <i>/</i> 7:00 pm Greece</p>
+        </div>
+        <div class="hc2">
+          """ + BYTH + """
+          <p class="obj"><b>You don't need a bigger list, a paywall or a sales call for any of this.</b> It's free and live on Zoom, three New York lunchtimes in a row (dinner time for me, here in Greece).</p>
+          <p class="april">If you did my April challenge: back then I had you build it first. I'd tell you something different now.</p>
+        </div>
+      </div>
     </div>
+
+    <div class="hright">
+      """ + pill + """      """ + h1 + """
+      <p class="hkick" id="hk"><span class="l">Already work for yourself? Then your "job" is the client hours. Same plan.</span></p>
+      <div class="htk">
+        """ + proof + """        """ + just + """
+        """ + ticket('hcard', 'hslot') + """
+        <p class="xnote">Sign up and answer seven quick questions, and I'll give you your <b>exit number.</b></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+"""
+R(hero, new_hero)
+# the testimonial bar for the frozen ticket: a copy without the live-feed id
+proof_t = proof.replace(' id="proofTxt"', '')
+rail = """<!-- the frozen column: the seat ticket the form moves into once the hero's ticket has scrolled away (1280 px and wider) -->
+  <aside class="v2rail" id="v2rail" aria-label="Save your seat">
+    <div class="tksticky">
+      """ + proof_t + """      """ + ticket('rcard', 'rslot') + """
       <p class="xnote">Sign up and answer seven quick questions, and I'll give you your <b>exit number.</b></p>
     </div>
   </aside>
 """
-assert 'rslot' in rail
-# hero, then the body: the frozen column rides along the sections up to the recap. The final call to action and the footer sit below.
 R('<main>\n', '<main class="v2page">\n<div class="v2body">\n' + rail)
 R('</main>\n', '')
 R('<!-- 9. final CTA: claim your seat -->', '</div>\n</main>\n\n<!-- 9. final CTA: claim your seat -->')
@@ -287,27 +308,38 @@ R("<p class=\"note\">You'll get my emails about the workshop and my program. Uns
   "<p class=\"note\">You'll get my emails, including the workshop reminders. Unsubscribe anytime. No hard feelings, no guilt email.</p>")
 
 # ---------- script: the form lives in the rail on desktop; buttons there focus it instead of opening the popup ----------
+R("var mbar = document.getElementById('mbar'), hb = document.getElementById('heroBtn')", "var mbar = document.getElementById('mbar'), hb = document.getElementById('hcard')")
 R("  function openM(e){\n    if (e) e.preventDefault();",
-  """  /* v2: on desktop the popup's form sits in the rail card; a button focuses it there (or opens the popup when the card is out of view) */
-  var wide = matchMedia('(min-width: 1280px)'), rslot = document.getElementById('rslot'), rcard = document.getElementById('rcard'), thanksEl = dlg.querySelector('.thanks');
-  function placeForm(){ if (wide.matches) { if (!modal.classList.contains('open')) rslot.appendChild(form) } else dlg.insertBefore(form, thanksEl) }
+  """  /* v2: the form sits in the hero's ticket, and moves into the frozen ticket once the hero's has scrolled away (desktop).
+     A button focuses it where it is, or opens the popup when no ticket is in view. */
+  var wide = matchMedia('(min-width: 1280px)'), hslot = document.getElementById('hslot'), rslot = document.getElementById('rslot'),
+      hcard = document.getElementById('hcard'), rcard = document.getElementById('rcard'), thanksEl = dlg.querySelector('.thanks');
+  function homeSlot(){ return (wide.matches && hcard.getBoundingClientRect().bottom < 110) ? rslot : hslot }
+  function perf(){ [hcard, rcard].forEach(function(t){ var pf = t.querySelector('.tk-perf'); if (t.offsetParent) t.style.setProperty('--py', pf.offsetTop + 'px') }) }
+  function placeForm(){
+    if (modal.classList.contains('open') || (form.contains(document.activeElement) && form.parentNode !== dlg)) return;
+    var h = homeSlot(); if (form.parentNode === h) return;
+    if (form.parentNode === hslot || form.parentNode === rslot) form.parentNode.style.minHeight = form.offsetHeight + 'px';
+    h.style.minHeight = ''; h.appendChild(form); perf(); railOn();
+  }
+  function railOn(){ document.getElementById('v2rail').classList.toggle('on', form.parentNode === rslot) }
+  var pfRaf = 0; addEventListener('scroll', function(){ if (!pfRaf) pfRaf = requestAnimationFrame(function(){ pfRaf = 0; placeForm() }) }, {passive:true});
   if (wide.addEventListener) wide.addEventListener('change', placeForm); else wide.addListener(placeForm);
   placeForm();
-  var tkName = document.getElementById('tkName'), tkIn = form.querySelector('[name=first_name]');
-  tkIn.addEventListener('input', function(){ var v = tkIn.value.trim(); tkName.textContent = v || 'Your name'; tkName.classList.toggle('set', !!v) });
-  function perf(){ var t = document.getElementById('rcard'), pf = t.querySelector('.tk-perf'); t.style.setProperty('--py', (pf.offsetTop) + 'px') }
+  var tkIn = form.querySelector('[name=first_name]');
+  tkIn.addEventListener('input', function(){ var v = tkIn.value.trim(); document.querySelectorAll('.tk-name').forEach(function(n){ n.textContent = v || 'Your name'; n.classList.toggle('set', !!v) }) });
   perf(); addEventListener('resize', perf); if (document.fonts) document.fonts.ready.then(perf);
   function openM(e){
     if (e) e.preventDefault();
-    if (wide.matches) {
-      var rr = rcard.getBoundingClientRect();
-      if (rr.top > -40 && rr.bottom < innerHeight + 80) {
-        var f1 = form.querySelector('[name=first_name]'); f1.focus({preventScroll:true});
-        rcard.classList.remove('pulse'); void rcard.offsetWidth; rcard.classList.add('pulse');
-        return;
-      }
-      dlg.insertBefore(form, thanksEl);
-    }""")
+    var home = homeSlot(), card = home === rslot ? rcard : hcard, rr = card.getBoundingClientRect();
+    if (card.offsetParent && rr.bottom > 120 && rr.top < innerHeight - 120) {
+      if (form.parentNode !== home) { home.style.minHeight = ''; home.appendChild(form); perf(); railOn() }
+      if (rr.top < 90 || rr.bottom > innerHeight) card.scrollIntoView({block:'center', behavior: reduce ? 'auto' : 'smooth'});
+      var f1 = form.querySelector('[name=first_name]'); f1.focus({preventScroll:true});
+      card.classList.remove('pulse'); void card.offsetWidth; card.classList.add('pulse');
+      return;
+    }
+    dlg.insertBefore(form, thanksEl);""")
 R("""  function closeM(){
     modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); document.body.classList.remove('noscroll');""",
   """  function closeM(){
