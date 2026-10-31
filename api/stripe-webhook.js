@@ -2,7 +2,7 @@
 // and adds a row to the Google Sheet's "Sales" tab (tools/survey-sheet.gs).
 //
 // Set up in Stripe: Developers > Webhooks > Add endpoint
-//   URL: https://exitplan.howwegrowtoday.com/api/stripe-webhook
+//   URL: https://exitplan.howwegrowtoday.com/api/stripe-webhook/  (with the final slash: the site redirects without it, and Stripe does not follow redirects)
 //   Events: checkout.session.completed and checkout.session.async_payment_succeeded
 // Vercel environment variables (Production):
 //   STRIPE_SECRET_KEY   a restricted key with read access to Events and Checkout Sessions (rk_live_...)

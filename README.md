@@ -40,7 +40,7 @@ or closed, the VIP deadline.
    its top), then add `SURVEY_SHEET_URL` and `SURVEY_SHEET_KEY`.
 4. After a payment, `api/stripe-webhook.js` tags the buyer in Kit and adds a row to the sheet. Variables: `STRIPE_SECRET_KEY`
    (restricted, read access to Events and Checkout Sessions), `KIT_TAG_VIP`, `KIT_TAG_LAB`, optional `KIT_TAG_LAB_PLAN`. In
-   Stripe, Developers > Webhooks: `https://exitplan.howwegrowtoday.com/api/stripe-webhook`, events
+   Stripe, Developers > Webhooks: `https://exitplan.howwegrowtoday.com/api/stripe-webhook/` (with the slash: Stripe does not follow redirects), events
    `checkout.session.completed` and `checkout.session.async_payment_succeeded`.
 5. Each Stripe payment link, "After payment" > "Don't show confirmation page" > redirect to:
    VIP `https://exitplan.howwegrowtoday.com/vip-confirmed/`, pay in full `https://exitplan.howwegrowtoday.com/welcome/`,
