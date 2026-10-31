@@ -1,6 +1,6 @@
 """Ana's registration page, layout trial: /v2/ (the live page at / is untouched).
 
-The hero is the live page's own two columns: the video big on the left with a drawing of the three days under it, and on
+The hero is the live page's own two columns: the video big on the left with the booking card under it, and on
 the right the headline and a seat ticket that holds the sign-up form. Once that ticket scrolls away, the form moves into
 a slim copy of the ticket that stays frozen on the right of the page (desktop, 1280 px and wider). The form is the
 popup's own form, moved between the two tickets and the popup, so the hidden fields, the situation chips and the Kit
@@ -46,6 +46,8 @@ proof = re.search(r'<div class="proof">.*?</div>\s*\n', hero, re.S).group(0)
 just = re.search(r'<p class="just" id="just" hidden>.*?</p>', hero, re.S).group(0)
 tstrip = re.search(r'<div class="tstrip">.*?</div>\s*</div>\s*</div>', hero, re.S).group(0)
 vsl = re.search(r'<div class="iph" id="vsl">.*?</div>\s*</div>\s*</div>\s*</div>', hero, re.S).group(0)
+# the live hero's booking card under the video (Day 1 slide, dates, button), as on the live page
+book = re.search(r'<div class="book">.*?<div class="go">.*?</div>\s*</div>', hero, re.S).group(0)
 tstrip = tstrip.replace('<div class="stat"><b>0</b><small>sales calls</small></div>',
                         '<div class="stat"><b>0</b><small>sales calls</small></div><i></i>\n          <div class="stat"><b>16,907</b><small>buyers</small></div>')
 assert '16,907' in tstrip
@@ -73,58 +75,6 @@ def ticket(tid, slot, sub):
       </div>
     </div>""") % (tid, slot)
 
-# the drawing under the video: what you make on each of the three days, the same example writer as in the day rows
-INK, SUN, PINK = '#1A1412', '#FFD400', '#F72585'
-def card(x, y, rot, title, day, body, title_x=16):
-    cx, cy = x + 103, y + 98
-    return ('<g transform="rotate(%s %d %d)">' % (rot, cx, cy)
-            + '<rect x="%d" y="%d" width="206" height="196" rx="16" fill="%s" stroke="%s" stroke-width="2.6"/>' % (x + 6, y + 7, SUN, INK)
-            + '<rect x="%d" y="%d" width="206" height="196" rx="16" fill="#fff" stroke="%s" stroke-width="2.6"/>' % (x, y, INK)
-            + ('<text x="%d" y="%d" font-family="Instrument Serif,Georgia,serif" font-size="21" fill="%s">%s</text>' % (x + title_x, y + 31, INK, title) if title else '')
-            + '<rect x="%d" y="%d" width="50" height="21" rx="10.5" fill="%s"/>' % (x + 142, y + 14, PINK)
-            + '<text x="%d" y="%d" text-anchor="middle" font-family="Manrope,sans-serif" font-weight="800" font-size="10" letter-spacing="1.4" fill="#fff">%s</text>' % (x + 167, y + 28.5, day)
-            + '<path d="M%d %dh178" stroke="%s" stroke-opacity=".12" stroke-width="1.5"/>' % (x + 14, y + 44, INK)
-            + body + '</g>')
-
-def t(x, y, txt, size=12.5, weight=700, fill=INK, serif=False, ls=None, anchor=None):
-    fam = 'Instrument Serif,Georgia,serif' if serif else 'Manrope,sans-serif'
-    return '<text x="%s" y="%s" font-family="%s"%s font-size="%s" fill="%s"%s%s>%s</text>' % (
-        x, y, fam, '' if serif else ' font-weight="%d"' % weight, size, fill,
-        ' letter-spacing="%s"' % ls if ls else '', ' text-anchor="%s"' % anchor if anchor else '', txt)
-
-X1, Y1, X2, Y2, X3, Y3 = 12, 40, 284, 30, 544, 42
-c1 = (  # Day 1: the reader file
-    '<g transform="translate(%d %d) scale(.36)"><circle r="50" fill="%s" stroke="%s" stroke-width="6"/><path d="M-50 -6C-44-48 44-48 50-6C40-26 22-34 0-34S-40-26-50-6Z" fill="#6B4E3A" stroke="%s" stroke-width="6" stroke-linejoin="round"/><ellipse cx="-16" cy="2" rx="5" ry="7" fill="%s"/><ellipse cx="16" cy="2" rx="5" ry="7" fill="%s"/><path d="M-20 18c4 16 36 16 40 0Z" fill="%s"/></g>' % (X1 + 34, Y1 + 76, SUN, INK, INK, INK, INK, INK)
-    + t(X1 + 62, Y1 + 70, 'READER', 9, 800, PINK, ls=1.4) + t(X1 + 62, Y1 + 88, 'Mother of two,', 13)
-    + t(X1 + 16, Y1 + 113, 'four years out of work.', 13)
-    + t(X1 + 16, Y1 + 139, 'SHE’D PAY FOR', 9, 800, PINK, ls=1.4)
-    + '<rect x="%d" y="%d" width="96" height="22" fill="%s"/><rect x="%d" y="%d" width="106" height="22" fill="%s"/>' % (X1 + 14, Y1 + 145, SUN, X1 + 14, Y1 + 169, SUN)
-    + t(X1 + 17, Y1 + 162, 'A clear plan', 21, serif=True) + t(X1 + 17, Y1 + 186, 'back to work.', 21, serif=True))
-c2 = (  # Day 2: the offer sentence and its price
-    t(X2 + 16, Y2 + 74, 'I help mothers after a', 19, serif=True) + t(X2 + 16, Y2 + 98, 'career break get back', 19, serif=True)
-    + t(X2 + 16, Y2 + 122, 'to work in six weeks.', 19, serif=True)
-    + '<path d="M%d %dc22-4 46-4 68 0" fill="none" stroke="%s" stroke-width="3.4" stroke-linecap="round"/>' % (X2 + 86, Y2 + 130, PINK)
-    + t(X2 + 16, Y2 + 162, 'PRICE', 9, 800, '#7A6A60', ls=1.4)
-    + '<g transform="rotate(-9 %d %d)"><path d="M%d %dh74a9 9 0 0 1 9 9v34a9 9 0 0 1-9 9h-74l-20-26Z" fill="%s" stroke="%s" stroke-width="3" stroke-linejoin="round"/><circle cx="%d" cy="%d" r="5" fill="#EADFCF" stroke="%s" stroke-width="2.6"/>' % (X2 + 140, Y2 + 168, X2 + 98, Y2 + 142, PINK, INK, X2 + 92, Y2 + 168, INK)
-    + t(X2 + 140, Y2 + 180, '$149', 27, 800, '#fff', anchor='middle', ls=-.5) + '</g>')
-c3 = (  # Day 3: the email that asks
-    t(X3 + 16, Y3 + 78, 'Back to work,', 23, serif=True) + t(X3 + 16, Y3 + 103, 'by spring.', 23, serif=True)
-    + '<rect x="%d" y="%d" width="160" height="7" rx="3.5" fill="%s" fill-opacity=".12"/><rect x="%d" y="%d" width="120" height="7" rx="3.5" fill="%s" fill-opacity=".12"/>' % (X3 + 16, Y3 + 118, INK, X3 + 16, Y3 + 132, INK)
-    + '<rect x="%d" y="%d" width="124" height="28" rx="14" fill="%s"/>' % (X3 + 16, Y3 + 150, PINK)
-    + t(X3 + 78, Y3 + 168.5, 'see what’s inside', 11.5, 700, '#fff', anchor='middle'))
-toast = ('<g transform="rotate(-2 %d %d)"><rect x="%d" y="%d" width="190" height="36" rx="18" fill="#fff" stroke="%s" stroke-width="2.4"/>' % (X3 + 130, Y3 + 198, X3 + 30, Y3 + 180, INK)
-         + '<circle cx="%d" cy="%d" r="11" fill="%s" stroke="%s" stroke-width="2"/><path d="m%d %d 4 4 7-8" fill="none" stroke="%s" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>' % (X3 + 50, Y3 + 198, SUN, INK, X3 + 44, Y3 + 198, INK)
-         + t(X3 + 68, Y3 + 202.5, 'Sent to her ten readers', 11.5, 700) + '</g>')
-arrow = lambda x1, y1, x2, y2: ('<path d="M%d %d Q %d %d %d %d" fill="none" stroke="%s" stroke-width="3" stroke-linecap="round" stroke-dasharray="1 7"/>' % (x1, y1, (x1 + x2) / 2, min(y1, y2) - 24, x2, y2, PINK)
-                                + '<path d="M%d %dl10 3-7 8" fill="none" stroke="%s" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>' % (x2 - 8, y2 - 6, PINK))
-HMAP = ('<div class="hmap" aria-hidden="true"><svg viewBox="0 0 760 270" role="presentation">'
-        + arrow(206, 30, 288, 22) + arrow(478, 22, 548, 34)
-        + card(X1, Y1, -2.2, 'Reader file', 'DAY 1', c1)
-        + card(X2, Y2, 1.6, 'Your offer', 'DAY 2', c2)
-        + card(X3, Y3, -1.4, None, 'DAY 3',
-               '<use href="#sf" x="%d" y="%d" width="26" height="26"/>' % (X3 + 12, Y3 + 10)
-               + t(X3 + 44, Y3 + 23, 'You', 13, 800) + t(X3 + 44, Y3 + 37, 'your newsletter', 10.5, 600, '#7A6A60') + c3)
-        + toast + '</svg></div>')
 
 new_hero = """<section class="hero" id="hero">
   <svg class="bgflower" aria-hidden="true"><use href="#sfo"/></svg>
@@ -136,8 +86,7 @@ new_hero = """<section class="hero" id="hero">
       <!-- the VSL: set VSL_SRC in the script when Ana's video is ready. Click to play; this still is the cover. -->
       """ + vsl + """
 
-      <!-- what you make on each of the three days -->
-      """ + HMAP + """
+      """ + book + """
     </div>
 
     <div class="hright">

@@ -52,7 +52,7 @@
 .htk .proof .faces img:nth-child(n+4),.v2rail .proof .faces img:nth-child(n+4){display:none}
 .htk .proof .stars svg,.v2rail .proof .stars svg{width:10px;height:10px}
 
-/* ---------- the hero: the live page's columns, the headline and the ticket on the right, the drawing under the video ---------- */
+/* ---------- the hero: the live page's columns, the headline and the ticket on the right, the booking card under the video ---------- */
 .v2h .hright .hpill{margin-bottom:2px}
 .v2h .hright h1,.v2h .hright h1.long{font-size:min(10.4cqi,62px);line-height:.99;margin:14px 0 0}
 .v2h .hright h1 .l{white-space:nowrap}
@@ -74,20 +74,16 @@
 .htk .tk-stub{padding:9px 16px 11px}
 .htk .tk-holder b{font-size:22px}
 .htk .tk-meta b{font-size:10px}
-.hmap{position:relative;margin:10px 0 0}
 .v2h .tstrip{gap:16px;padding-right:18px}
 .v2h .stats{gap:10px}
 .v2h .stat b{white-space:nowrap;font-size:20px}
-.hmap svg{display:block;width:100%;height:auto;overflow:visible}
 @media (max-width:1060px){
   .hero .hsub2{order:3;font-size:clamp(20px,4.6vw,24px)}
   .hero .htk{order:4;max-width:460px;width:100%;margin:20px auto 0}
   .hero .iph{order:5;margin-top:30px}
-  .hero .hmap{order:6;margin:0 0 20px}
   .hero .tstrip{order:7}
 }
 @media (max-width:640px){
-  .hero .hmap{display:none}
   .v2h .hright h1 .l{white-space:normal}
 }
 
