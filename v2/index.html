@@ -831,8 +831,8 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
 .tkt .proof .stars{margin-right:4px}
 .tkt .proof .stars svg{width:12px;height:12px}
 .tkt .just{margin:10px 0 0;padding:0;background:none;font-size:12.5px;gap:8px}
-.tk-h{font-size:23px;line-height:1.02;letter-spacing:-.01em;margin:0 0 6px}
-.tk-h .l{display:block;white-space:nowrap}
+.tk-h{font-size:25px;line-height:1.02;letter-spacing:-.01em;margin:0 0 6px}
+.tk-h .tk-and{display:block;margin-top:4px;font-style:italic;font-size:.66em;line-height:1.15;color:var(--pink)}
 .tk-meta{margin:0;font-size:12px;line-height:1.45;font-weight:600;color:var(--ink3)}
 .tk-meta i{font-style:normal;margin:0 2px;opacity:.5}
 .tk-meta span{white-space:nowrap}
@@ -847,10 +847,26 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
 .tkt form .field{margin-bottom:9px}
 .flbl{display:block;margin:0 0 5px 2px;font-weight:700;font-size:13px;line-height:1.2;color:var(--ink)}
 .tkt .flbl{font-size:12.5px}
-.tkt form .field input{height:43px;border-radius:12px;font-size:14px;padding:0 13px}
+.tkt form .field input{height:43px;border-radius:12px;font-size:14px;padding:0 13px 0 40px;border-color:#cbb9a2;background-repeat:no-repeat;background-position:13px 50%;background-size:17px 17px}
+.tkt form .field input[name=first_name]{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%237A6A60' stroke-width='1.7' stroke-linecap='round'%3E%3Ccircle cx='10' cy='7' r='3.6'/%3E%3Cpath d='M3.5 17.5c.9-3.3 3.4-5 6.5-5s5.6 1.7 6.5 5'/%3E%3C/svg%3E")}
+.tkt form .field input[name=email_address]{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%237A6A60' stroke-width='1.7' stroke-linejoin='round'%3E%3Crect x='2.5' y='4.5' width='15' height='11' rx='2.2'/%3E%3Cpath d='m3.5 6 6.5 5 6.5-5'/%3E%3C/svg%3E")}
+.tkt form .field input:focus{border-color:var(--ink)}
 .tkt form .field .err{font-size:11.5px}
-.tkt form .btn.big{height:47px;font-size:15px;margin-top:4px;padding:0 14px}
-.tkt form .note{margin-top:9px;font-size:10.5px;line-height:1.4;color:var(--ink3);text-align:left}
+.tkt form .btn.big{height:50px;font-size:15px;margin-top:6px;padding:0 16px 0 6px;justify-content:flex-start;gap:12px}
+.tkt form .btn.big .bt{flex:1;text-align:center}
+.tkt form .btn.big .ar{width:15px;height:15px;transition:transform .3s var(--ease)}
+.sf-b{position:relative;flex:none;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:var(--sun);box-shadow:0 0 0 2px #fff,inset 0 0 0 1.6px var(--ink);transition:transform .5s var(--ease)}
+.sf-b svg{width:30px;height:30px;transition:transform .7s cubic-bezier(.3,1.6,.5,1)}
+.sf-b:after{content:"";position:absolute;inset:-5px;border-radius:50%;border:2px dashed rgba(255,255,255,.75);opacity:0;transform:scale(.8);transition:opacity .3s,transform .5s var(--ease)}
+.tkt form .btn.big:hover .sf-b{transform:rotate(-10deg) scale(1.06)}
+.tkt form .btn.big:hover .sf-b svg{transform:rotate(360deg) scale(1.12)}
+.tkt form .btn.big:hover .sf-b:after{opacity:1;transform:scale(1);animation:sfring 4s linear infinite}
+.tkt form .btn.big:hover .ar{transform:translate(3px,-3px)}
+@keyframes sfring{to{transform:rotate(360deg)}}
+.tkt form .btn.big:focus-visible .sf-b svg{transform:rotate(360deg) scale(1.12)}
+@media (prefers-reduced-motion:reduce){.sf-b,.sf-b svg,.sf-b:after{transition:none;animation:none}}
+.tkt form .note{position:relative;margin-top:10px;padding-left:18px;font-size:10.5px;line-height:1.4;color:var(--ink3);text-align:left}
+.tkt form .note:before{content:"";position:absolute;left:0;top:1px;width:12px;height:13px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 13' fill='none' stroke='%237A6A60' stroke-width='1.4'%3E%3Crect x='1.5' y='5.5' width='9' height='6.5' rx='1.5'/%3E%3Cpath d='M3.5 5.5V4a2.5 2.5 0 0 1 5 0v1.5'/%3E%3C/svg%3E") no-repeat}
 .tkt form .note + .note{display:none}
 
 /* ---------- the hero: the live page's columns, the headline and the card on the right; the booking card and a small drawing of the days under the video ---------- */
@@ -861,12 +877,14 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
 .hsub2 em{font-style:normal;font-weight:700;color:var(--pink)}
 .htk{margin-top:18px;max-width:420px}
 .htk .tkt{padding:18px 20px 18px}
-.htk .tk-h{font-size:26px}
+.htk .tk-h{font-size:30px}
 .htk .tk-meta{font-size:12.5px}
 .htk .tkt .proof{font-size:13px}
 .htk .tkt .proof .faces img{width:32px;height:32px}
-.htk .tkt form .field input{height:46px;font-size:15px;padding:0 15px}
-.htk .tkt form .btn.big{height:50px;font-size:16px}
+.htk .tkt form .field input{height:48px;font-size:15px;padding:0 15px 0 42px;background-position:14px 50%}
+.htk .tkt form .btn.big{height:56px;font-size:16.5px;padding:0 18px 0 8px}
+.htk .sf-b{width:42px;height:42px}
+.htk .sf-b svg{width:34px;height:34px}
 .htk .tkt form .note{font-size:11px}
 .v2h .tstrip{gap:16px;padding-right:18px}
 .v2h .stats{gap:10px}
@@ -1126,7 +1144,7 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
           <p class="just" id="just" hidden><i></i><span id="justTxt"></span></p>
         </div>
         <div class="tk-body">
-          <h3 class="tk-h"><span class="l">Let’s put what you</span> <span class="l">know to work.</span></h3>
+          <h3 class="tk-h">Save your free seat<span class="tk-and">and let’s put what you know to work.</span></h3>
           <p class="tk-meta"><span>Free, live on Zoom</span> <i>·</i> <span>Nov 17 to 19</span> <i>·</i> <span>12:00 pm New York</span></p>
           <div class="rslot" id="hslot"></div>
         </div>
@@ -1148,7 +1166,7 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
           <div class="proof"><span class="faces"><img src="../img/av/gustavo.webp" alt=""><img src="../img/av/jeanette.webp" alt=""><img src="../img/av/adora.webp" alt=""><img src="../img/av/hilde.webp" alt=""><img src="../img/av/stacie.webp" alt=""></span><span><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span> <b>800+</b> student wins</span></div>
         </div>
         <div class="tk-body">
-          <h3 class="tk-h"><span class="l">Let’s put what you</span> <span class="l">know to work.</span></h3>
+          <h3 class="tk-h">Save your free seat<span class="tk-and">and let’s put what you know to work.</span></h3>
           <p class="tk-meta"><span>Free, live on Zoom</span> <i>·</i> <span>Nov 17 to 19</span> <i>·</i> <span>12:00 pm New York</span></p>
           <div class="rslot" id="rslot"></div>
         </div>
@@ -1553,7 +1571,7 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
       <div class="field"><label class="flbl" for="jFirst">First name</label><input type="text" id="jFirst" name="first_name" placeholder="What your readers call you" autocomplete="given-name" required><span class="err">add your first name</span></div>
       <div class="field"><label class="flbl" for="jEmail">Email</label><input type="email" id="jEmail" name="email_address" placeholder="The email you actually check" autocomplete="email" inputmode="email" required><span class="err">Almost. Check that email once more.</span></div>
       <input type="text" name="ep_check" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-      <button class="btn big send" type="submit">I’m in, Ana (it’s free)<svg><use href="#arr"/></svg></button>
+      <button class="btn big send" type="submit"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">I’m in, Ana (it’s free)</span><svg class="ar"><use href="#arr"/></svg></button>
       <p class="note">You’ll get my emails, including workshop reminders. Unsubscribe anytime. No hard feelings.</p>
       <p class="note">free · live on Zoom<span class="lt"></span></p>
       <div class="bye"><img src="../img/ana-sea.webp" alt="" width="52" height="52" loading="lazy"><p>See you there,<b>Ana</b></p></div>

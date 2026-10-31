@@ -64,7 +64,7 @@ def ticket(tid, slot, hero):
           """ + pr.strip() + (('\n          ' + just) if hero else '') + """
         </div>
         <div class="tk-body">
-          <h3 class="tk-h"><span class="l">Let’s put what you</span> <span class="l">know to work.</span></h3>
+          <h3 class="tk-h">Save your free seat<span class="tk-and">and let’s put what you know to work.</span></h3>
           <p class="tk-meta"><span>Free, live on Zoom</span> <i>·</i> <span>Nov 17 to 19</span> <i>·</i> <span>12:00 pm New York</span></p>
           <div class="rslot" id="%s"></div>
         </div>
@@ -402,7 +402,7 @@ R(fin, '<p class="note">free · live on Zoom</p>\n')
 
 # ---------- the form: the hero card's button and note ----------
 R('<button class="btn big send" type="submit">save my seat (free)<svg><use href="#arr"/></svg></button>',
-  '<button class="btn big send" type="submit">I’m in, Ana (it’s free)<svg><use href="#arr"/></svg></button>')
+  '<button class="btn big send" type="submit"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">I’m in, Ana (it’s free)</span><svg class="ar"><use href="#arr"/></svg></button>')
 R("<p class=\"note\">You'll get my emails about the workshop and my program. Unsubscribe anytime. No hard feelings, no guilt email.</p>",
   "<p class=\"note\">You’ll get my emails, including workshop reminders. Unsubscribe anytime. No hard feelings.</p>")
 
