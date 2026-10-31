@@ -1055,59 +1055,82 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
 .dlg .fmeta{text-align:center;margin-top:12px;font-weight:700;font-size:13.5px;color:var(--ink2)}
 .fb-bar .btn.sm{margin-left:auto}
 
-/* 2. the opening, after the hero */
-.intro{padding:92px 0 88px}
-.igrid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.9fr);gap:56px;align-items:start}
-.iq{font-size:clamp(32px,3.2vw,46px);line-height:1.08;margin:0 0 24px}
-.ilead{font-family:var(--serif);font-size:clamp(22px,1.9vw,27px);line-height:1.3;color:var(--ink);margin-bottom:6px}
+/* 2. the opening, after the hero: the three questions as one statement, then Ana's photo beside her answer */
+.intro{padding:96px 0 90px}
+.intro .partner{text-align:center}
+.iq{max-width:980px;margin:0 auto 56px;text-align:center;font-size:clamp(34px,3.8vw,56px);line-height:1.06}
+.iq .l{display:block}
+.igrid{display:grid;grid-template-columns:minmax(0,.62fr) minmax(0,1.38fr);gap:56px;align-items:center;max-width:1000px;margin:0 auto}
+.ipic{position:relative}
+.ipic figure{margin:0;background:#fff;padding:12px 12px 0;border:2px solid var(--ink);box-shadow:10px 10px 0 var(--sun),10px 10px 0 2px var(--ink);transform:rotate(-2.5deg)}
+.ipic img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 62%}
+.ipic figcaption{padding:12px 4px 14px;font-family:var(--serif);font-size:24px;line-height:1;text-align:center}
+.ipic figcaption small{display:block;margin-top:4px;font-family:var(--sans);font-weight:800;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
+.ipic-st{position:absolute;right:-22px;top:26px;display:flex;flex-direction:column;align-items:center;justify-content:center;width:104px;height:104px;border-radius:50%;background:var(--pink);color:#fff;border:2px solid var(--ink);transform:rotate(10deg);box-shadow:0 10px 18px -10px rgba(0,0,0,.45)}
+.ipic-st b{font-family:var(--serif);font-weight:400;font-size:32px;line-height:1}
+.ipic-st small{font-weight:800;font-size:10px;letter-spacing:.06em;margin-top:2px}
+.ilead{font-family:var(--serif);font-size:clamp(24px,2.1vw,30px);line-height:1.28;color:var(--ink);margin-bottom:6px}
 .ilead b{font-weight:400;background:var(--sun);padding:0 .1em}
-.itx > p:not(.ilead):not(.partner):not(.iwhen){font-size:17.5px;line-height:1.62;color:var(--ink2);margin-top:12px}
-.iwhen{margin-top:20px;font-weight:800;font-size:16px}
-.igo{margin-top:16px}
-.intro .cnotes{margin-top:30px}
-.jill{background:var(--sand);border:1.6px solid var(--ink);border-radius:24px;padding:28px 26px 26px;box-shadow:7px 8px 0 var(--sun),7px 8px 0 1.6px var(--ink)}
-.jill h3{font-size:clamp(30px,2.8vw,40px);line-height:1.04;margin-bottom:18px}
-.jill h3 .l{display:block}
-.jq{margin:0 0 16px;background:#fff;border-radius:14px;padding:14px 16px;border:1px solid rgba(26,20,18,.12)}
-.jq-hd{display:flex;align-items:center;gap:10px;margin-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
-.jq-av{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;flex:none;background:#FFB8D9;font-weight:800;font-size:13px}
-.jq-hd b{display:block;font-size:14px;line-height:1.25}
-.jq-hd small{display:block;font-size:12px;color:#8a8a8a}
-.jq blockquote{font-family:var(--serif);font-size:24px;line-height:1.25;quotes:none}
-.jq figcaption{margin-top:8px;font-weight:700;font-size:13px;color:var(--ink3)}
-.jill p{font-size:15.5px;line-height:1.55;color:var(--ink2)}
-.jill p + p{margin-top:8px}
+.itx > p:not(.ilead){font-size:17.5px;line-height:1.62;color:var(--ink2);margin-top:12px}
+.igo{display:flex;align-items:center;flex-wrap:wrap;gap:12px 18px;margin-top:24px}
+.iwhen{font-weight:700;font-size:14px;line-height:1.4;color:var(--ink2)}
+.inotes{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:28px;padding-top:22px;border-top:2px dashed rgba(26,20,18,.15)}
+.inotes p{font-size:14.5px;line-height:1.5;color:var(--ink2)}
+.inotes b{display:block;color:var(--ink);font-weight:800;margin-bottom:3px}
 
 /* 3. the days: bold leads, a second paragraph, three wins from the last challenge */
 .dtext li b{color:var(--ink)}
 .dtext p.body + p.body{margin-top:10px}
 .dtext p.body.after{margin-top:18px}
 .trio{margin-top:100px;text-align:center}
-.trio-h{font-size:clamp(30px,3vw,44px);line-height:1.08}
+.trio-h{font-size:clamp(34px,3.4vw,52px);line-height:1.04}
 .trio-h .l{display:block}
-.trio-s{margin-top:10px;font-size:17px;color:var(--ink2)}
-.trio-g{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:32px;text-align:left;align-items:start}
-.trc{margin:0;background:#fff;border:1.6px solid var(--ink);border-radius:18px;padding:12px;box-shadow:6px 6px 0 var(--sun),6px 6px 0 1.6px var(--ink)}
-.trc img{display:block;width:100%;height:auto;border-radius:10px;border:1px solid rgba(26,20,18,.08)}
-.trc figcaption{padding:12px 4px 2px}
-.trc b{display:block;font-weight:800;font-size:16px}
-.trc small{display:block;font-size:13px;color:var(--ink3);margin-top:2px}
-.trc span{display:block;margin-top:8px;font-size:15px;line-height:1.5;color:var(--ink2)}
+.trio-g{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:34px;text-align:left;align-items:stretch}
+.trn{margin:0;display:flex;flex-direction:column;background:#fff;border:1.6px solid var(--ink);border-radius:20px;padding:24px 22px 20px;box-shadow:6px 6px 0 var(--ink)}
+.trn.jill{background:var(--sun)}
+.trn-n{font-family:var(--serif);font-weight:400;font-size:clamp(56px,5.2vw,76px);line-height:.9;letter-spacing:-.02em}
+.trn-f{margin-top:8px;font-weight:800;font-size:15px;line-height:1.3}
+.trn blockquote{margin:16px 0 0;padding-top:14px;border-top:1.5px dashed rgba(26,20,18,.25);font-family:var(--serif);font-size:20px;line-height:1.3;color:var(--ink2);quotes:none;flex:1}
+.trn figcaption{margin-top:14px;font-weight:700;font-size:13px;color:var(--ink3)}
+.trn.jill figcaption{color:var(--ink2)}
 .trio-n{margin-top:18px;font-size:13px;color:var(--ink3)}
 
-/* 4. where are you right now */
+/* 4. where are you right now: three illustrated choices; the picked one comes alive */
 .where{padding:100px 0}
-.sit3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;max-width:1000px;margin:36px auto 0}
-.chip.sit{position:relative;height:auto;white-space:normal;text-align:left;display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:20px 20px 22px;border-radius:20px;border:1.6px solid var(--ink);background:#fff;color:var(--ink);font:inherit;transition:transform .2s var(--ease),box-shadow .2s,background .2s}
-.chip.sit b{font-family:var(--serif);font-weight:400;font-size:23px;line-height:1.15;padding-right:30px}
-.chip.sit .sit-s{font-size:15px;line-height:1.45;color:var(--ink2);font-weight:500}
-.sit-ck{position:absolute;right:16px;top:16px;width:28px;height:28px;border-radius:50%;border:1.6px solid var(--ink);display:grid;place-items:center;background:#fff;transition:background .2s,transform .3s var(--ease)}
-.sit-ck svg{width:15px;height:15px;stroke:var(--ink);stroke-width:2.8;fill:none;stroke-linecap:round;stroke-linejoin:round;opacity:0;transition:opacity .2s}
-.chip.sit:hover{transform:translateY(-2px)}
-.chip.sit[aria-pressed=true]{background:var(--ysoft);color:var(--ink);box-shadow:6px 6px 0 var(--ink)}
-.chip.sit[aria-pressed=true] .sit-ck{background:var(--sun);transform:rotate(-8deg) scale(1.06)}
+.sit3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;max-width:1040px;margin:36px auto 0}
+.chip.sit{position:relative;height:auto;white-space:normal;text-align:left;display:flex;flex-direction:column;align-items:stretch;gap:8px;padding:12px 12px 22px;border-radius:22px;border:1.6px solid var(--ink);background:#fff;color:var(--ink);font:inherit;cursor:pointer;transition:transform .25s var(--ease),box-shadow .25s,background .25s}
+.sit-art{display:block;margin-bottom:8px;border-radius:14px;background:var(--cream);overflow:hidden;transition:background .3s}
+.sit-art svg{display:block;width:100%;height:auto;aspect-ratio:220/150}
+.chip.sit b{padding:0 10px;font-family:var(--serif);font-weight:400;font-size:24px;line-height:1.12}
+.chip.sit .sit-s{padding:0 10px;font-size:15px;line-height:1.45;color:var(--ink2);font-weight:500}
+.sit-ck{position:absolute;right:20px;top:20px;width:30px;height:30px;border-radius:50%;border:1.6px solid var(--ink);display:grid;place-items:center;background:#fff;transition:background .2s,transform .3s var(--ease)}
+.sit-ck svg{width:16px;height:16px;stroke:var(--ink);stroke-width:2.8;fill:none;stroke-linecap:round;stroke-linejoin:round;opacity:0;transition:opacity .2s}
+.chip.sit:hover{transform:translateY(-3px);box-shadow:0 18px 30px -22px rgba(70,45,25,.6)}
+.chip.sit[aria-pressed=true]{background:var(--ysoft);color:var(--ink);box-shadow:7px 7px 0 var(--ink);transform:translateY(-3px)}
+.chip.sit[aria-pressed=true] .sit-art{background:#fff}
+.chip.sit[aria-pressed=true] .sit-ck{background:var(--sun);transform:rotate(-8deg) scale(1.08)}
 .chip.sit[aria-pressed=true] .sit-ck svg{opacity:1}
-.sitgo{text-align:center;margin-top:30px}
+/* the door opens to the light */
+.sit-art .dr{transform-origin:74px 86px;transition:transform .6s var(--ease)}
+.sit-art .sun,.sit-art .lt{opacity:0;transition:opacity .5s}
+.chip.sit:hover .lt{opacity:.6}
+.chip.sit[aria-pressed=true] .lt{opacity:1}
+.chip.sit:hover .dr{transform:perspective(300px) rotateY(-28deg)}
+.chip.sit[aria-pressed=true] .dr{transform:perspective(300px) rotateY(-58deg)}
+.chip.sit:hover .sun,.chip.sit[aria-pressed=true] .sun{opacity:.75}
+/* the calendar clears around your own block */
+.sit-art .blk{transition:opacity .4s,transform .4s var(--ease)}
+.chip.sit[aria-pressed=true] .blk{opacity:.18}
+.chip.sit:hover .blk.b3,.chip.sit:hover .blk.b8,.chip.sit:hover .blk.b11{opacity:.3}
+.sit-art .me{transition:transform .5s var(--ease);transform-box:fill-box;transform-origin:center}
+.chip.sit[aria-pressed=true] .me{transform:scale(1.25)}
+/* the signpost swings */
+.sit-art .a1,.sit-art .a2{transform-box:fill-box;transition:transform .5s var(--ease)}
+.sit-art .a1{transform-origin:0 50%}.sit-art .a2{transform-origin:100% 50%}
+.chip.sit:hover .a1,.chip.sit[aria-pressed=true] .a1{transform:rotate(-6deg)}
+.chip.sit:hover .a2,.chip.sit[aria-pressed=true] .a2{transform:rotate(6deg)}
+@media (prefers-reduced-motion:reduce){.sit-art *{transition:none!important}}
+.sitgo{text-align:center;margin-top:32px}
 .sitgo small,.fitgo small{display:block;margin-top:8px;font-weight:600;font-size:13px;color:var(--ink3)}
 
 /* 5. the host, 6. a life left to enjoy it */
@@ -1164,6 +1187,7 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
 @media (max-width:1060px){
   .igrid,.lifeg,.bringg{grid-template-columns:1fr;gap:36px}
   .life-pic{max-width:520px}
+  .ipic{max-width:300px;margin:0 auto}
 }
 @media (max-width:860px){
   .sit3,.trio-g{grid-template-columns:1fr}
@@ -1171,7 +1195,10 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
 }
 @media (max-width:640px){
   .intro,.where,.life,.bring{padding:72px 0}
-  .iq{font-size:30px}
+  .iq{font-size:30px;margin-bottom:36px}
+  .inotes{grid-template-columns:1fr}
+  .ipic-st{right:-8px;width:88px;height:88px}
+  .ipic-st b{font-size:27px}
   .jill{padding:22px 18px}
   .chip.sit b{font-size:21px}
   .bring-tx .bring-that{font-size:30px}
@@ -1303,29 +1330,25 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
     </div>
     </div>
   </aside>
-<!-- 2. the opening, after the hero: the questions, who Ana is, the first ask, and Jill's result beside it -->
+<!-- 2. the opening, after the hero: the three questions as one statement, then Ana answers them, beside her own photo -->
 <section class="intro who" id="who">
   <div class="wrap">
+    <p class="partner"><span id="pname"></span> sent you here. Here's who I am.</p>
+    <h2 class="iq" data-r><span class="l">But what would you sell?</span> <span class="l">Where would the people who buy it come from?</span> <span class="l"><em>And could it earn enough to make a difference?</em></span></h2>
     <div class="igrid">
+      <div class="ipic" data-r>
+        <figure><img src="../img/real/ana-real-a.webp" alt="Ana Calin" width="405" height="720" loading="lazy"><figcaption>Ana Calin<small>How We Grow</small></figcaption></figure>
+      </div>
       <div class="itx" data-r>
-        <p class="partner"><span id="pname"></span> sent you here. Here's who I am.</p>
-        <h2 class="iq">But what would you sell? Where would the people who buy it come from? <em>And could it earn enough to make a difference?</em></h2>
         <p class="ilead">I’m Ana Calin. My newsletter business has made <b>$1.4M</b> selling workshops and programs, without sales calls.</p>
         <p>On Nov 17 to 19, I’ll show you the starting point I’d choose today, including what AI has changed about the order I teach. We’ll work on your first paid offer, its price, and the email that puts it up for sale.</p>
         <p>You can start while your current work still pays the bills. You don’t need an audience or an idea ready.</p>
-        <p class="iwhen">Nov 17 to 19 · 12:00 pm New York · Free and live on Zoom</p>
-        <div class="igo"><button class="btn open" type="button">I want my exit plan, free<svg><use href="#arr"/></svg></button></div>
-        <div class="cnotes">
+        <div class="igo"><button class="btn open" type="button">I want my exit plan, free<svg><use href="#arr"/></svg></button><span class="iwhen">Nov 17 to 19 · 12:00 pm New York<br>Free and live on Zoom</span></div>
+        <div class="inotes">
           <p><b>Already work for yourself?</b> Your exit might mean dropping the clients you keep accepting because you need the money. This is for you too.</p>
           <p><b>Been to one of my workshops before?</b> Come see why I’d now start differently, and what that changes about your next offer.</p>
         </div>
       </div>
-      <aside class="jill" data-r>
-        <h3><span class="l">Around 300 readers.</span> <span class="l"><em>Over $3,000 in a month.</em></span></h3>
-        <figure class="jq"><div class="jq-hd"><span class="jq-av">JH</span><span><b>Jill Hart | World Changer</b><small>Substack note</small></span></div><blockquote>“I was able to monetize a 300ish audience and make over $3K in a month.”</blockquote><figcaption>Jill Hart</figcaption></figure>
-        <p>Jill credits Ana’s advice with helping her work out what mattered and where to focus.</p>
-        <p>Her experience gives you a more useful starting point than comparing yourself with someone who already has 80,000 readers.</p>
-      </aside>
     </div>
   </div>
 </section>
@@ -1486,14 +1509,13 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
       </div>
     </div>
 
-    <!-- three wins from the last challenge, one for each kind of first: readers, buyers, a price increase -->
+    <!-- what a first offer can do with a small list: three results -->
     <div class="trio" data-r>
-      <h3 class="trio-h"><span class="l">Your first readers. Your first buyers.</span> <span class="l"><em>Your first price increase.</em></span></h3>
-      <p class="trio-s">These are some of the wins people shared during Ana’s earlier challenge.</p>
+      <h3 class="trio-h"><span class="l">Small lists.</span> <span class="l"><em>Real sales.</em></span></h3>
       <div class="trio-g">
-        <figure class="trc"><img src="../img/wins/jessica.webp" alt="Jessica: woke up to 52 subscribers" width="900" height="275" loading="lazy"><figcaption><b>Jessica Donovan</b><small>Leadership coach and writer</small><span>Passed her 50-subscriber goal and reached 52 subscribers. She reported steady growth since starting the challenge.</span></figcaption></figure>
-        <figure class="trc"><img src="../img/wins/suzanne.webp" alt="Suzanne: #62 Rising, 16 subscribers and 3 paid in a week" width="900" height="388" loading="lazy"><figcaption><b>Suzanne Harrison</b><small>Astrology for the Second Act</small><span>Reported adding 16 subscribers, including three paid subscribers, in roughly a week.</span></figcaption></figure>
-        <figure class="trc"><img src="../img/wins/jenna.webp" alt="Jenna: increased the price, updated paid subscription" width="900" height="378" loading="lazy"><figcaption><b>Jenna Garagiola</b><small>Human Design expert and business strategist</small><span>Updated her paid subscription, increased her price, and clarified what she wanted to offer founding members.</span></figcaption></figure>
+        <figure class="trn jill"><b class="trn-n">$3,000+</b><span class="trn-f">in a month, from about 300 readers</span><blockquote>“I was able to monetize a 300ish audience and make over $3K in a month.”</blockquote><figcaption>Jill Hart, on Substack</figcaption></figure>
+        <figure class="trn"><b class="trn-n">$3,200</b><span class="trn-f">from 547 subscribers</span><blockquote>First launch ever. Three emails, launched the same week.</blockquote><figcaption>One of Ana’s students</figcaption></figure>
+        <figure class="trn"><b class="trn-n">$2,400</b><span class="trn-f">from 198 subscribers</span><blockquote>She almost didn’t start because she thought 198 subscribers wasn’t enough. It was.</blockquote><figcaption>One of Ana’s students</figcaption></figure>
       </div>
       <p class="trio-n">Individual experiences from Ana’s earlier teaching and challenge. Results vary.</p>
     </div>
@@ -1505,14 +1527,14 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
   </div>
 </section>
 
-<!-- 4. where are you right now? The pick goes with the sign-up (hidden field "situation"), and the button answers it -->
+<!-- 4. where are you right now? Three illustrated choices; the pick goes with the sign-up (hidden field "situation"), and the button answers it -->
 <section class="sand where" id="where">
   <div class="wrap">
     <div class="head" data-r><h2>Where are you <em>right now?</em></h2></div>
     <div class="sit3" role="group" aria-label="Where are you right now?" data-r>
-      <button class="chip sit" type="button" data-v="job" aria-pressed="false"><span class="sit-ck" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m5 10.5 3.4 3.4L15 6.8"/></svg></span><b>I have a job and want to build something alongside it.</b><span class="sit-s">I’d like leaving to become a choice I can afford.</span></button>
-      <button class="chip sit" type="button" data-v="self" aria-pressed="false"><span class="sit-ck" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m5 10.5 3.4 3.4L15 6.8"/></svg></span><b>I work for myself.</b><span class="sit-s">I’d like to earn from what I know without taking on another client.</span></button>
-      <button class="chip sit" type="button" data-v="both" aria-pressed="false"><span class="sit-ck" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m5 10.5 3.4 3.4L15 6.8"/></svg></span><b>A bit of both.</b><span class="sit-s">I’m ready to build something that gives me more options.</span></button>
+      <button class="chip sit" type="button" data-v="job" aria-pressed="false"><span class="sit-art"><svg viewBox="0 0 220 150" aria-hidden="true"><path d="M20 138h180" stroke="#1A1412" stroke-width="3" stroke-linecap="round"/><rect x="70" y="30" width="80" height="108" rx="4" fill="#FFF8EE" stroke="#1A1412" stroke-width="3"/><rect class="lt" x="74" y="34" width="72" height="100" fill="#FFD400"/><path class="sun" d="M150 136 214 150H150Z" fill="#FFD400" opacity=".75"/><g class="dr"><path d="M74 34h72v100l-72 4Z" fill="#F72585" stroke="#1A1412" stroke-width="3" stroke-linejoin="round"/><circle cx="134" cy="88" r="4" fill="#FFD400" stroke="#1A1412" stroke-width="2"/></g><rect x="88" y="10" width="44" height="16" rx="3" fill="#2fb36a" stroke="#1A1412" stroke-width="2.6"/><text x="110" y="22" text-anchor="middle" font-family="Manrope,sans-serif" font-weight="800" font-size="10" fill="#fff" letter-spacing="1">EXIT</text><path d="M34 120c6-10 14-10 20 0" fill="none" stroke="#7BAE5A" stroke-width="3" stroke-linecap="round"/><use href="#sf" x="30" y="88" width="28" height="28"/></svg></span><span class="sit-ck" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m5 10.5 3.4 3.4L15 6.8"/></svg></span><b>I have a job and want to build something alongside it.</b><span class="sit-s">I’d like leaving to become a choice I can afford.</span></button>
+      <button class="chip sit" type="button" data-v="self" aria-pressed="false"><span class="sit-art"><svg viewBox="0 0 220 150" aria-hidden="true"><rect x="30" y="18" width="160" height="120" rx="10" fill="#fff" stroke="#1A1412" stroke-width="3"/><path d="M30 40h160" stroke="#1A1412" stroke-width="3"/><rect x="30" y="18" width="160" height="22" rx="10" fill="#F72585" stroke="#1A1412" stroke-width="3"/><rect class="blk b0" x="40" y="50" width="26" height="18" rx="4" fill="#FFB8D9" stroke="#1A1412" stroke-width="2"/><rect class="blk b1" x="70" y="50" width="26" height="18" rx="4" fill="#FFB8D9" stroke="#1A1412" stroke-width="2"/><rect class="blk b2" x="100" y="50" width="26" height="18" rx="4" fill="#FFB8D9" stroke="#1A1412" stroke-width="2"/><rect class="blk b3" x="130" y="50" width="26" height="18" rx="4" fill="#FFB8D9" stroke="#1A1412" stroke-width="2"/><rect class="blk b4" x="160" y="50" width="26" height="18" rx="4" fill="#FFB8D9" stroke="#1A1412" stroke-width="2"/><rect class="blk b5" x="40" y="76" width="26" height="18" rx="4" fill="#FFB8D9" stroke="#1A1412" stroke-width="2"/><rect class="blk b6" x="70" y="76" width="26" height="18" rx="4" fill="#FFB8D9" stroke="#1A1412" stroke-width="2"/><rect class="blk b7" x="100" y="76" width="26" height="18" rx="4" fill="#FFB8D9" stroke="#1A1412" stroke-width="2"/><rect class="blk b8" x="130" y="76" width="26" height="18" rx="4" fill="#FFB8D9" stroke="#1A1412" stroke-width="2"/><rect class="blk b9" x="160" y="76" width="26" height="18" rx="4" fill="#FFB8D9" stroke="#1A1412" stroke-width="2"/><rect class="blk b10" x="40" y="102" width="26" height="18" rx="4" fill="#FFB8D9" stroke="#1A1412" stroke-width="2"/><rect class="blk b11" x="70" y="102" width="26" height="18" rx="4" fill="#FFB8D9" stroke="#1A1412" stroke-width="2"/><rect class="blk b12" x="100" y="102" width="26" height="18" rx="4" fill="#FFB8D9" stroke="#1A1412" stroke-width="2"/><rect class="blk b13" x="130" y="102" width="26" height="18" rx="4" fill="#FFB8D9" stroke="#1A1412" stroke-width="2"/><rect class="blk b14" x="160" y="102" width="26" height="18" rx="4" fill="#FFB8D9" stroke="#1A1412" stroke-width="2"/><rect class="me" x="100" y="76" width="26" height="18" rx="4" fill="#FFD400" stroke="#1A1412" stroke-width="2"/><use class="me" href="#sf" x="104" y="76" width="18" height="18"/></svg></span><span class="sit-ck" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m5 10.5 3.4 3.4L15 6.8"/></svg></span><b>I work for myself.</b><span class="sit-s">I’d like to earn from what I know without taking on another client.</span></button>
+      <button class="chip sit" type="button" data-v="both" aria-pressed="false"><span class="sit-art"><svg viewBox="0 0 220 150" aria-hidden="true"><path d="M110 40v98" stroke="#1A1412" stroke-width="5" stroke-linecap="round"/><path d="M60 138h100" stroke="#1A1412" stroke-width="3" stroke-linecap="round"/><g class="a1"><path d="M110 46h66l14 13-14 13h-66Z" fill="#FFD400" stroke="#1A1412" stroke-width="3" stroke-linejoin="round"/><text x="140" y="64" text-anchor="middle" font-family="Manrope,sans-serif" font-weight="800" font-size="10" fill="#1A1412">JOB</text></g><g class="a2"><path d="M110 80H44l-14 13 14 13h66Z" fill="#F72585" stroke="#1A1412" stroke-width="3" stroke-linejoin="round"/><text x="74" y="98" text-anchor="middle" font-family="Manrope,sans-serif" font-weight="800" font-size="10" fill="#fff">MY OWN</text></g><use href="#sf" x="96" y="14" width="28" height="28"/></svg></span><span class="sit-ck" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m5 10.5 3.4 3.4L15 6.8"/></svg></span><b>A bit of both.</b><span class="sit-s">I’m ready to build something that gives me more options.</span></button>
     </div>
     <div class="sitgo" data-r><button class="btn open" type="button" data-sitgo><span>I want the plan</span><svg><use href="#arr"/></svg></button><small>free · live on Zoom</small></div>
   </div>
@@ -1633,13 +1655,16 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
     <div class="aw" data-wins>
     <div class="aw-g">
     <figure class="aw-c"><span class="aw-r">27 → 88 in 15 days</span><img src="../img/wins/highticket.webp" alt="From 27 to 88 subscribers in 15 days" width="900" height="364" loading="lazy"><figcaption>The High-Ticket Closer</figcaption></figure>
+    <figure class="aw-c"><span class="aw-r">+3 paid in week 1</span><img src="../img/wins/suzanne.webp" alt="Suzanne: #62 Rising, 16 subscribers and 3 paid in a week" width="900" height="388" loading="lazy"><figcaption>Suzanne Harrison</figcaption></figure>
     <figure class="aw-c"><span class="aw-r">+18 in 30 days</span><img src="../img/wins/kwame.webp" alt="Kwame: +18 subscribers, 2 paid away from double digits" width="900" height="353" loading="lazy"><figcaption>Kwame Twumasi-Ankrah</figcaption></figure>
     <figure class="aw-c"><span class="aw-r">First 100 subs</span><img src="../img/wins/asteria.webp" alt="Asteria: first 100 subs" width="900" height="555" loading="lazy"><figcaption>Asteria Rose</figcaption></figure>
+    <figure class="aw-c"><span class="aw-r">52 subscribers</span><img src="../img/wins/jessica.webp" alt="Jessica: woke up to 52 subscribers" width="900" height="275" loading="lazy"><figcaption>Jessica Donovan</figcaption></figure>
+    <figure class="aw-c"><span class="aw-r">Raised her price</span><img src="../img/wins/jenna.webp" alt="Jenna: increased the price, updated paid subscription" width="900" height="378" loading="lazy"><figcaption>Jenna Garagiola</figcaption></figure>
     <figure class="aw-c"><span class="aw-r">Rebranded in week 1</span><img src="../img/wins/stephanie.webp" alt="Stephanie: rebranded her Substack in week one" width="900" height="265" loading="lazy"><figcaption>Stephanie Frank</figcaption></figure>
     <figure class="aw-c"><span class="aw-r">A name she loves</span><img src="../img/wins/malinda.webp" alt="Malinda: first week of the challenge has been amazing" width="900" height="342" loading="lazy"><figcaption>Malinda Zarate</figcaption></figure>
     <figure class="aw-c"><span class="aw-r">On the hot seat</span><img src="../img/wins/andrea.webp" alt="Andrea on the Thursday hot seat" width="900" height="333" loading="lazy"><figcaption>Andrea Dell</figcaption></figure>
     </div>
-    <button class="aw-more" type="button" hidden>show all 6 wins</button>
+    <button class="aw-more" type="button" hidden>show all 9 wins</button>
     <script>(function(){var w=document.currentScript.parentNode,b=w.querySelector(".aw-more");if(matchMedia("(max-width:700px)").matches){w.classList.add("short");b.hidden=false;b.addEventListener("click",function(){w.classList.remove("short");b.hidden=true})}})();</script>
     </div>
     <p class="wall-src">Individual experiences from Ana’s earlier teaching and challenge. Results vary.</p>

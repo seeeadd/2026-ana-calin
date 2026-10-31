@@ -157,29 +157,25 @@ R('<text x="88" y="50" font-family="Instrument Serif,serif" font-size="30" fill=
 # ---------- the copy of Oct 31, third version (the revised registration copy). En dashes in dates are written "to". ----------
 # 2. right under the hero: the three questions, who Ana is, the dates and the first ask; Jill's result beside it
 JILL_Q = '“I was able to monetize a 300ish audience and make over $3K in a month.”'
-INTRO = """<!-- 2. the opening, after the hero: the questions, who Ana is, the first ask, and Jill's result beside it -->
+INTRO = """<!-- 2. the opening, after the hero: the three questions as one statement, then Ana answers them, beside her own photo -->
 <section class="intro who" id="who">
   <div class="wrap">
+    <p class="partner"><span id="pname"></span> sent you here. Here's who I am.</p>
+    <h2 class="iq" data-r><span class="l">But what would you sell?</span> <span class="l">Where would the people who buy it come from?</span> <span class="l"><em>And could it earn enough to make a difference?</em></span></h2>
     <div class="igrid">
+      <div class="ipic" data-r>
+        <figure><img src="../img/real/ana-real-a.webp" alt="Ana Calin" width="405" height="720" loading="lazy"><figcaption>Ana Calin<small>How We Grow</small></figcaption></figure>
+      </div>
       <div class="itx" data-r>
-        <p class="partner"><span id="pname"></span> sent you here. Here's who I am.</p>
-        <h2 class="iq">But what would you sell? Where would the people who buy it come from? <em>And could it earn enough to make a difference?</em></h2>
         <p class="ilead">I’m Ana Calin. My newsletter business has made <b>$1.4M</b> selling workshops and programs, without sales calls.</p>
         <p>On Nov 17 to 19, I’ll show you the starting point I’d choose today, including what AI has changed about the order I teach. We’ll work on your first paid offer, its price, and the email that puts it up for sale.</p>
         <p>You can start while your current work still pays the bills. You don’t need an audience or an idea ready.</p>
-        <p class="iwhen">Nov 17 to 19 · 12:00 pm New York · Free and live on Zoom</p>
-        <div class="igo"><button class="btn open" type="button">I want my exit plan, free""" + ARR + """</button></div>
-        <div class="cnotes">
+        <div class="igo"><button class="btn open" type="button">I want my exit plan, free""" + ARR + """</button><span class="iwhen">Nov 17 to 19 · 12:00 pm New York<br>Free and live on Zoom</span></div>
+        <div class="inotes">
           <p><b>Already work for yourself?</b> Your exit might mean dropping the clients you keep accepting because you need the money. This is for you too.</p>
           <p><b>Been to one of my workshops before?</b> Come see why I’d now start differently, and what that changes about your next offer.</p>
         </div>
       </div>
-      <aside class="jill" data-r>
-        <h3><span class="l">Around 300 readers.</span> <span class="l"><em>Over $3,000 in a month.</em></span></h3>
-        <figure class="jq"><div class="jq-hd"><span class="jq-av">JH</span><span><b>Jill Hart | World Changer</b><small>Substack note</small></span></div><blockquote>""" + JILL_Q + """</blockquote><figcaption>Jill Hart</figcaption></figure>
-        <p>Jill credits Ana’s advice with helping her work out what mattered and where to focus.</p>
-        <p>Her experience gives you a more useful starting point than comparing yourself with someone who already has 80,000 readers.</p>
-      </aside>
     </div>
   </div>
 </section>
@@ -237,16 +233,17 @@ for old, (dd, dname, h3, body, lis, after, out, nxt) in zip(dtexts, DAYS):
                                           ('          <p class="body after">%s</p>\n' % after) if after else '', out[0], out[1],
                                           ('          <p class="next">%s</p>\n' % nxt) if nxt else '')
     R(old, new)
-TRIO = [('jessica', 'Jessica Donovan', 'Leadership coach and writer', 'Passed her 50-subscriber goal and reached 52 subscribers. She reported steady growth since starting the challenge.', 275, 'Jessica: woke up to 52 subscribers'),
-        ('suzanne', 'Suzanne Harrison', 'Astrology for the Second Act', 'Reported adding 16 subscribers, including three paid subscribers, in roughly a week.', 388, 'Suzanne: #62 Rising, 16 subscribers and 3 paid in a week'),
-        ('jenna', 'Jenna Garagiola', 'Human Design expert and business strategist', 'Updated her paid subscription, increased her price, and clarified what she wanted to offer founding members.', 378, 'Jenna: increased the price, updated paid subscription')]
+# the results after the days: Jill (her own note, by name) and two results Ana publishes on monetisesubstack.com/offer-clarity
+# ("Real results from my students", unnamed there). [Ana confirms the two before launch, and whether the students can be named.]
+RESULTS = [('$3,000+', 'in a month, from about 300 readers', JILL_Q, 'Jill Hart, on Substack'),
+           ('$3,200', 'from 547 subscribers', 'First launch ever. Three emails, launched the same week.', 'One of Ana’s students'),
+           ('$2,400', 'from 198 subscribers', 'She almost didn’t start because she thought 198 subscribers wasn’t enough. It was.', 'One of Ana’s students')]
 R(between('    <div class="after" data-r>\n      <p>Come to all three.', '  </div>\n</section>\n\n<!-- 4. is this for you? -->'),
-  """    <!-- three wins from the last challenge, one for each kind of first: readers, buyers, a price increase -->
+  """    <!-- what a first offer can do with a small list: three results -->
     <div class="trio" data-r>
-      <h3 class="trio-h"><span class="l">Your first readers. Your first buyers.</span> <span class="l"><em>Your first price increase.</em></span></h3>
-      <p class="trio-s">These are some of the wins people shared during Ana’s earlier challenge.</p>
+      <h3 class="trio-h"><span class="l">Small lists.</span> <span class="l"><em>Real sales.</em></span></h3>
       <div class="trio-g">
-""" + ''.join('        <figure class="trc"><img src="../img/wins/%s.webp" alt="%s" width="900" height="%d" loading="lazy"><figcaption><b>%s</b><small>%s</small><span>%s</span></figcaption></figure>\n' % (f, alt, h, n, w, c) for f, n, w, c, h, alt in TRIO) + """      </div>
+""" + ''.join('        <figure class="trn%s"><b class="trn-n">%s</b><span class="trn-f">%s</span><blockquote>%s</blockquote><figcaption>%s</figcaption></figure>\n' % (' jill' if k == 0 else '', n, f, q, c) for k, (n, f, q, c) in enumerate(RESULTS)) + """      </div>
       <p class="trio-n">Individual experiences from Ana’s earlier teaching and challenge. Results vary.</p>
     </div>
 
@@ -257,15 +254,29 @@ R(between('    <div class="after" data-r>\n      <p>Come to all three.', '  </di
 """)
 
 # ---------- 4 to 13 ----------
-SIT = [('job', 'I have a job and want to build something alongside it.', 'I’d like leaving to become a choice I can afford.'),
-       ('self', 'I work for myself.', 'I’d like to earn from what I know without taking on another client.'),
-       ('both', 'A bit of both.', 'I’m ready to build something that gives me more options.')]
-WHERE = """<!-- 4. where are you right now? The pick goes with the sign-up (hidden field "situation"), and the button answers it -->
+DOOR = ('<svg viewBox="0 0 220 150" aria-hidden="true"><path d="M20 138h180" stroke="#1A1412" stroke-width="3" stroke-linecap="round"/>'
+        '<rect x="70" y="30" width="80" height="108" rx="4" fill="#FFF8EE" stroke="#1A1412" stroke-width="3"/>'
+        '<rect class="lt" x="74" y="34" width="72" height="100" fill="#FFD400"/><path class="sun" d="M150 136 214 150H150Z" fill="#FFD400" opacity=".75"/>'
+        '<g class="dr"><path d="M74 34h72v100l-72 4Z" fill="#F72585" stroke="#1A1412" stroke-width="3" stroke-linejoin="round"/><circle cx="134" cy="88" r="4" fill="#FFD400" stroke="#1A1412" stroke-width="2"/></g>'
+        '<rect x="88" y="10" width="44" height="16" rx="3" fill="#2fb36a" stroke="#1A1412" stroke-width="2.6"/><text x="110" y="22" text-anchor="middle" font-family="Manrope,sans-serif" font-weight="800" font-size="10" fill="#fff" letter-spacing="1">EXIT</text>'
+        '<path d="M34 120c6-10 14-10 20 0" fill="none" stroke="#7BAE5A" stroke-width="3" stroke-linecap="round"/><use href="#sf" x="30" y="88" width="28" height="28"/></svg>')
+CAL = ('<svg viewBox="0 0 220 150" aria-hidden="true"><rect x="30" y="18" width="160" height="120" rx="10" fill="#fff" stroke="#1A1412" stroke-width="3"/>'
+       '<path d="M30 40h160" stroke="#1A1412" stroke-width="3"/><rect x="30" y="18" width="160" height="22" rx="10" fill="#F72585" stroke="#1A1412" stroke-width="3"/>'
+       + ''.join('<rect class="blk b%d" x="%d" y="%d" width="26" height="18" rx="4" fill="%s" stroke="#1A1412" stroke-width="2"/>' % (k, 40 + (k % 5) * 30, 50 + (k // 5) * 26, '#FFB8D9') for k in range(15))
+       + '<rect class="me" x="100" y="76" width="26" height="18" rx="4" fill="#FFD400" stroke="#1A1412" stroke-width="2"/><use class="me" href="#sf" x="104" y="76" width="18" height="18"/></svg>')
+POST = ('<svg viewBox="0 0 220 150" aria-hidden="true"><path d="M110 40v98" stroke="#1A1412" stroke-width="5" stroke-linecap="round"/><path d="M60 138h100" stroke="#1A1412" stroke-width="3" stroke-linecap="round"/>'
+        '<g class="a1"><path d="M110 46h66l14 13-14 13h-66Z" fill="#FFD400" stroke="#1A1412" stroke-width="3" stroke-linejoin="round"/><text x="140" y="64" text-anchor="middle" font-family="Manrope,sans-serif" font-weight="800" font-size="10" fill="#1A1412">JOB</text></g>'
+        '<g class="a2"><path d="M110 80H44l-14 13 14 13h66Z" fill="#F72585" stroke="#1A1412" stroke-width="3" stroke-linejoin="round"/><text x="74" y="98" text-anchor="middle" font-family="Manrope,sans-serif" font-weight="800" font-size="10" fill="#fff">MY OWN</text></g>'
+        '<use href="#sf" x="96" y="14" width="28" height="28"/></svg>')
+SIT = [('job', DOOR, 'I have a job and want to build something alongside it.', 'I’d like leaving to become a choice I can afford.'),
+       ('self', CAL, 'I work for myself.', 'I’d like to earn from what I know without taking on another client.'),
+       ('both', POST, 'A bit of both.', 'I’m ready to build something that gives me more options.')]
+WHERE = """<!-- 4. where are you right now? Three illustrated choices; the pick goes with the sign-up (hidden field "situation"), and the button answers it -->
 <section class="sand where" id="where">
   <div class="wrap">
     <div class="head" data-r><h2>Where are you <em>right now?</em></h2></div>
     <div class="sit3" role="group" aria-label="Where are you right now?" data-r>
-""" + ''.join('      <button class="chip sit" type="button" data-v="%s" aria-pressed="false"><span class="sit-ck" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m5 10.5 3.4 3.4L15 6.8"/></svg></span><b>%s</b><span class="sit-s">%s</span></button>\n' % x for x in SIT) + """    </div>
+""" + ''.join('      <button class="chip sit" type="button" data-v="%s" aria-pressed="false"><span class="sit-art">%s</span><span class="sit-ck" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m5 10.5 3.4 3.4L15 6.8"/></svg></span><b>%s</b><span class="sit-s">%s</span></button>\n' % x for x in SIT) + """    </div>
     <div class="sitgo" data-r><button class="btn open" type="button" data-sitgo><span>I want the plan</span>""" + ARR + """</button><small>free · live on Zoom</small></div>
   </div>
 </section>
@@ -389,7 +400,7 @@ REVIEWS = """<!-- 10. see the work behind the numbers, then what readers and stu
     <h3 class="rv-h" data-r>From readers and students who’ve worked with Ana</h3>
     <div class="rgrid" data-r>
 """ + ''.join('      <figure class="rq"><blockquote>%s</blockquote><figcaption><img src="../img/av/%s.webp" alt="" width="80" height="80" loading="lazy"><span><b>%s</b><span class="stars" aria-label="5 stars">%s</span></span></figcaption></figure>\n' % (q, img, n, STAR * 5) for img, n, q in REVS) + """    </div>
-    """ + wins_html('../', head=False, skip=('jessica', 'suzanne', 'jenna'), jill=False, rose=False).replace('\n', '\n    ') + """
+    """ + wins_html('../', head=False, jill=False, rose=False).replace('\n', '\n    ') + """
     <p class="wall-src">Individual experiences from Ana’s earlier teaching and challenge. Results vary.</p>
   </div>
 </section>
