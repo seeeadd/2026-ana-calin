@@ -38,6 +38,9 @@ or closed, the VIP deadline.
    variable only reaches the site on the next deployment.
 3. The survey, the exit numbers and the sales go to a Google Sheet: set it up with `tools/survey-sheet.gs` (the steps are at
    its top), then add `SURVEY_SHEET_URL` and `SURVEY_SHEET_KEY`.
+   The survey and the exit number also go to Kit with the existing `KIT_API_KEY`, on subscribers already in Kit: one
+   custom field per answer ("Exit Plan: ..."), "Exit Plan: survey note" with all seven in one line, and the tags
+   `ep_survey_done` / `ep_exit_number`. Nothing to set up; the fields and tags make themselves on the first answer.
 4. After a payment, `api/stripe-webhook.js` tags the buyer in Kit and adds a row to the sheet. Variables: `STRIPE_SECRET_KEY`
    (restricted, read access to Events and Checkout Sessions), and the Kit tag ids `KIT_TAG_VIP` (ep_vip), `KIT_TAG_LAB_FULL`
    (ep_lab_full) and `KIT_TAG_LAB_2PAY` (ep_lab_2pay). Every buyer also gets `KIT_TAG_ID` (ep_registered). In
