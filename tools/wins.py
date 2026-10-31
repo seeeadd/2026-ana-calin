@@ -19,13 +19,13 @@ ROSE = ('I think your emails are some of the best of the ones I receive. Very fo
         'I’m not interested in fluffy “you can do it” type of advice, which is why I read yours.')
 
 
-def html(prefix='../', head=True):
+def html(prefix='../', head=True, skip=(), jill=True, rose=True):
     cards = []
-    cards.append('<figure class="aw-c aw-note"><span class="aw-r">$3K+ in a month</span><div class="aw-n"><div class="aw-hd"><span class="aw-av">JH</span><span><b>Jill Hart | World Changer</b><small>Substack note</small></span></div>'
+    if jill: cards.append('<figure class="aw-c aw-note"><span class="aw-r">$3K+ in a month</span><div class="aw-n"><div class="aw-hd"><span class="aw-av">JH</span><span><b>Jill Hart | World Changer</b><small>Substack note</small></span></div>'
                  '<blockquote><span class="aw-at">' + JILL[:9] + '</span>' + JILL[9:] + '</blockquote></div><figcaption>Jill Hart</figcaption></figure>')
-    for i, (f, r, n, alt, h) in enumerate(WINS):
+    for i, (f, r, n, alt, h) in enumerate([w for w in WINS if w[0] not in skip]):
         cards.append('<figure class="aw-c"><span class="aw-r">%s</span><img src="%simg/wins/%s.webp" alt="%s" width="900" height="%d" loading="lazy"><figcaption>%s</figcaption></figure>' % (r, prefix, f, alt, h, n))
-        if i == 3:
+        if i == 3 and rose:
             cards.append('<figure class="aw-c aw-dm"><span class="aw-r">A paid subscriber</span><div class="aw-n"><div class="aw-hd"><span class="aw-av">R</span><span><b>Rose</b><small>Paid subscriber · a message to Ana</small></span></div>'
                          '<blockquote>' + ROSE + '</blockquote></div><figcaption>Rose</figcaption></figure>')
     top = ('<div class="aw-h"><b>From my students and readers.</b> Real posts and messages, word for word.</div>\n' if head else '')

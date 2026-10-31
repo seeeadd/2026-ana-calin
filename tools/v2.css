@@ -233,3 +233,137 @@
   .cplan .chips{flex-wrap:wrap;overflow:visible;margin:0;padding:0}
   .rtime{text-wrap:balance}
 }
+
+/* ================= Oct 31, third copy version: the new sections ================= */
+/* the form: the compact registration copy */
+.tk-k{margin:0 0 6px;font-weight:800;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--pink)}
+.tk-s{margin:5px 0 0;font-size:13.5px;line-height:1.4;color:var(--ink2)}
+.htk .tk-s{font-size:14.5px}
+.tkt form .fsub{display:none}
+.tkt form .fmeta{margin-top:10px;font-weight:700;font-size:11.5px;color:var(--ink2);text-align:center}
+.dlg .fsub{text-align:center;margin:-4px 0 18px;font-size:16px;line-height:1.45;color:var(--ink2)}
+.dlg .fmeta{text-align:center;margin-top:12px;font-weight:700;font-size:13.5px;color:var(--ink2)}
+.fb-bar .btn.sm{margin-left:auto}
+
+/* 2. the opening, after the hero */
+.intro{padding:92px 0 88px}
+.igrid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.9fr);gap:56px;align-items:start}
+.iq{font-size:clamp(32px,3.2vw,46px);line-height:1.08;margin:0 0 24px}
+.ilead{font-family:var(--serif);font-size:clamp(22px,1.9vw,27px);line-height:1.3;color:var(--ink);margin-bottom:6px}
+.ilead b{font-weight:400;background:var(--sun);padding:0 .1em}
+.itx > p:not(.ilead):not(.partner):not(.iwhen){font-size:17.5px;line-height:1.62;color:var(--ink2);margin-top:12px}
+.iwhen{margin-top:20px;font-weight:800;font-size:16px}
+.igo{margin-top:16px}
+.intro .cnotes{margin-top:30px}
+.jill{background:var(--sand);border:1.6px solid var(--ink);border-radius:24px;padding:28px 26px 26px;box-shadow:7px 8px 0 var(--sun),7px 8px 0 1.6px var(--ink)}
+.jill h3{font-size:clamp(30px,2.8vw,40px);line-height:1.04;margin-bottom:18px}
+.jill h3 .l{display:block}
+.jq{margin:0 0 16px;background:#fff;border-radius:14px;padding:14px 16px;border:1px solid rgba(26,20,18,.12)}
+.jq-hd{display:flex;align-items:center;gap:10px;margin-bottom:8px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+.jq-av{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;flex:none;background:#FFB8D9;font-weight:800;font-size:13px}
+.jq-hd b{display:block;font-size:14px;line-height:1.25}
+.jq-hd small{display:block;font-size:12px;color:#8a8a8a}
+.jq blockquote{font-family:var(--serif);font-size:24px;line-height:1.25;quotes:none}
+.jq figcaption{margin-top:8px;font-weight:700;font-size:13px;color:var(--ink3)}
+.jill p{font-size:15.5px;line-height:1.55;color:var(--ink2)}
+.jill p + p{margin-top:8px}
+
+/* 3. the days: bold leads, a second paragraph, three wins from the last challenge */
+.dtext li b{color:var(--ink)}
+.dtext p.body + p.body{margin-top:10px}
+.dtext p.body.after{margin-top:18px}
+.trio{margin-top:100px;text-align:center}
+.trio-h{font-size:clamp(30px,3vw,44px);line-height:1.08}
+.trio-h .l{display:block}
+.trio-s{margin-top:10px;font-size:17px;color:var(--ink2)}
+.trio-g{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:32px;text-align:left;align-items:start}
+.trc{margin:0;background:#fff;border:1.6px solid var(--ink);border-radius:18px;padding:12px;box-shadow:6px 6px 0 var(--sun),6px 6px 0 1.6px var(--ink)}
+.trc img{display:block;width:100%;height:auto;border-radius:10px;border:1px solid rgba(26,20,18,.08)}
+.trc figcaption{padding:12px 4px 2px}
+.trc b{display:block;font-weight:800;font-size:16px}
+.trc small{display:block;font-size:13px;color:var(--ink3);margin-top:2px}
+.trc span{display:block;margin-top:8px;font-size:15px;line-height:1.5;color:var(--ink2)}
+.trio-n{margin-top:18px;font-size:13px;color:var(--ink3)}
+
+/* 4. where are you right now */
+.where{padding:100px 0}
+.sit3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;max-width:1000px;margin:36px auto 0}
+.chip.sit{position:relative;height:auto;white-space:normal;text-align:left;display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:20px 20px 22px;border-radius:20px;border:1.6px solid var(--ink);background:#fff;color:var(--ink);font:inherit;transition:transform .2s var(--ease),box-shadow .2s,background .2s}
+.chip.sit b{font-family:var(--serif);font-weight:400;font-size:23px;line-height:1.15;padding-right:30px}
+.chip.sit .sit-s{font-size:15px;line-height:1.45;color:var(--ink2);font-weight:500}
+.sit-ck{position:absolute;right:16px;top:16px;width:28px;height:28px;border-radius:50%;border:1.6px solid var(--ink);display:grid;place-items:center;background:#fff;transition:background .2s,transform .3s var(--ease)}
+.sit-ck svg{width:15px;height:15px;stroke:var(--ink);stroke-width:2.8;fill:none;stroke-linecap:round;stroke-linejoin:round;opacity:0;transition:opacity .2s}
+.chip.sit:hover{transform:translateY(-2px)}
+.chip.sit[aria-pressed=true]{background:var(--ysoft);color:var(--ink);box-shadow:6px 6px 0 var(--ink)}
+.chip.sit[aria-pressed=true] .sit-ck{background:var(--sun);transform:rotate(-8deg) scale(1.06)}
+.chip.sit[aria-pressed=true] .sit-ck svg{opacity:1}
+.sitgo{text-align:center;margin-top:30px}
+.sitgo small,.fitgo small{display:block;margin-top:8px;font-weight:600;font-size:13px;color:var(--ink3)}
+
+/* 5. the host, 6. a life left to enjoy it */
+.hst-pic figure.sq img{aspect-ratio:1}
+.hst-tx p.hpl{font-family:var(--serif);font-size:clamp(23px,2vw,28px);line-height:1.25;color:var(--ink);margin-top:18px}
+.life{padding:110px 0}
+.lifeg{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:64px;align-items:center}
+.life-pic{position:relative;padding-bottom:22px}
+.life-pic figure{margin:0;background:#fff;padding:14px;border:2px solid var(--ink);box-shadow:12px 12px 0 var(--sun),12px 12px 0 2px var(--ink);transform:rotate(-2deg)}
+.life-pic img{display:block;width:100%;height:auto;aspect-ratio:1000/671;object-fit:cover}
+.life-clk{position:absolute;right:-14px;bottom:0;display:flex;align-items:center;gap:10px;background:#fff;border:1.6px solid var(--ink);border-radius:999px;padding:8px 18px 8px 8px;box-shadow:0 10px 20px -12px rgba(0,0,0,.4);transform:rotate(3deg)}
+.life-clk svg{width:34px;height:34px}
+.life-clk b{font-family:var(--serif);font-weight:400;font-size:20px;white-space:nowrap}
+.life h2{font-size:clamp(34px,3.4vw,50px);line-height:1.04;margin-bottom:18px}
+.life h2 .l{display:block}
+.life-tx p{font-size:17.5px;line-height:1.62;color:var(--ink2);margin-top:12px}
+.life .igo{margin-top:24px}
+
+/* 7. bring the part you're stuck on */
+.bring{padding:110px 0}
+.bringg{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:56px;align-items:start;max-width:1000px;margin:0 auto}
+.bring h2{font-size:clamp(40px,4.2vw,62px);line-height:1;margin:0}
+.bring h2 .l{display:block}
+.bring-tx p{font-size:18px;line-height:1.65;color:var(--ink2)}
+.bring-tx p + p{margin-top:14px}
+.bring-tx .bring-that{font-family:var(--serif);font-style:italic;font-size:36px;line-height:1.1;color:var(--pink)}
+
+/* 8. the gift, 9. the fit check */
+.gtx .gline{font-family:var(--serif);font-size:24px;line-height:1.25;color:var(--ink);margin-top:14px}
+.fitgo{text-align:center;margin-top:30px}
+.fitgo.in{animation:fitin .45s var(--ease)}
+@keyframes fitin{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* 10. see the work, 11. the draw, 12. questions, 13. the ask, the final */
+.revs .head .hp{max-width:640px;margin:12px auto 0;font-size:17.5px;line-height:1.6;color:var(--ink2)}
+.rv-h{text-align:center;margin-top:60px;font-size:clamp(26px,2.4vw,34px)}
+.revs .rgrid{margin-top:28px}
+.stay .lead{font-size:19px;font-weight:700;color:var(--ink);margin-bottom:8px}
+.faq p.a + p.a{margin-top:-12px}
+.recap.ask{text-align:center}
+.recap.ask h2{position:relative;margin:0 0 18px;font-size:clamp(38px,4vw,58px);line-height:1.02}
+.recap.ask h2 .l{display:block}
+.recap.ask p{position:relative;max-width:620px;margin:10px auto 0;font-size:18px;line-height:1.6;color:var(--ink2)}
+.recap.ask .ask-big{font-family:var(--serif);font-size:clamp(23px,2.1vw,28px);line-height:1.3;color:var(--ink)}
+.askt{position:relative;display:inline-flex;flex-direction:column;gap:4px;margin:26px auto 0;padding:14px 24px;border-radius:16px;background:#fff;border:1.6px solid var(--ink)}
+.askt b{font-weight:800;font-size:17px}
+.askt span{font-size:14px;color:var(--ink3);font-weight:600}
+.recap.ask .go{margin-top:22px}
+.claim .line{margin:14px 0 0}
+.ftimes{margin:20px 0 26px;font-size:15px;line-height:1.6;color:var(--ink2)}
+.ftimes b{display:block;font-size:18px;color:var(--ink)}
+.ftimes span{display:block}
+
+@media (max-width:1060px){
+  .igrid,.lifeg,.bringg{grid-template-columns:1fr;gap:36px}
+  .life-pic{max-width:520px}
+}
+@media (max-width:860px){
+  .sit3,.trio-g{grid-template-columns:1fr}
+  .trio-g{max-width:460px;margin-left:auto;margin-right:auto}
+}
+@media (max-width:640px){
+  .intro,.where,.life,.bring{padding:72px 0}
+  .iq{font-size:30px}
+  .jill{padding:22px 18px}
+  .chip.sit b{font-size:21px}
+  .bring-tx .bring-that{font-size:30px}
+  .life-clk{right:-4px}
+}
