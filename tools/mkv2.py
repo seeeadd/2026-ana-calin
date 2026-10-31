@@ -233,18 +233,30 @@ for old, (dd, dname, h3, body, lis, after, out, nxt) in zip(dtexts, DAYS):
                                           ('          <p class="body after">%s</p>\n' % after) if after else '', out[0], out[1],
                                           ('          <p class="next">%s</p>\n' % nxt) if nxt else '')
     R(old, new)
-# the results after the days: Jill (her own note, by name) and two results Ana publishes on monetisesubstack.com/offer-clarity
-# ("Real results from my students", unnamed there). [Ana confirms the two before launch, and whether the students can be named.]
-RESULTS = [('$3,000+', 'in a month, from about 300 readers', JILL_Q, 'Jill Hart, on Substack'),
-           ('$3,200', 'from 547 subscribers', 'First launch ever. Three emails, launched the same week.', 'One of Ana’s students'),
-           ('$2,400', 'from 198 subscribers', 'She almost didn’t start because she thought 198 subscribers wasn’t enough. It was.', 'One of Ana’s students')]
+# the results after the days: the three numbers from the copy ($3,000+, $3,200, $2,400), all from Ana's past challenge
+# (Sean, 2026-10-31). Jill's is her own Substack note, rebuilt word for word. The $3,200 and $2,400 have no screenshots
+# yet (the images on Ana's Offer Clarity page are drawn mockups), so they are plain quotes until Ana sends real ones.
+from wins import JILL
+ICONS = ('<span class="rn-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z"/></svg>'
+         '<svg viewBox="0 0 24 24"><path d="M5 5h14v10H9l-4 4Z"/></svg><svg viewBox="0 0 24 24"><path d="M7 7h10l-3-3M17 17H7l3 3M17 7v4M7 17v-4"/></svg>'
+         '<svg viewBox="0 0 24 24"><path d="M12 15V4M8 8l4-4 4 4M5 13v6h14v-6"/></svg></span>')
+RAW = [('$3,000+', 'in a month, from about 300 readers',
+        '<div class="rn"><div class="rn-hd"><span class="rn-av">JH</span><span><b>Jill Hart | World Changer</b><small>Substack note</small></span></div><p><span class="rn-at">Ana Calin</span> ' + JILL[10:] + '</p>' + ICONS + '</div>',
+        'Jill Hart, in Ana’s past challenge'),
+       ('$3,200', 'from 547 subscribers',
+        '<div class="trq"><p>First launch ever. Three emails, launched the same week.</p></div>',
+        'A student in Ana’s past challenge'),
+       ('$2,400', 'from 198 subscribers',
+        '<div class="trq"><p>She almost didn’t start because she thought 198 subscribers wasn’t enough. It was.</p></div>',
+        'A student in Ana’s past challenge')]
 R(between('    <div class="after" data-r>\n      <p>Come to all three.', '  </div>\n</section>\n\n<!-- 4. is this for you? -->'),
   """    <!-- what a first offer can do with a small list: three results -->
     <div class="trio" data-r>
-      <h3 class="trio-h"><span class="l">Small lists.</span> <span class="l"><em>Real sales.</em></span></h3>
+      <h3 class="trio-h"><span class="l">Small lists.</span> <span class="l"><em>Real results.</em></span></h3>
+      <p class="trio-k">From people in Ana’s past challenge</p>
       <div class="trio-g">
-""" + ''.join('        <figure class="trn%s"><b class="trn-n">%s</b><span class="trn-f">%s</span><blockquote>%s</blockquote><figcaption>%s</figcaption></figure>\n' % (' jill' if k == 0 else '', n, f, q, c) for k, (n, f, q, c) in enumerate(RESULTS)) + """      </div>
-      <p class="trio-n">Individual experiences from Ana’s earlier teaching and challenge. Results vary.</p>
+""" + ''.join('        <figure class="trr"><b class="trr-n">%s</b><span class="trr-f">%s</span>%s<figcaption>%s</figcaption></figure>\n' % x for x in RAW) + """      </div>
+      <p class="trio-n">Individual experiences from Ana’s past challenge. Results vary.</p>
     </div>
 
     <div class="after" data-r>

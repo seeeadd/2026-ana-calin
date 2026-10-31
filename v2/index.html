@@ -1205,6 +1205,27 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
   .life-clk{right:-4px}
 }
 
+/* the results after the days: raw screenshots, a small result tag on each */
+.trr{margin:0;background:#fff;border:1.5px solid var(--ink);border-radius:16px;padding:12px 12px 10px;box-shadow:0 16px 28px -22px rgba(70,45,25,.6);align-self:start}
+.trr:nth-child(1){transform:rotate(-1deg)}.trr:nth-child(2){transform:rotate(.8deg)}.trr:nth-child(3){transform:rotate(-.5deg)}
+.trio-k{display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:6px 14px;border-radius:999px;background:var(--sun);border:1.5px solid var(--ink);font-weight:800;font-size:14px}
+.trio-k:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--pink)}
+.trr-n{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(52px,4.8vw,70px);line-height:.92;letter-spacing:-.02em;padding:6px 4px 0}
+.trr-f{display:block;margin:6px 4px 12px;font-weight:800;font-size:15px;line-height:1.3}
+.trq{border:1px solid rgba(26,20,18,.1);border-radius:10px;padding:14px 16px;background:#FAF7F2}
+.trq p{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;font-size:15.5px;line-height:1.5;color:#1c1c1c}
+.trr img{display:block;width:100%;height:auto;border-radius:10px;border:1px solid rgba(26,20,18,.1)}
+.trr figcaption{margin:10px 4px 0;font-weight:700;font-size:12.5px;color:var(--ink3)}
+.rn{border:1px solid rgba(26,20,18,.1);border-radius:10px;padding:14px 16px 10px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;color:#1c1c1c}
+.rn-hd{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.rn-av{width:38px;height:38px;border-radius:50%;background:#FFB8D9;display:grid;place-items:center;font-weight:800;font-size:13px;flex:none}
+.rn-hd b{display:block;font-size:14.5px;line-height:1.25}
+.rn-hd small{display:block;font-size:12px;color:#8a8a8a}
+.rn p{font-size:14.5px;line-height:1.5}
+.rn-at{color:#2f6fd6}
+.rn-ic{display:flex;gap:22px;margin-top:10px;color:#777}
+.rn-ic svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
 </style>
 <link rel="stylesheet" href="../assets/wins.css">
 </head>
@@ -1511,13 +1532,14 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
 
     <!-- what a first offer can do with a small list: three results -->
     <div class="trio" data-r>
-      <h3 class="trio-h"><span class="l">Small lists.</span> <span class="l"><em>Real sales.</em></span></h3>
+      <h3 class="trio-h"><span class="l">Small lists.</span> <span class="l"><em>Real results.</em></span></h3>
+      <p class="trio-k">From people in Ana’s past challenge</p>
       <div class="trio-g">
-        <figure class="trn jill"><b class="trn-n">$3,000+</b><span class="trn-f">in a month, from about 300 readers</span><blockquote>“I was able to monetize a 300ish audience and make over $3K in a month.”</blockquote><figcaption>Jill Hart, on Substack</figcaption></figure>
-        <figure class="trn"><b class="trn-n">$3,200</b><span class="trn-f">from 547 subscribers</span><blockquote>First launch ever. Three emails, launched the same week.</blockquote><figcaption>One of Ana’s students</figcaption></figure>
-        <figure class="trn"><b class="trn-n">$2,400</b><span class="trn-f">from 198 subscribers</span><blockquote>She almost didn’t start because she thought 198 subscribers wasn’t enough. It was.</blockquote><figcaption>One of Ana’s students</figcaption></figure>
+        <figure class="trr"><b class="trr-n">$3,000+</b><span class="trr-f">in a month, from about 300 readers</span><div class="rn"><div class="rn-hd"><span class="rn-av">JH</span><span><b>Jill Hart | World Changer</b><small>Substack note</small></span></div><p><span class="rn-at">Ana Calin</span> When I first started here she really helped me sort out what was important and where to focus - because of her advise I was able to monetize a 300ish audience and make over $3K in a month. And she helped me connect the idea of Substack &amp; Skool together.</p><span class="rn-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z"/></svg><svg viewBox="0 0 24 24"><path d="M5 5h14v10H9l-4 4Z"/></svg><svg viewBox="0 0 24 24"><path d="M7 7h10l-3-3M17 17H7l3 3M17 7v4M7 17v-4"/></svg><svg viewBox="0 0 24 24"><path d="M12 15V4M8 8l4-4 4 4M5 13v6h14v-6"/></svg></span></div><figcaption>Jill Hart, in Ana’s past challenge</figcaption></figure>
+        <figure class="trr"><b class="trr-n">$3,200</b><span class="trr-f">from 547 subscribers</span><div class="trq"><p>First launch ever. Three emails, launched the same week.</p></div><figcaption>A student in Ana’s past challenge</figcaption></figure>
+        <figure class="trr"><b class="trr-n">$2,400</b><span class="trr-f">from 198 subscribers</span><div class="trq"><p>She almost didn’t start because she thought 198 subscribers wasn’t enough. It was.</p></div><figcaption>A student in Ana’s past challenge</figcaption></figure>
       </div>
-      <p class="trio-n">Individual experiences from Ana’s earlier teaching and challenge. Results vary.</p>
+      <p class="trio-n">Individual experiences from Ana’s past challenge. Results vary.</p>
     </div>
 
     <div class="after" data-r>

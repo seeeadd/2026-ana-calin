@@ -74,14 +74,14 @@
     a.target = '_blank'; a.rel = 'noopener';
   });
 
-  /* getting ready: the three steps at the top fill the progress bar (saved in this browser only). The seat counts as the
-     first 40%; WhatsApp, the calendar and the 7 quick questions are 20% each. The smaller things below tick their own cards. */
-  var STEPS = C.STEPS || ['wa', 'cal', 'survey'], ALL = STEPS.concat(['mail', 'sheet', 'hi']), st = {}, ST_KEY = 'ana_ready_' + (C.PAGE || 'reg');
+  /* getting ready: the four steps at the top fill the progress bar (saved in this browser only). The seat counts as the
+     first 40%; WhatsApp, the inbox, the calendar and the 7 quick questions are 15% each. The smaller things below tick their own cards. */
+  var STEPS = C.STEPS || ['wa', 'mail', 'cal', 'survey'], ALL = STEPS.concat(['sheet', 'hi']), st = {}, ST_KEY = 'ana_ready_' + (C.PAGE || 'reg');
   try { st = JSON.parse(localStorage.getItem(ST_KEY) || '{}') } catch (e) {}
   var ticket = document.querySelector('.cxa, .tkt, .pcard'), wasReady = null;
   var CAPS = C.PAGE === 'vip'
-    ? ['Your VIP seat is saved. 3 quick steps to go.', '2 steps to go.', 'One step to go: your exit number.', 'All set. See you Tue Nov 17.']
-    : ['Your seat is saved. 3 quick steps to go.', '2 steps to go.', 'One step to go: your exit number.', 'All set. See you Tue Nov 17.'];
+    ? ['Your VIP seat is saved. 4 quick steps to go.', '3 steps to go.', '2 steps to go.', 'One step to go: your exit number.', 'All set. See you Tue Nov 17.']
+    : ['Your seat is saved. 4 quick steps to go.', '3 steps to go.', '2 steps to go.', 'One step to go: your exit number.', 'All set. See you Tue Nov 17.'];
   function renderReady(){
     var n = 0;
     ALL.forEach(function(s){
