@@ -1226,6 +1226,25 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
 .rn-ic{display:flex;gap:22px;margin-top:10px;color:#777}
 .rn-ic svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 
+/* the ticket asks for attention now and then (Sean, 2026-10-31): a small sway every 7 s, the next empty field
+   glows (first name, then email once the name is in), then the button once both are filled. All of it stops while
+   someone is typing in the ticket, and none of it runs with reduced motion. */
+.tk-h{font-family:Manrope,sans-serif;font-weight:800;font-size:31px;line-height:1;letter-spacing:-.035em;text-wrap:balance;margin-bottom:8px}
+.tk-h .tk-and{font-family:var(--serif);font-weight:400;font-size:20px;letter-spacing:0;margin-top:7px}
+.v2rail .tk-h{font-size:28px}
+.tkshell{transform-origin:50% 0}
+@keyframes tksway{0%,16%,100%{transform:none}3%{transform:rotate(-1.3deg)}6.5%{transform:rotate(1.1deg)}10%{transform:rotate(-.6deg)}13%{transform:rotate(.25deg)}}
+@keyframes fglow{0%{border-color:var(--pink);background-color:#FFF3F9;box-shadow:0 0 0 0 rgba(247,37,133,.6),0 0 22px rgba(247,37,133,.4)}50%{border-color:var(--pink);background-color:#FFF3F9;box-shadow:0 0 0 10px rgba(247,37,133,0),0 0 22px rgba(247,37,133,.18)}85%,100%{border-color:#cbb9a2;background-color:#fff;box-shadow:0 0 0 0 rgba(247,37,133,0),0 0 0 rgba(247,37,133,0)}}
+.tkt .fmeta{text-wrap:balance}
+@keyframes bglow{0%{outline:3px solid rgba(247,37,133,.55);outline-offset:0}65%,100%{outline:3px solid rgba(247,37,133,0);outline-offset:10px}}
+@media (prefers-reduced-motion:no-preference){
+  .tkshell{animation:tksway 7s ease-in-out 2.5s infinite}
+  .tkshell:focus-within,.tkshell:has(input:not(:placeholder-shown)){animation:none}
+  .tkt form .field input[name=first_name]:placeholder-shown:not(:focus){animation:fglow 2.6s ease-out 1.2s infinite}
+  .tkt form:has(input[name=first_name]:not(:placeholder-shown)) .field input[name=email_address]:placeholder-shown:not(:focus){animation:fglow 2.6s ease-out .2s infinite}
+  .tkt form:has(input[name=first_name]:not(:placeholder-shown)):has(input[name=email_address]:valid) .btn.big{animation:bglow 2.2s ease-out .3s infinite}
+}
+
 </style>
 <link rel="stylesheet" href="../assets/wins.css">
 </head>
