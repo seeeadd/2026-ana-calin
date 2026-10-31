@@ -53,15 +53,18 @@ tstrip = tstrip.replace('<div class="stat"><b>0</b><small>sales calls</small></d
 assert '16,907' in tstrip
 
 # the sign-up card: the hero has one (the form starts there, on the first screen) and the frozen column has a copy.
-# Kept minimal: the dates line, the heading, the copy's one sentence (hero only), the time, then name, email and the button.
-CLOCK = '<svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.4" fill="#FFD400" stroke="#1A1412" stroke-width="1.6"/><path d="M8 4.6V8l2.3 1.5" fill="none" stroke="#1A1412" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>'
-def ticket(tid, slot, sub):
+# Minimal: the testimonial faces and count on top (the live feed swaps in the real count and the latest names), the
+# heading, one line with the dates, then first name, email and the button.
+def ticket(tid, slot, hero):
+    pr = proof if hero else proof.replace(' id="proofTxt"', '')
     return ("""<div class="tkshell">
       <div class="tkt" id="%s">
-        <div class="tk-top"><img src="../img/mark.png" alt="" width="34" height="34"><span><small>Free · Nov 17 to 19 · Live on Zoom</small><b>The Exit Plan</b></span></div>
+        <div class="tk-head">
+          """ + pr.strip() + (('\n          ' + just) if hero else '') + """
+        </div>
         <div class="tk-body">
           <h3 class="tk-h"><span class="l">Let’s put what you</span> <span class="l">know to work.</span></h3>
-          """ + ('<p class="tk-sub">Three days with me to find an offer idea, put a price on it, and write the email that asks people to buy.</p>\n          ' if sub else '') + """<p class="tk-when">""" + CLOCK + """<span><b>12:00 pm New York, each day</b> <span>About 90 minutes per session</span></span></p>
+          <p class="tk-meta"><span>Free, live on Zoom</span> <i>·</i> <span>Nov 17 to 19</span> <i>·</i> <span>12:00 pm New York</span></p>
           <div class="rslot" id="%s"></div>
         </div>
       </div>
@@ -127,7 +130,6 @@ new_hero = """<section class="hero" id="hero">
       """ + h1 + """
       <p class="hsub2" id="hk">You’ve spent years getting good at something. Maybe you write about it, and people thank you for helping them. <em>But what could you sell, and could it earn enough to give you more choice about work?</em></p>
       <div class="htk">
-        """ + proof + """        """ + just + """
         """ + ticket('hcard', 'hslot', True) + """
       </div>
     </div>
@@ -136,11 +138,10 @@ new_hero = """<section class="hero" id="hero">
 
 """
 R(hero, new_hero)
-proof_t = proof.replace(' id="proofTxt"', '')
 rail = """<!-- the frozen column: the seat ticket the form moves into once the hero's ticket has scrolled away (1280 px and wider) -->
   <aside class="v2rail" id="v2rail" aria-label="Save your seat">
     <div class="tksticky">
-      """ + proof_t + """      """ + ticket('rcard', 'rslot', False) + """
+      """ + ticket('rcard', 'rslot', False) + """
     </div>
   </aside>
 """
@@ -400,6 +401,12 @@ R('<button class="btn big send" type="submit">save my seat (free)<svg><use href=
   '<button class="btn big send" type="submit">I’m in, Ana (it’s free)<svg><use href="#arr"/></svg></button>')
 R("<p class=\"note\">You'll get my emails about the workshop and my program. Unsubscribe anytime. No hard feelings, no guilt email.</p>",
   "<p class=\"note\">You’ll get my emails, including workshop reminders. Unsubscribe anytime. No hard feelings.</p>")
+
+# ---------- the form: a visible label over each field, not just the placeholder ----------
+R('<div class="field"><input type="text" name="first_name" placeholder="What your readers call you" autocomplete="given-name" aria-label="First name" required>',
+  '<div class="field"><label class="flbl" for="jFirst">First name</label><input type="text" id="jFirst" name="first_name" placeholder="What your readers call you" autocomplete="given-name" required>')
+R('<div class="field"><input type="email" name="email_address" placeholder="The email you actually check" autocomplete="email" inputmode="email" aria-label="Email" required>',
+  '<div class="field"><label class="flbl" for="jEmail">Email</label><input type="email" id="jEmail" name="email_address" placeholder="The email you actually check" autocomplete="email" inputmode="email" required>')
 
 # ---------- script: the form lives in the hero ticket, then the frozen one; buttons focus it instead of opening the popup ----------
 R("var mbar = document.getElementById('mbar'), hb = document.getElementById('heroBtn')", "var mbar = document.getElementById('mbar'), hb = document.getElementById('hcard')")

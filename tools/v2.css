@@ -4,35 +4,39 @@
    card with the form stays frozen on the right (1280 px and wider), with the testimonial bar on top of it. */
 
 /* ---------- the sign-up card (hero and frozen column): kept minimal ---------- */
-.tkt{position:relative;background:#FFF8EE;border:1.6px solid var(--ink);border-radius:18px;overflow:hidden;box-shadow:7px 8px 0 var(--sun),7px 8px 0 1.6px var(--ink)}
+.tkt{position:relative;background:#FFF8EE;border:1.6px solid var(--ink);border-radius:20px;box-shadow:7px 8px 0 var(--sun),7px 8px 0 1.6px var(--ink);padding:16px 16px 16px}
 .tkt.pulse{animation:rpulse .9s var(--ease)}
 @keyframes rpulse{0%{transform:none}25%{transform:translateY(-6px) rotate(-.8deg)}60%{transform:translateY(2px)}100%{transform:none}}
-.tk-top{display:flex;align-items:center;gap:9px;background:var(--ink);color:var(--cream);padding:9px 12px 9px 10px}
-.tk-top img{width:28px;height:28px;flex:none}
-.tk-top span{display:flex;flex-direction:column;gap:3px;min-width:0}
-.tk-top small{font-weight:800;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--sun);line-height:1.15}
-.tk-top b{font-family:var(--serif);font-weight:400;font-size:19px;line-height:1}
-.tk-body{padding:14px 14px 15px}
-.tk-h{font-size:23px;line-height:1.02;letter-spacing:-.01em;margin:0 0 9px}
+.tk-head{padding-bottom:13px;margin-bottom:14px;border-bottom:1.5px solid rgba(26,20,18,.1)}
+.tkt .proof{display:flex;flex-wrap:wrap;align-items:center;gap:6px 9px;margin:0;padding:0;border:0;font-size:12.5px;line-height:1.25;color:var(--ink2)}
+.tkt .proof .faces{flex:none}
+.tkt .proof .faces img{width:28px;height:28px;margin-left:-9px;border-width:2px}
+.tkt .proof .faces img:first-child{margin-left:0}
+.tkt .proof .faces img:nth-child(n+5){display:none}
+.tkt .proof .stars{margin-right:4px}
+.tkt .proof .stars svg{width:12px;height:12px}
+.tkt .just{margin:10px 0 0;padding:0;background:none;font-size:12.5px;gap:8px}
+.tk-h{font-size:23px;line-height:1.02;letter-spacing:-.01em;margin:0 0 6px}
 .tk-h .l{display:block;white-space:nowrap}
-.tk-sub{font-size:13.5px;line-height:1.45;color:var(--ink2);margin:0 0 10px;text-wrap:pretty}
-.tk-when{display:flex;align-items:flex-start;gap:7px;margin:0;font-size:12px;line-height:1.4;color:var(--ink3)}
-.tk-when svg{width:15px;height:15px;flex:none;margin-top:1px}
-.tk-when b{display:block;color:var(--ink);font-weight:800}
-.tk-when > span > span{white-space:nowrap}
-.tkt form{margin-top:13px}
+.tk-meta{margin:0;font-size:12px;line-height:1.45;font-weight:600;color:var(--ink3)}
+.tk-meta i{font-style:normal;margin:0 2px;opacity:.5}
+.tk-meta span{white-space:nowrap}
+.v2rail .tkt .proof .faces img{width:26px;height:26px;margin-left:-8px}
+.v2rail .tkt .proof .faces img:first-child{margin-left:0}
+.v2rail .tkt .proof .faces img:nth-child(n+4){display:none}
+.v2rail .tkt .proof .stars{margin-right:2px}
+.v2rail .tkt .proof .stars svg{width:11px;height:11px}
+.v2rail .tkt .proof{gap:6px 7px;font-size:12px}
+.tkt form{margin-top:14px}
 .tkt form .ey,.tkt form .bye,.tkt form h3{display:none}
-.tkt form .field{margin-bottom:7px}
+.tkt form .field{margin-bottom:9px}
+.flbl{display:block;margin:0 0 5px 2px;font-weight:700;font-size:13px;line-height:1.2;color:var(--ink)}
+.tkt .flbl{font-size:12.5px}
 .tkt form .field input{height:43px;border-radius:12px;font-size:14px;padding:0 13px}
 .tkt form .field .err{font-size:11.5px}
-.tkt form .btn.big{height:47px;font-size:15px;margin-top:2px;padding:0 14px}
+.tkt form .btn.big{height:47px;font-size:15px;margin-top:4px;padding:0 14px}
 .tkt form .note{margin-top:9px;font-size:10.5px;line-height:1.4;color:var(--ink3);text-align:left}
 .tkt form .note + .note{display:none}
-.htk .proof,.v2rail .proof{margin:0 0 12px;padding:6px 12px 6px 6px;gap:8px;background:#fff;border:1.5px solid var(--ink);border-radius:999px;font-size:11.5px;line-height:1.2;box-shadow:0 4px 0 var(--ink)}
-.htk .proof .faces img,.v2rail .proof .faces img{width:24px;height:24px;margin-left:-8px;border-width:1.5px}
-.htk .proof .faces img:first-child,.v2rail .proof .faces img:first-child{margin-left:0}
-.htk .proof .faces img:nth-child(n+4),.v2rail .proof .faces img:nth-child(n+4){display:none}
-.htk .proof .stars svg,.v2rail .proof .stars svg{width:10px;height:10px}
 
 /* ---------- the hero: the live page's columns, the headline and the card on the right; the booking card and a small drawing of the days under the video ---------- */
 .v2h .hright .hpill{margin-bottom:2px}
@@ -41,13 +45,11 @@
 .hsub2{font-family:var(--serif);font-size:min(4.25cqi,22.5px);line-height:1.28;color:var(--ink2);margin:14px 0 0;text-wrap:pretty}
 .hsub2 em{color:var(--pink)}
 .htk{margin-top:18px;max-width:420px}
-.htk .proof{display:inline-flex}
-.htk .just{margin:-6px 0 12px}
-.htk .tk-top b{font-size:20px}
-.htk .tk-body{padding:15px 18px 16px}
+.htk .tkt{padding:18px 20px 18px}
 .htk .tk-h{font-size:26px}
-.htk .tk-when{font-size:12.5px}
-.htk .tk-when b{display:inline;margin-right:6px}
+.htk .tk-meta{font-size:12.5px}
+.htk .tkt .proof{font-size:13px}
+.htk .tkt .proof .faces img{width:32px;height:32px}
 .htk .tkt form .field input{height:46px;font-size:15px;padding:0 15px}
 .htk .tkt form .btn.big{height:50px;font-size:16px}
 .htk .tkt form .note{font-size:11px}
