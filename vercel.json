@@ -20,6 +20,16 @@
       "source": "/vip-whatsapp/",
       "destination": "https://chat.whatsapp.com/JwtqO7BLaLR5n4SZkO0COd?mode=gi_t",
       "permanent": false
+    },
+    {
+      "source": "/v2",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/v2/",
+      "destination": "/",
+      "permanent": false
     }
   ]
 }

@@ -1,4 +1,5 @@
-"""Ana's registration page, layout trial: /v2/ (the live page at / is untouched).
+"""Ana's registration page: the live page at / (since Oct 31), also written to /v2/ for local checks.
+The page that was live before is kept at /v1/, and tools/v1-source.html is what this script builds from.
 
 The hero is the live page's own two columns: the video big on the left with the booking card and a small drawing of the three days under it, and on
 the right the headline and a seat ticket that holds the sign-up form. Once that ticket scrolls away, the form moves into
@@ -6,14 +7,14 @@ a slim copy of the ticket that stays frozen on the right of the page (desktop, 1
 popup's own form, moved between the two tickets and the popup, so the hidden fields, the situation chips and the Kit
 sending all work as they do on the live page.
 
-Copy: the revised registration copy (Oct 31, third version), with no em or en dashes. Built from index.html; run it again
-after the live page changes:
+Copy: the revised registration copy (Oct 31, third version), with no em or en dashes. Built from tools/v1-source.html
+(the old live page); run it again after any change to this script or v2.css:
     python3 mkv2.py /home/user/2026-ana-calin
 """
 import sys, os, re
 
 ROOT = sys.argv[1]
-s = open(os.path.join(ROOT, 'index.html')).read()
+s = open(os.path.join(ROOT, 'tools', 'v1-source.html')).read()
 
 
 def R(old, new, count=1):
@@ -586,3 +587,9 @@ i = s.index('</style>'); s = s[:i] + CSS + '\n' + s[i:]
 os.makedirs(os.path.join(ROOT, 'v2'), exist_ok=True)
 open(os.path.join(ROOT, 'v2', 'index.html'), 'w').write(s)
 print('wrote v2/index.html', len(s))
+# the live page at /: the same page one folder up, and open to search engines
+top = s.replace('<meta name="robots" content="noindex">\n', '', 1)
+top = top.replace('"../', '"').replace("'../", "'").replace('url(../', 'url(')
+assert '../' not in top, 'a parent-folder path is left in the live page'
+open(os.path.join(ROOT, 'index.html'), 'w').write(top)
+print('wrote index.html', len(top))
