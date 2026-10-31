@@ -47,8 +47,8 @@
 .v2h .hright .hpill{margin-bottom:2px}
 .v2h .hright h1,.v2h .hright h1.long{font-size:min(10.4cqi,62px);line-height:.99;margin:14px 0 0}
 .v2h .hright h1 .l{white-space:nowrap}
-.hsub2{font-family:var(--serif);font-size:min(4.25cqi,22.5px);line-height:1.28;color:var(--ink2);margin:14px 0 0;text-wrap:pretty}
-.hsub2 em{color:var(--pink)}
+.hsub2{font-family:var(--sans);font-size:min(3.4cqi,18px);line-height:1.55;color:var(--ink2);margin:16px 0 0;text-wrap:pretty}
+.hsub2 em{font-style:normal;font-weight:700;color:var(--pink)}
 .htk{margin-top:18px;max-width:420px}
 .htk .tkt{padding:18px 20px 18px}
 .htk .tk-h{font-size:26px}
@@ -64,7 +64,7 @@
 .hmap{position:relative;margin:14px 0 0}
 .hmap svg{display:block;width:100%;height:auto;overflow:visible}
 @media (max-width:1060px){
-  .hero .hsub2{order:3;font-size:clamp(20px,4.6vw,24px)}
+  .hero .hsub2{order:3;font-size:clamp(16.5px,4.2vw,18px)}
   .hero .htk{order:4;max-width:460px;width:100%;margin:20px auto 0}
   .hero .iph{order:5;margin-top:30px}
   .hero .hmap{order:6;margin:0 0 24px}
