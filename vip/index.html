@@ -1789,6 +1789,48 @@ mark.sk{color:inherit;padding:0 2px;margin:0 -2px;-webkit-box-decoration-break:c
 .anim .fitg .seat.two .you,.anim .fitg.in .seat.two .you{transition:none}
 .anim .lw .letter,.anim .lw.in .letter,.anim .lw .seal,.anim .lw.in .seal{transition:none}
 
+
+/* Nº 01 is the live VIP Q&A: a tag that says so, and the Q&A chat in its picture (questions come in, Ana answers them live) */
+.live-tag{display:inline-flex;align-items:center;gap:8px;margin:10px 0 2px;padding:6px 12px 6px 10px;border-radius:999px;background:#FFE3EE;color:#B0124F;font-weight:800;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase}
+.live-tag i{width:8px;height:8px;border-radius:50%;background:#E0263C;box-shadow:0 0 0 3px rgba(224,38,60,.18)}
+.qa{position:absolute;display:grid;grid-template-rows:auto 1fr auto;border-radius:2.2cqw;overflow:hidden;background:#fff;border:1px solid rgba(26,20,18,.1);
+  box-shadow:0 1px 2px rgba(60,40,20,.12),0 4cqw 7cqw -4cqw rgba(60,40,20,.55);font-family:var(--sans);color:var(--ink);transform:rotate(1.5deg);z-index:2}
+.qa-hd{display:flex;align-items:center;gap:1.4cqw;padding:1.7cqw 2cqw;background:var(--ink);color:#fff}
+.qa-hd b{font-size:2.3cqw;font-weight:800}
+.qa-hd small{margin-left:auto;font-size:1.6cqw;opacity:.65;white-space:nowrap}
+.qa-live{display:inline-flex;align-items:center;gap:.7cqw;padding:.4cqw 1cqw;border-radius:.7cqw;background:#E0263C;font-size:1.5cqw;font-weight:800;letter-spacing:.1em}
+.qa-live i{width:1cqw;height:1cqw;border-radius:50%;background:#fff}
+@media (prefers-reduced-motion:no-preference){.qa-live i{animation:qaBlink 1.6s ease-in-out infinite}}
+@keyframes qaBlink{50%{opacity:.25}}
+.qa-ls{display:grid;align-content:start;gap:1.6cqw;padding:2cqw 1.8cqw;background:#FBF7F1}
+.qa-q{display:grid;grid-template-columns:4.6cqw 1fr;gap:1.3cqw;align-items:start}
+.qa-av{width:4.6cqw;height:4.6cqw;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:800;font-size:2cqw}
+.qa-b{min-width:0;padding:1.2cqw 1.5cqw 1.3cqw;border-radius:0 1.6cqw 1.6cqw 1.6cqw;background:#fff;box-shadow:0 1px 2px rgba(60,40,20,.12)}
+.qa-n{display:flex;align-items:baseline;gap:1cqw}
+.qa-n b{font-size:1.75cqw;font-weight:800}
+.qa-n small{font-size:1.45cqw;color:var(--ink3)}
+.qa-b p{margin:.4cqw 0 0;font-size:2.15cqw;line-height:1.3;font-weight:600}
+.qa-st{position:relative;display:block;height:2.6cqw;margin-top:.8cqw}
+.qa-st>span{position:absolute;left:0;top:0;display:inline-flex;align-items:center;gap:.7cqw;white-space:nowrap;padding:.3cqw 1cqw;border-radius:99px;font-size:1.5cqw;font-weight:800;letter-spacing:.02em}
+.qa-st .a1{background:#FFE3EE;color:#B0124F}
+.qa-st .a1 i{width:.9cqw;height:.9cqw;border-radius:50%;background:var(--pink)}
+.qa-st .a2{background:#E4F5EA;color:#1E7A45}
+.qa-st .a2 svg{width:1.6cqw;height:1.6cqw}
+.qa-ft{display:flex;align-items:center;gap:1cqw;margin:1.2cqw;padding:1.1cqw 1.6cqw;border-radius:99px;border:1px solid rgba(26,20,18,.14);font-size:1.7cqw;color:var(--ink3)}
+.qa-ft span{flex:1}
+.qa-ft i{width:2.6cqw;height:2.6cqw;border-radius:50%;background:var(--sun) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 8h9M8.5 4.5 12 8l-3.5 3.5' fill='none' stroke='%231A1412' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/70% no-repeat;box-shadow:inset 0 0 0 1px var(--ink)}
+
+/* the chair: its card shows at once (it used to fade in while the chair moved, so nobody saw it), and no leftover offset */
+.anim .fitg[data-r]{opacity:1;transform:none;transition:none}
+.anim .fitg .seat.two .you,.anim .fitg.in .seat.two .you{transform:none}
+
+
+/* each section CTA has a quiet way out, worded for its section; it opens the same decline flow */
+.cx .cxn{font-size:14px;font-weight:600;color:var(--ink3);white-space:normal;text-align:left;padding:2px 6px;text-decoration-thickness:1px;text-decoration-color:rgba(26,20,18,.3)}
+.cx .cxn:hover{color:var(--ink);text-decoration-color:var(--ink)}
+.cmp .cx .cxn,.vf .cx .cxn,.faqs .cx .cxn{text-align:center}
+@media (max-width:560px){.cx .cxn{justify-self:center;text-align:center}}
+
 /* the leave popup, in the page's finish: paper, hairlines, the real screens */
 .pop{background:rgba(40,28,22,.58);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
 .pbox{background:#FFFDF9;border:1px solid rgba(26,20,18,.1);border-radius:24px;box-shadow:0 2px 4px rgba(20,10,5,.1),0 60px 110px -40px rgba(20,10,5,.75)}
@@ -2053,7 +2095,7 @@ mark.sk{color:inherit;padding:0 2px;margin:0 -2px;-webkit-box-decoration-break:c
           <tr class="add2" style="--i:7"><td><img class="stp" src="../img/vip/paint/mini-rec.webp" alt="" width="160" height="200" loading="lazy">Lifetime workshop recordings <small>Plus the recording of the VIP review</small></td><td class="c"><span class="n">no</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
         </tbody>
       </table>
-      <div class="cx"><button class="btn add cxb" type="button" data-cta="table"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">Give me the VIP column ($67)</span><svg class="ar"><use href="#arr"/></svg></button><p class="closed">VIP is closed. <em>See you live.</em></p><small>One payment of $67, added to your free seat.</small></div>
+      <div class="cx"><button class="btn add cxb" type="button" data-cta="table"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">Give me the VIP column ($67)</span><svg class="ar"><use href="#arr"/></svg></button><p class="closed">VIP is closed. <em>See you live.</em></p><small>One payment of $67, added to your free seat.</small><button class="decline cxn" type="button">No thanks, the free seat is enough for me</button></div>
       <p class="cmp-note">Free or VIP, join my WhatsApp community on the next page for workshop reminders. You’ll also find the next steps for getting your exit number there.</p>
     </div>
   </div>
@@ -2071,11 +2113,13 @@ mark.sk{color:inherit;padding:0 2px;margin:0 -2px;-webkit-box-decoration-break:c
     <!-- 01: the live group review -->
     <article class="it it1">
       <div class="art pa mv rv" aria-hidden="true">
-        <div class="dev lap l1" style="left:0;top:6%;width:58%"><img src="../img/vip/paint/laptop.webp" alt="" width="600" height="420" loading="lazy"><div class="scrn2"><img src="../img/vip/raw/review.webp" alt="" loading="lazy"></div></div>
-        <img class="mv-coffee" src="../img/vip/paint/coffee.webp" alt="" style="right:4%;top:2%;width:17%">
-        <span class="steam" style="right:9.5%;top:-6%"><i></i><i></i><i></i></span>
-        <img class="mv-stack" src="../img/vip/paint/stack.webp" alt="" style="right:0;bottom:1%;width:31%">
-        <div class="mv-sheetbox" style="left:37%;top:23%;width:46%">
+        <div class="dev lap l1" style="left:0;top:5%;width:60%"><img src="../img/vip/paint/laptop.webp" alt="" width="600" height="420" loading="lazy"><div class="scrn2"><img src="../img/vip/raw/review.webp" alt="" loading="lazy"></div></div>
+        <div class="qa" style="right:-1%;top:0;width:40%">
+          <div class="qa-hd"><span class="qa-live"><i></i>LIVE</span><b>VIP Q&amp;A</b><small>Fri, Nov 20</small></div>
+          <div class="qa-ls"><div class="qa-q q1"><span class="qa-av" style="background:#2E7DD1">R</span><div class="qa-b"><span class="qa-n"><b>Rosa</b><small>12:04</small></span><p>Is $149 too much for my first workshop?</p><span class="qa-st"><span class="a1"><i></i>Ana is answering live</span><span class="a2"><svg viewBox="0 0 16 16"><path d="m3.5 8.5 3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Answered live</span></span></div></div><div class="qa-q q2"><span class="qa-av" style="background:#1F9D6B">M</span><div class="qa-b"><span class="qa-n"><b>Mei</b><small>12:09</small></span><p>Where should the price go in my email?</p><span class="qa-st"><span class="a1"><i></i>Ana is answering live</span><span class="a2"><svg viewBox="0 0 16 16"><path d="m3.5 8.5 3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Answered live</span></span></div></div><div class="qa-q q3"><span class="qa-av" style="background:#D9822B">C</span><div class="qa-b"><span class="qa-n"><b>Claire</b><small>12:15</small></span><p>What if nobody replies to my first email?</p><span class="qa-st"><span class="a1"><i></i>Ana is answering live</span><span class="a2"><svg viewBox="0 0 16 16"><path d="m3.5 8.5 3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Answered live</span></span></div></div></div>
+          <div class="qa-ft"><span>Ask Ana a question…</span><i></i></div>
+        </div>
+        <div class="mv-sheetbox" style="left:17%;top:46%;width:40%">
           <img src="../img/vip/paint/sub-sheet.webp" alt="">
           <svg viewBox="0 0 300 350">
             <text x="40" y="54" font-family="Manrope,sans-serif" font-weight="800" font-size="8.5" letter-spacing="2" fill="#8A7A6E">A SALES EMAIL, SHARED</text>
@@ -2092,9 +2136,10 @@ mark.sk{color:inherit;padding:0 2px;margin:0 -2px;-webkit-box-decoration-break:c
       </div>
       <div class="tx">
         <span class="num">01</span>
+        <span class="live-tag"><i></i>Live VIP Q&amp;A</span>
         <h3>Let’s look at it <em>the way a buyer would.</em></h3>
-        <p class="meta"><b>Fri, Nov 20</b> · VIP Q&amp;A · 90 minutes · VIPs only</p>
-        <p>You know your subject. A potential buyer still needs to understand why it matters to them, why it’s worth the price, and what they’re actually buying. I’ll work through selected offers, prices and sales emails on screen, <mark class="sk">showing you what I’d keep, what I’d change and why.</mark></p>
+        <p class="meta"><b>Fri, Nov 20</b> · 90 minutes · VIPs only</p>
+        <p>You know your subject. A potential buyer still needs to understand why it matters to them, why it’s worth the price, and what they’re actually buying. I’ll work through selected offers, prices and sales emails on screen, <mark class="sk">showing you what I’d keep, what I’d change and why.</mark> Bring your questions too: <mark class="sk">ask them in the chat and I’ll answer as many as I can, live.</mark></p>
         <span class="lab">What to bring</span>
         <ol class="how">
           <li><span><b>What you want to sell,</b> even if it still needs work.</span></li>
@@ -2102,7 +2147,7 @@ mark.sk{color:inherit;padding:0 2px;margin:0 -2px;-webkit-box-decoration-break:c
           <li><span><b>Your sales email,</b> or the question you keep coming back to.</span></li>
         </ol>
         <p class="soft">I’ll cover as many submissions as fit into 90 minutes; a personal review isn’t guaranteed. You can submit ahead if you can’t attend, and everyone gets the recording.</p>
-        <div class="cx"><button class="btn add cxb" type="button" data-cta="qa"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">Bring my offer to Friday’s Q&amp;A ($67)</span><svg class="ar"><use href="#arr"/></svg></button><p class="closed">VIP is closed. <em>See you live.</em></p><small>One payment of $67, added to your free seat.</small></div>
+        <div class="cx"><button class="btn add cxb" type="button" data-cta="qa"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">Bring my offer to Friday’s Q&amp;A ($67)</span><svg class="ar"><use href="#arr"/></svg></button><p class="closed">VIP is closed. <em>See you live.</em></p><small>One payment of $67, added to your free seat.</small><button class="decline cxn" type="button">No thanks, I’ll work on my offer on my own</button></div>
       </div>
     </article>
 
@@ -2138,6 +2183,8 @@ mark.sk{color:inherit;padding:0 2px;margin:0 -2px;-webkit-box-decoration-break:c
           </div>
           <div class="wac-ft"><span class="wac-in"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="9" cy="10" r="1.2" fill="currentColor"/><circle cx="15" cy="10" r="1.2" fill="currentColor"/><path d="M8 14a4.5 4.5 0 0 0 8 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span class="wac-ph">Type a message</span><svg viewBox="0 0 24 24"><path d="M16.5 6.5 8 15a2 2 0 0 0 3 3l9-9a4 4 0 0 0-6-6l-9 9a6 6 0 0 0 8.5 8.5l7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><svg viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3v11H4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span><span class="wac-mic"><svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3" fill="currentColor"/><path d="M6 11a6 6 0 0 0 12 0M12 17v4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span></div>
         </div>
+        <p><mark class="sk">I’ll be there for 30 minutes after each workshop session, plus one morning slot.</mark> The free community has your reminders. This separate group is where we talk about the work.</p>
+        <div class="cx"><button class="btn add cxb" type="button" data-cta="chat"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">Let me ask you in the VIP chat ($67)</span><svg class="ar"><use href="#arr"/></svg></button><p class="closed">VIP is closed. <em>See you live.</em></p><small>One payment of $67, added to your free seat.</small><button class="decline cxn" type="button">No thanks, I’ll keep my questions for the live sessions</button></div>
       </div>
     </article>
 
@@ -2160,7 +2207,7 @@ mark.sk{color:inherit;padding:0 2px;margin:0 -2px;-webkit-box-decoration-break:c
           <li><span><b>When you have another idea,</b> the course is still yours.</span></li>
         </ol>
         <p class="soft">You don’t have to finish another course before the workshop. Already own the Sprint? Bring the work you’ve started.</p>
-        <div class="cx"><button class="btn add cxb" type="button" data-cta="sprint"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">Get the Sprint with VIP ($67)</span><svg class="ar"><use href="#arr"/></svg></button><p class="closed">VIP is closed. <em>See you live.</em></p><small>One payment of $67, added to your free seat.</small></div>
+        <div class="cx"><button class="btn add cxb" type="button" data-cta="sprint"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">Get the Sprint with VIP ($67)</span><svg class="ar"><use href="#arr"/></svg></button><p class="closed">VIP is closed. <em>See you live.</em></p><small>One payment of $67, added to your free seat.</small><button class="decline cxn" type="button">No thanks, I’ll skip the course</button></div>
       </div>
     </article>
 
@@ -2184,7 +2231,7 @@ mark.sk{color:inherit;padding:0 2px;margin:0 -2px;-webkit-box-decoration-break:c
           <li><span><b>When you put it into practice,</b> revisit the explanation you need.</span></li>
           <li><span><b>After the VIP review,</b> keep its recording too.</span></li>
         </ol>
-        <div class="cx"><button class="btn add cxb" type="button" data-cta="recordings"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">Keep the workshop for life ($67)</span><svg class="ar"><use href="#arr"/></svg></button><p class="closed">VIP is closed. <em>See you live.</em></p><small>One payment of $67, added to your free seat.</small></div>
+        <div class="cx"><button class="btn add cxb" type="button" data-cta="recordings"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">Keep the workshop for life ($67)</span><svg class="ar"><use href="#arr"/></svg></button><p class="closed">VIP is closed. <em>See you live.</em></p><small>One payment of $67, added to your free seat.</small><button class="decline cxn" type="button">No thanks, I’ll catch it live</button></div>
       </div>
     </article>
   </div>
@@ -2218,7 +2265,7 @@ mark.sk{color:inherit;padding:0 2px;margin:0 -2px;-webkit-box-decoration-break:c
       </div>
     </div>
     <p class="after" data-r><mark class="sk">You don’t need an idea or subscribers ready today.</mark> Start with the workshop and bring the questions that come up.</p>
-    <div class="cx"><button class="btn add cxb" type="button" data-cta="fit"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">Yes, pull my chair closer ($67)</span><svg class="ar"><use href="#arr"/></svg></button><p class="closed">VIP is closed. <em>See you live.</em></p><small>One payment of $67, added to your free seat.</small></div>
+    <div class="cx"><button class="btn add cxb" type="button" data-cta="fit"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">Yes, pull my chair closer ($67)</span><svg class="ar"><use href="#arr"/></svg></button><p class="closed">VIP is closed. <em>See you live.</em></p><small>One payment of $67, added to your free seat.</small><button class="decline cxn" type="button">No thanks, the free seat suits me</button></div>
   </div>
 </section>
 
@@ -2268,7 +2315,7 @@ mark.sk{color:inherit;padding:0 2px;margin:0 -2px;-webkit-box-decoration-break:c
         <details class="faq"><summary>What happens in the VIP WhatsApp group?<i aria-hidden="true"></i></summary><p class="a">It's an open chat for VIPs only. I'm in there Nov 17 to 20: for 30 minutes after each session, and one morning slot. Other members can see your name and number, the way any WhatsApp group works.</p></details>
         <details class="faq"><summary>What if I can't make it on Friday?<i aria-hidden="true"></i></summary><p class="a">Send your work ahead for consideration and watch the recording afterward. I’ll review as many submissions as fit into 90 minutes, so a personal review isn’t guaranteed.</p></details>
         <details class="faq"><summary>Can I get a refund?<i aria-hidden="true"></i></summary><p class="a"><b>No.</b> All sales are final. Please check what’s included and the group-review format before you buy.</p></details>
-        <div class="cx"><button class="btn add cxb" type="button" data-cta="faq"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">Questions answered. Add VIP ($67)</span><svg class="ar"><use href="#arr"/></svg></button><p class="closed">VIP is closed. <em>See you live.</em></p><small>One payment of $67, added to your free seat.</small></div>
+        <div class="cx"><button class="btn add cxb" type="button" data-cta="faq"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">Questions answered. Add VIP ($67)</span><svg class="ar"><use href="#arr"/></svg></button><p class="closed">VIP is closed. <em>See you live.</em></p><small>One payment of $67, added to your free seat.</small><button class="decline cxn" type="button">No thanks, keep my free seat</button></div>
       </div>
     </div>
   </div>
@@ -2441,7 +2488,7 @@ mark.sk{color:inherit;padding:0 2px;margin:0 -2px;-webkit-box-decoration-break:c
 <script src="../assets/vendor/DrawSVGPlugin.min.js"></script>
 <script src="../assets/vendor/MotionPathPlugin.min.js"></script>
 <script src="../assets/vendor/MorphSVGPlugin.min.js"></script>
-<script src="../assets/vip-motion.js?v=6"></script>
+<script src="../assets/vip-motion.js?v=7"></script>
 
 </body>
 </html>

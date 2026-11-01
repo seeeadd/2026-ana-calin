@@ -135,8 +135,6 @@
           clip.setAttribute('width', x.toFixed(1)); pen.at(x0 + x, base - 7 + Math.sin(o.t * w / 3.2) * 4) } }) }
       var t1 = gsap.timeline();
       t1.from($('.l1', rv), { y: 34, opacity: 0, duration: 1, ease: 'power3.out' }, 0)
-        .from($('.mv-coffee', rv), { scale: .82, rotation: -40, opacity: 0, duration: 1, ease: 'back.out(1.5)' }, .15)
-        .from($('.mv-stack', rv), { x: 50, y: 30, rotation: 10, opacity: 0, duration: 1, ease: 'power3.out' }, .3)
         .fromTo(box1, { x: 120, y: 150, rotation: 16, scale: .55, opacity: 0 }, { opacity: 1, duration: .25 }, .7)
         .to(box1, { motionPath: { path: [{ x: 120, y: 150 }, { x: 60, y: -40 }, { x: 0, y: 0 }], curviness: 1.3 }, rotation: -3, scale: 1, duration: 1.3, ease: 'power3.inOut' }, .7)
         .set(penG, { opacity: 1 }, 1.9)
@@ -153,6 +151,23 @@
         .add(pen.go(380, -60, .8, 30, -60), 7.8)
         ;
       when(rv, t1);
+
+      /* the live Q&A: questions come into the chat one by one; each is answered live while the pencil works */
+      var qa = $('.qa', rv);
+      if (qa) {
+        var tq = gsap.timeline(), qq = $$('.qa-q', qa);
+        tq.from(qa, { x: 40, y: -10, rotation: 6, opacity: 0, duration: .9, ease: 'power3.out' }, .3);
+        qq.forEach(function (q, i) {
+          var a1 = $('.a1', q), a2 = $('.a2', q), t0 = 1.1 + i * 2.9;
+          gsap.set(q, { opacity: 0, y: 14 }); gsap.set([a1, a2], { opacity: 0 });
+          tq.to(q, { opacity: 1, y: 0, duration: .45, ease: 'back.out(1.7)' }, t0)
+            .to(a1, { opacity: 1, duration: .3 }, t0 + .6)
+            .to($('i', a1), { scale: 1.6, duration: .35, yoyo: true, repeat: 3, ease: 'sine.inOut' }, t0 + .7)
+            .to(a1, { opacity: 0, duration: .2 }, t0 + 2.2)
+            .fromTo(a2, { opacity: 0, scale: .7, transformOrigin: '0% 50%' }, { opacity: 1, scale: 1, duration: .35, ease: 'back.out(2.2)' }, t0 + 2.25);
+        });
+        when(rv, tq);
+      }
     }
 
     /* ---------- Nº 02: the line you're stuck on lifts off your draft and becomes a message to Ana ---------- */
@@ -270,7 +285,7 @@
 
     /* ---------- fit check: your chair comes a little closer to Ana's table ---------- */
     var you = $('.seat.two .you');
-    if (you) when(you, gsap.timeline().fromTo(you, { xPercent: -18, rotation: -5 }, { xPercent: 3, rotation: 0, duration: .8, ease: 'back.out(1.7)' }), 'top 90%');
+    if (you) { gsap.set(you, { x: 0 }); when(you, gsap.timeline().fromTo(you, { xPercent: -30, rotation: -6 }, { xPercent: 3, rotation: 0, duration: 1.1, ease: 'back.out(1.5)' }), 'top 72%') }
 
     /* ---------- her letter rises out of the envelope; the seal presses on ---------- */
     var lw = $('.lw');
