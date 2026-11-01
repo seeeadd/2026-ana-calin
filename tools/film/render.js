@@ -22,13 +22,15 @@ const URL0 = 'http://localhost:8767/tools/film/' + (process.env.FILM || 'motion.
     await b.close(); return;
   }
   // motion blur: render `sub` frames per output frame and let ffmpeg blend them (tmix), keeping every `sub`th
-  const out = args[0], fps = +(args[1] || 30), sub = +(process.env.SUB || 2), dur = await p.evaluate(() => window.DUR), n = Math.round(dur * fps * sub);
+  // T_FROM / T_TO (seconds) render one stretch, so several renders can run side by side and be joined
+  const out = args[0], fps = +(args[1] || 30), sub = +(process.env.SUB || 2), dur = await p.evaluate(() => window.DUR);
+  const tFrom = +(process.env.T_FROM || 0), tTo = process.env.T_TO ? +process.env.T_TO : dur, n = Math.round((tTo - tFrom) * fps * sub);
   const vf = sub > 1 ? ['-vf', `tmix=frames=${sub},framestep=${sub}`] : [];
   const ff = spawn('ffmpeg', ['-y', '-loglevel', 'error', '-f', 'image2pipe', '-framerate', String(fps * sub), '-i', '-', ...vf,
     '-c:v', 'libx264', '-preset', 'slow', '-crf', process.env.CRF || '20', '-pix_fmt', 'yuv420p', '-movflags', '+faststart', out], { stdio: ['pipe', 'inherit', 'inherit'] });
   const t0 = Date.now();
   for (let i = 0; i < n; i++) {
-    await p.evaluate(t => window.render(t), i / (fps * sub));
+    await p.evaluate(t => window.render(t), tFrom + i / (fps * sub));
     const buf = await p.screenshot({ type: 'jpeg', quality: 95 });
     if (!ff.stdin.write(buf)) await new Promise(r => ff.stdin.once('drain', r));
     if (i % 60 === 0) process.stdout.write(`frame ${i}/${n} (${((Date.now() - t0) / 1000).toFixed(0)}s)\n`);
