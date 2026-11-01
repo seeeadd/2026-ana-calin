@@ -3,7 +3,7 @@
 // node tools/film/render.js --sheet <out.png> t1,t2,...     a contact sheet of single frames, to check staging
 const { chromium } = require('playwright');
 const { spawn } = require('child_process');
-const URL0 = 'http://localhost:8767/tools/film/motion.html';
+const URL0 = 'http://localhost:8767/tools/film/' + (process.env.FILM || 'motion.html');
 
 (async () => {
   const args = process.argv.slice(2);

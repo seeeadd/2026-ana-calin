@@ -1,0 +1,660 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The Exit Plan · registration film</title>
+<!-- The registration film (Nov 1, 2026), about 2.5 minutes, every frame a function of time: render(t).
+     Story (the video script, with the registration page's facts, no event dates):
+       0:00 running in place (the wheel)          0:09 the usual order (the tower wobbles)
+       0:17 Ana's room in Greece: $1.4M, about 80,000 readers, 0 sales calls, about two hours a day
+       0:37 the two-sale workshop                 0:47 771 likes and nothing, 82 likes and money
+       1:01 the order changes: the tower falls, Day 1 to 3, the door to 2027
+       1:20 The Exit Plan, each day as a live session with the teaser slides and Ana's camera
+       1:58 results from the past challenge       2:10 the exit number, the five 1:1s       2:21 save your free seat
+     Ana's camera is a still from her own Shorts until her video arrives (swap .cam img for a <video>).
+     tools/film/render.js renders it (set FILM=film.html). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@500;600;700;800&display=swap">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1920px;height:1080px;overflow:hidden;background:#FFF8EE}
+:root{--ink:#1A1412;--ink2:#3D332E;--ink3:#7A6A60;--cream:#FFF8EE;--sun:#FFD400;--pink:#F72585;--serif:'Instrument Serif',Georgia,serif;--sans:'Manrope',system-ui,sans-serif}
+#film{position:relative;width:1920px;height:1080px;overflow:hidden;font-family:var(--sans);color:var(--ink);background:#FFF8EE}
+#sv{position:absolute;inset:0}
+.scene{position:absolute;inset:0;opacity:0;overflow:hidden}
+.cam{position:absolute;left:0;top:0;transform-origin:0 0}
+.abs{position:absolute}
+.wall{background-color:#F5E8D4}
+.serif{font-family:var(--serif);font-weight:400}
+.k{font-weight:800;letter-spacing:.16em;text-transform:uppercase}
+.rd{display:inline-block;height:.8em;border-radius:5px;background:var(--ink);vertical-align:-.06em}
+.shadow{box-shadow:0 2px 3px rgba(80,45,20,.16),0 26px 50px -22px rgba(80,45,20,.42)}
+/* captions: the words for muted viewing, one short line at a time */
+#cap{position:absolute;left:0;right:0;bottom:64px;text-align:center;pointer-events:none;z-index:60}
+#cap p{display:inline-block;font-family:var(--serif);font-size:64px;line-height:1.1;letter-spacing:-.01em;color:var(--ink);padding:12px 36px 16px;border-radius:24px;
+  background:rgba(255,250,242,.9);box-shadow:0 18px 40px -22px rgba(70,40,15,.5),0 0 0 1.5px rgba(26,20,18,.08)}
+#cap p span{display:inline-block;white-space:pre}
+#grain{position:absolute;inset:0;pointer-events:none;opacity:.3;mix-blend-mode:multiply;z-index:70}
+#vig{position:absolute;inset:0;pointer-events:none;z-index:69;background:radial-gradient(120% 90% at 50% 45%,transparent 60%,rgba(90,55,25,.22) 100%)}
+/* phones and screens */
+.phone{position:absolute;width:420px;height:860px;border-radius:64px;background:#1A1412;padding:16px;box-shadow:0 3px 6px rgba(50,30,15,.2),0 40px 80px -30px rgba(50,30,15,.55)}
+.phone .scr{position:relative;width:100%;height:100%;border-radius:50px;overflow:hidden;background:#FFFDF9}
+.phone .notch{position:absolute;left:50%;top:14px;width:120px;height:32px;margin-left:-60px;border-radius:20px;background:#1A1412;z-index:3}
+.row{display:flex;align-items:center;gap:14px;padding:14px 20px;border-bottom:1px solid #F0E6D8;font-size:20px}
+.av{flex:none;width:44px;height:44px;border-radius:50%;background:#E7DCCB;border:2px solid #1A1412}
+.win{position:absolute;border-radius:18px;overflow:hidden;background:#1A1412;border:3px solid #1A1412;box-shadow:0 4px 8px rgba(40,25,10,.2),0 50px 90px -40px rgba(40,25,10,.6)}
+.bar{display:flex;align-items:center;gap:12px;height:48px;padding:0 20px;color:#fff;font-weight:700;font-size:18px}
+.bar i{width:11px;height:11px;border-radius:50%;background:#FF3B5C;box-shadow:0 0 0 4px rgba(255,59,92,.25)}
+.bar b{font-weight:800;letter-spacing:.16em}
+.bar span{opacity:.75}
+.camtile{position:absolute;border-radius:16px;overflow:hidden;border:4px solid #1A1412;background:#2A211D;box-shadow:0 22px 40px -18px rgba(40,25,10,.7)}
+.camtile img{width:100%;height:100%;object-fit:cover;object-position:50% 26%}
+.camtile span{position:absolute;left:10px;bottom:8px;padding:3px 10px;border-radius:8px;background:rgba(26,20,18,.72);color:#fff;font-weight:700;font-size:16px}
+.chip{display:inline-flex;align-items:center;gap:12px;height:54px;padding:0 24px;border-radius:999px;background:#fff;border:2.5px solid #1A1412;box-shadow:0 5px 0 #1A1412;font-weight:800;font-size:22px;letter-spacing:.06em}
+.chip b{display:inline-grid;place-items:center;height:36px;padding:0 14px;border-radius:999px;background:var(--pink);color:#fff;letter-spacing:.14em;font-size:17px}
+.card{position:absolute;background:#fff;border:2.5px solid #1A1412;border-radius:26px}
+</style>
+</head>
+<body>
+<div id="film">
+<svg id="sv" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs id="defs">
+    <linearGradient id="floor" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#EBD8BA"/><stop offset="1" stop-color="#DCC3A0"/></linearGradient>
+    <radialGradient id="sh"><stop offset="0" stop-color="#4A2A12" stop-opacity=".55"/><stop offset=".55" stop-color="#5A3418" stop-opacity=".2"/><stop offset="1" stop-color="#5A3418" stop-opacity="0"/></radialGradient>
+    <linearGradient id="skyDay" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFE7A8"/><stop offset="1" stop-color="#FFF6DD"/></linearGradient>
+    <linearGradient id="skyNight" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1F2140"/><stop offset="1" stop-color="#3A3358"/></linearGradient>
+    <linearGradient id="doorSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFE29A"/><stop offset=".58" stop-color="#FFF3D2"/><stop offset=".59" stop-color="#7FB7CC"/><stop offset="1" stop-color="#4F8FAE"/></linearGradient>
+    <radialGradient id="glow"><stop offset="0" stop-color="#FFF3C4" stop-opacity=".95"/><stop offset=".45" stop-color="#FFE38A" stop-opacity=".45"/><stop offset="1" stop-color="#FFD400" stop-opacity="0"/></radialGradient>
+    <linearGradient id="beam" x1="1" y1="0" x2="0" y2=".6"><stop offset="0" stop-color="#FFF1BC" stop-opacity=".85"/><stop offset="1" stop-color="#FFE38A" stop-opacity="0"/></linearGradient>
+    <linearGradient id="leafFace" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#FFF6E6"/><stop offset="1" stop-color="#EAD9BD"/></linearGradient>
+    <radialGradient id="warmwash" cx=".85" cy=".2" r=".9"><stop offset="0" stop-color="#FFC24A"/><stop offset="1" stop-color="#FF9E3D" stop-opacity=".2"/></radialGradient>
+    <clipPath id="winClip"><circle cx="0" cy="0" r="92"/></clipPath>
+    <clipPath id="doorClip"><rect x="-80" y="-260" width="160" height="260" rx="4"/></clipPath>
+    <filter id="leafblur"><feGaussianBlur stdDeviation="9"/></filter>
+  </defs>
+  <rect width="1920" height="1080" fill="#F5E8D4"/>
+  <g id="cam"></g>
+  <rect id="cool" width="1920" height="1080" fill="#3C4470" style="mix-blend-mode:multiply" opacity=".16"/>
+  <rect id="warm" width="1920" height="1080" fill="url(#warmwash)" style="mix-blend-mode:soft-light" opacity="0"/>
+</svg>
+<div class="scene" id="s3"></div>
+<div class="scene" id="s4"></div>
+<div class="scene" id="s5"></div>
+<div class="scene" id="s7"></div>
+<div class="scene" id="s8"></div>
+<div class="scene" id="s9"></div>
+<div class="scene" id="s10"></div>
+<div id="cap"><p id="capP" style="opacity:0"></p></div>
+<div id="vig"></div>
+<div id="grain"></div>
+</div>
+<script>
+(function(){
+  'use strict';
+  var NS = 'http://www.w3.org/2000/svg', INK = '#1A1412', SUN = '#FFD400', PINK = '#F72585', CREAM = '#FFF8EE';
+  var $ = function(id){ return document.getElementById(id) };
+  var cam = $('cam'), defs = $('defs');
+  var gradN = 0, gradCache = {};
+  function el(tag, a, parent){ var e = document.createElementNS(NS, tag); for (var k in a) e.setAttribute(k, a[k]); (parent || cam).appendChild(e); return e }
+
+  /* ---------- easing and keyframes: everything glides, nothing pops ---------- */
+  var clamp = function(x, a, b){ return Math.max(a, Math.min(b, x)) };
+  var io = function(p){ return p < .5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2 };
+  var outq = function(p){ return 1 - Math.pow(1 - p, 5) };
+  var inq = function(p){ return p * p * p };
+  var seg = function(t, a, b){ return clamp((t - a) / (b - a), 0, 1) };
+  var lerp = function(a, b, p){ return a + (b - a) * p };
+  function track(keys, t, ease){
+    ease = ease || io;
+    if (t <= keys[0][0]) return keys[0][1];
+    for (var i = 0; i < keys.length - 1; i++) {
+      var k0 = keys[i], k1 = keys[i + 1];
+      if (t <= k1[0]) { var p = ease((t - k0[0]) / (k1[0] - k0[0])); return Array.isArray(k0[1]) ? k0[1].map(function(v, j){ return lerp(v, k1[1][j], p) }) : lerp(k0[1], k1[1], p) }
+    }
+    return keys[keys.length - 1][1];
+  }
+  var settle = function(p){ if (p >= 1) return 1; var q = outq(p); return q + Math.sin(p * Math.PI) * .04 * (1 - p) };
+  /* a window of visibility with soft edges */
+  var vis = function(t, a, b, f){ f = f || .8; return io(seg(t, a, a + f)) * (1 - io(seg(t, b - f, b))) };
+  var fmt = function(n){ return Math.round(n).toLocaleString('en-US') };
+
+  /* ---------- textures, painted once ---------- */
+  function texture(w, h, paint){ var c = document.createElement('canvas'); c.width = w; c.height = h; paint(c.getContext('2d'), w, h); return c.toDataURL('image/png') }
+  function vnoise(ctx, w, h, cell, alpha, rgb, seed){
+    var s = seed, r = function(){ s = (s * 16807) % 2147483647; return s / 2147483647 };
+    var gw = Math.ceil(w / cell) + 1, gh = Math.ceil(h / cell) + 1, g = [];
+    for (var i = 0; i < gw * gh; i++) g.push(r());
+    var img = ctx.getImageData(0, 0, w, h), d = img.data;
+    for (var y = 0; y < h; y++) for (var x = 0; x < w; x++) {
+      var gx = x / cell, gy = y / cell, x0 = gx | 0, y0 = gy | 0, fx = gx - x0, fy = gy - y0;
+      fx = fx * fx * (3 - 2 * fx); fy = fy * fy * (3 - 2 * fy);
+      var a = g[y0 * gw + x0], b = g[y0 * gw + x0 + 1], c2 = g[(y0 + 1) * gw + x0], e = g[(y0 + 1) * gw + x0 + 1];
+      var v = (a + (b - a) * fx) * (1 - fy) + (c2 + (e - c2) * fx) * fy, k = (y * w + x) * 4, al = v * alpha;
+      if (d[k + 3] > 0) { d[k] = d[k] * (1 - al) + rgb[0] * al; d[k + 1] = d[k + 1] * (1 - al) + rgb[1] * al; d[k + 2] = d[k + 2] * (1 - al) + rgb[2] * al }
+      else { d[k] = rgb[0]; d[k + 1] = rgb[1]; d[k + 2] = rgb[2]; d[k + 3] = al * 255 }
+    }
+    ctx.putImageData(img, 0, 0);
+  }
+  var PLASTER = texture(512, 512, function(c, w, h){ vnoise(c, w, h, 64, .10, [150, 110, 70], 7); vnoise(c, w, h, 9, .06, [120, 85, 50], 11) });
+  var TILES = texture(360, 120, function(c, w, h){
+    c.fillStyle = '#F0DFC4'; c.fillRect(0, 0, w, h); vnoise(c, w, h, 24, .08, [170, 120, 70], 5);
+    c.strokeStyle = 'rgba(140,95,55,.22)'; c.lineWidth = 3; c.beginPath(); c.moveTo(0, 1.5); c.lineTo(w, 1.5); c.moveTo(0, 60); c.lineTo(w, 60);
+    for (var x = 0; x <= w; x += 120) { c.moveTo(x, 0); c.lineTo(x - 8, 60); c.moveTo(x + 60, 60); c.lineTo(x + 52, 120) } c.stroke();
+  });
+  var WOOD = texture(800, 200, function(c, w, h){
+    c.fillStyle = '#D9B48A'; c.fillRect(0, 0, w, h); vnoise(c, w, h, 40, .12, [150, 100, 60], 3);
+    for (var i = 0; i < 40; i++) { c.strokeStyle = 'rgba(120,75,40,' + (.05 + (i % 5) * .02) + ')'; c.lineWidth = 1 + (i % 3); c.beginPath(); var y = i * 5 + (i % 7); c.moveTo(0, y); c.bezierCurveTo(w * .3, y + 6, w * .6, y - 6, w, y + 3); c.stroke() }
+  });
+  var GRAIN = 'url("data:image/svg+xml;utf8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="3" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 .35 0 0 0 0 .25 0 0 0 0 .15 0 0 0 .5 0"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>') + '")';
+  $('grain').style.backgroundImage = GRAIN;
+  el('image', {href: PLASTER, width: 512, height: 512}, el('pattern', {id: 'plaster', width: 512, height: 512, patternUnits: 'userSpaceOnUse'}, defs));
+  el('image', {href: TILES, width: 360, height: 120}, el('pattern', {id: 'tiles', width: 360, height: 120, patternUnits: 'userSpaceOnUse', y: 800}, defs));
+
+  var SF = '';   /* the sunflower vector, filled in at load */
+  var ANA = '../../img/real/ana-real-c.webp', ANA_WALL = '../../img/real/ana-real-a.webp', SL = function(k){ return '../../img/slides/day' + k + '.webp' };
+
+  /* ======================================================================================================
+     THE WORLD (wheel, tower, steps, door): an SVG room with a camera, shown 0:00 to 0:17 and 1:00 to 1:20
+     ====================================================================================================== */
+  var FLOOR = 800;
+  el('rect', {x: -2000, y: -1600, width: 7000, height: 2400, fill: 'url(#plaster)'});
+  el('rect', {x: -2000, y: FLOOR, width: 7000, height: 1400, fill: 'url(#tiles)'});
+  el('rect', {x: -2000, y: FLOOR, width: 7000, height: 1400, fill: 'url(#floor)', opacity: .18});
+  el('rect', {x: -2000, y: FLOOR - 26, width: 7000, height: 26, fill: '#EAD9BF'});
+  el('path', {d: 'M-2000 ' + (FLOOR - 26) + ' H5000', stroke: INK, 'stroke-width': 3, opacity: .5});
+  el('path', {d: 'M-2000 ' + FLOOR + ' H5000', stroke: INK, 'stroke-width': 4, opacity: .85});
+  var leaves = el('g', {filter: 'url(#leafblur)', opacity: .14});
+  (function(){
+    var s = 5, r = function(){ s = (s * 9301 + 49297) % 233280; return s / 233280 };
+    for (var b = 0; b < 4; b++) {
+      var bx = b * 700 - 300, by = -120 + (b % 2) * 90;
+      el('path', {d: 'M' + bx + ' ' + by + ' q 300 120 640 300', stroke: '#5A3418', 'stroke-width': 10, fill: 'none'}, leaves);
+      for (var i = 0; i < 12; i++) {
+        var p = i / 12, x = bx + 640 * p, y = by + 300 * p * p + 120 * p, sd = i % 2 ? 1 : -1, L = 70 + r() * 40;
+        el('ellipse', {cx: x, cy: y, rx: L / 2, ry: 10 + r() * 4, fill: '#5A3418', transform: 'rotate(' + (25 + sd * (40 + r() * 20)) + ' ' + x + ' ' + y + ') translate(' + (sd * L / 2.2) + ' 0)'}, leaves);
+      }
+    }
+  })();
+  /* the room's own things: a shelf of books, a picture of the sea, a rug, an olive tree by the door */
+  (function(){
+    var sh = el('g', {});
+    el('rect', {x: 918, y: 330, width: 270, height: 16, rx: 3, fill: '#D9B48A', stroke: INK, 'stroke-width': 4}, sh);
+    el('path', {d: 'M950 346 v26 h22 M1150 346 v26 h-22', stroke: INK, 'stroke-width': 4, fill: 'none'}, sh);
+    var bx = 934, books = [[22, 96, '#F28DB2'], [26, 84, '#FFF1B3'], [18, 104, '#CBB89A'], [28, 78, '#FFD400'], [20, 92, '#FFF8EE'], [24, 70, '#F3E9DA']];
+    books.forEach(function(b, i){ el('rect', {x: bx, y: 330 - b[1], width: b[0], height: b[1], rx: 3, fill: b[2], stroke: INK, 'stroke-width': 3.5, transform: i === 5 ? 'rotate(14 ' + (bx + b[0]) + ' 330)' : ''}, sh); el('path', {d: 'M' + (bx + 5) + ' ' + (330 - b[1] + 14) + ' h' + (b[0] - 10), stroke: INK, 'stroke-width': 2, opacity: .5}, sh); bx += b[0] + 2 });
+    el('path', {d: 'M1112 330 l6 -40 h40 l6 40 z', fill: '#E7A57E', stroke: INK, 'stroke-width': 3.5}, sh);
+    el('path', {d: 'M1138 290 c-2 -20 4 -34 10 -44', stroke: '#5E7A3A', 'stroke-width': 4, fill: 'none'}, sh);
+    var fl = el('g', {transform: 'translate(1150 236) scale(.32)'}, sh); fl.setAttribute('data-sf', '1');
+    var pic = el('g', {transform: 'translate(1500 190)'});
+    el('rect', {x: 0, y: 0, width: 230, height: 176, rx: 6, fill: '#FFF8EE', stroke: INK, 'stroke-width': 6}, pic);
+    el('rect', {x: 18, y: 18, width: 194, height: 140, fill: '#FFE9A8'}, pic);
+    el('rect', {x: 18, y: 98, width: 194, height: 60, fill: '#6FA9C2'}, pic);
+    el('circle', {cx: 150, cy: 82, r: 22, fill: SUN}, pic);
+    el('path', {d: 'M18 98 l40 -26 l30 18 l26 -14 l40 22 z', fill: '#FFF8EE', stroke: INK, 'stroke-width': 2}, pic);
+    el('path', {d: 'M30 120 q20 -6 40 0 t40 0 M100 136 q20 -6 40 0 t40 0', stroke: '#fff', 'stroke-width': 3, fill: 'none', opacity: .7}, pic);
+    el('rect', {x: 18, y: 18, width: 194, height: 140, fill: 'none', stroke: INK, 'stroke-width': 3}, pic);
+    el('ellipse', {cx: 700, cy: FLOOR + 22, rx: 330, ry: 26, fill: '#F7C9DD', stroke: INK, 'stroke-width': 3, opacity: .95});
+    el('ellipse', {cx: 700, cy: FLOOR + 22, rx: 290, ry: 18, fill: 'none', stroke: '#F72585', 'stroke-width': 3, 'stroke-dasharray': '10 10', opacity: .7});
+    var tree = el('g', {transform: 'translate(2600 ' + FLOOR + ')'});
+    el('ellipse', {cx: 0, cy: 4, rx: 110, ry: 14, fill: 'url(#sh)'}, tree);
+    el('path', {d: 'M-62 -150 h124 l-16 150 h-92 z', fill: '#D98A5F', stroke: INK, 'stroke-width': 5}, tree);
+    el('rect', {x: -70, y: -170, width: 140, height: 26, rx: 6, fill: '#E7A57E', stroke: INK, 'stroke-width': 5}, tree);
+    el('path', {d: 'M0 -170 c-6 -80 10 -150 -10 -230 M0 -260 c30 -40 60 -60 90 -70 M-6 -320 c-30 -30 -60 -40 -96 -40', stroke: '#6B4E3A', 'stroke-width': 9, fill: 'none', 'stroke-linecap': 'round'}, tree);
+    var s2 = 9, r2 = function(){ s2 = (s2 * 9301 + 49297) % 233280; return s2 / 233280 };
+    for (var i = 0; i < 46; i++) { var a = r2() * Math.PI * 2, d = 40 + r2() * 110, x = Math.cos(a) * d * 1.2, y = -330 + Math.sin(a) * d * .7;
+      el('ellipse', {cx: x, cy: y, rx: 26, ry: 8, fill: i % 3 ? '#A7B98A' : '#8EA273', stroke: INK, 'stroke-width': 2.5, transform: 'rotate(' + (r2() * 180) + ' ' + x + ' ' + y + ')'}, tree) }
+  })();
+
+  /* the sunflower, with ink legs */
+  function runnerGroup(){
+    var g = el('g', {});
+    g.shadow = el('ellipse', {rx: 60, ry: 12, fill: 'url(#sh)'}, cam);
+    cam.appendChild(g);
+    g.legs = [];
+    for (var i = 0; i < 2; i++) { var leg = el('g', {}, g); el('path', {d: 'M0 0 L0 46', stroke: INK, 'stroke-width': 7, 'stroke-linecap': 'round'}, leg); el('ellipse', {cx: 8, cy: 48, rx: 13, ry: 7, fill: INK}, leg); g.legs.push(leg) }
+    g.head = el('g', {}, g);
+    return g;
+  }
+  /* the wheel */
+  var W = {x: 700, y: 560, R: 210};
+  var wheelBack = el('g', {});
+  el('circle', {cx: W.x, cy: W.y, r: W.R + 4, fill: '#F7EBD8', opacity: .9}, wheelBack);
+  el('path', {d: 'M' + (W.x - 150) + ' ' + FLOOR + ' L' + W.x + ' ' + W.y + ' L' + (W.x + 150) + ' ' + FLOOR, stroke: INK, 'stroke-width': 9, fill: 'none', 'stroke-linejoin': 'round'});
+  /* the round window: Sunday night, Monday morning, on repeat */
+  var win = el('g', {transform: 'translate(330 250)'});
+  var winSky = el('g', {'clip-path': 'url(#winClip)'}, win);
+  el('rect', {x: -100, y: -100, width: 200, height: 200, fill: 'url(#skyDay)'}, winSky);
+  var skyN = el('rect', {x: -100, y: -100, width: 200, height: 200, fill: 'url(#skyNight)'}, winSky);
+  var orb = el('g', {}, winSky);
+  var sunO = el('circle', {r: 26, fill: SUN, stroke: INK, 'stroke-width': 4}, orb);
+  var moonO = el('path', {d: 'M-6 -24 a24 24 0 1 0 22 32 a19 19 0 1 1 -22 -32z', fill: '#FFF3C4', stroke: INK, 'stroke-width': 4}, orb);
+  el('circle', {r: 92, fill: 'none', stroke: INK, 'stroke-width': 8}, win);
+  el('path', {d: 'M-92 0 H92 M0 -92 V92', stroke: INK, 'stroke-width': 6}, win);
+  var monTile = el('g', {transform: 'translate(0 128)'}, win);
+  el('rect', {x: -46, y: -22, width: 92, height: 40, rx: 8, fill: CREAM, stroke: INK, 'stroke-width': 4}, monTile);
+  var monTxt = el('text', {x: 0, y: 7, 'text-anchor': 'middle', 'font-family': 'Manrope', 'font-weight': 800, 'font-size': 20, 'letter-spacing': 3, fill: INK}, monTile);
+  var wheel = el('g', {});
+  el('circle', {cx: 0, cy: 0, r: W.R, fill: 'none', stroke: INK, 'stroke-width': 9}, wheel);
+  el('circle', {cx: 0, cy: 0, r: W.R - 22, fill: 'none', stroke: INK, 'stroke-width': 4}, wheel);
+  for (var i = 0; i < 24; i++) { var a0 = i / 24 * Math.PI * 2; el('line', {x1: Math.cos(a0) * (W.R - 22), y1: Math.sin(a0) * (W.R - 22), x2: Math.cos(a0) * W.R, y2: Math.sin(a0) * W.R, stroke: INK, 'stroke-width': 4}, wheel) }
+  for (var i2 = 0; i2 < 6; i2++) { var a2 = i2 / 6 * Math.PI * 2; el('line', {x1: 0, y1: 0, x2: Math.cos(a2) * (W.R - 22), y2: Math.sin(a2) * (W.R - 22), stroke: INK, 'stroke-width': 5, opacity: .9}, wheel) }
+  el('circle', {r: 20, fill: SUN, stroke: INK, 'stroke-width': 5}, wheel);
+  var runner = runnerGroup();
+  cam.appendChild(wheel);
+
+  /* blocks */
+  var B = 150, DX = 28, DY = -20;
+  function iconPath(kind){
+    switch (kind) {
+      case 'people': return '<circle cx="-30" cy="-18" r="14"/><circle cx="30" cy="-18" r="14"/><circle cx="0" cy="-26" r="17"/><path d="M-56 32 c4 -26 18 -34 26 -34 c8 0 22 8 26 34 M-26 36 c4 -30 18 -40 26 -40 c8 0 22 10 26 40 M4 32 c4 -26 18 -34 26 -34 c8 0 22 8 26 34"/>';
+      case 'lock': return '<rect x="-34" y="-8" width="68" height="52" rx="10"/><path d="M-20 -8 v-14 a20 20 0 0 1 40 0 v14"/><path d="M0 8 v18"/>';
+      case 'course': return '<rect x="-46" y="-34" width="92" height="64" rx="10"/><path d="M-10 -14 l26 12 l-26 12 z" fill="#1A1412"/>';
+      case 'q': return '<path d="M-20 -24 a22 22 0 1 1 30 20 c-8 4 -10 8 -10 16"/><circle cx="0" cy="34" r="5" fill="#1A1412"/>';
+      case 'find': return '<circle cx="-8" cy="-8" r="28"/><path d="M12 12 l28 28" stroke-width="12"/>';
+      case 'tag': return '<path d="M-44 -6 l28 -30 h56 v62 h-56 z"/><circle cx="-14" cy="-6" r="6"/><text x="16" y="14" text-anchor="middle" font-family="Instrument Serif" font-size="40" fill="#1A1412" stroke="none">$</text>';
+      case 'mail': return '<rect x="-48" y="-32" width="96" height="64" rx="8"/><path d="M-48 -26 L0 8 L48 -26"/>';
+    }
+  }
+  function grad(c1, c2, vertical){
+    var k = c1 + c2 + vertical; if (gradCache[k]) return gradCache[k];
+    var id = 'bg' + (gradN++), lg = el('linearGradient', {id: id, x1: 0, y1: 0, x2: vertical ? 0 : 1, y2: vertical ? 1 : 0}, defs);
+    el('stop', {offset: 0, 'stop-color': c1}, lg); el('stop', {offset: 1, 'stop-color': c2}, lg);
+    return (gradCache[k] = 'url(#' + id + ')');
+  }
+  function shade(hex, f){ var n = parseInt(hex.slice(1), 16), r = n >> 16, g = n >> 8 & 255, b = n & 255; var m = function(v){ return Math.round(f > 0 ? v + (255 - v) * f : v * (1 + f)) }; return '#' + ((1 << 24) + (m(r) << 16) + (m(g) << 8) + m(b)).toString(16).slice(1) }
+  function skin(g, c){ g.topF.setAttribute('fill', grad(shade(c.top, .25), c.top, false)); g.sideF.setAttribute('fill', grad(c.side, shade(c.side, -.22), true)); g.front.setAttribute('fill', grad(shade(c.front, .12), shade(c.front, -.08), true)); g.icon.innerHTML = iconPath(c.icon) }
+  function block(top, side, front, icon){
+    var g = el('g', {});
+    g.long = el('ellipse', {rx: 160, ry: 18, fill: 'url(#sh)', opacity: .7}, cam);
+    g.shadow = el('ellipse', {rx: 100, ry: 16, fill: 'url(#sh)'}, cam); cam.appendChild(g);
+    g.body = el('g', {}, g);
+    var h = B / 2;
+    g.topF = el('path', {d: 'M' + (-h) + ' ' + (-h) + ' l' + DX + ' ' + DY + ' h' + B + ' l' + (-DX) + ' ' + (-DY) + ' z', stroke: INK, 'stroke-width': 5, 'stroke-linejoin': 'round'}, g.body);
+    g.sideF = el('path', {d: 'M' + h + ' ' + (-h) + ' l' + DX + ' ' + DY + ' v' + B + ' l' + (-DX) + ' ' + (-DY) + ' z', stroke: INK, 'stroke-width': 5, 'stroke-linejoin': 'round'}, g.body);
+    g.front = el('rect', {x: -h, y: -h, width: B, height: B, rx: 6, stroke: INK, 'stroke-width': 5}, g.body);
+    el('rect', {x: -h + 12, y: -h + 12, width: B - 24, height: 10, rx: 5, fill: '#fff', opacity: .45}, g.body);
+    g.icon = el('g', {fill: 'none', stroke: INK, 'stroke-width': 7, 'stroke-linecap': 'round', 'stroke-linejoin': 'round'}, g.body);
+    skin(g, {top: top, side: side, front: front, icon: icon});
+    return g;
+  }
+  var OLD = ['#E9DCC8', '#D6C3A6', '#F3E9DA'];
+  var tower = [block(OLD[0], OLD[1], OLD[2], 'people'), block(OLD[0], OLD[1], OLD[2], 'lock'), block(OLD[0], OLD[1], OLD[2], 'course'), block(OLD[0], OLD[1], OLD[2], 'q')];
+  var NEW = [{top: '#FFE45C', side: '#E2B800', front: SUN, icon: 'find'}, {top: '#FF7FB6', side: '#C9126A', front: PINK, icon: 'tag'}, {top: '#FFE45C', side: '#E2B800', front: SUN, icon: 'mail'}];
+  var TX = 1330, STEP = [[1620, 712], [1800, 600], [1980, 488]], dayLbl = [];
+  ['DAY 1', 'DAY 2', 'DAY 3'].forEach(function(s, i){ dayLbl.push(el('text', {x: STEP[i][0] + 10, y: STEP[i][1] + B / 2 + 46, 'text-anchor': 'middle', 'font-family': 'Manrope', 'font-weight': 800, 'font-size': 24, 'letter-spacing': 4, fill: INK, opacity: 0})); dayLbl[i].textContent = s });
+  /* tower labels: the usual order, written on the wall beside it */
+  var tLbl = el('g', {opacity: 0});
+  [['Build an audience', 0], ['Turn on paid', 1], ['Make a course', 2], ['Hope someone buys', 3]].forEach(function(l){
+    var y = FLOOR - B / 2 - l[1] * B + 8, tx = el('text', {x: TX - 120, y: y, 'text-anchor': 'end', 'font-family': 'Instrument Serif', 'font-style': 'italic', 'font-size': 34, fill: INK}, tLbl); tx.textContent = l[0];
+    el('path', {d: 'M' + (TX - 112) + ' ' + (y - 10) + ' h22', stroke: INK, 'stroke-width': 3, 'stroke-dasharray': '2 6', 'stroke-linecap': 'round'}, tLbl);
+  });
+
+  /* the door: a plinth, a frame with depth, a real swing */
+  var DOOR = {x: 2290, y: 430};
+  var plinth = el('g', {});
+  el('path', {d: 'M2120 430 l' + DX + ' ' + DY + ' h330 l' + (-DX) + ' ' + (-DY) + ' z', fill: '#F3E6D2', stroke: INK, 'stroke-width': 5, 'stroke-linejoin': 'round'}, plinth);
+  el('rect', {x: 2120, y: 430, width: 330, height: FLOOR - 430, fill: '#EBDDC6', stroke: INK, 'stroke-width': 5}, plinth);
+  el('path', {d: 'M2450 430 l' + DX + ' ' + DY + ' v' + (FLOOR - 430) + ' l' + (-DX) + ' ' + (-DY) + ' z', fill: '#D9C4A2', stroke: INK, 'stroke-width': 5, 'stroke-linejoin': 'round'}, plinth);
+  var doorG = el('g', {transform: 'translate(' + DOOR.x + ' ' + DOOR.y + ')'});
+  var opening = el('g', {'clip-path': 'url(#doorClip)'}, doorG);
+  el('rect', {x: -80, y: -260, width: 160, height: 260, fill: 'url(#doorSky)'}, opening);
+  var doorSun = el('circle', {cx: 10, cy: -120, r: 34, fill: SUN, opacity: .95}, opening);
+  el('path', {d: 'M-80 -107 l26 -18 l20 12 l18 -10 l30 16 l26 -12 l40 12 v8 h-160 z', fill: '#FFF8EE', stroke: INK, 'stroke-width': 2}, opening);
+  el('path', {d: 'M-70 -70 q 20 -6 40 0 t 40 0 M0 -40 q 20 -6 40 0 t 40 0', stroke: '#fff', 'stroke-width': 3, fill: 'none', opacity: .65}, opening);
+  var glow = el('circle', {cx: 0, cy: -120, r: 420, fill: 'url(#glow)', opacity: 0}, doorG);
+  /* the leaf is redrawn every frame from its swing angle: hinge on the left, the free edge comes toward us */
+  var leafShade = el('path', {fill: 'rgba(60,35,15,.25)'}, doorG);
+  var leafEdge = el('path', {fill: '#CDB28C', stroke: INK, 'stroke-width': 4, 'stroke-linejoin': 'round'}, doorG);
+  var leafFace = el('path', {fill: 'url(#leafFace)', stroke: INK, 'stroke-width': 6, 'stroke-linejoin': 'round'}, doorG);
+  var leafP1 = el('path', {fill: 'none', stroke: INK, 'stroke-width': 4, 'stroke-linejoin': 'round'}, doorG);
+  var leafP2 = el('path', {fill: 'none', stroke: INK, 'stroke-width': 4, 'stroke-linejoin': 'round'}, doorG);
+  var knob = el('ellipse', {rx: 9, ry: 9, fill: SUN, stroke: INK, 'stroke-width': 4}, doorG);
+  el('path', {d: 'M-92 0 V-272 H92 V0', fill: 'none', stroke: INK, 'stroke-width': 10, 'stroke-linejoin': 'round'}, doorG);
+  el('path', {d: 'M-104 0 V-284 H104 V0', fill: 'none', stroke: INK, 'stroke-width': 3, opacity: .5}, doorG);
+  el('rect', {x: -110, y: -4, width: 220, height: 12, rx: 3, fill: '#E3D2B6', stroke: INK, 'stroke-width': 4}, doorG);
+  var sign = el('g', {transform: 'translate(0 -330)'}, doorG);
+  el('rect', {x: -98, y: -30, width: 196, height: 60, rx: 10, fill: '#2fb36a', stroke: INK, 'stroke-width': 5}, sign);
+  el('text', {x: 0, y: 12, 'text-anchor': 'middle', 'font-family': 'Manrope', 'font-weight': 800, 'font-size': 30, 'letter-spacing': 4, fill: '#fff'}, sign).textContent = 'EXIT 2027';
+  function swing(th){
+    var c = Math.cos(th), s = Math.sin(th), w = 160 * c, k = 160 * s * .16, fx = -80 + w;
+    var mp = function(u, v){ return [(-80 + u * w).toFixed(1), lerp(-260 - u * k, u * k, v).toFixed(1)] };
+    var poly = function(pts){ return 'M' + pts.map(function(p){ return p.join(' ') }).join(' L') + ' Z' };
+    leafFace.setAttribute('d', poly([mp(0, 0), mp(1, 0), mp(1, 1), mp(0, 1)]));
+    var e = 14 * s;   /* the door's thickness shows on the free edge */
+    leafEdge.setAttribute('d', th > .02 ? poly([[fx, -260 - k], [fx + e, -260 - k + 3], [fx + e, k - 3], [fx, k]]) : '');
+    leafShade.setAttribute('d', th > .02 ? poly([[-80, 0], [fx, k], [fx + 40 * s, k + 16 * s], [-60, 10]]) : '');
+    var panel = function(u0, u1, v0, v1){ return poly([mp(u0, v0), mp(u1, v0), mp(u1, v1), mp(u0, v1)]) };
+    leafP1.setAttribute('d', panel(.14, .86, .09, .45)); leafP2.setAttribute('d', panel(.14, .86, .53, .9));
+    var kp = mp(.86, .5); knob.setAttribute('cx', kp[0]); knob.setAttribute('cy', kp[1]); knob.setAttribute('rx', Math.max(2, 9 * c));
+    leafFace.setAttribute('opacity', 1); leafFace.style.filter = 'brightness(' + (1 - s * .18) + ')';
+  }
+  var beam = el('path', {d: 'M' + (DOOR.x - 80) + ' ' + (DOOR.y - 255) + ' L' + (DOOR.x + 80) + ' ' + (DOOR.y - 255) + ' L' + (DOOR.x + 60) + ' ' + DOOR.y + ' L1450 ' + FLOOR + ' L1300 ' + FLOOR + ' Z', fill: 'url(#beam)', opacity: 0, style: 'mix-blend-mode:screen'});
+  cam.insertBefore(beam, plinth);
+
+  function placeBlock(g, x, y, rot, sx, shadowY){
+    g.setAttribute('transform', 'translate(' + x + ' ' + y + ') rotate(' + rot + ') scale(' + sx + ' 1)');
+    var d = clamp((shadowY - y - B / 2) / 400, 0, 1);
+    g.shadow.setAttribute('cx', x + 10); g.shadow.setAttribute('cy', shadowY + 6); g.shadow.setAttribute('rx', 96 * (1 + d * .6)); g.shadow.setAttribute('ry', 15 * (1 + d * .4)); g.shadow.setAttribute('opacity', 1 - d * .75);
+    g.long.setAttribute('cx', x - 70 - d * 40); g.long.setAttribute('cy', shadowY + 8); g.long.setAttribute('rx', 170 * (1 + d * .4)); g.long.setAttribute('ry', 16); g.long.setAttribute('opacity', .55 - d * .4);
+  }
+  function placeRunner(g, x, y, rot, legPhase, legAmp, sq){
+    g.setAttribute('transform', 'translate(' + x + ' ' + y + ') rotate(' + rot + ') scale(' + (1 / sq) + ' ' + sq + ')');
+    g.legs.forEach(function(L, i){ L.setAttribute('transform', 'translate(' + (i ? 16 : -16) + ' 40) rotate(' + (Math.sin(legPhase + i * Math.PI) * legAmp) + ')') });
+  }
+
+  function world(t){
+    var c = track([[0, [700, 560, 1.16]], [5.6, [740, 560, 1.24]], [8.8, [1240, 540, 1.0]], [16.8, [1300, 520, 1.1]], [60.4, [1300, 520, 1.1]], [62.0, [1320, 520, 1.04]], [64.8, [1660, 520, .9]], [71.0, [1700, 515, .9]], [73.2, [1980, 480, 1.02]], [76.4, [2010, 470, 1.06]], [78.4, [2290, 300, 3.4]], [79.4, [2290, 290, 3.8]]], t);
+    cam.setAttribute('transform', 'translate(960 540) scale(' + c[2] + ') translate(' + (-c[0]) + ' ' + (-c[1]) + ')');
+    leaves.setAttribute('transform', 'translate(' + (Math.sin(t * .5) * 18 + c[0] * .15) + ' ' + (Math.cos(t * .4) * 10) + ')');
+    var spin = t < 5.8 ? t * 220 : 5.8 * 220 + 220 * (1 - Math.pow(1 - seg(t, 5.8, 6.7), 2)) * .45;
+    wheel.setAttribute('transform', 'translate(' + W.x + ' ' + W.y + ') rotate(' + spin + ')');
+    var cyc = t < 6 ? (t * .9) % 1 : lerp(.4, .5, io(seg(t, 6, 6.8)));
+    var day = Math.sin(cyc * Math.PI * 2 - Math.PI / 2) * .5 + .5;
+    skyN.setAttribute('opacity', 1 - day);
+    var ang = cyc * 360 - 90; orb.setAttribute('transform', 'translate(' + (Math.cos(ang * Math.PI / 180) * 60) + ' ' + (Math.sin(ang * Math.PI / 180) * 60 + 20) + ')');
+    sunO.setAttribute('opacity', day); moonO.setAttribute('opacity', 1 - day); monTxt.textContent = day > .5 ? 'MON' : 'SUN';
+    /* the sunflower */
+    var run = t < 5.8 ? 1 : 1 - seg(t, 5.8, 6.5), legPh = t * 15 * (t < 5.8 ? 1 : 1 - seg(t, 5.8, 6.5) * .5), rx, ry, rr = 0, sq = 1;
+    if (t < 6.7) { rx = W.x + Math.sin(t * 7) * 4 * run; ry = W.y + W.R - 126 + Math.abs(Math.sin(legPh)) * -6 * run; rr = 6 * run + (t > 6.3 ? -6 * seg(t, 6.3, 6.7) : 0) }
+    else if (t < 7.6) { var p = seg(t, 6.7, 7.6), e = io(p); rx = lerp(W.x, 960, e); ry = lerp(W.y + W.R - 126, FLOOR - 104, e) - Math.sin(p * Math.PI) * 300; sq = 1 + Math.sin(p * Math.PI) * .06; rr = lerp(-6, 4, e) }
+    else if (t < 74.4) { rx = 960; ry = FLOOR - 104 + Math.sin((t - 7.6) * 2.2) * 2; rr = 4 + Math.sin((t - 7.6) * 1.4) * 2; sq = 1 - Math.max(0, .05 - (t - 7.6) * .2) }
+    else {
+      var hops = [[960, FLOOR - 104], [STEP[0][0] + 10, STEP[0][1] - B / 2 - 74], [STEP[1][0] + 10, STEP[1][1] - B / 2 - 74], [STEP[2][0] + 10, STEP[2][1] - B / 2 - 74], [DOOR.x - 10, DOOR.y - 104], [DOOR.x, DOOR.y - 104]];
+      var T0 = 74.4, HD = .62, kk = Math.min(Math.floor((t - T0) / HD), hops.length - 2), ph = seg(t, T0 + kk * HD, T0 + (kk + 1) * HD), ee = io(ph);
+      rx = lerp(hops[kk][0], hops[kk + 1][0], ee); ry = lerp(hops[kk][1], hops[kk + 1][1], ee) - Math.sin(ph * Math.PI) * 110;
+      sq = 1 + Math.sin(ph * Math.PI) * .05 - (ph < .12 ? (.12 - ph) * .5 : 0); rr = Math.sin(ph * Math.PI) * 8;
+    }
+    var legAmp = t < 6.5 ? 38 * run : (t > 74.4 ? 12 : 4); if (t >= 6.7 && t < 7.6) legAmp = 24;
+    placeRunner(runner, rx, ry, rr, legPh, legAmp, sq);
+    var onFloor = t >= 6.7 && t < 74.5;
+    runner.shadow.setAttribute('cx', rx + 6); runner.shadow.setAttribute('cy', t < 6.7 ? W.y + W.R - 18 : (t < 74.5 ? FLOOR + 4 : ry + 120));
+    var fade = 1 - seg(t, 77.3, 77.8);
+    runner.shadow.setAttribute('opacity', (t < 6.7 ? .5 : (onFloor ? 1 - clamp((FLOOR - 104 - ry) / 360, 0, .8) : .7)) * fade);
+    runner.setAttribute('opacity', fade);
+    /* the tower: the usual order, wobbling, until the order changes */
+    var A = t < 60.4 ? Math.pow(seg(t, 8.8, 14), 1.4) * 4 : 4 + 3.5 * seg(t, 60.4, 62.0), baseY = FLOOR - B / 2;
+    tLbl.setAttribute('opacity', vis(t, 9.4, 17.4, .9) + vis(t, 60.6, 62.4, .6));
+    tower.forEach(function(g, i){
+      var x = TX + Math.sin(t * 6 + i * .5) * A * i * 1.2, y = baseY - i * B, r = Math.sin(t * 6 + i * .5) * A * (.4 + i * .25);
+      if (i === 3) {
+        var f = seg(t, 62.0, 62.8);
+        if (f > 0) { x = lerp(x, TX - 190, outq(f)); y = lerp(y, baseY, inq(f)); r = lerp(r, -90, io(f)) }
+        if (t > 62.8) { var s2 = seg(t, 62.8, 63.2); y = baseY - Math.sin(s2 * Math.PI) * 14 * (1 - s2); r = -90 + Math.sin(s2 * Math.PI) * 6 * (1 - s2); x = TX - 190 - 12 * outq(s2) }
+        g.setAttribute('opacity', 1 - seg(t, 65, 66) * .55); placeBlock(g, x, y, r, 1, FLOOR); return;
+      }
+      var st = 62.25 + (2 - i) * .22 + (i === 0 ? .44 : 0), fp = seg(t, st, st + 1.25);
+      if (fp > 0) {
+        var tg = STEP[i], ex = io(fp);
+        x = lerp(x, tg[0], ex); y = lerp(y, tg[1], settle(fp)) - Math.sin(fp * Math.PI) * (220 - i * 40); r = lerp(r, 0, io(fp)) + Math.sin(fp * Math.PI) * (i % 2 ? -14 : 14);
+        var flip = Math.abs(Math.cos(seg(fp, .35, .65) * Math.PI));
+        if (fp > .5) skin(g, NEW[i]); else skin(g, {top: OLD[0], side: OLD[1], front: OLD[2], icon: ['people', 'lock', 'course'][i]});
+        placeBlock(g, x, y, r, Math.max(.06, flip), FLOOR); dayLbl[i].setAttribute('opacity', seg(t, st + 1.2, st + 1.7)); return;
+      }
+      if (t < 62) skin(g, {top: OLD[0], side: OLD[1], front: OLD[2], icon: ['people', 'lock', 'course'][i]});
+      placeBlock(g, x, y, r, 1, FLOOR); dayLbl[i].setAttribute('opacity', 0);
+    });
+    /* the door opens toward us, in perspective, and the light comes through */
+    var op = io(seg(t, 71.6, 73.8)), th = op * 1.22;
+    swing(th);
+    glow.setAttribute('opacity', op * (1 + seg(t, 76.6, 78.2) * 1.5)); beam.setAttribute('opacity', op * .9);
+    doorSun.setAttribute('cy', -120 + Math.sin(t * .8) * 3);
+    $('cool').setAttribute('opacity', t < 60.4 ? .16 : .16 * (1 - io(seg(t, 61, 64))));
+    $('warm').setAttribute('opacity', .55 * io(seg(t, 71.6, 74)));
+  }
+
+  /* ======================================================================================================
+     THE SCENES in HTML: each is built once, then moved as a function of its own time
+     ====================================================================================================== */
+  function H(id, html){ $(id).innerHTML = html; return $(id) }
+  var wallBg = 'background:#F5E8D4 url(' + PLASTER + ');';
+  var woodBg = 'background:#D9B48A url(' + WOOD + ') 0 0/800px 200px;';
+
+  /* ---- 3 · Ana's room in Greece (0:17 to 0:37) ---- */
+  H('s3', '<div class="cam" id="c3" style="width:3300px;height:1340px;' + wallBg + '">'
+    /* an arched window onto the Aegean */
+    + '<div class="abs" style="left:150px;top:70px;width:560px;height:600px;border-radius:280px 280px 14px 14px;border:20px solid #EFE2CC;box-shadow:inset 0 0 0 4px #1A1412,0 0 0 4px #1A1412,0 30px 60px -30px rgba(80,45,20,.45);overflow:hidden">'
+    +   '<svg width="520" height="560" viewBox="0 0 520 560" style="display:block"><defs><linearGradient id="gs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFD98A"/><stop offset=".6" stop-color="#FFF1CF"/></linearGradient><linearGradient id="gw" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#78B4CB"/><stop offset="1" stop-color="#3F7FA0"/></linearGradient></defs>'
+    +   '<rect width="520" height="560" fill="url(#gs)"/><circle id="s3sun" cx="330" cy="250" r="56" fill="#FFD400" opacity=".95"/><rect y="330" width="520" height="230" fill="url(#gw)"/>'
+    +   '<path d="M0 330 l60 -40 l40 20 l50 -30 l60 34 l40 -18 l70 30 l50 -20 l80 24 l70 -10 v10 z" fill="#E9DCC6" stroke="#1A1412" stroke-width="3"/>'
+    +   '<g fill="#FFF8EE" stroke="#1A1412" stroke-width="3"><rect x="60" y="270" width="54" height="44"/><rect x="128" y="280" width="40" height="34"/><rect x="300" y="276" width="60" height="40"/><path d="M380 300 h50 v18 h-50 z"/><path d="M60 270 l27 -18 l27 18"/></g>'
+    +   '<g id="s3waves" stroke="#fff" stroke-width="4" fill="none" opacity=".6"><path d="M20 380 q30 -8 60 0 t60 0 t60 0"/><path d="M240 430 q30 -8 60 0 t60 0 t60 0"/><path d="M80 490 q30 -8 60 0 t60 0"/></g></svg></div>'
+    + '<div class="abs" style="left:120px;top:668px;width:620px;height:30px;border-radius:6px;background:#EFE2CC;border:4px solid #1A1412"></div>'
+    /* Ana's photo, taped to the wall */
+    + '<div class="abs shadow" style="left:820px;top:150px;width:300px;padding:16px 16px 70px;background:#fff;transform:rotate(4deg)"><div style="height:330px;background:url(' + ANA_WALL + ') 50% 30%/cover"></div>'
+    +   '<p class="serif" style="position:absolute;left:0;right:0;bottom:16px;text-align:center;font-style:italic;font-size:36px">Ana · How We Grow</p>'
+    +   '<span style="position:absolute;left:96px;top:-18px;width:110px;height:36px;background:rgba(247,37,133,.55);transform:rotate(-6deg)"></span></div>'
+    /* the clock */
+    + '<div class="abs" style="left:2160px;top:120px;width:250px;height:250px"><svg width="250" height="250" viewBox="-125 -125 250 250"><circle r="116" fill="#FFF8EE" stroke="#1A1412" stroke-width="9"/>'
+    +   '<path id="s3arc" d="" fill="rgba(255,212,0,.75)" stroke="#1A1412" stroke-width="3"/>'
+    +   (function(){ var s = ''; for (var i = 0; i < 12; i++) { var a = i / 12 * Math.PI * 2; s += '<line x1="' + (Math.sin(a) * 92) + '" y1="' + (-Math.cos(a) * 92) + '" x2="' + (Math.sin(a) * 104) + '" y2="' + (-Math.cos(a) * 104) + '" stroke="#1A1412" stroke-width="' + (i % 3 ? 4 : 7) + '"/>' } return s })()
+    +   '<line id="s3hh" x1="0" y1="0" x2="0" y2="-56" stroke="#1A1412" stroke-width="9" stroke-linecap="round"/><line id="s3mh" x1="0" y1="0" x2="0" y2="-86" stroke="#1A1412" stroke-width="6" stroke-linecap="round"/><circle r="10" fill="#FFD400" stroke="#1A1412" stroke-width="4"/></svg></div>'
+    + '<div class="abs" id="s3clk" style="left:2120px;top:390px;width:330px;text-align:center"><p class="serif" style="font-size:52px;line-height:1">About 2 hours</p><p class="k" style="font-size:18px;color:#7A6A60;margin-top:8px">A DAY, THE WHOLE BUSINESS</p></div>'
+    /* the desk */
+    + '<div class="abs" style="left:0;top:780px;width:3300px;height:560px;' + woodBg + 'border-top:5px solid #1A1412;box-shadow:inset 0 14px 18px -10px rgba(255,255,255,.4)"></div>'
+    /* the laptop */
+    + '<div class="abs" style="left:1050px;top:400px;width:640px">'
+    +   '<div style="height:400px;border-radius:22px 22px 6px 6px;background:#1A1412;padding:18px;box-shadow:0 40px 70px -30px rgba(50,30,15,.6)"><div style="height:100%;border-radius:10px;background:#FFFDF8;padding:26px 30px;position:relative;overflow:hidden">'
+    +     '<p class="k" style="font-size:15px;color:#7A6A60">HOW WE GROW · ALL TIME</p><p class="serif" id="s3rev" style="font-size:110px;line-height:1;margin-top:10px">$0</p><p style="font-weight:700;font-size:20px;color:#3D332E">from the newsletter</p>'
+    +     '<svg width="580" height="140" viewBox="0 0 580 140" style="position:absolute;left:30px;bottom:18px"><g id="s3bars"></g></svg></div></div>'
+    +   '<div style="height:26px;margin:0 -40px;border-radius:0 0 30px 30px;background:linear-gradient(#E6D7C1,#BCA88B);border:4px solid #1A1412"></div></div>'
+    /* the readers: a fan of envelopes */
+    + '<div class="abs" id="s3env" style="left:1760px;top:600px;width:360px;height:220px"></div>'
+    + '<div class="abs" id="s3rdl" style="left:1740px;top:850px;width:420px;text-align:center;opacity:0"><p class="serif" style="font-size:56px;line-height:1">About <span id="s3rd">0</span></p><p class="k" style="font-size:18px;color:#3D332E;margin-top:6px">READERS</p></div>'
+    /* the phone that never rings */
+    + '<div class="abs" style="left:2200px;top:560px;width:300px"><svg width="300" height="240" viewBox="0 0 300 240" style="filter:drop-shadow(0 26px 22px rgba(60,35,15,.35))">'
+    +   '<path d="M40 210 L70 110 h160 l30 100 z" fill="#FFF3DF" stroke="#1A1412" stroke-width="6" stroke-linejoin="round"/><circle cx="150" cy="160" r="40" fill="#FFF8EE" stroke="#1A1412" stroke-width="5"/>'
+    +   (function(){ var s = ''; for (var i = 0; i < 10; i++) { var a = (i / 10) * Math.PI * 1.6 + 2.4; s += '<circle cx="' + (150 + Math.cos(a) * 26) + '" cy="' + (160 + Math.sin(a) * 26) + '" r="5" fill="#1A1412"/>' } return s })()
+    +   '<path d="M40 90 c0 -40 40 -56 110 -56 s110 16 110 56 l-40 14 l-12 -28 c-20 -6 -40 -8 -58 -8 s-38 2 -58 8 l-12 28 z" fill="#F72585" stroke="#1A1412" stroke-width="6" stroke-linejoin="round"/></svg>'
+    +   '<div style="text-align:center;margin-top:24px"><p class="serif" style="font-size:96px;line-height:.9">0</p><p class="k" style="font-size:18px;color:#3D332E;margin-top:8px">SALES CALLS</p></div></div>'
+    /* a notebook and a coffee, for the desk */
+    + '<div class="abs" style="left:780px;top:820px;width:230px;height:150px;border-radius:8px;background:#FFF8EE;border:4px solid #1A1412;transform:rotate(-8deg);box-shadow:0 22px 30px -18px rgba(60,35,15,.5);background-image:repeating-linear-gradient(transparent 0 26px,rgba(26,20,18,.12) 26px 28px)"></div>'
+    + '<div class="abs" style="left:620px;top:800px;width:120px;height:120px;border-radius:50%;background:#FFF8EE;border:4px solid #1A1412;box-shadow:0 20px 26px -14px rgba(60,35,15,.5)"><div style="margin:18px;height:76px;border-radius:50%;background:radial-gradient(#5A3A22 55%,#B07A48 85%);border:3px solid #1A1412"></div></div>'
+    + '</div>');
+  (function(){
+    var bars = '', env = '';
+    for (var i = 0; i < 12; i++) bars += '<rect class="b" x="' + (i * 48) + '" width="34" rx="6" fill="' + (i % 3 === 2 ? '#F72585' : '#FFD400') + '" stroke="#1A1412" stroke-width="3"/>';
+    $('s3bars').innerHTML = bars;
+    for (var j = 0; j < 7; j++) env += '<div class="e" style="position:absolute;left:60px;top:40px;width:240px;height:150px;border-radius:10px;background:#FFF8EE;border:4px solid #1A1412;transform-origin:50% 140%;box-shadow:0 10px 14px -8px rgba(60,35,15,.35)"><svg width="232" height="142" viewBox="0 0 232 142" style="display:block"><path d="M4 8 L116 84 L228 8" fill="none" stroke="#1A1412" stroke-width="4"/>' + (j === 6 ? '<circle cx="116" cy="80" r="20" fill="#F72585" stroke="#1A1412" stroke-width="3"/>' : '') + '</svg></div>';
+    $('s3env').innerHTML = env;
+  })();
+  function s3(t){
+    /* the camera looks at one thing at a time: [centre x, centre y, zoom] */
+    var c = track([[0, [900, 470, 1.0]], [4.4, [920, 480, 1.04]], [6.0, [1370, 580, 1.12]], [9.4, [1380, 585, 1.14]], [10.8, [1950, 740, 1.18]], [13.4, [1960, 745, 1.2]], [14.8, [2350, 730, 1.18]], [16.8, [2360, 735, 1.2]], [18.0, [2290, 520, 1.04]], [20.8, [2295, 522, 1.06]]], t);
+    $('c3').style.transform = 'translate(' + (960 - c[0] * c[2]) + 'px,' + (540 - c[1] * c[2]) + 'px) scale(' + c[2] + ')';
+    $('s3sun').setAttribute('cy', 250 - Math.sin(t * .3) * 6);
+    $('s3waves').setAttribute('transform', 'translate(' + (Math.sin(t * 1.2) * 10) + ' 0)');
+    var rp = io(seg(t, 6.2, 9.0)), rev = rp * 1.4;
+    $('s3rev').textContent = rp >= 1 ? '$1.4M' : (rev < .1 ? '$' + fmt(rev * 1e6) : '$' + rev.toFixed(1) + 'M');
+    var bs = document.querySelectorAll('#s3bars .b');
+    bs.forEach(function(b, i){ var h = (20 + i * 9 + (i % 3) * 6) * io(seg(t, 6.2 + i * .1, 7.6 + i * .1)); b.setAttribute('y', 130 - h); b.setAttribute('height', Math.max(.1, h)) });
+    var es = document.querySelectorAll('#s3env .e');
+    es.forEach(function(e, i){ var p = io(seg(t, 10.6 + i * .12, 11.9 + i * .12)); e.style.transform = 'rotate(' + ((i - 3) * 9 * p) + 'deg)' });
+    $('s3rd').textContent = fmt(Math.round(io(seg(t, 10.6, 12.6)) * 80) * 1000); $('s3rdl').style.opacity = io(seg(t, 10.2, 10.8));
+    var cp = io(seg(t, 18.2, 20.2)), mAng = cp * 720, hAng = 300 + cp * 60;
+    $('s3mh').setAttribute('transform', 'rotate(' + mAng + ')'); $('s3hh').setAttribute('transform', 'rotate(' + hAng + ')');
+    var a0 = 300, a1 = 300 + cp * 60, r = 96, p0 = [Math.sin(a0 * Math.PI / 180) * r, -Math.cos(a0 * Math.PI / 180) * r], p1 = [Math.sin(a1 * Math.PI / 180) * r, -Math.cos(a1 * Math.PI / 180) * r];
+    $('s3arc').setAttribute('d', cp > .01 ? 'M0 0 L' + p0[0] + ' ' + p0[1] + ' A' + r + ' ' + r + ' 0 0 1 ' + p1[0] + ' ' + p1[1] + ' Z' : '');
+    $('s3clk').style.opacity = io(seg(t, 18.6, 19.4));
+  }
+
+  /* ---- 4 · the two-sale workshop (0:37 to 0:47) ---- */
+  H('s4', '<div class="cam" id="c4" style="width:1920px;height:1080px;' + wallBg + '">'
+    + '<div class="abs win" style="left:220px;top:120px;width:1480px;height:840px;background:#FFFDF8">'
+    +   '<div style="display:flex;align-items:center;gap:10px;height:56px;padding:0 24px;background:#F3EADC;border-bottom:3px solid #1A1412"><span style="width:16px;height:16px;border-radius:50%;background:#F72585"></span><span style="width:16px;height:16px;border-radius:50%;background:#FFD400"></span><span style="width:16px;height:16px;border-radius:50%;background:#E0D3BF"></span><span style="margin-left:24px;font-weight:700;font-size:20px;color:#3D332E">Sales · My first workshop</span></div>'
+    +   '<div style="position:relative;padding:44px 60px">'
+    +     '<p class="k" style="font-size:18px;color:#7A6A60">SALES, ALL TIME</p><p class="serif" id="s4n" style="font-size:230px;line-height:.9;margin-top:6px">0</p>'
+    +     '<div style="position:absolute;left:420px;top:70px"><p class="k" style="font-size:16px;color:#7A6A60">VIEWS</p><p style="margin-top:10px"><span class="rd" style="width:190px;height:30px"></span></p><p class="k" style="font-size:16px;color:#7A6A60;margin-top:34px">CONVERSION</p><p style="margin-top:10px"><span class="rd" style="width:120px;height:30px"></span></p></div>'
+    +     '<svg width="1360" height="360" viewBox="0 0 1360 360" style="position:absolute;left:60px;top:330px"><path d="M0 330 H1360" stroke="#E7DCCB" stroke-width="4"/><path d="M0 230 H1360 M0 130 H1360 M0 30 H1360" stroke="#F1E9DC" stroke-width="3" stroke-dasharray="8 10"/>'
+    +       '<path id="s4line" d="M0 320 L260 320 L300 290 L700 290 L740 260 L1360 260" fill="none" stroke="#1A1412" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>'
+    +       '<circle id="s4d1" cx="300" cy="290" r="16" fill="#F72585" stroke="#1A1412" stroke-width="4" opacity="0"/><circle id="s4d2" cx="740" cy="260" r="16" fill="#F72585" stroke="#1A1412" stroke-width="4" opacity="0"/></svg>'
+    +   '</div></div></div>');
+  var s4L = 0;
+  function s4(t){
+    var c = track([[0, [0, 0, 1]], [10.6, [-30, -16, 1.04]]], t, function(p){ return p });
+    $('c4').style.transform = 'translate(' + c[0] + 'px,' + c[1] + 'px) scale(' + c[2] + ')';
+    var ln = $('s4line'); if (!s4L) s4L = ln.getTotalLength(); ln.style.strokeDasharray = s4L; var lp = io(seg(t, 1.0, 7.0)); ln.style.strokeDashoffset = s4L * (1 - lp);
+    $('s4d1').setAttribute('opacity', seg(lp, .22, .26)); $('s4d2').setAttribute('opacity', seg(lp, .53, .57));
+    $('s4n').textContent = lp > .55 ? '2' : lp > .24 ? '1' : '0';
+  }
+
+  /* ---- 5 · likes and money (0:47 to 1:01) ---- */
+  function phone(id, x, likes){
+    return '<div class="phone" id="' + id + '" style="left:' + x + 'px;top:110px"><div class="scr"><div class="notch"></div>'
+      + '<div style="padding:74px 26px 0"><p class="k" style="font-size:15px;color:#7A6A60">YOUR POST</p><div style="margin-top:14px;height:170px;border-radius:18px;background:' + (likes > 100 ? '#F1E9DC' : 'linear-gradient(135deg,#FFE1EE,#FFF1B3)') + ';border:2.5px solid #1A1412;display:grid;place-items:center"><span class="rd" style="width:160px;height:22px"></span></div>'
+      + '<p style="margin-top:16px"><span class="rd" style="width:300px;height:20px"></span></p><p style="margin-top:10px"><span class="rd" style="width:220px;height:20px"></span></p>'
+      + '<div style="display:flex;align-items:center;gap:12px;margin-top:22px"><svg width="44" height="44" viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.5 3 4.5 6.8 4.5c2.1 0 3.6 1.2 5.2 3 1.6-1.8 3.1-3 5.2-3 3.8 0 5.9 4 4.4 7.3C19.5 16.4 12 21 12 21Z" fill="#F72585"/></svg><span class="serif lk" style="font-size:66px;line-height:1">0</span><span style="font-weight:700;font-size:22px;color:#3D332E">likes</span></div>'
+      + '<div style="display:flex;justify-content:space-between;align-items:center;margin-top:18px;padding:16px 0;border-top:2px dashed #EFE6D8;border-bottom:2px dashed #EFE6D8"><span class="k" style="font-size:16px;color:#7A6A60">EARNED</span><span class="serif ern" style="font-size:52px">$0</span></div></div>'
+      + '<div class="feed" style="position:absolute;left:0;right:0;top:600px;bottom:0;overflow:hidden"><div class="fi" style="position:absolute;left:0;right:0;top:0"></div></div></div></div>';
+  }
+  H('s5', '<div class="cam" id="c5" style="width:1920px;height:1080px;' + wallBg + '">' + phone('pA', 470, 771) + phone('pB', 1030, 82) + '</div>');
+  (function(){
+    var rows = ''; for (var i = 0; i < 18; i++) rows += '<div class="row"><span class="av" style="background:' + ['#E7DCCB', '#FFE1EE', '#FFF1B3'][i % 3] + '"></span><span><b>Someone</b> liked your post</span><svg width="22" height="22" viewBox="0 0 24 24" style="margin-left:auto"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.5 3 4.5 6.8 4.5c2.1 0 3.6 1.2 5.2 3 1.6-1.8 3.1-3 5.2-3 3.8 0 5.9 4 4.4 7.3C19.5 16.4 12 21 12 21Z" fill="#F72585"/></svg></div>';
+    $('pA').querySelector('.fi').innerHTML = rows;
+    $('pB').querySelector('.fi').innerHTML = '<div class="row nb" style="background:#EAF7EF"><span class="av" style="background:#1f7a45;border-color:#1A1412;display:grid;place-items:center;color:#fff;font-weight:800">✓</span><span><b>New paid subscriber</b></span></div>'
+      + '<div class="row nb" style="background:#FFF6D6"><span class="av" style="background:#FFD400;display:grid;place-items:center;font-weight:800">$</span><span><b>You made a sale</b></span><span class="rd" style="margin-left:auto;width:90px;height:22px"></span></div>'
+      + '<div class="row nb" style="background:#EAF7EF"><span class="av" style="background:#1f7a45;display:grid;place-items:center;color:#fff;font-weight:800">✓</span><span><b>New paid subscriber</b></span></div>';
+  })();
+  function s5(t){
+    $('c5').style.transform = 'scale(' + lerp(1, 1.03, t / 14) + ')';
+    var A = $('pA'), Bp = $('pB');
+    A.querySelector('.lk').textContent = fmt(io(seg(t, .8, 5.6)) * 771);
+    A.querySelector('.fi').style.transform = 'translateY(' + (-io(seg(t, .8, 6)) * 640) + 'px)';
+    A.style.opacity = 1 - seg(t, 6.6, 7.4) * .45;
+    A.style.transform = 'translateX(' + (io(seg(t, 6.4, 7.6)) * -60) + 'px)';
+    Bp.style.opacity = io(seg(t, 6.6, 7.6)); Bp.style.transform = 'translateY(' + ((1 - io(seg(t, 6.6, 7.8))) * 40) + 'px)';
+    Bp.querySelector('.lk').textContent = fmt(io(seg(t, 7.4, 9.2)) * 82);
+    var nb = Bp.querySelectorAll('.nb'); nb.forEach(function(n, i){ var p = io(seg(t, 9.6 + i * .9, 10.4 + i * .9)); n.style.opacity = p; n.style.transform = 'translateY(' + ((1 - p) * -18) + 'px)' });
+    Bp.querySelector('.ern').innerHTML = t > 10.2 ? '<span class="rd" style="width:130px;height:44px"></span>' : '$0';
+  }
+
+  /* ---- 7 · The Exit Plan, and each day as a live session (1:20 to 1:58) ---- */
+  var DAYS = [['1', 'Find your first offer', ['1b', '1a']], ['2', 'Put a price on it', ['2a', '2b']], ['3', 'Write the ask', ['3a', '3b']]];
+  H('s7', '<div class="cam" id="c7" style="width:1920px;height:1080px;background:radial-gradient(80% 70% at 50% 40%,#FFF3D6,#F5E8D4)">'
+    + '<div id="s7t" style="position:absolute;left:0;right:0;top:330px;text-align:center"><div id="s7sf" style="width:150px;height:150px;margin:0 auto 18px"></div><h1 class="serif" id="s7h" style="font-size:180px;line-height:.95;letter-spacing:-.015em"></h1><p class="k" id="s7p" style="margin-top:26px;font-size:28px;letter-spacing:.2em;color:#F72585">A FREE 3-DAY LIVE WORKSHOP WITH ANA CALIN</p></div>'
+    + '<div id="s7w" style="position:absolute;left:0;top:0;width:1920px;height:1080px;opacity:0">'
+    +   '<div id="s7chip" style="position:absolute;left:340px;top:78px"></div>'
+    +   '<div class="win" style="left:340px;top:170px;width:1240px" id="s7win"><div class="bar"><i></i><b>LIVE</b><span id="s7bar">Day 1 · Ana is sharing her slides</span></div><div id="s7sl" style="position:relative;width:1234px;height:694px;overflow:hidden;background:#FFF8EE"></div></div>'
+    +   '<div class="camtile" style="left:1430px;top:760px;width:300px;height:225px"><img src="' + ANA + '" alt=""><span>Ana</span></div>'
+    + '</div></div>');
+  (function(){
+    var sl = ''; DAYS.forEach(function(d){ d[2].forEach(function(k){ sl += '<img class="sl" data-k="' + k + '" src="' + SL(k) + '" style="position:absolute;inset:0;width:100%;height:100%;opacity:0;transform-origin:70% 60%">' }) });
+    $('s7sl').innerHTML = sl;
+    var h = $('s7h'); 'The Exit Plan'.split('').forEach(function(c){ var s = document.createElement('span'); s.style.display = 'inline-block'; s.textContent = c === ' ' ? ' ' : c; h.appendChild(s) });
+  })();
+  function s7(t){
+    var tp = seg(t, .4, 2.2), sp = $('s7h').querySelectorAll('span');
+    sp.forEach(function(s, i){ var p = clamp(tp * 1.6 - i * .045, 0, 1); s.style.opacity = io(p); s.style.filter = 'blur(' + ((1 - io(p)) * 14).toFixed(1) + 'px)' });
+    var sf = io(seg(t, .2, 1.4)); $('s7sf').style.opacity = sf; $('s7sf').style.filter = 'blur(' + ((1 - sf) * 14).toFixed(1) + 'px)';
+    $('s7p').style.opacity = io(seg(t, 1.6, 2.6));
+    var out = io(seg(t, 5.0, 6.2)); $('s7t').style.opacity = 1 - out; $('s7t').style.filter = 'blur(' + (out * 10).toFixed(1) + 'px)'; $('s7t').style.transform = 'scale(' + (1 - out * .06) + ')';
+    var wi = io(seg(t, 5.6, 6.8)); $('s7w').style.opacity = wi; $('s7w').style.transform = 'translateY(' + ((1 - wi) * 40) + 'px)';
+    /* six slides, about 5 s each, a slow push toward the covered part */
+    var T0 = 6.2, D = 5.1, idx = clamp(Math.floor((t - T0) / D), 0, 5), slides = document.querySelectorAll('#s7sl .sl');
+    slides.forEach(function(im, i){
+      var a = T0 + i * D, o = i === 0 ? (t < a + D ? 1 : 1 - io(seg(t, a + D - .5, a + D + .1))) : vis(t, a - .5, a + D + .1, .6);
+      if (i === 5) o = io(seg(t, a - .5, a + .1));
+      im.style.opacity = o; im.style.transform = 'scale(' + (1 + io(seg(t, a, a + D)) * .07) + ')';
+    });
+    var day = Math.floor(idx / 2), d = DAYS[day];
+    var chip = '<span class="chip"><b>DAY ' + d[0] + '</b>' + d[1] + '</span>';
+    if ($('s7chip').innerHTML !== chip) $('s7chip').innerHTML = chip;
+    $('s7bar').textContent = 'Day ' + d[0] + ' · Ana is sharing her slides';
+  }
+
+  /* ---- 8 · results from the past challenge (1:58 to 2:10) ---- */
+  var RES = [['$3,000+', 'in a month, from about 300 readers', 'Jill Hart', 'JH'], ['$3,200', 'from 547 subscribers. First launch ever.', 'A student', ''], ['$2,400', 'from 198 subscribers', 'A student', '']];
+  H('s8', '<div class="cam" id="c8" style="width:1920px;height:1080px;' + wallBg + '">'
+    + '<div style="position:absolute;left:0;right:0;top:120px;text-align:center"><h2 class="serif" style="font-size:96px;line-height:1">Small lists. <span style="background:linear-gradient(transparent 58%,#FFD400 58%,#FFD400 92%,transparent 92%)">Real results.</span></h2></div>'
+    + RES.map(function(r, i){ return '<div class="card shadow rc" style="left:' + (190 + i * 540) + 'px;top:330px;width:480px;height:430px;padding:40px 40px">'
+        + '<div style="display:flex;align-items:center;gap:14px"><span class="av" style="width:58px;height:58px;display:grid;place-items:center;font-weight:800;background:' + ['#FFD400', '#FFE1EE', '#FFF1B3'][i] + '">' + (r[3] || '') + '</span><b style="font-size:24px">' + r[2] + '</b></div>'
+        + '<p class="serif rv" data-v="' + r[0] + '" style="font-size:130px;line-height:1;margin-top:34px">' + r[0] + '</p><p style="font-weight:600;font-size:26px;line-height:1.35;color:#3D332E;margin-top:14px">' + r[1] + '</p></div>' }).join('')
+    + '<p style="position:absolute;left:0;right:0;top:830px;text-align:center;font-weight:700;font-size:24px;color:#7A6A60">From people in Ana’s past challenge. Individual results; results vary.</p></div>');
+  function s8(t){
+    $('c8').style.transform = 'scale(' + lerp(1.02, 1, io(seg(t, 0, 12))) + ')';
+    document.querySelectorAll('#s8 .rc').forEach(function(c, i){ var p = io(seg(t, .6 + i * .45, 1.8 + i * .45)); c.style.opacity = p; c.style.transform = 'translateY(' + ((1 - p) * 50) + 'px)' });
+  }
+
+  /* ---- 9 · the gift and the draw (2:10 to 2:21) ---- */
+  H('s9', '<div class="cam" id="c9" style="width:1920px;height:1080px;background:radial-gradient(70% 60% at 50% 40%,#FFF3D6,#F5E8D4)">'
+    + '<div style="position:absolute;left:150px;top:150px;width:760px;text-align:center"><p class="k" style="font-size:20px;color:#F72585">YOUR GIFT WHEN YOU SIGN UP</p><h2 class="serif" style="font-size:76px;line-height:1;margin-top:12px">Your exit number</h2>'
+    +   '<div id="calc" style="position:relative;width:420px;margin:44px auto 0;padding:28px;border-radius:44px;background:linear-gradient(165deg,#FF5CA8,#F72585 45%,#DE1675);border:4px solid #1A1412;box-shadow:inset 0 3px 0 rgba(255,255,255,.35),0 16px 0 -2px #A80F55,0 16px 0 2px #1A1412,0 50px 60px -30px rgba(70,20,40,.6)">'
+    +     '<div style="height:150px;border-radius:18px;background:linear-gradient(#C9D3A6,#B9C596);border:5px solid #2A1A22;display:flex;flex-direction:column;justify-content:center;align-items:flex-end;padding:0 26px;box-shadow:inset 0 5px 10px rgba(30,40,20,.35)"><span class="k" style="font-size:15px;color:#3A4630">PURCHASES A MONTH</span><span id="calcN" style="font-family:ui-monospace,monospace;font-weight:800;font-size:84px;line-height:1;color:#25301D">00</span></div>'
+    +     '<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:22px">' + '789÷456×123−0.=+'.split('').map(function(k){ return '<span style="display:grid;place-items:center;height:56px;border-radius:14px;background:' + (k === '=' ? '#FFD400' : '÷×−+'.indexOf(k) >= 0 ? '#FFD3E7' : '#FFF8EE') + ';border:3px solid #1A1412;box-shadow:0 5px 0 #1A1412;font-weight:800;font-size:24px">' + k + '</span>' }).join('') + '</div></div>'
+    +   '<p style="margin-top:44px;font-weight:600;font-size:26px;color:#3D332E">The sales, people and hours behind your income goal.</p></div>'
+    + '<div style="position:absolute;left:1010px;top:150px;width:760px;text-align:center"><p class="k" style="font-size:20px;color:#F72585">STAY UNTIL THE END OF DAY 3</p><h2 class="serif" style="font-size:76px;line-height:1;margin-top:12px">Five 1:1s with Ana</h2>'
+    +   '<div style="position:relative;height:520px;margin-top:20px"><div id="slips"></div>'
+    +   '<svg width="460" height="300" viewBox="0 0 460 300" style="position:absolute;left:150px;top:230px;overflow:visible"><ellipse cx="230" cy="290" rx="220" ry="22" fill="rgba(90,52,24,.25)"/><path d="M20 60 C 30 240, 430 240, 440 60 Z" fill="#FFF3DF" stroke="#1A1412" stroke-width="7"/><ellipse cx="230" cy="60" rx="210" ry="40" fill="#E7D3B5" stroke="#1A1412" stroke-width="7"/><path d="M40 92 C 60 200, 400 200, 420 92" fill="none" stroke="#D98A5F" stroke-width="10"/></svg></div></div>'
+    + '</div>');
+  (function(){ var s = ''; for (var i = 0; i < 5; i++) s += '<div class="slip" style="position:absolute;left:0;top:0;width:150px;height:62px;border-radius:6px;background:#fff;border:3px solid #1A1412;box-shadow:0 8px 12px -6px rgba(60,35,15,.4);display:grid;place-items:center"><span class="rd" style="width:90px;height:14px;background:#C9B79E"></span></div>'; $('slips').innerHTML = s })();
+  function s9(t){
+    var n = t < 1.2 ? 0 : t < 3.6 ? Math.floor(((t * 13) % 1) * 90) + 10 : 7;
+    $('calcN').textContent = t < 1.2 ? '00' : t < 3.6 ? String(n).padStart(2, '0') : '07';
+    document.querySelectorAll('#slips .slip').forEach(function(s, i){
+      var p = seg(t, 3.4 + i * .55, 4.6 + i * .55), e = io(p), x0 = 60 + i * 120, y0 = -40, x1 = 230 + (i - 2) * 40, y1 = 196 + (i % 2) * 10;
+      var x = lerp(x0, x1, e), y = lerp(y0, y1, e) - Math.sin(p * Math.PI) * 120;
+      s.style.opacity = io(seg(t, 3.2 + i * .55, 3.6 + i * .55)); s.style.transform = 'translate(' + x + 'px,' + y + 'px) rotate(' + lerp(-14 + i * 6, (i - 2) * 9, e) + 'deg)';
+    });
+  }
+
+  /* ---- 10 · the ask (2:21 to the end) ---- */
+  H('s10', '<div class="cam" id="c10" style="width:1920px;height:1080px;background:radial-gradient(80% 70% at 50% 40%,#FFF3D6,#F5E8D4);text-align:center">'
+    + '<div id="e10" style="position:absolute;left:0;right:0;top:250px"><div id="e10sf" style="width:140px;height:140px;margin:0 auto 18px"></div><h1 class="serif" style="font-size:150px;line-height:.95">The Exit Plan</h1>'
+    + '<p style="margin-top:20px;font-weight:700;font-size:30px;color:#3D332E">A free 3-day live workshop with Ana Calin</p>'
+    + '<div id="e10b" style="display:inline-flex;align-items:center;gap:16px;margin-top:46px;height:96px;padding:0 50px 0 14px;border-radius:999px;background:#F72585;color:#fff;font-weight:800;font-size:36px;box-shadow:0 22px 40px -18px rgba(247,37,133,.8)"><span id="e10i" style="width:70px;height:70px;border-radius:50%;background:#FFD400;border:3px solid #fff;display:grid;place-items:center"></span>Save your free seat</div>'
+    + '<p style="margin-top:22px;font-weight:700;font-size:22px;letter-spacing:.14em;color:#7A6A60">FREE · LIVE ON ZOOM</p></div></div>');
+  function s10(t){
+    var p = io(seg(t, .3, 1.6)); $('e10').style.opacity = p; $('e10').style.filter = 'blur(' + ((1 - p) * 12).toFixed(1) + 'px)';
+    $('e10b').style.transform = 'scale(' + (1 + io(seg(t, 2.0, 2.8)) * .03 - io(seg(t, 2.8, 3.6)) * .03) + ')';
+  }
+
+  /* ======================================================================================================
+     THE CUT: scene windows (with soft cross-dissolves) and the captions
+     ====================================================================================================== */
+  var CAPS = [[1.0, 4.6, 'Not enough subscribers yet?'], [5.0, 8.4, 'That isn’t the reason.'], [9.6, 16.6, 'It’s the order you’ve been told to do things in.'],
+    [17.6, 22.6, 'I’m Ana Calin. I write How We Grow.'], [37.6, 41.6, 'It didn’t start that way.'], [42.0, 46.6, 'My first workshop sold two copies.'],
+    [48.0, 52.6, '771 likes. Nothing.'], [54.2, 60.2, '82 likes. Money.'], [61.0, 64.8, 'The usual order takes years.'], [65.4, 70.8, 'AI changed the order.'],
+    [74.2, 78.0, 'That’s why 2027 is closer than it sounds.'], [114.6, 118.0, 'Each day, you write while I’m there.']];
+  var capP = $('capP'), capCur = -1;
+  function captions(t){
+    var k = -1; for (var i = 0; i < CAPS.length; i++) if (t >= CAPS[i][0] && t < CAPS[i][1]) k = i;
+    if (k !== capCur) { capCur = k; capP.innerHTML = k < 0 ? '' : CAPS[k][2].split(' ').map(function(w){ return '<span>' + w + ' </span>' }).join('') }
+    if (k < 0) { capP.style.opacity = 0; return }
+    var c = CAPS[k], spans = capP.querySelectorAll('span');
+    capP.style.opacity = io(seg(t, c[0], c[0] + .35)) * (1 - io(seg(t, c[1] - .45, c[1])));
+    spans.forEach(function(s, i){ var p = io(seg(t, c[0] + i * .07, c[0] + i * .07 + .5)); s.style.opacity = p; s.style.filter = 'blur(' + ((1 - p) * 8).toFixed(1) + 'px)' });
+    capP.style.transform = 'translateY(' + ((1 - io(seg(t, c[0], c[0] + .5))) * 10) + 'px)';
+  }
+  var SCENES = [['s3', 16.8, 37.6, s3], ['s4', 36.8, 47.6, s4], ['s5', 46.8, 61.2, s5], ['s7', 79.2, 118.6, s7], ['s8', 117.8, 130.6, s8], ['s9', 129.8, 141.6, s9], ['s10', 140.8, 150, s10]];
+  var DUR = 148;
+  window.DUR = DUR;
+  window.render = function(t){
+    var wv = t < 30 ? 1 - io(seg(t, 16.8, 17.6)) : io(seg(t, 60.4, 61.2)) * (1 - io(seg(t, 77.4, 78.6)));
+    $('sv').style.opacity = wv; $('sv').style.display = wv > .001 ? '' : 'none';
+    if (wv > .001) world(t);
+    SCENES.forEach(function(s){
+      var o = vis(t, s[1], s[2], .8), e = $(s[0]);
+      if (s[0] === 's7') o = io(seg(t, s[1], s[1] + 1.0)) * (1 - io(seg(t, s[2] - .8, s[2])));
+      e.style.opacity = o; e.style.display = o > .001 ? '' : 'none';
+      if (o > .001) s[3](t - s[1]);
+    });
+    captions(t);
+  };
+
+  fetch('../../exit-number/').then(function(r){ return r.text() }).then(function(txt){
+    var m = txt.match(/<symbol id="sf" viewBox="-60 -60 120 120">([\s\S]*?)<\/symbol>/); SF = m ? m[1] : '';
+  }).catch(function(){}).then(function(){
+    runner.head.innerHTML = '<g transform="scale(1.05)">' + SF + '</g>';
+    document.querySelectorAll('[data-sf]').forEach(function(g){ g.innerHTML = SF });
+    var big = '<svg width="100%" height="100%" viewBox="-60 -60 120 120">' + SF + '</svg>';
+    $('s7sf').innerHTML = big; $('e10sf').innerHTML = big; $('e10i').innerHTML = '<svg width="54" height="54" viewBox="-60 -60 120 120">' + SF + '</svg>';
+    var imgs = Array.prototype.slice.call(document.images);
+    Promise.all(imgs.map(function(im){ return im.complete ? 0 : new Promise(function(r){ im.onload = im.onerror = r }) })).then(function(){
+      window.render(+(new URLSearchParams(location.search).get('t') || 0));
+      document.fonts.ready.then(function(){ document.body.setAttribute('data-ready', '1') });
+    });
+  });
+})();
+</script>
+</body>
+</html>
