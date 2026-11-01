@@ -133,8 +133,7 @@
         .add(pen.go(168, 168, .45, 26), 6.9)
         .add(draw(tick, .35, pen, 'power2.in'), 7.35)
         .add(pen.go(380, -60, .8, 30, -60), 7.8)
-        .fromTo($('.mv-stamp', rv), { scale: 2.4, opacity: 0, rotation: -18 }, { scale: 1, opacity: .85, rotation: -7, duration: .35, ease: 'back.out(2.6)' }, 8.1)
-        .to(box1, { y: 3, duration: .08, yoyo: true, repeat: 1 }, 8.42);
+        ;
       when(rv, t1);
     }
 
@@ -163,7 +162,6 @@
           .to(o, { t: 1, duration: 1.1, ease: 'power1.inOut', onUpdate: function () { w.style.strokeDashoffset = L * (1 - o.t * .5); h.setAttribute('transform', 'rotate(' + (o.t * 180).toFixed(1) + ' ' + cx + ' 402)') } }, 4.6 + i * 1.0);
       });
       if (sun) t2.from(sun, { y: '+=56', duration: 1.6, ease: 'power2.out' }, 7.5);
-      t2.fromTo($('.mv-stamp', wa), { scale: 2.4, opacity: 0, rotation: -18 }, { scale: 1, opacity: .85, rotation: -6, duration: .35, ease: 'back.out(2.6)' }, 8.6);
       t2.add(function () { if (reduce) return;
         gsap.to(bars, { scaleY: function () { return rnd(.35, 1.4) }, transformOrigin: '50% 50%', duration: .28, repeat: -1, yoyo: true, repeatRefresh: true, stagger: { each: .05, from: 'random' }, ease: 'sine.inOut' });
         if (rays) gsap.to(rays, { rotation: 360, svgOrigin: '0 0', duration: 40, repeat: -1, ease: 'none' });
@@ -180,7 +178,12 @@
       function delta(el, tx, ty) { var a = sp.getBoundingClientRect(), b = el.getBoundingClientRect();
         return { x: a.left + a.width * tx - (b.left + b.width / 2), y: a.top + a.height * ty - (b.top + b.height / 2) } }
       var t3 = gsap.timeline();
+      var tchBar = $('.tch-bar i', sp), tchPc = $('.tch-pc b', sp), tchLs = $$('.tch-ls li', sp).slice(0, 3), ys = $$('.tch-sl li em', sp).slice(0, 2), pc = { v: 0 };
       t3.from($('.l3', sp), { y: 34, opacity: 0, duration: 1, ease: 'power3.out' }, 0)
+        .to(pc, { v: 37, duration: 1.6, ease: 'power2.out', onUpdate: function () { if (tchPc) tchPc.textContent = Math.round(pc.v) } }, .8)
+        .fromTo(tchBar, { width: '0%' }, { width: '37%', duration: 1.6, ease: 'power2.out' }, .8)
+        .add(function () { tchLs.forEach(function (li, i) { setTimeout(function () { li.classList.add('dn') }, i * 260) }) }, .9)
+        .add(function () { ys.forEach(function (e, i) { setTimeout(function () { e.textContent = 'Y'; e.classList.add('y') }, i * 420) }) }, 1.6)
         .from(notes, { y: -60, opacity: 0, rotation: '+=30', duration: .8, ease: 'back.out(1.6)', stagger: .09 }, .3)
         .to(notes, { rotation: '+=4', duration: .18, yoyo: true, repeat: 3, ease: 'sine.inOut', stagger: .05 }, 1.3);
       others.forEach(function (n, i) {

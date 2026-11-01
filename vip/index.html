@@ -1574,6 +1574,66 @@ footer{background-image:url(../img/vip/paint/tx-grain.webp);background-size:256p
 .anim .it .art.mv .dev,.anim .it.in .art.mv .dev{opacity:1;transform:none}
 .anim .it .art.mv .dev.ph{transform:none}
 .trk .sun{left:66%;width:min(600px,64%)}
+
+/* the top strip: thin, pink, scrolls away; the header is a floating pill */
+.keep{margin:0;padding:6px 16px;background:var(--pink);color:#fff;text-align:center;font-weight:700;font-size:13px;letter-spacing:.02em;line-height:1.3}
+.fb{position:sticky;top:10px;background:none;border:0;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none;padding:10px 16px 0}
+body.scrolled .fb{box-shadow:none}
+.fb-bar{max-width:1080px;margin:0 auto;grid-template-columns:auto 1fr auto;gap:22px;padding:8px 10px 8px 12px;border-radius:999px;
+  background:rgba(255,253,249,.86);-webkit-backdrop-filter:blur(18px) saturate(1.4);backdrop-filter:blur(18px) saturate(1.4);
+  border:1px solid rgba(26,20,18,.08);box-shadow:0 1px 1px rgba(60,40,20,.05),0 14px 34px -22px rgba(60,40,20,.45)}
+body.scrolled .fb-bar{padding:6px 8px 6px 10px}
+.fb-id img{width:36px;height:36px}
+body.scrolled .fb-id img{width:30px;height:30px}
+.fb-id b{font-size:19px}
+.steps{justify-self:center;gap:0;padding:4px;border-radius:999px;background:rgba(26,20,18,.045)}
+.st{padding:6px 14px 6px 8px;border-radius:999px;gap:8px;font-size:13px}
+.st i{width:20px;height:20px;font-size:10.5px}
+.st.now{background:#fff;box-shadow:0 1px 2px rgba(60,40,20,.12),0 4px 12px -6px rgba(247,37,133,.45);color:var(--ink)}
+.st.now i{box-shadow:none}
+.steps .ln{width:18px;margin:0 2px;background:rgba(26,20,18,.18)}
+.steps .ln.on{background:#2F9E5A}
+.fb-n{border:0;padding:0 12px 0 0;font-size:10.5px;letter-spacing:.18em}
+@media (max-width:860px){.fb{top:8px;padding:8px 10px 0}.fb-bar{grid-template-columns:auto 1fr auto;gap:8px}.st{padding:5px 8px}.fb-n{display:none}}
+@media (max-width:560px){.st .t{display:none}.st.now .t{display:inline}.st.now{padding:5px 10px 5px 6px}.keep{font-size:12px}}
+
+/* the Offer Clarity Sprint, coded: the course player, its money numbers blurred */
+.tch{position:absolute;inset:0;container-type:inline-size;display:grid;grid-template-columns:31% 1fr;background:#fff;font-family:Manrope,system-ui,sans-serif;color:#212121;overflow:hidden}
+.tch .bz{filter:blur(.55cqw);opacity:.85;user-select:none}
+.tch-side{background:#FAFAFA;border-right:1px solid #EEE;padding:3cqw 2cqw;overflow:hidden}
+.tch-t{display:block;font-weight:800;font-size:2.3cqw;letter-spacing:.02em}
+.tch-bar{display:block;height:.9cqw;margin:1.6cqw 0 .8cqw;border-radius:1cqw;background:#ECECEC;overflow:hidden}
+.tch-bar i{display:block;height:100%;width:0;background:#FFD600}
+.tch-pc{display:block;text-align:center;font-weight:800;font-size:1.7cqw;letter-spacing:.06em}
+.tch-pc b{font-size:2.6cqw}
+.tch-sec{margin:2.4cqw 0 1cqw;font-weight:800;font-size:2cqw;line-height:1.3}
+.tch-ls{list-style:none;display:grid;gap:.2cqw}
+.tch-ls li{display:grid;grid-template-columns:3cqw 1fr;gap:1.2cqw;align-items:center;padding:1cqw .6cqw;border-radius:.6cqw;font-size:1.75cqw;line-height:1.3}
+.tch-ls li i{width:2.6cqw;height:2.6cqw;border-radius:50%;border:.3cqw solid #FFD600;background:#fff}
+.tch-ls li.on{background:#FFF8D6}
+.tch-ls li.on i{background:linear-gradient(90deg,#FFD600 50%,#fff 50%)}
+.tch-ls li.dn i{background:#FFD600}
+.tch-main{padding:3.2cqw 4cqw;display:grid;align-content:start;gap:2cqw}
+.tch-h{font-weight:800;font-size:2.9cqw;line-height:1.2}
+.tch-vid{position:relative;aspect-ratio:16/9;border-radius:.8cqw;overflow:hidden;background:#1E1B3A}
+.tch-sl{position:absolute;inset:5% 8% 12%;color:#fff;display:grid;align-content:start;gap:.5cqw}
+.tch-sl .st{all:unset;display:block;text-align:center;color:#FFD600;font-weight:800;font-size:1.9cqw;letter-spacing:.04em}
+.tch-sl .ss{text-align:center;color:rgba(255,255,255,.55);font-size:1.4cqw;margin-bottom:.4cqw}
+.tch-sl ol{list-style:none;display:grid;gap:.45cqw}
+.tch-sl li{display:grid;grid-template-columns:2.6cqw 1fr auto;align-items:center;gap:1cqw;padding:.55cqw 1.2cqw;border-radius:.4cqw;background:rgba(255,255,255,.07);font-size:1.4cqw}
+.tch-sl li b{color:#FFD600;font-family:'Instrument Serif',serif;font-weight:400;font-size:1.9cqw}
+.tch-sl li em{font-style:normal;color:rgba(255,255,255,.4);font-size:1.1cqw;letter-spacing:.1em}
+.tch-sl li em.y{color:#FFD600;font-weight:800}
+.tch-sl .bands{display:grid;grid-template-columns:repeat(3,1fr);gap:1cqw;margin-top:.6cqw}
+.tch-sl .bands span{text-align:center;padding:.6cqw;border-radius:.3cqw;font-weight:800;font-size:1.15cqw;color:#fff}
+.tch-sl .bands span:nth-child(1){background:#16805A}.tch-sl .bands span:nth-child(2){background:#F2C21B;color:#212121}.tch-sl .bands span:nth-child(3){background:#E0457B}
+.tch-cam{position:absolute;left:2.5%;bottom:9%;width:15%;aspect-ratio:1;border-radius:50%;object-fit:cover;object-position:50% 25%;border:.3cqw solid #fff}
+.tch-ctl{position:absolute;left:0;right:0;bottom:0;display:flex;align-items:center;gap:1.6cqw;padding:1cqw 2cqw;background:linear-gradient(transparent,rgba(0,0,0,.55));color:#fff;font-size:1.3cqw}
+.tch-ctl .pp{width:0;height:0;border-left:1.3cqw solid #fff;border-top:.8cqw solid transparent;border-bottom:.8cqw solid transparent}
+.tch-ctl .tl{flex:1;height:.5cqw;border-radius:.5cqw;background:rgba(255,255,255,.35);overflow:hidden}
+.tch-ctl .tl i{display:block;height:100%;width:40%;background:#FF3D3D}
+.tch-ctl em{font-style:normal;font-weight:700}
+.tch-btn{justify-self:center;padding:1.2cqw 3cqw;border-radius:.6cqw;background:#FFD600;color:#fff;font-weight:800;font-size:2cqw}
 </style>
 </head>
 <body>
@@ -1596,17 +1656,18 @@ footer{background-image:url(../img/vip/paint/tx-grain.webp);background-size:256p
   <filter id="pencil" x="-5%" y="-20%" width="110%" height="140%"><feTurbulence type="fractalNoise" baseFrequency="1.1" numOctaves="1" seed="4" result="n"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.4 1.35" result="m"/><feComposite in="SourceGraphic" in2="m" operator="in" result="g"/><feTurbulence type="fractalNoise" baseFrequency=".04" numOctaves="2" seed="9" result="w"/><feDisplacementMap in="g" in2="w" scale="2.2"/></filter>
   <filter id="wob" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency=".035" numOctaves="2" seed="3" result="w"/><feDisplacementMap in="SourceGraphic" in2="w" scale="2"/></filter>
 </defs></svg>
+<p class="keep" role="note">Don’t close or refresh this page</p>
 <header class="fb">
   <div class="fb-bar">
     <div class="fb-id"><img src="../img/mark.png" alt="" width="44" height="44"><span><small>ANA CALIN</small><b>The Exit Plan</b></span></div>
     <div class="steps" aria-label="Step 2 of 3">
       <span class="st done"><i><svg width="12" height="12" style="color:#fff"><use href="#ck"/></svg></i><span class="t">Seat saved</span></span>
       <span class="ln on"></span>
-      <span class="st now"><i>2</i><span class="t">Optional VIP upgrade</span></span>
+      <span class="st now"><i>2</i><span class="t">VIP upgrade</span></span>
       <span class="ln"></span>
       <span class="st"><i>3</i><span class="t">Join details</span></span>
     </div>
-    <div class="fb-r"><span class="fb-keep"><i aria-hidden="true"></i>Don’t close this page</span><span class="fb-n">STEP 2 OF 3</span></div>
+    <div class="fb-r"><span class="fb-n">STEP 2 OF 3</span></div>
   </div>
 </header>
 
@@ -1821,7 +1882,6 @@ footer{background-image:url(../img/vip/paint/tx-grain.webp);background-size:256p
             <g class="mv-pen"><image href="../img/vip/paint/pencil.webp" x="-10" y="-28" width="320" height="60"/></g>
           </svg>
         </div>
-        <span class="rstamp mv-stamp" style="left:3%;top:2%">EXAMPLE</span>
       </div>
       <div class="tx">
         <span class="num">01</span>
@@ -1850,7 +1910,6 @@ footer{background-image:url(../img/vip/paint/tx-grain.webp);background-size:256p
           <g class="mv-clock" data-i="0"><circle cx="64" cy="402" r="38" fill="#FFFDF8" stroke="#2E2420" stroke-width="1.3" filter="url(#wob)"/><circle class="mv-wedge" cx="64" cy="402" r="18" fill="none" stroke="#F25A9C" stroke-width="36" transform="rotate(-90 64 402)" opacity=".85"/><g stroke="#2E2420" stroke-linecap="round"><line x1="64" y1="402" x2="78" y2="402" stroke-width="2.4"/><line class="mv-hand" x1="64" y1="402" x2="64" y2="372" stroke-width="1.8"/></g><circle cx="64" cy="402" r="2.6" fill="#2E2420"/><text x="64" y="462" text-anchor="middle" font-family="Nothing You Could Do,cursive" font-size="15" fill="#3D332E">Day 1</text></g><g class="mv-clock" data-i="1"><circle cx="166" cy="402" r="38" fill="#FFFDF8" stroke="#2E2420" stroke-width="1.3" filter="url(#wob)"/><circle class="mv-wedge" cx="166" cy="402" r="18" fill="none" stroke="#F25A9C" stroke-width="36" transform="rotate(-90 166 402)" opacity=".85"/><g stroke="#2E2420" stroke-linecap="round"><line x1="166" y1="402" x2="180" y2="402" stroke-width="2.4"/><line class="mv-hand" x1="166" y1="402" x2="166" y2="372" stroke-width="1.8"/></g><circle cx="166" cy="402" r="2.6" fill="#2E2420"/><text x="166" y="462" text-anchor="middle" font-family="Nothing You Could Do,cursive" font-size="15" fill="#3D332E">Day 2</text></g><g class="mv-clock" data-i="2"><circle cx="268" cy="402" r="38" fill="#FFFDF8" stroke="#2E2420" stroke-width="1.3" filter="url(#wob)"/><circle class="mv-wedge" cx="268" cy="402" r="18" fill="none" stroke="#F25A9C" stroke-width="36" transform="rotate(-90 268 402)" opacity=".85"/><g stroke="#2E2420" stroke-linecap="round"><line x1="268" y1="402" x2="282" y2="402" stroke-width="2.4"/><line class="mv-hand" x1="268" y1="402" x2="268" y2="372" stroke-width="1.8"/></g><circle cx="268" cy="402" r="2.6" fill="#2E2420"/><text x="268" y="462" text-anchor="middle" font-family="Nothing You Could Do,cursive" font-size="15" fill="#3D332E">Day 3</text></g>
           <g class="mv-sunwrap"><defs><clipPath id="horizon"><rect x="320" y="330" width="130" height="102"/></clipPath></defs><g clip-path="url(#horizon)"><g class="mv-sun" transform="translate(385 432)"><circle r="20" fill="#F5C518" stroke="#2E2420" stroke-width="1.2"/><g class="mv-rays" stroke="#2E2420" stroke-width="1.6" stroke-linecap="round"><line x1="0" y1="-25" x2="0" y2="-33" transform="rotate(0)"/><line x1="0" y1="-25" x2="0" y2="-33" transform="rotate(45)"/><line x1="0" y1="-25" x2="0" y2="-33" transform="rotate(90)"/><line x1="0" y1="-25" x2="0" y2="-33" transform="rotate(135)"/><line x1="0" y1="-25" x2="0" y2="-33" transform="rotate(180)"/><line x1="0" y1="-25" x2="0" y2="-33" transform="rotate(225)"/><line x1="0" y1="-25" x2="0" y2="-33" transform="rotate(270)"/><line x1="0" y1="-25" x2="0" y2="-33" transform="rotate(315)"/></g></g></g><path d="M330 432 H442" stroke="#2E2420" stroke-width="1.3" filter="url(#wob)"/><text x="386" y="462" text-anchor="middle" font-family="Nothing You Could Do,cursive" font-size="15" fill="#3D332E">one morning</text></g>
         </svg>
-        <span class="rstamp mv-stamp" style="right:2%;bottom:2%">EXAMPLE</span>
       </div>
       <div class="tx">
         <span class="num">02</span>
@@ -1858,14 +1917,31 @@ footer{background-image:url(../img/vip/paint/tx-grain.webp);background-size:256p
         <p class="meta"><b>Nov 17 to Nov 20</b> · Ana in the chat</p>
         <p>Sometimes the lesson makes perfect sense. Then you open your own document and think, “Yes, but what about mine?” Put that question in our private VIP WhatsApp group, along with the bit you’re working on.</p>
         <p>I’ll be there for 30 minutes after each workshop session, plus one morning slot. The free community has your reminders. This separate group is where we talk about the work.</p>
-        <p class="soft">Group members can see each other's phone numbers.</p>
       </div>
     </article>
 
     <!-- 03: the bonus: six ideas become one, then the course and its four parts -->
     <article class="it it3">
       <div class="art pa mv spr" aria-hidden="true">
-        <div class="dev lap l3" style="left:17%;top:13%;width:66%"><img src="../img/vip/paint/laptop.webp" alt="" width="600" height="420" loading="lazy"><div class="scrn2"><img src="../img/vip/raw/sprint-lesson.webp" alt="" loading="lazy"></div></div>
+        <div class="dev lap l3" style="left:17%;top:13%;width:66%"><img src="../img/vip/paint/laptop.webp" alt="" width="600" height="420" loading="lazy"><div class="scrn2"><div class="tch">
+            <div class="tch-side">
+              <b class="tch-t">THE OFFER CLARITY SPRINT</b>
+              <span class="tch-bar"><i></i></span><small class="tch-pc"><b>0</b>% COMPLETE</small>
+              <p class="tch-sec">How we make more money with the same offer</p>
+              <ol class="tch-ls"><li class=""><i></i><span>The <span class="bz">$•</span> That Changed My Life</span></li><li class=""><i></i><span>The One Sentence That Made <span class="bz">$•,•••</span></span></li><li class=""><i></i><span>The 3 Words That Kill Every Offer</span></li><li class="on"><i></i><span>How I Know If Something Will Sell Before I Build It</span></li><li class=""><i></i><span>The Day I Changed One Number And <span class="bz">•x’d</span> My Revenue</span></li><li class=""><i></i><span>The Email That Made <span class="bz">$•,•••</span></span></li><li class=""><i></i><span>Go Make Money</span></li><li class=""><i></i><span>What to expect in the <span class="bz">•••</span> Launch Lab</span></li></ol>
+              <p class="tch-sec">Bonus Chapter: Watch This First If You Sell Services</p>
+            </div>
+            <div class="tch-main">
+              <p class="tch-h">How I Know If Something Will Sell Before I Build It</p>
+              <div class="tch-vid">
+                <div class="tch-sl"><p class="st">“WILL IT SELL?” STRESS TEST</p><p class="ss">Score your offer. Yes = 1. No = 0.</p><ol><li class=""><b>1</b><span>Can you describe it in one sentence?</span><em>Y / N</em></li><li class=""><b>2</b><span>Are people ALREADY trying to fix this problem?</span><em>Y / N</em></li><li class="bz"><b>3</b><span>•••• ••• •••• •• ••••••• ••••</span><em>Y / N</em></li><li class="bz"><b>4</b><span>•••• ••• •••• •• ••••••• ••••</span><em>Y / N</em></li><li class="bz"><b>5</b><span>•••• ••• •••• •• ••••••• ••••</span><em>Y / N</em></li><li class="bz"><b>6</b><span>•••• ••• •••• •• ••••••• ••••</span><em>Y / N</em></li><li class="bz"><b>7</b><span>•••• ••• •••• •• ••••••• ••••</span><em>Y / N</em></li></ol>
+                  <div class="bands"><span>6–7: Ship it this week</span><span>4–5: Fix + ship</span><span>0–3: New angle</span></div></div>
+                <img class="tch-cam" src="../img/real/ana-real-a.webp" alt="">
+                <span class="tch-ctl"><i class="pp"></i><span class="tl"><i></i></span><em>4:25</em></span>
+              </div>
+              <span class="tch-btn">Complete and Continue ›</span>
+            </div>
+          </div></div></div>
         <img class="mv-note" src="../img/vip/paint/note-y.webp" alt="" style="left:0%;top:0%;width:21%;--r:-10deg"><img class="mv-note" src="../img/vip/paint/note-g.webp" alt="" style="left:2%;top:50%;width:21%;--r:8deg"><img class="mv-note" src="../img/vip/paint/note-b.webp" alt="" style="left:74%;top:-2%;width:21%;--r:7deg"><img class="mv-note" src="../img/vip/paint/note-y.webp" alt="" style="left:79%;top:36%;width:21%;--r:-6deg"><img class="mv-note" src="../img/vip/paint/note-g.webp" alt="" style="left:22%;top:66%;width:21%;--r:-4deg"><img class="mv-note pink" src="../img/vip/paint/note-p.webp" alt="" style="left:66%;top:62%;width:21%;--r:5deg">
         <img class="mv-card" src="../img/vip/paint/card1.webp" alt="" style="right:-2%;bottom:0;width:46%">
         <span class="src" style="left:24%;top:72%">From the Offer Clarity Sprint</span>
@@ -2153,7 +2229,7 @@ footer{background-image:url(../img/vip/paint/tx-grain.webp);background-size:256p
 <script src="../assets/vendor/DrawSVGPlugin.min.js"></script>
 <script src="../assets/vendor/MotionPathPlugin.min.js"></script>
 <script src="../assets/vendor/MorphSVGPlugin.min.js"></script>
-<script src="../assets/vip-motion.js?v=2"></script>
+<script src="../assets/vip-motion.js?v=3"></script>
 
 </body>
 </html>
