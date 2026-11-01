@@ -208,6 +208,13 @@ html,body{width:1920px;height:1080px;overflow:hidden;background:#FFF8EE}
     var s2 = 9, r2 = function(){ s2 = (s2 * 9301 + 49297) % 233280; return s2 / 233280 };
     for (var i = 0; i < 46; i++) { var a = r2() * Math.PI * 2, d = 40 + r2() * 110, x = Math.cos(a) * d * 1.2, y = -330 + Math.sin(a) * d * .7;
       el('ellipse', {cx: x, cy: y, rx: 26, ry: 8, fill: i % 3 ? '#A7B98A' : '#8EA273', stroke: INK, 'stroke-width': 2.5, transform: 'rotate(' + (r2() * 180) + ' ' + x + ' ' + y + ')'}, tree) }
+    /* real furniture, cut out: the room someone wakes up in every Monday */
+    var furn = function(src, x, y, w, h){ el('ellipse', {cx: x + w / 2, cy: FLOOR + 6, rx: w * .52, ry: 14, fill: 'url(#sh)'}); return el('image', {href: 'cut/' + src + '.png', x: x, y: y, width: w, height: h}) };
+    furn('bed-canopy', 96, FLOOR + 22 - 406, 380, 406);
+    furn('dresser-roses', 985, FLOOR + 8 - 298, 200, 298);
+    el('ellipse', {cx: 1088, cy: 440, rx: 120, ry: 90, fill: 'url(#glow)', opacity: .7});
+    el('image', {href: 'cut/lamp-roses.png', x: 1023, y: FLOOR + 8 - 298 - 150 + 12, width: 130, height: 150});
+    furn('chaise', 2700, FLOOR + 10 - 173, 420, 173);
   })();
 
   /* the sunflower, with ink legs */
@@ -465,9 +472,11 @@ html,body{width:1920px;height:1080px;overflow:hidden;background:#FFF8EE}
     + '<div class="abs" style="left:150px;top:46px;width:520px;height:740px;background:url(tex/window-greek-crop.webp) 50% 50%/cover;-webkit-mask-image:radial-gradient(ellipse 62% 58% at 50% 48%,#000 74%,transparent 100%);mask-image:radial-gradient(ellipse 62% 58% at 50% 48%,#000 74%,transparent 100%)"></div>'
     + '<img class="abs" id="s3ol" src="' + CUT('olive-branch') + '" alt="" style="left:1010px;top:96px;width:150px;transform-origin:20% 0;filter:drop-shadow(0 10px 8px rgba(60,35,15,.25))">'
     /* Ana's photo, taped to the wall */
-    + '<div class="abs shadow" style="left:770px;top:150px;width:280px;padding:16px 16px 70px;background:#fff;transform:rotate(4deg)"><div style="height:330px;background:url(' + ANA_WALL + ') 50% 30%/cover"></div>'
-    +   '<p class="serif" style="position:absolute;left:0;right:0;bottom:16px;text-align:center;font-style:italic;font-size:32px">Ana · How We Grow</p>'
-    +   '<span style="position:absolute;left:96px;top:-18px;width:110px;height:36px;background:rgba(247,37,133,.55);transform:rotate(-6deg)"></span></div>'
+    + '<div class="abs" style="left:760px;top:96px;width:300px;height:400px;filter:drop-shadow(0 22px 22px rgba(80,45,20,.38))"><div style="position:absolute;left:62px;top:84px;width:176px;height:234px;border-radius:50%;background:url(' + ANA_WALL + ') 50% 28%/cover"></div>'
+    +   '<img src="' + CUT('frame-oval') + '" alt="" style="position:relative;width:100%;display:block"></div>'
+    + '<p class="abs serif" style="left:760px;top:506px;width:300px;text-align:center;font-style:italic;font-size:30px;color:#3D332E">Ana · How We Grow</p>'
+    + '<div class="abs" style="left:560px;top:420px;width:420px;height:300px;border-radius:50%;background:radial-gradient(closest-side,rgba(255,226,140,.55),rgba(255,226,140,0));mix-blend-mode:screen"></div>'
+    + '<img class="abs" src="' + CUT('lamp-roses') + '" alt="" style="left:672px;top:540px;width:220px;filter:drop-shadow(0 18px 14px rgba(60,35,15,.35))">'
     /* the clock */
     + '<div class="abs" style="left:2700px;top:140px;width:250px;height:250px"><svg width="250" height="250" viewBox="-125 -125 250 250"><circle r="116" fill="#FFF8EE" stroke="#1A1412" stroke-width="9"/>'
     +   '<path id="s3arc" d="" fill="rgba(255,212,0,.75)" stroke="#1A1412" stroke-width="3"/>'
