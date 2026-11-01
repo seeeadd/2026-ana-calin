@@ -1209,6 +1209,159 @@ body{background:#F4ECDD var(--paper) 0 0/512px}
   .cmp tr.add2 td:first-child small{margin-left:0}
 }
 </style>
+<style id="v4">
+/* ===== v4: a calm, clean page (Sean: the textured background read cheap); the real screens sit on painted devices;
+   real animation: anticipation, easing, arcs, follow-through, overlapping and secondary motion (tools/paint/MOTION.md) ===== */
+:root{--page:#F8F3EB;--card:#FFFDF9;--lift:0 1px 1px rgba(60,40,20,.08),0 4px 10px -4px rgba(60,40,20,.12),0 26px 44px -26px rgba(60,40,20,.38);
+  --spring:cubic-bezier(.34,1.36,.5,1);--glide:cubic-bezier(.22,.8,.24,1);--swing:cubic-bezier(.6,-0.28,.3,1.18)}
+body{background:var(--page)}
+.vw{background:#F1E9DC}
+.vf{background:#FBEFF1}
+.vh .bgf{display:none}
+.saved,.vspam,.hiw,.order,.vb .bb,.bring,.fitc.yes,.vb .letter{background:var(--card)}
+.vspam{border:1px solid rgba(26,20,18,.07);border-left:3px solid #E0263C}
+.hiw,.order,.vb .bb,.fitc.yes{border:1px solid rgba(26,20,18,.07)}
+.vb .letter{border:1px solid rgba(26,20,18,.06)}
+
+/* print craft: a rule after each opener, plate numbers with a long hairline */
+.eyebrow{display:flex;align-items:center;gap:14px}
+.eyebrow:after{content:"";flex:0 1 96px;height:1px;background:currentColor;opacity:.4}
+.vh-top .eyebrow:after{display:none}
+.num{display:flex;align-items:center;gap:14px}
+.num:after{content:"";flex:1;max-width:220px;height:1px;background:rgba(236,52,134,.45)}
+/* the order card and the price box are tickets: a tear line with notches where you pay */
+.order .tot2,.vb .bb .aside{position:relative;border:0;border-top:1.5px dashed rgba(26,20,18,.22);border-radius:0;background:none;padding-top:16px;margin-top:6px}
+.order .tot2:before,.order .tot2:after,.vb .bb .aside:before,.vb .bb .aside:after{content:"";position:absolute;top:-11px;width:20px;height:20px;border-radius:50%;background:var(--page);box-shadow:inset 0 1px 2px rgba(60,40,20,.12)}
+.order .tot2:before{left:-35px}.order .tot2:after{right:-35px}
+.vb .bb .aside:before{left:-39px}.vb .bb .aside:after{right:-39px}
+.vb .bb .aside{padding-top:14px;margin-top:2px}
+/* the table: the VIP column framed like a column of a ledger */
+.cmp td.v,.cmp th.v{border-left:1px solid rgba(236,52,134,.28);border-right:1px solid rgba(236,52,134,.28)}
+.cmp tbody tr:last-child td.v{border-bottom:2px solid rgba(236,52,134,.6)}
+.cmp thead th{border-bottom:1.5px solid rgba(26,20,18,.5)}
+
+/* ---- hero: the door opens on her ---- */
+.door-leaf,.door-closed{position:absolute;inset:0;width:100%;height:auto;pointer-events:none}
+.door-leaf{opacity:0;animation:leafin .5s ease-out 1.75s forwards}
+.door-closed{transform-origin:75.68% 50%;animation:dswing 1.6s var(--swing) .55s forwards;z-index:2}
+@keyframes dswing{0%{transform:perspective(1600px) rotateY(0)}12%{transform:perspective(1600px) rotateY(4deg)}80%{opacity:1}100%{transform:perspective(1600px) rotateY(-84deg);opacity:0}}
+@keyframes leafin{from{opacity:0;transform:translateX(-1.2%) scaleX(.94)}to{opacity:1;transform:none}}
+.door .door-v .scr img{animation:warm 1.6s var(--glide) .9s both}
+@keyframes warm{from{filter:brightness(.55) saturate(.7);transform:scale(1.06)}to{filter:none;transform:none}}
+
+/* ---- your week: the same sheet of paper, day by day ---- */
+.trk .stop .wk{display:block;width:100%;max-width:170px;height:auto;margin:0 auto 6px}
+.trk .stop .dt{display:inline-flex;align-items:baseline;gap:6px;width:auto;background:none;box-shadow:none;border:0;padding:0;transform:none}
+.trk .stop .dt b{font-size:22px}
+.trk .stop .dt small{font-size:11px}
+.trk .stop.vip .dt{background:none;color:var(--pink);box-shadow:none;transform:none}
+.trk .stop.vip .dt small{color:var(--pink)}
+.trk .stop.vip .dt .tg{position:static;transform:none;order:-1}
+.trk .stop .lb{margin-top:6px}
+.trk .stop p{font-size:21px}
+.lane.free:before{top:72px}
+.anim .trk .stop .wk{opacity:0;transform:translateY(18px) rotate(-3deg);transition:opacity .7s ease,transform .9s var(--spring)}
+.anim .trk.in .stop .wk{opacity:1;transform:none}
+.anim .trk.in .s2 .wk{transition-delay:.35s}.anim .trk.in .s3 .wk{transition-delay:.7s}.anim .trk.in .s4 .wk{transition-delay:1.05s}.anim .trk.in .s5 .wk{transition-delay:1.4s}
+.trk .s5 .wk{animation:none}
+.anim .trk.in .s5 .wk{animation:post 4.5s ease-in-out 2.4s infinite}
+@keyframes post{0%,70%,100%{transform:none}76%{transform:translateY(2px) rotate(-1deg)}84%{transform:translateY(-1px) rotate(.6deg)}}
+
+/* ---- what's in VIP: devices and props laid out on the table ---- */
+.pa .dev{position:absolute}
+.pa .dev>img{display:block;width:100%;height:auto}
+.dev .scrn2{position:absolute;overflow:hidden;background:#fff}
+.dev.lap .scrn2{left:12%;top:7.143%;width:76%;height:66.19%}
+.dev.ph .scrn2{left:11.92%;top:4.2%;width:76.15%;height:91.6%;border-radius:13.6%/5.9%}
+.dev .scrn2>img{width:100%;height:100%;object-fit:cover;object-position:0 0}
+.pa .prop{position:absolute;height:auto}
+.src{position:absolute;font-family:var(--serif);font-style:italic;font-size:15px;color:var(--ink3);white-space:nowrap}
+/* 01 */
+.rv .l1{left:-2%;top:12%;width:80%}
+.rv .stack{right:-5%;bottom:-2%;width:42%}
+.rv .coffee{right:2%;top:-2%;width:25%}
+.rv .pencil{left:16%;bottom:1%;width:46%;transform:rotate(-7deg)}
+.steam{position:absolute;right:9%;top:-12%;width:10%;height:16%;pointer-events:none}
+.steam i{position:absolute;bottom:0;width:22%;height:100%;border-radius:50%;background:linear-gradient(transparent,rgba(255,255,255,.75),transparent);filter:blur(3px);opacity:0;animation:steam 4.2s ease-in-out infinite}
+.steam i:nth-child(1){left:10%}.steam i:nth-child(2){left:42%;animation-delay:1.4s}.steam i:nth-child(3){left:72%;animation-delay:2.8s}
+@keyframes steam{0%{opacity:0;transform:translateY(20%) scaleY(.6)}35%{opacity:.9}100%{opacity:0;transform:translateY(-60%) translateX(30%) scaleY(1.2)}}
+.anim .it1 .l1{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform 1.1s var(--glide)}
+.anim .it1 .stack{opacity:0;transform:translate(40px,30px) rotate(10deg);transition:opacity .7s ease .35s,transform 1.1s var(--spring) .35s}
+.anim .it1 .pencil{opacity:0;transform:translate(-60px,40px) rotate(-30deg);transition:opacity .6s ease .6s,transform 1.2s var(--spring) .6s}
+.anim .it1 .coffee{opacity:0;transform:scale(.85);transition:opacity .8s ease .2s,transform 1s var(--spring) .2s}
+.anim .it1.in .l1,.anim .it1.in .stack,.anim .it1.in .coffee{opacity:1;transform:none}
+.anim .it1.in .pencil{opacity:1;transform:rotate(-7deg)}
+/* 02 */
+.wa2 .l2{left:0;top:12%;width:72%}
+.wa2 .ph{right:1%;top:0;width:30%;transform:rotate(5deg)}
+.wa2 .clk{position:absolute;left:3%;bottom:1%;width:66%}
+.wa2 .clk img{display:block;width:100%;height:auto}
+.wa2 .clk .wdg{position:absolute;inset:0;clip-path:inset(0 100% 0 0)}
+.hl{position:absolute;left:7%;top:47%;width:44%;height:3.4%;background:rgba(255,212,0,.55);mix-blend-mode:multiply;transform-origin:0 50%;transform:scaleX(0)}
+.anim .it2 .ph{opacity:0;transform:translate(30px,40px) rotate(14deg);transition:opacity .7s ease .5s,transform 1.2s var(--spring) .5s}
+.anim .it2.in .ph{opacity:1;transform:rotate(5deg)}
+.anim .it2.in .hl{transition:transform .9s var(--glide) 1.4s;transform:scaleX(1)}
+.anim .it2.in .clk .wdg{animation:wedges 3.6s var(--glide) 1.8s forwards}
+@keyframes wedges{0%{clip-path:inset(0 100% 0 0)}30%{clip-path:inset(0 72% 0 0)}35%{clip-path:inset(0 72% 0 0)}62%{clip-path:inset(0 45% 0 0)}67%{clip-path:inset(0 45% 0 0)}100%{clip-path:inset(0 18% 0 0)}}
+.wa2 .clk img:first-child{transition:none}
+/* 03 */
+.spr .n5{left:-3%;top:2%;width:46%}
+.spr .n1{left:-3%;top:2%;width:46%}
+.spr .l3{left:28%;top:12%;width:72%}
+.spr .c1{right:-3%;bottom:-2%;width:46%}
+.spr .src{left:40%;top:63%}
+.anim .it3 .n5{transition:opacity 1s ease 1.2s,transform 1.6s var(--glide) 1.2s}
+.anim .it3.in .n5{opacity:.18;transform:translate(-6%,-4%) rotate(-6deg) scale(.94)}
+.anim .it3 .n1{transition:transform 1.5s var(--swing) 1.5s,opacity .5s ease 2.7s}
+.anim .it3.in .n1{transform:translate(118%,100%) rotate(-10deg) scale(.8);opacity:0}
+.anim .it3 .c1{opacity:0;transform:translateY(16px) rotate(4deg);transition:opacity .6s ease 2.6s,transform 1s var(--spring) 2.6s}
+.anim .it3.in .c1{opacity:1;transform:none}
+.anim .it3 .l3{opacity:0;transform:translateY(20px);transition:opacity .8s ease .3s,transform 1.1s var(--glide) .3s}
+.anim .it3.in .l3{opacity:1;transform:none}
+/* 04 */
+.rec .plan{left:-2%;top:0;width:58%}
+.rec .stk{left:18%;top:15%;width:21%}
+.rec .l4{right:-2%;bottom:0;width:66%}
+.replay{position:absolute;inset:0;background:#1A1412}
+.replay .sl{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.replay .me{position:absolute;right:4%;bottom:20%;width:20%;aspect-ratio:1;border-radius:50%;object-fit:cover;object-position:50% 25%;box-shadow:0 0 0 2px #fff}
+.rbar{position:absolute;left:0;right:0;bottom:0;display:flex;align-items:center;gap:6%;padding:3% 4%;background:linear-gradient(transparent,rgba(26,20,18,.85));color:#fff;font-size:clamp(7px,1.5cqw,11px)}
+.rbar b{font-weight:800;letter-spacing:.12em;white-space:nowrap}
+.rbar em{font-style:normal;font-weight:700;color:#7CE09A}
+.rbar .pl{flex:none;width:0;height:0;border-left:8px solid #fff;border-top:5px solid transparent;border-bottom:5px solid transparent}
+.rbar .pg{flex:1;height:3px;border-radius:2px;background:rgba(255,255,255,.3);position:relative;overflow:hidden}
+.rbar .pg i{position:absolute;left:0;top:0;bottom:0;width:8%;background:var(--pink)}
+.anim .it4.in .rbar .pg i{animation:prog 14s linear 2.6s infinite}
+@keyframes prog{from{width:8%}to{width:100%}}
+.anim .it4 .stk{opacity:0;transform:translate(-30%,-60%) rotate(-24deg) scale(1.25);transition:opacity .4s ease .6s,transform 1s var(--spring) .6s}
+.anim .it4.in .stk{opacity:1;transform:none}
+.anim .it4 .l4{opacity:0;transform:translateX(30px);transition:opacity .8s ease 1.5s,transform 1.1s var(--glide) 1.5s}
+.anim .it4.in .l4{opacity:1;transform:none}
+
+/* ---- fit check: your chair comes a little closer ---- */
+.seat{position:relative}
+.seat.two .you{position:absolute;inset:0;width:100%;height:auto}
+.anim .fitg .seat.two .you{transform:translateX(-16%);transition:transform 1.6s var(--glide) .9s}
+.anim .fitg.in .seat.two .you{transform:translateX(3%)}
+
+/* ---- her letter comes out of the envelope ---- */
+.anim .lw .letter{transform:translateY(70px) rotate(-1.2deg);transition:transform 1.3s var(--spring) .3s}
+.anim .lw.in .letter{transform:rotate(-1.2deg)}
+.anim .lw .seal{opacity:0;transform:scale(1.6) rotate(-30deg);transition:opacity .3s ease 1.3s,transform .6s var(--spring) 1.3s}
+.anim .lw.in .seal{opacity:1;transform:rotate(-12deg)}
+.bb-pm{animation:none}
+.anim .order .bb-pm{opacity:0;transform:scale(1.5) rotate(-20deg);animation:frank .5s var(--spring) 2.4s forwards}
+@keyframes frank{to{opacity:.85;transform:rotate(-9deg)}}
+
+@media (prefers-reduced-motion:reduce){.door-closed{display:none}.door-leaf{opacity:1;animation:none}}
+@media (max-width:900px){.it .art.pa{max-width:620px;width:100%;margin:0 auto}}
+@media (max-width:760px){
+  .trk .stop{grid-template-columns:110px 1fr}
+  .trk .stop .wk{grid-row:1 / 5;max-width:110px;margin:0}
+  .lane.free:before{display:none}
+  .src{font-size:12px}
+}
+</style>
 </head>
 <body>
 
@@ -1342,6 +1495,8 @@ body{background:#F4ECDD var(--paper) 0 0/512px}
               <img class="mk" src="../img/mark.png" alt="" width="56" height="56">
               <span class="vplay"><i><svg width="18" height="18" viewBox="0 0 26 26" aria-hidden="true"><path d="M8.6 5.6v14.8c0 .9 1 1.4 1.7 1l11.6-7.4c.7-.4.7-1.4 0-1.9L10.3 4.6c-.7-.5-1.7 0-1.7 1z" fill="#F72585"/></svg></i>tap for sound</span>
             </button></div>
+          <img class="door-leaf" src="../img/vip/paint/door-leaf.webp" alt="" width="1110" height="620" aria-hidden="true">
+          <img class="door-closed" src="../img/vip/paint/door-closed.webp" alt="" width="1110" height="620" aria-hidden="true">
         </div>
         <p class="under"><b>A minute with me before you decide.</b> Here’s what VIP adds to your free seat.</p>
 
@@ -1389,11 +1544,11 @@ body{background:#F4ECDD var(--paper) 0 0/512px}
     <div class="trk" data-r aria-label="Your week">
       <div class="lane free">
         <span class="lane-k" aria-hidden="true">Free, for everyone</span>
-        <div class="stop s1"><div class="dt"><b>17</b><small>Tue</small></div><span class="lb">Day 1</span><p>Find what you could sell and who could buy.</p></div>
-        <div class="stop s2"><div class="dt"><b>18</b><small>Wed</small></div><span class="lb">Day 2</span><p>Give people a reason to pay your price.</p></div>
-        <div class="stop s3"><div class="dt"><b>19</b><small>Thu</small></div><span class="lb">Day 3</span><p>Get ready to invite people to buy.</p><span class="bring"><i class="env" aria-hidden="true"></i>Bring your work to the VIP review.</span></div>
-        <div class="stop s4 vip"><div class="dt"><span class="tg">VIP</span><b>20</b><small>Fri</small></div><span class="lb">Live group review</span><p>See what I’d improve in selected submissions.</p></div>
-        <div class="stop s5 next"><div class="dt"><img src="../img/vip/paint/sprout.webp" alt="" width="140" height="130" loading="lazy"></div><span class="lb">Keep going</span><p>Put it in front of potential buyers and learn from the response.</p></div>
+        <div class="stop s1"><img class="wk" src="../img/vip/paint/wk1.webp" alt="" width="240" height="190" loading="lazy" aria-hidden="true"><div class="dt"><b>17</b><small>Tue</small></div><span class="lb">Day 1</span><p>Find what you could sell and who could buy.</p></div>
+        <div class="stop s2"><img class="wk" src="../img/vip/paint/wk2.webp" alt="" width="240" height="190" loading="lazy" aria-hidden="true"><div class="dt"><b>18</b><small>Wed</small></div><span class="lb">Day 2</span><p>Give people a reason to pay your price.</p></div>
+        <div class="stop s3"><img class="wk" src="../img/vip/paint/wk3.webp" alt="" width="240" height="190" loading="lazy" aria-hidden="true"><div class="dt"><b>19</b><small>Thu</small></div><span class="lb">Day 3</span><p>Get ready to invite people to buy.</p><span class="bring"><i class="env" aria-hidden="true"></i>Bring your work to the VIP review.</span></div>
+        <div class="stop s4 vip"><img class="wk" src="../img/vip/paint/wk4.webp" alt="" width="240" height="190" loading="lazy" aria-hidden="true"><div class="dt"><span class="tg">VIP</span><b>20</b><small>Fri</small></div><span class="lb">Live group review</span><p>See what I’d improve in selected submissions.</p></div>
+        <div class="stop s5 next"><img class="wk" src="../img/vip/paint/wk5.webp" alt="" width="240" height="190" loading="lazy" aria-hidden="true"><span class="lb">Keep going</span><p>Put it in front of potential buyers and learn from the response.</p></div>
         <i class="fly" aria-hidden="true"><b></b><span></span><span></span></i>
       </div>
       <!-- VIP's lane: what is there for you on each day (pictures only, the words are in the table below) -->
@@ -1440,9 +1595,11 @@ body{background:#F4ECDD var(--paper) 0 0/512px}
     <article class="it it1" data-r>
       <div class="mst" aria-hidden="true"><span class="now"><img class="stp" src="../img/vip/paint/mini-rev.webp" alt="" width="160" height="200" loading="lazy"></span><i></i><span><img class="stp" src="../img/vip/paint/mini-wa.webp" alt="" width="160" height="200" loading="lazy"></span><i></i><span><img class="stp" src="../img/vip/paint/mini-spr.webp" alt="" width="160" height="200" loading="lazy"></span><i></i><span><img class="stp" src="../img/vip/paint/mini-rec.webp" alt="" width="160" height="200" loading="lazy"></span></div>
       <div class="art pa rv" aria-hidden="true">
-        <img class="pa-img" src="../img/vip/paint/rv.webp" alt="" width="600" height="500" loading="lazy">
-        <img class="pa-img marks" src="../img/vip/paint/rv-marks.webp" alt="" width="600" height="500" loading="lazy">
-        <span class="rstamp" style="left:4%;top:5%">EXAMPLE</span>
+        <div class="dev lap l1"><img src="../img/vip/paint/laptop.webp" alt="" width="600" height="420" loading="lazy"><div class="scrn2"><img src="../img/vip/raw/review.webp" alt="" loading="lazy"></div></div>
+        <img class="prop stack" src="../img/vip/paint/stack.webp" alt="" width="320" height="260" loading="lazy">
+        <img class="prop coffee" src="../img/vip/paint/coffee.webp" alt="" width="200" height="200" loading="lazy"><span class="steam"><i></i><i></i><i></i></span>
+        <img class="prop pencil" src="../img/vip/paint/pencil.webp" alt="" width="320" height="60" loading="lazy">
+        <span class="rstamp" style="left:6%;top:2%">EXAMPLE</span>
       </div>
       <div class="tx">
         <span class="num">01</span>
@@ -1463,16 +1620,10 @@ body{background:#F4ECDD var(--paper) 0 0/512px}
     <article class="it it2 flip" data-r>
       <div class="mst" aria-hidden="true"><span class="done"><img class="stp" src="../img/vip/paint/mini-rev.webp" alt="" width="160" height="200" loading="lazy"></span><i></i><span class="now"><img class="stp" src="../img/vip/paint/mini-wa.webp" alt="" width="160" height="200" loading="lazy"></span><i></i><span><img class="stp" src="../img/vip/paint/mini-spr.webp" alt="" width="160" height="200" loading="lazy"></span><i></i><span><img class="stp" src="../img/vip/paint/mini-rec.webp" alt="" width="160" height="200" loading="lazy"></span></div>
       <div class="art pa wa2" aria-hidden="true">
-        <img class="pa-img" src="../img/vip/paint/wa.webp" alt="" width="600" height="500" loading="lazy">
-        <div class="scrn"><div class="wbd">
-          <div class="wh2"><i></i><b>VIP group · how we grow</b></div>
-          <div class="wb m1"><small>Rosa</small>Is $97 too low for a six-week program?</div>
-          <div class="wb ana m2"><small>Ana</small><span class="vn"><i><svg viewBox="0 0 26 26"><path d="M8.6 5.6v14.8c0 .9 1 1.4 1.7 1l11.6-7.4c.7-.4.7-1.4 0-1.9L10.3 4.6c-.7-.5-1.7 0-1.7 1z" fill="#fff"/></svg></i><span class="wv"><b style="height:30%"></b><b style="height:55%"></b><b style="height:85%"></b><b style="height:45%"></b><b style="height:70%"></b><b style="height:95%"></b><b style="height:40%"></b><b style="height:62%"></b><b style="height:80%"></b><b style="height:36%"></b><b style="height:58%"></b><b style="height:88%"></b></span><em>0:42</em></span></div>
-          <div class="wb ana m3"><small>Ana</small>Say $149, and put the result in the first line.</div>
-          <div class="wb me m4"><small>You</small>Changing it now.<span class="tk2">✓✓</span></div>
-          <div class="typ"><i></i><i></i><i></i></div>
-        </div></div>
-        <span class="rstamp" style="left:62%;top:86%">EXAMPLE</span>
+        <div class="dev lap l2"><img src="../img/vip/paint/laptop.webp" alt="" width="600" height="420" loading="lazy"><div class="scrn2"><img src="../img/vip/raw/compose.webp" alt="" loading="lazy"><span class="hl"></span></div></div>
+        <div class="dev ph"><img src="../img/vip/paint/phone.webp" alt="" width="260" height="500" loading="lazy"><div class="scrn2"><img src="../img/vip/raw/vipgroup.webp" alt="" loading="lazy"></div></div>
+        <div class="clk"><img src="../img/vip/paint/clocks.webp" alt="" width="560" height="150" loading="lazy"><img class="wdg" src="../img/vip/paint/wedges.webp" alt="" width="560" height="150" loading="lazy"></div>
+        <span class="rstamp" style="left:4%;top:0">EXAMPLE</span>
       </div>
       <div class="tx">
         <span class="num">02</span>
@@ -1488,8 +1639,11 @@ body{background:#F4ECDD var(--paper) 0 0/512px}
     <article class="it it3" data-r>
       <div class="mst" aria-hidden="true"><span class="done"><img class="stp" src="../img/vip/paint/mini-rev.webp" alt="" width="160" height="200" loading="lazy"></span><i></i><span class="done"><img class="stp" src="../img/vip/paint/mini-wa.webp" alt="" width="160" height="200" loading="lazy"></span><i></i><span class="now"><img class="stp" src="../img/vip/paint/mini-spr.webp" alt="" width="160" height="200" loading="lazy"></span><i></i><span><img class="stp" src="../img/vip/paint/mini-rec.webp" alt="" width="160" height="200" loading="lazy"></span></div>
       <div class="art pa spr" aria-hidden="true">
-        <img class="pa-img" src="../img/vip/paint/spr.webp" alt="" width="600" height="500" loading="lazy">
-        <img class="pa-img card" src="../img/vip/paint/spr-card.webp" alt="" width="600" height="500" loading="lazy">
+        <img class="prop n5" src="../img/vip/paint/notes5.webp" alt="" width="360" height="300" loading="lazy">
+        <img class="prop n1" src="../img/vip/paint/note1.webp" alt="" width="360" height="300" loading="lazy">
+        <div class="dev lap l3"><img src="../img/vip/paint/laptop.webp" alt="" width="600" height="420" loading="lazy"><div class="scrn2"><img src="../img/vip/raw/sprint-lesson.webp" alt="" loading="lazy"></div></div>
+        <img class="prop c1" src="../img/vip/paint/card1.webp" alt="" width="360" height="240" loading="lazy">
+        <span class="src">From the Offer Clarity Sprint</span>
       </div>
       <div class="tx">
         <span class="num">03</span>
@@ -1510,8 +1664,9 @@ body{background:#F4ECDD var(--paper) 0 0/512px}
     <article class="it it4 flip" data-r>
       <div class="mst" aria-hidden="true"><span class="done"><img class="stp" src="../img/vip/paint/mini-rev.webp" alt="" width="160" height="200" loading="lazy"></span><i></i><span class="done"><img class="stp" src="../img/vip/paint/mini-wa.webp" alt="" width="160" height="200" loading="lazy"></span><i></i><span class="done"><img class="stp" src="../img/vip/paint/mini-spr.webp" alt="" width="160" height="200" loading="lazy"></span><i></i><span class="now"><img class="stp" src="../img/vip/paint/mini-rec.webp" alt="" width="160" height="200" loading="lazy"></span></div>
       <div class="art pa rec" aria-hidden="true">
-        <img class="pa-img" src="../img/vip/paint/rec.webp" alt="" width="600" height="500" loading="lazy">
-        <div class="yrs"><span>2026</span><span>2027</span><span>2028</span><span>2029</span><span>2030</span><span>2031</span><span>2032</span></div>
+        <img class="prop plan" src="../img/vip/paint/planner.webp" alt="" width="460" height="300" loading="lazy">
+        <img class="prop stk" src="../img/vip/paint/sticky.webp" alt="" width="200" height="190" loading="lazy">
+        <div class="dev lap l4"><img src="../img/vip/paint/laptop.webp" alt="" width="600" height="420" loading="lazy"><div class="scrn2"><div class="replay"><img class="sl" src="../img/slides/day2a.webp" alt="" loading="lazy"><img class="me" src="../img/real/ana-real-c.webp" alt="" loading="lazy"><span class="rbar"><i class="pl"></i><b>DAY 2 · RECORDING</b><span class="pg"><i></i></span><em>saved</em></span></div></div></div>
       </div>
       <div class="tx">
         <span class="num">04</span>
@@ -1535,7 +1690,7 @@ body{background:#F4ECDD var(--paper) 0 0/512px}
     <div class="vf-hd" data-r><span class="eyebrow">Honest fit check</span><h2>Would you like me <em>a little closer while you do this?</em></h2></div>
     <div class="fitg" data-r>
       <div class="fitc yes">
-        <div class="seat" aria-hidden="true"><img src="../img/vip/paint/chairs-two.webp" alt="" width="600" height="330" loading="lazy"></div>
+        <div class="seat two" aria-hidden="true"><img src="../img/vip/paint/vip-table.webp" alt="" width="600" height="330" loading="lazy"><img class="you" src="../img/vip/paint/vip-chair.webp" alt="" width="600" height="330" loading="lazy"></div>
         <h3>Get VIP <em>if</em></h3>
         <ul>
           <li><i><svg width="11" height="11"><use href="#ck"/></svg></i><span>You want to keep the lessons and use them around your job, clients or family.</span></li>
