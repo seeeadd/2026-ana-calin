@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Day 1 · The Exit Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Manrope:wght@600;700;800&display=swap">
+<link rel="stylesheet" href="deck.css?v=1">
+<style>
+/* Day 1. Slide 1: her first readers sign a guest book while her phone counts them. Slide 2: a box of workbooks,
+   two copies sold, and the ink pad of the "checked" stamp still closed. */
+.scr .st{display:flex;justify-content:space-between;align-items:center;padding:4.5cqw 7cqw 0;height:12cqw}
+.scr .st i{display:block;height:3.4cqw;width:16cqw;border-radius:2cqw;background:#2A2420}
+.scr .st em{display:flex;gap:1.6cqw}.scr .st em u{display:block;width:4cqw;height:3.4cqw;border-radius:1cqw;background:#2A2420}
+.scr .ap{display:flex;align-items:center;gap:3.4cqw;padding:5cqw 7cqw 4cqw;border-bottom:1px solid #EFE6DA}
+.scr .ap svg{width:9cqw;height:11cqw;flex:none}
+.scr .ap i{display:block;height:4cqw;width:42cqw;border-radius:2cqw;background:#3A2A22}
+.scr .ct{padding:6cqw 7cqw 2cqw}
+.scr .ct i{display:block;height:3.4cqw;width:34cqw;border-radius:2cqw;background:#B9AC9E}
+.scr .num{position:relative;height:42cqw;overflow:hidden;margin-top:2cqw}
+.scr .num b{position:absolute;left:0;top:0;font-family:'Instrument Serif',serif;font-weight:400;font-size:44cqw;line-height:.95;color:#1A1412}
+.scr .num b.nw{color:#F72585}
+.scr .li{padding:0 5cqw}
+.scr .nt{display:flex;align-items:center;gap:3.6cqw;padding:3.6cqw 3cqw;border-radius:4cqw;background:#FFF1F7;margin-top:2.6cqw;box-shadow:0 1px 0 rgba(0,0,0,.05)}
+.scr .nt .av{flex:none;width:11cqw;height:11cqw;border-radius:50%}
+.scr .nt .tx{flex:1}.scr .nt .tx i{display:block;height:3.2cqw;border-radius:2cqw;background:#3A2A22}.scr .nt .tx i+i{margin-top:2cqw;background:#C9BBAE;width:60%}
+.scr .nt .pl{flex:none;font-weight:800;font-size:5cqw;color:#F72585}
+.sig{stroke-width:2.5}
+</style></head>
+<body>
+<div class="stage">
+  <img class="bgl" src="bg.svg" alt="">
+  <svg width="0" height="0" style="position:absolute"><filter id="pencilTex" x="-5%" y="-20%" width="110%" height="140%"><feTurbulence type="fractalNoise" baseFrequency="1.2" numOctaves="1" seed="4" result="n"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.6 1.5" result="m"/><feComposite in="SourceGraphic" in2="m" operator="in"/></filter></svg>
+
+  <div class="wm"><img src="../img/mark.png" alt=""><b>how we grow</b></div>
+  <div class="type">
+    <p class="mk">Day 1<i>·</i>The Exit Plan</p>
+    <h1 class="hl" id="hA"><span class="ln key">First readers</span><span class="ln">when nobody</span><span class="ln">knows your name</span></h1>
+    <h1 class="hl" id="hB"><span class="ln">Two copies.</span><span class="ln">The check</span><span class="ln key">I didn’t do.</span></h1>
+  </div>
+
+  <div class="ill">
+    <img class="tbl" src="../img/vip/paint/dk-table.webp" alt="">
+    <!-- slide 1 -->
+    <div class="ob a" id="coffee" style="--x:56;--y:600;--w:190"><img src="../img/vip/paint/coffee.webp" alt=""></div>
+    <div class="ob a1" id="book" style="--x:24;--y:66;--w:620;--r:-3deg"><img src="../img/vip/paint/dk-book.webp" alt="">
+      <svg class="loc" viewBox="0 0 620 460"><path class="ink sig" id="s1" stroke="#2C4A7A"/><path class="ink sig" id="s2" stroke="#2A2420"/><path class="ink sig" id="s3" stroke="#2F6B4F"/><path class="ink pk-ink" id="lpA"/></svg></div>
+    <div class="ob a1" id="sunf" style="--x:300;--y:560;--w:270;--r:-24deg"><img src="../img/vip/paint/dk-sunflower.webp" alt=""></div>
+    <div class="ob a1" id="phone" style="--x:640;--y:296;--w:244;--r:7deg"><img src="../img/vip/paint/phone.webp" alt="">
+      <div class="scr">
+        <div class="st"><i></i><em><u></u><u></u><u></u></em></div>
+        <div class="ap"><svg viewBox="0 0 18 22"><path d="M1 1h16v3H1zM1 6.5h16v3H1zM1 12h16v9l-8-4.4L1 21z" fill="#FF6719"/></svg><i></i></div>
+        <div class="ct"><i></i><div class="num" id="num"><b>0</b></div></div>
+        <div class="li" id="notes"></div>
+      </div></div>
+    <!-- slide 2 -->
+    <div class="ob b1" id="box" style="--x:16;--y:26;--w:520;--r:-3deg"><img src="../img/vip/paint/dk-box.webp" alt=""></div>
+    <div class="ob b1" id="stamp" style="--x:620;--y:596;--w:196;--r:-12deg"><img src="../img/vip/paint/dk-stamp.webp" alt=""></div>
+    <div class="ob b1" id="pad" style="--x:300;--y:566;--w:276;--r:4deg"><img src="../img/vip/paint/dk-pad.webp" alt="">
+      <svg class="loc" viewBox="0 0 300 220"><path class="ink pk-ink" id="lpB"/></svg></div>
+    <div class="ob b1" id="cp1" style="--x:560;--y:34;--w:226;--r:8deg"><img src="../img/vip/paint/dk-copy.webp" alt=""></div>
+    <div class="ob b1" id="cp2" style="--x:598;--y:318;--w:226;--r:-5deg"><img src="../img/vip/paint/dk-copy.webp" alt=""></div>
+    <div class="ob b1" id="tg1" style="--x:704;--y:6;--w:150;--r:-8deg"><img src="../img/vip/paint/dk-soldtag.webp" alt=""></div>
+    <div class="ob b1" id="tg2" style="--x:742;--y:300;--w:150;--r:10deg"><img src="../img/vip/paint/dk-soldtag.webp" alt=""></div>
+  </div>
+  <div class="pen" id="pen"><img src="../img/vip/paint/pencil.webp" alt=""></div>
+  <svg class="grain" viewBox="0 0 1920 1080" preserveAspectRatio="none"><filter id="gr"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter><rect width="1920" height="1080" filter="url(#gr)"/></svg>
+</div>
+
+<script src="../assets/vendor/gsap.min.js"></script>
+<script src="deck.js?v=1"></script>
+<script>
+DECK.start(function (D) {
+  var $ = D.$, $$ = D.$$, hA = $('#hA'), hB = $('#hB');
+  D.setHeadline(hA); D.setHeadline(hB);
+  /* the three signatures and Ana's loop around them (book units) */
+  var sigs = [['#s1', 92, 118, 132, 11], ['#s2', 98, 152, 108, 23], ['#s3', 90, 186, 146, 37]];
+  sigs.forEach(function (s) { $(s[0]).setAttribute('d', D.signature(s[1], s[2], s[3], s[4])) });
+  $('#lpA').setAttribute('d', D.loop(172, 152, 132, 66, 5));
+  $('#lpB').setAttribute('d', D.loop(150, 112, 152, 112, 9));
+  var notes = $('#notes'), cols = ['#F9C6DD', '#FFE48A', '#CFE3C5'];
+  for (var i = 0; i < 3; i++) notes.insertAdjacentHTML('afterbegin', '<div class="nt"><span class="av" style="background:' + cols[i] + '"></span><span class="tx"><i></i><i></i></span><span class="pl">+1</span></div>');
+  var nts = $$('.nt', notes).reverse(), num = $('#num');
+  num.innerHTML = '<b>0</b><b>1</b><b>2</b><b>3</b>'; var dg = $$('b', num); gsap.set(dg.slice(1), { yPercent: 110 });
+  function tick(tl, n, at) {   /* the count rolls: the old number rises out, the new one comes up in her pink, then settles to ink */
+    tl.to(dg[n - 1], { yPercent: -110, duration: .4, ease: 'power2.in' }, at)
+      .fromTo(dg[n], { yPercent: 110, color: '#F72585' }, { yPercent: 0, duration: .5, ease: 'back.out(1.7)', immediateRender: false }, '<.12')
+      .to(dg[n], { color: '#1A1412', duration: .5 }, '>+.4');
+  }
+  var pen = D.Pencil($('#pen')), ill = $('.ill');
+  var rest = { x: 1004 + 520 * 820 / 900, y: 166 + 790 * 820 / 900 };
+  pen.at(rest.x, rest.y, -24);
+
+  /* ---------- slide 1 ---------- */
+  var A = gsap.timeline();
+  if (!D.still) gsap.set(['.mk', '.ob.a', '.ob.a1', '#pen'].concat($$('.w', hA)), { opacity: 0 });
+  gsap.set($$('.ob.b1'), { opacity: 0 }); gsap.set($$('.w', hB).concat($$('.sw', hB)), { opacity: 0 });
+  $$('.sig').forEach(D.hide); D.hide($('#lpA')); D.hide($('#lpB'));
+  A.add(function () { D.emit('talk') })
+   .fromTo('.mk', { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: .5, ease: 'power2.out', immediateRender: false });
+  D.wordsIn(A, hA, .25); D.swipeIn(A, hA, 1.25);
+  D.placeIn(A, '#coffee', .35, { rot: -5 }); D.placeIn(A, '#book', .5, { rot: 6 }); D.placeIn(A, '#phone', .7, { rot: -9 }); D.placeIn(A, '#sunf', .86, { rot: 14 });
+  A.fromTo('#pen', { opacity: 0 }, { opacity: 1, duration: .3, immediateRender: false }, 1.1);
+  nts.forEach(function (n) { gsap.set(n, { display: 'none' }) });
+  [[0, 1.0], [1, .8], [2, .62]].forEach(function (p, i) {   /* each reader signs a little faster than the last: momentum */
+    A.add(D.draw($(sigs[i][0]), p[1], 'power1.inOut'), i ? '+=.25' : 1.75);
+    A.add(function () { gsap.fromTo('#phone', { rotation: 7 }, { rotation: 7, keyframes: { rotation: [8.6, 5.6, 8, 6.4, 7] }, duration: .42, ease: 'none' }) }, '-=.05');
+    A.fromTo(nts[i], { display: 'none', y: -30, opacity: 0, height: 0 }, { display: 'flex', y: 0, opacity: 1, height: 'auto', duration: .45, ease: 'back.out(1.5)', immediateRender: false }, '<');
+    tick(A, i + 1, '<');
+  });
+  /* Ana's pencil comes over on an arc and rings her first readers (the one hand mark on the slide) */
+  var lp = $('#lpA'), p0 = lp.getPointAtLength(0), sA = D.toStage(lp.ownerSVGElement, p0.x, p0.y);
+  A.add(pen.go(sA.x, sA.y, .85, -34, 110), '+=.25');
+  A.add(pen.write(lp, 1.15, 'power1.inOut'));
+  A.add(pen.go(rest.x, rest.y, .8, -24, 70), '+=.15');
+  A.add(function () { D.emit('quiet') });
+  A.to('#sunf', { rotation: '-=2', duration: 2.4, ease: 'sine.inOut', yoyo: true, repeat: 1 }, '-=.6');
+
+  /* ---------- the change, and slide 2 ---------- */
+  var T = gsap.timeline();
+  T.add(function () { D.emit('talk') });
+  D.wordsOut(T, hA, 0);
+  D.takeOut(T, '#book', .05, -1750, 90, -14); D.takeOut(T, '#sunf', .14, -1500, 160, -40); D.takeOut(T, '#phone', .1, 620, 120, 16);
+  T.set(['#book', '#sunf', '#phone'], { opacity: 0 }, 1.1);
+  D.placeIn(T, '#box', 1.0, { y: -100, scale: 1.16, rot: 6, dur: .85 });
+  D.placeIn(T, '#pad', 1.25, { rot: -8 }); D.placeIn(T, '#stamp', 1.38, { rot: 10 });
+  T.fromTo($$('.w', hB), { opacity: 0 }, { opacity: 1, duration: .01, immediateRender: false }, 1.2);
+  D.wordsIn(T, hB, 1.2); D.swipeIn(T, hB, 2.2);
+  /* two copies come up out of the box on arcs and land beside it; each gets its kraft tag, which swings and settles */
+  [['#cp1', '#tg1', 2.1, -420, 150, -16], ['#cp2', '#tg2', 2.45, -470, -110, 14]].forEach(function (c) {
+    var o = { t: 0 }, el = $(c[0]), r0 = gsap.getProperty(el, 'rotation');
+    T.fromTo(el, { opacity: 0 }, { opacity: 1, duration: .12, immediateRender: false }, c[2]);
+    T.fromTo(o, { t: 0 }, { t: 1, duration: .95, ease: 'power2.inOut', immediateRender: false, onUpdate: function () { var t = o.t;
+      gsap.set(el, { x: c[3] * (1 - t), y: c[4] * (1 - t) - Math.sin(Math.PI * t) * 150, scale: .82 + .18 * t + Math.sin(Math.PI * t) * .1, rotation: r0 + c[5] * (1 - t),
+        filter: 'drop-shadow(' + (4 + Math.sin(Math.PI * t) * 26).toFixed(1) + 'px ' + (6 + Math.sin(Math.PI * t) * 40).toFixed(1) + 'px ' + (4 + Math.sin(Math.PI * t) * 20).toFixed(1) + 'px rgba(60,40,25,.18))' }) } }, c[2]);
+    T.fromTo(el, { scale: 1 }, { scale: 1, keyframes: { scale: [.97, 1.01, 1] }, duration: .3, immediateRender: false }, '>');
+    T.fromTo(c[1], { opacity: 0, y: -60, rotation: '-=30' }, { opacity: 1, y: 0, rotation: '+=30', duration: 1.3, ease: 'elastic.out(1,.38)', transformOrigin: '35% 53%', immediateRender: false }, '>-.2');
+  });
+  var pB = $('#lpB'), q0 = pB.getPointAtLength(0), sB = D.toStage(pB.ownerSVGElement, q0.x, q0.y);
+  T.add(pen.go(sB.x, sB.y, .85, -34, 120), '+=.2');
+  T.add(pen.write(pB, 1.2, 'power1.inOut'));
+  T.add(pen.go(1004 + 330 * 820 / 900, 166 + 528 * 820 / 900, .8, -12, 60), '+=.15');
+  T.add(function () { D.emit('quiet') });
+  return { A: A, T: T, hold: 1.8 };
+});
+</script>
+</body></html>

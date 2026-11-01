@@ -1,0 +1,53 @@
+/* Ana's workshop deck: one 1920x1080 stage per day, scaled to whatever holds it (a Day window on the page, a PNG
+   export, or the file opened on its own). Design rules: prompts/4-day1-slide.md in the outreach factory (her brand
+   raised: her cream ground, one dominant accent (her pink), her yellow used once as the highlighter, Instrument Serif
+   headlines set big and broken by hand, a painted illustration from her own world, a background with her sunflower
+   and grain). Motion: tools/paint/MOTION.md. */
+:root{--cream:#FFF8EE;--ink:#1A1412;--ink2:#3D332E;--ink3:#7A6A60;--pink:#F72585;--sun:#FFD400;--u:calc(820px / 900)}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%;overflow:hidden;background:var(--cream)}
+body{font-family:Manrope,system-ui,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:none;user-select:none;-webkit-user-drag:none}
+
+.stage{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:0 0;overflow:hidden;
+  background:
+    radial-gradient(circle at 88% 8%,rgba(255,212,0,.17),transparent 38%),
+    radial-gradient(circle at 6% 96%,rgba(247,37,133,.08),transparent 42%),
+    radial-gradient(circle at 46% 52%,rgba(255,255,255,.55),transparent 60%),
+    radial-gradient(ellipse 120% 110% at 50% 46%,transparent 58%,rgba(140,95,50,.16) 100%),
+    var(--cream)}
+
+/* background: her sunflower drawn large and bleeding off the edges, ghost objects, grain (all under the type) */
+.bgl{position:absolute;inset:0;width:1920px;height:1080px;pointer-events:none;z-index:0}
+.bgl .pat{fill:none;stroke:var(--ink);stroke-opacity:.12;stroke-width:6;stroke-linejoin:round}
+.bgl .pat.pk{stroke:var(--pink);stroke-opacity:.14}
+.bgl .ghost{fill:none;stroke:var(--ink);stroke-opacity:.11;stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
+.grain{position:absolute;inset:0;z-index:20;pointer-events:none;mix-blend-mode:multiply;opacity:.11}
+
+/* her wordmark, and the line above the headline */
+.wm{position:absolute;left:96px;top:70px;display:flex;align-items:center;gap:16px;z-index:5}
+.wm img{width:64px;height:64px}
+.wm b{font-weight:800;font-size:30px;letter-spacing:-.01em}
+.type{position:absolute;left:96px;width:820px;top:0;height:1080px;z-index:5}
+.mk{position:absolute;left:2px;font-weight:800;font-size:26px;letter-spacing:.14em;text-transform:uppercase;color:var(--pink);white-space:nowrap}
+.mk i{font-style:normal;color:var(--ink3);margin:0 14px}
+.hl{position:absolute;left:0;width:820px;font-family:'Instrument Serif',Georgia,serif;font-weight:400;line-height:.98;letter-spacing:-.025em;color:var(--ink)}
+.hl .ln{display:block;white-space:nowrap;position:relative;width:max-content}
+.hl .ln.key{z-index:1}
+.hl .w{display:inline-block}
+.sw{position:absolute;z-index:-1;left:-14px;right:-18px;top:18%;bottom:6%;overflow:visible}
+.sw path{fill:var(--sun)}
+
+/* the illustration: her cafe table, 820 px wide, with objects placed in table units (900 x 820) */
+.ill{position:absolute;left:1004px;top:166px;width:820px;height:747px;z-index:3}
+.ill .tbl{position:absolute;left:0;top:0;width:100%;height:auto}
+.ob{position:absolute;left:calc(var(--x) * var(--u));top:calc(var(--y) * var(--u));width:calc(var(--w) * var(--u));transform:rotate(var(--r,0deg));transform-origin:50% 50%}
+.ob>img{width:100%;height:auto}
+.ob>svg.loc{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.pen{position:absolute;left:0;top:0;width:calc(320 * var(--u));z-index:9;transform-origin:calc(10 / 320 * 100%) 50%;pointer-events:none}
+.pen img{width:100%;height:auto}
+.ink{fill:none;stroke-linecap:round;stroke-linejoin:round}
+.pk-ink{stroke:#D81B6E;stroke-width:4;filter:url(#pencilTex)}
+
+/* a phone's real screen, inside the painted phone (screen x31 y21 w198 h458 of 260 x 500) */
+.scr{position:absolute;left:11.92%;top:4.2%;width:76.15%;height:91.6%;border-radius:22px;overflow:hidden;background:#FFFDF9;container-type:inline-size}
