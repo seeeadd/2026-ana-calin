@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Day 1 · Where I'd find my first readers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Manrope:wght@600;700;800&family=Nothing+You+Could+Do&display=swap">
+<link rel="stylesheet" href="deck.css?v=2">
+<style>
+/* Day 1, slide 1 · the map. Where would the first readers come from, when nobody knows you yet? Her pin on a Greek
+   island reads "You · 0 readers"; three routes lead in from three places she only names live (pink notes); readers
+   walk in along them and the pin counts them. Layout: the map, full bleed; the headline on a map-legend card. */
+.map{position:absolute;left:-120px;top:-70px;width:2160px;height:auto;transform-origin:62% 42%}
+.card{position:absolute;left:84px;top:84px;width:860px;height:640px;z-index:5;background:#FFFBF3;border-radius:6px;transform:rotate(-1.4deg);
+  box-shadow:0 2px 0 rgba(26,20,18,.05),0 34px 70px -30px rgba(60,40,25,.55);
+  clip-path:polygon(0 1%,8% 0,22% .8%,40% 0,61% .9%,78% .2%,100% 1.2%,99.4% 22%,100% 48%,99.2% 74%,100% 99%,82% 100%,60% 99.2%,37% 100%,18% 99.3%,0 100%,.6% 78%,0 52%,.8% 26%)}
+.card .wm{position:absolute;left:56px;top:46px}
+.card .wm img{width:52px;height:52px}.card .wm b{font-size:25px}
+.card .mk{left:58px;top:150px}
+.card .hl{left:54px}
+.routes{position:absolute;inset:0;width:1920px;height:1080px;z-index:3;overflow:visible;pointer-events:none}
+.route{fill:none;stroke:#E0247A;stroke-width:6;stroke-linecap:round;stroke-dasharray:1 17}
+.pin{position:absolute;z-index:6;left:0;top:0;width:150px;height:205px;transform-origin:50% 100%}
+.flag{position:absolute;z-index:6;left:0;top:0;display:flex;align-items:center;gap:12px;background:#FFFBF3;border:2.5px solid #1A1412;border-radius:999px;padding:10px 22px 10px 12px;box-shadow:0 18px 30px -16px rgba(60,40,25,.6);white-space:nowrap;transform-origin:0 50%}
+.flag i{width:56px;height:56px;border-radius:50%;background:#F72585;display:grid;place-items:center}
+.flag i img{width:34px;height:34px}
+.flag b{font-family:'Instrument Serif',serif;font-weight:400;font-size:54px;line-height:1}
+.flag span{font-weight:800;font-size:28px;color:#7A6A60;letter-spacing:.02em}
+.flag .cnt{display:inline-block;min-width:1ch;color:#E0247A;font-size:34px}
+.note{position:absolute;z-index:5;width:190px;height:178px;transform-origin:50% 0;background:#F9B6D2 url(../img/vip/paint/tx-grain.webp);background-blend-mode:multiply;box-shadow:0 18px 26px -14px rgba(90,30,60,.5),inset 0 -14px 18px -12px rgba(170,40,100,.25)}
+.note:before{content:"";position:absolute;left:28%;top:-14px;width:44%;height:28px;background:rgba(255,248,236,.72);transform:rotate(-3deg)}
+.note em{position:absolute;left:0;right:0;top:30%;text-align:center;font-family:'Nothing You Could Do',cursive;font-style:normal;font-size:30px;line-height:1.05;color:#5A1638;transform:rotate(-4deg)}
+.walker{position:absolute;z-index:4;left:0;top:0;width:44px;height:68px;margin:-68px 0 0 -22px}
+.walker svg{width:100%;height:100%;overflow:visible}
+</style></head>
+<body>
+<div class="stage">
+  <img class="map" id="map" src="../img/vip/paint/dk-map.webp" alt="">
+  <svg class="routes" viewBox="0 0 1920 1080"><path class="route" id="r1"/><path class="route" id="r2"/><path class="route" id="r3"/></svg>
+  <div class="note" id="n1"><em>place 1<br>Day 1</em></div>
+  <div class="note" id="n2"><em>place 2<br>Day 1</em></div>
+  <div class="note" id="n3"><em>place 3<br>Day 1</em></div>
+  <div id="walkers"></div>
+  <svg class="pin" id="pin" viewBox="0 0 110 150"><path d="M55 146 C40 112 8 86 8 54 a47 47 0 0 1 94 0 C102 86 70 112 55 146 Z" fill="#F72585" stroke="#1A1412" stroke-width="5"/><circle cx="55" cy="52" r="19" fill="#FFF8EE" stroke="#1A1412" stroke-width="4"/></svg>
+  <div class="flag" id="flag"><i><img src="../img/mark.png" alt=""></i><b>You</b><span><span class="cnt" id="cnt">0</span> readers</span></div>
+  <div class="card" id="card">
+    <div class="wm"><img src="../img/mark.png" alt=""><b>how we grow</b></div>
+    <p class="mk">Day 1<i>·</i>The Exit Plan</p>
+    <h1 class="hl" id="hA"><span class="ln">Where I’d find</span><span class="ln key">my first readers</span><span class="ln">from zero</span></h1>
+  </div>
+  <svg class="grain" viewBox="0 0 1920 1080" preserveAspectRatio="none"><filter id="gr"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter><rect width="1920" height="1080" filter="url(#gr)"/></svg>
+</div>
+<script src="../assets/vendor/gsap.min.js"></script>
+<script src="deck.js?v=2"></script>
+<script>
+DECK.start(function (D) {
+  var $ = D.$, $$ = D.$$, hA = $('#hA');
+  D.setHeadline(hA, { width: 750, top: 214, max: 150 });
+  /* where things are, in stage px: her pin, and the three places (on the island's far villages) */
+  var PIN = [1290, 470], PL = [[1690, 250], [1600, 840], [1050, 900]], NOTE = [[1712, 70], [1520, 720], [930, 790]];
+  var R = ['M1790 250 C1700 300 1560 330 1460 380 C1390 420 1340 450 1300 468', 'M1610 820 C1590 720 1520 660 1450 610 C1390 566 1330 520 1296 476', 'M1080 880 C1100 790 1180 730 1220 640 C1250 570 1270 520 1288 478'];
+  R.forEach(function (d, i) { $('#r' + (i + 1)).setAttribute('d', d) });
+  NOTE.forEach(function (p, i) { gsap.set('#n' + (i + 1), { x: p[0], y: p[1], rotation: [-6, 5, -3][i] }) });
+  gsap.set('#pin', { x: PIN[0] - 75, y: PIN[1] - 205 }); gsap.set('#flag', { x: PIN[0] + 70, y: PIN[1] - 268 });
+  /* six readers (two per route): a small painted figure each, in her colours */
+  var cols = ['#F72585', '#FFD400', '#3C6FB0', '#F72585', '#FFD400', '#3C6FB0'], wk = $('#walkers'), h = '';
+  for (var i = 0; i < 6; i++) h += '<div class="walker"><svg viewBox="0 0 30 46"><ellipse cx="15" cy="44" rx="11" ry="3" fill="rgba(60,40,25,.25)"/><path d="M5 42 C5 28 9 22 15 22 C21 22 25 28 25 42 Z" fill="' + cols[i] + '" stroke="#1A1412" stroke-width="2.4"/><circle cx="15" cy="13" r="8" fill="#F6D7BE" stroke="#1A1412" stroke-width="2.4"/></svg></div>';
+  wk.innerHTML = h; var W = $$('.walker', wk);
+  /* the routes draw in as dotted lines (a mask reveals them from each place toward her) */
+  $$('.route').forEach(function (r) { var L = r.getTotalLength(); r.dataset.L = L });
+
+  var A = gsap.timeline();
+  if (!D.still) gsap.set(['#card', '#pin', '#flag', '.note'].concat($$('.w', hA), W), { opacity: 0 });
+  if (!D.still) gsap.set(W, { opacity: 0 });
+  /* the camera: starts close on the island and pulls back to show the whole map (the camera discovers) */
+  A.fromTo('#map', { scale: 1.16 }, { scale: 1, duration: 5.2, ease: 'power2.inOut', immediateRender: false }, 0);
+  A.add(function () { D.emit('talk') }, 0);
+  D.placeIn(A, '#card', .2, { y: -50, rot: -4, dur: .7 });
+  A.fromTo('.card .wm, .card .mk', { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .4, stagger: .1, immediateRender: false }, .55);
+  D.wordsIn(A, hA, .75); D.swipeIn(A, hA, 1.7);
+  /* her pin drops in with a squash, then the flag unrolls */
+  A.fromTo('#pin', { opacity: 0, y: '-=220', scaleY: 1.15, scaleX: .9 }, { opacity: 1, y: '+=220', scaleY: 1, scaleX: 1, duration: .55, ease: 'power3.in', immediateRender: false }, 1.6)
+   .to('#pin', { keyframes: { scaleY: [.78, 1.08, 1], scaleX: [1.18, .95, 1] }, duration: .45, ease: 'none' })
+   .fromTo('#flag', { opacity: 0, scaleX: .2 }, { opacity: 1, scaleX: 1, duration: .45, ease: 'back.out(1.6)', immediateRender: false }, '-=.2');
+  /* each place gets a pink note (named live on Day 1), and its route draws toward her */
+  [0, 1, 2].forEach(function (i) {
+    A.fromTo('#n' + (i + 1), { opacity: 0, y: '-=40', rotation: '+=14' }, { opacity: 1, y: '+=40', rotation: '-=14', duration: .6, ease: 'back.out(1.8)', immediateRender: false }, 2.5 + i * .35);
+  });
+  /* the routes: a dotted line reveals along itself (dash pattern kept, the visible length grows) */
+  $$('.route').forEach(function (r, i) { var L = +r.dataset.L, o = { t: 0 };
+    r.style.strokeDasharray = '1 17'; var mask = r.cloneNode(); mask.removeAttribute('id'); mask.setAttribute('class', '');
+    A.fromTo(o, { t: 0 }, { t: 1, duration: 1.1, ease: 'power1.inOut', immediateRender: false, onUpdate: function () { var n = Math.floor(L * o.t / 18);
+      r.style.strokeDasharray = n > 0 ? (Array(n).fill('1 17').join(' ') + ' 0 ' + (L + 20)) : '0 ' + (L + 20) } }, 2.8 + i * .35);
+  });
+  /* readers walk in along the routes (a little bob in their step), and the pin counts each one */
+  var cnt = $('#cnt'), n = { v: 0 };
+  W.forEach(function (w, k) { var r = $('#r' + (k % 3 + 1)), at = 4.0 + k * .45;
+    A.fromTo(w, { opacity: 0 }, { opacity: 1, duration: .2, immediateRender: false }, at);
+    A.add(D.along(w, r, 1.6, { ease: 'power1.inOut', bob: 5, steps: 9 }), at);
+    A.to(w, { opacity: 0, scale: .6, duration: .25 }, at + 1.5);
+    A.add(function () { cnt.textContent = k + 1; gsap.fromTo('#flag', { scale: 1 }, { scale: 1.06, duration: .12, yoyo: true, repeat: 1 }); gsap.fromTo('#pin', { scaleY: 1 }, { keyframes: { scaleY: [.9, 1.04, 1] }, duration: .3 }) }, at + 1.55);
+  });
+  A.add(function () { D.emit('quiet') });
+  /* idle: the notes' corners lift a little in the breeze */
+  A.to('.note', { rotation: '+=2.5', duration: 1.8, ease: 'sine.inOut', yoyo: true, repeat: 3, stagger: .3 });
+  if (D.still) A.add(function () { cnt.textContent = 6 }, '>');
+  return { A: A };
+});
+</script>
+</body></html>

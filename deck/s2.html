@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Day 1 · My first workshop sold two copies</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Manrope:wght@600;700;800&family=Nothing+You+Could+Do&display=swap">
+<link rel="stylesheet" href="deck.css?v=2">
+<style>
+/* Day 1, slide 2 · the room. Her first workshop, set up for many: rows of her blue taverna chairs. The camera walks
+   along the empty rows to the only two seats with a workbook on them, each tagged SOLD, and stops at the flip chart,
+   where a note holds what she didn't check first (shown live). Layout: a wide scene under a two-line headline. */
+.stage{background:linear-gradient(180deg,#FFF8EE 0%,#FBF1E3 52%,#EADBC4 52.2%,#E3D2B8 100%)}
+.floor{position:absolute;left:0;right:0;top:563px;bottom:0;background:url(../img/vip/paint/tx-linen.webp);opacity:.35;mix-blend-mode:multiply}
+.wall{position:absolute;left:0;right:0;top:0;height:563px;background:url(../img/vip/paint/tx-stucco.webp);opacity:.28;mix-blend-mode:multiply}
+.head{position:absolute;left:96px;top:66px;z-index:6}
+.head .wm{position:static;margin-bottom:34px}
+.head .mk{position:static;margin-bottom:14px}
+.head .hl{position:relative;top:auto}
+.scene{position:absolute;left:0;top:340px;width:2440px;height:860px;transform-origin:70% 60%}
+.scene img{position:absolute}
+.row3{opacity:.78}.row2{opacity:.9}
+.spot{position:absolute;z-index:1;width:340px;height:420px;border-radius:50%;background:radial-gradient(closest-side,rgba(255,212,0,.42),rgba(255,212,0,.16) 55%,transparent);mix-blend-mode:multiply;pointer-events:none}
+.bk{position:absolute;z-index:3;width:104px}
+.bk img{position:static;width:100%}
+.tg{position:absolute;z-index:4;width:120px;transform-origin:8% 4%}
+.tg img{position:static;width:100%}
+.flip{position:absolute;left:2040px;top:96px;width:330px;z-index:2}
+.note{position:absolute;left:2088px;top:196px;width:236px;height:214px;z-index:4;transform:rotate(3deg);background:#F9B6D2 url(../img/vip/paint/tx-grain.webp);background-blend-mode:multiply;box-shadow:0 16px 24px -14px rgba(90,30,60,.5),inset 0 -14px 18px -12px rgba(170,40,100,.25);padding:30px 24px}
+.note:before{content:"";position:absolute;left:30%;top:-13px;width:40%;height:26px;background:rgba(255,248,236,.75);transform:rotate(-3deg)}
+.note em{display:block;font-family:'Nothing You Could Do',cursive;font-style:normal;font-size:27px;line-height:1.1;color:#5A1638}
+.note i{display:block;height:16px;border-radius:3px;background:#2A2420;margin-top:14px}
+.note i+i{width:70%}
+</style></head>
+<body>
+<div class="stage">
+  <div class="wall"></div><div class="floor"></div>
+  <div class="scene" id="scene">
+    <img class="row3" src="../img/vip/paint/chairs-row.webp" style="left:330px;top:0;width:620px" alt="">
+    <img class="row3" src="../img/vip/paint/chairs-row.webp" style="left:930px;top:0;width:620px" alt="">
+    <img class="row3" src="../img/vip/paint/chairs-row.webp" style="left:1530px;top:0;width:620px" alt="">
+    <img class="row2" src="../img/vip/paint/chairs-row.webp" style="left:120px;top:80px;width:860px" alt="">
+    <img class="row2" src="../img/vip/paint/chairs-row.webp" style="left:960px;top:80px;width:860px" alt="">
+    <img class="flip" src="../img/vip/paint/dk-flip.webp" alt="">
+    <div class="note" id="note"><em>What I didn’t<br>check first:</em><i></i><i></i></div>
+    <img src="../img/vip/paint/chairs-row.webp" style="left:-40px;top:190px;width:1160px" alt="">
+    <img src="../img/vip/paint/chairs-row.webp" style="left:1100px;top:190px;width:1160px" alt="">
+    <div class="spot" style="left:560px;top:420px"></div><div class="spot" style="left:1276px;top:420px"></div>
+    <div class="bk" id="bk1" style="left:691px;top:560px"><img src="../img/vip/paint/dk-copy.webp" alt=""></div>
+    <div class="bk" id="bk2" style="left:1408px;top:560px"><img src="../img/vip/paint/dk-copy.webp" alt=""></div>
+    <div class="tg" id="tg1" style="left:765px;top:466px"><img src="../img/vip/paint/dk-soldtag.webp" alt=""></div>
+    <div class="tg" id="tg2" style="left:1482px;top:466px"><img src="../img/vip/paint/dk-soldtag.webp" alt=""></div>
+  </div>
+  <div class="head">
+    <div class="wm"><img src="../img/mark.png" alt=""><b>how we grow</b></div>
+    <p class="mk">Day 1<i>·</i>The Exit Plan</p>
+    <h1 class="hl" id="hA"><span class="ln">My first workshop</span><span class="ln key">sold two copies.</span></h1>
+  </div>
+  <svg class="grain" viewBox="0 0 1920 1080" preserveAspectRatio="none"><filter id="gr"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter><rect width="1920" height="1080" filter="url(#gr)"/></svg>
+</div>
+<script src="../assets/vendor/gsap.min.js"></script>
+<script src="deck.js?v=2"></script>
+<script>
+DECK.start(function (D) {
+  var $ = D.$, $$ = D.$$, hA = $('#hA');
+  D.setHeadline(hA, { width: 1100, min: 110, max: 128, top: 0 }); hA.style.top = 'auto';
+  gsap.set(['#bk1', '#bk2'], { rotation: function (i) { return [-7, 6][i] } });
+  var A = gsap.timeline();
+  if (!D.still) gsap.set(['.head .wm', '.head .mk', '#note', '#bk1', '#bk2', '#tg1', '#tg2'].concat($$('.w', hA)), { opacity: 0 });
+  A.add(function () { D.emit('talk') }, 0);
+  A.fromTo('.head .wm, .head .mk', { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .45, stagger: .1, immediateRender: false }, .1);
+  D.wordsIn(A, hA, .3);
+  /* the camera walks along the empty rows, slow in and slow out, and arrives on the two taken seats and the flip chart */
+  A.fromTo('#scene', { x: 60, scale: 1.06 }, { x: -520, scale: 1, duration: 5.4, ease: 'power2.inOut', immediateRender: false }, .2);
+  /* the two copies that sold: a workbook set on each seat, then its SOLD tag drops and swings */
+  if (!D.still) gsap.set('.spot', { opacity: 0 });
+  [['#bk1', '#tg1', 2.6], ['#bk2', '#tg2', 3.5]].forEach(function (b, i) {
+    A.fromTo($$('.spot')[i], { opacity: 0, scale: .6 }, { opacity: 1, scale: 1, duration: .9, ease: 'power2.out', immediateRender: false }, b[2] - .2);
+    D.placeIn(A, b[0], b[2], { y: -90, rot: 10, dur: .7 });
+    A.fromTo(b[1], { opacity: 0, y: -50, rotation: -38 }, { opacity: 1, y: 0, rotation: 6, duration: 1.5, ease: 'elastic.out(1,.32)', immediateRender: false }, b[2] + .45);
+  });
+  D.swipeIn(A, hA, 4.2);
+  /* the note on the flip chart lands, its words written in, the answer kept for Day 1 */
+  A.fromTo('#note', { opacity: 0, y: -40, rotation: 12 }, { opacity: 1, y: 0, rotation: 3, duration: .7, ease: 'back.out(1.7)', immediateRender: false }, 5.2)
+   .fromTo('#note em', { clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0% 0 0)', duration: 1.1, ease: 'power1.inOut', immediateRender: false }, 5.6)
+   .fromTo('#note i', { scaleX: 0, transformOrigin: '0 50%' }, { scaleX: 1, duration: .35, stagger: .15, ease: 'power2.out', immediateRender: false }, 6.6);
+  A.add(function () { D.emit('quiet') });
+  A.to(['#tg1', '#tg2'], { rotation: '-=5', duration: 1.6, ease: 'sine.inOut', yoyo: true, repeat: 3, stagger: .4 });
+  return { A: A };
+});
+</script>
+</body></html>

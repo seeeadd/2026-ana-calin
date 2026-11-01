@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Day 3 · 771 likes, 82 likes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Manrope:wght@600;700;800&family=Nothing+You+Could+Do&display=swap">
+<link rel="stylesheet" href="deck.css?v=2">
+<style>
+/* Day 3, slide 1 · the split. Two of her posts, side by side as two halves of the slide torn apart: one got 771 likes
+   and its dish stays empty; one got 82 and the euros drop in. Both counters run at the same time, so the eye sees the
+   bigger number lose. Layout: split down a torn seam, the headline split across the halves. */
+.half{position:absolute;top:0;bottom:0;width:960px;overflow:hidden}
+.half.l{left:0;background:radial-gradient(circle at 50% 70%,#FDE3EE,#F9D2E2 70%)}
+.half.r{left:960px;background:radial-gradient(circle at 50% 70%,#FFFBEA,#FFF1C4 75%)}
+.half:before{content:"";position:absolute;inset:0;background:url(../img/vip/paint/tx-grain.webp);opacity:.35;mix-blend-mode:multiply}
+.seam{position:absolute;left:930px;top:-10px;width:60px;height:1100px;z-index:3;overflow:visible}
+.wm{left:96px;top:56px;z-index:6}
+.tagline{position:absolute;left:0;right:0;top:64px;text-align:center;z-index:6}
+.tagline .mk{position:static;display:inline-block;background:#FFFBF3;padding:12px 26px;border-radius:999px;box-shadow:0 12px 24px -14px rgba(60,40,25,.5)}
+.hh{position:absolute;top:170px;width:960px;text-align:center;z-index:5;font-family:'Instrument Serif',serif;font-size:116px;line-height:1;letter-spacing:-.005em;color:#1A1412}
+.hh .ln{display:block;white-space:nowrap}
+.hh .w{display:inline-block}
+.hh.r .key{position:relative;display:inline-block}
+.heart{position:absolute;top:440px;width:960px;display:flex;justify-content:center;align-items:center;gap:22px;z-index:5}
+.heart svg{width:96px;height:88px;overflow:visible}
+.heart b{font-family:'Instrument Serif',serif;font-weight:400;font-size:150px;line-height:1;color:#1A1412;font-variant-numeric:tabular-nums;min-width:2.1ch;text-align:left}
+.dish{position:absolute;top:640px;width:340px;z-index:4}
+.dish img{width:100%;height:auto}
+.coin{position:absolute;z-index:5;width:84px;height:84px;left:0;top:0;filter:drop-shadow(2px 4px 3px rgba(60,40,25,.35))}
+.coin svg{width:100%;height:100%}
+.note0{position:absolute;left:300px;top:984px;z-index:5;font-family:'Nothing You Could Do',cursive;font-size:38px;color:#B0285E;transform:rotate(-3deg);white-space:nowrap}
+</style></head>
+<body>
+<div class="stage">
+  <div class="half l"></div><div class="half r"></div>
+  <svg class="seam" viewBox="0 0 60 1100" preserveAspectRatio="none"><path d="M30 0 L22 60 L36 120 L24 190 L38 260 L20 330 L34 400 L26 470 L40 540 L22 610 L36 680 L24 750 L38 820 L22 890 L34 960 L26 1030 L32 1100" fill="none" stroke="#FFFBF3" stroke-width="18" stroke-linejoin="round"/><path d="M30 0 L22 60 L36 120 L24 190 L38 260 L20 330 L34 400 L26 470 L40 540 L22 610 L36 680 L24 750 L38 820 L22 890 L34 960 L26 1030 L32 1100" fill="none" stroke="rgba(60,40,25,.22)" stroke-width="2" transform="translate(8 0)"/></svg>
+  <div class="wm"><img src="../img/mark.png" alt=""><b>how we grow</b></div>
+  <div class="tagline"><p class="mk">Day 3<i>·</i>The Exit Plan</p></div>
+  <h1 class="hh l" id="hL" style="left:0"><span class="ln">771 likes</span><span class="ln">made nothing.</span></h1>
+  <h1 class="hh r" id="hR" style="left:960px"><span class="ln">82 likes</span><span class="ln key">made money.</span></h1>
+  <div class="heart" style="left:0"><svg viewBox="0 0 96 88"><path d="M48 84 C20 62 4 46 4 26 C4 12 15 4 27 4 C37 4 44 10 48 18 C52 10 59 4 69 4 C81 4 92 12 92 26 C92 46 76 62 48 84 Z" fill="#F72585" stroke="#1A1412" stroke-width="4"/></svg><b id="cL">0</b></div>
+  <div class="heart" style="left:960px"><svg viewBox="0 0 96 88"><path d="M48 84 C20 62 4 46 4 26 C4 12 15 4 27 4 C37 4 44 10 48 18 C52 10 59 4 69 4 C81 4 92 12 92 26 C92 46 76 62 48 84 Z" fill="#F72585" stroke="#1A1412" stroke-width="4"/></svg><b id="cR">0</b></div>
+  <div class="dish" id="dL" style="left:310px"><img src="../img/vip/paint/dk-dish.webp" alt=""></div>
+  <div class="dish" id="dR" style="left:1270px"><img src="../img/vip/paint/dk-dish.webp" alt=""></div>
+  <div id="coins"></div>
+  <svg class="grain" viewBox="0 0 1920 1080" preserveAspectRatio="none"><filter id="gr"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter><rect width="1920" height="1080" filter="url(#gr)"/></svg>
+</div>
+<script src="../assets/vendor/gsap.min.js"></script>
+<script src="deck.js?v=2"></script>
+<script>
+DECK.start(function (D) {
+  var $ = D.$, $$ = D.$$, hL = $('#hL'), hR = $('#hR');
+  [hL, hR].forEach(function (h) { $$('.ln', h).forEach(function (ln) { ln.innerHTML = ln.textContent.trim().split(/\s+/).map(function (w) { return '<span class="w">' + w + '</span>' }).join(' ') }) });
+  var key = $('.key', hR); key.style.display = 'inline-block'; D.swipe(key);
+  /* seven euro coins come to rest in the right-hand dish (her readers paid; the amount stays for Day 3) */
+  var spots = [[1440, 800], [1392, 826], [1490, 822], [1436, 856], [1478, 772], [1396, 776], [1446, 830]], ch = '';
+  spots.forEach(function () { ch += '<div class="coin"><svg viewBox="0 0 84 84"><circle cx="42" cy="42" r="39" fill="#E8B930" stroke="#5A4120" stroke-width="2.5"/><circle cx="42" cy="42" r="25" fill="#D9DDE3" stroke="#6A6458" stroke-width="2"/><text x="42" y="53" text-anchor="middle" font-family="Instrument Serif,serif" font-size="30" fill="#4A443C">1</text><path d="M14 30 A30 30 0 0 1 32 10" fill="none" stroke="#FFF3C4" stroke-width="3" stroke-linecap="round"/><g fill="#F8E39A"><circle cx="75.0" cy="42.0" r="1.6"/><circle cx="70.6" cy="58.5" r="1.6"/><circle cx="58.5" cy="70.6" r="1.6"/><circle cx="42.0" cy="75.0" r="1.6"/><circle cx="25.5" cy="70.6" r="1.6"/><circle cx="13.4" cy="58.4" r="1.6"/><circle cx="9.0" cy="41.9" r="1.6"/><circle cx="13.5" cy="25.4" r="1.6"/><circle cx="25.6" cy="13.4" r="1.6"/><circle cx="42.1" cy="9.0" r="1.6"/><circle cx="58.6" cy="13.5" r="1.6"/><circle cx="70.7" cy="25.6" r="1.6"/></g></svg></div>' });
+  $('#coins').innerHTML = ch; var C = $$('.coin');
+  C.forEach(function (c, i) { gsap.set(c, { x: spots[i][0] - 42, y: spots[i][1] - 42, rotation: i * 47 }) });
+  var A = gsap.timeline(), cL = $('#cL'), cR = $('#cR');
+  if (!D.still) gsap.set(['.wm', '.tagline', '.heart', '.dish'].concat($$('.w', hL), $$('.w', hR), C), { opacity: 0 });
+  A.add(function () { D.emit('talk') }, 0);
+  /* the two halves open apart from the seam, then settle */
+  A.fromTo('.half.l', { x: 60 }, { x: 0, duration: .8, ease: 'power3.out', immediateRender: false }, 0).fromTo('.half.r', { x: -60 }, { x: 0, duration: .8, ease: 'power3.out', immediateRender: false }, 0);
+  A.fromTo('.wm, .tagline', { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: .4, stagger: .1, immediateRender: false }, .2);
+  D.wordsIn(A, hL, .4); D.wordsIn(A, hR, .9);
+  A.fromTo('.heart', { opacity: 0, scale: .6 }, { opacity: 1, scale: 1, duration: .5, ease: 'back.out(2)', stagger: .12, immediateRender: false }, 1.6);
+  A.fromTo('.dish', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: .55, ease: 'back.out(1.4)', stagger: .12, immediateRender: false }, 1.8);
+  /* both counters run at once: the left one runs far higher */
+  var o = { l: 0, r: 0 };
+  A.fromTo(o, { l: 0, r: 0 }, { l: 771, r: 82, duration: 2.2, ease: 'power2.out', immediateRender: false, onUpdate: function () { cL.textContent = Math.round(o.l); cR.textContent = Math.round(o.r) } }, 2.3);
+  A.fromTo('.heart svg', { scale: 1 }, { keyframes: { scale: [1.12, 1, 1.12, 1, 1.08, 1] }, duration: 2.2, ease: 'none', immediateRender: false }, 2.3);
+  /* then the money: coins drop into the right dish on short arcs, bounce, and settle; the left dish stays empty */
+  C.forEach(function (c, i) { var at = 4.7 + i * .22;
+    A.fromTo(c, { opacity: 0, y: '-=420', x: '+=' + (i % 2 ? -40 : 40), rotation: '-=200' }, { opacity: 1, y: '+=420', x: '-=' + (i % 2 ? -40 : 40), rotation: '+=200', duration: .55, ease: 'power2.in', immediateRender: false }, at)
+     .fromTo(c, { y: '+=0' }, { keyframes: { y: ['-=26', '+=26', '-=8', '+=8'] }, duration: .34, ease: 'none', immediateRender: false }, at + .55)
+     .fromTo('#dR', { rotation: 0 }, { keyframes: { rotation: [1.6, -1, 0] }, duration: .25, ease: 'none', immediateRender: false }, at + .55);
+  });
+  A.add(function () { D.emit('quiet') });
+  D.swipeIn(A, hR, 6.6);
+  return { A: A };
+});
+</script>
+</body></html>

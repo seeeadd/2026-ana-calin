@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Day 2 · The pricing check</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Manrope:wght@600;700;800&family=Nothing+You+Could+Do&display=swap">
+<link rel="stylesheet" href="deck.css?v=2">
+<style>
+/* Day 2, slide 2 · the price tag. Her offer's tag hangs from a Greek market awning, checked before it goes on sale:
+   it swings in on its string and settles; her pencil ticks two of the five checks; three wait for Day 2.
+   Layout: one object hanging from the top edge, the headline low on the left. */
+.aw{position:absolute;top:0;height:auto;z-index:6}
+.awsh{position:absolute;left:0;right:0;top:150px;height:120px;background:linear-gradient(180deg,rgba(90,40,50,.16),transparent);z-index:1}
+.wm{left:96px;top:248px}
+.mk{left:2px}
+.hang{position:absolute;left:0;top:0;width:1920px;height:1080px;z-index:4;transform-origin:1310px 168px;pointer-events:none}
+.hang svg.str{position:absolute;inset:0;width:1920px;height:1080px;overflow:visible}
+.tag{position:absolute;left:1170px;top:316px;width:640px;transform-origin:102px 252px;transform:rotate(-10deg)}
+.tag img{width:100%;height:auto}
+.tag svg.loc{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.tick{fill:none;stroke:#D81B6E;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round;filter:url(#pencilTex)}
+.more{position:absolute;left:1380px;top:830px;z-index:5;font-family:'Nothing You Could Do',cursive;font-size:42px;color:#D81B6E;transform:rotate(-5deg);white-space:nowrap}
+.more svg{position:absolute;left:-60px;top:-70px;width:70px;height:60px;overflow:visible}
+.crate{position:absolute;left:-40px;right:-40px;bottom:-30px;height:150px;z-index:2;background:repeating-linear-gradient(90deg,transparent 0 238px,rgba(58,42,34,.55) 238px 240px),linear-gradient(180deg,#DDBC90 0 18%,#C9A27A 18.5%,#C29A70);box-shadow:0 -2px 0 #3A2A22,0 -14px 30px -12px rgba(60,40,25,.4)}
+.crate:before{content:"";position:absolute;inset:0;background:url(../img/vip/paint/tx-linen.webp);opacity:.45;mix-blend-mode:multiply}
+.pen{z-index:8}
+</style></head>
+<body>
+<div class="stage">
+  <img class="bgl" src="bg.svg" alt="">
+  <svg width="0" height="0" style="position:absolute"><filter id="pencilTex" x="-5%" y="-20%" width="110%" height="140%"><feTurbulence type="fractalNoise" baseFrequency="1.2" numOctaves="1" seed="4" result="n"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.6 1.5" result="m"/><feComposite in="SourceGraphic" in2="m" operator="in"/></filter></svg>
+  <div class="awsh"></div>
+  <img class="aw" src="../img/vip/paint/dk-awning.webp" style="left:0;width:1560px" alt="">
+  <img class="aw" src="../img/vip/paint/dk-awning.webp" style="left:1520px;width:1560px" alt="">
+  <div class="crate"></div>
+  <div class="wm"><img src="../img/mark.png" alt=""><b>how we grow</b></div>
+  <div class="type"><p class="mk">Day 2<i>·</i>The Exit Plan</p>
+    <h1 class="hl" id="hA"><span class="ln">The pricing</span><span class="ln">check before</span><span class="ln key">it’s for sale.</span></h1></div>
+  <div class="hang" id="hang">
+    <svg class="str" viewBox="0 0 1920 1080"><path d="M1310 168 C1300 300 1284 420 1276 548" fill="none" stroke="#8A6A48" stroke-width="5" stroke-linecap="round"/><circle cx="1310" cy="168" r="9" fill="#5A3A1E"/></svg>
+    <div class="tag" id="tag"><img src="../img/vip/paint/dk-tagback.webp" alt="">
+      <svg class="loc" viewBox="0 0 300 230"><path class="tick" id="t1" d="M98 68 L103 74 L116 56"/><path class="tick" id="t2" d="M98 98 L103 104 L116 86"/></svg></div>
+  </div>
+  <p class="more" id="more"><svg viewBox="0 0 70 60"><path d="M66 56 C40 50 20 36 10 8 M10 8 L6 22 M10 8 L22 14" fill="none" stroke="#D81B6E" stroke-width="3" stroke-linecap="round"/></svg>three more, live on Day 2</p>
+  <div class="pen" id="pen"><img src="../img/vip/paint/pencil.webp" alt=""></div>
+  <svg class="grain" viewBox="0 0 1920 1080" preserveAspectRatio="none"><filter id="gr"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter><rect width="1920" height="1080" filter="url(#gr)"/></svg>
+</div>
+<script src="../assets/vendor/gsap.min.js"></script>
+<script src="deck.js?v=2"></script>
+<script>
+DECK.start(function (D) {
+  var $ = D.$, $$ = D.$$, hA = $('#hA');
+  D.setHeadline(hA, { width: 860, top: 420, max: 170 }); $('.mk').style.top = '352px';
+  var pen = D.Pencil($('#pen')), off = { x: 2080, y: 760 };
+  pen.at(off.x, off.y, -30);
+  D.hide($('#t1')); D.hide($('#t2'));
+  var A = gsap.timeline();
+  if (!D.still) gsap.set(['.wm', '.mk', '#more'].concat($$('.w', hA)), { opacity: 0 });
+  A.add(function () { D.emit('talk') }, 0);
+  A.fromTo('.wm, .mk', { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .4, stagger: .1, immediateRender: false }, .1);
+  D.wordsIn(A, hA, .35); D.swipeIn(A, hA, 1.5);
+  /* the tag swings in on its string from the awning: a long pendulum that loses a little each pass, then settles */
+  A.fromTo('#hang', { rotation: -62 }, { rotation: 0, duration: 2.6, ease: 'elastic.out(1,.28)', immediateRender: false }, .3);
+  A.fromTo('#tag', { rotation: -26 }, { rotation: -10, duration: 2.8, ease: 'elastic.out(1,.22)', immediateRender: false }, .45);
+  /* her pencil comes in from the right on an arc and ticks the first two checks; it leaves the other three */
+  var g1 = $('#t1'), p1 = g1.getPointAtLength(0);
+  var s1 = D.toStage(g1.ownerSVGElement, p1.x, p1.y), g2 = $('#t2'), q = g2.getPointAtLength(0), s2 = D.toStage(g2.ownerSVGElement, q.x, q.y);
+  A.add(pen.go(s1.x, s1.y, .9, -38, 120), 2.9);
+  A.add(pen.write(g1, .45, 'power2.in'));
+  A.add(pen.go(s2.x, s2.y, .35, -38, 26), '+=.05');
+  A.add(pen.write(g2, .45, 'power2.in'));
+  A.add(pen.go(off.x, off.y, .8, -24, 90), '+=.25');
+  A.fromTo('#more', { opacity: 0, clipPath: 'inset(0 100% 0 0)' }, { opacity: 1, clipPath: 'inset(0 0% 0 0)', duration: 1.1, ease: 'power1.inOut', immediateRender: false }, '-=.5');
+  A.add(function () { D.emit('quiet') });
+  /* idle: the tag keeps a small sway in the market breeze */
+  A.to('#hang', { rotation: 1.6, duration: 2.2, ease: 'sine.inOut', yoyo: true, repeat: 3 });
+  return { A: A };
+});
+</script>
+</body></html>

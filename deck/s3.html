@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Day 2 · Four words</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@600;700;800&family=Nothing+You+Could+Do&display=swap">
+<link rel="stylesheet" href="deck.css?v=2">
+<style>
+/* Day 2, slide 1 · the four words. Typographic: the client's question is the biggest thing on the slide (Jason: the
+   most important words biggest, the title small). Her answer arrives as four torn paper strips, one per word, inked
+   out until Day 2; then her pink stamp lands: accepted, at her price. */
+.wm{left:96px;top:70px}
+.mk{left:0;right:0;top:92px;text-align:center}
+.bub{position:absolute;left:250px;top:200px;width:1420px;padding:58px 80px 64px;background:#FFFDF8;border-radius:28px;border:2px solid rgba(26,20,18,.08);z-index:4;
+  box-shadow:0 2px 0 rgba(26,20,18,.06),0 40px 80px -40px rgba(60,40,25,.55);transform-origin:12% 100%}
+.bub:after{content:"";position:absolute;left:110px;bottom:-40px;width:62px;height:44px;background:#FFFDF8;clip-path:polygon(0 0,100% 0,6% 100%)}
+.who{display:flex;align-items:center;gap:16px;font-weight:800;font-size:24px;letter-spacing:.12em;text-transform:uppercase;color:#7A6A60;margin-bottom:18px}
+.who i{width:44px;height:44px;border-radius:50%;background:#E8DCCB;display:block}
+.q{font-family:'Instrument Serif',serif;font-size:104px;line-height:1.02;letter-spacing:-.02em;color:#1A1412}
+.q .w{display:inline-block}.q .ql{display:block;white-space:nowrap}
+.ans{position:absolute;left:420px;top:650px;display:flex;justify-content:flex-start;align-items:flex-end;gap:34px;z-index:5}
+.me{position:absolute;left:370px;top:600px;display:flex;align-items:center;gap:12px;font-weight:800;font-size:22px;letter-spacing:.12em;text-transform:uppercase;color:#F72585;z-index:5}
+.me img{width:40px;height:40px}
+.strip{position:relative;height:118px;padding:0 34px;display:flex;align-items:center;background:#FFFFFF;filter:drop-shadow(0 16px 14px rgba(60,40,25,.28));clip-path:polygon(0 6%,6% 0,20% 5%,36% 0,52% 6%,70% 1%,86% 6%,100% 0,98% 34%,100% 66%,97% 100%,80% 94%,62% 100%,44% 95%,26% 100%,10% 94%,0 100%,2% 62%)}
+.strip i{display:block;height:58px;border-radius:6px;background:#1E1A18;filter:url(#marker)}
+.strip em{position:absolute;left:12px;top:6px;font-family:'Nothing You Could Do',cursive;font-style:normal;font-size:24px;color:#F72585}
+.stamp{position:absolute;left:1340px;top:410px;width:470px;z-index:7;transform:rotate(-11deg);mix-blend-mode:multiply}
+.stamp svg{width:100%;height:auto;display:block}
+.foot{position:absolute;left:0;right:0;top:850px;text-align:center;z-index:5}
+.foot .hl{position:relative;left:auto;top:auto;width:auto;display:inline-block;text-align:left}
+.foot .hl .ln{display:inline-block}
+</style></head>
+<body>
+<div class="stage">
+  <img class="bgl" src="bg.svg" alt="">
+  <svg width="0" height="0" style="position:absolute"><filter id="marker" x="-3%" y="-20%" width="106%" height="140%"><feTurbulence type="fractalNoise" baseFrequency=".9 .08" numOctaves="2" seed="3" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="7"/></filter>
+    <filter id="rubber" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency=".75" numOctaves="2" seed="8" result="n"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -2.2 1.75" result="m"/><feComposite in="SourceGraphic" in2="m" operator="in"/></filter></svg>
+  <div class="wm"><img src="../img/mark.png" alt=""><b>how we grow</b></div>
+  <p class="mk">Day 2<i>·</i>The Exit Plan</p>
+  <div class="bub" id="bub"><p class="who"><i></i>A client, before saying yes</p><p class="q" id="q"><span class="ql">“Before I say yes,</span><span class="ql">what’s your best price?”</span></p></div>
+  <p class="me" id="me"><img src="../img/mark.png" alt="">Ana</p>
+  <div class="ans" id="ans">
+    <div class="strip" style="transform:rotate(-2deg)"><em>1</em><i style="width:150px"></i></div>
+    <div class="strip" style="transform:rotate(1.6deg) translateY(-8px)"><em>2</em><i style="width:110px"></i></div>
+    <div class="strip" style="transform:rotate(-1deg) translateY(4px)"><em>3</em><i style="width:190px"></i></div>
+    <div class="strip" style="transform:rotate(2.4deg) translateY(-4px)"><em>4</em><i style="width:130px"></i></div>
+  </div>
+  <div class="stamp" id="stamp"><svg viewBox="0 0 500 220"><g filter="url(#rubber)" fill="none" stroke="#E0247A"><rect x="10" y="10" width="480" height="200" rx="22" stroke-width="10"/><rect x="28" y="28" width="444" height="164" rx="14" stroke-width="3"/>
+    <text x="250" y="118" text-anchor="middle" fill="#E0247A" stroke="none" font-family="Manrope,sans-serif" font-weight="800" font-size="76" letter-spacing="6">ACCEPTED</text>
+    <text x="250" y="168" text-anchor="middle" fill="#E0247A" stroke="none" font-family="Manrope,sans-serif" font-weight="800" font-size="27" letter-spacing="9">AT MY PRICE</text></g></svg></div>
+  <div class="foot"><h1 class="hl" id="hA"><span class="ln">Four words that</span> <span class="ln key">held my price.</span></h1></div>
+  <svg class="grain" viewBox="0 0 1920 1080" preserveAspectRatio="none"><filter id="gr"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter><rect width="1920" height="1080" filter="url(#gr)"/></svg>
+</div>
+<script src="../assets/vendor/gsap.min.js"></script>
+<script src="deck.js?v=2"></script>
+<script>
+DECK.start(function (D) {
+  var $ = D.$, $$ = D.$$, hA = $('#hA'), q = $('#q');
+  /* the headline sits small at the foot: one line, two halves */
+  $$('.ln', hA).forEach(function (ln) { ln.innerHTML = ln.textContent.trim().split(/\s+/).map(function (w) { return '<span class="w">' + w + '</span>' }).join(' ') });
+  hA.style.fontSize = '96px'; D.swipe($('.ln.key', hA));
+  $$('.ql', q).forEach(function (l) { l.innerHTML = l.textContent.trim().split(/\s+/).map(function (w) { return '<span class="w">' + w + '</span>' }).join(' ') });
+  var strips = $$('.strip'), A = gsap.timeline();
+  if (!D.still) gsap.set(['.wm', '.mk', '#bub', '#me', '#stamp'].concat(strips, $$('.w', q), $$('.w', hA)), { opacity: 0 });
+  A.add(function () { D.emit('talk') }, 0);
+  A.fromTo('.wm, .mk', { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: .4, stagger: .1, immediateRender: false }, .1);
+  /* the client's message pops up from its tail, then the question arrives word by word */
+  A.fromTo('#bub', { opacity: 0, scale: .6, y: 40 }, { opacity: 1, scale: 1, y: 0, duration: .65, ease: 'back.out(1.5)', immediateRender: false }, .35);
+  A.fromTo($$('.w', q), { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: .4, stagger: .09, ease: 'power3.out', immediateRender: false }, .8);
+  A.fromTo('#me', { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: .4, immediateRender: false }, 2.2);
+  /* her answer: four torn strips laid down one at a time, each a word, inked out until Day 2 */
+  strips.forEach(function (s, i) {
+    A.fromTo(s, { opacity: 0, y: -120, rotation: '+=' + (i % 2 ? 14 : -14), scale: 1.1 }, { opacity: 1, y: 0, rotation: '-=' + (i % 2 ? 14 : -14), scale: 1, duration: .55, ease: 'back.out(1.6)', immediateRender: false }, 2.5 + i * .42);
+    A.fromTo($('i', s), { scaleX: 0, transformOrigin: '0 50%' }, { scaleX: 1, duration: .3, ease: 'power2.out', immediateRender: false }, 2.75 + i * .42);
+  });
+  /* the stamp: lifted high (big, soft shadow), then down hard; the page jolts once */
+  A.fromTo('#stamp', { opacity: 0, scale: 1.7, rotation: -24, filter: 'drop-shadow(30px 50px 30px rgba(60,40,25,.25))' }, { opacity: 1, scale: 1.7, duration: .25, immediateRender: false }, 4.6)
+   .to('#stamp', { scale: 1, rotation: -11, filter: 'drop-shadow(0px 0px 0px rgba(60,40,25,0))', duration: .22, ease: 'power4.in' })
+   .fromTo('.stage > :not(.grain)', { x: 0 }, { keyframes: { x: [6, -5, 3, 0] }, duration: .28, ease: 'none', immediateRender: false })
+   .fromTo('#stamp', { scale: 1 }, { keyframes: { scale: [1.04, 1] }, duration: .2, immediateRender: false }, '<');
+  A.fromTo($$('.w', hA), { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: .5, stagger: .08, ease: 'power3.out', immediateRender: false }, 5.4);
+  D.swipeIn(A, hA, 6.0);
+  A.add(function () { D.emit('quiet') });
+  return { A: A };
+});
+</script>
+</body></html>

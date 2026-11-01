@@ -18,15 +18,16 @@
 
   /* headline: words wrapped for word-by-word entrances, size fitted to the column (130 to 190 px), the marker line
      sits above it, and the type block is centred on the illustration */
-  D.setHeadline = function (hl, opt) { opt = opt || {};
+  D.setHeadline = function (hl, opt) { opt = opt || {}; var W = opt.width || 820;
     $$('.ln', hl).forEach(function (ln) { if (ln.dataset.w) return; ln.dataset.w = 1;
       ln.innerHTML = ln.textContent.trim().split(/\s+/).map(function (w) { return '<span class="w">' + w + '</span>' }).join(' ') });
-    hl.style.fontSize = '100px';
+    hl.style.width = W + 'px'; hl.style.fontSize = '100px';
     var widest = Math.max.apply(null, $$('.ln', hl).map(function (l) { return l.scrollWidth }));
-    var fs = Math.max(130, Math.min(opt.max || 190, 100 * 820 / widest)); hl.style.fontSize = fs + 'px';
-    var h = hl.offsetHeight, ill = $('.ill'), mid = ill.offsetTop + ill.offsetHeight / 2, gap = 64;
-    var top = mid - (h + gap) / 2; hl.style.top = (top + gap) + 'px';
-    var mk = $('.mk'); if (mk && opt.marker !== false) mk.style.top = (top - 4) + 'px';
+    var fs = Math.max(opt.min || 130, Math.min(opt.max || 190, 100 * W / widest)); hl.style.fontSize = fs + 'px';
+    if (opt.top != null) hl.style.top = opt.top + 'px';
+    else { var h = hl.offsetHeight, ill = $('.ill'), mid = ill.offsetTop + ill.offsetHeight / 2, gap = 64;
+      var top = mid - (h + gap) / 2; hl.style.top = (top + gap) + 'px';
+      var mk = $('.mk'); if (mk && opt.marker !== false) mk.style.top = (top - 4) + 'px' }
     $$('.ln.key', hl).forEach(function (ln) { if (!$('.sw', ln)) D.swipe(ln) });
     return fs;
   };
@@ -58,6 +59,8 @@
         onUpdate: function () { if (L == null) L = path.getTotalLength(); path.style.strokeDashoffset = L * (1 - o.t); var p = path.getPointAtLength(L * o.t), s = D.toStage(svg, p.x, p.y); P.x = s.x; P.y = s.y; P.lift = 0; apply() } }) };
     return P;
   };
+  D.along = function (el, path, dur, opt) { opt = opt || {}; var o = { t: 0 }, svg = path.ownerSVGElement, L;
+    return gsap.to(o, { t: 1, duration: dur, ease: opt.ease || 'power1.inOut', onStart: function () { L = path.getTotalLength() }, onUpdate: function () { if (L == null) L = path.getTotalLength(); var t = opt.rev ? 1 - o.t : o.t, p = path.getPointAtLength(L * t), s = D.toStage(svg, p.x, p.y); gsap.set(el, { x: s.x, y: s.y - Math.abs(Math.sin(o.t * Math.PI * (opt.steps || 10))) * (opt.bob || 0) }) } }) };
   D.hide = function (path) { var L = path.getTotalLength(); path.style.strokeDasharray = L + ' ' + (L + 4); path.style.strokeDashoffset = L };
   D.draw = function (path, dur, ease) { var L = path.getTotalLength(); path.style.strokeDasharray = L + ' ' + (L + 4);
     return gsap.fromTo(path, { strokeDashoffset: L }, { strokeDashoffset: 0, duration: dur || 1, ease: ease || 'power1.inOut' }) };
