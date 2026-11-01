@@ -369,7 +369,7 @@ GIFT = """<!-- 8. your gift: the exit number -->
         <p>“Enough to leave” is a difficult target to work toward.</p>
         <p>Enough to cover your monthly bills, replace one client, or buy back a day of your week gives you somewhere to start.</p>
         <p>After you register, answer seven quick questions and get your <b>exit number</b>.</p>
-        <p>You’ll compare your income goal with a few example prices and see how many purchases those prices would require. You’ll also see what the same goal looks like through paid newsletter subscriptions.</p>
+        <p>You’ll compare your income goal with a few example prices and see how many purchases those prices would require. You’ll also see what it would take in costs, hours and the people you’d need to reach.</p>
         <p>It’s a way to put your options on paper before deciding what to build.</p>
         <p class="gline">Your goal. Your starting point. Some numbers to work with.</p>
         <p class="gnext"><b>From Nov 4,</b> I’ll also send a small preparation task most days, about 15 minutes each. Do what you can. They’ll help you arrive with material we can use during the workshop.</p>
