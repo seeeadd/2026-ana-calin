@@ -138,9 +138,16 @@ body.xlocked .xapp{filter:blur(7px);opacity:.5;pointer-events:none;user-select:n
 .xc-n b{display:block;font-family:var(--serif);font-weight:400;font-size:64px;line-height:.95;letter-spacing:-.02em}
 .xc-s{margin-top:6px;font-size:15px;line-height:1.45;color:var(--ink2)}
 .xc-go{margin-top:auto;padding-top:16px}
-.xc-go button{width:100%;min-height:48px;border-radius:999px;border:1.6px solid var(--ink);background:#fff;font-weight:800;font-size:15px;cursor:pointer;transition:background .15s}
-.xc-go button:hover{background:var(--ysoft)}
-.xc.on .xc-go button{background:var(--ink);color:#fff}
+.xc-go button{width:100%;min-height:54px;border-radius:999px;border:0;background:var(--pink);color:#fff;font-weight:800;font-size:16.5px;cursor:pointer;box-shadow:0 10px 20px -12px rgba(247,37,133,.8),inset 0 -2px 0 rgba(0,0,0,.12);transition:background .15s,transform .15s}
+.xc-go button:hover{background:#ff2f8f;transform:translateY(-1px)}
+.xc.on .xc-go button{background:var(--ink);color:#fff;box-shadow:none}
+.xpick{display:flex;gap:20px;align-items:center;padding:24px 28px;border:2px dashed var(--ink);border-radius:24px;background:#fff}
+.xpick-ar{flex:none;width:56px;height:56px;color:var(--pink)}
+@media (prefers-reduced-motion:no-preference){.xpick-ar{animation:xbob 1.6s ease-in-out infinite}@keyframes xbob{0%,100%{transform:none}50%{transform:translateY(-6px)}}}
+.xpick h3{font-size:clamp(28px,3vw,38px);line-height:1.05}
+.xpick p{margin-top:6px;font-size:17.5px;line-height:1.5;color:var(--ink2);max-width:680px}
+.xpick p b{color:var(--ink)}
+@media (max-width:640px){.xpick{flex-direction:column;align-items:flex-start;padding:20px 18px}.xpick-ar{width:44px;height:44px}}
 .xnotes{margin-top:16px;display:flex;flex-wrap:wrap;gap:6px 24px;align-items:flex-start;justify-content:space-between}
 .xnotes p{flex:1 1 420px;font-size:14.5px;line-height:1.5;color:var(--ink3)}
 .xnotes .btn{flex:none;height:48px;font-size:15px;padding:0 22px}
@@ -514,6 +521,15 @@ button.xtile:hover{transform:translateY(-2px);box-shadow:0 5px 0 var(--ink)}
           <div class="xnotes">
             <p><span id="exNote">Example prices.</span> The number of purchases changes with the price; we do not know how many people would buy at any of these prices yet. These are new purchases needed each month. One successful month does not establish recurring income.</p>
             <button class="btn ghost" type="button" id="ownPrice">Use my own price</button>
+          </div>
+        </div>
+
+        <!-- until a price is chosen: say where the plan is (Sean couldn't find it) -->
+        <div class="xsec xpick" id="pick">
+          <svg class="xpick-ar" viewBox="0 0 60 60" aria-hidden="true"><path d="M30 52V10M14 26 30 10l16 16" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div>
+            <h3>Pick a price to see your plan.</h3>
+            <p>Tap <b>“See my plan”</b> on any card above. You’ll see what that price means for your money, your time and the people you’d need, one step at a time. You can switch prices whenever you like.</p>
           </div>
         </div>
 
@@ -1011,13 +1027,13 @@ button.xtile:hover{transform:translateY(-2px);box-shadow:0 5px 0 var(--ink)}
         if (o.nBasis === 'profit') sm.textContent = M(o.gross) + ' in sales, about ' + M(o.profit, 10000n) + ' after the costs entered';
         else sm.textContent = M(o.gross) + ' in sales before costs';
       }
-      var b = c.querySelector('.xc-go button'); b.textContent = on ? 'Exploring this price' : 'Explore this price'; b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      var b = c.querySelector('.xc-go button'); b.textContent = on ? 'Showing this plan below' : (o.hasPrice ? 'See my plan at ' + M(X.big('price', s.price)) : 'See my plan'); b.setAttribute('aria-pressed', on ? 'true' : 'false');
     });
     $('exNote').textContent = anyEdited ? 'Prices you can change.' : 'Example prices.';
 
     /* the plan for the chosen price */
     var s = sel();
-    $('plan').hidden = !s;
+    $('plan').hidden = !s; $('pick').hidden = !!s;
     if (s) renderPlan(s);
     renderActuals();
     renderEvent();
