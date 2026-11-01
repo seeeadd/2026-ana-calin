@@ -1289,6 +1289,7 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
 </style>
 <link rel="stylesheet" href="assets/wins.css">
 
+<script>(function(){var d=document.documentElement;if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;d.classList.add("wn-wait");setTimeout(function(){d.classList.remove("wn-wait")},4500)})();</script>
 <style id="vipadd">
 /* ===== Nov 1: what the VIP page taught us, added on top of this page's own look (Jason Fladlien's slide rules too) ===== */
 
@@ -1484,6 +1485,97 @@ mark.sk{color:var(--ink);font-weight:700;padding:0 2px;margin:0 -2px;-webkit-box
   .vtotal b{font-size:52px}
   .cta2,.cta2.c{align-items:stretch}.cta2 .btn{width:100%;white-space:normal}.cta2 .btn .bt{white-space:normal;line-height:1.2}.cta2 small{text-align:center;padding-left:0}
 }
+
+/* the hero video sits in Ana's painted window (tools/paint: winh, winh-flora, shut-l, shut-r). The art is placed from the
+   opening's position in the painting: opening x264-846 y94-470 of the 856x548 crop that starts at 96,30 */
+.iph.win{border-radius:0;padding:0;margin:9% 8% 13% 8%;background:none;box-shadow:none}
+.iph.win:before,.iph.win .sb,.iph.win .isl{display:none}
+.iph.win .bz{position:relative;background:none;border-radius:0;padding:0;perspective:1700px}
+.iph.win .scr{border-radius:2px;aspect-ratio:1.548;box-shadow:inset 0 0 0 1px rgba(26,20,18,.2)}
+.iph.win .wn-art,.iph.win .wn-flo{position:absolute;left:-28.866%;top:-17.022%;width:147.08%;height:auto;max-width:none;pointer-events:none;z-index:2}
+.iph.win .wn-art{z-index:0;filter:drop-shadow(0 18px 26px rgba(80,60,40,.12))}
+.iph.win .scr{z-index:1}
+.iph.win .wn-flo{z-index:3}
+.iph.win .wn-sh{position:absolute;top:-8.67%;width:59.5%;height:116.5%;z-index:4;pointer-events:none;transform-style:preserve-3d;will-change:transform}
+.iph.win .wn-sh img{display:block;width:100%;height:100%;max-width:none}
+.iph.win .wn-sh.l{left:-8.01%;transform-origin:2.5% 50%;transform:rotateY(-72deg)}
+.iph.win .wn-sh.r{right:-8.01%;transform-origin:97.5% 50%;transform:rotateY(72deg)}
+/* "a life left to enjoy it": Ana's week in Google Calendar, in her colours. Her business takes the two morning hours,
+   the evenings and the weekend stay free (yellow) */
+.life-pic{padding-bottom:0}
+.life-pic figure{width:78%}
+.gw{position:relative;margin:-24% -12% 0 4%;background:#fff;border-radius:12px;border:1px solid rgba(26,20,18,.12);box-shadow:0 30px 60px -28px rgba(60,40,25,.5),0 2px 6px rgba(60,40,25,.08);container-type:inline-size;font-family:Manrope,system-ui,sans-serif;color:#3c4043;z-index:2;transform:rotate(1.4deg);overflow:hidden}
+.gw-top{display:flex;align-items:center;gap:2.2cqw;padding:2.4cqw 3cqw;border-bottom:1px solid #e8e3dc}
+.gw-ic svg{display:block;width:5.6cqw;height:5.6cqw}
+.gw-app{font-size:3.6cqw;font-weight:500;color:#5f6368;margin-right:1.4cqw}
+.gw-today{font-size:2.6cqw;font-weight:600;border:1px solid #d6d0c8;border-radius:999px;padding:.9cqw 2.6cqw;color:#3c4043}
+.gw-nav{font-size:4.2cqw;line-height:1;color:#5f6368;letter-spacing:.06em}
+.gw-mo{font-size:3.4cqw;font-weight:500;color:#3c4043;flex:1;white-space:nowrap}
+.gw-view{display:flex;align-items:center;gap:1cqw;font-size:2.6cqw;font-weight:600;border:1px solid #d6d0c8;border-radius:999px;padding:.9cqw 2.2cqw}
+.gw-view svg{width:1.8cqw;height:1.2cqw}
+.gw{--gut:10.5%;--cw:calc((100% - 0px) / 7)}
+.gw-days{display:grid;grid-template-columns:var(--gut) repeat(7,1fr);align-items:end;padding:1.6cqw 0 1.2cqw;border-bottom:1px solid #e8e3dc}
+.gw-tz{font-size:1.7cqw;color:#70757a;text-align:center;padding-bottom:.6cqw}
+.gw-days span:not(.gw-tz){display:flex;flex-direction:column;align-items:center;gap:.4cqw}
+.gw-days small{font-size:1.9cqw;font-weight:600;letter-spacing:.06em;color:#70757a}
+.gw-days b{font-size:3.9cqw;font-weight:400;width:6.4cqw;height:6.4cqw;display:grid;place-items:center;border-radius:50%;color:#3c4043}
+.gw-days .now small{color:#F72585}.gw-days .now b{background:#F72585;color:#fff}
+.gw-grid{position:relative;display:grid;grid-template-columns:var(--gut) 1fr;height:56cqw}
+.gw-hrs{position:relative}
+.gw-hrs i{position:absolute;left:0;right:0;height:0;border-top:1px solid transparent}
+.gw-hrs em{position:absolute;right:1.2cqw;top:-1cqw;font-style:normal;font-size:1.8cqw;color:#70757a;white-space:nowrap}
+.gw-hrs i:first-child em{display:none}
+.gw-cols{position:relative;--cw:calc(100% / 7);background:repeating-linear-gradient(180deg,#ece7e0 0 1px,transparent 1px calc(100% / 12)),repeating-linear-gradient(90deg,#ece7e0 0 1px,transparent 1px calc(100% / 7));border-left:1px solid #ece7e0}
+.gw-free{position:absolute;background:rgba(255,212,0,.22);transform-origin:0 50%}
+.gw-free.ev{left:0;width:calc(5 * var(--cw));top:calc(9 / 12 * 100%);bottom:0}
+.gw-free.we{left:calc(5 * var(--cw));width:calc(2 * var(--cw));top:0;bottom:0;background:rgba(255,212,0,.3)}
+.gw-ev{position:absolute;top:calc(1 / 12 * 100%);height:calc(2 / 12 * 100%);width:calc(var(--cw) - 1.1cqw);margin-left:.4cqw;background:#F72585;border-radius:1.2cqw;padding:1cqw 1.2cqw;color:#fff;display:flex;flex-direction:column;gap:.3cqw;overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,.18);transform-origin:50% 0}
+.gw-ev b{font-size:1.85cqw;font-weight:700;line-height:1.12}
+.gw-ev small{font-size:1.75cqw;opacity:.92;white-space:nowrap}
+.gw-nowl{position:absolute;left:calc(2 * var(--cw));width:var(--cw);top:calc(7.33 / 12 * 100%);height:0;border-top:2px solid #F72585}
+.gw-nowl i{position:absolute;left:-1.3cqw;top:-1.4cqw;width:2.6cqw;height:2.6cqw;border-radius:50%;background:#F72585}
+.gw-ink{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.gw-hand{position:absolute;left:28%;top:64%;font-family:'Nothing You Could Do',cursive;font-size:3.7cqw;line-height:1;color:#D81B6E;white-space:nowrap;transform:rotate(-4deg);clip-path:inset(0 0 0 0)}
+.gw-sun{position:absolute;left:calc(5.5 * var(--cw));top:8%;width:calc(var(--cw) * .9);aspect-ratio:1}
+.gw-sun svg{width:100%;height:100%}
+@media (max-width:980px){.gw{margin:-20% 1% 0 3%;transform:rotate(.8deg)}.life-pic figure{width:84%}}
+/* "See you Tuesday": the Day 1 invite as Google Calendar shows it, in her colours; a cursor answers Yes */
+.gi{position:absolute;right:-16%;bottom:-14%;width:84%;container-type:inline-size;background:#fff;border-radius:14px;box-shadow:0 34px 70px -30px rgba(60,40,25,.55),0 2px 8px rgba(60,40,25,.1);font-family:Manrope,system-ui,sans-serif;color:#3c4043;transform:rotate(-2.2deg);z-index:3;text-align:left}
+.gi-in{padding:3.6cqw 5cqw 4.6cqw}
+.gi-bar{display:flex;justify-content:flex-end;gap:4.4cqw;margin-bottom:2.4cqw}
+.gi-bar svg{width:5cqw;height:5cqw}
+.gi-row{display:flex;align-items:center;gap:4.4cqw;margin-top:3.6cqw}
+.gi-t{align-items:flex-start;margin-top:0}
+.gi-sq{flex:none;width:4.6cqw;height:4.6cqw;border-radius:1.2cqw;background:#F72585;margin:1.6cqw .2cqw 0}
+.gi-t b{display:block;font-size:6cqw;font-weight:500;line-height:1.2;color:#1f1f1f;letter-spacing:-.01em}
+.gi-t small{display:block;font-size:3.5cqw;line-height:1.5;color:#3c4043;margin-top:.6cqw}
+.gi-t small+small{color:#5f6368;margin-top:0}
+.gi-i{flex:none;width:5cqw;height:5cqw;display:grid;place-items:center}
+.gi-i svg{width:5cqw;height:5cqw}
+.gi-zoom{font-size:3.5cqw;font-weight:700;color:#fff;background:#F72585;border-radius:999px;padding:1.8cqw 4.2cqw}
+.gi-who{display:flex;align-items:center;gap:2.6cqw}
+.gi-who img{width:7.6cqw;height:7.6cqw;border-radius:50%;object-fit:cover}
+.gi-who b{display:block;white-space:nowrap;font-size:3.6cqw;font-weight:600;color:#1f1f1f}
+.gi-who small,.gi-s{display:block;font-size:3.2cqw;color:#5f6368}
+.gi-go{display:flex;align-items:center;gap:2.4cqw;margin-top:4.6cqw;padding-top:3.6cqw;border-top:1px solid #e8e3dc;font-size:3.4cqw}
+.gi-go>span:first-child{font-weight:600;margin-right:1.4cqw;color:#3c4043}
+.gi-c{display:inline-flex;align-items:center;gap:1cqw;border:1px solid #d6d0c8;border-radius:999px;padding:1.4cqw 3.6cqw;font-weight:600;color:#3c4043;white-space:nowrap}
+.gi-c svg{width:0;height:3.6cqw;overflow:visible}
+.gi-y.on{background:#FDE2EE;border-color:#F72585;color:#B3135C}
+.gi-y.on svg{width:3.6cqw}
+.gi-cur{position:absolute;left:96%;top:104%;width:5.6cqw;opacity:0;filter:drop-shadow(0 2px 3px rgba(0,0,0,.3));pointer-events:none}
+.gi-cur svg{display:block;width:100%}
+@media (max-width:980px){.gi{position:relative;right:auto;bottom:auto;width:94%;margin:-24% 0 0 5%}}
+/* the draw: the top ticket waits for a name, and the date of the draw is stamped on it */
+.tix .tx-name{position:absolute;left:38%;top:64%;font-family:'Nothing You Could Do',cursive;font-size:17px;line-height:1;color:#D81B6E;white-space:nowrap;transform:rotate(-3deg)}
+.tix .tx-stamp{position:absolute;right:-20px;top:-40px;width:94px;height:94px;transform:rotate(-14deg);mix-blend-mode:multiply;opacity:.92}
+.tix .tx-stamp svg{display:block;width:100%;height:100%}
+@media (max-width:360px){.btn.open{max-width:100%;padding-left:6px;padding-right:16px}.btn.open .bt{white-space:normal;text-align:left;line-height:1.2}}
+html.wn-wait .iph.win .wn-sh.l,html.wn-wait .iph.win .wn-sh.r{transform:rotateY(0)}
+html.wn-wait .iph.win .vplay{opacity:0}
+.iph.win .wn-pet{position:absolute;left:-12%;top:-8%;width:12px;height:9px;border-radius:60% 40% 60% 40%;background:#E05A92;z-index:5;opacity:0;pointer-events:none}
+.iph.win .wn-pet:nth-of-type(2n){background:#A8245E;width:9px;height:7px}
+@media (max-width:980px){.iph.win{margin:7% 9% 13% 9%}}
 </style>
 </head>
 <body>
@@ -1542,7 +1634,7 @@ mark.sk{color:var(--ink);font-weight:700;padding:0 2px;margin:0 -2px;-webkit-box
       </div>
 
       <!-- the VSL: set VSL_SRC in the script when Ana's video is ready. Click to play; this still is the cover. -->
-      <div class="iph" id="vsl">
+      <div class="iph win" id="vsl">
         <span class="sb" style="left:18%;width:9%"></span><span class="sb" style="left:30%;width:5%"></span><span class="sb" style="left:37%;width:5%"></span><span class="sb b" style="left:60%;width:14%"></span>
         <div class="bz">
           <div class="scr">
@@ -1553,6 +1645,11 @@ mark.sk{color:var(--ink);font-weight:700;padding:0 2px;margin:0 -2px;-webkit-box
             <button class="vplay" type="button" aria-label="Play Ana's welcome video"><i><svg width="20" height="20" viewBox="0 0 26 26" aria-hidden="true"><path d="M8.6 5.6v14.8c0 .9 1 1.4 1.7 1l11.6-7.4c.7-.4.7-1.4 0-1.9L10.3 4.6c-.7-.5-1.7 0-1.7 1z" fill="#F72585"/></svg></i>tap for sound</button>
             <div class="scrub" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 26 26"><path d="M8.6 5.6v14.8c0 .9 1 1.4 1.7 1l11.6-7.4c.7-.4.7-1.4 0-1.9L10.3 4.6c-.7-.5-1.7 0-1.7 1z" fill="#fff"/></svg><span class="cur">0:00</span><span class="ln"><i></i></span><span class="rem">-1:00</span><svg width="18" height="18" viewBox="0 0 16 16"><path d="M2.5 6h2.6L8.6 3v10L5.1 10H2.5z" fill="#fff"/><path d="M11 6l3.5 4M14.5 6 11 10" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/></svg></div>
           </div>
+          <!-- her window in Greece: the wall and frame, the flower box, and two blue shutters that swing open on load -->
+          <img class="wn-art" src="img/vip/paint/winh.webp" alt="" width="856" height="548" aria-hidden="true">
+          <img class="wn-flo" src="img/vip/paint/winh-flora.webp" alt="" width="856" height="548" aria-hidden="true">
+          <span class="wn-sh l" aria-hidden="true"><img src="img/vip/paint/shut-l.webp" alt="" width="321" height="406"></span><span class="wn-sh r" aria-hidden="true"><img src="img/vip/paint/shut-r.webp" alt="" width="321" height="406"></span>
+          <i class="wn-pet" aria-hidden="true"></i><i class="wn-pet" aria-hidden="true"></i><i class="wn-pet" aria-hidden="true"></i><i class="wn-pet" aria-hidden="true"></i>
         </div>
       </div>
 
@@ -1790,7 +1887,16 @@ mark.sk{color:var(--ink);font-weight:700;padding:0 2px;margin:0 -2px;-webkit-box
     <div class="lifeg">
       <div class="life-pic" data-r>
         <figure><img src="img/ana-paris.webp" alt="Ana Calin" width="1000" height="671" loading="lazy"></figure>
-        <span class="life-clk" aria-hidden="true"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="16" fill="#fff" stroke="#1A1412" stroke-width="2.6"/><path d="M20 10v10l7 4" fill="none" stroke="#F72585" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg><b>about two hours a day</b></span>
+        <div class="gw" aria-hidden="true">
+          <div class="gw-top"><span class="gw-ic"><svg viewBox="0 0 24 24"><rect x="2.5" y="3.5" width="19" height="18" rx="3" fill="#fff" stroke="#F72585" stroke-width="2"/><path d="M2.5 8.5h19" stroke="#F72585" stroke-width="2"/><text x="12" y="18.4" text-anchor="middle" font-family="Manrope,sans-serif" font-weight="800" font-size="9" fill="#F72585">25</text></svg></span><b class="gw-app">Calendar</b><span class="gw-today">Today</span><span class="gw-nav">&#8249;&#8197;&#8250;</span><b class="gw-mo">November 2026</b><span class="gw-view">Week <svg viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span></div>
+          <div class="gw-days"><span class="gw-tz">GMT+2</span><span class="gw-d"><small>MON</small><b>23</b></span><span class="gw-d"><small>TUE</small><b>24</b></span><span class="gw-d now"><small>WED</small><b>25</b></span><span class="gw-d"><small>THU</small><b>26</b></span><span class="gw-d"><small>FRI</small><b>27</b></span><span class="gw-d we"><small>SAT</small><b>28</b></span><span class="gw-d we"><small>SUN</small><b>29</b></span></div>
+          <div class="gw-grid"><div class="gw-hrs"><i style="top:0.0000%"><em>8 AM</em></i><i style="top:8.3333%"><em>9 AM</em></i><i style="top:16.6667%"><em>10 AM</em></i><i style="top:25.0000%"><em>11 AM</em></i><i style="top:33.3333%"><em>12 PM</em></i><i style="top:41.6667%"><em>1 PM</em></i><i style="top:50.0000%"><em>2 PM</em></i><i style="top:58.3333%"><em>3 PM</em></i><i style="top:66.6667%"><em>4 PM</em></i><i style="top:75.0000%"><em>5 PM</em></i><i style="top:83.3333%"><em>6 PM</em></i><i style="top:91.6667%"><em>7 PM</em></i></div>
+            <div class="gw-cols"><span class="gw-free ev"></span><span class="gw-free we"></span><span class="gw-ev" style="left:calc(0 * var(--cw))"><b>How We Grow</b><small>9 – 11am</small></span><span class="gw-ev" style="left:calc(1 * var(--cw))"><b>How We Grow</b><small>9 – 11am</small></span><span class="gw-ev" style="left:calc(2 * var(--cw))"><b>How We Grow</b><small>9 – 11am</small></span><span class="gw-ev" style="left:calc(3 * var(--cw))"><b>How We Grow</b><small>9 – 11am</small></span><span class="gw-ev" style="left:calc(4 * var(--cw))"><b>How We Grow</b><small>9 – 11am</small></span>
+              <svg class="gw-ink" viewBox="0 0 160 100" preserveAspectRatio="none"><path class="gw-arw" d="M70 65 C58 58 45 45 39.5 31" fill="none" stroke="#F72585" stroke-width="1.1" stroke-linecap="round"/><path class="gw-arh" d="M35.2 34.6 L39.5 31 L43.6 34.4" fill="none" stroke="#F72585" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span class="gw-hand">about two hours a day</span><span class="gw-sun"><svg viewBox="0 0 24 24"><use href="#sf"/></svg></span>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="life-tx" data-r>
         <h2><span class="l">You want more money.</span> <span class="l"><em>You’d also like some life left to enjoy it.</em></span></h2>
@@ -1938,7 +2044,7 @@ mark.sk{color:var(--ink);font-weight:700;padding:0 2px;margin:0 -2px;-webkit-box
         <div class="t"><svg viewBox="0 0 240 110"><use href="#tk"/></svg></div>
         <div class="t"><svg viewBox="0 0 240 110"><use href="#tk"/></svg></div>
         <div class="t"><svg viewBox="0 0 240 110"><use href="#tk"/></svg></div>
-        <div class="t"><svg viewBox="0 0 240 110"><use href="#tk"/></svg></div>
+        <div class="t tx-top"><svg viewBox="0 0 240 110"><use href="#tk"/></svg><span class="tx-name">your name?</span><span class="tx-stamp"><svg viewBox="0 0 100 100"><defs><path id="txc" d="M50 50m-33 0a33 33 0 1 1 66 0a33 33 0 1 1-66 0"/></defs><circle cx="50" cy="50" r="45" fill="none" stroke="#F72585" stroke-width="4"/><circle cx="50" cy="50" r="24" fill="none" stroke="#F72585" stroke-width="2"/><text font-family="Manrope,sans-serif" font-weight="800" font-size="11.5" letter-spacing="2.4" fill="#F72585"><textPath href="#txc">DRAWN LIVE · END OF DAY 3 ·</textPath></text><text x="50" y="47" text-anchor="middle" font-family="Instrument Serif,serif" font-size="19" fill="#F72585">Nov</text><text x="50" y="65" text-anchor="middle" font-family="Instrument Serif,serif" font-size="23" fill="#F72585">19</text></svg></span></div>
       </div>
     </div>
   </div>
@@ -1998,6 +2104,16 @@ mark.sk{color:var(--ink);font-weight:700;padding:0 2px;margin:0 -2px;-webkit-box
         <svg class="sun" aria-hidden="true"><use href="#sfo"/></svg>
         <div class="fr"><img src="img/ana-cabin.webp" alt="Ana Calin" width="612" height="744" loading="lazy"></div>
         <img class="mk" src="img/mark.png" alt="" width="96" height="96" loading="lazy">
+        <!-- the invite, as Google Calendar shows it, in her colours: a cursor answers "Yes" -->
+        <div class="gi" aria-hidden="true"><div class="gi-in">
+          <div class="gi-bar"><svg viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16z M13.5 6.5l4 4" fill="none" stroke="#5f6368" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><svg viewBox="0 0 24 24"><path d="M5 7h14 M10 7V4.5h4V7 M7 7l1 13h8l1-13" fill="none" stroke="#5f6368" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><svg viewBox="0 0 24 24"><path d="M3.5 6.5h17v11h-17z M3.5 7l8.5 6 8.5-6" fill="none" stroke="#5f6368" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><svg viewBox="0 0 24 24"><circle cx="12" cy="5.5" r="1.6" fill="#5f6368"/><circle cx="12" cy="12" r="1.6" fill="#5f6368"/><circle cx="12" cy="18.5" r="1.6" fill="#5f6368"/></svg><svg viewBox="0 0 24 24"><path d="M6 6l12 12 M18 6 6 18" fill="none" stroke="#5f6368" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="gi-row gi-t"><i class="gi-sq"></i><div><b>The Exit Plan · Day 1</b><small>Tuesday, November 17 · 12:00 – 1:30pm</small><small>Daily, until Thursday, November 19</small></div></div>
+          <div class="gi-row"><span class="gi-i"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="12" height="10" rx="2" fill="#F72585"/><path d="M15 11l5-3v8l-5-3z" fill="#F72585"/></svg></span><span class="gi-zoom">Join Zoom Meeting</span></div>
+          <div class="gi-row"><span class="gi-i"><svg viewBox="0 0 24 24"><path d="M9 11a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z M2.5 20c.6-3.6 3.2-5.6 6.5-5.6s5.9 2 6.5 5.6 M16 4.6a3.4 3.4 0 0 1 0 6.4 M18 14.6c2 .7 3.2 2.5 3.5 5.4" fill="none" stroke="#5f6368" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="gi-who"><img src="img/ana-hat.webp" alt="" width="40" height="40" loading="lazy"><span><b>Ana Calin</b><small>Organizer</small></span></span></div>
+          <div class="gi-row"><span class="gi-i"><svg viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z M10 20.5h4" fill="none" stroke="#5f6368" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><small class="gi-s">30 minutes before</small></div>
+          <div class="gi-go"><span>Going?</span><span class="gi-c gi-y"><svg viewBox="0 0 20 20"><path d="m5 10.5 3.4 3.4L15 6.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Yes</span><span class="gi-c">No</span><span class="gi-c">Maybe</span></div>
+          </div><span class="gi-cur"><svg viewBox="0 0 20 24"><path d="M2 2l15 9.6-6.6 1.6 3.6 7.4-3 1.4-3.6-7.4L2 19z" fill="#1A1412" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+        </div>
       </div>
       <div data-r>
         <div class="tiles" aria-label="Tuesday to Thursday, November 17 to 19">
@@ -2331,6 +2447,6 @@ mark.sk{color:var(--ink);font-weight:700;padding:0 2px;margin:0 -2px;-webkit-box
 </script>
 <script src="assets/vendor/gsap.min.js"></script>
 <script src="assets/vendor/ScrollTrigger.min.js"></script>
-<script src="assets/reg-motion.js?v=4"></script>
+<script src="assets/reg-motion.js?v=7"></script>
 </body>
 </html>

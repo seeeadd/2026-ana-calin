@@ -396,6 +396,35 @@ svg[data-art]{background:transparent;display:block}
   <g data-mat="ink" stroke="#3A2A22" stroke-width="1.1" fill="none"><path d="M286 500 H826 L812 548 H300 Z"/></g>
 </svg>
 
+<!-- the hero window, cropped close to the frame so the video stays big -->
+<svg data-art="winh" width="856" height="548" viewBox="96 30 856 548">
+  <g data-mat="shadow" fill="#8E98AA" data-density=".45"><ellipse cx="555" cy="568" rx="372" ry="9"/></g>
+  <g data-mat="gouache" data-angle="0" data-streak=".012"><path d="M200 46 C340 34 780 32 912 44 C930 48 936 66 934 96 C928 250 940 410 932 532 C930 556 914 566 890 564 C700 572 420 572 214 566 C190 564 178 552 178 526 C176 380 172 220 180 84 C182 60 188 50 200 46 Z M250 90 C250 84 256 80 262 80 H848 C854 80 860 84 860 90 V470 H250 Z" fill="#FBF8F2" fill-rule="evenodd"/></g>
+  <g data-mat="wash" fill="#D8CBB6" data-density=".55"><path d="M236 70 H874 C880 70 884 74 884 80 V96 H860 V90 C860 84 854 80 848 80 H262 C256 80 250 84 250 90 V96 H226 V80 C226 74 230 70 236 70 Z M226 96 H250 V470 H226 Z M860 96 H884 V470 H860 Z"/></g>
+  <g data-mat="wash" fill="#B9C6D4" data-density=".8" data-rim="1.4"><path d="M250 90 C250 84 256 80 262 80 H848 C854 80 860 84 860 90 V470 H846 V94 H264 V470 H250 Z"/></g>
+  <g data-mat="wash" fill="#93A6BC" data-density=".5"><path d="M264 94 H846 V104 H274 V470 H264 Z"/></g>
+  <g data-mat="gouache" data-angle="0"><path d="M222 470 H888 L904 494 H206 Z" fill="#EFE7D9"/></g>
+  <g data-mat="wash" fill="#B7C0CC" data-density=".45"><path d="M206 494 H904 L900 502 H210 Z"/></g>
+  <g data-mat="ink" stroke="#3A2A22" stroke-width="1.15" fill="none">
+    <path d="M250 470 V90 C250 84 256 80 262 80 H848 C854 80 860 84 860 90 V470"/>
+    <path d="M264 470 V94 H846 V470" stroke-width=".8"/>
+    <path d="M226 470 V80 C226 74 230 70 236 70 H874 C880 70 884 74 884 80 V470" stroke-width=".7"/>
+    <path d="M222 470 H888 L904 494 H206 Z"/>
+  </g>
+  <g data-mat="ink" stroke="#8A7A6E" stroke-width=".7" fill="none" data-density=".6"><path d="M190 180 h22 M186 300 h20 M196 430 h18 M904 200 h20 M908 360 h22 M300 52 h50 M720 54 h44 M600 552 h40 M300 550 h34"/></g>
+</svg>
+
+<svg data-art="winh-flora" width="856" height="548" viewBox="96 30 856 548">
+  <g data-mat="shadow" fill="#8E7F70" data-density=".45"><path d="M300 548 H816 L808 556 H306 Z"/></g>
+  <g data-mat="gouache" data-angle="0"><path d="M286 500 H826 L812 548 H300 Z" fill="#C9614E"/></g>
+  <g data-mat="wash" fill="#A9483A" data-density=".55"><path d="M290 512 H822 L819 520 H293 Z"/></g>
+  <g data-mat="wash" fill="#7E9A4E" data-rim="2.2" id="winhLeaves"></g>
+  <g data-mat="gouache" data-angle="0" id="winhFlowers"></g>
+  <g data-mat="wash" fill="#E05A92" data-rim="2" data-density=".8" id="winhBoug"></g>
+  <g data-mat="wash" fill="#A8245E" data-rim="1.6" data-density=".55" id="winhBoug2"></g>
+  <g data-mat="ink" stroke="#3A2A22" stroke-width="1.1" fill="none"><path d="M286 500 H826 L812 548 H300 Z"/></g>
+</svg>
+
 <!-- hero · her door in Greece: the video sits in the arched opening (x170 y110 w670 h420); the blue door leaf swings open toward us -->
 <svg data-art="door" width="1110" height="620" viewBox="0 0 1110 620">
   <g data-mat="shadow" fill="#8E98AA" data-density=".5"><ellipse cx="555" cy="588" rx="470" ry="14"/></g>
@@ -836,7 +865,8 @@ document.fonts.ready.then(() => {
         const sh = `<path d="M${x} ${y} c${r} ${-r * 1.4} ${r * 2.2} ${-r * .2} ${r * .2} ${r * 1.5} c${-r * 1.6} ${r * .4} ${-r * 1.8} ${-r} ${-r * .2} ${-r * 1.5} Z" transform="rotate(${a2} ${x} ${y})"/>`;
         if (rnd() < .3) B2 += sh; else B += sh }
       if (rnd() < .6) L += `<ellipse cx="${cx + (rnd() - .5) * 30}" cy="${cy + 8 + rnd() * 8}" rx="${8 + rnd() * 4}" ry="${3.6 + rnd() * 1.4}" transform="rotate(${rnd() * 180} ${cx} ${cy + 10})"/>` }
-    wl.innerHTML = L; document.getElementById('winFlowers').innerHTML = F; document.getElementById('winBoug').innerHTML = B; document.getElementById('winBoug2').innerHTML = B2 }
+    wl.innerHTML = L; document.getElementById('winFlowers').innerHTML = F; document.getElementById('winBoug').innerHTML = B; document.getElementById('winBoug2').innerHTML = B2;
+    ['Leaves', 'Flowers', 'Boug', 'Boug2'].forEach(k => { const t = document.getElementById('winh' + k); if (t) t.innerHTML = document.getElementById('win' + k).innerHTML }) }
   const ol = document.getElementById('waOlive');
   if (ol) { let h = ''; const P = t => [430 + t * 156 - t * t * 20, 470 - t * 50 + t * t * 12];
     for (let i = 0; i < 9; i++) { const t = .08 + i * .1, [x, y] = P(t), side = i % 2 ? 1 : -1, a = -18 + side * 48;

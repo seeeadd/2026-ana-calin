@@ -46,6 +46,30 @@
     return self;
   }
 
+  /* the hero: her window's shutters are closed at first; they rattle on the latch, swing open toward us with a settle,
+     a few bougainvillea petals fall, and the play button arrives */
+  (function () {
+    var w = $('.iph.win'); if (!w) return;
+    var L = $('.wn-sh.l', w), R = $('.wn-sh.r', w), play = $('.vplay', w), pets = $$('.wn-pet', w);
+    gsap.set([L, R], { rotationY: 0 }); gsap.set(play, { opacity: 0, scale: .7 });
+    document.documentElement.classList.remove('wn-wait');
+    var tl = gsap.timeline({ delay: .45 });
+    tl.to(L, { rotationY: -4, duration: .08, yoyo: true, repeat: 3, ease: 'sine.inOut' })
+      .to(R, { rotationY: 4, duration: .08, yoyo: true, repeat: 3, ease: 'sine.inOut' }, '<.04')
+      .to(L, { rotationY: -76, duration: 1.05, ease: 'back.out(1.3)' }, '+=.06')
+      .to(R, { rotationY: 76, duration: 1.05, ease: 'back.out(1.3)' }, '<.09')
+      .to(L, { rotationY: -72, duration: .5, ease: 'sine.inOut' }, '>-.2')
+      .to(R, { rotationY: 72, duration: .5, ease: 'sine.inOut' }, '<.05')
+      .to(play, { opacity: 1, scale: 1, duration: .55, ease: 'back.out(2)', clearProps: 'transform' }, 1.1);
+    pets.forEach(function (p, i) {
+      var x0 = 6 + i * 9, drift = 30 + i * 22, o = { t: 0 };
+      tl.fromTo(p, { opacity: 0 }, { opacity: 1, duration: .2 }, .9 + i * .22)
+        .to(o, { t: 1, duration: 2.6 + i * .3, ease: 'none', onUpdate: function () {
+          var t = o.t; gsap.set(p, { x: x0 + drift * t + Math.sin(t * 7 + i) * 14, y: 10 + t * (150 + i * 40), rotation: t * 260 * (i % 2 ? -1 : 1) }) } }, '<')
+        .to(p, { opacity: 0, duration: .5 }, '>-.5');
+    });
+  })();
+
   document.fonts.ready.then(function () {
 
     /* the hero's numbers count once */
@@ -54,6 +78,55 @@
       var dec = (m[1].split('.')[1] || '').length, pre = t.slice(0, m.index), suf = t.slice(m.index + m[1].length);
       count(b, v, 1.6, function (x) { return pre + (dec ? x.toFixed(dec) : Math.round(x).toLocaleString('en-US')) + suf }).delay(.5 + i * .15);
     });
+
+    /* "a life left to enjoy it": her week fills in like a real calendar. Each morning gets its two-hour block, dragged
+       out from 9 to 11; then the evenings and the weekend light up yellow, the sun comes out, and her note is written */
+    (function () {
+      var g = $('.gw'); if (!g) return;
+      var evs = $$('.gw-ev', g), fr = $$('.gw-free', g), sun = $('.gw-sun', g), arw = $('.gw-arw', g), arh = $('.gw-arh', g), hand = $('.gw-hand', g);
+      var tl = gsap.timeline();
+      tl.from(g, { y: 60, rotation: 6, opacity: 0, duration: .9, ease: 'power3.out' })
+        .from(evs, { scaleY: 0, duration: .42, ease: 'power2.out', stagger: .2 }, '+=.15')
+        .from(evs, { opacity: 0, duration: .15, stagger: .2 }, '<')
+        .from(fr[0], { scaleX: 0, duration: .8, ease: 'power2.inOut' }, '+=.15')
+        .from(fr[1], { opacity: 0, duration: .5 }, '-=.25')
+        .from(sun, { scale: 0, rotation: -120, duration: .8, ease: 'back.out(2)' }, '-=.3')
+        .add(draw(arw, .6), '-=.2').add(draw(arh, .2))
+        .fromTo(hand, { clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0% 0 0)', duration: 1.1, ease: 'power1.inOut' }, '-=.5')
+        .to(sun, { rotation: 20, duration: 2.4, yoyo: true, repeat: -1, ease: 'sine.inOut' });
+      when(g, tl, 'top 75%');
+    })();
+
+    /* "See you Tuesday": the Day 1 invite drops onto her photo, a cursor comes in and answers Yes, and Tuesday lights up */
+    (function () {
+      var g = $('.gi'); if (!g) return;
+      var cur = $('.gi-cur', g), yes = $('.gi-y', g), t17 = $('.claim .tiles > div'), o = { t: 0 };
+      var tl = gsap.timeline();
+      tl.from(g, { y: -70, rotation: -9, opacity: 0, duration: .8, ease: 'back.out(1.5)' })
+        .set(cur, { opacity: 1 }, '+=.2')
+        .to(o, { t: 1, duration: .9, ease: 'power2.inOut', onUpdate: function () {
+          var gr = g.getBoundingClientRect(), yr = yes.getBoundingClientRect(), t = o.t;
+          var x1 = (yr.left - gr.left + yr.width * .5) / gr.width * 100, y1 = (yr.top - gr.top + yr.height * .55) / gr.height * 100;
+          cur.style.left = (96 + (x1 - 96) * t) + '%'; cur.style.top = (104 + (y1 - 104) * t - Math.sin(Math.PI * t) * 10) + '%' } })
+        .to(cur, { scale: .8, duration: .09, yoyo: true, repeat: 1, transformOrigin: '0 0' })
+        .add(function () { yes.classList.add('on') }, '<.09')
+        .fromTo(yes, { scale: 1 }, { scale: 1.12, duration: .16, yoyo: true, repeat: 1, ease: 'power1.out' }, '<')
+        .to(cur, { opacity: 0, x: 18, y: 14, duration: .5 }, '+=.5');
+      if (t17) tl.fromTo(t17, { scale: 1 }, { scale: 1.12, rotation: -4, duration: .22, yoyo: true, repeat: 1, ease: 'power2.out' }, '-=.4');
+      when(g, tl, 'top 80%');
+    })();
+
+    /* the draw: once the five tickets have fanned out, the top one waits for a name and the draw's date is stamped on it */
+    (function () {
+      var st = $('#stay'), top = $('.tx-top'); if (!st || !top) return;
+      var nm = $('.tx-name', top), sp = $('.tx-stamp', top), card = top.querySelector('svg');
+      var tl = gsap.timeline({ delay: 1.1 });
+      tl.fromTo(nm, { clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0% 0 0)', duration: .9, ease: 'power1.inOut' })
+        .fromTo(sp, { scale: 2.2, opacity: 0, rotation: -40 }, { scale: 1, opacity: .92, rotation: -14, duration: .32, ease: 'power4.in' }, '+=.25')
+        .fromTo(card, { y: 0 }, { y: 4, duration: .08, yoyo: true, repeat: 1, ease: 'power1.out' })
+        .fromTo(sp, { scale: 1 }, { scale: 1.06, duration: .1, yoyo: true, repeat: 1 }, '<');
+      when(st, tl, 'top 60%');
+    })();
 
     /* ---------- the Day windows, as a real screen share ----------
        Ana's cursor travels to what she is talking about, her pink ink rings it, her camera lights up while she talks,
