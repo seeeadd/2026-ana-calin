@@ -316,6 +316,16 @@ html,body{width:1920px;height:1080px;overflow:hidden;background:#FFF8EE}
   var leafP1 = el('path', {fill: 'none', stroke: INK, 'stroke-width': 4, 'stroke-linejoin': 'round'}, doorG);
   var leafP2 = el('path', {fill: 'none', stroke: INK, 'stroke-width': 4, 'stroke-linejoin': 'round'}, doorG);
   var knob = el('ellipse', {rx: 9, ry: 9, fill: SUN, stroke: INK, 'stroke-width': 4}, doorG);
+  var DSN = 14, stripG = el('g', {}), strips = [];
+  doorG.insertBefore(stripG, leafFace);
+  for (var si = 0; si < DSN; si++) {
+    var cp = el('clipPath', {id: 'ds' + si, clipPathUnits: 'userSpaceOnUse'}, $('defs'));
+    el('rect', {x: si / DSN - .001, y: 0, width: 1 / DSN + .002, height: 1}, cp);
+    var sg = el('g', {'clip-path': 'url(#ds' + si + ')'}, stripG);
+    el('image', {href: 'tex/door-pink.webp', x: 0, y: 0, width: 1, height: 1, preserveAspectRatio: 'none'}, sg);
+    strips.push(sg);
+  }
+  leafFace.setAttribute('fill', 'none'); leafP1.setAttribute('display', 'none'); leafP2.setAttribute('display', 'none'); knob.setAttribute('display', 'none');
   el('path', {d: 'M-92 0 V-272 H92 V0', fill: 'none', stroke: INK, 'stroke-width': 10, 'stroke-linejoin': 'round'}, doorG);
   el('path', {d: 'M-104 0 V-284 H104 V0', fill: 'none', stroke: INK, 'stroke-width': 3, opacity: .5}, doorG);
   el('rect', {x: -110, y: -4, width: 220, height: 12, rx: 3, fill: '#E3D2B6', stroke: INK, 'stroke-width': 4}, doorG);
@@ -333,7 +343,9 @@ html,body{width:1920px;height:1080px;overflow:hidden;background:#FFF8EE}
     var panel = function(u0, u1, v0, v1){ return poly([mp(u0, v0), mp(u1, v0), mp(u1, v1), mp(u0, v1)]) };
     leafP1.setAttribute('d', panel(.14, .86, .09, .45)); leafP2.setAttribute('d', panel(.14, .86, .53, .9));
     var kp = mp(.86, .5); knob.setAttribute('cx', kp[0]); knob.setAttribute('cy', kp[1]); knob.setAttribute('rx', Math.max(2, 9 * c));
-    leafFace.setAttribute('opacity', 1); leafFace.style.filter = 'brightness(' + (1 - s * .18) + ')';
+    leafFace.setAttribute('opacity', 1);
+    strips.forEach(function(g, i){ var um = (i + .5) / DSN; g.setAttribute('transform', 'matrix(' + w.toFixed(2) + ' ' + (-k).toFixed(2) + ' 0 ' + (260 + 2 * um * k).toFixed(2) + ' -80 -260)') });
+    stripG.style.filter = 'brightness(' + (1 - s * .22).toFixed(3) + ')';
   }
   var beam = el('path', {d: 'M' + (DOOR.x - 80) + ' ' + (DOOR.y - 255) + ' L' + (DOOR.x + 80) + ' ' + (DOOR.y - 255) + ' L' + (DOOR.x + 60) + ' ' + DOOR.y + ' L1450 ' + FLOOR + ' L1300 ' + FLOOR + ' Z', fill: 'url(#beam)', opacity: 0, style: 'mix-blend-mode:screen'});
   cam.insertBefore(beam, plinth);
