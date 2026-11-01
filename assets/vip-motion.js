@@ -51,6 +51,24 @@
     }
     addEventListener('scroll', onScroll, { passive: true }); onScroll();
 
+    /* ---------- under the spam note: a pencil arrow draws itself down to the offer; a tap scrolls there ---------- */
+    var gv = $('.go-vip');
+    if (gv) {
+      var ta = gsap.timeline({ delay: reduce ? 0 : 1.4 });
+      ta.add(draw($('.gv-l', gv), 1.1, null, 'power1.inOut'), 0).add(draw($('.gv-h', gv), .3, null, 'power1.out'), 1.05)
+        .add(function () { if (!reduce) gsap.to(gv, { y: 7, duration: .9, ease: 'sine.inOut', yoyo: true, repeat: -1, repeatDelay: .3 }) });
+      if (reduce) ta.progress(1);
+      gv.addEventListener('click', function (e) { var t = document.getElementById('vsl'); if (!t) return; e.preventDefault(); t.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' }) });
+    }
+
+    /* ---------- skimmable: each key line is swept with her yellow as it comes into view ---------- */
+    var marks = $$('mark.sk');
+    if (reduce || !('IntersectionObserver' in window)) marks.forEach(function (m) { m.classList.add('on') });
+    else {
+      var mo = new IntersectionObserver(function (es) { es.forEach(function (en) { if (en.isIntersecting) { var m = en.target; setTimeout(function () { m.classList.add('on') }, 200); mo.unobserve(m) } }) }, { rootMargin: '0px 0px -15% 0px' });
+      marks.forEach(function (m) { mo.observe(m) });
+    }
+
     /* ---------- hero: petals drift down from the bougainvillea once the door is open ---------- */
     var pet = $('.door .petals');
     if (pet && !reduce) {
@@ -169,35 +187,56 @@
       when(wa, t2);
     }
 
-    /* ---------- Nº 03: six ideas; five fold into the course, the last one becomes your one clear offer ---------- */
+    /* ---------- Nº 03: her Sprint mock-up behind; the real lesson comes forward; the camera reads the screen ---------- */
     var sp = $('.art.mv.spr');
     if (sp) {
-      var notes = $$('.mv-note', sp), pink = $('.mv-note.pink', sp), others = notes.filter(function (n) { return n !== pink }), card = $('.mv-card', sp), scr = $('.l3 .scrn2', sp);
-      gsap.set(card, { opacity: 0, scaleX: 0, rotation: 6 });
-      notes.forEach(function (n) { gsap.set(n, { rotation: parseFloat(getComputedStyle(n).getPropertyValue('--r')) || 0 }) });
-      function delta(el, tx, ty) { var a = sp.getBoundingClientRect(), b = el.getBoundingClientRect();
-        return { x: a.left + a.width * tx - (b.left + b.width / 2), y: a.top + a.height * ty - (b.top + b.height / 2) } }
-      var t3 = gsap.timeline();
-      var tchBar = $('.tch-bar i', sp), tchPc = $('.tch-pc b', sp), tchLs = $$('.tch-ls li', sp).slice(0, 3), ys = $$('.tch-sl li em', sp).slice(0, 2), pc = { v: 0 };
-      t3.from($('.l3', sp), { y: 34, opacity: 0, duration: 1, ease: 'power3.out' }, 0)
-        .to(pc, { v: 37, duration: 1.6, ease: 'power2.out', onUpdate: function () { if (tchPc) tchPc.textContent = Math.round(pc.v) } }, .8)
-        .fromTo(tchBar, { width: '0%' }, { width: '37%', duration: 1.6, ease: 'power2.out' }, .8)
-        .add(function () { tchLs.forEach(function (li, i) { setTimeout(function () { li.classList.add('dn') }, i * 260) }) }, .9)
-        .add(function () { ys.forEach(function (e, i) { setTimeout(function () { e.textContent = 'Y'; e.classList.add('y') }, i * 420) }) }, 1.6)
-        .from(notes, { y: -60, opacity: 0, rotation: '+=30', duration: .8, ease: 'back.out(1.6)', stagger: .09 }, .3)
-        .to(notes, { rotation: '+=4', duration: .18, yoyo: true, repeat: 3, ease: 'sine.inOut', stagger: .05 }, 1.3);
-      others.forEach(function (n, i) {
-        t3.to(n, { x: function () { return delta(n, .5, .36).x }, y: function () { return delta(n, .5, .36).y }, scale: .12, rotation: '+=220', opacity: 0, duration: .85, ease: 'power3.in' }, 2.3 + i * .22);
-      });
-      if (scr) t3.fromTo(scr, { filter: 'brightness(1)' }, { filter: 'brightness(1.12)', duration: .15, yoyo: true, repeat: 7, ease: 'none' }, 2.9);
-      t3.to(pink, { scale: 1.12, y: '-=14', duration: .35, ease: 'power2.out' }, 3.7)
-        .to(pink, { x: function () { return delta(pink, .76, .8).x }, y: function () { return delta(pink, .76, .8).y }, rotation: -4, duration: .9, ease: 'power3.inOut' }, 4.05)
-        .to(pink, { scaleX: 0, duration: .22, ease: 'power2.in' }, 4.95)
-        .set(pink, { opacity: 0 }, 5.17)
-        .to(card, { opacity: 1, scaleX: 1, rotation: -2, duration: .45, ease: 'back.out(1.8)' }, 5.17)
-        .to(card, { rotation: 0, duration: .8, ease: 'elastic.out(1,.4)' }, 5.6)
-        .from($('.src', sp), { opacity: 0, y: 8, duration: .6 }, 5.6);
+      var t3 = gsap.timeline(), ring = $('.spr-ring', sp), cam = $('.spr-cam', sp);
+      /* a region of the screen (fractions of the screenshot): where it starts and how wide it is */
+      function look(rx, ry, rw) { var k = 1 / rw; return { scale: k, xPercent: -rx * k * 100, yPercent: -ry * k * 100 } }
+      t3.from($('.spr-mock', sp), { y: 30, rotation: 4, opacity: 0, duration: 1, ease: 'power3.out' }, 0)
+        .from($('.l3', sp), { y: 110, rotation: -3, scale: .92, opacity: 0, duration: 1.1, ease: 'back.out(1.25)' }, .45)
+        .from($('.src', sp), { opacity: 0, y: 8, duration: .6 }, 1.2);
+      if (cam && !reduce) {
+        var cl = gsap.timeline({ repeat: -1, repeatDelay: 1.6, paused: true, defaults: { duration: 1.5, ease: 'power2.inOut' } });
+        cl.to(cam, look(.34, .075, .55), 0)                      // the lesson: its title and the "Will it sell?" test
+          .to(cam, look(0, .3, .33), '+=3.2')                   // the course outline, this lesson highlighted
+          .to(cam, look(0, 0, 1), '+=2.8');                      // the whole screen again
+        t3.add(function () { cl.play(0) }, 2.2);
+        if (ring) t3.add(draw(ring, .9, null, 'power1.inOut'), 3.8);
+      } else if (ring) t3.add(draw(ring, .9, null, 'power1.inOut'), 1.6);
       when(sp, t3);
+    }
+
+    /* ---------- Nº 02: your question goes into the VIP chat; Ana is typing; her answer quotes you ---------- */
+    var wac = $('.wac');
+    if (wac) {
+      var m1 = $('.m1', wac), dots = $('.dots', wac), m2 = $('.m2', wac), m3 = $('.m3', wac), s0 = $('.s0', wac), s1 = $('.s1', wac);
+      gsap.set([m1, m2, m3], { opacity: 0, y: 12, scale: .94 });
+      gsap.set(dots, { opacity: 0, scale: .9, transformOrigin: '0% 0%' });
+      var tc = gsap.timeline();
+      tc.to(m1, { opacity: 1, y: 0, scale: 1, duration: .45, ease: 'back.out(1.7)', transformOrigin: '100% 100%' }, .3)
+        .add(function () { m1.classList.add('read') }, 1.1)
+        .to(s0, { opacity: 0, y: -8, duration: .25 }, 1.3)
+        .fromTo(s1, { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: .25 }, 1.35)
+        .to(dots, { opacity: 1, scale: 1, duration: .3, ease: 'back.out(2)' }, 1.5)
+        .to($$('i', dots), { y: -4, duration: .28, ease: 'sine.inOut', yoyo: true, repeat: 7, stagger: .14 }, 1.6)
+        .to(dots, { opacity: 0, scale: .9, duration: .15 }, 3.9)
+        .to(m2, { opacity: 1, y: 0, scale: 1, duration: .5, ease: 'back.out(1.6)', transformOrigin: '0% 0%' }, 3.95)
+        .to(s1, { opacity: 0, y: -8, duration: .25 }, 4.1)
+        .fromTo(s0, { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: .25 }, 4.15)
+        .to(m3, { opacity: 1, y: 0, scale: 1, duration: .45, ease: 'back.out(1.7)', transformOrigin: '100% 100%' }, 5.6)
+        .add(function () { m3.classList.add('read') }, 6.3);
+      when(wac, tc, 'top 78%');
+    }
+
+    /* ---------- Nº 04: "access expires: never", written in by hand ---------- */
+    var ex = $('.exp');
+    if (ex) {
+      var exw = $('.exp-v em', ex), exu = $('.exp-v path', ex), te = gsap.timeline();
+      gsap.set(exw, { clipPath: 'inset(0% 100% 0% 0%)' });
+      te.to(exw, { clipPath: 'inset(0% 0% 0% 0%)', duration: .9, ease: 'none' }, .5)
+        .add(draw(exu, .45, null, 'power2.out'), 1.4);
+      when(ex, te, 'top 85%');
     }
 
     /* ---------- Nº 04: a meeting runs late; the note slaps onto Wednesday; the recording plays ---------- */
@@ -228,7 +267,7 @@
 
     /* ---------- fit check: your chair comes a little closer to Ana's table ---------- */
     var you = $('.seat.two .you');
-    if (you) when(you, gsap.timeline().fromTo(you, { xPercent: -18, rotation: -5 }, { xPercent: 3, rotation: 0, duration: 1.5, ease: 'back.out(1.4)', delay: .5 }), 'top 75%');
+    if (you) when(you, gsap.timeline().fromTo(you, { xPercent: -18, rotation: -5 }, { xPercent: 3, rotation: 0, duration: .8, ease: 'back.out(1.7)' }), 'top 90%');
 
     /* ---------- her letter rises out of the envelope; the seal presses on ---------- */
     var lw = $('.lw');
