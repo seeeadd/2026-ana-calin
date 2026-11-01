@@ -581,6 +581,40 @@ R("""  function closeM(){
     modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); document.body.classList.remove('noscroll');
     placeForm();""")
 
+# ---------- 3b. the day drawings become Ana's own slides (Nov 1): each day is a live-session window with one slide, her
+#            camera in the corner, and the day's second slide fanned behind. The method on the slides is covered (black
+#            bars): that's what she teaches live. Slides: tools/film/slides.html, rendered to img/slides/. ----------
+LIVE = {1: ('1b', '1a'), 2: ('2a', '2b'), 3: ('3a', '3b')}
+OLD = {1: 'Reader file', 2: 'Your offer', 3: 'id="mail"'}
+def live(n, front, back):
+    return ('<div class="art lv" id="art%d" aria-hidden="true"><div class="stage">\n'
+            '          <svg class="fl" style="left:420px;top:330px;width:230px;height:230px"><use href="#sfo"/></svg>\n'
+            '          <span class="lv-tag">From the Day %d slides</span>\n'
+            '          <img class="lv-back" src="../img/slides/day%s.webp" alt="" width="1280" height="720" loading="lazy">\n'
+            '          <div class="lv-win"><div class="lv-bar"><i></i><b>LIVE</b><span>Day %d · Ana is sharing her slides</span></div>'
+            '<img src="../img/slides/day%s.webp" alt="" width="1280" height="720" loading="lazy"></div>\n'
+            '          <div class="lv-cam"><img src="../img/real/ana-real-c.webp" alt="" width="405" height="720" loading="lazy"><span>Ana</span></div>\n'
+            '        </div></div>') % (n, n, back, n, front)
+for n in (1, 2, 3):
+    start = '<div class="art" id="art%d" aria-hidden="true"><div class="stage">' % n
+    a = s.index(start); b = s.index('\n        </div></div>', a) + len('\n        </div></div>')
+    assert OLD[n] in s[a:b], 'art%d: not the drawing I expected' % n
+    s = s[:a] + live(n, *LIVE[n]) + s[b:]
+# the old drawings' scripts go too (they look for elements that are gone)
+R(between('  /* day 1: fourteen readers, one of them is her */', '  /* every animation ends in the state the CSS already shows'), '')
+R(between('  var plays = {', '  /* reveal on scroll; each drawing plays once, when it is in view */'),
+  """  /* the slides arrive like a screen share: the window rises, the second slide fans out behind it, Ana's camera comes on */
+  function playLive(a){
+    A(a.querySelector('.lv-win'),[{opacity:0,transform:'translateY(26px)'},{opacity:1,transform:'none'}],{duration:900,delay:100});
+    A(a.querySelector('.lv-back'),[{opacity:0,transform:'translate(-70px,46px) rotate(-2deg)'},{opacity:1,transform:'rotate(4deg)'}],{duration:1150,delay:380});
+    A(a.querySelector('.lv-cam'),[{opacity:0,transform:'translateY(12px)'},{opacity:1,transform:'none'}],{duration:700,delay:950});
+    A(a.querySelector('.lv-tag'),[{opacity:0},{opacity:1}],{duration:600,delay:1250});
+  }
+  var plays = {art1: playLive, art2: playLive, art3: playLive};
+
+""")
+R("  if (!canAnim) { document.querySelector('#mail .sendb').textContent = 'sent'; document.getElementById('mail').classList.add('typed','sent') }\n", '')
+
 # ---------- checks: no em dashes in what a reader sees, nothing from the dropped sections ----------
 body = s[s.index('<body'):]
 assert '—' not in re.sub(r'<script.*?</script>|<!--.*?-->', '', body, flags=re.S), 'em dash in the page'

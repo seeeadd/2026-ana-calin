@@ -1267,6 +1267,26 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
   .tkt form:has(input[name=first_name]:not(:placeholder-shown)):has(input[name=email_address]:valid) .btn.big{animation:bglow 2.2s ease-out .3s infinite}
 }
 
+/* ---------- the days: Ana's own slides, as a live session (Nov 1) ---------- */
+.lv .lv-back{position:absolute;left:236px;top:24px;width:336px;height:auto;border-radius:10px;border:4px solid #fff;
+  box-shadow:0 22px 40px -20px rgba(70,45,25,.55),0 2px 4px rgba(70,45,25,.12);transform:rotate(4deg)}
+.lv .lv-win{position:absolute;left:24px;top:118px;width:530px;border-radius:14px;overflow:hidden;background:#1A1412;border:2px solid #1A1412;
+  box-shadow:0 34px 60px -28px rgba(50,30,15,.7),0 3px 8px rgba(50,30,15,.18)}
+.lv .lv-bar{display:flex;align-items:center;gap:8px;height:34px;padding:0 14px;color:#fff;font:700 12.5px/1 Manrope,sans-serif}
+.lv .lv-bar i{width:8px;height:8px;border-radius:50%;background:#FF3B5C;box-shadow:0 0 0 3px rgba(255,59,92,.25)}
+.lv .lv-bar b{font-weight:800;letter-spacing:.14em}
+.lv .lv-bar span{margin-left:6px;opacity:.72;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lv .lv-win img{display:block;width:100%;height:auto}
+.lv .lv-cam{position:absolute;left:436px;top:368px;width:144px;height:108px;border-radius:12px;overflow:hidden;background:#2A211D;border:3px solid #1A1412;
+  box-shadow:0 16px 26px -14px rgba(50,30,15,.7)}
+.lv .lv-cam img{width:100%;height:100%;object-fit:cover;object-position:50% 26%}
+.lv .lv-cam span{position:absolute;left:7px;bottom:6px;padding:2px 8px;border-radius:6px;background:rgba(26,20,18,.72);color:#fff;font:700 12px/1.4 Manrope,sans-serif}
+.lv .lv-tag{position:absolute;left:24px;top:44px;padding:7px 13px;border-radius:999px;background:#fff;border:1.6px solid #1A1412;
+  font:800 11.5px/1 Manrope,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#F72585}
+.drow.flip .lv .lv-back{left:30px}
+.drow.flip .lv .lv-win{left:46px}
+.drow.flip .lv .lv-tag{left:auto;right:24px}
+
 </style>
 <link rel="stylesheet" href="../assets/wins.css">
 </head>
@@ -1443,35 +1463,12 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
           <p class="out"><span>You’ll leave with</span>a direction for your offer and the people you want to reach.</p>
           <p class="next">On Day 2, we put a price on it that makes this worth doing.</p>
         </div>
-        <div class="art" id="art1" aria-hidden="true"><div class="stage">
-          <svg class="fl" style="left:420px;top:-70px;width:250px;height:250px"><use href="#sfo"/></svg>
-          <svg class="fl" style="left:-80px;top:330px;width:220px;height:220px"><use href="#sfo"/></svg>
-          <div class="sheet s1" style="left:78px;top:32px;width:448px;transform:rotate(-1.6deg)">
-            <div class="sh">Reader file<small class="ex">EXAMPLE</small><span>DAY 1</span></div>
-            <div class="crowd" id="crowd"></div>
-            <p class="cap">the one who opens every email</p>
-            <div class="pf">
-              <svg viewBox="-60 -60 120 120" width="62" height="62" class="av"><circle r="50" fill="#FFD400" stroke="#1A1412" stroke-width="5"/><path d="M-50 -6C-44-48 44-48 50-6C40-26 22-34 0-34S-40-26-50-6Z" fill="#6B4E3A" stroke="#1A1412" stroke-width="5" stroke-linejoin="round"/><ellipse cx="-16" cy="2" rx="5" ry="7" fill="#1A1412"/><ellipse cx="16" cy="2" rx="5" ry="7" fill="#1A1412"/><path d="M-20 18c4 16 36 16 40 0Z" fill="#1A1412"/></svg>
-              <dl>
-                <dt>READER</dt><dd>Mother of two, four years out of work.</dd>
-                <dt>STUCK ON</dt><dd>Freezes every time she opens her CV.</dd>
-                <dt>SHE'D PAY FOR</dt><dd><span class="mk-anim" id="mk1">A clear plan back to work.</span></dd>
-              </dl>
-            </div>
-            <div class="todo">
-              <div class="t1"><span class="bx"><svg viewBox="0 0 16 16"><path d="m3.5 8.5 3 3 6-7"/></svg></span>Name your one reader<em>DONE</em></div>
-              <div class="t2"><span class="bx"><svg viewBox="0 0 16 16"><path d="m3.5 8.5 3 3 6-7"/></svg></span>The problem she'd pay you to fix<em>DONE</em></div>
-            </div>
-          </div>
-          <!-- the sunflower mug -->
-          <svg class="mug" style="position:absolute;left:8px;top:352px;width:140px;height:140px;overflow:visible" viewBox="0 0 140 140">
-            <g class="steam" fill="none" stroke="#7A6A60" stroke-width="3" stroke-linecap="round"><path d="M44 20c-6-8 6-12 0-20"/><path d="M60 18c-6-8 6-12 0-20"/><path d="M76 20c-6-8 6-12 0-20"/></g>
-            <path d="M104 58c22-2 26 38 0 38" fill="none" stroke="#1A1412" stroke-width="5"/>
-            <path d="M18 34h88v74c0 12-8 20-20 20H38c-12 0-20-8-20-20Z" fill="#fff" stroke="#1A1412" stroke-width="5" stroke-linejoin="round"/>
-            <ellipse cx="62" cy="34" rx="44" ry="9" fill="#6B4E3A" stroke="#1A1412" stroke-width="5"/>
-            <use href="#sf" x="38" y="58" width="48" height="48"/>
-          </svg>
-          <svg class="spark" style="position:absolute;left:520px;top:22px;width:56px;height:50px" viewBox="0 0 56 50" fill="none" stroke="#1A1412" stroke-width="4" stroke-linecap="round"><path d="M10 34 2 28M22 22 18 6M36 26l12-12"/></svg>
+        <div class="art lv" id="art1" aria-hidden="true"><div class="stage">
+          <svg class="fl" style="left:420px;top:330px;width:230px;height:230px"><use href="#sfo"/></svg>
+          <span class="lv-tag">From the Day 1 slides</span>
+          <img class="lv-back" src="../img/slides/day1a.webp" alt="" width="1280" height="720" loading="lazy">
+          <div class="lv-win"><div class="lv-bar"><i></i><b>LIVE</b><span>Day 1 · Ana is sharing her slides</span></div><img src="../img/slides/day1b.webp" alt="" width="1280" height="720" loading="lazy"></div>
+          <div class="lv-cam"><img src="../img/real/ana-real-c.webp" alt="" width="405" height="720" loading="lazy"><span>Ana</span></div>
         </div></div>
       </div>
 
@@ -1492,35 +1489,12 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
           <p class="out"><span>You’ll leave with</span>a defined offer and a price you can stand behind.</p>
           <p class="next">Then comes the moment that turns all this into a real possibility: asking someone to buy.</p>
         </div>
-        <div class="art" id="art2" aria-hidden="true"><div class="stage">
-          <svg class="fl" style="left:-70px;top:-60px;width:230px;height:230px"><use href="#sfo"/></svg>
-          <svg class="fl" style="left:440px;top:340px;width:240px;height:240px"><use href="#sfo"/></svg>
-          <div class="sheet s2" style="left:52px;top:58px;width:462px;transform:rotate(1.3deg)">
-            <div class="sh">Your offer<small class="ex">EXAMPLE</small><span>DAY 2</span></div>
-            <p class="offer">I help <span class="blk b1">mothers after a career break</span> get <span class="blk p b2">back to work</span> in <span class="blk b3">six weeks.</span></p>
-            <div class="parts"><span>WHO</span><span>WHAT CHANGES</span><span>HOW LONG</span></div>
-            <div class="prow"><b>PRICE</b></div>
-          </div>
-          <!-- the price tag, tied to the sheet -->
-          <svg class="tag" style="position:absolute;left:356px;top:290px;width:200px;height:160px;transform-origin:44px 10px;overflow:visible" viewBox="0 0 200 160">
-            <path d="M44 10c-4 16 4 30 16 36" fill="none" stroke="#1A1412" stroke-width="3.4" stroke-linecap="round"/>
-            <g transform="rotate(-10 110 90)">
-              <path d="M56 54h112a12 12 0 0 1 12 12v56a12 12 0 0 1-12 12H56L28 94Z" fill="#F72585" stroke="#1A1412" stroke-width="5" stroke-linejoin="round"/>
-              <circle cx="58" cy="94" r="8" fill="#E8DBC5" stroke="#1A1412" stroke-width="4"/>
-              <text x="124" y="110" text-anchor="middle" font-family="Manrope,sans-serif" font-weight="800" font-size="40" fill="#fff" letter-spacing="-1">$149</text>
-            </g>
-          </svg>
-          <!-- the highlighter, from her slide -->
-          <svg class="pen" style="position:absolute;left:0;top:0;width:184px;height:60px;overflow:visible;transform-origin:4px 36px;transform:translate(48px,410px) rotate(-10deg)" viewBox="0 0 184 60">
-            <path d="M4 36 18 22h12v26H18Z" fill="#FFD400" stroke="#1A1412" stroke-width="3.4" stroke-linejoin="round"/>
-            <rect x="30" y="16" width="16" height="38" rx="3" fill="#1A1412"/>
-            <rect x="44" y="12" width="88" height="46" rx="9" fill="#FFD400" stroke="#1A1412" stroke-width="3.6"/>
-            <path d="M56 22h62" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".7"/>
-            <rect x="130" y="12" width="8" height="46" fill="#1A1412"/>
-            <rect x="136" y="9" width="44" height="52" rx="10" fill="#1A1412"/>
-            <rect x="144" y="3" width="32" height="9" rx="4.5" fill="#1A1412"/>
-            <path d="M148 22h24" stroke="#4a3f3a" stroke-width="3" stroke-linecap="round"/>
-          </svg>
+        <div class="art lv" id="art2" aria-hidden="true"><div class="stage">
+          <svg class="fl" style="left:420px;top:330px;width:230px;height:230px"><use href="#sfo"/></svg>
+          <span class="lv-tag">From the Day 2 slides</span>
+          <img class="lv-back" src="../img/slides/day2b.webp" alt="" width="1280" height="720" loading="lazy">
+          <div class="lv-win"><div class="lv-bar"><i></i><b>LIVE</b><span>Day 2 · Ana is sharing her slides</span></div><img src="../img/slides/day2a.webp" alt="" width="1280" height="720" loading="lazy"></div>
+          <div class="lv-cam"><img src="../img/real/ana-real-c.webp" alt="" width="405" height="720" loading="lazy"><span>Ana</span></div>
         </div></div>
       </div>
 
@@ -1540,33 +1514,12 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
           <p class="body after">Then you’ll write your own sales email with me there. I’ll review selected examples live so you can see what I’d change before you send yours.</p>
           <p class="out"><span>By the end,</span>you’ll have an offer, a price, and a written ask. Something you can take into the world and begin testing while your current work still supports you.</p>
         </div>
-        <div class="art" id="art3" aria-hidden="true"><div class="stage">
-          <svg class="fl" style="left:430px;top:-60px;width:230px;height:230px"><use href="#sfo"/></svg>
-          <!-- the envelope with a sunflower stamp -->
-          <svg class="env" style="position:absolute;left:14px;top:318px;width:190px;height:150px" viewBox="0 0 190 150">
-            <g transform="rotate(-8 95 75)">
-              <rect x="12" y="30" width="166" height="104" rx="10" fill="#fff" stroke="#1A1412" stroke-width="5"/>
-              <path d="M14 36l81 56 81-56" fill="none" stroke="#1A1412" stroke-width="5" stroke-linejoin="round"/>
-              <rect x="132" y="44" width="34" height="38" rx="3" fill="#FFF1B3" stroke="#1A1412" stroke-width="3" stroke-dasharray="4 3"/>
-              <use href="#sf" x="136" y="50" width="26" height="26"/>
-            </g>
-          </svg>
-          <div class="sheet mail" id="mail" style="left:88px;top:30px;width:444px;transform:rotate(-1.2deg)">
-            <div class="mh">
-              <div class="from"><svg width="30" height="30"><use href="#sf"/></svg><span><b>You</b> · your newsletter</span><small class="ex">EXAMPLE</small><span class="sendb">send</span></div>
-              <div class="subj"><span id="subj">Back to work, by spring.</span><span class="caret"></span></div>
-              <div class="prev">Back to Work in Six Weeks opens Monday.</div>
-            </div>
-            <div class="mb">
-              <div class="bar" style="width:92%"></div>
-              <div class="bar" style="width:74%"></div>
-              <p class="say">So I built the thing I needed: <span class="mk-anim" id="mk3">a six-week course, $149.</span></p>
-              <span class="cta">see what's inside<svg><use href="#arr"/></svg></span>
-              <div class="sign">your name</div>
-            </div>
-          </div>
-          <div class="toast" id="toast" style="left:300px;top:418px"><i><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#1A1412" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3.5 8.5 3 3 6-7"/></svg></i>Sent to her ten readers</div>
-          <svg class="cursor" style="position:absolute;left:0;top:0;width:30px;height:36px;opacity:0" viewBox="0 0 30 36"><path d="M3 2l22 16-10 2 6 12-5 2-6-12-7 7Z" fill="#fff" stroke="#1A1412" stroke-width="2.6" stroke-linejoin="round"/></svg>
+        <div class="art lv" id="art3" aria-hidden="true"><div class="stage">
+          <svg class="fl" style="left:420px;top:330px;width:230px;height:230px"><use href="#sfo"/></svg>
+          <span class="lv-tag">From the Day 3 slides</span>
+          <img class="lv-back" src="../img/slides/day3b.webp" alt="" width="1280" height="720" loading="lazy">
+          <div class="lv-win"><div class="lv-bar"><i></i><b>LIVE</b><span>Day 3 · Ana is sharing her slides</span></div><img src="../img/slides/day3a.webp" alt="" width="1280" height="720" loading="lazy"></div>
+          <div class="lv-cam"><img src="../img/real/ana-real-c.webp" alt="" width="405" height="720" loading="lazy"><span>Ana</span></div>
         </div></div>
       </div>
     </div>
@@ -2082,11 +2035,6 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
   function fit(){arts.forEach(function(a){a.querySelector('.stage').style.setProperty('--k', a.clientWidth/600)})}
   fit(); if (window.ResizeObserver) new ResizeObserver(fit).observe(document.body); else addEventListener('resize', fit);
 
-  /* day 1: fourteen readers, one of them is her */
-  var crowd = document.getElementById('crowd'), ME = 8, ch = '';
-  for (var i = 0; i < 14; i++) ch += '<svg viewBox="0 0 24 28" class="'+(i===ME?'me':'')+'"><circle class="p hd" cx="12" cy="8" r="5.5"/><path class="p bd" d="M3 27c0-7 4-11 9-11s9 4 9 11Z"/></svg>';
-  crowd.innerHTML = ch + '<svg class="ring" viewBox="0 0 56 56" style="left:'+(ME*28-16)+'px"><path d="M30 4C14 3 4 14 5 28s12 24 25 23 21-12 20-25C49 13 40 5 26 6"/></svg>';
-
   /* every animation ends in the state the CSS already shows: no JS, or reduced motion, shows the finished drawing */
   function A(el, frames, o){ if (!el || !el.animate) return; o.fill = o.fill || 'backwards'; o.easing = o.easing || 'cubic-bezier(.2,.8,.2,1)'; return el.animate(frames, o) }
   function draw(path, delay, dur){ var L = path.getTotalLength ? Math.ceil(path.getTotalLength()) : 200; path.style.strokeDasharray = L; A(path,[{strokeDashoffset:L},{strokeDashoffset:0}],{duration:dur||600,delay:delay,easing:'cubic-bezier(.6,0,.3,1)'}) }
@@ -2098,77 +2046,17 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
   }
   function kOf(a){ return parseFloat(a.querySelector('.stage').style.getPropertyValue('--k')) || 1 }
 
-  var plays = {
-    art1: function(a){
-      var ic = a.querySelectorAll('.crowd svg:not(.ring)');
-      ic.forEach(function(s,i){A(s,[{opacity:0,transform:'translateY(8px) scale(.6)'},{opacity:1,transform:'none'}],{duration:420,delay:120+i*35})});
-      A(ic[ME],[{transform:'none'},{transform:'translateY(-5px) scale(1.25)'},{transform:'none'}],{duration:700,delay:720,fill:'none'});
-      A(ic[ME].querySelector('.bd'),[{fill:'#fff',stroke:'#bcae9f'},{fill:'#FFD400',stroke:'#1A1412'}],{duration:300,delay:760});
-      A(ic[ME].querySelector('.hd'),[{stroke:'#bcae9f'},{stroke:'#1A1412'}],{duration:300,delay:760});
-      draw(a.querySelector('.ring path'), 950, 650);
-      A(a.querySelector('.cap'),[{opacity:0},{opacity:1}],{duration:400,delay:1250});
-      A(a.querySelector('.pf'),[{opacity:0,transform:'translateY(16px)'},{opacity:1,transform:'none'}],{duration:600,delay:1350});
-      A(a.querySelector('.pf .av'),[{transform:'scale(0) rotate(-30deg)'},{transform:'none'}],{duration:600,delay:1500,easing:'cubic-bezier(.3,1.6,.5,1)'});
-      sweep(document.getElementById('mk1'), 1950, 600);
-      [['.t1',2350],['.t2',2650]].forEach(function(t){
-        var row = a.querySelector(t[0]);
-        A(row,[{opacity:0,transform:'translateX(-8px)'},{opacity:1,transform:'none'}],{duration:400,delay:t[1]-150});
-        draw(row.querySelector('path'), t[1], 380);
-        A(row.querySelector('em'),[{opacity:0,transform:'scale(.6)'},{opacity:1,transform:'none'}],{duration:400,delay:t[1]+300,easing:'cubic-bezier(.3,1.6,.5,1)'});
-      });
-      A(a.querySelector('.mug'),[{opacity:0,transform:'translate(-40px,30px) rotate(-12deg)'},{opacity:1,transform:'none'}],{duration:800,delay:300});
-      a.querySelectorAll('.spark path').forEach(function(p,i){draw(p, 1100+i*90, 260)});
-      a.querySelectorAll('.steam path').forEach(function(p,i){ p.animate([{transform:'translateY(4px)',opacity:0},{opacity:.9,offset:.4},{transform:'translateY(-8px)',opacity:0}],{duration:2600,delay:i*500,iterations:Infinity}) });
-    },
-    art2: function(a){
-      var st = a.querySelector('.stage'), pen = a.querySelector('.pen'), k = kOf(a), sr = st.getBoundingClientRect(), t = 700;
-      A(a.querySelector('.s2'),[{opacity:0,transform:'translateY(24px) rotate(-2deg)'},{opacity:1,transform:'rotate(1.3deg)'}],{duration:700,delay:100});
-      /* the pen runs along each block while it highlights, then rests */
-      var blocks = [a.querySelector('.b1'), a.querySelector('.b2'), a.querySelector('.b3')], kf = [], step = 700, total = step*3 + 500;
-      blocks.forEach(function(b,i){
-        var r = b.getBoundingClientRect(), x0 = (r.left-sr.left)/k - 4, x1 = (r.right-sr.left)/k - 4, y = (r.bottom-sr.top)/k - 42;
-        kf.push({offset:(i*step)/total, transform:'translate('+(x0-24)+'px,'+(y-30)+'px) rotate(-30deg)'});
-        kf.push({offset:(i*step+150)/total, transform:'translate('+x0+'px,'+y+'px) rotate(-30deg)'});
-        kf.push({offset:(i*step+670)/total, transform:'translate('+x1+'px,'+y+'px) rotate(-30deg)'});
-        sweep(b, t + i*step + 150, 520);
-      });
-      kf.push({offset:1, transform:'translate(48px,410px) rotate(-10deg)'});
-      A(pen, kf, {duration:total, delay:t, easing:'ease-in-out'});
-      a.querySelectorAll('.parts span').forEach(function(s,i){A(s,[{opacity:0,transform:'translateY(6px)'},{opacity:1,transform:'none'}],{duration:350,delay:t+i*step+500})});
-      A(a.querySelector('.prow'),[{opacity:0},{opacity:1}],{duration:400,delay:t+2200});
-      var tag = a.querySelector('.tag');
-      A(tag,[{opacity:0,transform:'translateY(-90px) rotate(-30deg)'},{opacity:1,transform:'rotate(14deg)',offset:.45},{transform:'rotate(-8deg)',offset:.7},{transform:'rotate(4deg)',offset:.86},{transform:'none'}],{duration:1500,delay:t+2500,easing:'ease-out'});
-      setTimeout(function(){ tag.animate([{transform:'rotate(0)'},{transform:'rotate(3deg)'},{transform:'rotate(0)'},{transform:'rotate(-2deg)'},{transform:'rotate(0)'}],{duration:5200,iterations:Infinity,easing:'ease-in-out'}) }, t+4000);
-    },
-    art3: function(a){
-      var mail = document.getElementById('mail'), subj = document.getElementById('subj'), text = subj.textContent, k = kOf(a);
-      var cursor = a.querySelector('.cursor'), toast = document.getElementById('toast'), sb = a.querySelector('.sendb');
-      A(a.querySelector('.env'),[{opacity:0,transform:'translate(-30px,30px) rotate(-10deg)'},{opacity:1,transform:'none'}],{duration:800,delay:200});
-      A(mail,[{opacity:0,transform:'translateY(24px) rotate(1deg)'},{opacity:1,transform:'rotate(-1.2deg)'}],{duration:700,delay:100});
-      A(a.querySelector('.prev'),[{opacity:0},{opacity:1}],{duration:400,delay:2200});
-      a.querySelectorAll('.mb > *').forEach(function(el,i){A(el,[{opacity:0,transform:'translateY(8px)'},{opacity:1,transform:'none'}],{duration:450,delay:2300+i*160})});
-      sweep(document.getElementById('mk3'), 2900, 600);
-      /* the subject types itself */
-      subj.textContent = ''; mail.classList.remove('typed');
-      var n = 0; setTimeout(function tick(){ subj.textContent = text.slice(0, ++n); if (n < text.length) setTimeout(tick, 42 + Math.random()*36); else mail.classList.add('typed') }, 800);
-      /* then the cursor presses send */
-      var sbr = sb.getBoundingClientRect(), sr = a.querySelector('.stage').getBoundingClientRect();
-      var tx = (sbr.left - sr.left)/k + 20, ty = (sbr.top - sr.top)/k + 12;
-      sb.textContent = 'send'; mail.classList.remove('sent'); toast.style.opacity = 0;
-      cursor.animate([{opacity:0,transform:'translate(540px,480px)'},{opacity:1,transform:'translate(500px,430px)',offset:.2},{opacity:1,transform:'translate('+tx+'px,'+ty+'px)',offset:.75},{opacity:1,transform:'translate('+tx+'px,'+ty+'px) scale(.82)',offset:.86},{opacity:1,transform:'translate('+tx+'px,'+ty+'px)'}],{duration:1500,delay:3600,easing:'ease-in-out',fill:'forwards'});
-      setTimeout(function(){
-        mail.classList.add('sent'); sb.textContent = 'sent';
-        mail.animate([{transform:'rotate(-1.2deg)'},{transform:'translateY(-8px) rotate(-2deg)'},{transform:'rotate(-1.2deg)'}],{duration:600,easing:'ease-out'});
-        cursor.animate([{opacity:1,transform:'translate('+tx+'px,'+ty+'px)'},{opacity:0,transform:'translate('+(tx+30)+'px,'+(ty+40)+'px)'}],{duration:500,delay:300,fill:'forwards'});
-        toast.style.opacity = '';
-        toast.animate([{opacity:0,transform:'translateY(20px) scale(.9)'},{opacity:1,transform:'none'}],{duration:600,easing:'cubic-bezier(.3,1.5,.5,1)',fill:'backwards'});
-      }, 4950);
-    }
-  };
+  /* the slides arrive like a screen share: the window rises, the second slide fans out behind it, Ana's camera comes on */
+  function playLive(a){
+    A(a.querySelector('.lv-win'),[{opacity:0,transform:'translateY(26px)'},{opacity:1,transform:'none'}],{duration:900,delay:100});
+    A(a.querySelector('.lv-back'),[{opacity:0,transform:'translate(-70px,46px) rotate(-2deg)'},{opacity:1,transform:'rotate(4deg)'}],{duration:1150,delay:380});
+    A(a.querySelector('.lv-cam'),[{opacity:0,transform:'translateY(12px)'},{opacity:1,transform:'none'}],{duration:700,delay:950});
+    A(a.querySelector('.lv-tag'),[{opacity:0},{opacity:1}],{duration:600,delay:1250});
+  }
+  var plays = {art1: playLive, art2: playLive, art3: playLive};
 
   /* reveal on scroll; each drawing plays once, when it is in view */
   var played = {}, canAnim = !reduce && !!document.body.animate;
-  if (!canAnim) { document.querySelector('#mail .sendb').textContent = 'sent'; document.getElementById('mail').classList.add('typed','sent') }
   function seen(el){
     el.classList.add('in');
     var art = el.querySelector && el.querySelector('.art');
