@@ -1853,6 +1853,19 @@ mark.sk{font-weight:700;color:var(--ink)}
 .cmp .cx .cxn,.vf .cx .cxn,.faqs .cx .cxn{text-align:center}
 @media (max-width:560px){.cx .cxn{justify-self:center;text-align:center}}
 
+
+/* the header: the VIP picture, and the free workshop with its dates, so nobody forgets the three days */
+.fb-id img{border-radius:50%;object-fit:cover;box-shadow:0 0 0 1.5px #fff,0 2px 6px -2px rgba(60,40,20,.35)}
+.fb-id .fb-tx{display:block;min-width:0}
+.fb-id small{text-transform:uppercase;white-space:nowrap}
+.fb-id small .s{display:none}
+.fb-id b{display:flex;align-items:center;gap:8px}
+.fb-dt{font-family:var(--sans);font-style:normal;font-weight:800;font-size:11.5px;letter-spacing:.02em;line-height:1;padding:4px 8px;border-radius:99px;background:#FFE3EE;color:#B0124F;white-space:nowrap}
+@media (max-width:1120px){.fb-id .fb-tt{display:none}.fb-id b{margin-top:5px}}
+@media (max-width:860px){.fb-id span.fb-tx{display:block}.fb-id small{font-size:9px;letter-spacing:.12em}.fb-id small .l{display:none}.fb-id small .s{display:inline}.fb-dt{font-size:11px;padding:3px 7px}}
+@media (max-width:560px){.st.now .t{display:none}.st.now{padding:5px 8px}.fb-card .fb-bar{gap:10px;padding:7px 12px 7px 8px}}
+@media (max-width:374px){.fb-id small{display:none}.fb-id b{margin-top:0}.steps .ln{width:12px;margin:0 3px}.fb-card .fb-bar{gap:6px}}
+
 /* the leave popup, in the page's finish: paper, hairlines, the real screens */
 .pop{background:rgba(40,28,22,.58);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
 .pbox{background:#FFFDF9;border:1px solid rgba(26,20,18,.1);border-radius:24px;box-shadow:0 2px 4px rgba(20,10,5,.1),0 60px 110px -40px rgba(20,10,5,.75)}
@@ -1925,7 +1938,7 @@ mark.sk{font-weight:700;color:var(--ink)}
  <div class="fb-card">
   <p class="keep" role="note"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 4.6v4.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="8" cy="11.2" r="1.05" fill="currentColor"/></svg><span>Don’t close this page.</span> <span>Your registration isn’t finished yet.</span></p>
   <div class="fb-bar">
-    <div class="fb-id"><img src="../img/mark.png" alt="" width="44" height="44"><span><small>ANA CALIN</small><b>The Exit Plan</b></span></div>
+    <div class="fb-id"><img src="../img/vip/raw/vip-avatar.webp" alt="" width="44" height="44"><span class="fb-tx"><small><span class="l">Free 3-day live workshop</span><span class="s">Free live workshop</span></small><b><span class="fb-tt">The Exit Plan</span><em class="fb-dt">Nov 17 to 19</em></b></span></div>
     <div class="steps" aria-label="Step 2 of 3">
       <span class="st done"><i><svg width="12" height="12" style="color:#fff"><use href="#ck"/></svg></i><span class="t">Seat saved</span></span>
       <span class="ln on"></span>
