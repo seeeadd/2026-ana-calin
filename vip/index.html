@@ -16,7 +16,7 @@
 <link rel="apple-touch-icon" href="../img/fav/apple-touch-icon.png?v=dc986e96">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&family=Nothing+You+Could+Do&display=swap">
 <link rel="preload" as="image" href="img/cover.webp">
 <style>
 :root{
@@ -1519,6 +1519,61 @@ body.scrolled .fb-id img{width:32px;height:32px}
 .vb .bb .aside:before,.vb .bb .aside:after{background:#FBEFC9}
 footer{background:var(--sun);border-top:0}
 footer .links a,footer .links span{color:var(--ink)}
+
+/* Sean: subtle textures, section by section, made in code (tools/paint/textures.py) after his references:
+   whitewash behind the door, a halftone sun on the yellow week, a workbook dot grid for What's in VIP,
+   gingham on the pink fit check, linen under the letter and the price, grain on the yellow footer */
+.vh{background-image:radial-gradient(52% 46% at 30% 74%,rgba(255,212,0,.2),rgba(255,212,0,0) 72%),radial-gradient(40% 40% at 86% 70%,rgba(247,37,133,.06),rgba(247,37,133,0) 70%),url(../img/vip/paint/tx-stucco.webp);background-size:auto,auto,640px}
+.vw:before,.vw:after{content:"";position:absolute;width:900px;height:760px;background:url(../img/vip/paint/tx-halftone.webp) 0 0/100% 100% no-repeat;pointer-events:none}
+.vw:before{right:0;top:0}
+.vw:after{left:0;bottom:0;transform:rotate(180deg);opacity:.7}
+.vi{background-image:radial-gradient(circle,rgba(26,20,18,.13) 1.1px,transparent 1.5px);background-size:26px 26px;background-position:13px 13px;
+  -webkit-mask-image:none}
+.vi>.wrap{position:relative}
+.vi:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--page) 0,rgba(248,243,235,.55) 18%,rgba(248,243,235,.55) 82%,var(--page) 100%);pointer-events:none}
+.vf{background-image:linear-gradient(rgba(255,227,238,.35),rgba(255,227,238,.35)),url(../img/vip/paint/tx-gingham.webp);background-size:auto,240px}
+.vb{background-image:url(../img/vip/paint/tx-linen.webp);background-size:256px}
+footer{background-image:url(../img/vip/paint/tx-grain.webp);background-size:256px}
+</style>
+<style id="v6">
+
+/* ===== v6: real animation (assets/vip-motion.js); the week's rising sun; scene layout ===== */
+.art.mv{overflow:visible}
+.art.mv *{transition:none!important}
+.art.mv>img,.art.mv>.dev,.art.mv>.mv-sheetbox{position:absolute;height:auto}
+.art.mv .dev.ph{transform:none}
+.mv-sheetbox img{display:block;width:100%;height:auto}
+.mv-sheetbox svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.mv-over{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.mv-note{position:absolute;height:auto}
+.replay .ring{position:absolute;right:4%;bottom:20%;width:20%;aspect-ratio:1;border-radius:50%;border:2px solid #F72585;opacity:0}
+.petals{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none;z-index:3}
+.trk .stop .wk{opacity:1!important;transform:none!important}
+.wkb{position:relative;display:block;max-width:180px;margin:0 auto 6px}
+.wkb>img{display:block;width:100%;height:auto}
+.wko{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.mv-tag,.mv-env,.mv-l1,.mv-l2{opacity:0}
+/* the week on white, with one sunflower sun rising behind the road */
+.vw{background:var(--page)}
+.vw:before,.vw:after{display:none}
+.lane{position:relative;z-index:1}
+.road{z-index:1}
+.trk .sun{position:absolute;left:58%;bottom:-8px;width:min(860px,92%);aspect-ratio:2/1;transform:translateX(-50%);pointer-events:none;z-index:0}
+.trk .sun .rays{position:absolute;left:50%;bottom:0;width:260%;aspect-ratio:2/1;transform:translateX(-50%);transform-origin:50% 100%;
+  background:repeating-conic-gradient(from -90deg at 50% 100%,rgba(255,212,0,.2) 0deg 3deg,rgba(255,212,0,0) 3deg 9deg);
+  -webkit-mask-image:radial-gradient(farthest-side at 50% 100%,#000 25%,transparent 92%);mask-image:radial-gradient(farthest-side at 50% 100%,#000 25%,transparent 92%)}
+.trk .sun .disc{position:absolute;inset:0;border-radius:50% 50% 0 0/100% 100% 0 0;background:radial-gradient(farthest-side at 50% 100%,#FFE27A 0,#FFDA55 88%,#FFD13A 100%)}
+.trk .sun .disc:after{content:"";position:absolute;left:-26px;right:-26px;top:-26px;bottom:0;border-radius:50% 50% 0 0/100% 100% 0 0;
+  background:radial-gradient(circle,#FFD13A 1.6px,transparent 2.1px) 0 0/9px 9px;
+  -webkit-mask-image:radial-gradient(farthest-side at 50% 100%,transparent 91%,#000 93%,transparent 100%);mask-image:radial-gradient(farthest-side at 50% 100%,transparent 91%,#000 93%,transparent 100%)}
+@media (prefers-reduced-motion:no-preference){.trk .sun .rays{animation:raysTurn 180s linear infinite}}
+@keyframes raysTurn{to{transform:translateX(-50%) rotate(360deg)}}
+@media (max-width:760px){.trk .sun{left:50%;bottom:auto;top:40px;width:150%}}
+
+/* earlier reveal rules hid the devices until a class that no longer comes; the motion script owns them now */
+.anim .it .art.mv .dev,.anim .it.in .art.mv .dev{opacity:1;transform:none}
+.anim .it .art.mv .dev.ph{transform:none}
+.trk .sun{left:66%;width:min(600px,64%)}
 </style>
 </head>
 <body>
@@ -1537,6 +1592,10 @@ footer .links a,footer .links span{color:var(--ink)}
 </svg>
 
 <!-- 0. progress: step 2 of 3 -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <filter id="pencil" x="-5%" y="-20%" width="110%" height="140%"><feTurbulence type="fractalNoise" baseFrequency="1.1" numOctaves="1" seed="4" result="n"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.4 1.35" result="m"/><feComposite in="SourceGraphic" in2="m" operator="in" result="g"/><feTurbulence type="fractalNoise" baseFrequency=".04" numOctaves="2" seed="9" result="w"/><feDisplacementMap in="g" in2="w" scale="2.2"/></filter>
+  <filter id="wob" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency=".035" numOctaves="2" seed="3" result="w"/><feDisplacementMap in="SourceGraphic" in2="w" scale="2"/></filter>
+</defs></svg>
 <header class="fb">
   <div class="fb-bar">
     <div class="fb-id"><img src="../img/mark.png" alt="" width="44" height="44"><span><small>ANA CALIN</small><b>The Exit Plan</b></span></div>
@@ -1653,6 +1712,7 @@ footer .links a,footer .links span{color:var(--ink)}
               <img class="mk" src="../img/mark.png" alt="" width="56" height="56">
               <span class="vplay"><i><svg width="18" height="18" viewBox="0 0 26 26" aria-hidden="true"><path d="M8.6 5.6v14.8c0 .9 1 1.4 1.7 1l11.6-7.4c.7-.4.7-1.4 0-1.9L10.3 4.6c-.7-.5-1.7 0-1.7 1z" fill="#F72585"/></svg></i>tap for sound</span>
             </button></div>
+          <svg class="petals" viewBox="0 0 1110 620" aria-hidden="true"></svg>
           <img class="door-leaf" src="../img/vip/paint/door-leaf.webp" alt="" width="1110" height="620" aria-hidden="true">
           <img class="door-closed" src="../img/vip/paint/door-closed.webp" alt="" width="1110" height="620" aria-hidden="true">
         </div>
@@ -1693,21 +1753,20 @@ footer .links a,footer .links span{color:var(--ink)}
 <main>
 <!-- 2. your week: the free days on top, what VIP adds underneath at the moment it is used, then the side-by-side table -->
 <section class="vw">
-  <svg class="sunf" aria-hidden="true"><use href="#sfo"/></svg><svg class="sunf2" aria-hidden="true"><use href="#sfo"/></svg>
   <div class="wrap">
     <div class="vw-hd" data-r>
       <div><span class="eyebrow">Your week, Nov 17 to 20</span><h2>Work toward the sale <em>that makes this feel possible.</em></h2></div>
       <p>When someone pays for your help, you have something real to build on. The workshop helps you work toward that. VIP gives you the lessons to revisit and access to me while you put them to use.</p>
     </div>
 
-    <div class="trk" aria-label="Your week"><i class="road" aria-hidden="true"><b></b></i>
+    <div class="trk" aria-label="Your week"><div class="sun" aria-hidden="true"><i class="rays"></i><i class="disc"></i></div><i class="road" aria-hidden="true"><b></b></i>
       <div class="lane free">
         <span class="lane-k" aria-hidden="true">Free, for everyone</span>
-        <div class="stop s1"><img class="wk" src="../img/vip/paint/wk1.webp" alt="" width="240" height="190" loading="lazy" aria-hidden="true"><div class="dt"><b>17</b><small>Tue</small></div><span class="lb">Day 1</span><p>Find what you could sell and who could buy.</p></div>
-        <div class="stop s2"><img class="wk" src="../img/vip/paint/wk2.webp" alt="" width="240" height="190" loading="lazy" aria-hidden="true"><div class="dt"><b>18</b><small>Wed</small></div><span class="lb">Day 2</span><p>Give people a reason to pay your price.</p></div>
-        <div class="stop s3"><img class="wk" src="../img/vip/paint/wk3.webp" alt="" width="240" height="190" loading="lazy" aria-hidden="true"><div class="dt"><b>19</b><small>Thu</small></div><span class="lb">Day 3</span><p>Get ready to invite people to buy.</p><span class="bring"><i class="env" aria-hidden="true"></i>Bring your work to the VIP review.</span></div>
-        <div class="stop s4 vip"><img class="wk" src="../img/vip/paint/wk4.webp" alt="" width="240" height="190" loading="lazy" aria-hidden="true"><div class="dt"><span class="tg">VIP</span><b>20</b><small>Fri</small></div><span class="lb">Live group review</span><p>See what I’d improve in selected submissions.</p></div>
-        <div class="stop s5 next"><img class="wk" src="../img/vip/paint/wk5.webp" alt="" width="240" height="190" loading="lazy" aria-hidden="true"><span class="lb">Keep going</span><p>Put it in front of potential buyers and learn from the response.</p></div>
+        <div class="stop s1"><div class="wk wkb"><img src="../img/vip/paint/wk1-base.webp" alt="" width="240" height="190" loading="lazy"><svg class="wko" viewBox="0 0 240 190" aria-hidden="true"><g transform="rotate(-4 110 96)"><ellipse class="mv-c1" cx="106" cy="90" rx="50" ry="15" fill="none" stroke="#EC3486" stroke-width="2.6" filter="url(#pencil)"/></g></svg></div><div class="dt"><b>17</b><small>Tue</small></div><span class="lb">Day 1</span><p>Find what you could sell and who could buy.</p></div>
+        <div class="stop s2"><div class="wk wkb"><img src="../img/vip/paint/wk2-base.webp" alt="" width="240" height="190" loading="lazy"><svg class="wko" viewBox="0 0 240 190" aria-hidden="true"><image class="mv-tag" href="../img/vip/paint/wk2-tag.webp" width="240" height="190"/></svg></div><div class="dt"><b>18</b><small>Wed</small></div><span class="lb">Day 2</span><p>Give people a reason to pay your price.</p></div>
+        <div class="stop s3"><div class="wk wkb"><img src="../img/vip/paint/wk3.webp" alt="" width="240" height="190" loading="lazy"><svg class="wko" viewBox="0 0 240 190" aria-hidden="true"><g class="mv-sheet"><rect x="92" y="-6" width="60" height="78" fill="#FFFDF8" stroke="#3A2A22" stroke-width="1" filter="url(#wob)"/><path d="M100 14 h40 M100 26 h34 M100 38 h40 M100 50 h26" stroke="#9A8A7E" stroke-width="1.2" fill="none"/></g><g class="mv-seal"><circle cx="118" cy="112" r="7" fill="#C2185B"/><circle cx="118" cy="112" r="3" fill="#F5C518"/></g></svg></div><div class="dt"><b>19</b><small>Thu</small></div><span class="lb">Day 3</span><p>Get ready to invite people to buy.</p><span class="bring"><i class="env" aria-hidden="true"></i>Bring your work to the VIP review.</span></div>
+        <div class="stop s4 vip"><div class="wk wkb"><img src="../img/vip/paint/wk4-base.webp" alt="" width="240" height="190" loading="lazy"><svg class="wko" viewBox="0 0 240 190" aria-hidden="true"><g transform="rotate(-3 120 90)" fill="none" stroke="#C93A30" stroke-width="2.4" stroke-linecap="round" filter="url(#pencil)"><path class="mv-r1" d="M66 50 C100 47 140 51 168 48"/><path class="mv-r2" d="M70 88 c10 8 18 8 28 0"/><path class="mv-r3" d="M172 66 l8 -6"/><path class="mv-r4" d="M170 72 l12 -2"/></g></svg></div><div class="dt"><span class="tg">VIP</span><b>20</b><small>Fri</small></div><span class="lb">Live group review</span><p>See what I’d improve in selected submissions.</p></div>
+        <div class="stop s5 next"><div class="wk wkb"><img class="mv-box" src="../img/vip/paint/wk5-base.webp" alt="" width="240" height="190" loading="lazy"><svg class="wko" viewBox="0 0 240 190" aria-hidden="true"><defs><clipPath id="slotclip"><rect x="-60" y="-200" width="360" height="285"/></clipPath></defs><g clip-path="url(#slotclip)"><image class="mv-env" href="../img/vip/paint/wk5-env.webp" x="80" y="40" width="80" height="60"/></g><image class="mv-l1" href="../img/vip/paint/wk5-letter.webp" x="90" y="66" width="60" height="44"/><image class="mv-l2" href="../img/vip/paint/wk5-letter.webp" x="90" y="66" width="60" height="44"/></svg></div><span class="lb">Keep going</span><p>Put it in front of potential buyers and learn from the response.</p></div>
         <i class="fly" aria-hidden="true"><b></b><span></span><span></span></i>
       </div>
     </div>
@@ -1742,13 +1801,27 @@ footer .links a,footer .links span{color:var(--ink)}
     </div>
 
     <!-- 01: the live group review -->
-    <article class="it it1" data-r>
-      <div class="art pa rv" aria-hidden="true">
-        <div class="dev lap l1"><img src="../img/vip/paint/laptop.webp" alt="" width="600" height="420" loading="lazy"><div class="scrn2"><img src="../img/vip/raw/review.webp" alt="" loading="lazy"></div></div>
-        <img class="prop stack" src="../img/vip/paint/stack.webp" alt="" width="320" height="260" loading="lazy">
-        <img class="prop coffee" src="../img/vip/paint/coffee.webp" alt="" width="200" height="200" loading="lazy"><span class="steam"><i></i><i></i><i></i></span>
-        <img class="prop pencil" src="../img/vip/paint/pencil.webp" alt="" width="320" height="60" loading="lazy">
-        <span class="rstamp" style="left:6%;top:2%">EXAMPLE</span>
+    <article class="it it1">
+      <div class="art pa mv rv" aria-hidden="true">
+        <div class="dev lap l1" style="left:0;top:6%;width:58%"><img src="../img/vip/paint/laptop.webp" alt="" width="600" height="420" loading="lazy"><div class="scrn2"><img src="../img/vip/raw/review.webp" alt="" loading="lazy"></div></div>
+        <img class="mv-coffee" src="../img/vip/paint/coffee.webp" alt="" style="right:4%;top:2%;width:17%">
+        <span class="steam" style="right:9.5%;top:-6%"><i></i><i></i><i></i></span>
+        <img class="mv-stack" src="../img/vip/paint/stack.webp" alt="" style="right:0;bottom:1%;width:31%">
+        <div class="mv-sheetbox" style="left:37%;top:23%;width:46%">
+          <img src="../img/vip/paint/sub-sheet.webp" alt="">
+          <svg viewBox="0 0 300 350">
+            <text x="40" y="54" font-family="Manrope,sans-serif" font-weight="800" font-size="8.5" letter-spacing="2" fill="#8A7A6E">A SALES EMAIL, SHARED</text>
+            <text font-family="Instrument Serif,serif" font-size="21" fill="#2E2420"><tspan x="40" y="90">I made a thing, if anyone</tspan><tspan x="40" y="114">wants it.</tspan><tspan x="40" y="152">It opens Monday. Here is</tspan><tspan x="40" y="176">who it’s for.</tspan></text>
+            <g fill="none" stroke="#9A8A7E" stroke-width="1.1" filter="url(#wob)"><path d="M40 272 q5 -3 10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0"/><path d="M40 292 q5 -3 10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0"/><path d="M40 314 q5 -3 10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0"/></g>
+            <g fill="none" stroke="#C93A30" stroke-width="2.6" stroke-linecap="round" filter="url(#pencil)"><path class="mv-s1" d="M36 85 C100 81 180 87 258 83"/><path class="mv-s2" d="M36 109 C60 107 84 110 108 108"/></g>
+            <path class="mv-tick" d="M168 168 l8 9 l17 -21" fill="none" stroke="#3F8F4E" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" filter="url(#pencil)"/>
+            <defs><clipPath id="nclip1"><rect class="mv-n1" x="34" y="196" width="0" height="34"/></clipPath><clipPath id="nclip2"><rect class="mv-n2" x="34" y="224" width="0" height="34"/></clipPath></defs>
+            <text class="hand" font-family="Nothing You Could Do,cursive" font-size="21" fill="#C93A30" clip-path="url(#nclip1)"><tspan class="mv-t1" x="44" y="220">Say the price in</tspan></text>
+            <text class="hand" font-family="Nothing You Could Do,cursive" font-size="21" fill="#C93A30" clip-path="url(#nclip2)"><tspan class="mv-t2" x="54" y="248">the first line.</tspan></text>
+            <g class="mv-pen"><image href="../img/vip/paint/pencil.webp" x="-10" y="-28" width="320" height="60"/></g>
+          </svg>
+        </div>
+        <span class="rstamp mv-stamp" style="left:3%;top:2%">EXAMPLE</span>
       </div>
       <div class="tx">
         <span class="num">01</span>
@@ -1766,12 +1839,18 @@ footer .links a,footer .links span{color:var(--ink)}
     </article>
 
     <!-- 02: the VIP WhatsApp group: the chat, and when Ana is in it -->
-    <article class="it it2 flip" data-r>
-      <div class="art pa wa2" aria-hidden="true">
-        <div class="dev lap l2"><img src="../img/vip/paint/laptop.webp" alt="" width="600" height="420" loading="lazy"><div class="scrn2"><img src="../img/vip/raw/compose.webp" alt="" loading="lazy"><span class="hl"></span></div></div>
-        <div class="dev ph"><img src="../img/vip/paint/phone.webp" alt="" width="260" height="500" loading="lazy"><div class="scrn2"><img src="../img/vip/raw/vipgroup.webp" alt="" loading="lazy"></div></div>
-        <div class="clk"><img src="../img/vip/paint/clocks.webp" alt="" width="560" height="150" loading="lazy"><img class="wdg" src="../img/vip/paint/wedges.webp" alt="" width="560" height="150" loading="lazy"></div>
-        <span class="rstamp" style="left:4%;top:0">EXAMPLE</span>
+    <article class="it it2 flip">
+      <div class="art pa mv wa2" aria-hidden="true">
+        <div class="dev lap l2" style="left:0;top:5%;width:62%"><img src="../img/vip/paint/laptop.webp" alt="" width="600" height="420" loading="lazy"><div class="scrn2"><img src="../img/vip/raw/compose.webp" alt="" loading="lazy"></div></div>
+        <div class="dev ph" style="right:3%;top:0;width:28%"><img src="../img/vip/paint/phone.webp" alt="" width="260" height="500" loading="lazy"><div class="scrn2"><img class="mv-chat" src="../img/vip/raw/vipgroup.webp" alt="" loading="lazy"></div></div>
+        <svg class="mv-over" viewBox="0 0 600 500">
+          <rect class="mv-hl" x="60" y="111" width="132" height="10" fill="#FFD400" opacity=".55"/>
+          <g class="mv-strip"><path class="mv-strip-s" d="M0 0 H132 V16 H0 Z" fill="#FFE68A" stroke="#2E2420" stroke-width="1"/><path class="mv-strip-l" d="M8 8 q4 -3 8 0 t8 0 t8 0 t8 0 t8 0 t8 0 t8 0 t8 0 t8 0 t8 0 t8 0 t8 0 t8 0 t8 0 t8 0" fill="none" stroke="#3D332E" stroke-width="1.1"/></g>
+          <g class="mv-voice"><rect x="440" y="288" width="96" height="24" rx="10" fill="#FFFFFF" stroke="#2E2420" stroke-width=".8"/><circle cx="455" cy="300" r="8" fill="#EC3486"/><path d="M452 296 v8 l6 -4 Z" fill="#fff"/><text x="532" y="309" text-anchor="end" font-family="Manrope,sans-serif" font-size="6.5" font-weight="700" fill="#7A6A60">Ana</text><rect class="mv-bar" x="478" y="295" width="2.6" height="10" rx="1.3" fill="#7A6A60"/><rect class="mv-bar" x="483" y="295" width="2.6" height="10" rx="1.3" fill="#7A6A60"/><rect class="mv-bar" x="488" y="295" width="2.6" height="10" rx="1.3" fill="#7A6A60"/><rect class="mv-bar" x="493" y="295" width="2.6" height="10" rx="1.3" fill="#7A6A60"/><rect class="mv-bar" x="498" y="295" width="2.6" height="10" rx="1.3" fill="#7A6A60"/><rect class="mv-bar" x="503" y="295" width="2.6" height="10" rx="1.3" fill="#7A6A60"/><rect class="mv-bar" x="508" y="295" width="2.6" height="10" rx="1.3" fill="#7A6A60"/><rect class="mv-bar" x="513" y="295" width="2.6" height="10" rx="1.3" fill="#7A6A60"/><rect class="mv-bar" x="518" y="295" width="2.6" height="10" rx="1.3" fill="#7A6A60"/><rect class="mv-bar" x="523" y="295" width="2.6" height="10" rx="1.3" fill="#7A6A60"/></g>
+          <g class="mv-clock" data-i="0"><circle cx="64" cy="402" r="38" fill="#FFFDF8" stroke="#2E2420" stroke-width="1.3" filter="url(#wob)"/><circle class="mv-wedge" cx="64" cy="402" r="18" fill="none" stroke="#F25A9C" stroke-width="36" transform="rotate(-90 64 402)" opacity=".85"/><g stroke="#2E2420" stroke-linecap="round"><line x1="64" y1="402" x2="78" y2="402" stroke-width="2.4"/><line class="mv-hand" x1="64" y1="402" x2="64" y2="372" stroke-width="1.8"/></g><circle cx="64" cy="402" r="2.6" fill="#2E2420"/><text x="64" y="462" text-anchor="middle" font-family="Nothing You Could Do,cursive" font-size="15" fill="#3D332E">Day 1</text></g><g class="mv-clock" data-i="1"><circle cx="166" cy="402" r="38" fill="#FFFDF8" stroke="#2E2420" stroke-width="1.3" filter="url(#wob)"/><circle class="mv-wedge" cx="166" cy="402" r="18" fill="none" stroke="#F25A9C" stroke-width="36" transform="rotate(-90 166 402)" opacity=".85"/><g stroke="#2E2420" stroke-linecap="round"><line x1="166" y1="402" x2="180" y2="402" stroke-width="2.4"/><line class="mv-hand" x1="166" y1="402" x2="166" y2="372" stroke-width="1.8"/></g><circle cx="166" cy="402" r="2.6" fill="#2E2420"/><text x="166" y="462" text-anchor="middle" font-family="Nothing You Could Do,cursive" font-size="15" fill="#3D332E">Day 2</text></g><g class="mv-clock" data-i="2"><circle cx="268" cy="402" r="38" fill="#FFFDF8" stroke="#2E2420" stroke-width="1.3" filter="url(#wob)"/><circle class="mv-wedge" cx="268" cy="402" r="18" fill="none" stroke="#F25A9C" stroke-width="36" transform="rotate(-90 268 402)" opacity=".85"/><g stroke="#2E2420" stroke-linecap="round"><line x1="268" y1="402" x2="282" y2="402" stroke-width="2.4"/><line class="mv-hand" x1="268" y1="402" x2="268" y2="372" stroke-width="1.8"/></g><circle cx="268" cy="402" r="2.6" fill="#2E2420"/><text x="268" y="462" text-anchor="middle" font-family="Nothing You Could Do,cursive" font-size="15" fill="#3D332E">Day 3</text></g>
+          <g class="mv-sunwrap"><defs><clipPath id="horizon"><rect x="320" y="330" width="130" height="102"/></clipPath></defs><g clip-path="url(#horizon)"><g class="mv-sun" transform="translate(385 432)"><circle r="20" fill="#F5C518" stroke="#2E2420" stroke-width="1.2"/><g class="mv-rays" stroke="#2E2420" stroke-width="1.6" stroke-linecap="round"><line x1="0" y1="-25" x2="0" y2="-33" transform="rotate(0)"/><line x1="0" y1="-25" x2="0" y2="-33" transform="rotate(45)"/><line x1="0" y1="-25" x2="0" y2="-33" transform="rotate(90)"/><line x1="0" y1="-25" x2="0" y2="-33" transform="rotate(135)"/><line x1="0" y1="-25" x2="0" y2="-33" transform="rotate(180)"/><line x1="0" y1="-25" x2="0" y2="-33" transform="rotate(225)"/><line x1="0" y1="-25" x2="0" y2="-33" transform="rotate(270)"/><line x1="0" y1="-25" x2="0" y2="-33" transform="rotate(315)"/></g></g></g><path d="M330 432 H442" stroke="#2E2420" stroke-width="1.3" filter="url(#wob)"/><text x="386" y="462" text-anchor="middle" font-family="Nothing You Could Do,cursive" font-size="15" fill="#3D332E">one morning</text></g>
+        </svg>
+        <span class="rstamp mv-stamp" style="right:2%;bottom:2%">EXAMPLE</span>
       </div>
       <div class="tx">
         <span class="num">02</span>
@@ -1784,13 +1863,12 @@ footer .links a,footer .links span{color:var(--ink)}
     </article>
 
     <!-- 03: the bonus: six ideas become one, then the course and its four parts -->
-    <article class="it it3" data-r>
-      <div class="art pa spr" aria-hidden="true">
-        <img class="prop n5" src="../img/vip/paint/notes5.webp" alt="" width="360" height="300" loading="lazy">
-        <img class="prop n1" src="../img/vip/paint/note1.webp" alt="" width="360" height="300" loading="lazy">
-        <div class="dev lap l3"><img src="../img/vip/paint/laptop.webp" alt="" width="600" height="420" loading="lazy"><div class="scrn2"><img src="../img/vip/raw/sprint-lesson.webp" alt="" loading="lazy"></div></div>
-        <img class="prop c1" src="../img/vip/paint/card1.webp" alt="" width="360" height="240" loading="lazy">
-        <span class="src">From the Offer Clarity Sprint</span>
+    <article class="it it3">
+      <div class="art pa mv spr" aria-hidden="true">
+        <div class="dev lap l3" style="left:17%;top:13%;width:66%"><img src="../img/vip/paint/laptop.webp" alt="" width="600" height="420" loading="lazy"><div class="scrn2"><img src="../img/vip/raw/sprint-lesson.webp" alt="" loading="lazy"></div></div>
+        <img class="mv-note" src="../img/vip/paint/note-y.webp" alt="" style="left:0%;top:0%;width:21%;--r:-10deg"><img class="mv-note" src="../img/vip/paint/note-g.webp" alt="" style="left:2%;top:50%;width:21%;--r:8deg"><img class="mv-note" src="../img/vip/paint/note-b.webp" alt="" style="left:74%;top:-2%;width:21%;--r:7deg"><img class="mv-note" src="../img/vip/paint/note-y.webp" alt="" style="left:79%;top:36%;width:21%;--r:-6deg"><img class="mv-note" src="../img/vip/paint/note-g.webp" alt="" style="left:22%;top:66%;width:21%;--r:-4deg"><img class="mv-note pink" src="../img/vip/paint/note-p.webp" alt="" style="left:66%;top:62%;width:21%;--r:5deg">
+        <img class="mv-card" src="../img/vip/paint/card1.webp" alt="" style="right:-2%;bottom:0;width:46%">
+        <span class="src" style="left:24%;top:72%">From the Offer Clarity Sprint</span>
       </div>
       <div class="tx">
         <span class="num">03</span>
@@ -1808,11 +1886,12 @@ footer .links a,footer .links span{color:var(--ink)}
     </article>
 
     <!-- 04: the recordings, for life -->
-    <article class="it it4 flip" data-r>
-      <div class="art pa rec" aria-hidden="true">
-        <img class="prop plan" src="../img/vip/paint/planner.webp" alt="" width="460" height="300" loading="lazy">
-        <img class="prop stk" src="../img/vip/paint/sticky.webp" alt="" width="200" height="190" loading="lazy">
-        <div class="dev lap l4"><img src="../img/vip/paint/laptop.webp" alt="" width="600" height="420" loading="lazy"><div class="scrn2"><div class="replay"><img class="sl" src="../img/slides/day2a.webp" alt="" loading="lazy"><img class="me" src="../img/real/ana-real-c.webp" alt="" loading="lazy"><span class="rbar"><i class="pl"></i><b>DAY 2 · RECORDING</b><span class="pg"><i></i></span><em>saved</em></span></div></div></div>
+    <article class="it it4 flip">
+      <div class="art pa mv rec" aria-hidden="true">
+        <img class="mv-plan" src="../img/vip/paint/planner.webp" alt="" style="left:0;top:0;width:56%">
+        <img class="mv-sticky" src="../img/vip/paint/sticky.webp" alt="" style="left:17%;top:12%;width:20%">
+        <div class="dev lap l4" style="right:0;bottom:2%;width:64%"><img src="../img/vip/paint/laptop.webp" alt="" width="600" height="420" loading="lazy"><div class="scrn2"><div class="replay"><img class="sl mv-slide" src="../img/slides/day2a.webp" alt="" loading="lazy"><span class="ring"></span><img class="me" src="../img/real/ana-real-c.webp" alt="" loading="lazy"><span class="rbar"><i class="pl"></i><b>DAY 2 · RECORDING</b><span class="pg"><i class="mv-prog"></i></span><em>saved</em></span></div></div></div>
+        <svg class="mv-over" viewBox="0 0 600 500"><g class="mv-play" transform="translate(408 330)"><circle class="mv-ripple" r="26" fill="none" stroke="#fff" stroke-width="3" opacity="0"/><circle r="26" fill="rgba(26,20,18,.62)"/><path class="mv-icon" d="M-8 -12 L13 0 L-8 12 Z" fill="#fff"/></g></svg>
       </div>
       <div class="tx">
         <span class="num">04</span>
@@ -1862,7 +1941,7 @@ footer .links a,footer .links span{color:var(--ink)}
 <section class="vb" id="buy">
   <div class="wrap">
     <div class="vb-g">
-      <div class="lw" data-r>
+      <div class="lw">
       <img class="lw-env" src="../img/vip/paint/env.webp" alt="" width="560" height="440" loading="lazy" aria-hidden="true">
       <img class="seal" src="../img/vip/paint/seal.webp" alt="" width="130" height="130" loading="lazy" aria-hidden="true">
       <div class="letter">
@@ -2069,90 +2148,12 @@ footer .links a,footer .links span{color:var(--ink)}
   }
 })();
 </script>
-<script>
-/* v5 motion (tools/paint/PLAN-v5.md): each scene's scroll progress is smoothed every frame, so layers glide and
-   settle; layers follow keyframes on arcs with easing, at their own depth. Reduced motion: everything at rest. */
-(function(){
-  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var ease = function(t){ return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2 };
-  var clamp = function(v, a, b){ return Math.max(a, Math.min(b, v)) };
-  /* keyframes: [progress, {x, y (percent of the stage width), r (deg), s (scale), o (opacity), a (arc height to the next key, %)}] */
-  var SC = [
-    { el: '.it1 .art', k: {
-      '.l1':     [[0, {y: 7, s: .94, o: .0}], [.35, {y: 0, s: 1, o: 1}], [1, {y: -2, s: 1.015, o: 1}]],
-      '.coffee': [[0, {y: -6, o: 0, r: -20}], [.4, {y: 0, o: 1, r: 0}], [1, {y: -3, r: 6, o: 1}]],
-      '.stack':  [[0, {x: 10, y: 6, r: 8, o: 0}], [.5, {x: 0, y: 0, r: 0, o: 1}], [1, {x: -1, y: -1, r: -1, o: 1}]],
-      '.pencil': [[.15, {x: 18, y: 10, r: -60, o: 0, a: 10}], [.6, {x: 0, y: 0, r: -24, o: 1}], [1, {x: -2, y: -1, r: -20, o: 1}]],
-      '.rstamp': [[.45, {s: 1.5, o: 0, r: -18}], [.6, {s: 1, o: .8, r: -7}], [1, {s: 1, o: .8, r: -7}]] } },
-    { el: '.it2 .art', k: {
-      '.l2':     [[0, {y: 6, s: .95, o: 0}], [.35, {y: 0, s: 1, o: 1}], [1, {y: -2, o: 1}]],
-      '.ph':     [[.1, {x: -22, y: 18, r: -14, s: .85, o: 0, a: 12}], [.55, {x: 0, y: 0, r: 5, s: 1, o: 1}], [1, {x: 0, y: -2, r: 4, o: 1}]],
-      '.hl':     [[.45, {sx: 0}], [.7, {sx: 1}], [1, {sx: 1}]],
-      '.clk':    [[.3, {y: 4, o: 0}], [.5, {y: 0, o: 1}], [1, {y: 0, o: 1}]],
-      '.wdg':    [[.5, {cr: 100}], [.62, {cr: 72}], [.66, {cr: 72}], [.78, {cr: 45}], [.82, {cr: 45}], [.95, {cr: 18}], [1, {cr: 18}]],
-      '.rstamp': [[.6, {s: 1.5, o: 0, r: -18}], [.72, {s: 1, o: .8, r: -6}], [1, {s: 1, o: .8, r: -6}]] } },
-    { el: '.it3 .art', k: {
-      '.l3':     [[0, {y: 6, s: .95, o: 0}], [.35, {y: 0, s: 1, o: 1}], [1, {y: -2, o: 1}]],
-      '.n5':     [[.15, {x: 0, y: 0, s: 1, o: 1}], [.65, {x: 14, y: 8, s: .82, o: .0, a: -4}], [1, {x: 14, y: 8, s: .82, o: 0}]],
-      '.n1':     [[.25, {x: 0, y: 0, r: 0, s: 1, o: 1, a: -16}], [.72, {x: 52, y: 40, r: -8, s: .9, o: 1}], [.8, {x: 54, y: 42, r: -6, s: .9, o: 0}], [1, {x: 54, y: 42, o: 0}]],
-      '.c1':     [[.7, {s: .9, o: 0, r: 4}], [.85, {s: 1, o: 1, r: 0}], [1, {s: 1, o: 1, r: 0}]],
-      '.src':    [[.35, {o: 0}], [.5, {o: 1}], [1, {o: 1}]] } },
-    { el: '.it4 .art', k: {
-      '.plan':   [[0, {y: 6, o: 0, r: -2}], [.3, {y: 0, o: 1, r: 0}], [1, {y: -2, o: 1}]],
-      '.stk':    [[.2, {x: -16, y: -26, r: -30, s: 1.35, o: 0, a: -6}], [.55, {x: 0, y: 0, r: 0, s: 1, o: 1}], [.62, {x: 0, y: .6, r: 2, s: .98, o: 1}], [.7, {x: 0, y: 0, r: 0, s: 1, o: 1}], [1, {o: 1}]],
-      '.l4':     [[.3, {x: 6, o: 0}], [.6, {x: 0, o: 1}], [1, {x: 0, y: -1, o: 1}]],
-      '.pg i':   [[.55, {w: 8}], [1, {w: 82}]] } },
-    { el: '.fitg', k: { '.seat.two .you': [[0, {x: -15}], [.7, {x: 3}], [1, {x: 3}]] } },
-    { el: '.lw', k: { '.letter': [[0, {y: 14, r: -2.4}], [.65, {y: 0, r: -1.2}], [1, {y: 0, r: -1.2}]],
-                     '.seal':   [[.55, {s: 1.6, o: 0, r: -36}], [.75, {s: 1, o: 1, r: -12}], [1, {s: 1, o: 1, r: -12}]] } }
-  ];
-  function lerpKeys(keys, p){
-    if (p <= keys[0][0]) return { v: keys[0][1], arc: 0 };
-    for (var i = 0; i < keys.length - 1; i++) { var a = keys[i], b = keys[i + 1];
-      if (p <= b[0]) { var t = ease((p - a[0]) / (b[0] - a[0])), o = {};
-        for (var k in b[1]) o[k] = (a[1][k] == null ? (k === 's' || k === 'o' || k === 'sx' ? 1 : 0) : a[1][k]) + (b[1][k] - (a[1][k] == null ? (k === 's' || k === 'o' || k === 'sx' ? 1 : 0) : a[1][k])) * t;
-        for (var k2 in a[1]) if (!(k2 in o)) o[k2] = a[1][k2];
-        return { v: o, arc: (a[1].a || 0) * Math.sin(Math.PI * t) } } }
-    return { v: keys[keys.length - 1][1], arc: 0 };
-  }
-  var scenes = [];
-  SC.forEach(function(sc){ document.querySelectorAll(sc.el).forEach(function(root){
-    var layers = []; for (var sel in sc.k) root.querySelectorAll(sel).forEach(function(n){ n.setAttribute('data-anim', ''); layers.push({ n: n, k: sc.k[sel], base: getComputedStyle(n).transform }) });
-    scenes.push({ root: root, layers: layers, p: reduce ? 1 : 0 }) }) });
-  function apply(sc){
-    var w = sc.root.clientWidth || 600;
-    sc.layers.forEach(function(L){
-      var r = lerpKeys(L.k, sc.p), v = r.v, t = '';
-      if (v.cr != null) { L.n.style.clipPath = 'inset(0 ' + v.cr.toFixed(2) + '% 0 0)'; return }
-      if (v.w != null) { L.n.style.width = v.w.toFixed(2) + '%'; return }
-      if (v.sx != null) { L.n.style.transform = 'scaleX(' + v.sx.toFixed(3) + ')'; return }
-      var x = (v.x || 0) / 100 * w, y = ((v.y || 0) - r.arc) / 100 * w;
-      t = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px) rotate(' + (v.r || 0).toFixed(2) + 'deg) scale(' + (v.s == null ? 1 : v.s).toFixed(4) + ')';
-      L.n.style.transform = t; if (v.o != null) L.n.style.opacity = v.o.toFixed(3);
-    });
-  }
-  /* the week: the road draws, each sheet focuses as the road reaches it */
-  var trk = document.querySelector('.trk'), stops = trk ? trk.querySelectorAll('.stop .wk') : [], wp = reduce ? 1 : 0;
-  /* the rail: which item is in front of you */
-  var items = document.querySelectorAll('.vi .it'), rail = document.querySelectorAll('.rail span'), railLn = document.querySelector('.rail-ln');
-  var last = performance.now();
-  function frame(now){
-    var dt = Math.min(64, now - last) / 1000; last = now; var k = 1 - Math.exp(-dt * 5.5), vh = innerHeight;
-    scenes.forEach(function(sc){ var b = sc.root.getBoundingClientRect(); if (b.bottom < -200 || b.top > vh + 200) return;
-      var target = reduce ? 1 : clamp((vh * .92 - b.top) / (vh * .5 + b.height * .5), 0, 1);
-      if (Math.abs(target - sc.p) > .0005) { sc.p += (target - sc.p) * k; apply(sc) } else if (!sc.done) { sc.p = target; apply(sc) } sc.done = Math.abs(target - sc.p) <= .0005 });
-    if (trk) { var tb = trk.getBoundingClientRect(), tt = reduce ? 1 : clamp((vh * .85 - tb.top) / (vh * .55), 0, 1); wp += (tt - wp) * k;
-      trk.style.setProperty('--wp', wp.toFixed(4));
-      stops.forEach(function(im, i){ var q = clamp((wp - i * .2) / .22, 0, 1), e = ease(q); im.style.opacity = (.15 + .85 * e).toFixed(3); im.style.transform = 'translateY(' + ((1 - e) * 14).toFixed(1) + 'px) scale(' + (.9 + .1 * e).toFixed(3) + ') rotate(' + ((1 - e) * -4).toFixed(2) + 'deg)' }) }
-    if (rail.length) { var cur = -1, prog = 0; items.forEach(function(it, i){ var b = it.getBoundingClientRect(); if (b.top < vh * .55) { cur = i; prog = clamp((vh * .55 - b.top) / b.height, 0, 1) } });
-      rail.forEach(function(r, i){ r.classList.toggle('on', i === cur); r.classList.toggle('done', i < cur) });
-      if (railLn) railLn.style.setProperty('--rp', cur < 0 ? 0 : ((cur + prog) / items.length).toFixed(3)) }
-    document.body.classList.toggle('scrolled', scrollY > 30);
-    requestAnimationFrame(frame);
-  }
-  scenes.forEach(apply); requestAnimationFrame(frame);
-})();
-</script>
+<script src="../assets/vendor/gsap.min.js"></script>
+<script src="../assets/vendor/ScrollTrigger.min.js"></script>
+<script src="../assets/vendor/DrawSVGPlugin.min.js"></script>
+<script src="../assets/vendor/MotionPathPlugin.min.js"></script>
+<script src="../assets/vendor/MorphSVGPlugin.min.js"></script>
+<script src="../assets/vip-motion.js?v=2"></script>
 
 </body>
 </html>
