@@ -207,6 +207,155 @@ body.xlocked .xapp{filter:blur(7px);opacity:.5;pointer-events:none;user-select:n
 .xhow .xdb p{margin-top:10px;font-size:15px;line-height:1.55;color:var(--ink2)}
 .xback{margin-top:26px;text-align:center;font-weight:700;font-size:15px}
 .xback a{color:var(--ink2);text-underline-offset:3px}
+/* ---------- the plan, friendlier (Sean, Nov 1): bigger type, plain words, four tiles, then colour-coded steps,
+   each with its goal, its questions and a "your answer" box ---------- */
+.xplan{padding:32px 34px 32px}
+.xp-k{font-size:13px}
+.xplan h3{font-size:clamp(34px,4vw,54px);line-height:1.02;margin-top:10px}
+.xplan h3 b{white-space:nowrap}
+.xp-sub{margin-top:12px;max-width:720px;font-size:19px;line-height:1.55;color:var(--ink2)}
+.xp-sub b{color:var(--ink)}
+.xnotes2:empty{display:none}
+.xnotes2{margin-top:16px;display:grid;gap:10px;max-width:760px}
+.xnote{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border-radius:16px;background:#fff;border:1.8px solid var(--pink);font-size:16.5px;line-height:1.5;color:var(--ink2)}
+.xnote b{color:var(--ink)}
+.xnote::before{content:"!";flex:none;display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--pink);color:#fff;font-weight:800;font-size:15px;line-height:1}
+.xnote.calm{border-color:rgba(26,20,18,.3)}
+.xnote.calm::before{content:"i";background:var(--ink)}
+
+/* four tiles: the whole plan at a glance; each opens its step */
+.xtiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:24px}
+.xtile{--tone:#fff;display:flex;flex-direction:column;align-items:flex-start;gap:2px;min-height:178px;padding:16px 18px 16px;border:1.8px solid var(--ink);border-radius:20px;background:var(--tone);text-align:left;font:inherit;color:var(--ink);cursor:pointer;transition:transform .15s,box-shadow .15s}
+button.xtile:hover{transform:translateY(-2px);box-shadow:0 5px 0 var(--ink)}
+.xtile.t-sales{--tone:var(--sun)}
+.xtile.t-money{--tone:#FFF3BF}
+.xtile.t-time{--tone:#FFE1EE}
+.xtile.t-people{--tone:#DDF3E4}
+.xtile .tl{display:flex;align-items:center;gap:8px;font-weight:800;font-size:15px}
+.xtile .tl svg{width:22px;height:22px}
+.xtile .tv{margin-top:10px;font-family:var(--serif);font-size:clamp(38px,3.6vw,50px);line-height:.95;letter-spacing:-.01em}
+.xtile .tv.q{color:rgba(26,20,18,.35)}
+.xtile .td{margin-top:4px;font-size:15.5px;line-height:1.35;color:var(--ink2)}
+.xtile .tn{margin-top:auto;padding-top:10px;font-weight:800;font-size:14.5px;text-decoration:underline;text-underline-offset:3px}
+.xtile .tn.ok{text-decoration:none}
+
+/* what's still unknown, as a short checklist */
+.xtodo:empty{display:none}
+.xtodo{margin-top:22px;padding:18px 20px;border-radius:18px;background:#fff;border:1.8px dashed rgba(26,20,18,.4);max-width:760px}
+.xtodo h4{font-family:var(--serif);font-weight:400;font-size:26px;line-height:1.1}
+.xtodo ul{list-style:none;margin-top:10px;display:grid;gap:8px}
+.xtodo li{position:relative;padding-left:34px;font-size:17px;line-height:1.45;color:var(--ink2)}
+.xtodo li::before{content:"";position:absolute;left:0;top:1px;width:22px;height:22px;border-radius:7px;border:2px solid var(--ink);background:var(--cream)}
+.xtodo p{margin-top:12px;font-size:15px;line-height:1.5;color:var(--ink3)}
+
+/* the steps */
+.xsteps-h{margin-top:46px;max-width:780px}
+.xsteps-h h3{font-size:clamp(32px,3.4vw,46px);line-height:1.04}
+.xsteps-h h3 em{color:var(--pink)}
+.xsteps-h p{margin-top:10px;font-size:18px;line-height:1.55;color:var(--ink2)}
+.xst{--tone:#FFF3BF;margin-top:18px;border:1.8px solid var(--ink);border-radius:26px;background:#fff;overflow:hidden;box-shadow:6px 7px 0 var(--tone),6px 7px 0 1.8px var(--ink)}
+.xst.money{--tone:#FFE680}
+.xst.time{--tone:#FFB8D9}
+.xst.people{--tone:#A8E2BD}
+.xst.real{--tone:#E3D3BA}
+.xst>summary{display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;gap:18px;align-items:center;padding:20px 24px;background:#FFFBEA;background:color-mix(in srgb,var(--tone) 45%,#fff);cursor:pointer;list-style:none}
+.xst>summary::-webkit-details-marker{display:none}
+.xst>summary::after{content:"";width:12px;height:12px;margin:0 6px;border-right:2.6px solid var(--ink);border-bottom:2.6px solid var(--ink);transform:rotate(45deg) translate(-3px,-3px);transition:transform .2s}
+.xst[open]>summary::after{transform:rotate(-135deg) translate(-3px,-3px)}
+.xst>summary:focus-visible{outline:3px solid var(--ink);outline-offset:-6px;border-radius:24px}
+.xst-n{display:grid;place-items:center;width:56px;height:56px;border-radius:50%;background:var(--tone);border:2px solid var(--ink);box-shadow:0 3px 0 var(--ink);font-family:var(--serif);font-size:32px;line-height:1}
+.xst-n svg{width:26px;height:26px}
+.xst-t b{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(27px,2.6vw,34px);line-height:1.05}
+.xst-t em{display:block;margin-top:6px;font-style:normal;font-size:17px;line-height:1.4;color:var(--ink2)}
+.xst-t strong{color:var(--ink)}
+.xst-s{justify-self:end;max-width:230px;padding:7px 14px;border-radius:999px;background:#fff;border:1.6px solid rgba(26,20,18,.35);font-weight:800;font-size:14.5px;line-height:1.25;text-align:center}
+.xst-s.done{background:var(--ink);border-color:var(--ink);color:#fff}
+.xst-b{padding:6px 28px 30px;border-top:1.8px solid var(--ink)}
+.xst-why{margin-top:20px;max-width:720px;font-size:18px;line-height:1.55;color:var(--ink2)}
+.xf{border:0;min-width:0;padding:22px 0;border-bottom:1.5px dashed rgba(26,20,18,.16)}
+.xst-b .xf:last-of-type{border-bottom:0}
+.xf>label,.xf>legend{display:block;font-weight:800;font-size:19.5px;line-height:1.3;color:var(--ink);padding:0}
+.xf>legend{margin-bottom:12px;float:left;width:100%}
+.xf>legend+*{clear:both}
+.xf .tech{display:block;margin-top:3px;font-weight:700;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3)}
+.xf .opt{margin-left:6px;padding:2px 8px;border-radius:999px;background:var(--cream);border:1px solid rgba(26,20,18,.2);font-weight:700;font-size:12.5px;color:var(--ink3);vertical-align:3px}
+.xf .xhelp{margin-top:6px;max-width:680px;font-size:16.5px;line-height:1.5;color:var(--ink2)}
+.xf .xin{margin-top:12px;min-height:58px;max-width:380px}
+.xf .xin input{font-size:21px;height:54px}
+.xf .xin .pre,.xf .xin .suf{font-size:16px}
+.xst .xopt{font-size:17px}
+.xst .xopt span small{display:block;margin-top:3px;font-weight:500;font-size:14.5px;line-height:1.4;color:var(--ink2)}
+.xsubs{margin-top:16px;font-size:16.5px}
+.xfine{margin-top:16px;max-width:720px;font-size:14.5px;line-height:1.55;color:var(--ink3)}
+
+/* the answer box at the end of each step */
+.xans{margin-top:20px;padding:20px 22px 20px;border-radius:20px;background:#FFFBEA;background:color-mix(in srgb,var(--tone) 38%,#fff);border:1.8px solid var(--ink)}
+.xans:empty{display:none}
+.xans.soft{background:var(--cream);border-style:dashed}
+.xans>small{display:block;font-weight:800;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2)}
+.xans .big{margin-top:6px;font-family:var(--serif);font-size:clamp(27px,2.8vw,36px);line-height:1.12;color:var(--ink)}
+.xans .big b{font-weight:400;background:linear-gradient(transparent 62%,rgba(255,255,255,.95) 62%,rgba(255,255,255,.95) 94%,transparent 94%)}
+.xans p{margin-top:8px;font-size:17px;line-height:1.5;color:var(--ink2)}
+.xans p b{color:var(--ink)}
+.xans .rows{margin-top:14px;display:grid;gap:0;background:#fff;border-radius:14px;padding:4px 16px;border:1.5px solid rgba(26,20,18,.18)}
+.xans .k{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:10px 0;border-bottom:1px dashed rgba(26,20,18,.18);font-size:16.5px;line-height:1.35}
+.xans .k:last-child{border-bottom:0}
+.xans .k span:last-child{font-weight:800;color:var(--ink);text-align:right;white-space:nowrap}
+.xans .k.tot span{font-weight:800;color:var(--ink)}
+
+/* step 2's picture: the hours you have against the hours it needs */
+.xbars{margin-top:16px;display:grid;gap:12px}
+.xbar2 .bl{display:flex;justify-content:space-between;gap:12px;font-weight:700;font-size:15.5px;margin-bottom:5px}
+.xbar2 .bt{position:relative;height:26px;border-radius:999px;background:#fff;border:1.8px solid var(--ink);overflow:hidden}
+.xbar2 .bf{position:absolute;left:0;top:0;bottom:0;border-radius:999px 0 0 999px;background:var(--ink)}
+.xbar2.need .bf{background:var(--pink)}
+.xbar2 .bo{position:absolute;top:0;bottom:0;background:repeating-linear-gradient(-45deg,var(--pink) 0 6px,#fff 6px 11px);border-left:2px solid var(--ink)}
+
+/* step 3's picture: one dot per person (or per 100 people) */
+.xdots{display:flex;flex-wrap:wrap;gap:5px;margin-top:16px;max-width:560px}
+.xdots i{width:16px;height:16px;border-radius:50%;background:#fff;border:1.6px solid rgba(26,20,18,.45)}
+.xdots i.on{background:var(--pink);border-color:var(--ink)}
+.xdots-k{margin-top:8px;display:flex;flex-wrap:wrap;gap:4px 16px;font-size:14.5px;font-weight:700;color:var(--ink2)}
+.xdots-k span{display:inline-flex;align-items:center;gap:6px}
+.xdots-k i{width:12px;height:12px;border-radius:50%;background:#fff;border:1.6px solid rgba(26,20,18,.45)}
+.xdots-k i.on{background:var(--pink);border-color:var(--ink)}
+
+.xact{max-width:1080px;margin:26px auto 0}
+.xact .btn{margin-top:18px;height:52px;font-size:16px}
+.xrec h4{font-size:28px}
+.xrec p{font-size:16.5px}
+
+@media (max-width:900px){
+  .xtiles{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:640px){
+  .xplan{padding:22px 18px 24px}
+  .xplan h3{font-size:36px}
+  .xp-sub{font-size:17.5px}
+  .xtiles{gap:10px}
+  .xtile{min-height:160px;padding:14px 14px}
+  .xtile .tv{font-size:36px}
+  .xtile .td{font-size:14.5px}
+  .xsteps-h h3{font-size:32px}
+  .xsteps-h p{font-size:16.5px}
+  .xst{border-radius:22px;box-shadow:4px 5px 0 var(--tone),4px 5px 0 1.8px var(--ink)}
+  .xst>summary{grid-template-columns:auto minmax(0,1fr) auto;grid-template-areas:"n t c" "n s s";gap:8px 14px;padding:16px 16px}
+  .xst-n{grid-area:n;width:46px;height:46px;font-size:26px;align-self:start}
+  .xst-t{grid-area:t}
+  .xst>summary::after{grid-area:c;align-self:start;margin-top:10px}
+  .xst-s{grid-area:s;justify-self:start;max-width:none;font-size:13.5px}
+  .xst-t b{font-size:26px}
+  .xst-t em{font-size:15.5px}
+  .xst-b{padding:4px 16px 22px}
+  .xst-why{font-size:16.5px}
+  .xf>label,.xf>legend{font-size:18px}
+  .xf .xhelp{font-size:15.5px}
+  .xans{padding:16px 16px}
+  .xans p{font-size:16px}
+  .xans .k{font-size:15.5px}
+  .xdots i{width:13px;height:13px}
+}
+@media (prefers-reduced-motion:reduce){.xtile{transition:none}}
 #printout{display:none}
 
 @media (max-width:900px){
@@ -368,160 +517,199 @@ body.xlocked .xapp{filter:blur(7px);opacity:.5;pointer-events:none;user-select:n
           </div>
         </div>
 
+        <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+          <symbol id="i-bag" viewBox="0 0 24 24"><path d="M5 8.5h14l-1.2 11.5H6.2Z M9 8.5V7a3 3 0 0 1 6 0v1.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+          <symbol id="i-money" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><ellipse cx="12" cy="6" rx="7" ry="2.8"/><path d="M5 6v4c0 1.6 3.1 2.8 7 2.8s7-1.2 7-2.8V6M5 10v4c0 1.6 3.1 2.8 7 2.8s7-1.2 7-2.8v-4M5 14v4c0 1.6 3.1 2.8 7 2.8s7-1.2 7-2.8v-4"/></g></symbol>
+          <symbol id="i-clock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></g></symbol>
+          <symbol id="i-people" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="9" cy="8.5" r="3.2"/><path d="M3 19.5c.6-3.3 3-5 6-5s5.4 1.7 6 5"/><circle cx="17" cy="9.5" r="2.5"/><path d="M15.8 14.6c2.5-.2 4.5 1.3 5.2 4.2"/></g></symbol>
+          <symbol id="i-pen" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19.5 8.5l-4-4L4 16Z"/><path d="m13.5 6.5 4 4"/></g></symbol>
+        </defs></svg>
+
         <div class="xsec" id="plan" hidden>
+          <!-- the answer for the price they chose, in plain words, then four tiles that each open their step -->
           <div class="xplan">
             <p class="xp-k" id="pK"></p>
             <h3 id="pHead"></h3>
-            <div class="xlines" id="pLines"></div>
-            <p class="xtest" id="pTest"></p>
-
-            <div class="xrefine">
-              <details class="xd" id="dA">
-                <summary><span>Make this estimate more realistic<small>Add business costs</small></span></summary>
-                <div class="xdb">
-                  <fieldset class="xq" style="margin-top:18px">
-                    <legend style="font-family:var(--sans);font-weight:800;font-size:17px">What is your monthly goal?</legend>
-                    <div class="xopts">
-                      <label class="xopt"><input type="radio" name="basis" value="sales">Sales before costs</label>
-                      <label class="xopt"><input type="radio" name="basis" value="profit">Money left after the business costs I enter, before personal tax</label>
-                    </div>
-                  </fieldset>
-                  <div class="xgrid2">
-                    <div class="xfield">
-                      <label for="f_k">Percentage selling costs and allowance</label>
-                      <div class="xin"><input id="f_k" data-sf="costs.k" data-p="k" inputmode="decimal" autocomplete="off" placeholder="I don’t know yet" aria-describedby="h_k e_k"><span class="suf">% of the price</span></div>
-                      <p class="xerr" id="e_k"></p>
-                      <p class="xhelp" id="h_k">Payment and platform percentage fees, plus any percentage you set aside for refunds or other selling costs.</p>
-                    </div>
-                    <div class="xfield">
-                      <label for="f_v">Cash cost per purchase</label>
-                      <div class="xin"><span class="pre" data-sym>$</span><input id="f_v" data-sf="costs.v" data-p="v" inputmode="decimal" autocomplete="off" placeholder="I don’t know yet" aria-describedby="h_v e_v"></div>
-                      <p class="xerr" id="e_v"></p>
-                      <p class="xhelp" id="h_v">A fixed charge per payment, plus any delivery or fulfilment cash costs for each purchase.</p>
-                    </div>
-                    <div class="xfield">
-                      <label for="f_F">Monthly fixed business costs</label>
-                      <div class="xin"><span class="pre" data-sym>$</span><input id="f_F" data-sf="costs.F" data-p="F" inputmode="decimal" autocomplete="off" placeholder="I don’t know yet" aria-describedby="h_F e_F"><span class="suf">a month</span></div>
-                      <p class="xerr" id="e_F"></p>
-                      <p class="xhelp" id="h_F">Software and other running costs for this offer.</p>
-                    </div>
-                  </div>
-                  <button class="xcopy" type="button" id="copyA" hidden></button>
-                  <div class="xout" id="aOut" aria-live="polite"></div>
-                  <p class="xhelp" style="margin-top:12px">Count each expense once. Your own time goes in the time check, so it isn’t charged here again. Personal income tax, sales tax or VAT, benefits and retirement savings are not included. Enter prices and costs without any sales tax you collect and pass on. A zero is an answer; a blank means you don’t know yet.</p>
-                </div>
-              </details>
-
-              <details class="xd" id="dB">
-                <summary><span>Check the time it would take<small>Your hours, and the hours this plan needs</small></span></summary>
-                <div class="xdb">
-                  <div class="xfield">
-                    <label for="f_W">Hours available each week</label>
-                    <div class="xin"><input id="f_W" data-cf="weeklyHours" data-p="W" inputmode="decimal" autocomplete="off" placeholder="I don’t know yet" aria-describedby="e_W"><span class="suf">hours a week</span></div>
-                    <p class="xerr" id="e_W"></p>
-                  </div>
-                  <fieldset class="xq" style="margin-top:22px">
-                    <legend style="font-family:var(--sans);font-weight:800;font-size:17px">How would you deliver it?</legend>
-                    <div class="xopts three">
-                      <label class="xopt"><input type="radio" name="mode" value="per">Time with each purchaser, or mostly self-serve</label>
-                      <label class="xopt"><input type="radio" name="mode" value="group">Shared group sessions</label>
-                      <label class="xopt"><input type="radio" name="mode" value="undecided">I haven’t decided yet</label>
-                    </div>
-                  </fieldset>
-                  <div class="xgrid2" id="tFields">
-                    <div class="xfield">
-                      <label for="f_B">Shared monthly hours</label>
-                      <div class="xin"><input id="f_B" data-sf="time.B" data-p="B" inputmode="decimal" autocomplete="off" placeholder="I don’t know yet" aria-describedby="h_B e_B"><span class="suf">hours a month</span></div>
-                      <p class="xerr" id="e_B"></p>
-                      <p class="xhelp" id="h_B">Marketing, admin and recurring preparation not counted below.</p>
-                    </div>
-                    <div class="xfield">
-                      <label for="f_d">Hours per purchaser</label>
-                      <div class="xin"><input id="f_d" data-sf="time.d" data-p="d" inputmode="decimal" autocomplete="off" placeholder="I don’t know yet" aria-describedby="h_d e_d"><span class="suf">hours each</span></div>
-                      <p class="xerr" id="e_d"></p>
-                      <p class="xhelp" id="h_d">Individual delivery, support and admin that grows with each purchaser.</p>
-                    </div>
-                    <div class="xfield" data-group>
-                      <label for="f_C">Most purchasers in one group</label>
-                      <div class="xin"><input id="f_C" data-sf="time.C" data-p="C" inputmode="numeric" autocomplete="off" placeholder="I don’t know yet" aria-describedby="e_C"><span class="suf">people</span></div>
-                      <p class="xerr" id="e_C"></p>
-                    </div>
-                    <div class="xfield" data-group>
-                      <label for="f_H">Hours per group</label>
-                      <div class="xin"><input id="f_H" data-sf="time.H" data-p="H" inputmode="decimal" autocomplete="off" placeholder="I don’t know yet" aria-describedby="h_H e_H"><span class="suf">hours a month</span></div>
-                      <p class="xerr" id="e_H"></p>
-                      <p class="xhelp" id="h_H">Delivery and group-specific preparation for one group. Leave these out of shared hours.</p>
-                    </div>
-                    <div class="xfield">
-                      <label for="f_S">One-time setup hours <span class="xhelp" style="display:inline">(optional)</span></label>
-                      <div class="xin"><input id="f_S" data-sf="time.S" data-p="S" inputmode="decimal" autocomplete="off" placeholder="I don’t know yet" aria-describedby="h_S e_S"><span class="suf">hours</span></div>
-                      <p class="xerr" id="e_S"></p>
-                      <p class="xhelp" id="h_S">Preparation for the first cycle only.</p>
-                    </div>
-                    <div class="xfield" data-client>
-                      <label for="f_cH">Hours per month this client currently takes</label>
-                      <div class="xin"><input id="f_cH" data-cf="clientHours" data-p="clientH" inputmode="decimal" autocomplete="off" placeholder="I don’t know yet" aria-describedby="h_cH e_cH"><span class="suf">hours a month</span></div>
-                      <p class="xerr" id="e_cH"></p>
-                      <p class="xhelp" id="h_cH">A comparison only. It doesn’t change the hours you have for the new offer.</p>
-                    </div>
-                  </div>
-                  <button class="xcopy" type="button" id="copyB" hidden></button>
-                  <div class="xout" id="bOut" aria-live="polite"></div>
-                </div>
-              </details>
-
-              <details class="xd" id="dC">
-                <summary><span>Check the audience assumption<small>The share of a group that would need to buy</small></span></summary>
-                <div class="xdb">
-                  <p class="xhelp" id="subsLine" style="margin-top:16px"></p>
-                  <button class="xcopy" type="button" id="useSubs" hidden></button>
-                  <div class="xfield">
-                    <label for="f_A">How many distinct people would receive this offer in one monthly sales cycle?</label>
-                    <div class="xin"><input id="f_A" data-sf="audience.A" data-p="A" inputmode="numeric" autocomplete="off" placeholder="I don’t know yet" aria-describedby="h_A e_A"><span class="suf">people</span></div>
-                    <p class="xerr" id="e_A"></p>
-                    <p class="xhelp" id="h_A">Count people once. Repeated emails to the same people do not increase this number. The calculation does not assume all recipients read the message.</p>
-                  </div>
-                  <div class="xout" id="cOut" aria-live="polite"></div>
-                  <div class="xfield" style="margin-top:26px">
-                    <label for="f_r">At a purchase rate of this many percent, how many people would need to receive the offer?</label>
-                    <div class="xin"><input id="f_r" data-sf="audience.r" data-p="r" inputmode="decimal" autocomplete="off" placeholder="Your own rate" aria-describedby="h_r e_r"><span class="suf">% buy</span></div>
-                    <p class="xerr" id="e_r"></p>
-                    <p class="xhelp" id="h_r">A what-if. No rate is normal, safe or expected; each price keeps its own.</p>
-                  </div>
-                  <div class="xout" id="rOut" aria-live="polite"></div>
-                </div>
-              </details>
-            </div>
+            <p class="xp-sub" id="pSub"></p>
+            <div class="xnotes2" id="pNotes"></div>
+            <div class="xtiles" id="pTiles"></div>
+            <div class="xtodo" id="pTest"></div>
           </div>
+
+          <div class="xsteps-h">
+            <h3>Make your plan more real, <em>one step at a time.</em></h3>
+            <p>Each step answers one question about this price. They’re all optional, and you can do them in any order. Don’t know something yet? Leave it blank. A blank means “I don’t know yet”, and 0 means zero.</p>
+          </div>
+
+          <!-- step 1: costs -->
+          <details class="xst money" id="dA">
+            <summary>
+              <span class="xst-n" aria-hidden="true">1</span>
+              <span class="xst-t"><b>Count what it costs you</b><em><strong>Goal:</strong> find out how much of each sale you actually keep.</em></span>
+              <span class="xst-s" id="sA"></span>
+            </summary>
+            <div class="xst-b">
+              <p class="xst-why">When someone pays you, you don’t keep all of it. Payment apps take a slice, some things cost you money every time someone buys, and some costs you pay every month no matter what. Three questions, then you’ll see what’s really left.</p>
+              <fieldset class="xf">
+                <legend>Which number is your goal?</legend>
+                <div class="xopts">
+                  <label class="xopt"><input type="radio" name="basis" value="sales"><span>The money that comes in<small>Sales before costs. The simplest place to start.</small></span></label>
+                  <label class="xopt"><input type="radio" name="basis" value="profit"><span>The money I keep<small>After the business costs below, before your own income tax. Needs all three answers.</small></span></label>
+                </div>
+              </fieldset>
+              <div class="xf">
+                <label for="f_k">What percentage of each sale goes to fees and refunds?<span class="tech">Selling costs and allowance</span></label>
+                <p class="xhelp" id="h_k">Payment apps and platforms keep a percentage of every sale. Add any percentage you want to set aside for refunds. Example: if your payment app takes 3% and you set aside 2% for refunds, type 5.</p>
+                <div class="xin"><input id="f_k" data-sf="costs.k" data-p="k" inputmode="decimal" autocomplete="off" placeholder="I don’t know yet" aria-describedby="h_k e_k"><span class="suf">% of the price</span></div>
+                <p class="xerr" id="e_k"></p>
+              </div>
+              <div class="xf">
+                <label for="f_v">Is there a cost every single time someone buys?<span class="tech">Cash cost per purchase</span></label>
+                <p class="xhelp" id="h_v">A fixed charge per payment (some apps add a few cents), a workbook you print and post, a tool you pay for per person. Type 0 if there’s nothing.</p>
+                <div class="xin"><span class="pre" data-sym>$</span><input id="f_v" data-sf="costs.v" data-p="v" inputmode="decimal" autocomplete="off" placeholder="I don’t know yet" aria-describedby="h_v e_v"><span class="suf">per sale</span></div>
+                <p class="xerr" id="e_v"></p>
+              </div>
+              <div class="xf">
+                <label for="f_F">What does running this offer cost each month?<span class="tech">Monthly fixed business costs</span></label>
+                <p class="xhelp" id="h_F">Costs you pay whether 1 person buys or 100: email software, Zoom, your website. Count only the part that’s for this offer.</p>
+                <div class="xin"><span class="pre" data-sym>$</span><input id="f_F" data-sf="costs.F" data-p="F" inputmode="decimal" autocomplete="off" placeholder="I don’t know yet" aria-describedby="h_F e_F"><span class="suf">a month</span></div>
+                <p class="xerr" id="e_F"></p>
+              </div>
+              <button class="xcopy" type="button" id="copyA" hidden></button>
+              <div class="xans" id="aOut" aria-live="polite"></div>
+              <p class="xfine">Count each cost once. Your own time is in step 2, so it isn’t charged here again. Not included: your personal income tax, sales tax or VAT, benefits and retirement savings. Type prices and costs without any sales tax you collect and pass on.</p>
+            </div>
+          </details>
+
+          <!-- step 2: time -->
+          <details class="xst time" id="dB">
+            <summary>
+              <span class="xst-n" aria-hidden="true">2</span>
+              <span class="xst-t"><b>Check your time</b><em><strong>Goal:</strong> see if this plan fits the hours you really have.</em></span>
+              <span class="xst-s" id="sB"></span>
+            </summary>
+            <div class="xst-b">
+              <p class="xst-why">A plan that needs 30 hours a month won’t work if you have 10. Tell me how much time you have, and roughly how long the work takes. I’ll add it up.</p>
+              <div class="xf">
+                <label for="f_W">How many hours a week can you give this?<span class="tech">Hours available each week</span></label>
+                <p class="xhelp" id="h_W">Be honest: the hours you really have after work, family and rest.</p>
+                <div class="xin"><input id="f_W" data-cf="weeklyHours" data-p="W" inputmode="decimal" autocomplete="off" placeholder="I don’t know yet" aria-describedby="h_W e_W"><span class="suf">hours a week</span></div>
+                <p class="xerr" id="e_W"></p>
+              </div>
+              <fieldset class="xf">
+                <legend>How would you deliver it?</legend>
+                <div class="xopts three">
+                  <label class="xopt"><input type="radio" name="mode" value="per"><span>One person at a time, or a course they do alone<small>Each buyer takes some of your time.</small></span></label>
+                  <label class="xopt"><input type="radio" name="mode" value="group"><span>In group sessions<small>One session serves several buyers at once.</small></span></label>
+                  <label class="xopt"><input type="radio" name="mode" value="undecided"><span>I haven’t decided yet<small>That’s fine. The three days help with this.</small></span></label>
+                </div>
+              </fieldset>
+              <div id="tFields">
+                <div class="xf">
+                  <label for="f_B">How many hours a month go to running it, however many buy?<span class="tech">Shared monthly hours</span></label>
+                  <p class="xhelp" id="h_B">Posting, emails, admin and getting ready. Leave out the delivery itself; that comes next.</p>
+                  <div class="xin"><input id="f_B" data-sf="time.B" data-p="B" inputmode="decimal" autocomplete="off" placeholder="I don’t know yet" aria-describedby="h_B e_B"><span class="suf">hours a month</span></div>
+                  <p class="xerr" id="e_B"></p>
+                </div>
+                <div class="xf">
+                  <label for="f_d">How many hours does each buyer take?<span class="tech">Hours per purchaser</span></label>
+                  <p class="xhelp" id="h_d">Calls, feedback and answering questions, for one person. Type 0 if it runs on its own.</p>
+                  <div class="xin"><input id="f_d" data-sf="time.d" data-p="d" inputmode="decimal" autocomplete="off" placeholder="I don’t know yet" aria-describedby="h_d e_d"><span class="suf">hours each</span></div>
+                  <p class="xerr" id="e_d"></p>
+                </div>
+                <div class="xf" data-group>
+                  <label for="f_C">How many people fit in one group?<span class="tech">Most purchasers in one group</span></label>
+                  <p class="xhelp" id="h_C">The most you’d teach at once.</p>
+                  <div class="xin"><input id="f_C" data-sf="time.C" data-p="C" inputmode="numeric" autocomplete="off" placeholder="I don’t know yet" aria-describedby="h_C e_C"><span class="suf">people</span></div>
+                  <p class="xerr" id="e_C"></p>
+                </div>
+                <div class="xf" data-group>
+                  <label for="f_H">How many hours does one group take each month?<span class="tech">Hours per group</span></label>
+                  <p class="xhelp" id="h_H">Teaching that group plus getting ready for it. Don’t count these hours again in the running hours above.</p>
+                  <div class="xin"><input id="f_H" data-sf="time.H" data-p="H" inputmode="decimal" autocomplete="off" placeholder="I don’t know yet" aria-describedby="h_H e_H"><span class="suf">hours a month</span></div>
+                  <p class="xerr" id="e_H"></p>
+                </div>
+                <div class="xf">
+                  <label for="f_S">Any one-time setup? <span class="opt">Optional</span><span class="tech">One-time setup hours</span></label>
+                  <p class="xhelp" id="h_S">Making the course, slides or workbook the first time. Only counted in your first month.</p>
+                  <div class="xin"><input id="f_S" data-sf="time.S" data-p="S" inputmode="decimal" autocomplete="off" placeholder="I don’t know yet" aria-describedby="h_S e_S"><span class="suf">hours</span></div>
+                  <p class="xerr" id="e_S"></p>
+                </div>
+                <div class="xf" data-client>
+                  <label for="f_cH">How many hours a month does that client take now?<span class="tech">Client hours, for comparison</span></label>
+                  <p class="xhelp" id="h_cH">So you can compare. It doesn’t change the hours you have for the new offer.</p>
+                  <div class="xin"><input id="f_cH" data-cf="clientHours" data-p="clientH" inputmode="decimal" autocomplete="off" placeholder="I don’t know yet" aria-describedby="h_cH e_cH"><span class="suf">hours a month</span></div>
+                  <p class="xerr" id="e_cH"></p>
+                </div>
+              </div>
+              <button class="xcopy" type="button" id="copyB" hidden></button>
+              <div class="xans" id="bOut" aria-live="polite"></div>
+            </div>
+          </details>
+
+          <!-- step 3: people -->
+          <details class="xst people" id="dC">
+            <summary>
+              <span class="xst-n" aria-hidden="true">3</span>
+              <span class="xst-t"><b>Check who would see it</b><em><strong>Goal:</strong> see what share of the people you can reach would need to buy.</em></span>
+              <span class="xst-s" id="sC"></span>
+            </summary>
+            <div class="xst-b">
+              <p class="xst-why">Seven sales sounds small. Seven out of 20 people is a lot; seven out of 2,000 is a few in every thousand. This step shows which one you’re looking at. It can’t tell you how many will buy. Only trying it can.</p>
+              <p class="xhelp xsubs" id="subsLine"></p>
+              <button class="xcopy" type="button" id="useSubs" hidden></button>
+              <div class="xf">
+                <label for="f_A">How many different people would see this offer in a month?<span class="tech">Distinct offer recipients</span></label>
+                <p class="xhelp" id="h_A">Count each person once: your email list, a group you post in, people you message. Sending three emails to the same 64 people is still 64. It doesn’t assume everyone reads it.</p>
+                <div class="xin"><input id="f_A" data-sf="audience.A" data-p="A" inputmode="numeric" autocomplete="off" placeholder="I don’t know yet" aria-describedby="h_A e_A"><span class="suf">people</span></div>
+                <p class="xerr" id="e_A"></p>
+              </div>
+              <div class="xans" id="cOut" aria-live="polite"></div>
+              <div class="xf" style="margin-top:8px">
+                <label for="f_r">What if a certain percentage bought? <span class="opt">Optional</span><span class="tech">Your own what-if rate</span></label>
+                <p class="xhelp" id="h_r">Type a percentage to see how many people would need to see the offer. It’s a what-if you make up, so no number here is normal or safe. Each price keeps its own.</p>
+                <div class="xin"><input id="f_r" data-sf="audience.r" data-p="r" inputmode="decimal" autocomplete="off" placeholder="For example 2" aria-describedby="h_r e_r"><span class="suf">% buy</span></div>
+                <p class="xerr" id="e_r"></p>
+              </div>
+              <div class="xans soft" id="rOut" aria-live="polite"></div>
+            </div>
+          </details>
         </div>
 
+        <!-- after they try it: what really happened -->
         <div class="xact">
-          <div class="xpanel">
-            <h3 style="font-size:clamp(26px,2.6vw,34px);line-height:1.1">What actually happened</h3>
-            <p>After you make the offer, record a month here. Recorded results are kept apart from your estimates, and each one keeps the plan it was compared with.</p>
-            <button class="btn ghost" type="button" id="actAdd">Add what actually happened</button>
-            <form id="actForm" hidden novalidate>
-              <div class="xfield">
-                <label for="a_month">Which month?</label>
-                <select class="xsel" id="a_month"></select>
-              </div>
-              <div class="xgrid2">
-                <div class="xfield"><label for="a_collected">Money collected</label><div class="xin"><span class="pre" data-sym>$</span><input id="a_collected" data-a="collected" inputmode="decimal" autocomplete="off" placeholder="I don’t know yet" aria-describedby="h_ac ea_collected"></div><p class="xerr" id="ea_collected"></p><p class="xhelp" id="h_ac">Before refunds, without any sales tax you pass on.</p></div>
-                <div class="xfield"><label for="a_refunds">Refunds paid this month</label><div class="xin"><span class="pre" data-sym>$</span><input id="a_refunds" data-a="refunds" inputmode="decimal" autocomplete="off" placeholder="I don’t know yet" aria-describedby="ea_refunds"></div><p class="xerr" id="ea_refunds"></p></div>
-                <div class="xfield"><label for="a_fees">Selling fees</label><div class="xin"><span class="pre" data-sym>$</span><input id="a_fees" data-a="fees" inputmode="decimal" autocomplete="off" placeholder="I don’t know yet" aria-describedby="ea_fees"></div><p class="xerr" id="ea_fees"></p></div>
-                <div class="xfield"><label for="a_delivery">Delivery cash costs</label><div class="xin"><span class="pre" data-sym>$</span><input id="a_delivery" data-a="delivery" inputmode="decimal" autocomplete="off" placeholder="I don’t know yet" aria-describedby="ea_delivery"></div><p class="xerr" id="ea_delivery"></p></div>
-                <div class="xfield"><label for="a_fixed">Fixed business costs</label><div class="xin"><span class="pre" data-sym>$</span><input id="a_fixed" data-a="fixed" inputmode="decimal" autocomplete="off" placeholder="I don’t know yet" aria-describedby="ea_fixed"></div><p class="xerr" id="ea_fixed"></p></div>
-                <div class="xfield"><label for="a_hours">Hours worked</label><div class="xin"><input id="a_hours" data-a="hours" inputmode="decimal" autocomplete="off" placeholder="I don’t know yet" aria-describedby="h_ah ea_hours"><span class="suf">hours</span></div><p class="xerr" id="ea_hours"></p><p class="xhelp" id="h_ah">Setup included, if you did it that month.</p></div>
-                <div class="xfield"><label for="a_recips">People who received the offer</label><div class="xin"><input id="a_recips" data-a="recips" inputmode="numeric" autocomplete="off" placeholder="I don’t know yet" aria-describedby="h_ar ea_recips"><span class="suf">people</span></div><p class="xerr" id="ea_recips"></p><p class="xhelp" id="h_ar">Distinct people, counted once.</p></div>
-                <div class="xfield"><label for="a_buyers">Of those same people, how many bought?</label><div class="xin"><input id="a_buyers" data-a="buyers" inputmode="numeric" autocomplete="off" placeholder="I don’t know yet" aria-describedby="ea_buyers"><span class="suf">people</span></div><p class="xerr" id="ea_buyers"></p></div>
-              </div>
-              <div class="xrow" style="margin-top:22px;gap:16px;align-items:center">
-                <button class="btn" type="submit">Record this month</button>
-                <button class="lnk" type="button" id="actCancel">Cancel</button>
-              </div>
-            </form>
-            <div id="actList"></div>
-          </div>
+          <details class="xst real" id="dD">
+            <summary>
+              <span class="xst-n" aria-hidden="true"><svg><use href="#i-pen"/></svg></span>
+              <span class="xst-t"><b>Later: record what really happened</b><em><strong>Goal:</strong> after you make the offer, compare your plan with real life.</em></span>
+              <span class="xst-s" id="sD"></span>
+            </summary>
+            <div class="xst-b">
+              <p class="xst-why">Come back after you’ve made the offer and add a month. Your real numbers are kept apart from your guesses, and each month remembers the plan you had then, so changing a price later won’t rewrite it.</p>
+              <button class="btn ghost" type="button" id="actAdd">Add a month</button>
+              <form id="actForm" hidden novalidate>
+                <div class="xf">
+                  <label for="a_month">Which month?</label>
+                  <select class="xsel" id="a_month"></select>
+                </div>
+                <div class="xgrid2">
+                  <div class="xf"><label for="a_collected">Money that came in</label><p class="xhelp" id="h_ac">Before refunds, without any sales tax you pass on.</p><div class="xin"><span class="pre" data-sym>$</span><input id="a_collected" data-a="collected" inputmode="decimal" autocomplete="off" placeholder="I don’t know yet" aria-describedby="h_ac ea_collected"></div><p class="xerr" id="ea_collected"></p></div>
+                  <div class="xf"><label for="a_refunds">Refunds you paid back</label><p class="xhelp" id="h_ar2">This month, even for older sales.</p><div class="xin"><span class="pre" data-sym>$</span><input id="a_refunds" data-a="refunds" inputmode="decimal" autocomplete="off" placeholder="I don’t know yet" aria-describedby="h_ar2 ea_refunds"></div><p class="xerr" id="ea_refunds"></p></div>
+                  <div class="xf"><label for="a_fees">Fees taken by payment apps</label><div class="xin"><span class="pre" data-sym>$</span><input id="a_fees" data-a="fees" inputmode="decimal" autocomplete="off" placeholder="I don’t know yet" aria-describedby="ea_fees"></div><p class="xerr" id="ea_fees"></p></div>
+                  <div class="xf"><label for="a_delivery">Costs of delivering it</label><div class="xin"><span class="pre" data-sym>$</span><input id="a_delivery" data-a="delivery" inputmode="decimal" autocomplete="off" placeholder="I don’t know yet" aria-describedby="ea_delivery"></div><p class="xerr" id="ea_delivery"></p></div>
+                  <div class="xf"><label for="a_fixed">Monthly running costs</label><div class="xin"><span class="pre" data-sym>$</span><input id="a_fixed" data-a="fixed" inputmode="decimal" autocomplete="off" placeholder="I don’t know yet" aria-describedby="ea_fixed"></div><p class="xerr" id="ea_fixed"></p></div>
+                  <div class="xf"><label for="a_hours">Hours you worked on it</label><p class="xhelp" id="h_ah">Setup included, if you did it that month.</p><div class="xin"><input id="a_hours" data-a="hours" inputmode="decimal" autocomplete="off" placeholder="I don’t know yet" aria-describedby="h_ah ea_hours"><span class="suf">hours</span></div><p class="xerr" id="ea_hours"></p></div>
+                  <div class="xf"><label for="a_recips">People who saw the offer</label><p class="xhelp" id="h_ar">Different people, counted once.</p><div class="xin"><input id="a_recips" data-a="recips" inputmode="numeric" autocomplete="off" placeholder="I don’t know yet" aria-describedby="h_ar ea_recips"><span class="suf">people</span></div><p class="xerr" id="ea_recips"></p></div>
+                  <div class="xf"><label for="a_buyers">Of those same people, how many bought?</label><div class="xin"><input id="a_buyers" data-a="buyers" inputmode="numeric" autocomplete="off" placeholder="I don’t know yet" aria-describedby="ea_buyers"><span class="suf">people</span></div><p class="xerr" id="ea_buyers"></p></div>
+                </div>
+                <div class="xrow" style="margin-top:22px;gap:16px;align-items:center">
+                  <button class="btn" type="submit">Record this month</button>
+                  <button class="lnk" type="button" id="actCancel">Cancel</button>
+                </div>
+              </form>
+              <div id="actList"></div>
+            </div>
+          </details>
         </div>
 
         <div class="xev" id="xev">
@@ -836,118 +1024,174 @@ body.xlocked .xapp{filter:blur(7px);opacity:.5;pointer-events:none;user-select:n
     status();
   }
 
+  function svgUse(id){ var n = 'http://www.w3.org/2000/svg', s = document.createElementNS(n, 'svg'), u = document.createElementNS(n, 'use'); u.setAttribute('href', '#' + id); s.setAttribute('aria-hidden', 'true'); s.appendChild(u); return s }
+  function openStep(id){ var d = $(id); d.open = true; d.scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start'}); d.querySelector('summary').focus({preventScroll: true}) }
+  function stat(id, text, done){ var e = $(id); e.textContent = text; e.classList.toggle('done', !!done) }
+  function answerBox(box, label){ box.textContent = ''; box.appendChild(el('small', null, label || 'Your answer')) }
+  function big(box, parts){ box.appendChild(rich('p', 'big', parts)) }
+  function para(box, parts){ box.appendChild(rich('p', null, typeof parts === 'string' ? [parts] : parts)) }
+  function row(rows, k, v, tot){ var d = el('div', 'k' + (tot ? ' tot' : '')); d.appendChild(el('span', null, k)); d.appendChild(el('span', null, v)); rows.appendChild(d) }
+  var MINUS = '−';
+
   function renderPlan(s){
-    var o = calcFor(s), P = X.big('price', s.price), L = $('pLines'); L.textContent = '';
-    $('pK').textContent = s.price ? 'Exploring ' + M(P) : 'Exploring your own price';
-    var h = $('pHead'); h.textContent = '';
-    var lines = [];
-    function line(cls, parts){ lines.push(rich('p', 'xl' + (cls ? ' ' + cls : ''), parts)) }
-    if (!o.hasPrice) { h.textContent = 'Compare the examples for now. You can enter your own price later.' }
+    var o = calcFor(s), P = X.big('price', s.price), G = X.big('goal', plan.goal.amount), cx = plan.context;
+    var Ps = s.price ? M(P) : 'your price';
+    $('pK').textContent = s.price ? 'Your plan at ' + M(P) : 'Your plan';
+    var h = $('pHead'), sub = $('pSub'), notes = $('pNotes'); h.textContent = ''; sub.textContent = ''; notes.textContent = '';
+    function note(parts, calm){ notes.appendChild(rich('p', 'xnote' + (calm ? ' calm' : ''), parts)) }
+
+    /* ---- the answer in one sentence, then what it means ---- */
+    if (!o.hasPrice) { h.textContent = 'Compare the examples for now.'; sub.textContent = 'You can enter your own price later: type it into any of the cards above.' }
     else if (o.impossible) {
-      h.textContent = 'At ' + M(P) + ', no number of purchases reaches a positive profit goal with these costs.';
-      line('warn', ['At this price, the entered costs leave ', [M(o.c, 10000n)], ' per purchase before monthly fixed costs. Revisit the price or costs before treating this as a profit plan.']);
+      h.textContent = 'At ' + M(P) + ', these costs leave nothing for your goal.';
+      sub.textContent = 'However many people buy, the costs you entered use up the whole price.';
+      note(['At this price, the entered costs leave ', [M(o.c, 10000n)], ' per purchase before monthly fixed costs. Revisit the price or costs before treating this as a profit plan.']);
     } else {
-      h.appendChild(document.createTextNode('At ' + M(P) + ', your plan needs '));
+      h.appendChild(document.createTextNode('At ' + M(P) + ', you’d need '));
       h.appendChild(el('b', null, X.int(o.N) + ' ' + purch(o.N)));
-      h.appendChild(document.createTextNode(' per month.'));
-      /* money */
-      if (o.basis === 'profit' && o.needCosts) {
-        line('', ['That is ', [M(o.gross)], ' in sales before costs.']);
-        line('info', ['Add the three cost estimates to calculate money left after costs.']);
-      } else if (o.costsKnown) {
-        if (o.unitLoss) {
-          line('', ['That is ', [M(o.gross)], ' in sales.']);
-          line('warn', ['At this price, the entered costs leave ', [M(o.c, 10000n)], ' per purchase before monthly fixed costs. Revisit the price or costs before treating this as a profit plan.']);
-        } else if (o.profit < 0n) {
-          line('warn', ['That is ', [M(o.gross)], ' in sales and a loss of about ', [M(-o.profit, 10000n)], ' after the costs you entered.']);
-        } else line('', ['That is ', [M(o.gross)], ' in sales and approximately ', [M(o.profit, 10000n)], ' after the costs you entered, before personal taxes.']);
-      } else {
-        line('', ['That is ', [M(o.gross)], ' in sales. Your current result is sales before costs.']);
-      }
-      /* audience */
-      if (o.rate) {
-        line('', ['If you offer it to ', [X.int(o.A)], ' people, about ', [X.pct(o.rate.num, o.rate.den)], ' would need to buy once.']);
-        if (o.overReach) line('warn', ['This target requires more purchases than there are people in this group, assuming one purchase per person. You would need additional reach or a different scenario.']);
-      } else if (o.audZero) line('info', ['Your first audience is still to build. Keep this as a sales scenario while you work on reaching people.']);
-      else line('info', ['Add a recipient count to see the purchase rate this scenario would require.']);
-      /* time */
-      if (o.recurring != null && o.budgetU != null) {
-        line('', ['Your recurring workload estimate is ', [X.hrs(o.recurring) + ' hours'], ' per month. Your available time is about ', [X.hoursU(o.budgetU) + ' hours'], '.']);
-        if (o.overU > 0n) line('warn', ['The current workload estimate is about ', [X.hoursU(o.overU) + ' hours'], ' over your monthly budget.']);
-        else line('', ['This fits the time estimates you entered. Real delivery time may differ.']);
-      } else if (o.recurring != null) line('info', ['Your recurring workload estimate is ', [X.hrs(o.recurring) + ' hours'], ' per month. Add the hours you have each week to see the fit.']);
-      else line('info', ['Your time fit is not calculated yet.']);
-      if (!plan.actuals.length) line('info', ['This plan is based on assumptions. Add results after your first test.']);
+      h.appendChild(document.createTextNode(' a month.'));
+      var sp = ['That’s ' + X.int(o.N) + (o.N === 1n ? ' person' : ' people') + ' buying your ' + M(P) + ' offer each month, which brings in ', [M(o.gross)], '.'];
+      if (o.nBasis === 'profit') sp.push(' After the costs you entered, you’d keep about ', [M(o.profit, 10000n)], ' before your own income tax, which covers your ', [M(G)], ' goal.');
+      else if (o.gross > G) sp.push(' That’s a little over your ' + M(G) + ' goal, because nobody can buy part of an offer.');
+      sub.appendChild(rich('span', null, sp));
+      if (o.basis === 'profit' && o.needCosts) note(['Your goal is the money you keep, and step 1 isn’t finished yet. Until it is, these numbers are sales before costs. ', ['Add the three cost estimates to calculate money left after costs.']], true);
+      if (o.costsKnown && o.unitLoss) note(['At this price, the entered costs leave ', [M(o.c, 10000n)], ' per purchase before monthly fixed costs. Revisit the price or costs before treating this as a profit plan.']);
+      else if (o.costsKnown && o.profit < 0n) note(['After the costs you entered, this would lose about ', [M(-o.profit, 10000n)], ' a month.']);
+      if (o.overReach) note(['That’s more purchases than people who’d see it, if each person buys once. You’d need to reach more people, or try a different price.']);
     }
-    lines.forEach(function(p){ L.appendChild(p) });
-    var tst = $('pTest'); tst.textContent = '';
-    if (o.hasPrice && !o.impossible) {
-      tst.appendChild(el('b', null, 'Still to test: '));
-      tst.appendChild(document.createTextNode('whether people will buy at this price' + (o.recurring != null ? ' and whether delivery takes the time you estimated.' : '.')));
-    }
-    tst.hidden = !tst.textContent;
     announce(h.textContent);
 
-    /* A: costs */
-    var a = $('aOut'); a.textContent = '';
-    if (!o.hasPrice) a.appendChild(el('p', null, 'Enter a price for this card first.'));
-    else if (!o.costsKnown) a.appendChild(el('p', null, 'Add the three cost estimates to calculate money left after costs.'));
+    /* ---- four tiles: the plan at a glance ---- */
+    var T = $('pTiles'); T.textContent = '';
+    function tile(cls, icon, label, value, desc, next, step, ok){
+      var b = el(step ? 'button' : 'div', 'xtile ' + cls);
+      if (step) { b.type = 'button'; b.addEventListener('click', function(){ openStep(step) }) }
+      var tl = el('span', 'tl'); tl.appendChild(svgUse(icon)); tl.appendChild(document.createTextNode(label)); b.appendChild(tl);
+      b.appendChild(el('span', 'tv' + (value === '?' ? ' q' : ''), value));
+      b.appendChild(el('span', 'td', desc));
+      if (next) b.appendChild(el('span', 'tn' + (ok ? ' ok' : ''), next));
+      T.appendChild(b);
+    }
+    var hasN = o.N != null;
+    tile('t-sales', 'i-bag', 'Sales needed', hasN ? X.int(o.N) : '?', hasN ? purch(o.N) + ' a month at ' + Ps : 'Enter a price to see it', '', null);
+    if (o.costsKnown && (o.unitLoss || o.impossible)) tile('t-money', 'i-money', 'Money', M(o.c, 10000n), 'left from each sale after costs', 'Check step 1', 'dA');
+    else if (o.costsKnown && o.profit != null) tile('t-money', 'i-money', 'Money you keep', M(o.profit, 10000n), 'a month after costs, before income tax', 'See step 1', 'dA', true);
+    else tile('t-money', 'i-money', 'Money in', o.gross != null ? M(o.gross) : '?', 'a month, before any costs', 'Add costs in step 1', 'dA');
+    if (o.recurring != null && o.budgetU != null) tile('t-time', 'i-clock', 'Time', X.hrs(o.recurring) + ' hrs', 'needed a month. You have about ' + X.hoursU(o.budgetU) + '.', o.overU > 0n ? 'Over by ' + X.hoursU(o.overU) + ' hrs' : 'Fits your hours', 'dB', o.overU <= 0n);
+    else if (o.recurring != null) tile('t-time', 'i-clock', 'Time', X.hrs(o.recurring) + ' hrs', 'needed a month', 'Add your hours in step 2', 'dB');
+    else tile('t-time', 'i-clock', 'Time', '?', s.time.mode === 'undecided' ? 'Delivery not decided yet' : 'Not checked yet', 'Check in step 2', 'dB');
+    if (o.rate) tile('t-people', 'i-people', 'People', X.pct(o.rate.num, o.rate.den), 'of ' + X.int(o.A) + ' people would need to buy', 'See step 3', 'dC', true);
+    else if (o.audZero) tile('t-people', 'i-people', 'People', '0', 'people to offer it to so far', 'See step 3', 'dC', true);
+    else tile('t-people', 'i-people', 'People', '?', 'Not checked yet', 'Check in step 3', 'dC');
+
+    /* ---- what's still unknown ---- */
+    var td = $('pTest'); td.textContent = '';
+    if (o.hasPrice && !o.impossible) {
+      td.appendChild(el('h4', null, 'What you still need to find out'));
+      var ul = el('ul');
+      ul.appendChild(el('li', null, 'Will people buy at ' + M(P) + '? Only trying it can tell you.'));
+      if (o.recurring != null) ul.appendChild(el('li', null, 'Does the work really take the hours you estimated?'));
+      if (o.costsKnown) ul.appendChild(el('li', null, 'Are your cost estimates close to real life?'));
+      td.appendChild(ul);
+      td.appendChild(el('p', null, plan.actuals.length ? 'You’ve recorded ' + plan.actuals.length + (plan.actuals.length === 1 ? ' month' : ' months') + '. Compare them in the last step.' : 'This plan is based on assumptions. Add results after your first test.'));
+    }
+
+    /* ---- step 1: costs ---- */
+    var answered = ['k', 'v', 'F'].filter(function(k){ return s.costs[k] != null }).length;
+    if (o.costsKnown && o.hasPrice) stat('sA', o.unitLoss ? 'Costs use up the price' : 'You keep ' + M(o.c, 10000n) + ' a sale', !o.unitLoss);
+    else stat('sA', answered ? answered + ' of 3 answered' : '3 questions, optional');
+    var a = $('aOut'); answerBox(a);
+    if (!o.hasPrice) big(a, ['Enter a price in the card above first.']);
+    else if (!o.costsKnown) { big(a, ['Answer all three to see what you keep.']); para(a, 'You’ve answered ' + answered + ' of 3. Leave any you don’t know blank for now. Your current result is sales before costs.') }
     else {
-      kv(a, 'Selling costs and allowance per purchase', M(o.sellPer, 10000n));
-      kv(a, 'Cash remaining per purchase before monthly fixed costs', M(o.c, 10000n));
-      if (o.N != null) kv(a, 'Estimated monthly profit before personal tax' + (o.nBasis === 'profit' ? '' : ' (at ' + X.int(o.N) + ' ' + purch(o.N) + ')'), M(o.profit, 10000n));
-      if (o.unitLoss) a.appendChild(el('p', null, 'At this price, the entered costs leave ' + M(o.c, 10000n) + ' per purchase before monthly fixed costs. Revisit the price or costs before treating this as a profit plan.'));
+      big(a, o.unitLoss ? ['These costs leave ', [M(o.c, 10000n)], ' from each ' + M(P) + ' sale.'] : ['You keep ', [M(o.c, 10000n)], ' from each ' + M(P) + ' sale.']);
+      var rows = el('div', 'rows');
+      row(rows, 'The price', M(P));
+      row(rows, 'Fees and refunds set aside (' + X.show(X.big('k', s.costs.k), 'pct') + ')', (o.sellPer > 0n ? MINUS : '') + M(o.sellPer, 10000n));
+      row(rows, 'Cost every time someone buys', (X.big('v', s.costs.v) > 0n ? MINUS : '') + M(X.big('v', s.costs.v)));
+      row(rows, 'What you keep per sale, before monthly costs', M(o.c, 10000n), true);
+      row(rows, 'Monthly running costs', (X.big('F', s.costs.F) > 0n ? MINUS : '') + M(X.big('F', s.costs.F)));
+      if (o.N != null) row(rows, 'Left each month at ' + X.int(o.N) + ' ' + purch(o.N) + ', before your own income tax', M(o.profit, 10000n), true);
+      a.appendChild(rows);
+      if (o.unitLoss) para(a, 'At this price, the entered costs leave ' + M(o.c, 10000n) + ' per purchase before monthly fixed costs. Revisit the price or costs before treating this as a profit plan.');
+      else if (o.basis === 'profit') para(a, 'Your goal is the money you keep, so the number of purchases at the top already includes these costs.');
+      else para(a, 'Want the number of purchases to include these costs? Choose “The money I keep” at the top of this step.');
     }
     var dA = donor('costs'); $('copyA').hidden = !(dA && isEmpty(s, 'costs')); if (dA) $('copyA').textContent = 'Use the costs I entered for ' + (dA.price ? M(X.big('price', dA.price)) : 'another price');
 
-    /* B: time */
+    /* ---- step 2: time ---- */
     $$('[data-group]').forEach(function(f){ f.hidden = s.time.mode !== 'group' });
     $$('[data-client]').forEach(function(f){ f.hidden = plan.goal.type !== 'client' });
     $('tFields').hidden = s.time.mode !== 'per' && s.time.mode !== 'group';
-    var b = $('bOut'); b.textContent = '';
-    if (!s.time.mode || s.time.mode === 'undecided') b.appendChild(el('p', null, s.time.mode === 'undecided' ? 'That’s fine. Your time fit is not calculated yet, and it’s a good thing to settle during the three days.' : 'Choose how you’d deliver it to see the hours it needs.'));
-    else if (o.N == null) b.appendChild(el('p', null, 'Your time fit is not calculated yet.'));
-    else if (o.recurring == null) b.appendChild(el('p', null, 'Add ' + (s.time.mode === 'group' ? 'shared hours, hours per purchaser, group size and hours per group' : 'shared hours and hours per purchaser') + ' to estimate the hours. Zero is fine if that’s the honest answer.'));
+    if (o.recurring != null && o.budgetU != null) stat('sB', o.overU > 0n ? 'Over by ' + X.hoursU(o.overU) + ' hrs a month' : 'Fits your hours', o.overU <= 0n);
+    else if (o.recurring != null) stat('sB', X.hrs(o.recurring) + ' hrs a month needed');
+    else stat('sB', s.time.mode === 'undecided' ? 'Delivery not decided yet' : 'A few questions, optional');
+    var b = $('bOut'); answerBox(b);
+    if (!s.time.mode) big(b, ['Choose how you’d deliver it to see the hours it needs.']);
+    else if (s.time.mode === 'undecided') { big(b, ['Your time fit isn’t worked out yet.']); para(b, 'That’s fine. How you’d deliver it is a good thing to settle during the three days.') }
+    else if (o.N == null) big(b, ['Your time fit isn’t worked out yet.']);
+    else if (o.recurring == null) { big(b, ['Answer the questions above to add up the hours.']); para(b, 'Needed: ' + (s.time.mode === 'group' ? 'running hours, hours per buyer, group size and hours per group' : 'running hours and hours per buyer') + '. 0 is fine if that’s the honest answer.') }
     else {
-      if (o.groups != null) kv(b, X.int(o.N) + ' ' + purch(o.N) + ' in groups of up to ' + X.int(X.big('C', s.time.C)), X.int(o.groups) + (o.groups === 1n ? ' group' : ' groups'));
-      kv(b, 'Recurring hours each month', X.hrs(o.recurring));
       if (o.budgetU != null) {
-        kv(b, 'Hours you have each month', 'about ' + X.hoursU(o.budgetU));
-        kv(b, o.overU > 0n ? 'Over your monthly budget by' : 'Inside your monthly budget by', 'about ' + X.hoursU(o.overU > 0n ? o.overU : -o.overU));
-        if (o.capacity != null) b.appendChild(el('p', null, 'With these estimates, your hours cover about ' + X.int(o.capacity) + ' ' + purch(o.capacity) + ' a month.'));
-        else if (o.sharedOver) b.appendChild(el('p', null, 'Your shared monthly hours alone are more than the hours you have.'));
-        else if (o.noPerBuyerLimit) b.appendChild(el('p', null, 'With zero hours per purchaser, this estimate has no per-purchaser time limit in it. Real support time may differ.'));
-      } else b.appendChild(el('p', null, 'Add the hours you have each week to see the fit.'));
-      if (o.firstCycle != null) kv(b, 'First cycle, with setup', X.hrs(o.firstCycle) + ' hours');
-      else if (s.time.mode) b.appendChild(el('p', null, 'First-cycle hours: unknown until you add setup hours.'));
-      if (o.regained != null) b.appendChild(el('p', null, o.regained >= 0n ? 'Compared with the ' + X.hrs(X.big('clientH', plan.context.clientHours)) + ' hours the client takes, this would give back about ' + X.hrs(o.regained) + ' hours a month.' : 'This would take about ' + X.hrs(-o.regained) + ' hours a month more than the client does.'));
-      b.appendChild(el('p', null, 'Real delivery time may differ.'));
+        big(b, ['This plan needs about ', [X.hrs(o.recurring) + ' hours'], ' a month. You have about ', [X.hoursU(o.budgetU) + '.']]);
+        var needU = o.recurring * 12n, max = needU > o.budgetU ? needU : o.budgetU, pc = function(u){ return max > 0n ? Number(u * 1000n / max) / 10 : 0 };
+        var bars = el('div', 'xbars');
+        [['have', 'Hours you have', o.budgetU], ['need', 'Hours this plan needs', needU]].forEach(function(r){
+          var w = el('div', 'xbar2 ' + r[0]), l = el('div', 'bl'); l.appendChild(el('span', null, r[1])); l.appendChild(el('span', null, X.hoursU(r[2]) + ' a month')); w.appendChild(l);
+          var t = el('div', 'bt'), f = el('div', 'bf'); f.style.width = (r[0] === 'need' && needU > o.budgetU ? pc(o.budgetU) : pc(r[2])) + '%'; t.appendChild(f);
+          if (r[0] === 'need' && needU > o.budgetU) { var ov = el('div', 'bo'); ov.style.left = pc(o.budgetU) + '%'; ov.style.width = (pc(needU) - pc(o.budgetU)) + '%'; t.appendChild(ov) }
+          w.appendChild(t); bars.appendChild(w);
+        });
+        b.appendChild(bars);
+        if (o.overU > 0n) para(b, ['That’s about ', [X.hoursU(o.overU) + ' hours more'], ' than you have each month (the striped part). You could change the price, the way you deliver it, the goal or your hours.']);
+        else para(b, ['That fits the hours you entered, with about ', [X.hoursU(-o.overU) + ' hours'], ' to spare. Real delivery time may differ.']);
+        if (o.capacity != null) para(b, 'With this way of delivering, your hours cover about ' + X.int(o.capacity) + ' ' + purch(o.capacity) + ' a month.');
+        else if (o.sharedOver) para(b, 'Your running hours alone are more than the hours you have.');
+        else if (o.noPerBuyerLimit) para(b, 'With 0 hours per buyer, this estimate has no per-buyer time limit in it. Real support time may differ.');
+      } else {
+        big(b, ['This plan needs about ', [X.hrs(o.recurring) + ' hours'], ' a month.']);
+        para(b, 'Add the hours you have each week (the first question) to see if it fits.');
+      }
+      if (o.groups != null) para(b, X.int(o.N) + ' ' + purch(o.N) + ' in groups of up to ' + X.int(X.big('C', s.time.C)) + ' people makes ' + X.int(o.groups) + (o.groups === 1n ? ' group.' : ' groups.'));
+      if (o.firstCycle != null) para(b, 'Your first month, with setup: about ' + X.hrs(o.firstCycle) + ' hours.');
+      else para(b, 'First month with setup: unknown until you add setup hours.');
+      if (o.regained != null) para(b, o.regained >= 0n ? 'Compared with the ' + X.hrs(X.big('clientH', cx.clientHours)) + ' hours that client takes, this would give you back about ' + X.hrs(o.regained) + ' hours a month.' : 'This would take about ' + X.hrs(-o.regained) + ' hours a month more than that client does.');
     }
     var dB = donor('time'); $('copyB').hidden = !(dB && isEmpty(s, 'time')); if (dB) $('copyB').textContent = 'Use the time estimates I entered for ' + (dB.price ? M(X.big('price', dB.price)) : 'another price');
 
-    /* C: audience */
-    var cx = plan.context;
-    $('subsLine').textContent = cx.subscribers != null ? 'Current subscribers: ' + X.int(X.big('subs', cx.subscribers)) + '. That is not the same as people who will see the offer, or buyers.' : cx.subscribersRange ? 'You told me ' + cx.subscribersRange + ' subscribers. That’s a range, so it isn’t used here.' : '';
+    /* ---- step 3: people ---- */
+    $('subsLine').textContent = cx.subscribers != null ? 'You have ' + X.int(X.big('subs', cx.subscribers)) + ' subscribers right now. That isn’t the same as people who will see this offer, or buyers.' : cx.subscribersRange ? 'You told me you have ' + cx.subscribersRange + ' subscribers. That’s a range, so it isn’t used here: type the exact number below if you know it.' : '';
     $('subsLine').hidden = !$('subsLine').textContent;
     $('useSubs').hidden = !(cx.subscribers != null && s.audience.A !== cx.subscribers); $('useSubs').textContent = 'Use my subscriber count (' + (cx.subscribers != null ? X.int(X.big('subs', cx.subscribers)) : '') + ')';
-    var c = $('cOut'); c.textContent = '';
-    if (o.N == null) c.appendChild(el('p', null, 'Add a price and goal first.'));
+    if (o.rate) stat('sC', X.pct(o.rate.num, o.rate.den) + ' would need to buy', true);
+    else if (o.audZero) stat('sC', 'Audience still to build', true);
+    else stat('sC', '1 question, optional');
+    var c = $('cOut'); answerBox(c);
+    if (o.N == null) big(c, ['Add a price and goal first.']);
     else if (o.rate) {
-      c.appendChild(rich('p', null, [[X.int(o.N) + ' ' + purch(o.N)], ' would require about ', [X.pct(o.rate.num, o.rate.den)], ' of those ' + X.int(o.A) + ' people to buy once.']));
-      c.appendChild(el('p', null, 'That purchase rate is an assumption to test.'));
-      if (o.overReach) c.appendChild(el('p', null, 'This target requires more purchases than there are people in this group, assuming one purchase per person. You would need additional reach or a different scenario.'));
-    } else if (o.audZero) c.appendChild(el('p', null, 'Your purchase target is calculated. Your starting audience still needs to be built.'));
-    else c.appendChild(el('p', null, 'Add a recipient count to see the purchase rate this scenario would require.'));
-    var r = $('rOut'); r.textContent = '';
-    if (s.audience.r == null) r.hidden = true;
+      big(c, [[X.int(o.N)], ' of those ' + X.int(o.A) + ' people would need to buy once: about ', [X.pct(o.rate.num, o.rate.den)], '.']);
+      var dots = el('div', 'xdots'), A = Number(o.A), Nn = Number(o.N), per100 = A > 100, n = per100 ? 100 : A;
+      var on = per100 ? Math.min(100, Math.max(1, Math.round(Nn * 100 / A))) : Math.min(Nn, A);
+      for (var i = 0; i < n; i++) dots.appendChild(el('i', i < on ? 'on' : null));
+      dots.setAttribute('role', 'img'); dots.setAttribute('aria-label', per100 ? 'About ' + on + ' in every 100 people' : Math.min(Nn, A) + ' of ' + A + ' people');
+      c.appendChild(dots);
+      var key = el('div', 'xdots-k'), k1 = el('span'), k2 = el('span'); k1.appendChild(el('i', 'on')); k1.appendChild(document.createTextNode(per100 ? (Nn * 100 / A < 0.5 ? 'fewer than 1 in every 100' : 'about ' + on + ' in every 100') + ' would need to buy' : 'would need to buy'));
+      k2.appendChild(el('i')); k2.appendChild(document.createTextNode(per100 ? 'everyone else (each dot is 1 in 100 people)' : 'everyone else (one dot per person)'));
+      key.appendChild(k1); key.appendChild(k2); c.appendChild(key);
+      para(c, 'That purchase rate is an assumption to test. Nobody can know it before trying.');
+      if (o.overReach) para(c, 'This target requires more purchases than there are people in this group, assuming one purchase per person. You would need additional reach or a different scenario.');
+    } else if (o.audZero) { big(c, ['Your sales number is worked out. Your audience is still to build.']); para(c, 'That’s a normal place to start. Keep this as a sales plan while you work on reaching people.') }
+    else big(c, ['Type a number above to see the share that would need to buy.']);
+    var r = $('rOut');
+    if (s.audience.r == null) { r.textContent = ''; r.hidden = true }
     else {
-      r.hidden = false;
-      if (o.N == null) r.appendChild(el('p', null, 'Add a price and goal first.'));
-      else if (o.rZero) r.appendChild(el('p', null, 'No purchases at this assumed rate.'));
-      else r.appendChild(rich('p', null, ['At ', [X.show(X.big('r', s.audience.r), 'pct')], ', ' + X.int(o.N) + ' ' + purch(o.N) + ' would need about ', [X.int(o.reachAtR) + ' people'], ' to receive the offer.']));
+      r.hidden = false; answerBox(r, 'What if');
+      if (o.N == null) big(r, ['Add a price and goal first.']);
+      else if (o.rZero) { big(r, ['No purchases at this assumed rate.']); para(r, 'At 0%, no number of people would be enough.') }
+      else big(r, ['If ' + X.show(X.big('r', s.audience.r), 'pct') + ' bought, about ', [X.int(o.reachAtR) + ' people'], ' would need to see the offer to make ' + X.int(o.N) + ' ' + purch(o.N) + '.']);
       var src = s.audience.rSource;
-      if (src) r.appendChild(el('p', null, 'This rate was recorded in ' + monthName(src.month) + (src.price ? ' at ' + M(X.big('price', src.price)) : '') + '. One month is one observation.' + (src.price && src.price !== s.price ? ' Untested at this price.' : '')));
-      else if (!o.rZero) r.appendChild(el('p', null, 'Your own what-if rate, untested.'));
+      if (src) para(r, 'This rate was recorded in ' + monthName(src.month) + (src.price ? ' at ' + M(X.big('price', src.price)) : '') + '. One month is one observation.' + (src.price && src.price !== s.price ? ' Untested at this price.' : ''));
+      else if (!o.rZero) para(r, 'Your own what-if rate, untested.');
     }
   }
   function kv(box, k, v){ var d = el('div', 'k'); d.appendChild(el('span', null, k)); d.appendChild(el('span', null, v)); box.appendChild(d) }
@@ -979,6 +1223,7 @@ body.xlocked .xapp{filter:blur(7px);opacity:.5;pointer-events:none;user-select:n
   });
   function renderActuals(){
     var box = $('actList'); box.textContent = '';
+    stat('sD', plan.actuals.length ? plan.actuals.length + (plan.actuals.length === 1 ? ' month recorded' : ' months recorded') : 'Nothing recorded yet', plan.actuals.length > 0);
     plan.actuals.forEach(function(r){
       var B = function(f){ return X.big(f, r[f]) }, a = X.actual({collected: B('collected'), refunds: B('refunds'), fees: B('fees'), delivery: B('delivery'), fixed: B('fixed'), recips: B('recips'), buyers: B('buyers')});
       var sn = r.snapshot, so = X.scenario(X.snapshotInputs(sn)), cur0 = sn.currency || plan.currency, MM = function(x, sc){ return X.money(x, cur0, sc) };
@@ -1114,8 +1359,9 @@ body.xlocked .xapp{filter:blur(7px);opacity:.5;pointer-events:none;user-select:n
        ['Hours available each week', u('W', plan.context.weeklyHours, 'hours')], ['Delivery', {per: 'time with each purchaser', group: 'shared group sessions', undecided: 'not decided yet'}[tm.mode] || 'not chosen'],
        ['Shared monthly hours', u('B', tm.B, 'hours')], ['Hours per purchaser', u('d', tm.d, 'hours')], ['People receiving the offer', u('A', au.A, 'count')], ['What-if purchase rate', u('r', au.r, 'pct')]
       ].forEach(function(r){ p.appendChild(el('p', null, r[0] + ': ' + r[1])) });
-      $$('#pLines .xl').forEach(function(l){ p.appendChild(el('p', null, l.textContent)) });
-      if (!$('pTest').hidden) p.appendChild(el('p', null, $('pTest').textContent));
+      [$('pHead'), $('pSub')].concat($$('#pNotes .xnote')).forEach(function(l){ if (l.textContent) p.appendChild(el('p', null, l.textContent)) });
+      $$('#pTiles .xtile').forEach(function(t){ p.appendChild(el('p', null, t.querySelector('.tl').textContent + ': ' + t.querySelector('.tv').textContent + ' ' + t.querySelector('.td').textContent)) });
+      var todo = $$('#pTest li').map(function(li){ return li.textContent }); if (todo.length) p.appendChild(el('p', null, 'Still to find out: ' + todo.join(' ')));
     }
     if (plan.actuals.length) {
       p.appendChild(el('h2', null, 'Recorded results'));
