@@ -1,0 +1,520 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Ana's paint studio</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@500;700;800&family=Nothing+You+Could+Do&display=swap">
+<style>
+body{margin:0;padding:20px;background:#eee;display:flex;flex-wrap:wrap;gap:20px;align-items:flex-start}
+svg[data-art]{background:transparent;display:block}
+.serif{font-family:'Instrument Serif',serif}.sans{font-family:Manrope,sans-serif}.hand{font-family:'Nothing You Could Do',cursive}
+</style></head>
+<body>
+<!-- Every picture is flat layers; paint.py gives each <g data-mat> its material. Colours are pigments (STUDY.md):
+     ink #3A2A22 · sheet #FFFCF4 · shadow #8E98AA · coffee #6B4226 · editor's red #C93A30 · olive #5E7F3A -->
+
+<!-- ===== 01 · the review: a printed sales email, her coffee, the red pencil (newspaper-and-coffee composition) ===== -->
+<svg data-art="rv" width="600" height="500" viewBox="0 0 600 500">
+  <g data-mat="shadow" fill="#8E98AA">
+    <g transform="translate(6 9) rotate(-5 250 250)"><polygon points="105,65 365,65 395,95 395,435 105,435"/></g>
+    <circle cx="463" cy="153" r="60"/>
+    <g transform="translate(366 412) rotate(18)"><rect x="0" y="-6" width="222" height="16" rx="6"/></g>
+  </g>
+  <g data-mat="sheet" fill="#FFFCF4"><g transform="rotate(-5 250 250)"><polygon points="105,65 365,65 395,95 395,435 105,435"/></g></g>
+  <g data-mat="wash" data-density=".55" fill="#B9B2A6"><g transform="rotate(-5 250 250)"><polygon points="365,65 395,95 365,95"/></g></g>
+  <g data-mat="flat"><g transform="rotate(-5 250 250)">
+    <text x="128" y="100" class="sans" font-weight="800" font-size="9" letter-spacing="2.2" fill="#8A7A6E">A SALES EMAIL, SHARED</text>
+    <text x="128" y="140" class="serif" font-size="22" fill="#3A2A22">I made a thing, if anyone</text>
+    <text x="128" y="164" class="serif" font-size="22" fill="#3A2A22">wants it.</text>
+    <text x="128" y="202" class="serif" font-size="22" fill="#3A2A22">It opens Monday. Here is</text>
+    <text x="128" y="226" class="serif" font-size="22" fill="#3A2A22">who it’s for.</text>
+  </g></g>
+  <g data-mat="ink" data-density=".55"><g transform="rotate(-5 250 250)" id="rvScrib" stroke="#7C6C61" stroke-width="1" fill="none"></g></g>
+  <g data-mat="wash" fill="#C9CCD3" data-rim="3">
+    <circle cx="455" cy="140" r="61"/>
+  </g>
+  <g data-mat="white" fill="#FBF8F1">
+    <circle cx="452" cy="137" r="52"/>
+  </g>
+  <g data-mat="wash" data-rim="2.2" fill="#6B4226">
+    <circle cx="455" cy="140" r="30"/>
+  </g>
+  <g data-mat="wash" data-density=".55" data-rim="1.6" fill="#8B5A33"><circle cx="458" cy="143" r="19"/></g>
+  <g data-mat="gouache" data-angle="18">
+    <g transform="translate(360 400) rotate(18)">
+      <polygon points="10,-2.6 34,-9 34,9 10,2.6" fill="#E9C496"/>
+      <polygon points="0,0 10,-2.6 10,2.6" fill="#3A2A22"/>
+      <rect x="34" y="-9" width="182" height="18" fill="#C93A30"/>
+      <rect x="34" y="-9" width="182" height="5.5" fill="#DE5A4A"/>
+      <rect x="34" y="3.5" width="182" height="5.5" fill="#A32A22"/>
+      <rect x="216" y="-9" width="6" height="18" fill="#8E2219"/>
+    </g>
+  </g>
+  <g data-mat="ink" stroke="#3A2A22" stroke-width="1.1" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <g transform="rotate(-5 250 250)">
+      <path d="M105 65 H365 L395 95 V435 H105 Z" stroke-width="1.05" stroke="#5A4A40" data-gap="1"/>
+      <path d="M365 65 V95 H395" stroke-width="1"/>
+    </g>
+    <circle cx="455" cy="140" r="61"/>
+    <circle cx="455" cy="140" r="40"/>
+    <circle cx="455" cy="140" r="31" stroke-width="1"/>
+    <path d="M492 122 c16 -10 30 -4 31 8 c1 10 -10 16 -24 14" />
+    <g transform="translate(360 400) rotate(18)">
+      <path d="M0 0 L34 -9 M0 0 L34 9 M10 -2.6 L10 2.6"/>
+      <path d="M34 -9 q3 3 0 6 q3 3 0 6 q3 3 0 6"/>
+      <path d="M34 -9 H222 V9 H34" />
+      <path d="M36 -3.5 H214 M36 3.5 H214" stroke-width=".8"/>
+    </g>
+  </g>
+  <g data-mat="white" fill="none" stroke="#FFFDF7" stroke-width="2.4" stroke-linecap="round">
+    <path d="M419 104 a54 54 0 0 1 40 -16" />
+    <path d="M436 131 a24 24 0 0 1 14 -8" stroke-width="2"/>
+    <g transform="translate(360 400) rotate(18)"><path d="M48 -6.5 H160" stroke-width="1.8"/></g>
+  </g>
+</svg>
+
+<!-- 01 · Ana's red pencil, on its own layer so the marks can draw on -->
+<svg data-art="rv-marks" width="600" height="500" viewBox="0 0 600 500">
+  <g data-mat="pencil" fill="none" stroke="#C93A30" stroke-width="2.6" stroke-linecap="round">
+    <g transform="rotate(-5 250 250)">
+      <path d="M124 133 C190 129 270 134 352 130"/>
+      <path d="M124 157 C150 155 175 158 200 156"/>
+      <text x="262" y="166" class="hand" font-size="19" fill="#C93A30" stroke="none">change</text>
+      <path d="M128 233 C190 237 230 231 248 233" stroke="#5E7F3A"/>
+      <path d="M262 214 l7 8 l15 -19" stroke="#5E7F3A"/>
+      <text x="290" y="222" class="hand" font-size="19" fill="#5E7F3A" stroke="none">keep</text>
+      <text x="140" y="292" class="hand" font-size="22" fill="#C93A30" stroke="none">Say the price in</text>
+      <text x="150" y="318" class="hand" font-size="22" fill="#C93A30" stroke="none">the first line.</text>
+      <path d="M128 286 C112 250 112 196 118 164 M110 176 l8 -13 l8 11"/>
+    </g>
+  </g>
+</svg>
+
+<svg data-art="st-rev" width="160" height="200" viewBox="0 0 160 200">
+  <g data-mat="shadow" fill="#7E889A" data-density=".8"><rect x="12" y="14" width="140" height="180" rx="2"/></g>
+  <g data-mat="sheet" fill="#FFFCF5"><rect x="10" y="10" width="140" height="180" data-perf="1"/></g>
+  <g data-mat="wash" fill="#F2D2CE" data-bleed="1.4" data-density=".8"><rect x="23" y="23" width="114" height="126"/></g>
+  <g data-mat="gouache" data-angle="-8"><g transform="rotate(-8 75 86)"><rect x="42" y="42" width="66" height="86" fill="#FFFCF4"/></g></g>
+  <g data-mat="ink" stroke="#3A2A22" stroke-width=".8" fill="none" data-j=".4"><g transform="rotate(-8 75 86)">
+    <rect x="42" y="42" width="66" height="86"/>
+    <path d="M50 56 h44 M50 64 h30 M50 76 h48 M50 84 h40" stroke-width="1.6"/>
+    <path d="M50 98 q3 -2 6 0 t6 0 t6 0 t6 0 t6 0 t6 0 M50 106 q3 -2 6 0 t6 0 t6 0 t6 0 t6 0 M50 114 q3 -2 6 0 t6 0 t6 0 t6 0 t6 0 t6 0" stroke="#8A7A6E" stroke-width=".7"/>
+  </g></g>
+  <g data-mat="pencil" fill="none" stroke="#C93A30" stroke-width="2"><g transform="rotate(-8 75 86)"><path d="M47 60 C70 58 90 61 101 59"/><path d="M47 88 c4 4 8 4 12 0" stroke="#5E7F3A"/></g></g>
+  <g data-mat="gouache" data-angle="-34"><g transform="translate(86 120) rotate(-34)">
+    <polygon points="0,0 7,-2 7,2" fill="#3A2A22"/><polygon points="7,-2 20,-6 20,6 7,2" fill="#E9C496"/>
+    <rect x="20" y="-6" width="58" height="12" fill="#C93A30"/><rect x="20" y="-6" width="58" height="3.8" fill="#DE5A4A"/><rect x="20" y="2.2" width="58" height="3.8" fill="#A32A22"/></g></g>
+  <g data-mat="ink" stroke="#3A2A22" stroke-width=".9" fill="none" data-j=".4"><g transform="translate(86 120) rotate(-34)"><path d="M0 0 L20 -6 M0 0 L20 6 M20 -6 H78 V6 H20"/></g></g>
+  <g data-mat="sheet" fill="#FFFCF5"><circle cx="124" cy="36" r="14"/></g>
+  <g data-mat="ink" stroke="#5E4E44" stroke-width=".55" fill="none" data-j=".18">
+    <path d="M23 23 H110 M138 50 V149 H23 V23"/>
+    <circle cx="124" cy="36" r="11.5"/>
+  </g>
+  <g data-mat="flat" fill="#3A2A22">
+    <text x="124" y="40.5" text-anchor="middle" class="serif" font-size="12.5">01</text>
+    <text x="80" y="172" text-anchor="middle" class="serif" font-size="12" letter-spacing="2.2">LIVE REVIEW</text>
+    <text x="24" y="184" class="serif" font-size="7" letter-spacing=".6" fill="#7A6A60">the exit plan</text>
+    <text x="136" y="184" text-anchor="end" class="serif" font-size="7" letter-spacing=".6" fill="#7A6A60">vip</text>
+  </g>
+</svg>
+<svg data-art="st-wa" width="160" height="200" viewBox="0 0 160 200">
+  <g data-mat="shadow" fill="#7E889A" data-density=".8"><rect x="12" y="14" width="140" height="180" rx="2"/></g>
+  <g data-mat="sheet" fill="#FFFCF5"><rect x="10" y="10" width="140" height="180" data-perf="1"/></g>
+  <g data-mat="wash" fill="#D6E2CB" data-bleed="1.4" data-density=".8"><rect x="23" y="23" width="114" height="126"/></g>
+  <g data-mat="gouache" data-angle="96"><g transform="rotate(7 79 88)"><rect x="50" y="34" width="58" height="108" rx="11" fill="#2E2622"/><rect x="54" y="42" width="50" height="92" rx="5" fill="#F4EEE2"/></g></g>
+  <g data-mat="gouache" data-angle="0"><g transform="rotate(7 79 88)">
+    <rect x="57" y="52" width="34" height="12" rx="5" fill="#FFFFFF"/><rect x="66" y="70" width="34" height="14" rx="5" fill="#CDEBC0"/>
+    <rect x="57" y="90" width="38" height="13" rx="5" fill="#FFFFFF"/><circle cx="63" cy="96.5" r="3.4" fill="#E04A86"/><rect x="72" y="110" width="28" height="12" rx="5" fill="#CDEBC0"/></g></g>
+  <g data-mat="ink" stroke="#3A2A22" stroke-width=".8" fill="none" data-j=".35"><g transform="rotate(7 79 88)">
+    <rect x="50" y="34" width="58" height="108" rx="11"/>
+    <path d="M60 58 h22 M70 77 h24 M68 96.5 h4 M74 95 v3 M77 93.5 v6 M80 95 v3 M83 94 v5 M86 95.5 v2 M76 116 h18" stroke-width=".9"/></g></g>
+  <g data-mat="white" fill="none" stroke="#FFFDF7" stroke-width="1.6" stroke-linecap="round"><g transform="rotate(7 79 88)"><path d="M54 40 q4 -3 10 -3"/></g></g>
+  <g data-mat="sheet" fill="#FFFCF5"><circle cx="124" cy="36" r="14"/></g>
+  <g data-mat="ink" stroke="#5E4E44" stroke-width=".55" fill="none" data-j=".18">
+    <path d="M23 23 H110 M138 50 V149 H23 V23"/>
+    <circle cx="124" cy="36" r="11.5"/>
+  </g>
+  <g data-mat="flat" fill="#3A2A22">
+    <text x="124" y="40.5" text-anchor="middle" class="serif" font-size="12.5">02</text>
+    <text x="80" y="172" text-anchor="middle" class="serif" font-size="12" letter-spacing="2.2">WHATSAPP</text>
+    <text x="24" y="184" class="serif" font-size="7" letter-spacing=".6" fill="#7A6A60">the exit plan</text>
+    <text x="136" y="184" text-anchor="end" class="serif" font-size="7" letter-spacing=".6" fill="#7A6A60">vip</text>
+  </g>
+</svg>
+<svg data-art="st-spr" width="160" height="200" viewBox="0 0 160 200">
+  <g data-mat="shadow" fill="#7E889A" data-density=".8"><rect x="12" y="14" width="140" height="180" rx="2"/></g>
+  <g data-mat="sheet" fill="#FFFCF5"><rect x="10" y="10" width="140" height="180" data-perf="1"/></g>
+  <g data-mat="wash" fill="#F5E2A6" data-bleed="1.4" data-density=".8"><rect x="23" y="23" width="114" height="126"/></g>
+  <g data-mat="gouache" data-angle="80"><g transform="rotate(-6 78 86)">
+    <rect x="44" y="38" width="68" height="94" rx="3" fill="#F2C230"/><rect x="44" y="38" width="10" height="94" fill="#D6A215"/>
+    <g fill="#9A6A12"><ellipse cx="84" cy="87.6" rx="2.3" ry="4.2" transform="rotate(0 84 96)"/><ellipse cx="84" cy="87.6" rx="2.3" ry="4.2" transform="rotate(30 84 96)"/><ellipse cx="84" cy="87.6" rx="2.3" ry="4.2" transform="rotate(60 84 96)"/><ellipse cx="84" cy="87.6" rx="2.3" ry="4.2" transform="rotate(90 84 96)"/><ellipse cx="84" cy="87.6" rx="2.3" ry="4.2" transform="rotate(120 84 96)"/><ellipse cx="84" cy="87.6" rx="2.3" ry="4.2" transform="rotate(150 84 96)"/><ellipse cx="84" cy="87.6" rx="2.3" ry="4.2" transform="rotate(180 84 96)"/><ellipse cx="84" cy="87.6" rx="2.3" ry="4.2" transform="rotate(210 84 96)"/><ellipse cx="84" cy="87.6" rx="2.3" ry="4.2" transform="rotate(240 84 96)"/><ellipse cx="84" cy="87.6" rx="2.3" ry="4.2" transform="rotate(270 84 96)"/><ellipse cx="84" cy="87.6" rx="2.3" ry="4.2" transform="rotate(300 84 96)"/><ellipse cx="84" cy="87.6" rx="2.3" ry="4.2" transform="rotate(330 84 96)"/></g><circle cx="84" cy="96" r="4.6" fill="#3A2A22"/></g></g>
+  <g data-mat="gouache" data-angle="90"><path d="M96 130 C98 144 92 152 99 166 L104 161 L108 167 C104 152 108 142 104 130 Z" fill="#E04A86"/></g>
+  <g data-mat="ink" stroke="#3A2A22" stroke-width=".9" fill="none" data-j=".4"><g transform="rotate(-6 78 86)">
+    <rect x="44" y="38" width="68" height="94" rx="3"/><path d="M54 38 V132"/>
+    <circle cx="84" cy="96" r="4.8"/>
+    <path d="M64 52 h36 M64 60 h28" stroke-width="1.5"/></g></g>
+  <g data-mat="white" fill="none" stroke="#FFFDF7" stroke-width="1.5" stroke-linecap="round"><g transform="rotate(-6 78 86)"><path d="M60 44 h34"/></g></g>
+  <g data-mat="sheet" fill="#FFFCF5"><circle cx="124" cy="36" r="14"/></g>
+  <g data-mat="ink" stroke="#5E4E44" stroke-width=".55" fill="none" data-j=".18">
+    <path d="M23 23 H110 M138 50 V149 H23 V23"/>
+    <circle cx="124" cy="36" r="11.5"/>
+  </g>
+  <g data-mat="flat" fill="#3A2A22">
+    <text x="124" y="40.5" text-anchor="middle" class="serif" font-size="12.5">03</text>
+    <text x="80" y="172" text-anchor="middle" class="serif" font-size="12" letter-spacing="2.2">THE SPRINT</text>
+    <text x="24" y="184" class="serif" font-size="7" letter-spacing=".6" fill="#7A6A60">the exit plan</text>
+    <text x="136" y="184" text-anchor="end" class="serif" font-size="7" letter-spacing=".6" fill="#7A6A60">vip</text>
+  </g>
+</svg>
+<svg data-art="st-rec" width="160" height="200" viewBox="0 0 160 200">
+  <g data-mat="shadow" fill="#7E889A" data-density=".8"><rect x="12" y="14" width="140" height="180" rx="2"/></g>
+  <g data-mat="sheet" fill="#FFFCF5"><rect x="10" y="10" width="140" height="180" data-perf="1"/></g>
+  <g data-mat="wash" fill="#CFDCE6" data-bleed="1.4" data-density=".8"><rect x="23" y="23" width="114" height="126"/></g>
+  <g data-mat="gouache" data-angle="0"><path d="M84 104 C108 112 112 134 132 140 C142 143 150 140 156 132" stroke="#3A3330" stroke-width="13" fill="none"/></g>
+  <g data-mat="gouache" data-angle="0"><path d="M84 104 C108 112 112 134 132 140 C142 143 150 140 156 132" stroke="#F4EEE2" stroke-width="2.6" stroke-dasharray="3 4" fill="none" transform="translate(0 -3.5)"/></g>
+  <g data-mat="wash" fill="#AEB6C1" data-rim="2"><circle cx="72" cy="80" r="36"/></g>
+  <g data-mat="gouache" fill="#FBF6EA"><circle cx="72" cy="60" r="7"/><circle cx="91" cy="74" r="7"/><circle cx="84" cy="97" r="7"/><circle cx="60" cy="97" r="7"/><circle cx="53" cy="74" r="7"/></g>
+  <g data-mat="gouache" fill="#4A4550"><circle cx="72" cy="80" r="5"/></g>
+  <g data-mat="ink" stroke="#3A2A22" stroke-width=".9" fill="none" data-j=".4"><circle cx="72" cy="80" r="36"/><circle cx="72" cy="80" r="32" stroke-width=".6"/>
+    <circle cx="72" cy="60" r="7"/><circle cx="91" cy="74" r="7"/><circle cx="84" cy="97" r="7"/><circle cx="60" cy="97" r="7"/><circle cx="53" cy="74" r="7"/></g>
+  <g data-mat="white" fill="none" stroke="#FFFDF7" stroke-width="1.8" stroke-linecap="round"><path d="M46 66 a30 30 0 0 1 14 -16"/></g>
+  <g data-mat="sheet" fill="#FFFCF5"><circle cx="124" cy="36" r="14"/></g>
+  <g data-mat="ink" stroke="#5E4E44" stroke-width=".55" fill="none" data-j=".18">
+    <path d="M23 23 H110 M138 50 V149 H23 V23"/>
+    <circle cx="124" cy="36" r="11.5"/>
+  </g>
+  <g data-mat="flat" fill="#3A2A22">
+    <text x="124" y="40.5" text-anchor="middle" class="serif" font-size="12.5">04</text>
+    <text x="80" y="172" text-anchor="middle" class="serif" font-size="12" letter-spacing="2.2">RECORDINGS</text>
+    <text x="24" y="184" class="serif" font-size="7" letter-spacing=".6" fill="#7A6A60">the exit plan</text>
+    <text x="136" y="184" text-anchor="end" class="serif" font-size="7" letter-spacing=".6" fill="#7A6A60">vip</text>
+  </g>
+</svg>
+<svg data-art="seal" width="130" height="130" viewBox="0 0 130 130">
+  <g data-mat="shadow" fill="#8E7080" data-density=".6"><circle cx="68" cy="70" r="50"/></g>
+  <g data-mat="gouache" data-angle="30"><path d="M65 14 C82 12 92 22 104 28 C116 36 112 50 118 62 C122 78 112 88 104 98 C96 112 80 114 66 116 C50 118 38 110 28 102 C16 92 12 80 12 66 C12 50 20 38 30 28 C40 18 52 15 65 14 Z" fill="#A9235C"/></g>
+  <g data-mat="wash" fill="#7A1242" data-rim="5" data-density=".5"><path d="M65 14 C82 12 92 22 104 28 C116 36 112 50 118 62 C122 78 112 88 104 98 C96 112 80 114 66 116 C50 118 38 110 28 102 C16 92 12 80 12 66 C12 50 20 38 30 28 C40 18 52 15 65 14 Z"/></g>
+  <g data-mat="wash" fill="#8A1A4C" data-rim="3" data-density=".6"><circle cx="65" cy="65" r="34"/></g>
+  <g data-mat="gouache" data-angle="0" id="sealPetals"></g>
+  <g data-mat="wash" fill="#7E0F44" data-density=".8"><circle cx="65" cy="65" r="9"/></g>
+  <g data-mat="white" fill="none" stroke="#FFE3EF" stroke-width="3" stroke-linecap="round"><path d="M30 46 a40 40 0 0 1 22 -24" /><path d="M86 30 l6 3" stroke-width="2.4"/></g>
+</svg>
+<svg data-art="postmark" width="220" height="120" viewBox="0 0 220 120">
+  <defs><path id="pmRing" d="M60 60 m-38 0 a38 38 0 1 1 76 0 a38 38 0 1 1 -76 0"/></defs>
+  <g data-mat="flat" data-density=".72" fill="none" stroke="#3A2A22">
+    <circle cx="60" cy="60" r="47" stroke-width="2"/><circle cx="60" cy="60" r="30" stroke-width="1.4"/>
+    <text font-size="11.5" letter-spacing="2.4" class="serif" fill="#3A2A22" stroke="none"><textPath href="#pmRing" startOffset="2%">HOW WE GROW · THE EXIT PLAN ·</textPath></text>
+    <text x="60" y="58" text-anchor="middle" class="serif" font-size="15" fill="#3A2A22" stroke="none" letter-spacing="1.5">VIP</text>
+    <text x="60" y="73" text-anchor="middle" class="serif" font-size="9" fill="#3A2A22" stroke="none" letter-spacing="1.2">GREECE</text>
+    <path d="M112 38 q12 -8 24 0 t24 0 t24 0 t24 0 M112 52 q12 -8 24 0 t24 0 t24 0 t24 0 M112 66 q12 -8 24 0 t24 0 t24 0 t24 0 M112 80 q12 -8 24 0 t24 0 t24 0 t24 0" stroke-width="2.2"/>
+  </g>
+</svg>
+<svg data-art="sprout" width="140" height="130" viewBox="0 0 140 130">
+  <g data-mat="wash" fill="#9A7A5C" data-density=".7"><path d="M22 112 C40 100 100 100 118 112 C100 120 40 120 22 112 Z"/></g>
+  <g data-mat="wash" fill="#7E9A4E" data-rim="2.4"><path d="M70 66 C56 44 30 40 20 50 C30 70 56 74 70 66 Z"/><path d="M71 52 C82 26 110 22 122 30 C114 54 88 62 71 52 Z"/></g>
+  <g data-mat="wash" fill="#5E7F3A" data-density=".55"><path d="M70 66 C56 58 40 54 24 51 C34 64 54 70 70 66 Z"/><path d="M72 52 C86 44 104 36 120 31 C112 48 92 58 72 52 Z"/></g>
+  <g data-mat="ink" stroke="#3A2A22" stroke-width="1.1" fill="none" data-j=".6"><path d="M70 108 C70 92 68 78 70 66 C71 60 71 56 72 52"/>
+    <path d="M70 66 C56 44 30 40 20 50 C30 70 56 74 70 66"/><path d="M71 52 C82 26 110 22 122 30 C114 54 88 62 71 52"/><path d="M68 64 C54 58 38 54 26 51 M74 50 C88 42 104 36 118 31" stroke-width=".7"/></g>
+</svg>
+<!-- 02 · her phone on the table (the chat itself is live HTML laid over the screen), the times she's in it, an olive sprig -->
+<svg data-art="wa" width="600" height="500" viewBox="0 0 600 500">
+  <g data-mat="shadow" fill="#7E889A"><g transform="translate(8 12) rotate(-5 200 255)"><rect x="80" y="40" width="240" height="430" rx="34"/></g><g transform="translate(7 10) rotate(6 455 275)"><rect x="350" y="150" width="210" height="250"/></g></g>
+  <g data-mat="gouache" data-angle="85"><g transform="rotate(-5 200 255)"><rect x="80" y="40" width="240" height="430" rx="34" fill="#2B2422"/></g></g>
+  <g data-mat="sheet" fill="#EFE7DA"><g transform="rotate(-5 200 255)"><rect x="92" y="52" width="216" height="406" rx="24"/></g></g>
+  <g data-mat="gouache" fill="#2B2422"><g transform="rotate(-5 200 255)"><rect x="160" y="58" width="80" height="14" rx="7"/></g></g>
+  <g data-mat="sheet" fill="#FFFCF4"><g transform="rotate(6 455 275)"><rect x="350" y="150" width="210" height="250"/></g></g>
+  <g data-mat="ink" data-density=".55" fill="none" stroke-width=".9"><g transform="rotate(6 455 275)"><path d="M350 188 H560" stroke="#D9707A"/><path d="M350 214 H560 M350 240 H560 M350 266 H560 M350 292 H560 M350 318 H560 M350 344 H560 M350 370 H560" stroke="#9DB7D2" stroke-width=".7"/></g></g>
+  <g data-mat="pencil" fill="#3A2A22"><g transform="rotate(6 455 275)">
+    <text x="362" y="180" class="hand" font-size="15">in the chat with you</text>
+    <text x="362" y="235" class="hand" font-size="15">Tue 17 · after the session</text><text x="362" y="261" class="hand" font-size="15">Wed 18 · after the session</text>
+    <text x="362" y="287" class="hand" font-size="15">Thu 19 · after the session</text><text x="362" y="313" class="hand" font-size="15" fill="#C93A30">30 min each</text>
+    <text x="362" y="365" class="hand" font-size="15">+ one morning</text></g></g>
+  <g data-mat="wash" fill="#7E9A4E" data-rim="2" id="waOlive"></g>
+  <g data-mat="ink" stroke="#3A2A22" stroke-width="1.1" fill="none">
+    <g transform="rotate(-5 200 255)"><rect x="80" y="40" width="240" height="430" rx="34"/></g>
+    <g transform="rotate(6 455 275)"><rect x="350" y="150" width="210" height="250" stroke="#7A6A60" stroke-width=".8"/></g>
+    <path d="M430 470 C470 440 520 432 586 420" stroke="#5A4A3A"/>
+  </g>
+  <g data-mat="white" fill="none" stroke="#FFFDF7" stroke-width="3" stroke-linecap="round"><g transform="rotate(-5 200 255)"><path d="M96 70 q6 -16 26 -18" /><path d="M86 120 v40" stroke-width="2"/></g></g>
+</svg>
+
+<!-- 03 · the workbook open: six cards in a kraft pocket, the four parts on the right page, a brass clip, the ribbon -->
+<svg data-art="spr" width="600" height="500" viewBox="0 0 600 500">
+  <g data-mat="shadow" fill="#7E889A"><g transform="translate(8 12) rotate(-3 300 250)"><rect x="60" y="70" width="480" height="360" rx="6"/></g></g>
+  <g data-mat="gouache" data-angle="88"><g transform="rotate(-3 300 250)"><rect x="60" y="70" width="242" height="360" rx="6" fill="#EDB92A"/><rect x="298" y="70" width="242" height="360" rx="4" fill="#FBF5E6"/></g></g>
+  <g data-mat="wash" fill="#B3842A" data-density=".45" data-rim="4"><g transform="rotate(-3 300 250)"><rect x="60" y="70" width="242" height="360" rx="6"/></g></g>
+  <g data-mat="sheet" fill="#FFFDF8" id="sprCards"></g>
+  <g data-mat="wash" fill="#C9A26E" data-rim="2.6"><g transform="rotate(-3 300 250)"><path d="M86 250 H276 V404 H86 Z"/></g></g>
+  <g data-mat="flat" fill="#3A2A22"><g transform="rotate(-3 300 250)">
+    <text x="330" y="118" class="serif" font-size="11" letter-spacing="2.4" fill="#8A7A6E">THE OFFER CLARITY SPRINT</text>
+    <text x="356" y="175" class="serif" font-size="21">Choosing an offer</text><text x="356" y="230" class="serif" font-size="21">Checking demand</text>
+    <text x="356" y="285" class="serif" font-size="21">Making its value clear</text><text x="356" y="340" class="serif" font-size="21">Deciding on a price</text>
+    <text x="338" y="175" class="serif" font-size="17" fill="#C93A30">1</text><text x="338" y="230" class="serif" font-size="17" fill="#C93A30">2</text><text x="338" y="285" class="serif" font-size="17" fill="#C93A30">3</text><text x="338" y="340" class="serif" font-size="17" fill="#C93A30">4</text>
+  </g></g>
+  <g data-mat="ink" data-density=".45" fill="none" stroke="#9A8A7E" stroke-width=".8"><g transform="rotate(-3 300 250)"><path d="M330 192 H520 M330 247 H520 M330 302 H520 M330 357 H520"/></g></g>
+  <g data-mat="gouache" data-angle="90"><g transform="rotate(-3 300 250)"><path d="M470 424 C472 446 466 458 474 476 L480 469 L486 478 C480 458 484 444 480 424 Z" fill="#D9437E"/></g></g>
+  <g data-mat="wash" fill="#B98A3A" data-rim="2"><g transform="rotate(-3 300 250)"><path d="M392 52 h76 l6 30 h-88 Z"/><circle cx="430" cy="48" r="13"/></g></g>
+  <g data-mat="ink" stroke="#3A2A22" stroke-width="1.1" fill="none"><g transform="rotate(-3 300 250)">
+    <rect x="60" y="70" width="480" height="360" rx="6"/><path d="M300 72 V428"/><path d="M86 250 H276 V404 H86 Z"/>
+    <path d="M392 52 h76 l6 30 h-88 Z"/><circle cx="430" cy="48" r="13"/><circle cx="430" cy="48" r="5"/></g></g>
+  <g data-mat="white" fill="none" stroke="#FFFDF7" stroke-width="2.6" stroke-linecap="round"><g transform="rotate(-3 300 250)"><path d="M400 58 h40"/><path d="M80 90 v60" stroke-width="2"/></g></g>
+</svg>
+<svg data-art="spr-card" width="600" height="500" viewBox="0 0 600 500">
+  <g data-mat="shadow" fill="#7E889A" data-density=".7"><g transform="translate(5 8) rotate(-9 180 210)"><rect x="112" y="150" width="140" height="96"/></g></g>
+  <g data-mat="sheet" fill="#FFFDF8"><g transform="rotate(-9 180 210)"><rect x="112" y="150" width="140" height="96"/></g></g>
+  <g data-mat="ink" data-density=".6" fill="none" stroke="#7C6C61" stroke-width=".9"><g transform="rotate(-9 180 210)" id="cardScrib"></g></g>
+  <g data-mat="ink" stroke="#7A6A60" stroke-width=".8" fill="none"><g transform="rotate(-9 180 210)"><rect x="112" y="150" width="140" height="96"/></g></g>
+  <g data-mat="pencil" fill="none" stroke="#D9437E" stroke-width="2.6"><g transform="rotate(-9 180 210)"><ellipse cx="182" cy="198" rx="64" ry="38"/><path d="M228 150 l8 9 l16 -22"/></g></g>
+</svg>
+
+<!-- 04 · the recordings as film tins, each labelled by hand, the film unspooling -->
+<svg data-art="rec" width="600" height="500" viewBox="0 0 600 500">
+  <g data-mat="shadow" fill="#7E889A"><circle cx="196" cy="206" r="118"/><circle cx="398" cy="196" r="96"/><circle cx="330" cy="372" r="86"/><circle cx="502" cy="372" r="54"/></g>
+  <g data-mat="gouache" data-angle="0"><path d="M300 110 C360 60 470 70 520 120 C560 160 590 150 600 140" stroke="#3A3330" stroke-width="22" fill="none"/></g>
+  <g data-mat="gouache" data-angle="0"><path d="M300 104 C360 54 470 64 520 114 C560 154 590 144 600 134" stroke="#F4EEE2" stroke-width="3.2" stroke-dasharray="4 6" fill="none"/><path d="M300 117 C360 67 470 77 520 127 C560 167 590 157 600 147" stroke="#F4EEE2" stroke-width="3.2" stroke-dasharray="4 6" fill="none"/></g>
+  <g data-mat="wash" fill="#AEB6C1" data-rim="3"><circle cx="190" cy="200" r="116"/><circle cx="392" cy="190" r="94"/><circle cx="324" cy="366" r="84"/><circle cx="496" cy="366" r="52"/></g>
+  <g data-mat="wash" fill="#8E97A4" data-density=".5" data-rim="2"><circle cx="190" cy="200" r="100"/><circle cx="392" cy="190" r="80"/><circle cx="324" cy="366" r="71"/><circle cx="496" cy="366" r="43"/></g>
+  <g data-mat="sheet" fill="#FFFCF4"><circle cx="190" cy="200" r="54"/><circle cx="392" cy="190" r="44"/><circle cx="324" cy="366" r="40"/><circle cx="496" cy="366" r="27"/></g>
+  <g data-mat="pencil" fill="#3A2A22">
+    <text x="190" y="196" text-anchor="middle" class="hand" font-size="26">Day 1</text><text x="190" y="222" text-anchor="middle" class="hand" font-size="13" fill="#7A6A60">recording</text>
+    <text x="392" y="196" text-anchor="middle" class="hand" font-size="23">Day 2</text><text x="324" y="372" text-anchor="middle" class="hand" font-size="22">Day 3</text>
+    <text x="496" y="364" text-anchor="middle" class="hand" font-size="12" fill="#C93A30">VIP</text><text x="496" y="378" text-anchor="middle" class="hand" font-size="11" fill="#C93A30">review</text></g>
+  <g data-mat="ink" stroke="#3A2A22" stroke-width="1.1" fill="none">
+    <circle cx="190" cy="200" r="116"/><circle cx="190" cy="200" r="100" stroke-width=".7"/><circle cx="190" cy="200" r="54" stroke-width=".8"/>
+    <circle cx="392" cy="190" r="94"/><circle cx="392" cy="190" r="80" stroke-width=".7"/><circle cx="392" cy="190" r="44" stroke-width=".8"/>
+    <circle cx="324" cy="366" r="84"/><circle cx="324" cy="366" r="71" stroke-width=".7"/><circle cx="324" cy="366" r="40" stroke-width=".8"/>
+    <circle cx="496" cy="366" r="52"/><circle cx="496" cy="366" r="27" stroke-width=".8"/></g>
+  <g data-mat="white" fill="none" stroke="#FFFDF7" stroke-width="3" stroke-linecap="round"><path d="M98 150 a104 104 0 0 1 50 -60"/><path d="M318 128 a84 84 0 0 1 36 -30"/><path d="M256 330 a76 76 0 0 1 26 -32" stroke-width="2.4"/></g>
+</svg>
+
+<!-- fit check, free: a row of kafeneio chairs, the audience -->
+<svg data-art="chairs-row" width="600" height="330" viewBox="0 0 600 330">
+  <g data-mat="shadow" fill="#8E98AA" data-density=".7"><ellipse cx="76" cy="304" rx="40" ry="7"/><ellipse cx="186" cy="304" rx="40" ry="7"/><ellipse cx="296" cy="304" rx="40" ry="7"/><ellipse cx="406" cy="304" rx="40" ry="7"/><ellipse cx="516" cy="304" rx="40" ry="7"/></g>
+  <g data-mat="gouache" fill="#8FA9C4" data-angle="90" stroke="#8FA9C4" stroke-width="7" stroke-linecap="round"><g transform="translate(40 300)"><path d="M10 -150 L12 -70 M60 -150 L58 -70 M10 -64 L8 0 M60 -64 L62 0 M12 -24 H58"/><rect x="6" y="-152" width="58" height="11"/><rect x="10" y="-120" width="50" height="6"/></g><g transform="translate(150 300)"><path d="M10 -150 L12 -70 M60 -150 L58 -70 M10 -64 L8 0 M60 -64 L62 0 M12 -24 H58"/><rect x="6" y="-152" width="58" height="11"/><rect x="10" y="-120" width="50" height="6"/></g><g transform="translate(260 300)"><path d="M10 -150 L12 -70 M60 -150 L58 -70 M10 -64 L8 0 M60 -64 L62 0 M12 -24 H58"/><rect x="6" y="-152" width="58" height="11"/><rect x="10" y="-120" width="50" height="6"/></g><g transform="translate(370 300)"><path d="M10 -150 L12 -70 M60 -150 L58 -70 M10 -64 L8 0 M60 -64 L62 0 M12 -24 H58"/><rect x="6" y="-152" width="58" height="11"/><rect x="10" y="-120" width="50" height="6"/></g><g transform="translate(480 300)"><path d="M10 -150 L12 -70 M60 -150 L58 -70 M10 -64 L8 0 M60 -64 L62 0 M12 -24 H58"/><rect x="6" y="-152" width="58" height="11"/><rect x="10" y="-120" width="50" height="6"/></g></g>
+  <g data-mat="gouache" fill="#D9B26A" data-angle="0"><g transform="translate(40 300)"><polygon points="2,-72 68,-72 64,-62 6,-62"/></g><g transform="translate(150 300)"><polygon points="2,-72 68,-72 64,-62 6,-62"/></g><g transform="translate(260 300)"><polygon points="2,-72 68,-72 64,-62 6,-62"/></g><g transform="translate(370 300)"><polygon points="2,-72 68,-72 64,-62 6,-62"/></g><g transform="translate(480 300)"><polygon points="2,-72 68,-72 64,-62 6,-62"/></g></g>
+  <g data-mat="ink" stroke="#3A2A22" stroke-width="1" fill="none" data-j=".6"><g transform="translate(40 300)"><path d="M10 -150 L12 -70 M60 -150 L58 -70 M10 -64 L8 0 M60 -64 L62 0 M12 -24 H58"/><rect x="6" y="-152" width="58" height="11"/><rect x="10" y="-120" width="50" height="6"/></g><g transform="translate(150 300)"><path d="M10 -150 L12 -70 M60 -150 L58 -70 M10 -64 L8 0 M60 -64 L62 0 M12 -24 H58"/><rect x="6" y="-152" width="58" height="11"/><rect x="10" y="-120" width="50" height="6"/></g><g transform="translate(260 300)"><path d="M10 -150 L12 -70 M60 -150 L58 -70 M10 -64 L8 0 M60 -64 L62 0 M12 -24 H58"/><rect x="6" y="-152" width="58" height="11"/><rect x="10" y="-120" width="50" height="6"/></g><g transform="translate(370 300)"><path d="M10 -150 L12 -70 M60 -150 L58 -70 M10 -64 L8 0 M60 -64 L62 0 M12 -24 H58"/><rect x="6" y="-152" width="58" height="11"/><rect x="10" y="-120" width="50" height="6"/></g><g transform="translate(480 300)"><path d="M10 -150 L12 -70 M60 -150 L58 -70 M10 -64 L8 0 M60 -64 L62 0 M12 -24 H58"/><rect x="6" y="-152" width="58" height="11"/><rect x="10" y="-120" width="50" height="6"/></g><g transform="translate(40 300)"><polygon points="2,-72 68,-72 64,-62 6,-62"/></g><g transform="translate(150 300)"><polygon points="2,-72 68,-72 64,-62 6,-62"/></g><g transform="translate(260 300)"><polygon points="2,-72 68,-72 64,-62 6,-62"/></g><g transform="translate(370 300)"><polygon points="2,-72 68,-72 64,-62 6,-62"/></g><g transform="translate(480 300)"><polygon points="2,-72 68,-72 64,-62 6,-62"/></g></g>
+  <g data-mat="ink" stroke="#8A6A3A" stroke-width=".7" fill="none" data-density=".7"><g transform="translate(40 300)"><path d="M8 -70 L18 -63 M18 -71 L28 -63 M28 -71 L38 -63 M38 -71 L48 -63 M48 -71 L58 -63 M14 -63 L24 -71 M24 -63 L34 -71 M34 -63 L44 -71 M44 -63 L54 -71"/></g><g transform="translate(150 300)"><path d="M8 -70 L18 -63 M18 -71 L28 -63 M28 -71 L38 -63 M38 -71 L48 -63 M48 -71 L58 -63 M14 -63 L24 -71 M24 -63 L34 -71 M34 -63 L44 -71 M44 -63 L54 -71"/></g><g transform="translate(260 300)"><path d="M8 -70 L18 -63 M18 -71 L28 -63 M28 -71 L38 -63 M38 -71 L48 -63 M48 -71 L58 -63 M14 -63 L24 -71 M24 -63 L34 -71 M34 -63 L44 -71 M44 -63 L54 -71"/></g><g transform="translate(370 300)"><path d="M8 -70 L18 -63 M18 -71 L28 -63 M28 -71 L38 -63 M38 -71 L48 -63 M48 -71 L58 -63 M14 -63 L24 -71 M24 -63 L34 -71 M34 -63 L44 -71 M44 -63 L54 -71"/></g><g transform="translate(480 300)"><path d="M8 -70 L18 -63 M18 -71 L28 -63 M28 -71 L38 -63 M38 -71 L48 -63 M48 -71 L58 -63 M14 -63 L24 -71 M24 -63 L34 -71 M34 -63 L44 -71 M44 -63 L54 -71"/></g></g>
+</svg>
+<!-- fit check, VIP: two chairs pulled up at her table, two coffees, her black hat on one chair -->
+<svg data-art="chairs-two" width="600" height="330" viewBox="0 0 600 330">
+  <g data-mat="shadow" fill="#8E98AA" data-density=".7"><ellipse cx="160" cy="304" rx="44" ry="7"/><ellipse cx="440" cy="304" rx="44" ry="7"/><ellipse cx="300" cy="306" rx="70" ry="9"/></g>
+  <g data-mat="gouache" fill="#8FA9C4" data-angle="90" stroke="#8FA9C4" stroke-width="7" stroke-linecap="round"><g transform="translate(120 300)"><path d="M14 -152 C16 -120 14 -90 16 -70 L14 0 M68 -66 L70 0 M16 -26 H69"/><rect x="10" y="-154" width="12" height="11"/><rect x="12" y="-122" width="8" height="7"/></g><g transform="translate(480 300) scale(-1 1)"><path d="M14 -152 C16 -120 14 -90 16 -70 L14 0 M68 -66 L70 0 M16 -26 H69"/><rect x="10" y="-154" width="12" height="11"/><rect x="12" y="-122" width="8" height="7"/></g></g>
+  <g data-mat="gouache" fill="#D9B26A" data-angle="0"><g transform="translate(120 300)"><polygon points="14,-74 74,-74 72,-64 16,-64"/></g><g transform="translate(480 300) scale(-1 1)"><polygon points="14,-74 74,-74 72,-64 16,-64"/></g></g>
+  <g data-mat="gouache" data-angle="0"><ellipse cx="300" cy="190" rx="78" ry="14" fill="#FBF6EA"/><path d="M296 200 L292 296 M304 200 L308 296" stroke="#5E5450" stroke-width="7" fill="none"/><ellipse cx="300" cy="298" rx="38" ry="6" fill="#5E5450"/></g>
+  <g data-mat="gouache" data-angle="0"><path d="M256 186 h22 l-3 -16 h-16 Z" fill="#E36A9A"/><path d="M322 186 h22 l-3 -16 h-16 Z" fill="#F2C230"/></g>
+  <g data-mat="gouache" data-angle="20"><ellipse cx="432" cy="152" rx="40" ry="8" fill="#2B2422"/><path d="M414 150 C414 128 450 128 450 150 Z" fill="#2B2422"/></g>
+  <g data-mat="ink" stroke="#3A2A22" stroke-width="1" fill="none" data-j=".6">
+    <g transform="translate(120 300)"><path d="M14 -152 C16 -120 14 -90 16 -70 L14 0 M68 -66 L70 0 M16 -26 H69"/><rect x="10" y="-154" width="12" height="11"/><rect x="12" y="-122" width="8" height="7"/><polygon points="14,-74 74,-74 72,-64 16,-64"/></g><g transform="translate(480 300) scale(-1 1)"><path d="M14 -152 C16 -120 14 -90 16 -70 L14 0 M68 -66 L70 0 M16 -26 H69"/><rect x="10" y="-154" width="12" height="11"/><rect x="12" y="-122" width="8" height="7"/><polygon points="14,-74 74,-74 72,-64 16,-64"/></g>
+    <ellipse cx="300" cy="190" rx="78" ry="14"/><path d="M300 204 V296"/><ellipse cx="300" cy="298" rx="38" ry="6"/>
+    <path d="M256 186 h22 l-3 -16 h-16 Z M322 186 h22 l-3 -16 h-16 Z M278 178 c7 0 7 7 0 7 M344 178 c7 0 7 7 0 7"/>
+  </g>
+  <g data-mat="white" fill="none" stroke="#FFFDF7" stroke-width="2" stroke-linecap="round"><path d="M240 186 q60 8 120 0" /><path d="M420 140 q10 -8 20 -4"/></g>
+</svg>
+<!-- her letter's envelope: open, at an angle, pink, sealed with her sunflower (the seal is placed over it on the page) -->
+<svg data-art="env" width="560" height="440" viewBox="0 0 560 440">
+  <g data-mat="shadow" fill="#8E7F90"><g transform="translate(9 12) rotate(-7 280 260)"><rect x="60" y="150" width="420" height="260" rx="4"/></g></g>
+  <g data-mat="wash" fill="#EE9DBB" data-rim="3.2" data-density=".9"><g transform="rotate(-7 280 260)"><path d="M60 150 L270 20 L480 150 Z"/></g></g>
+  <g data-mat="wash" fill="#F2AEC7" data-rim="3"><g transform="rotate(-7 280 260)"><rect x="60" y="150" width="420" height="260" rx="4"/></g></g>
+  <g data-mat="wash" fill="#E58AAE" data-density=".55" data-rim="2.4"><g transform="rotate(-7 280 260)"><path d="M60 410 L270 262 L480 410 Z"/><path d="M60 150 L230 290 L60 410 Z"/></g></g>
+  <g data-mat="pencil" fill="none" stroke="#7A4A5E" stroke-width="1.1"><g transform="rotate(-7 280 260)"><path d="M60 150 L270 20 L480 150 M60 410 L270 262 L480 410 M60 150 L230 290 M480 150 L310 290"/><rect x="60" y="150" width="420" height="260" rx="4"/></g></g>
+  <g data-mat="white" fill="none" stroke="#FFF5F9" stroke-width="2.4" stroke-linecap="round"><g transform="rotate(-7 280 260)"><path d="M80 404 L262 274"/><path d="M286 30 L460 140" stroke-width="1.8"/></g></g>
+</svg>
+
+<!-- hero · her door in Greece: the video sits in the arched opening (x170 y110 w670 h420); the blue door leaf swings open toward us -->
+<svg data-art="door" width="1110" height="620" viewBox="0 0 1110 620">
+  <g data-mat="shadow" fill="#8E98AA" data-density=".5"><ellipse cx="555" cy="588" rx="470" ry="14"/></g>
+  <g data-mat="gouache" data-angle="0" data-streak=".012"><path d="M96 560 V180 C96 100 190 50 320 50 H690 C820 50 914 100 914 180 V560 Z" fill="#FBF8F2"/></g>
+  <g data-mat="wash" fill="#D8CBB6" data-density=".7"><path d="M136 530 V200 C136 128 256 80 400 80 H610 C754 80 874 128 874 200 V530 H840 V210 C840 150 730 110 600 110 H410 C280 110 170 150 170 210 V530 Z"/></g>
+  <g data-mat="gouache" data-angle="90"><path d="M840 530 L952 500 V150 C952 132 934 124 916 130 L840 160 Z" fill="#EC3486"/></g>
+  <g data-mat="wash" fill="#A3155A" data-density=".55"><path d="M840 530 L868 522 V152 L840 160 Z"/><path d="M880 486 L940 470 V440 L880 456 Z M880 330 L940 314 V284 L880 300 Z M880 196 L940 180 V160 L880 176 Z"/></g>
+  <g data-mat="gouache" data-angle="0"><path d="M126 530 H884 L902 556 H108 Z" fill="#F1EADD"/><path d="M96 556 H914 L934 582 H76 Z" fill="#E7DDCB"/></g>
+  <g data-mat="wash" fill="#B7C0CC" data-density=".45"><path d="M108 556 H902 L906 562 H104 Z M76 582 H934 L936 588 H74 Z"/></g>
+  <g data-mat="wash" fill="#C9614E" data-rim="2.6"><path d="M12 582 L28 506 H118 L134 582 Z"/><path d="M976 582 L992 506 H1082 L1098 582 Z"/></g>
+  <g data-mat="wash" fill="#A9483A" data-density=".5"><path d="M24 520 H122 L120 528 H26 Z M988 520 H1086 L1084 528 H990 Z"/></g>
+  <g data-mat="wash" fill="#7E9A4E" data-rim="2.2" id="heroLeaves"></g>
+  <g data-mat="gouache" data-angle="0" id="heroFlowers"></g>
+  <g data-mat="wash" fill="#E05A92" data-rim="2" data-density=".8" id="heroBoug"></g>
+  <g data-mat="wash" fill="#A8245E" data-rim="1.6" data-density=".55" id="heroBoug2"></g>
+  <g data-mat="ink" stroke="#3A2A22" stroke-width="1.2" fill="none">
+    <path d="M96 560 V180 C96 100 190 50 320 50 H690 C820 50 914 100 914 180 V560"/>
+    <path d="M170 530 V210 C170 150 280 110 410 110 H600 C730 110 840 150 840 210 V530"/>
+    <path d="M136 530 V200 C136 128 256 80 400 80 H610 C754 80 874 128 874 200 V530" stroke-width=".8"/>
+    <path d="M840 530 L952 500 V150 C952 132 934 124 916 130 L840 160"/>
+    <path d="M880 486 L940 470 V440 L880 456 Z M880 330 L940 314 V284 L880 300 Z M880 196 L940 180 V160 L880 176 Z" stroke-width=".8"/>
+    <path d="M126 530 H884 L902 556 H108 Z M96 556 H914 L934 582 H76 Z"/>
+    <path d="M12 582 L28 506 H118 L134 582 Z M976 582 L992 506 H1082 L1098 582 Z"/>
+    <path d="M944 350 c-8 0 -8 14 0 14" stroke-width="1.6"/>
+  </g>
+  <g data-mat="shadow" fill="#8E98AA" data-density=".6"><ellipse cx="508" cy="84" rx="78" ry="23"/></g>
+  <g data-mat="gouache" data-angle="0" data-streak=".01"><ellipse cx="505" cy="80" rx="78" ry="24" fill="#FFFCF3"/></g>
+  <g data-mat="wash" fill="#4F7FB4" data-density=".75" data-rim="1.4"><path d="M427 80 a78 24 0 1 0 156 0 a78 24 0 1 0 -156 0 Z M433 80 a72 19 0 1 1 144 0 a72 19 0 1 1 -144 0 Z" fill-rule="evenodd"/></g>
+  <g data-mat="gouache" data-angle="0" id="plaqueFlower"></g>
+  <g data-mat="flat" fill="#1A1412"><text x="476" y="86" class="sans" font-weight="800" font-size="15.5" letter-spacing="-.2">how we grow</text></g>
+  <g data-mat="ink" stroke="#1A1412" stroke-width="1" fill="none"><ellipse cx="505" cy="80" rx="78" ry="24"/></g>
+  <g data-mat="ink" stroke="#8A7A6E" stroke-width=".7" fill="none" data-density=".6"><path d="M42 250 h34 M36 330 h28 M50 420 h24 M960 260 h30 M968 420 h26 M380 26 h60 M660 30 h40"/></g>
+</svg>
+
+<svg data-art="mini-rev" width="160" height="200" viewBox="0 0 160 200">
+  <g data-mat="shadow" fill="#7E889A" data-density=".8"><rect x="12" y="14" width="140" height="180" rx="2"/></g>
+  <g data-mat="sheet" fill="#FFFCF5"><rect x="10" y="10" width="140" height="180" data-perf="1"/></g>
+  <g data-mat="wash" fill="#F2D2CE" data-bleed="1.2" data-density=".9"><rect x="19" y="19" width="122" height="162"/></g>
+  <g data-tx="translate(80 100) scale(1.32) translate(-80 -90)">
+  <g data-mat="gouache" data-angle="-8"><g transform="rotate(-8 75 86)"><rect x="42" y="42" width="66" height="86" fill="#FFFCF4"/></g></g>
+  <g data-mat="ink" stroke="#3A2A22" stroke-width="1.08" fill="none" data-j=".4"><g transform="rotate(-8 75 86)">
+    <rect x="42" y="42" width="66" height="86"/>
+    <path d="M50 56 h44 M50 64 h30 M50 76 h48 M50 84 h40" stroke-width="2.16"/>
+    <path d="M50 98 q3 -2 6 0 t6 0 t6 0 t6 0 t6 0 t6 0 M50 106 q3 -2 6 0 t6 0 t6 0 t6 0 t6 0 M50 114 q3 -2 6 0 t6 0 t6 0 t6 0 t6 0 t6 0" stroke="#8A7A6E" stroke-width="0.94"/>
+  </g></g>
+  <g data-mat="pencil" fill="none" stroke="#C93A30" stroke-width="2.70"><g transform="rotate(-8 75 86)"><path d="M47 60 C70 58 90 61 101 59"/><path d="M47 88 c4 4 8 4 12 0" stroke="#5E7F3A"/></g></g>
+  <g data-mat="gouache" data-angle="-34"><g transform="translate(86 120) rotate(-34)">
+    <polygon points="0,0 7,-2 7,2" fill="#3A2A22"/><polygon points="7,-2 20,-6 20,6 7,2" fill="#E9C496"/>
+    <rect x="20" y="-6" width="58" height="12" fill="#C93A30"/><rect x="20" y="-6" width="58" height="3.8" fill="#DE5A4A"/><rect x="20" y="2.2" width="58" height="3.8" fill="#A32A22"/></g></g>
+  <g data-mat="ink" stroke="#3A2A22" stroke-width="1.22" fill="none" data-j=".4"><g transform="translate(86 120) rotate(-34)"><path d="M0 0 L20 -6 M0 0 L20 6 M20 -6 H78 V6 H20"/></g></g>
+  </g>
+  <g data-mat="ink" stroke="#5E4E44" stroke-width=".7" fill="none" data-j=".18"><rect x="19" y="19" width="122" height="162"/></g>
+</svg>
+<svg data-art="mini-wa" width="160" height="200" viewBox="0 0 160 200">
+  <g data-mat="shadow" fill="#7E889A" data-density=".8"><rect x="12" y="14" width="140" height="180" rx="2"/></g>
+  <g data-mat="sheet" fill="#FFFCF5"><rect x="10" y="10" width="140" height="180" data-perf="1"/></g>
+  <g data-mat="wash" fill="#D6E2CB" data-bleed="1.2" data-density=".9"><rect x="19" y="19" width="122" height="162"/></g>
+  <g data-tx="translate(80 100) scale(1.32) translate(-80 -90)">
+  <g data-mat="gouache" data-angle="96"><g transform="rotate(7 79 88)"><rect x="50" y="34" width="58" height="108" rx="11" fill="#2E2622"/><rect x="54" y="42" width="50" height="92" rx="5" fill="#F4EEE2"/></g></g>
+  <g data-mat="gouache" data-angle="0"><g transform="rotate(7 79 88)">
+    <rect x="57" y="52" width="34" height="12" rx="5" fill="#FFFFFF"/><rect x="66" y="70" width="34" height="14" rx="5" fill="#CDEBC0"/>
+    <rect x="57" y="90" width="38" height="13" rx="5" fill="#FFFFFF"/><circle cx="63" cy="96.5" r="3.4" fill="#E04A86"/><rect x="72" y="110" width="28" height="12" rx="5" fill="#CDEBC0"/></g></g>
+  <g data-mat="ink" stroke="#3A2A22" stroke-width="1.08" fill="none" data-j=".35"><g transform="rotate(7 79 88)">
+    <rect x="50" y="34" width="58" height="108" rx="11"/>
+    <path d="M60 58 h22 M70 77 h24 M68 96.5 h4 M74 95 v3 M77 93.5 v6 M80 95 v3 M83 94 v5 M86 95.5 v2 M76 116 h18" stroke-width="1.22"/></g></g>
+  <g data-mat="white" fill="none" stroke="#FFFDF7" stroke-width="2.16" stroke-linecap="round"><g transform="rotate(7 79 88)"><path d="M54 40 q4 -3 10 -3"/></g></g>
+  </g>
+  <g data-mat="ink" stroke="#5E4E44" stroke-width=".7" fill="none" data-j=".18"><rect x="19" y="19" width="122" height="162"/></g>
+</svg>
+<svg data-art="mini-spr" width="160" height="200" viewBox="0 0 160 200">
+  <g data-mat="shadow" fill="#7E889A" data-density=".8"><rect x="12" y="14" width="140" height="180" rx="2"/></g>
+  <g data-mat="sheet" fill="#FFFCF5"><rect x="10" y="10" width="140" height="180" data-perf="1"/></g>
+  <g data-mat="wash" fill="#F5E2A6" data-bleed="1.2" data-density=".9"><rect x="19" y="19" width="122" height="162"/></g>
+  <g data-tx="translate(80 100) scale(1.32) translate(-80 -90)">
+  <g data-mat="gouache" data-angle="80"><g transform="rotate(-6 78 86)">
+    <rect x="44" y="38" width="68" height="94" rx="3" fill="#F2C230"/><rect x="44" y="38" width="10" height="94" fill="#D6A215"/>
+    <g fill="#9A6A12"><ellipse cx="84" cy="87.6" rx="2.3" ry="4.2" transform="rotate(0 84 96)"/><ellipse cx="84" cy="87.6" rx="2.3" ry="4.2" transform="rotate(30 84 96)"/><ellipse cx="84" cy="87.6" rx="2.3" ry="4.2" transform="rotate(60 84 96)"/><ellipse cx="84" cy="87.6" rx="2.3" ry="4.2" transform="rotate(90 84 96)"/><ellipse cx="84" cy="87.6" rx="2.3" ry="4.2" transform="rotate(120 84 96)"/><ellipse cx="84" cy="87.6" rx="2.3" ry="4.2" transform="rotate(150 84 96)"/><ellipse cx="84" cy="87.6" rx="2.3" ry="4.2" transform="rotate(180 84 96)"/><ellipse cx="84" cy="87.6" rx="2.3" ry="4.2" transform="rotate(210 84 96)"/><ellipse cx="84" cy="87.6" rx="2.3" ry="4.2" transform="rotate(240 84 96)"/><ellipse cx="84" cy="87.6" rx="2.3" ry="4.2" transform="rotate(270 84 96)"/><ellipse cx="84" cy="87.6" rx="2.3" ry="4.2" transform="rotate(300 84 96)"/><ellipse cx="84" cy="87.6" rx="2.3" ry="4.2" transform="rotate(330 84 96)"/></g><circle cx="84" cy="96" r="4.6" fill="#3A2A22"/></g></g>
+  <g data-mat="gouache" data-angle="90"><path d="M96 130 C98 144 92 152 99 166 L104 161 L108 167 C104 152 108 142 104 130 Z" fill="#E04A86"/></g>
+  <g data-mat="ink" stroke="#3A2A22" stroke-width="1.22" fill="none" data-j=".4"><g transform="rotate(-6 78 86)">
+    <rect x="44" y="38" width="68" height="94" rx="3"/><path d="M54 38 V132"/>
+    <circle cx="84" cy="96" r="4.8"/>
+    <path d="M64 52 h36 M64 60 h28" stroke-width="2.03"/></g></g>
+  <g data-mat="white" fill="none" stroke="#FFFDF7" stroke-width="2.03" stroke-linecap="round"><g transform="rotate(-6 78 86)"><path d="M60 44 h34"/></g></g>
+  </g>
+  <g data-mat="ink" stroke="#5E4E44" stroke-width=".7" fill="none" data-j=".18"><rect x="19" y="19" width="122" height="162"/></g>
+</svg>
+<svg data-art="mini-rec" width="160" height="200" viewBox="0 0 160 200">
+  <g data-mat="shadow" fill="#7E889A" data-density=".8"><rect x="12" y="14" width="140" height="180" rx="2"/></g>
+  <g data-mat="sheet" fill="#FFFCF5"><rect x="10" y="10" width="140" height="180" data-perf="1"/></g>
+  <g data-mat="wash" fill="#CFDCE6" data-bleed="1.2" data-density=".9"><rect x="19" y="19" width="122" height="162"/></g>
+  <g data-tx="translate(80 100) scale(1.32) translate(-80 -90)">
+  <g data-mat="gouache" data-angle="0"><path d="M84 104 C108 112 112 134 132 140 C142 143 150 140 156 132" stroke="#3A3330" stroke-width="17.55" fill="none"/></g>
+  <g data-mat="gouache" data-angle="0"><path d="M84 104 C108 112 112 134 132 140 C142 143 150 140 156 132" stroke="#F4EEE2" stroke-width="3.51" stroke-dasharray="3 4" fill="none" transform="translate(0 -3.5)"/></g>
+  <g data-mat="wash" fill="#AEB6C1" data-rim="2"><circle cx="72" cy="80" r="36"/></g>
+  <g data-mat="gouache" fill="#FBF6EA"><circle cx="72" cy="60" r="7"/><circle cx="91" cy="74" r="7"/><circle cx="84" cy="97" r="7"/><circle cx="60" cy="97" r="7"/><circle cx="53" cy="74" r="7"/></g>
+  <g data-mat="gouache" fill="#4A4550"><circle cx="72" cy="80" r="5"/></g>
+  <g data-mat="ink" stroke="#3A2A22" stroke-width="1.22" fill="none" data-j=".4"><circle cx="72" cy="80" r="36"/><circle cx="72" cy="80" r="32" stroke-width="0.81"/>
+    <circle cx="72" cy="60" r="7"/><circle cx="91" cy="74" r="7"/><circle cx="84" cy="97" r="7"/><circle cx="60" cy="97" r="7"/><circle cx="53" cy="74" r="7"/></g>
+  <g data-mat="white" fill="none" stroke="#FFFDF7" stroke-width="2.43" stroke-linecap="round"><path d="M46 66 a30 30 0 0 1 14 -16"/></g>
+  </g>
+  <g data-mat="ink" stroke="#5E4E44" stroke-width=".7" fill="none" data-j=".18"><rect x="19" y="19" width="122" height="162"/></g>
+</svg>
+<script>
+// ---- the hand: every stroked shape in an ink or pencil layer becomes a line a person drew ----
+let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647, (seed - 1) / 2147483646);
+const NS = 'http://www.w3.org/2000/svg';
+function wob(n){ const p = [rnd() * 6.28, rnd() * 6.28, rnd() * 6.28]; return t => Math.sin(t / 26 + p[0]) * .6 + Math.sin(t / 9.5 + p[1]) * .3 + Math.sin(t / 4.1 + p[2]) * .1 }
+function handPath(el, closed){
+  const L = el.getTotalLength(), j = +(el.closest('[data-j]')?.dataset.j || 0.9), f = wob();
+  const step = 3, start = closed ? rnd() * L : 0, total = closed ? L * (1.04 + rnd() * .05) : L, ext = closed ? 0 : 2.5 + rnd() * 2;
+  const pts = [];
+  for (let s = -ext; s <= total + ext; s += step) {
+    const u = closed ? (start + s) % L : Math.min(Math.max(s, 0), L);
+    const p = el.getPointAtLength(u), q = el.getPointAtLength(Math.min(L, u + .5)), r0 = el.getPointAtLength(Math.max(0, u - .5));
+    let tx = q.x - r0.x, ty = q.y - r0.y; const m = Math.hypot(tx, ty) || 1; tx /= m; ty /= m;
+    let x = p.x, y = p.y;
+    if (!closed && s < 0) { x += tx * s; y += ty * s } if (!closed && s > L) { x += tx * (s - L); y += ty * (s - L) }
+    const o = f(s) * j; pts.push([x - ty * o, y + tx * o]);
+  }
+  return 'M' + pts.map(p => p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join(' L');
+}
+function geom(el){
+  const t = el.tagName;
+  if (t === 'rect') { const x = +el.getAttribute('x') || 0, y = +el.getAttribute('y') || 0, w = +el.getAttribute('width'), h = +el.getAttribute('height');
+    return [[`M${x} ${y} H${x + w}`, 0], [`M${x + w} ${y} V${y + h}`, 0], [`M${x + w} ${y + h} H${x}`, 0], [`M${x} ${y + h} V${y}`, 0]] }
+  if (t === 'line') return [[`M${el.getAttribute('x1')} ${el.getAttribute('y1')} L${el.getAttribute('x2')} ${el.getAttribute('y2')}`, 0]];
+  if (t === 'circle' || t === 'ellipse') { const cx = +el.getAttribute('cx'), cy = +el.getAttribute('cy'), rx = +(el.getAttribute('r') || el.getAttribute('rx')), ry = +(el.getAttribute('r') || el.getAttribute('ry'));
+    return [[`M${cx - rx} ${cy} a${rx} ${ry} 0 1 0 ${2 * rx} 0 a${rx} ${ry} 0 1 0 ${-2 * rx} 0`, 1]] }
+  if (t === 'polygon' || t === 'polyline') return [['M' + el.getAttribute('points').trim().replace(/\s+/g, ' L') + (t === 'polygon' ? ' Z' : ''), t === 'polygon' ? 1 : 0]];
+  if (t === 'path') { const d = el.getAttribute('d');
+    // a path with several subpaths: each one drawn separately (a person lifts the pen)
+    return d.split(/(?=M)/).filter(s => s.trim()).map(s => [s, /z\s*$/i.test(s.trim()) ? 1 : 0]) }
+  return [];
+}
+document.fonts.ready.then(() => {
+  // a <g data-tx> holding material groups: each material keeps its own layer, the transform moves inside it
+  document.querySelectorAll('svg[data-art] > g[data-tx]').forEach(w => { const tx = w.dataset.tx;
+    [...w.children].forEach(g => { const inner = document.createElementNS(NS, 'g'); inner.setAttribute('transform', tx);
+      while (g.firstChild) inner.appendChild(g.firstChild); g.appendChild(inner); w.parentNode.insertBefore(g, w) }); w.remove() });
+  document.querySelectorAll('rect[data-perf]').forEach((r, k) => {
+    const x = +r.getAttribute('x'), y = +r.getAttribute('y'), w = +r.getAttribute('width'), h = +r.getAttribute('height'), rr = 3.6, st = 10.6;
+    const svg = r.ownerSVGElement, defs = svg.querySelector('defs') || svg.insertBefore(document.createElementNS(NS, 'defs'), svg.firstChild);
+    const m = document.createElementNS(NS, 'mask'); m.id = 'perf' + k; let h2 = `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="#fff"/>`;
+    for (let i = x; i <= x + w + .1; i += st) h2 += `<circle cx="${i}" cy="${y}" r="${rr}"/><circle cx="${i}" cy="${y + h}" r="${rr}"/>`;
+    for (let j = y; j <= y + h + .1; j += st) h2 += `<circle cx="${x}" cy="${j}" r="${rr}"/><circle cx="${x + w}" cy="${j}" r="${rr}"/>`;
+    m.innerHTML = h2; defs.appendChild(m); r.setAttribute('mask', `url(#perf${k})`) });
+  const hl = document.getElementById('heroLeaves'), hf = document.getElementById('heroFlowers'), hb = document.getElementById('heroBoug');
+  if (hl) { let L = '', F = '', B = '';
+    // sunflowers in the two pots, bookends (Hotel Le Luv's topiaries)
+    [[72, 506], [1036, 506]].forEach(([x, y], k) => { const stems = k ? [[-30, 132, -10], [-4, 186, -4], [26, 150, 8]] : [[-26, 150, -8], [6, 190, 4], [32, 132, 12]];
+      stems.forEach(([dx, hgt, lean]) => { const tx = x + dx + lean, ty = y - hgt;
+        L += `<path d="M${x + dx} ${y} C${x + dx} ${y - hgt * .5} ${tx} ${ty + 40} ${tx} ${ty}" stroke="#5E7F3A" stroke-width="5" fill="none"/>`;
+        L += `<ellipse cx="${x + dx + 12}" cy="${y - hgt * .45}" rx="16" ry="6" transform="rotate(-30 ${x + dx + 12} ${y - hgt * .45})"/><ellipse cx="${x + dx - 12}" cy="${y - hgt * .65}" rx="15" ry="5.5" transform="rotate(28 ${x + dx - 12} ${y - hgt * .65})"/>`;
+        for (let i = 0; i < 16; i++) F += `<ellipse cx="${tx}" cy="${ty - 21}" rx="5.5" ry="12" fill="#EFB321" transform="rotate(${i * 22.5} ${tx} ${ty})"/>`;
+        F += `<circle cx="${tx}" cy="${ty}" r="11" fill="#5A3A1E"/>` }) });
+    // bougainvillea over the arch: clusters of papery bracts hugging the wall's top left, hanging down its side
+    let B2 = '';
+    for (let i = 0; i < 64; i++) { const t = Math.pow(rnd(), 1.4), ang = Math.PI * (1.0 - t * .5), cx = 505 + Math.cos(ang) * (412 + (rnd() - .5) * 40), cy = 196 - Math.sin(ang) * (150 + (rnd() - .5) * 34) + (t < .12 ? rnd() * 160 : 0);
+      const n = 6 + Math.floor(rnd() * 6);
+      for (let j = 0; j < n; j++) { const x = cx + (rnd() - .5) * 30, y = cy + (rnd() - .5) * 24, r = 4.2 + rnd() * 2.6, a2 = rnd() * 360;
+        const sh = `<path d="M${x} ${y} c${r} ${-r * 1.4} ${r * 2.2} ${-r * .2} ${r * .2} ${r * 1.5} c${-r * 1.6} ${r * .4} ${-r * 1.8} ${-r} ${-r * .2} ${-r * 1.5} Z" transform="rotate(${a2} ${x} ${y})"/>`;
+        if (rnd() < .3) B2 += sh; else B += sh }
+      if (rnd() < .6) L += `<ellipse cx="${cx + (rnd() - .5) * 30}" cy="${cy + 8 + rnd() * 8}" rx="${8 + rnd() * 4}" ry="${3.6 + rnd() * 1.4}" transform="rotate(${rnd() * 180} ${cx} ${cy + 10})"/>` }
+    document.getElementById('heroBoug2').innerHTML = B2;
+    let PF = ''; for (let i = 0; i < 12; i++) PF += `<ellipse cx="458" cy="70" rx="3.4" ry="7.4" fill="#F5C518" transform="rotate(${i * 30} 458 80)"/>`;
+    PF += '<circle cx="458" cy="80" r="6.6" fill="#1A1412"/><path d="M454.6 81.5 q3.4 3 6.8 0" stroke="#F5C518" stroke-width="1.3" fill="none" stroke-linecap="round"/><circle cx="456" cy="78.4" r=".9" fill="#F5C518"/><circle cx="460" cy="78.4" r=".9" fill="#F5C518"/>';
+    document.getElementById('plaqueFlower').innerHTML = PF;
+    hl.innerHTML = L; hf.innerHTML = F; hb.innerHTML = B }
+  const ol = document.getElementById('waOlive');
+  if (ol) { let h = ''; const P = t => [430 + t * 156 - t * t * 20, 470 - t * 50 + t * t * 12];
+    for (let i = 0; i < 9; i++) { const t = .08 + i * .1, [x, y] = P(t), side = i % 2 ? 1 : -1, a = -18 + side * 48;
+      h += `<ellipse cx="${x}" cy="${y + side * 12}" rx="17" ry="5.2" transform="rotate(${a} ${x} ${y + side * 12})"/>` } ol.innerHTML = h }
+  const cs2 = document.getElementById('sprCards');
+  if (cs2) { let h = ''; [[96,214,-6],[120,206,-2],[146,210,3],[172,204,-4],[200,212,5],[226,208,1]].forEach(([x, y, r]) => { h += `<g transform="rotate(-3 300 250)"><rect x="${x}" y="${y}" width="58" height="80" transform="rotate(${r} ${x + 29} ${y + 40})"/></g>` }); cs2.innerHTML = h }
+  const cd = document.getElementById('cardScrib');
+  if (cd) { let h = ''; [176, 196, 216].forEach((y, i) => { let d = `M130 ${y}`, x = 130; const W = [96, 104, 70][i]; while (x < 130 + W) { const a = 4 + rnd() * 5; d += ` q${a / 2} -2.4 ${a} 0`; x += a } h += `<path d="${d}"/>` }); cd.innerHTML = h }
+  const sp = document.getElementById('sealPetals');
+  if (sp) { let h3 = ''; for (let i = 0; i < 14; i++) { const a = i / 14 * 360; h3 += `<ellipse cx="65" cy="45" rx="5.2" ry="11" fill="#C9568A" transform="rotate(${a} 65 65)"/>` } sp.innerHTML = h3 }
+  // scribbled lines stand in for the rest of the email (the newspaper's trick: never fake words)
+  const sc = document.getElementById('rvScrib');
+  if (sc) { let y = 262; const W = [232, 214, 238, 196, 226, 150]; W.forEach((w, i) => { let d = `M128 ${y}`, x = 128;
+      while (x < 128 + w) { const a = 3 + rnd() * 5, h = 1.6 + rnd() * 2.2; d += ` q${a / 2} ${-h} ${a} 0`; x += a; if (rnd() < .12) { x += 6; d += ` m6 0` } }
+      const p = document.createElementNS(NS, 'path'); p.setAttribute('d', d); sc.appendChild(p); y += i === 3 ? 30 : 19 });
+    // the sign-off
+    const s = document.createElementNS(NS, 'path'); s.setAttribute('d', 'M132 412 c8 -14 14 -12 12 0 c-2 10 10 -16 18 -6 c4 6 8 -2 14 -2'); sc.appendChild(s) }
+  document.querySelectorAll('g[data-mat="ink"], g[data-mat="pencil"]').forEach(layer => {
+    layer.querySelectorAll('path,line,polyline,polygon,rect,circle,ellipse').forEach(el => {
+      const cs = getComputedStyle(el); if (cs.stroke === 'none' || el.dataset.raw !== undefined) return;
+      const fillOn = cs.fill !== 'none' && el.tagName !== 'path';
+      const parts = geom(el); if (!parts.length) return;
+      parts.forEach(([d, closed]) => { const tmp = document.createElementNS(NS, 'path'); tmp.setAttribute('d', d); el.parentNode.insertBefore(tmp, el);
+        const nd = handPath(tmp, closed); tmp.setAttribute('d', nd);
+        ['stroke', 'stroke-width', 'stroke-linecap', 'stroke-linejoin', 'opacity', 'transform'].forEach(a => { const v = el.getAttribute(a); if (v) tmp.setAttribute(a, v) });
+        tmp.setAttribute('fill', 'none'); if (!tmp.getAttribute('stroke')) tmp.setAttribute('stroke', cs.stroke); if (!tmp.getAttribute('stroke-width')) tmp.setAttribute('stroke-width', cs.strokeWidth) });
+      if (fillOn) el.setAttribute('stroke', 'none'); else el.remove();
+    });
+  });
+  document.body.dataset.ready = '1';
+});
+</script>
+</body></html>

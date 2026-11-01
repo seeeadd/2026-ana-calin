@@ -1,2 +1,4 @@
 # keep the working files of the registration film off the live site (drafts, Pinterest assets awaiting licences)
 tools/film/
+# the paint studio: source drawings and scripts for the page illustrations
+tools/paint/
