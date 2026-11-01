@@ -691,6 +691,396 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
   .order .btn,.bb .btn{padding:0 10px;font-size:15px;gap:8px}
 }
 </style>
+<link rel="stylesheet" href="../assets/gmail-demo.css?v=1">
+<style id="v2">
+/* ===== VIP page, Nov 1 redesign. Built on Jason Fladlien's slide rules (fladdy repo, video 1 + 2-4):
+   show the real thing, the most important words biggest, one idea per band, the four-part strip comes back with
+   its progress, tables built row by row, the price not giant, calm motion that points at the next thing. ===== */
+body{font-size:18px}
+.btn:after{animation:none;display:none}                 /* no pulsing CTA: calm reads as confidence (V03) */
+.mt{display:block;width:64px;height:46px;flex:none;border-radius:9px;box-shadow:0 0 0 1.6px var(--ink),0 8px 14px -10px rgba(70,45,25,.6)}
+.mt.sm{width:48px;height:35px;border-radius:7px}
+
+/* ---------- 1. hero ---------- */
+.vh{position:relative;padding:22px 0 96px;overflow:clip}
+.vh .bgf.a{width:520px;height:520px;right:-240px;top:120px;left:auto}
+.vh .wrap{max-width:1200px;position:relative}
+.vh-top{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:12px 18px}
+.vh-top .eyebrow{color:var(--pink)}
+.saved{font-size:16px}
+
+/* the spam note, with the inbox demo on its left */
+.vspam{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:24px;align-items:center;max-width:900px;margin:18px auto 0;padding:12px 26px 12px 12px;border-radius:20px;background:#FFF1F2;border:1.6px solid #E8323F;box-shadow:0 22px 40px -30px rgba(160,30,40,.55)}
+.vspam-demo{min-width:0}
+.vspam-demo .gx{border-radius:12px}
+.vspam-t{display:flex;gap:12px;align-items:flex-start;font-size:16.5px;line-height:1.5;color:var(--ink2);text-align:left}
+.vspam-t b{color:var(--ink)}
+.vspam-t .ib-i{flex:none;width:26px;height:26px;border-radius:50%;background:#E8323F;color:#fff;display:grid;place-items:center;font-weight:800;font-size:15px;margin-top:1px}
+
+.vh h1{font-size:clamp(42px,4.4vw,66px);line-height:1;margin:34px auto 0;text-align:center;max-width:1000px}
+.vh .hsub{max-width:780px;margin:14px auto 0;font-size:19.5px;line-height:1.5;color:var(--ink2);text-align:center;text-wrap:balance}
+.vh-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:44px;align-items:start;margin-top:40px}
+.vh .under{margin-top:2px;text-align:center;font-size:17px;line-height:1.5;color:var(--ink2)}
+.vh .under b{color:var(--ink)}
+
+.hiw{max-width:none;margin:22px 0 0;padding:22px 24px 18px}
+.hiw-h{font-size:28px;line-height:1.1}
+.hiw3{list-style:none;display:grid;gap:12px;margin:16px 0 0;padding:0}
+.hiw3 li{display:grid;grid-template-columns:64px 1fr;gap:16px;align-items:start;padding:0;font-size:17px;line-height:1.5;color:var(--ink2)}
+.hiw3 li:before{display:none}
+.hiw3 li b{color:var(--ink)}
+.hiw-lh{display:flex;gap:14px;align-items:center;margin-top:16px;padding-top:14px;font-size:16px}
+.anim .hiw:not(.in) .hiw3 li{opacity:0;transform:translateX(-10px)}
+.hiw3 li{transition:opacity .5s,transform .5s var(--ease)}
+.anim .hiw.in .hiw3 li:nth-child(2){transition-delay:.25s}.anim .hiw.in .hiw3 li:nth-child(3){transition-delay:.5s}
+
+/* the order card: the four things as their own little pictures (the stack you will see again at the end) */
+.order{padding:24px 24px 20px}
+.order h2{font-size:34px;margin:6px 0 2px}
+.oh .op{font-size:20px}
+.stack{list-style:none;display:grid;gap:10px;margin:14px 0 14px;padding:14px 0 0;border-top:1.5px dashed rgba(26,20,18,.18)}
+.stack li{display:grid;grid-template-columns:56px 1fr;gap:14px;align-items:center;font-size:16px;line-height:1.35;color:var(--ink2)}
+.stack li b{color:var(--ink);font-weight:800}
+.stack .mt{width:56px;height:40px;border-radius:8px}
+.order .btn{height:62px;font-size:18px}
+.order .meta2{font-size:13.5px}
+.order .dl .decline{font-size:16px}
+
+/* ---------- 2. your week ---------- */
+.vw{position:relative;background:var(--sand) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .25 0 0 0 0 .15 0 0 0 .16 0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E")}
+.vw-hd{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:64px;align-items:end}
+.vw h2,.vi h2,.vf h2{font-size:clamp(42px,4.8vw,68px);line-height:1;margin-top:14px}
+.vw-hd p,.vi-hd p{font-family:var(--serif);font-size:clamp(22px,2.1vw,27px);line-height:1.32;color:var(--ink2)}
+
+.trk{position:relative;margin-top:76px}
+.lane{position:relative;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px}
+.lane-k{position:absolute;left:0;top:-34px;font-weight:800;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3)}
+.lane.free:before{content:"";position:absolute;left:8%;right:8%;top:40px;border-top:2px dashed rgba(26,20,18,.3)}
+.trk .stop{padding-top:0;text-align:center}
+.trk .stop .dt{width:80px;margin:0 auto;background:#fff}
+.trk .stop .dt b{font-size:38px}
+.trk .stop.vip .dt{width:92px;background:var(--pink);color:#fff;box-shadow:5px 5px 0 var(--ink);transform:rotate(-4deg)}
+.trk .stop.vip .dt small{color:var(--sun)}
+.trk .stop .lb{margin-top:18px;font-size:12px}
+.trk .stop p{font-size:24px;line-height:1.16;margin-top:8px}
+.trk .stop.next .dt{border:0;background:none;width:96px;height:84px;display:grid;place-items:end center;padding:0}
+.trk .stop.next .dt img{width:96px;height:auto;transform-origin:50% 100%;transition:transform 1s cubic-bezier(.3,1.5,.5,1) 2s}
+.anim .trk:not(.in) .stop.next .dt img{transform:scale(.2,0)}
+.bring{display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:8px 12px;border-radius:12px;background:#fff;border:1.6px solid var(--ink);box-shadow:3px 3px 0 var(--pink);font-size:14px;font-weight:700;line-height:1.3;text-align:left}
+.env{flex:none;width:24px;height:17px;border-radius:3px;border:1.6px solid var(--ink);background:linear-gradient(155deg,transparent 46%,var(--ink) 47%,var(--ink) 53%,transparent 54%) top/100% 55% no-repeat,linear-gradient(205deg,transparent 46%,var(--ink) 47%,var(--ink) 53%,transparent 54%) top/100% 55% no-repeat,var(--ysoft)}
+/* the work travels from Day 3 to the review (one storyboard: the same email comes back in item 01) */
+.fly{position:absolute;left:calc(50% + 4px);top:22px;width:34px;height:24px;border-radius:4px;border:1.8px solid var(--ink);background:var(--sun);opacity:0;pointer-events:none;z-index:2}
+.fly b{position:absolute;left:0;right:0;top:0;height:12px;background:linear-gradient(155deg,transparent 46%,var(--ink) 47%,var(--ink) 54%,transparent 55%),linear-gradient(205deg,transparent 46%,var(--ink) 47%,var(--ink) 54%,transparent 55%)}
+.anim .trk.in .fly{animation:fly 6s ease-in-out 3s infinite}
+@keyframes fly{0%{opacity:0;transform:translate(0,40px) scale(.8)}10%{opacity:1;transform:translate(0,0) scale(1)}45%{opacity:1;transform:translate(calc((100cqw - 72px)/5 + 18px),-26px) rotate(8deg)}58%{opacity:1;transform:translate(calc((100cqw - 72px)/5 + 18px),6px) rotate(0) scale(.9)}66%,100%{opacity:0;transform:translate(calc((100cqw - 72px)/5 + 18px),10px) scale(.4)}}
+.lane.free{container-type:inline-size}
+.anim .trk .stop{opacity:0;transform:translateY(16px);transition:opacity .55s,transform .55s var(--ease)}
+.anim .trk.in .stop{opacity:1;transform:none}
+.anim .trk.in .s2{transition-delay:.3s}.anim .trk.in .s3{transition-delay:.6s}.anim .trk.in .s4{transition-delay:1.1s}.anim .trk.in .s5{transition-delay:1.6s}
+/* VIP's lane, under the days: the chat across the week, a recording after each day, the review on Friday, the course to keep */
+.vipl{margin-top:34px;padding:16px 0 14px;border-top:2px solid var(--pink);align-items:center}
+.vipl .lane-k{top:-14px;left:0;background:var(--pink);color:#fff;border-radius:999px;padding:3px 12px;font-size:11px}
+.vipl>span:not(.lane-k){display:flex;justify-content:center}
+.vbar{grid-column:1 / 5;grid-row:1;align-self:center;height:14px;border-radius:999px;background:repeating-linear-gradient(90deg,#25D366 0 22px,#9BE7B5 22px 30px);border:1.6px solid var(--ink);position:relative;justify-content:flex-start!important}
+.vbar .mt{position:absolute;left:-6px;top:50%;transform:translateY(-50%);width:44px;height:32px;border-radius:7px}
+.vrec{grid-row:2;margin-top:12px}.vrec.r1{grid-column:1}.vrec.r2{grid-column:2}.vrec.r3{grid-column:3}
+.vrv{grid-column:4;grid-row:2;margin-top:12px}
+.vsp{grid-column:5;grid-row:1 / 3}
+.vipl .mt{width:52px;height:37px;border-radius:7px}
+.vsp .mt{width:64px;height:46px}
+.anim .trk .vipl>span:not(.lane-k){opacity:0;transform:scale(.6);transition:opacity .4s,transform .5s cubic-bezier(.3,1.5,.5,1)}
+.anim .trk.in .vipl>span:not(.lane-k){opacity:1;transform:none}
+.anim .trk.in .vbar{transition-delay:2.1s!important}.anim .trk.in .vrec.r1{transition-delay:2.4s}.anim .trk.in .vrec.r2{transition-delay:2.55s}.anim .trk.in .vrec.r3{transition-delay:2.7s}.anim .trk.in .vrv{transition-delay:2.9s}.anim .trk.in .vsp{transition-delay:3.1s}
+
+/* the side-by-side table, built row by row; the four VIP rows get their picture and a soft lit row */
+.cmp{max-width:980px;margin:100px auto 0}
+.cmp h3{font-size:clamp(32px,3vw,42px);margin-bottom:18px}
+.cmp table{width:100%;border-collapse:collapse}
+.cmp th,.cmp td{padding:15px 12px;text-align:left;vertical-align:middle;border-top:1.4px solid rgba(26,20,18,.14);font-size:18px;line-height:1.4}
+.cmp tbody tr:last-child td{border-bottom:1.4px solid rgba(26,20,18,.14)}
+.cmp thead th{border-top:0;font-weight:800;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3);padding-bottom:12px}
+.cmp th.c,.cmp td.c{text-align:center;width:150px}
+.cmp .v{background:rgba(247,37,133,.1)}
+.cmp thead .v{background:var(--pink);color:#fff;border-radius:12px 12px 0 0}
+.cmp td:first-child small{display:inline;font-size:15px;color:var(--ink3);margin-left:6px}
+.cmp tr.add2 td:first-child{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.cmp tr.add2 td:first-child small{flex-basis:100%;margin:-8px 0 0 58px}
+.cmp tr.add2 .mt{width:44px;height:32px;border-radius:7px}
+.cmp tr.add2 td{background:linear-gradient(90deg,rgba(255,212,0,.22),rgba(255,212,0,0) 70%) no-repeat;background-size:100% 100%}
+.cmp tr.add2 td.c{background:none}
+.cmp tr.add2 td.c.v{background:rgba(247,37,133,.16)}
+.cmp .y{font-size:20px}
+.cmp .n{font-size:15px}
+.cmp .cmp-note{margin-top:16px;font-family:var(--serif);font-size:22px;line-height:1.3;color:var(--ink2)}
+.anim .cmp tbody tr{opacity:0;transform:translateY(10px);transition:opacity .45s,transform .45s var(--ease);transition-delay:calc(var(--i) * .14s + .3s)}
+.anim .cmp.in tbody tr{opacity:1;transform:none}
+.anim .cmp tr.add2 td.v .y{display:inline-block;transition:transform .5s cubic-bezier(.3,1.8,.5,1);transition-delay:calc(var(--i) * .14s + .6s)}
+.anim .cmp:not(.in) tr.add2 td.v .y{transform:scale(0)}
+
+/* ---------- 3. what's in VIP: one band per item ---------- */
+.vi .wrap{max-width:1160px}
+.vi-hd{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:end}
+.vi-hd p{max-width:460px;justify-self:end}
+.it{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,1fr);gap:20px 68px;align-items:center;padding:84px 0;border-top:1.6px solid var(--ink)}
+.vi-hd + .it{margin-top:70px;border-top:0;padding-top:0}
+.it .art{grid-column:1;grid-row:1 / 3}
+.it .mst{grid-column:2;grid-row:1;align-self:end}
+.it .tx{grid-column:2;grid-row:2;align-self:start}
+.it.flip .art{grid-column:2}.it.flip .mst,.it.flip .tx{grid-column:1}
+/* the four-part strip: done ticked and small, now big, next faded (Jason 24:35) */
+.mst{display:flex;align-items:center;gap:10px;margin-bottom:-4px}
+.mst span{position:relative;display:block;opacity:.32;transition:opacity .5s,transform .5s var(--ease)}
+.mst span .mt{width:44px;height:32px;border-radius:7px}
+.mst span.done{opacity:.85}
+.mst span.done:after{content:"";position:absolute;right:-7px;top:-7px;width:18px;height:18px;border-radius:50%;background:var(--green) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='m3.5 8.5 3 3 6-7' fill='none' stroke='%23fff' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/11px no-repeat;border:1.5px solid var(--ink)}
+.mst span.now{opacity:1}
+.mst span.now .mt{width:72px;height:52px;border-radius:10px;box-shadow:0 0 0 2px var(--ink),0 0 0 6px rgba(247,37,133,.25),0 10px 18px -10px rgba(70,45,25,.6)}
+.mst i{display:block;width:26px;height:2px;background:rgba(26,20,18,.25);border-radius:2px}
+.it .art{position:relative;aspect-ratio:6/5;border-radius:30px;overflow:hidden;background-color:#FFD9E9}
+.it h3{font-size:clamp(38px,3.8vw,54px);line-height:1.02;margin:16px 0 12px}
+.it .tx p{font-size:18.5px;line-height:1.6;color:var(--ink2);max-width:520px}
+.it .tx p + p{margin-top:14px}
+.it .lab{display:block;margin-top:24px;font-weight:800;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink)}
+.it .how li{font-size:17.5px}
+.it .soft{color:var(--ink3);margin-top:16px;font-style:italic;font-family:var(--serif);font-size:21px;line-height:1.35}
+.stamp{position:absolute;width:150px;height:56px;display:grid;place-items:center;transform:rotate(-7deg);mix-blend-mode:multiply}
+.stamp img{position:absolute;inset:0;width:100%;height:100%}
+.stamp b{position:relative;font-weight:800;font-size:15px;letter-spacing:.2em;color:#D7262B;opacity:.9}
+
+/* 01: the review, marked up in red ink the way a buyer reads it */
+.rv{background:#FFD9E9}
+.rv .zm{position:absolute;left:26px;top:34px;width:500px;height:400px;border-radius:20px;background:var(--ink);border:3px solid var(--ink);box-shadow:0 34px 54px -28px rgba(70,45,25,.6);overflow:hidden;transform:rotate(-1.2deg)}
+.zbar{display:flex;align-items:center;gap:8px;height:38px;padding:0 14px;color:var(--cream);font-weight:800;font-size:13px}
+.zbar i{width:10px;height:10px;border-radius:50%;background:#e2483d;animation:live 1.6s ease-in-out infinite}
+.zbar small{margin-left:auto;font-weight:700;font-size:11px;letter-spacing:.12em;color:rgba(255,248,238,.6)}
+.zg{display:grid;grid-template-columns:1fr 104px;gap:10px;padding:0 10px 10px;height:calc(100% - 38px)}
+.rv .doc{position:relative;border-radius:12px;background:#FFFDF8;padding:18px 18px 14px}
+.rv .doc small{display:block;font-weight:800;font-size:10.5px;letter-spacing:.14em;color:var(--ink3);margin-bottom:14px}
+.rv .doc p{position:relative;font-family:var(--serif);font-size:23px;line-height:1.22;margin:0 0 14px;max-width:290px}
+.rv .doc .d1 span{color:var(--ink2)}
+.rv .doc .d2 span{background:linear-gradient(transparent 58%,rgba(255,212,0,.85) 58%,rgba(255,212,0,.85) 94%,transparent 94%)}
+.rv .doc .d3 .bar{display:block;height:8px;border-radius:5px;background:#EADFD0;margin:10px 0}
+.ink-x,.ink-u{position:absolute;left:-4px;width:calc(100% + 8px);overflow:visible}
+.ink-x{top:30%;height:24px}.ink-u{bottom:-8px;height:14px}
+.ink-x path,.ink-u path,.ink-a path{fill:none;stroke:#E0263C;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round}
+.ink-u path{stroke:#1F9D55}
+.ink-a{position:absolute;right:20px;top:58px;width:110px;height:74px;overflow:visible}
+.tag{position:absolute;font-weight:800;font-size:11px;letter-spacing:.14em;text-transform:uppercase;border-radius:999px;padding:3px 9px;border:1.6px solid currentColor;background:#fff}
+.t-ch{right:16px;top:44px;color:#E0263C;transform:rotate(4deg)}
+.t-kp{right:28px;top:104px;color:#1F9D55;transform:rotate(-3deg)}
+.rv .cm{position:absolute;left:18px;right:18px;bottom:16px;background:var(--ysoft);border:2px solid var(--ink);border-radius:12px;padding:9px 12px;font-size:15px;line-height:1.35;font-weight:700;transform:rotate(-1deg)}
+.rv .cm b{display:block;font-size:10px;letter-spacing:.14em;color:#c4105f;margin-bottom:2px}
+.cams{display:grid;grid-template-rows:repeat(3,1fr);gap:8px}
+.cam{position:relative;border-radius:10px;overflow:hidden;background:#3D332E;display:grid;place-items:center;color:#fff}
+.cam span{width:38px;height:38px;border-radius:50%;background:#7A6A60;display:grid;place-items:center;font-weight:800;font-size:15px}
+.cam.you span{background:#5E7A3A}
+.cam.host{border:2px solid #25D366}
+.cam img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 20%}
+.cam b{position:absolute;left:5px;bottom:5px;font-size:10px;font-weight:700;background:rgba(26,20,18,.7);border-radius:6px;padding:2px 6px}
+.cam em{position:absolute;right:5px;top:5px;font-style:normal;font-weight:800;font-size:8.5px;letter-spacing:.1em;background:var(--pink);border-radius:999px;padding:2px 6px}
+.rv .mag{position:absolute;left:330px;top:150px;width:170px;height:auto;transform-origin:30% 20%;filter:drop-shadow(0 22px 18px rgba(60,35,15,.35));z-index:3}
+.rv .stamp{left:34px;bottom:16px;z-index:4;transform:rotate(-5deg)}
+/* the marks draw on, in the order she would say them; the magnifier reads along */
+.ink-x path,.ink-u path,.ink-a path{stroke-dasharray:420;stroke-dashoffset:0;transition:stroke-dashoffset .7s ease}
+.anim .it1:not(.in) .ink-x path,.anim .it1:not(.in) .ink-u path,.anim .it1:not(.in) .ink-a path{stroke-dashoffset:420}
+.anim .it1.in .ink-x path{transition-delay:1.1s}.anim .it1.in .ink-u path{transition-delay:2s}.anim .it1.in .ink-a path{transition-delay:3s}
+.tag,.rv .cm{transition:opacity .4s,transform .5s cubic-bezier(.3,1.5,.5,1)}
+.anim .it1:not(.in) .tag,.anim .it1:not(.in) .rv .cm{opacity:0;transform:translateY(8px) scale(.9)}
+.anim .it1.in .t-ch{transition-delay:1.5s}.anim .it1.in .t-kp{transition-delay:2.4s}.anim .it1.in .rv .cm{transition-delay:3.4s}
+.anim .it1.in .rv .mag{animation:mag 7s ease-in-out .6s infinite}
+@keyframes mag{0%,100%{transform:translate(0,0) rotate(0)}22%{transform:translate(-210px,-82px) rotate(-6deg)}44%{transform:translate(-120px,-70px) rotate(-3deg)}66%{transform:translate(-200px,-14px) rotate(-5deg)}84%{transform:translate(-60px,-10px) rotate(-2deg)}}
+
+/* 02: the chat, and when Ana is in it */
+.wa2{background:#E4F4E7}
+.phone{position:absolute;left:34px;top:26px;width:300px;height:450px;border-radius:38px;background:var(--ink);padding:10px;box-shadow:0 34px 54px -26px rgba(30,60,40,.55);transform:rotate(-2deg)}
+.phone .wh{border-radius:28px 28px 8px 8px;padding:12px 14px;box-shadow:none;border:0}
+.phone .wh b{font-size:14.5px}.phone .wh small{font-size:11.5px}
+.wbd{position:absolute;left:10px;right:10px;top:76px;bottom:10px;border-radius:8px 8px 28px 28px;background:#EFE7DC;padding:14px 10px;display:flex;flex-direction:column;gap:9px;overflow:hidden}
+.wbd .wb{max-width:88%;font-size:14px;padding:8px 11px;border-width:1.6px}
+.wbd .wb small{font-size:10.5px}
+.wbd .vn{min-width:0;gap:7px}.wbd .vn i{width:28px;height:28px}.wbd .vn .wv b{width:2.6px}.wbd .vn em{font-size:10.5px}
+.typ{align-self:flex-start;display:flex;gap:4px;padding:9px 12px;border-radius:14px;background:#fff;border:1.6px solid var(--ink);opacity:0}
+.typ i{width:6px;height:6px;border-radius:50%;background:var(--ink3);animation:typ 1s ease-in-out infinite}
+.typ i:nth-child(2){animation-delay:.15s}.typ i:nth-child(3){animation-delay:.3s}
+@keyframes typ{50%{transform:translateY(-3px);opacity:.5}}
+.anim .it2.in .m1{animation:wm1 11s infinite}.anim .it2.in .m2{animation:wm2 11s infinite}.anim .it2.in .m3{animation:wm3 11s infinite}.anim .it2.in .m4{animation:wm4 11s infinite}.anim .it2.in .typ{animation:wty 11s infinite}
+@keyframes wm1{0%,3%{opacity:0;transform:translateY(10px)}7%,90%{opacity:1;transform:none}96%,100%{opacity:0}}
+@keyframes wm2{0%,16%{opacity:0;transform:translateY(10px)}20%,90%{opacity:1;transform:none}96%,100%{opacity:0}}
+@keyframes wm3{0%,36%{opacity:0;transform:translateY(10px)}40%,90%{opacity:1;transform:none}96%,100%{opacity:0}}
+@keyframes wm4{0%,52%{opacity:0;transform:translateY(10px)}56%,90%{opacity:1;transform:none}96%,100%{opacity:0}}
+@keyframes wty{0%,24%{opacity:0;max-height:0;padding:0 12px;margin:0}26%,34%{opacity:1;max-height:30px;padding:9px 12px}36%,100%{opacity:0;max-height:0;padding:0 12px}}
+.sched{position:absolute;left:356px;top:70px;width:214px;display:grid;gap:10px}
+.sd{display:grid;grid-template-columns:52px 1fr;grid-template-rows:auto auto;gap:4px 8px;align-items:center;background:#fff;border:1.8px solid var(--ink);border-radius:14px;padding:8px 10px;box-shadow:4px 4px 0 rgba(26,20,18,.85)}
+.sd .d{grid-row:1 / 3;text-align:center;line-height:1}
+.sd .d b{display:block;font-family:var(--serif);font-weight:400;font-size:30px}
+.sd .d small{display:block;font-weight:800;font-size:9.5px;letter-spacing:.14em;margin-top:2px}
+.sd .ss,.sd .sc{display:block;border-radius:7px;padding:3px 8px;font-weight:800;font-size:11.5px;line-height:1.3}
+.sd .ss{background:var(--ink);color:var(--cream)}
+.sd .sc{background:#25D366;color:#fff}
+.sd.mo{grid-template-columns:52px 1fr;grid-template-rows:auto}
+.sd.mo .msun{grid-column:1;grid-row:1}.sd.mo .sc{grid-column:2;grid-row:1;justify-self:start}
+.msun{display:block;width:34px;height:34px;margin:0 auto;border-radius:50%;background:var(--sun);border:1.8px solid var(--ink);box-shadow:0 0 0 5px rgba(255,212,0,.35)}
+.anim .it2 .sd{opacity:0;transform:translateX(16px);transition:opacity .45s,transform .45s var(--ease)}
+.anim .it2.in .sd{opacity:1;transform:none}
+.anim .it2.in .sd:nth-child(2){transition-delay:.25s}.anim .it2.in .sd:nth-child(3){transition-delay:.5s}.anim .it2.in .sd:nth-child(4){transition-delay:.8s}
+.wa2 .stamp.s2{right:20px;bottom:18px}
+
+/* 03: six ideas become one; the course, tied with a ribbon; its four parts */
+.spr{background:var(--ysoft)}
+.six{position:absolute;left:30px;top:34px;width:270px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.nt{position:relative;height:74px;border-radius:4px;background:#FFF8EE;border:1.6px solid var(--ink);padding:12px 10px;box-shadow:2px 3px 0 rgba(26,20,18,.2);transition:opacity .5s,transform .6s cubic-bezier(.3,1.4,.5,1),background .4s}
+.nt i{display:block;height:6px;border-radius:4px;background:#D9CDBF;margin:5px 0}
+.nt i + i{width:62%}
+.nt.n1{transform:rotate(-4deg)}.nt.n2{transform:rotate(3deg);background:#FFE1EE}.nt.n3{transform:rotate(-2deg)}.nt.n5{transform:rotate(4deg);background:#FFE1EE}.nt.n6{transform:rotate(-3deg)}
+.nt.one{background:#fff;border-color:var(--pink);box-shadow:0 0 0 3px rgba(247,37,133,.25),3px 4px 0 var(--ink);transform:scale(1.12) rotate(-2deg);z-index:2}
+.nt.one:after{content:"";position:absolute;right:-9px;top:-9px;width:22px;height:22px;border-radius:50%;background:var(--pink) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='m3.5 8.5 3 3 6-7' fill='none' stroke='%23fff' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/13px no-repeat;border:1.6px solid var(--ink)}
+.nt.one i{background:var(--pink)}
+.six .nt:not(.one){opacity:.3}
+.anim .it3:not(.in) .nt{opacity:0;transform:translateY(-14px) rotate(0)}
+.anim .it3.in .nt:not(.one){animation:fade6 2.6s ease forwards}
+@keyframes fade6{0%,55%{opacity:1}100%{opacity:.3}}
+.anim .it3.in .nt.one{animation:pick1 2.6s ease}
+@keyframes pick1{0%,55%{transform:none;background:#FFF8EE;border-color:var(--ink);box-shadow:2px 3px 0 rgba(26,20,18,.2)}100%{transform:scale(1.12) rotate(-2deg)}}
+.anim .it3 .nt.one:after{transition:transform .5s cubic-bezier(.3,1.8,.5,1) 2.2s}
+.anim .it3:not(.in) .nt.one:after{transform:scale(0)}
+.anim .it3.in .n2{transition-delay:.08s}.anim .it3.in .n3{transition-delay:.16s}.anim .it3.in .n4{transition-delay:.24s}.anim .it3.in .n5{transition-delay:.32s}.anim .it3.in .n6{transition-delay:.4s}
+.spr .book{left:330px;top:96px;width:220px;height:290px}
+.spr .book .cv h4{font-size:40px}
+.spr .book .cv .sfw{width:74px;height:74px}
+.spr .bow{position:absolute;left:-58px;top:-44px;width:170px;height:auto;transform:rotate(-14deg);filter:drop-shadow(0 8px 8px rgba(60,35,15,.3));z-index:2}
+.mods{position:absolute;left:30px;top:250px;width:270px;list-style:none;display:grid;gap:8px;counter-reset:m}
+.mods li{counter-increment:m;display:grid;grid-template-columns:26px 1fr;gap:10px;align-items:center;background:#fff;border:1.6px solid var(--ink);border-radius:10px;padding:8px 10px;font-weight:700;font-size:14.5px;line-height:1.2}
+.mods li:before{content:counter(m);display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--sun);border:1.5px solid var(--ink);font-family:var(--serif);font-size:16px;font-weight:400}
+.anim .it3 .mods li{opacity:0;transform:translateX(-12px);transition:opacity .45s,transform .45s var(--ease)}
+.anim .it3.in .mods li{opacity:1;transform:none}
+.anim .it3.in .mods li:nth-child(1){transition-delay:2.6s}.anim .it3.in .mods li:nth-child(2){transition-delay:2.85s}.anim .it3.in .mods li:nth-child(3){transition-delay:3.1s}.anim .it3.in .mods li:nth-child(4){transition-delay:3.35s}
+
+/* 04: the recordings, projected; the years they stay yours */
+.rec{background:#FFE7D6}
+.rec .cine{position:absolute;left:-6px;top:136px;width:178px;height:auto;z-index:3;filter:drop-shadow(0 18px 14px rgba(60,35,15,.3))}
+.rec .beam{position:absolute;left:150px;top:150px;width:80px;height:150px;background:linear-gradient(90deg,rgba(255,222,40,.85),rgba(255,222,40,.15));clip-path:polygon(0 30%,100% 0,100% 100%,0 52%);z-index:1;animation:beam 3.2s ease-in-out infinite}
+@keyframes beam{50%{opacity:.6}}
+.rec .player{left:206px;top:34px;width:370px;transform:rotate(-1deg)}
+.rec .player .scr2{height:180px}
+.rec .player .cap3{font-size:19px}
+.rec .player li{grid-template-columns:52px 1fr auto;gap:10px;padding:7px 6px;font-size:13px}
+.rec .player li.vr .dp{background:var(--ink);color:var(--sun)}
+.rec .yrs{position:absolute;left:206px;right:0;top:446px;display:flex;gap:14px;font-family:var(--serif);font-size:24px;color:var(--ink);white-space:nowrap;-webkit-mask-image:linear-gradient(90deg,#000 40%,transparent);mask-image:linear-gradient(90deg,#000 40%,transparent)}
+.rec .yrs span{opacity:.85}
+.anim .it4.in .rec .yrs{animation:yrs 12s linear infinite}
+@keyframes yrs{to{transform:translateX(-120px)}}
+
+/* ---------- 4. honest fit check ---------- */
+.vf{background:var(--pk3)}
+.vf .wrap{max-width:1080px}
+.vf h2{max-width:20ch}
+.fitc{position:relative}
+.fitc li{font-size:18px}
+.fitc.no li i{background:transparent}
+.near{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.near img{width:84px;height:84px;border-radius:50%;object-fit:cover;object-position:50% 22%;box-shadow:0 0 0 3px #fff,0 0 0 5px var(--pink)}
+.near .mt{width:52px;height:37px}
+.far{margin-bottom:16px}
+.far .zt{display:block;width:120px;height:84px;border-radius:12px;background:var(--ink);padding:8px;position:relative}
+.far .zt img{width:30px;height:30px;border-radius:7px;object-fit:cover;object-position:50% 22%;position:absolute;right:8px;bottom:8px;opacity:.85}
+.far .zt:before{content:"";position:absolute;left:8px;top:8px;width:66px;height:44px;border-radius:5px;background:#FFF8EE}
+.fitg{transition:none}
+.anim .fitg:not(.in) .near img{transform:scale(.6)}
+.near img{transition:transform .8s cubic-bezier(.3,1.5,.5,1) .4s}
+.vf .after{margin-top:26px;font-family:var(--serif);font-size:25px;line-height:1.3;color:var(--ink2);max-width:680px}
+
+/* ---------- 5. the letter beside the price ---------- */
+.vb{padding-top:120px}
+.vb-g{display:grid;grid-template-columns:minmax(0,1fr) 470px;gap:64px;align-items:center;max-width:1120px;margin:0 auto}
+.vb .letter{background:#FFFDF6 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .25 0 0 0 0 .15 0 0 0 .16 0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");padding:54px 54px 46px 60px;border-radius:4px;transform:rotate(-1.2deg);box-shadow:0 2px 3px rgba(70,45,25,.12),0 36px 60px -30px rgba(70,45,25,.5)}
+.vb .letter:before{display:none}
+.vb .letter .pm{position:absolute;right:18px;top:16px;width:170px;height:auto;opacity:.75;mix-blend-mode:multiply;transform:rotate(8deg)}
+.vb .letter .from{display:flex;align-items:center;gap:18px;margin-bottom:22px;font-weight:800;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3)}
+.vb .letter .ov{position:relative;flex:none;width:132px;height:176px;margin:-16px 0 -10px -8px}
+.vb .letter .ov .ph{position:absolute;left:21%;top:21%;width:58%;height:58.5%;border-radius:50%;object-fit:cover;object-position:50% 25%;box-shadow:none}
+.vb .letter .ov .fr{position:absolute;inset:0;width:100%;height:100%;border-radius:0;box-shadow:none;filter:drop-shadow(0 8px 10px rgba(60,35,15,.3))}
+.vb .letter p{font-size:25px;line-height:1.4}
+.vb .letter .sig{font-size:50px;margin-top:16px}
+.vb .letter .fl2{position:absolute;right:26px;bottom:20px;width:110px;height:auto;opacity:.9;transform:rotate(-8deg)}
+
+.vb .bb{padding:28px 28px 24px;text-align:left}
+.bb-h{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+.vb .bb .lbl{font-size:13px}
+.vb .bb .price{font-family:var(--serif);font-weight:400;font-size:56px;letter-spacing:-.01em;margin:0}  /* the price not giant (Jason 41:22) */
+.vb .bb .when{font-size:16px;margin-top:2px}
+.vb .bb .stack{margin:16px 0 18px;padding:16px;border-radius:16px;background:var(--cream);border:1.4px solid rgba(26,20,18,.12);gap:12px}
+.vb .bb .aside{margin:-4px 0 18px;text-align:center}
+.cta{position:relative}
+.cta .btn{width:100%;height:66px;font-size:19px}
+.cta .pt{position:absolute;right:-118px;top:20px;width:120px;height:auto;transform:rotate(-24deg);filter:drop-shadow(0 14px 12px rgba(60,35,15,.3));pointer-events:none}
+.anim .bb .pt{transition:transform .8s cubic-bezier(.3,1.4,.5,1) .6s,opacity .5s .6s}
+.anim .bb:not(.in) .pt{opacity:0;transform:translate(40px,30px) rotate(-24deg)}
+.vb .bb .meta2{align-items:center}
+.vb .bb .dl{text-align:center}
+body.is-closed .cta .pt{display:none}
+
+/* questions: bigger type, easier on the eyes */
+.vb .faqs{max-width:860px}
+.vb .faq summary{font-size:28px}
+.vb .faq .a{font-size:18.5px;line-height:1.6}
+
+/* ---------- responsive ---------- */
+@media (max-width:1100px){.cta .pt{display:none}}
+@media (max-width:1000px){
+  .vh-grid{display:flex;flex-direction:column;gap:22px}
+  .vh-l{display:contents}
+  .vh-l .iph{order:1;width:calc(100% - 10px);align-self:flex-start;max-width:720px}.vh-l .under{order:2}.vh-grid .order{order:3;margin-top:14px}.vh-l .hiw{order:4;margin-top:22px}
+  .order{max-width:560px;margin:0 auto;width:100%}
+  .hiw{max-width:620px;width:100%;margin-left:auto;margin-right:auto}
+  .vb-g{grid-template-columns:1fr;gap:56px}
+  .vb .bb{max-width:560px;margin:0 auto;width:100%}
+}
+@media (max-width:900px){
+  .it{grid-template-columns:1fr;gap:22px;padding:64px 0}
+  .it .mst,.it.flip .mst{grid-column:1;grid-row:1}
+  .it .art,.it.flip .art{grid-column:1;grid-row:2}
+  .it .tx,.it.flip .tx{grid-column:1;grid-row:3}
+  .vw-hd,.vi-hd{grid-template-columns:1fr;gap:18px}
+  .vi-hd p{justify-self:start}
+}
+@media (max-width:760px){
+  section{padding:76px 0}
+  .vspam{grid-template-columns:1fr;padding:12px 12px 16px;gap:14px}
+  .vspam-t{font-size:15.5px;padding:0 4px}
+  .vh h1{font-size:40px;margin-top:24px}
+  .vh .hsub{font-size:17.5px}
+  .hiw{padding:18px 16px 14px}
+  .hiw-h{font-size:24px}
+  .hiw3 li{grid-template-columns:52px 1fr;gap:12px;font-size:16px}
+  .hiw3 .mt{width:52px;height:37px}
+  .trk{margin-top:54px}
+  .lane.free{grid-template-columns:1fr;gap:0}
+  .lane.free:before{left:39px;right:auto;top:20px;bottom:60px;border-top:0;border-left:2px dashed rgba(26,20,18,.3)}
+  .lane-k{position:static;margin-bottom:14px}
+  .trk .stop{display:grid;grid-template-columns:80px 1fr;column-gap:18px;text-align:left;padding:10px 0}
+  .trk .stop .dt{grid-row:1 / 4;margin:0}
+  .trk .stop .lb{margin-top:4px}
+  .trk .stop p{font-size:22px;margin-top:2px}
+  .bring{justify-self:start}
+  .trk .stop.next .dt{width:80px;height:70px}
+  .trk .stop.next .dt img{width:80px}
+  .fly,.vipl{display:none}
+  .cmp{margin-top:72px}
+  .cmp th,.cmp td{padding:12px 6px;font-size:16px}
+  .cmp th.c,.cmp td.c{width:76px}
+  .cmp td:first-child small{display:block;margin:2px 0 0}
+  .cmp tr.add2 td:first-child{gap:10px}
+  .cmp tr.add2 td:first-child small{margin:0 0 0 0}
+  .cmp tr.add2 .mt{width:36px;height:26px}
+  .it .art{border-radius:20px}
+  .mst span .mt{width:36px;height:26px}.mst span.now .mt{width:56px;height:40px}.mst i{width:14px}
+  .vb .letter{padding:40px 26px 34px;transform:none}
+  .vb .letter p{font-size:21px}
+  .vb .letter .pm{width:120px;right:6px;top:6px}
+  .vb .letter .ov{width:96px;height:128px}
+  .vb .faq summary{font-size:22px}
+}
+</style>
 </head>
 <body>
 
@@ -722,22 +1112,107 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
   </div>
 </header>
 
-<!-- 1. hero: the headline across the top, then Ana's video and the order card side by side -->
-<section class="hero">
+<!-- the four VIP things as tiny pictures: the same little tile everywhere it appears (Jason: reuse the mechanism element, show it three times) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="t-rev" viewBox="0 0 64 46"><rect x="1.5" y="1.5" width="61" height="43" rx="7" fill="#1A1412"/><rect x="6" y="8" width="35" height="31" rx="3" fill="#FFFDF8"/><path d="M10 15h20" stroke="#E0263C" stroke-width="2.4" stroke-linecap="round"/><path d="M10 15h20" stroke="#1A1412" stroke-width="1" opacity=".25"/><path d="M10 21h24M10 26h18M10 31h21" stroke="#CDBFAE" stroke-width="2.4" stroke-linecap="round"/><circle cx="20" cy="15" r="11" fill="none" stroke="#E0263C" stroke-width="1.6"/><rect x="44" y="8" width="14" height="14" rx="3" fill="#F72585"/><circle cx="51" cy="13" r="2.6" fill="#FFF8EE"/><path d="M46.5 20c1-2.4 2.6-3.4 4.5-3.4s3.5 1 4.5 3.4" fill="#FFF8EE"/><rect x="44" y="25" width="14" height="14" rx="3" fill="#3D332E"/><circle cx="7" cy="5" r="1.4" fill="#E0263C"/></symbol>
+    <symbol id="t-wa" viewBox="0 0 64 46"><rect x="1.5" y="1.5" width="61" height="43" rx="7" fill="#E9F7EC"/><rect x="7" y="7" width="31" height="10" rx="5" fill="#fff"/><rect x="24" y="20" width="33" height="10" rx="5" fill="#D9FDD3"/><rect x="7" y="33" width="24" height="8" rx="4" fill="#fff"/><circle cx="54" cy="10" r="6" fill="#25D366"/><path d="M51.3 12.6l.6-2a3.3 3.3 0 1 1 1.3 1.3Z" fill="#fff"/></symbol>
+    <symbol id="t-spr" viewBox="0 0 64 46"><rect x="1.5" y="1.5" width="61" height="43" rx="7" fill="#FFF1B3"/><rect x="17" y="5" width="26" height="36" rx="2.5" fill="#fff" transform="rotate(-6 30 23)"/><rect x="21" y="5" width="26" height="36" rx="2.5" fill="#FFD400" stroke="#1A1412" stroke-width="1.6"/><circle cx="34" cy="27" r="5.4" fill="#1A1412"/><circle cx="34" cy="27" r="2.4" fill="#FFD400"/><path d="M25 12h14M25 16h10" stroke="#1A1412" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="t-rec" viewBox="0 0 64 46"><rect x="1.5" y="1.5" width="61" height="43" rx="7" fill="#2B2320"/><rect x="6" y="6" width="52" height="22" rx="3" fill="#5A4A41"/><circle cx="32" cy="17" r="6.5" fill="#F72585"/><path d="M30 14v6l5-3Z" fill="#fff"/><path d="M6 33h52" stroke="#5A4A41" stroke-width="2" stroke-linecap="round"/><path d="M6 33h22" stroke="#F72585" stroke-width="2" stroke-linecap="round"/><path d="M6 39h12M22 39h12M38 39h12" stroke="#CDBFAE" stroke-width="2.2" stroke-linecap="round"/></symbol>
+  </defs>
+</svg>
+
+<!-- 1. hero: the spam note with the inbox demo, the headline, then Ana's video and the order card -->
+<section class="vh">
   <svg class="bgf a" aria-hidden="true"><use href="#sfo"/></svg>
-  <svg class="bgf b" aria-hidden="true"><use href="#sfo"/></svg>
-  <div class="wrap hwrap">
-    <div class="toprow">
+  <div class="wrap">
+    <div class="vh-top">
       <span class="saved"><i><svg width="14" height="14" style="color:#fff"><use href="#ck"/></svg></i><span><span id="hi">Your</span> free seat is saved.</span></span>
       <span class="eyebrow" id="eyebrow">One more thing before you go</span>
     </div>
-    <!-- right after signing up: the confirmation often lands in Spam or Promotions -->
-    <p class="inbx" role="note"><span class="ib-i" aria-hidden="true">!</span><span><b>Important: check your Spam and Promotions folders.</b> Your confirmation is on its way from <b>anacalin@howwegrowtoday.com</b>. If it’s there, tap “Not spam” or move it to your inbox, or you’ll miss your Zoom link and reminders.</span></p>
+
+    <!-- the confirmation often lands in Spam or Promotions: the same inbox demo as the confirmation page, beside the note -->
+    <div class="vspam" role="note">
+      <div class="vspam-demo">
+<div class="gx" aria-hidden="true">
+          <div class="gx-s gx-sa">
+          <div class="gx-cam">
+            <div class="gx-side">
+              <span class="gx-menu"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></span>
+              <span class="gx-cmp"><svg viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16Z"/></svg> Compose</span>
+              <span class="gx-sel"></span>
+              <span class="gx-nav n-in" style="top:calc(74*var(--u))"><svg viewBox="0 0 24 24"><rect x="3.5" y="4" width="17" height="16" rx="2"/><path d="M3.5 13.5H8l1.5 2.5h5l1.5-2.5h4.5"/></svg> Inbox<i>1</i></span>
+              <span class="gx-nav" style="top:calc(94*var(--u))"><svg viewBox="0 0 24 24"><path d="m12 3.5 2.6 5.6 6 .7-4.5 4.1 1.2 6-5.3-3-5.3 3 1.2-6L3.4 9.8l6-.7Z"/></svg> Starred</span>
+              <span class="gx-nav" style="top:calc(114*var(--u))"><svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="7.5"/><path d="M12 9v4l2.5 1.5M5 4 2.5 6.5M19 4l2.5 2.5"/></svg> Snoozed</span>
+              <span class="gx-nav" style="top:calc(134*var(--u))"><svg viewBox="0 0 24 24"><path d="M3 20 21 12 3 4l2 8Zm2-8h8"/></svg> Sent</span>
+              <span class="gx-nav n-sp" style="top:calc(154*var(--u))"><svg viewBox="0 0 24 24"><path d="M8.2 3h7.6L21 8.2v7.6L15.8 21H8.2L3 15.8V8.2Z"/><path d="M12 7.5v5.5"/><circle cx="12" cy="16.3" r="1.1" class="f"/></svg> Spam<i>1</i></span>
+            </div>
+            <div class="gx-main">
+              <div class="gx-v gx-open">
+                <div class="gx-tb"><svg viewBox="0 0 24 24"><path d="M20 12H5m6-7-7 7 7 7"/></svg><span class="sep"></span><span class="w">Delete forever</span><span class="sep"></span><span class="w gx-ns">Not spam</span><span class="sep"></span><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/><circle cx="19" cy="5" r="2.4" class="f"/></svg><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg><svg viewBox="0 0 24 24"><circle cx="11" cy="12" r="8"/><path d="m7.5 12 2.5 2.5 4.5-5M19 3v5M16.5 5.5h5"/></svg><span class="sep"></span><svg viewBox="0 0 24 24"><path d="M3 6h7l2 2h9v11H3Z"/><path d="M10 13.5h6m-2-2 2 2-2 2"/></svg><svg viewBox="0 0 24 24"><path d="M4 6h11l5 6-5 6H4Z"/></svg><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="1.6" class="f"/><circle cx="12" cy="12" r="1.6" class="f"/><circle cx="12" cy="19" r="1.6" class="f"/></svg><span class="gx-of">1 of 7</span></div>
+                <div class="gx-from"><span class="gx-av"><b>!</b></span><span class="gx-fn"><span><b>Ana Calin</b> &lt;anacalin@howwegrowtoday.com&gt;</span><small>to me &#9662;</small></span><span class="gx-tm">7:34 AM (2 minutes ago)</span><svg viewBox="0 0 24 24"><path d="m12 3.5 2.6 5.6 6 .7-4.5 4.1 1.2 6-5.3-3-5.3 3 1.2-6L3.4 9.8l6-.7Z"/></svg><svg viewBox="0 0 24 24"><path d="M10 6 4 12l6 6M4 12h10a6 6 0 0 1 6 6"/></svg></div>
+                <div class="gx-ban"><div class="gx-bt"><b>Why is this message in spam?</b> This message is similar to messages that were identified as spam in the past.</div><span class="gx-rns">Report not spam</span></div>
+                <div class="gx-mail">
+                  <div class="gx-mh"><span class="gx-logo"></span><b>how we grow</b><span class="gx-ep">THE EXIT PLAN</span></div>
+                  <div class="gx-mk"><span>YOU’RE IN</span>FREE 3-DAY LIVE WORKSHOP</div>
+                  <div class="gx-mt"><span data-name></span>your seat is <em>saved.</em></div>
+                  <div class="gx-mp">The Exit Plan is a free, 3-day live workshop on Zoom, with me. Everything you need is below, and it takes about two minutes.</div>
+                  <div class="gx-md"><span><small>TUE</small><b>17</b><i>NOVEMBER</i></span><span><small>WED</small><b>18</b><i>NOVEMBER</i></span><span><small>THU</small><b>19</b><i>NOVEMBER</i></span></div>
+                </div>
+              </div>
+              <div class="gx-v gx-list">
+                <div class="gx-tb"><svg viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14" rx="2"/></svg><svg viewBox="0 0 24 24"><path d="M19 12a7 7 0 1 1-2-4.9M19 4v4h-4"/></svg><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="1.6" class="f"/><circle cx="12" cy="12" r="1.6" class="f"/><circle cx="12" cy="19" r="1.6" class="f"/></svg></div>
+                <div class="gx-tabs"><span class="on"><svg viewBox="0 0 24 24"><rect x="3.5" y="4" width="17" height="16" rx="2"/><path d="M3.5 13.5H8l1.5 2.5h5l1.5-2.5h4.5"/></svg> Primary</span><span><svg viewBox="0 0 24 24"><path d="M4 12V5h7l9 9-7 7Z"/><circle cx="8" cy="9" r="1.2" class="f"/></svg> Promotions</span><span><svg viewBox="0 0 24 24"><circle cx="9" cy="9" r="3.2"/><path d="M3.5 19a5.5 5.5 0 0 1 11 0M15.5 6.2a3 3 0 0 1 0 5.6M17 14a5 5 0 0 1 3.5 5"/></svg> Social</span></div>
+                <span class="gx-row gx-new"><i class="gx-cb"></i><svg viewBox="0 0 24 24"><path d="m12 3.5 2.6 5.6 6 .7-4.5 4.1 1.2 6-5.3-3-5.3 3 1.2-6L3.4 9.8l6-.7Z"/></svg><b class="gx-who">Ana Calin</b><span class="gx-sub"><b>You’re in. See you Tue Nov 17.</b> - Your Zoom link and reminders will come from this address.</span><b class="gx-t">7:34 AM</b></span>
+                <span class="gx-row gx-old"><i class="gx-cb"></i><i class="gx-st"></i><i class="gx-bar" style="width:calc(60*var(--u))"></i><i class="gx-bar gx-bar2"></i><i class="gx-bar gx-bar3"></i></span><span class="gx-row gx-old"><i class="gx-cb"></i><i class="gx-st"></i><i class="gx-bar" style="width:calc(74*var(--u))"></i><i class="gx-bar gx-bar2"></i><i class="gx-bar gx-bar3"></i></span><span class="gx-row gx-old"><i class="gx-cb"></i><i class="gx-st"></i><i class="gx-bar" style="width:calc(52*var(--u))"></i><i class="gx-bar gx-bar2"></i><i class="gx-bar gx-bar3"></i></span><span class="gx-row gx-old"><i class="gx-cb"></i><i class="gx-st"></i><i class="gx-bar" style="width:calc(66*var(--u))"></i><i class="gx-bar gx-bar2"></i><i class="gx-bar gx-bar3"></i></span>
+              </div>
+            </div>
+          </div>
+          <span class="gx-toast">Conversation marked as not spam. <b>Undo</b></span>
+          <span class="gx-ok"><svg viewBox="0 0 16 16"><use href="#ck"/></svg>In your inbox</span>
+          <span class="gx-cur"><i></i><svg viewBox="0 0 30 36"><path d="M3 2l22 16-10 2 6 12-5 2-6-12-7 7Z" fill="#fff" stroke="#1A1412" stroke-width="2.6" stroke-linejoin="round"/></svg></span>
+          </div>
+          <div class="gx-s gx-sb">
+          <div class="gy-cam">
+            <div class="gx-side">
+              <span class="gx-menu"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></span>
+              <span class="gx-cmp"><svg viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16Z"/></svg> Compose</span>
+              <span class="gx-sel gy-sel"></span>
+              <span class="gx-nav gy-in" style="top:calc(74*var(--u))"><svg viewBox="0 0 24 24"><rect x="3.5" y="4" width="17" height="16" rx="2"/><path d="M3.5 13.5H8l1.5 2.5h5l1.5-2.5h4.5"/></svg> Inbox<i>1</i></span>
+              <span class="gx-nav" style="top:calc(94*var(--u))"><svg viewBox="0 0 24 24"><path d="m12 3.5 2.6 5.6 6 .7-4.5 4.1 1.2 6-5.3-3-5.3 3 1.2-6L3.4 9.8l6-.7Z"/></svg> Starred</span>
+              <span class="gx-nav" style="top:calc(114*var(--u))"><svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="7.5"/><path d="M12 9v4l2.5 1.5M5 4 2.5 6.5M19 4l2.5 2.5"/></svg> Snoozed</span>
+              <span class="gx-nav" style="top:calc(134*var(--u))"><svg viewBox="0 0 24 24"><path d="M3 20 21 12 3 4l2 8Zm2-8h8"/></svg> Sent</span>
+              <span class="gx-nav" style="top:calc(154*var(--u))"><svg viewBox="0 0 24 24"><path d="M8.2 3h7.6L21 8.2v7.6L15.8 21H8.2L3 15.8V8.2Z"/><path d="M12 7.5v5.5"/><circle cx="12" cy="16.3" r="1.1" class="f"/></svg> Spam</span>
+            </div>
+            <div class="gx-main">
+              <div class="gx-tb"><svg viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14" rx="2"/></svg><svg viewBox="0 0 24 24"><path d="M19 12a7 7 0 1 1-2-4.9M19 4v4h-4"/></svg><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="1.6" class="f"/><circle cx="12" cy="12" r="1.6" class="f"/><circle cx="12" cy="19" r="1.6" class="f"/></svg></div>
+              <div class="gx-tabs gy-tabs"><span class="gy-pri"><svg viewBox="0 0 24 24"><rect x="3.5" y="4" width="17" height="16" rx="2"/><path d="M3.5 13.5H8l1.5 2.5h5l1.5-2.5h4.5"/></svg> Primary</span><span class="gy-pro"><svg viewBox="0 0 24 24"><path d="M4 12V5h7l9 9-7 7Z"/><circle cx="8" cy="9" r="1.2" class="f"/></svg> Promotions<em class="gy-new1">1 new</em></span><span><svg viewBox="0 0 24 24"><circle cx="9" cy="9" r="3.2"/><path d="M3.5 19a5.5 5.5 0 0 1 11 0M15.5 6.2a3 3 0 0 1 0 5.6M17 14a5 5 0 0 1 3.5 5"/></svg> Social</span><b class="gy-u"></b></div>
+              <div class="gy-l gy-lpro">
+                <span class="gx-row gy-ana"><i class="gx-cb"></i><svg viewBox="0 0 24 24"><path d="m12 3.5 2.6 5.6 6 .7-4.5 4.1 1.2 6-5.3-3-5.3 3 1.2-6L3.4 9.8l6-.7Z"/></svg><b class="gx-who">Ana Calin</b><span class="gx-sub"><b>You’re in. See you Tue Nov 17.</b> - Your Zoom link and reminders will come from this address.</span><b class="gx-t">7:34 AM</b></span>
+                <span class="gx-row gx-old"><i class="gx-cb"></i><i class="gx-st"></i><i class="gx-bar" style="width:calc(60*var(--u))"></i><i class="gx-bar gx-bar2"></i><i class="gx-bar gx-bar3"></i></span><span class="gx-row gx-old"><i class="gx-cb"></i><i class="gx-st"></i><i class="gx-bar" style="width:calc(74*var(--u))"></i><i class="gx-bar gx-bar2"></i><i class="gx-bar gx-bar3"></i></span><span class="gx-row gx-old"><i class="gx-cb"></i><i class="gx-st"></i><i class="gx-bar" style="width:calc(52*var(--u))"></i><i class="gx-bar gx-bar2"></i><i class="gx-bar gx-bar3"></i></span><span class="gx-row gx-old"><i class="gx-cb"></i><i class="gx-st"></i><i class="gx-bar" style="width:calc(66*var(--u))"></i><i class="gx-bar gx-bar2"></i><i class="gx-bar gx-bar3"></i></span>
+              </div>
+              <div class="gy-l gy-lpri">
+                <span class="gx-row gy-ana2"><i class="gx-cb"></i><svg viewBox="0 0 24 24"><path d="m12 3.5 2.6 5.6 6 .7-4.5 4.1 1.2 6-5.3-3-5.3 3 1.2-6L3.4 9.8l6-.7Z"/></svg><b class="gx-who">Ana Calin</b><span class="gx-sub"><b>You’re in. See you Tue Nov 17.</b> - Your Zoom link and reminders will come from this address.</span><b class="gx-t">7:34 AM</b></span>
+                <span class="gx-row gx-old"><i class="gx-cb"></i><i class="gx-st"></i><i class="gx-bar" style="width:calc(60*var(--u))"></i><i class="gx-bar gx-bar2"></i><i class="gx-bar gx-bar3"></i></span><span class="gx-row gx-old"><i class="gx-cb"></i><i class="gx-st"></i><i class="gx-bar" style="width:calc(74*var(--u))"></i><i class="gx-bar gx-bar2"></i><i class="gx-bar gx-bar3"></i></span><span class="gx-row gx-old"><i class="gx-cb"></i><i class="gx-st"></i><i class="gx-bar" style="width:calc(52*var(--u))"></i><i class="gx-bar gx-bar2"></i><i class="gx-bar gx-bar3"></i></span><span class="gx-row gx-old"><i class="gx-cb"></i><i class="gx-st"></i><i class="gx-bar" style="width:calc(66*var(--u))"></i><i class="gx-bar gx-bar2"></i><i class="gx-bar gx-bar3"></i></span>
+              </div>
+              <div class="gy-toast"><span>Conversation moved to “Primary”.<small>Do this for future messages from anacalin@howwegrowtoday.com?</small></span><b class="gy-yes">Yes</b><b>Undo</b></div>
+            </div>
+          </div>
+          <span class="gy-ghost"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/><circle cx="19" cy="5" r="2.4" class="f"/></svg>Move 1 conversation</span>
+          <span class="gx-ok gy-ok"><svg viewBox="0 0 16 16"><use href="#ck"/></svg>In your inbox</span>
+          <span class="gx-cur gy-cur"><i></i><svg viewBox="0 0 30 36"><path d="M3 2l22 16-10 2 6 12-5 2-6-12-7 7Z" fill="#fff" stroke="#1A1412" stroke-width="2.6" stroke-linejoin="round"/></svg></span>
+          </div>
+        </div>
+      </div>
+      <p class="vspam-t"><span class="ib-i" aria-hidden="true">!</span><span><b>Important: check your Spam and Promotions folders.</b> Your confirmation is on its way from <b class="nw">anacalin@howwegrowtoday.com</b>. If it’s there, tap “Not spam” or move it to your inbox, or you’ll miss your Zoom link and reminders.</span></p>
+    </div>
+
     <!-- headline A/B: ?h=A or ?h=B previews one -->
     <h1 id="h1">Keep the workshop for life, <em>and work through the hard parts with me.</em></h1>
     <p class="hsub">You’ve saved your free seat. For $67, add lifetime workshop recordings, a live group review, private WhatsApp access to me during the workshop, and my Offer Clarity Sprint course.</p>
-    <div class="hv">
-      <div class="hvv">
+
+    <div class="vh-grid">
+      <div class="vh-l">
         <div class="iph" id="vsl">
           <span class="sb" style="left:16%;width:9%"></span><span class="sb" style="left:28%;width:5%"></span><span class="sb" style="left:35%;width:5%"></span>
           <div class="bz">
@@ -751,25 +1226,27 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
           </div>
         </div>
         <p class="under"><b>A minute with me before you decide.</b> Here’s what VIP adds to your free seat.</p>
-        <!-- what VIP adds, in three lines -->
-        <div class="hiw">
+
+        <!-- what VIP adds, three lines, each with its picture -->
+        <div class="hiw" data-r>
           <h2 class="hiw-h">Use what you learn to work toward your first sales</h2>
-          <ol>
-            <li><b>Keep the teaching beside you.</b> Rewatch every workshop session whenever you need it, with lifetime access to the recordings.</li>
-            <li><b>Ask me while you’re working on it.</b> Bring your questions to the private VIP WhatsApp group during the workshop.</li>
-            <li><b>See what I’d change before someone buys.</b> I’ll review selected offers, prices and sales emails live in a dedicated 90-minute group session.</li>
+          <ol class="hiw3">
+            <li><svg class="mt" aria-hidden="true"><use href="#t-rec"/></svg><p><b>Keep the teaching beside you.</b> Rewatch every workshop session whenever you need it, with lifetime access to the recordings.</p></li>
+            <li><svg class="mt" aria-hidden="true"><use href="#t-wa"/></svg><p><b>Ask me while you’re working on it.</b> Bring your questions to the private VIP WhatsApp group during the workshop.</p></li>
+            <li><svg class="mt" aria-hidden="true"><use href="#t-rev"/></svg><p><b>See what I’d change before someone buys.</b> I’ll review selected offers, prices and sales emails live in a dedicated 90-minute group session.</p></li>
           </ol>
-          <p class="hiw-lh">You also keep my Offer Clarity Sprint course. Use the part you need now, and come back to it when you’re working on your next idea.</p>
+          <p class="hiw-lh"><svg class="mt sm" aria-hidden="true"><use href="#t-spr"/></svg><span>You also keep my Offer Clarity Sprint course. Use the part you need now, and come back to it when you’re working on your next idea.</span></p>
         </div>
       </div>
+
       <aside class="order" id="order">
         <div class="oh"><p class="ok">VIP · one payment</p><span class="op">$67</span></div>
         <h2>Get the full <em>VIP package.</em></h2>
-        <ul class="ticks">
-          <li><i><svg width="11" height="11"><use href="#ck"/></svg></i><span><b>Lifetime recordings,</b> all three workshop sessions</span></li>
-          <li><i><svg width="11" height="11"><use href="#ck"/></svg></i><span><b>Live group review</b> with me, 90 minutes, plus the recording</span></li>
-          <li><i><svg width="11" height="11"><use href="#ck"/></svg></i><span><b>Private WhatsApp access</b> to me, Nov 17 to 20</span></li>
-          <li><i><svg width="11" height="11"><use href="#ck"/></svg></i><span><b>The Offer Clarity Sprint</b> course, yours to keep</span></li>
+        <ul class="stack">
+          <li><svg class="mt" aria-hidden="true"><use href="#t-rec"/></svg><span><b>Lifetime recordings,</b> all three workshop sessions</span></li>
+          <li><svg class="mt" aria-hidden="true"><use href="#t-rev"/></svg><span><b>Live group review</b> with me, 90 minutes, plus the recording</span></li>
+          <li><svg class="mt" aria-hidden="true"><use href="#t-wa"/></svg><span><b>Private WhatsApp access</b> to me, Nov 17 to 20</span></li>
+          <li><svg class="mt" aria-hidden="true"><use href="#t-spr"/></svg><span><b>The Offer Clarity Sprint</b> course, yours to keep</span></li>
         </ul>
         <div class="tot2"><span>On sale until <span class="nw">Tue, Nov 17,</span><br><span class="nw">11:59 pm New York</span></span><span>Total today <b>$67.00</b></span></div>
         <p class="closed">VIP is closed. <em>See you live.</em></p>
@@ -782,36 +1259,49 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
 </section>
 
 <main>
-<!-- 2. your week: the three free days, the VIP review, then putting it in front of buyers -->
-<section class="sand week">
+<!-- 2. your week: the free days on top, what VIP adds underneath at the moment it is used, then the side-by-side table -->
+<section class="vw">
   <div class="wrap">
-    <div class="hd2" data-r>
+    <div class="vw-hd" data-r>
       <div><span class="eyebrow">Your week, Nov 17 to 20</span><h2>Work toward the sale <em>that makes this feel possible.</em></h2></div>
       <p>When someone pays for your help, you have something real to build on. The workshop helps you work toward that. VIP gives you the lessons to revisit and access to me while you put them to use.</p>
     </div>
-    <div class="tl" data-r aria-label="Your week">
-      <span class="brk f" aria-hidden="true"><span>Free, for everyone</span></span>
-      <span class="brk v" aria-hidden="true"><span>VIP</span></span>
-      <div class="stop"><div class="dt"><b>17</b><small>Tue</small></div><span class="lb">Day 1</span><p>Find what you could sell and who could buy.</p></div>
-      <div class="stop"><div class="dt"><b>18</b><small>Wed</small></div><span class="lb">Day 2</span><p>Give people a reason to pay your price.</p></div>
-      <div class="stop"><div class="dt"><b>19</b><small>Thu</small></div><span class="lb">Day 3</span><p>Get ready to invite people to buy.</p><span class="warn">Bring your work to the VIP review.</span></div>
-      <div class="stop vip"><div class="dt vip"><span class="tg">VIP</span><b>20</b><small>Fri</small></div><span class="lb">Live group review</span><p>See what I’d improve in selected submissions.</p></div>
-      <div class="stop next"><div class="dt"><b>→</b></div><span class="lb">Keep going</span><p>Put it in front of potential buyers and learn from the response.</p></div>
+
+    <div class="trk" data-r aria-label="Your week">
+      <div class="lane free">
+        <span class="lane-k" aria-hidden="true">Free, for everyone</span>
+        <div class="stop s1"><div class="dt"><b>17</b><small>Tue</small></div><span class="lb">Day 1</span><p>Find what you could sell and who could buy.</p></div>
+        <div class="stop s2"><div class="dt"><b>18</b><small>Wed</small></div><span class="lb">Day 2</span><p>Give people a reason to pay your price.</p></div>
+        <div class="stop s3"><div class="dt"><b>19</b><small>Thu</small></div><span class="lb">Day 3</span><p>Get ready to invite people to buy.</p><span class="bring"><i class="env" aria-hidden="true"></i>Bring your work to the VIP review.</span></div>
+        <div class="stop s4 vip"><div class="dt"><span class="tg">VIP</span><b>20</b><small>Fri</small></div><span class="lb">Live group review</span><p>See what I’d improve in selected submissions.</p></div>
+        <div class="stop s5 next"><div class="dt"><img src="../img/vip/sprout.webp" alt="" width="240" height="193" loading="lazy"></div><span class="lb">Keep going</span><p>Put it in front of potential buyers and learn from the response.</p></div>
+        <i class="fly" aria-hidden="true"><b></b><span></span><span></span></i>
+      </div>
+      <!-- VIP's lane: what is there for you on each day (pictures only, the words are in the table below) -->
+      <div class="lane vipl" aria-hidden="true">
+        <span class="lane-k">VIP</span>
+        <span class="vbar wa"><svg class="mt"><use href="#t-wa"/></svg></span>
+        <span class="vrec r1"><svg class="mt"><use href="#t-rec"/></svg></span>
+        <span class="vrec r2"><svg class="mt"><use href="#t-rec"/></svg></span>
+        <span class="vrec r3"><svg class="mt"><use href="#t-rec"/></svg></span>
+        <span class="vrv"><svg class="mt"><use href="#t-rev"/></svg></span>
+        <span class="vsp"><svg class="mt"><use href="#t-spr"/></svg></span>
+      </div>
     </div>
 
-    <div class="cmp-l" data-r>
+    <div class="cmp" data-r>
       <h3>Your free seat and <em>VIP,</em> side by side</h3>
       <table>
         <thead><tr><th scope="col"><span class="sr">What you get</span></th><th class="c" scope="col">free seat</th><th class="c v" scope="col">VIP ($67)</th></tr></thead>
         <tbody>
-          <tr><td>All three sessions, live <small>Nov 17 to 19</small></td><td class="c"><span class="y" aria-label="yes">✓</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
-          <tr><td>The Day 3 prize draw <small>live attendees</small></td><td class="c"><span class="y" aria-label="yes">✓</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
-          <tr><td>Live exercises to prepare what you’ll sell</td><td class="c"><span class="y" aria-label="yes">✓</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
-          <tr><td>Reminders on WhatsApp <small>voice notes, short videos</small></td><td class="c"><span class="y" aria-label="yes">✓</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
-          <tr><td>Dedicated group review with me <small>Selected submissions · 90 minutes · Nov 20</small></td><td class="c"><span class="n">no</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
-          <tr><td>Private WhatsApp group with me <small>Nov 17 to 20</small></td><td class="c"><span class="n">no</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
-          <tr><td>The Offer Clarity Sprint</td><td class="c"><span class="n">no</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
-          <tr><td>Lifetime workshop recordings <small>Plus the recording of the VIP review</small></td><td class="c"><span class="n">no</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
+          <tr style="--i:0"><td>All three sessions, live <small>Nov 17 to 19</small></td><td class="c"><span class="y" aria-label="yes">✓</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
+          <tr style="--i:1"><td>The Day 3 prize draw <small>live attendees</small></td><td class="c"><span class="y" aria-label="yes">✓</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
+          <tr style="--i:2"><td>Live exercises to prepare what you’ll sell</td><td class="c"><span class="y" aria-label="yes">✓</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
+          <tr style="--i:3"><td>Reminders on WhatsApp <small>voice notes, short videos</small></td><td class="c"><span class="y" aria-label="yes">✓</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
+          <tr class="add2" style="--i:4"><td><svg class="mt" aria-hidden="true"><use href="#t-rev"/></svg>Dedicated group review with me <small>Selected submissions · 90 minutes · Nov 20</small></td><td class="c"><span class="n">no</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
+          <tr class="add2" style="--i:5"><td><svg class="mt" aria-hidden="true"><use href="#t-wa"/></svg>Private WhatsApp group with me <small>Nov 17 to 20</small></td><td class="c"><span class="n">no</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
+          <tr class="add2" style="--i:6"><td><svg class="mt" aria-hidden="true"><use href="#t-spr"/></svg>The Offer Clarity Sprint</td><td class="c"><span class="n">no</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
+          <tr class="add2" style="--i:7"><td><svg class="mt" aria-hidden="true"><use href="#t-rec"/></svg>Lifetime workshop recordings <small>Plus the recording of the VIP review</small></td><td class="c"><span class="n">no</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
         </tbody>
       </table>
       <p class="cmp-note">Free or VIP, join my WhatsApp community on the next page for workshop reminders. You’ll also find the next steps for getting your exit number there.</p>
@@ -819,145 +1309,158 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
   </div>
 </section>
 
-<!-- 3. what's in VIP: one focused row each -->
-<section class="inc">
+<!-- 3. what's in VIP: one item per band; the four-part strip comes back on each with its progress (done, now, next) -->
+<section class="vi">
   <div class="wrap">
-    <div class="hd" data-r>
+    <div class="vi-hd" data-r>
       <div><span class="eyebrow">What's in VIP</span><h2>Help while you do it. <em>The lessons to come back to.</em></h2></div>
       <p>Keep learning when you close Zoom, and bring the questions that only turn up when you try this for yourself.</p>
     </div>
-    <div class="rows">
-      <!-- 01: the live group review -->
-      <div class="row" data-r>
-        <div class="art" aria-hidden="true"><div class="stage">
-          <svg class="fl" style="left:430px;top:-80px;width:240px;height:240px"><use href="#sfo"/></svg>
-          <div class="call">
-            <div class="bar"><i></i>VIP review · live<small>FRI NOV 20</small></div>
-            <div class="gridc">
-              <div class="host"><img src="../img/ana-hat.webp" alt="" width="520" height="520" loading="lazy"><em>HOST</em><b>Ana</b></div>
-              <div class="doc">
-                <small>A SALES EMAIL, SHARED</small>
-                <div class="ln2"><span class="old">I made a thing, if anyone wants it.</span></div>
-                <div class="ln2"><span class="new">It opens Monday. Here is who it's for.</span></div>
-                <div class="rest" style="width:92%"></div><div class="rest" style="width:70%"></div><div class="rest" style="width:82%"></div>
-                <div class="cm"><b>ANA</b>Say the price in the first line.</div>
-              </div>
+
+    <!-- 01: the live group review -->
+    <article class="it it1" data-r>
+      <div class="mst" aria-hidden="true"><span class="now"><svg class="mt"><use href="#t-rev"/></svg></span><i></i><span><svg class="mt"><use href="#t-wa"/></svg></span><i></i><span><svg class="mt"><use href="#t-spr"/></svg></span><i></i><span><svg class="mt"><use href="#t-rec"/></svg></span></div>
+      <div class="art rv" aria-hidden="true"><div class="stage">
+        <div class="zm">
+          <div class="zbar"><i></i>VIP review · live<small>FRI NOV 20</small></div>
+          <div class="zg">
+            <div class="doc">
+              <small>A SALES EMAIL, SHARED</small>
+              <p class="d1"><span>I made a thing, if anyone wants it.</span><svg class="ink-x" viewBox="0 0 300 24" preserveAspectRatio="none"><path d="M2 13c60-3 140 2 296-2"/></svg></p>
+              <p class="d2"><span>It opens Monday. Here is who it’s for.</span><svg class="ink-u" viewBox="0 0 300 14" preserveAspectRatio="none"><path d="M3 8c80 4 190-3 294 1"/></svg></p>
+              <p class="d3"><span class="bar" style="width:92%"></span><span class="bar" style="width:74%"></span><span class="bar" style="width:84%"></span></p>
+              <span class="tag t-ch">change</span><span class="tag t-kp">keep</span>
+              <div class="cm"><b>ANA · WHY</b>Say the price in the first line.</div>
+              <svg class="ink-a" viewBox="0 0 120 80"><path d="M6 8c40 2 78 18 96 58M90 54l12 12 6-16"/></svg>
+            </div>
+            <div class="cams">
+              <div class="cam host"><img src="../img/ana-hat.webp" alt="" width="520" height="520" loading="lazy"><em>HOST</em><b>Ana</b></div>
+              <div class="cam"><span>R</span></div>
+              <div class="cam you"><span>Y</span><b>You</b></div>
             </div>
           </div>
-          <div class="fri"><span>VIP</span><b>20</b><small>FRI</small></div>
-        </div></div>
-        <div class="tx">
-          <span class="num">01</span>
-          <h3>Let’s look at it <em>the way a buyer would.</em></h3>
-          <p class="meta"><b>Fri, Nov 20</b> · 90 minutes · VIPs only</p>
-          <div class="days4" aria-label="Tue Nov 17 to Thu Nov 19 free, Fri Nov 20 for VIPs">
-            <div class="dt"><b>17</b><small>Tue</small><span class="ck"><svg style="color:#fff" width="11" height="11"><use href="#ck"/></svg></span></div>
-            <div class="dt"><b>18</b><small>Wed</small><span class="ck"><svg style="color:#fff" width="11" height="11"><use href="#ck"/></svg></span></div>
-            <div class="dt"><b>19</b><small>Thu</small><span class="ck"><svg style="color:#fff" width="11" height="11"><use href="#ck"/></svg></span></div>
-            <span class="plus" aria-hidden="true">+</span>
-            <div class="dt vip"><span class="tg">VIP</span><b>20</b><small>Fri</small></div>
-          </div>
-          <p>You know your subject. A potential buyer still needs to understand why it matters to them, why it’s worth the price, and what they’re actually buying. I’ll work through selected offers, prices and sales emails on screen, showing you what I’d keep, what I’d change and why.</p>
-          <span class="lab">What to bring</span>
-          <ol class="how">
-            <li><span><b>What you want to sell,</b> even if it still needs work.</span></li>
-            <li><span><b>The price you’re considering,</b> and what makes you hesitate.</span></li>
-            <li><span><b>Your sales email,</b> or the question you keep coming back to.</span></li>
-          </ol>
-          <p class="soft">I’ll cover as many submissions as fit into 90 minutes; a personal review isn’t guaranteed. You can submit ahead if you can’t attend, and everyone gets the recording.</p>
         </div>
+        <img class="mag" src="../img/vip/magnifier.webp" alt="" width="300" height="512" loading="lazy">
+        <span class="stamp"><img src="../img/vip/stamp.webp" alt="" width="360" height="133" loading="lazy"><b>EXAMPLE</b></span>
+      </div></div>
+      <div class="tx">
+        <span class="num">01</span>
+        <h3>Let’s look at it <em>the way a buyer would.</em></h3>
+        <p class="meta"><b>Fri, Nov 20</b> · 90 minutes · VIPs only</p>
+        <p>You know your subject. A potential buyer still needs to understand why it matters to them, why it’s worth the price, and what they’re actually buying. I’ll work through selected offers, prices and sales emails on screen, showing you what I’d keep, what I’d change and why.</p>
+        <span class="lab">What to bring</span>
+        <ol class="how">
+          <li><span><b>What you want to sell,</b> even if it still needs work.</span></li>
+          <li><span><b>The price you’re considering,</b> and what makes you hesitate.</span></li>
+          <li><span><b>Your sales email,</b> or the question you keep coming back to.</span></li>
+        </ol>
+        <p class="soft">I’ll cover as many submissions as fit into 90 minutes; a personal review isn’t guaranteed. You can submit ahead if you can’t attend, and everyone gets the recording.</p>
       </div>
+    </article>
 
-      <!-- 02: the VIP WhatsApp group (open chat, VIPs only). [Nov 20 or Nov 30: Ana's last day in the chat, to confirm] -->
-      <div class="row flip" data-r>
-        <div class="art wag" aria-hidden="true"><div class="stage">
-          <svg class="fl" style="left:-80px;top:-70px;width:230px;height:230px"><use href="#sfo"/></svg>
-          <span class="meta" style="position:absolute;right:30px;top:18px;margin:0">EXAMPLE</span>
-          <div class="wchat">
-            <div class="wh"><span class="wai"><svg class="wa" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.5-.3Z"/></svg></span><span><b>VIP group · how we grow</b><small>Ana and the VIPs</small></span></div>
-            <div class="wb"><small>Rosa</small>Is $97 too low for a six-week program?</div>
-            <div class="wb ana"><small>Ana</small><span class="vn"><i><svg viewBox="0 0 26 26"><path d="M8.6 5.6v14.8c0 .9 1 1.4 1.7 1l11.6-7.4c.7-.4.7-1.4 0-1.9L10.3 4.6c-.7-.5-1.7 0-1.7 1z" fill="#fff"/></svg></i><span class="wv"><b style="height:7px"></b><b style="height:12px"></b><b style="height:19px"></b><b style="height:10px"></b><b style="height:15px"></b><b style="height:22px"></b><b style="height:9px"></b><b style="height:14px"></b><b style="height:18px"></b><b style="height:8px"></b><b style="height:13px"></b><b style="height:20px"></b><b style="height:10px"></b><b style="height:7px"></b><b style="height:14px"></b><b style="height:17px"></b><b style="height:9px"></b><b style="height:12px"></b><b style="height:16px"></b><b style="height:8px"></b></span><em>0:42</em></span></div>
-            <div class="wb ana"><small>Ana</small>Say $149, and put the result in the first line.</div>
-            <div class="wb me"><small>You</small>Changing it now.<span class="tk2">✓✓</span></div>
+    <!-- 02: the VIP WhatsApp group: the chat, and when Ana is in it -->
+    <article class="it it2 flip" data-r>
+      <div class="mst" aria-hidden="true"><span class="done"><svg class="mt"><use href="#t-rev"/></svg></span><i></i><span class="now"><svg class="mt"><use href="#t-wa"/></svg></span><i></i><span><svg class="mt"><use href="#t-spr"/></svg></span><i></i><span><svg class="mt"><use href="#t-rec"/></svg></span></div>
+      <div class="art wa2" aria-hidden="true"><div class="stage">
+        <div class="phone">
+          <div class="wh"><span class="wai"><svg class="wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.5-.3Z"/></svg></span><span><b>VIP group · how we grow</b><small>Ana and the VIPs</small></span></div>
+          <div class="wbd">
+            <div class="wb m1"><small>Rosa</small>Is $97 too low for a six-week program?</div>
+            <div class="wb ana m2"><small>Ana</small><span class="vn"><i><svg viewBox="0 0 26 26"><path d="M8.6 5.6v14.8c0 .9 1 1.4 1.7 1l11.6-7.4c.7-.4.7-1.4 0-1.9L10.3 4.6c-.7-.5-1.7 0-1.7 1z" fill="#fff"/></svg></i><span class="wv"><b style="height:7px"></b><b style="height:12px"></b><b style="height:19px"></b><b style="height:10px"></b><b style="height:15px"></b><b style="height:22px"></b><b style="height:9px"></b><b style="height:14px"></b><b style="height:18px"></b><b style="height:8px"></b><b style="height:13px"></b><b style="height:20px"></b><b style="height:10px"></b><b style="height:7px"></b><b style="height:14px"></b><b style="height:17px"></b></span><em>0:42</em></span></div>
+            <div class="wb ana m3"><small>Ana</small>Say $149, and put the result in the first line.</div>
+            <div class="wb me m4"><small>You</small>Changing it now.<span class="tk2">✓✓</span></div>
+            <div class="typ"><i></i><i></i><i></i></div>
           </div>
-          <span class="wbadge"><svg class="wa" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.5-.3Z"/></svg></span>
-        </div></div>
-        <div class="tx">
-          <span class="num">02</span>
-          <h3>Ask me while the question <em>is in front of you.</em></h3>
-          <p class="meta"><b>Nov 17 to Nov 20</b> · Ana in the chat</p>
-          <p>Sometimes the lesson makes perfect sense. Then you open your own document and think, “Yes, but what about mine?” Put that question in our private VIP WhatsApp group, along with the bit you’re working on.</p>
-          <p>I’ll be there for 30 minutes after each workshop session, plus one morning slot. The free community has your reminders. This separate group is where we talk about the work.</p>
-          <p class="soft">Group members can see each other's phone numbers.</p>
         </div>
-      </div>
-
-      <!-- 03: the bonus. Ana writes the one line on what it helps you do; no price until it's confirmed on sale on its own -->
-      <div class="row" data-r>
-        <div class="art" aria-hidden="true"><div class="stage">
-          <svg class="fl" style="left:-70px;top:330px;width:230px;height:230px"><use href="#sfo"/></svg>
-          <div class="book">
-            <div class="pg p3"></div><div class="pg p2"></div>
-            <div class="cv"><small>BONUS</small><h4>Offer <em>Clarity</em> Sprint</h4><svg class="sfw"><use href="#sf"/></svg><span class="br">how we grow</span></div>
-          </div>
-          <svg class="arrow2" viewBox="0 0 70 40" fill="none" stroke="#F72585" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 30c18-20 38-24 58-14M52 8l10 8-12 6"/></svg>
-          <div class="sheet2">
-            <small>YOUR OFFER</small>
-            <div class="fz" style="width:96%"></div><div class="fz" style="width:78%"></div><div class="fz" style="width:88%"></div>
-            <p class="ok2"><span>One offer. One sentence. One price.</span></p>
-          </div>
-        </div></div>
-        <div class="tx">
-          <span class="num">03</span>
-          <h3>The Offer <em>Clarity Sprint.</em></h3>
-          <p class="meta"><b>Bonus</b> · yours to keep</p>
-          <p>You might have six ideas and no idea which to choose. Or you know what you want to sell, but explaining why someone should buy it takes half a page. My Offer Clarity Sprint course helps you work through choosing an offer, checking demand, making its value clear and deciding on a price.</p>
-          <span class="lab">When to use it</span>
-          <ol class="how">
-            <li><span><b>During the workshop,</b> use the lesson you need.</span></li>
-            <li><span><b>Before the review,</b> work through the part you’re stuck on.</span></li>
-            <li><span><b>When you have another idea,</b> the course is still yours.</span></li>
-          </ol>
-          <p class="soft">You don’t have to finish another course before the workshop. Already own the Sprint? Bring the work you’ve started.</p>
+        <!-- when Ana is in the chat: 30 minutes after each session, plus one morning slot -->
+        <div class="sched">
+          <div class="sd"><span class="d"><b>17</b><small>TUE</small></span><span class="ss">Session</span><span class="sc">+30 min</span></div>
+          <div class="sd"><span class="d"><b>18</b><small>WED</small></span><span class="ss">Session</span><span class="sc">+30 min</span></div>
+          <div class="sd"><span class="d"><b>19</b><small>THU</small></span><span class="ss">Session</span><span class="sc">+30 min</span></div>
+          <div class="sd mo"><span class="msun"></span><span class="sc">+1 morning</span></div>
         </div>
+        <span class="stamp s2"><img src="../img/vip/stamp.webp" alt="" width="360" height="133" loading="lazy"><b>EXAMPLE</b></span>
+      </div></div>
+      <div class="tx">
+        <span class="num">02</span>
+        <h3>Ask me while the question <em>is in front of you.</em></h3>
+        <p class="meta"><b>Nov 17 to Nov 20</b> · Ana in the chat</p>
+        <p>Sometimes the lesson makes perfect sense. Then you open your own document and think, “Yes, but what about mine?” Put that question in our private VIP WhatsApp group, along with the bit you’re working on.</p>
+        <p>I’ll be there for 30 minutes after each workshop session, plus one morning slot. The free community has your reminders. This separate group is where we talk about the work.</p>
+        <p class="soft">Group members can see each other's phone numbers.</p>
       </div>
+    </article>
 
-      <!-- 04: the recordings -->
-      <div class="row flip" data-r>
-        <div class="art" aria-hidden="true"><div class="stage">
-          <svg class="fl" style="left:440px;top:330px;width:230px;height:230px"><use href="#sfo"/></svg>
-          <div class="player">
-            <div class="scr2"><img src="../img/ana-paris.webp" alt="" width="1000" height="671" loading="lazy"><span class="pp"><svg width="20" height="20" viewBox="0 0 26 26"><path d="M8.6 5.6v14.8c0 .9 1 1.4 1.7 1l11.6-7.4c.7-.4.7-1.4 0-1.9L10.3 4.6c-.7-.5-1.7 0-1.7 1z" fill="#fff"/></svg></span><span class="cap3"><small>RECORDING · DAY 1</small>Find what you could sell and who could buy.</span><span class="prog"><i></i></span></div>
-            <ol>
-              <li class="on"><span class="dp">DAY 1</span>Find what you could sell and who could buy.<span class="sv">SAVED</span></li>
-              <li><span class="dp">DAY 2</span>Give people a reason to pay your price.<span class="sv">SAVED</span></li>
-              <li><span class="dp">DAY 3</span>Get ready to invite people to buy.<span class="sv">SAVED</span></li>
-            </ol>
-          </div>
-        </div></div>
-        <div class="tx">
-          <span class="num">04</span>
-          <h3>The workshop is yours <em>to keep for life.</em></h3>
-          <p class="meta"><b>Lifetime access</b> · all three sessions in full</p>
-          <p>A meeting runs late. You miss a session. Or you only realise which question you should have asked when you try it yourself. With VIP, you can come back to every workshop recording whenever you need it. Pause it beside your own work and take the time to use it.</p>
-          <span class="lab">When you'll want them</span>
-          <ol class="how">
-            <li><span><b>If you miss a session,</b> catch up in your own time.</span></li>
-            <li><span><b>When you put it into practice,</b> revisit the explanation you need.</span></li>
-            <li><span><b>After the VIP review,</b> keep its recording too.</span></li>
+    <!-- 03: the bonus: six ideas become one, then the course and its four parts -->
+    <article class="it it3" data-r>
+      <div class="mst" aria-hidden="true"><span class="done"><svg class="mt"><use href="#t-rev"/></svg></span><i></i><span class="done"><svg class="mt"><use href="#t-wa"/></svg></span><i></i><span class="now"><svg class="mt"><use href="#t-spr"/></svg></span><i></i><span><svg class="mt"><use href="#t-rec"/></svg></span></div>
+      <div class="art spr" aria-hidden="true"><div class="stage">
+        <div class="six">
+          <span class="nt n1"><i></i><i></i></span><span class="nt n2"><i></i><i></i></span><span class="nt n3"><i></i><i></i></span>
+          <span class="nt n4 one"><i></i><i></i></span><span class="nt n5"><i></i><i></i></span><span class="nt n6"><i></i><i></i></span>
+        </div>
+        <div class="book">
+          <div class="pg p3"></div><div class="pg p2"></div>
+          <div class="cv"><small>BONUS</small><h4>Offer <em>Clarity</em> Sprint</h4><svg class="sfw"><use href="#sf"/></svg><span class="br">how we grow</span></div>
+          <img class="bow" src="../img/vip/bow.webp" alt="" width="360" height="218" loading="lazy">
+        </div>
+        <ol class="mods"><li>Choosing an offer</li><li>Checking demand</li><li>Making its value clear</li><li>Deciding on a price</li></ol>
+      </div></div>
+      <div class="tx">
+        <span class="num">03</span>
+        <h3>The Offer <em>Clarity Sprint.</em></h3>
+        <p class="meta"><b>Bonus</b> · yours to keep</p>
+        <p>You might have six ideas and no idea which to choose. Or you know what you want to sell, but explaining why someone should buy it takes half a page. My Offer Clarity Sprint course helps you work through choosing an offer, checking demand, making its value clear and deciding on a price.</p>
+        <span class="lab">When to use it</span>
+        <ol class="how">
+          <li><span><b>During the workshop,</b> use the lesson you need.</span></li>
+          <li><span><b>Before the review,</b> work through the part you’re stuck on.</span></li>
+          <li><span><b>When you have another idea,</b> the course is still yours.</span></li>
+        </ol>
+        <p class="soft">You don’t have to finish another course before the workshop. Already own the Sprint? Bring the work you’ve started.</p>
+      </div>
+    </article>
+
+    <!-- 04: the recordings, for life -->
+    <article class="it it4 flip" data-r>
+      <div class="mst" aria-hidden="true"><span class="done"><svg class="mt"><use href="#t-rev"/></svg></span><i></i><span class="done"><svg class="mt"><use href="#t-wa"/></svg></span><i></i><span class="done"><svg class="mt"><use href="#t-spr"/></svg></span><i></i><span class="now"><svg class="mt"><use href="#t-rec"/></svg></span></div>
+      <div class="art rec" aria-hidden="true"><div class="stage">
+        <img class="cine" src="../img/vip/cinecam.webp" alt="" width="340" height="343" loading="lazy">
+        <span class="beam"></span>
+        <div class="player">
+          <div class="scr2"><img src="../img/ana-paris.webp" alt="" width="1000" height="671" loading="lazy"><span class="pp"><svg width="20" height="20" viewBox="0 0 26 26"><path d="M8.6 5.6v14.8c0 .9 1 1.4 1.7 1l11.6-7.4c.7-.4.7-1.4 0-1.9L10.3 4.6c-.7-.5-1.7 0-1.7 1z" fill="#fff"/></svg></span><span class="cap3"><small>RECORDING · DAY 1</small>Find what you could sell and who could buy.</span><span class="prog"><i></i></span></div>
+          <ol>
+            <li class="on"><span class="dp">DAY 1</span>Find what you could sell and who could buy.<span class="sv">SAVED</span></li>
+            <li><span class="dp">DAY 2</span>Give people a reason to pay your price.<span class="sv">SAVED</span></li>
+            <li><span class="dp">DAY 3</span>Get ready to invite people to buy.<span class="sv">SAVED</span></li>
+            <li class="vr"><span class="dp">VIP</span>Live group review<span class="sv">SAVED</span></li>
           </ol>
         </div>
+        <div class="yrs"><span>2026</span><span>2027</span><span>2028</span><span>2029</span><span>2030</span><span>2031</span></div>
+      </div></div>
+      <div class="tx">
+        <span class="num">04</span>
+        <h3>The workshop is yours <em>to keep for life.</em></h3>
+        <p class="meta"><b>Lifetime access</b> · all three sessions in full</p>
+        <p>A meeting runs late. You miss a session. Or you only realise which question you should have asked when you try it yourself. With VIP, you can come back to every workshop recording whenever you need it. Pause it beside your own work and take the time to use it.</p>
+        <span class="lab">When you'll want them</span>
+        <ol class="how">
+          <li><span><b>If you miss a session,</b> catch up in your own time.</span></li>
+          <li><span><b>When you put it into practice,</b> revisit the explanation you need.</span></li>
+          <li><span><b>After the VIP review,</b> keep its recording too.</span></li>
+        </ol>
       </div>
-    </div>
+    </article>
   </div>
 </section>
 
-<!-- 4. honest fit check: who should get VIP, and who should keep the free seat -->
-<section class="sand fit">
+<!-- 4. honest fit check: two honest paths; Ana is further away on one and closer on the other -->
+<section class="vf">
   <div class="wrap">
-    <div data-r><span class="eyebrow">Honest fit check</span><h2>Would you like me <em>a little closer while you do this?</em></h2></div>
+    <div class="vf-hd" data-r><span class="eyebrow">Honest fit check</span><h2>Would you like me <em>a little closer while you do this?</em></h2></div>
     <div class="fitg" data-r>
       <div class="fitc yes">
+        <div class="near" aria-hidden="true"><img src="../img/ana-hat.webp" alt="" width="520" height="520" loading="lazy"><svg class="mt"><use href="#t-wa"/></svg><svg class="mt"><use href="#t-rev"/></svg></div>
         <h3>Get VIP <em>if</em></h3>
         <ul>
           <li><i><svg width="11" height="11"><use href="#ck"/></svg></i><span>You want to keep the lessons and use them around your job, clients or family.</span></li>
@@ -966,11 +1469,12 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
         </ul>
       </div>
       <div class="fitc no">
+        <div class="far" aria-hidden="true"><span class="zt"><img src="../img/ana-hat.webp" alt="" width="520" height="520" loading="lazy"></span></div>
         <h3>Keep the free seat <em>if</em></h3>
         <ul>
-          <li><i><svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M2 2l10 10M12 2 2 12"/></svg></i><span>You’re happy to take part in the live workshop without the extra support.</span></li>
-          <li><i><svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M2 2l10 10M12 2 2 12"/></svg></i><span>You don’t want lifetime access to the recordings.</span></li>
-          <li><i><svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M2 2l10 10M12 2 2 12"/></svg></i><span>You’d prefer to work through your questions independently.</span></li>
+          <li><i><svg width="11" height="11"><use href="#ck"/></svg></i><span>You’re happy to take part in the live workshop without the extra support.</span></li>
+          <li><i><svg width="11" height="11"><use href="#ck"/></svg></i><span>You don’t want lifetime access to the recordings.</span></li>
+          <li><i><svg width="11" height="11"><use href="#ck"/></svg></i><span>You’d prefer to work through your questions independently.</span></li>
         </ul>
       </div>
     </div>
@@ -978,30 +1482,31 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
   </div>
 </section>
 
-<!-- 5. a note from Ana + the price, with what you get -->
-<section class="buy" id="buy">
+<!-- 5. a note from Ana, as a letter, beside the price (the human next to the number) -->
+<section class="vb" id="buy">
   <div class="wrap">
-    <div class="buy-g">
+    <div class="vb-g">
       <div class="letter" data-r>
-        <div class="from"><img src="../img/ana-hat.webp" alt="" width="520" height="520" loading="lazy">A note from Ana</div>
+        <img class="pm" src="../img/vip/postmarks.webp" alt="" width="360" height="230" loading="lazy">
+        <div class="from"><span class="ov"><img class="ph" src="../img/real/ana-real-a.webp" alt="" loading="lazy"><img class="fr" src="../img/vip/frame-oval.webp" alt="" width="420" height="560" loading="lazy"></span><span>A note from Ana</span></div>
         <p>I want you to find out whether people will pay for what you know, while you still have the income you rely on.</p>
         <p>That first customer matters. It gives you something to learn from, improve and sell again. Getting there can bring up questions you can’t answer by staring at your own draft.</p>
         <p>That’s what VIP is for. Keep the lessons, ask me about the work as you do it, and see the changes I’d make in the live review. I’d like you to use what we do together.</p>
         <div class="sig">Ana</div>
+        <img class="fl2" src="../img/vip/flowers.webp" alt="" width="320" height="290" loading="lazy">
       </div>
       <div class="bb" id="buyBlock" data-r>
-        <span class="lbl">VIP</span>
-        <div class="price">$67</div>
+        <div class="bb-h"><span class="lbl">VIP</span><div class="price">$67</div></div>
         <p class="when">Get the full VIP package for one payment of $67.</p>
-        <ul class="ticks">
-          <li><i><svg width="11" height="11"><use href="#ck"/></svg></i><span><b>Lifetime recordings,</b> all three workshop sessions</span></li>
-          <li><i><svg width="11" height="11"><use href="#ck"/></svg></i><span><b>Live group review</b> with me, 90 minutes, plus the recording</span></li>
-          <li><i><svg width="11" height="11"><use href="#ck"/></svg></i><span><b>Private WhatsApp access</b> to me, Nov 17 to 20</span></li>
-          <li><i><svg width="11" height="11"><use href="#ck"/></svg></i><span><b>The Offer Clarity Sprint</b> course, yours to keep</span></li>
+        <ul class="stack">
+          <li><svg class="mt" aria-hidden="true"><use href="#t-rec"/></svg><span><b>Lifetime recordings,</b> all three workshop sessions</span></li>
+          <li><svg class="mt" aria-hidden="true"><use href="#t-rev"/></svg><span><b>Live group review</b> with me, 90 minutes, plus the recording</span></li>
+          <li><svg class="mt" aria-hidden="true"><use href="#t-wa"/></svg><span><b>Private WhatsApp access</b> to me, Nov 17 to 20</span></li>
+          <li><svg class="mt" aria-hidden="true"><use href="#t-spr"/></svg><span><b>The Offer Clarity Sprint</b> course, yours to keep</span></li>
         </ul>
         <p class="aside">Lifetime access to the workshop recordings. Support while you put the teaching to use.</p>
         <p class="closed">VIP is closed. <em>See you live.</em></p>
-        <button class="btn add" type="button">I want VIP, Ana ($67)<svg><use href="#arr"/></svg></button>
+        <div class="cta"><button class="btn add" type="button">I want VIP, Ana ($67)<svg><use href="#arr"/></svg></button><img class="pt" src="../img/vip/hand-point.webp" alt="" width="320" height="416" loading="lazy" aria-hidden="true"></div>
         <p class="meta2"><span><svg width="13" height="15" viewBox="0 0 13 15" fill="none" stroke="#7A6A60" stroke-width="1.7"><rect x="1.5" y="6.5" width="10" height="7" rx="2"/><path d="M3.8 6.5V4.6a2.7 2.7 0 0 1 5.4 0v1.9"/></svg>Secure checkout with Stripe. All sales are final.</span><span>On sale until Tue, Nov 17 at 11:59 pm New York.</span></p>
         <p class="dl"><button class="decline" type="button">Coming to see what it’s like? Keep your free seat. Either way, see you Tuesday →</button></p>
       </div>
@@ -1094,6 +1599,10 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
   var ref = (qs.get('ref') || reg.ref || '').trim();
   var first = (qs.get('first') || qs.get('first_name') || reg.first_name || '').trim().split(/\s+/)[0];
   if (first && first.length < 30) document.getElementById('hi').textContent = first + ', your';
+  /* the inbox demo beside the spam note: their name on the email, then Spam and Promotions take turns (one loop each, 11 s) */
+  if (first && first.length < 30) document.querySelectorAll('[data-name]').forEach(function(e){ e.textContent = first });
+  var gxEl = document.querySelector('.gx');
+  if (gxEl && !matchMedia('(prefers-reduced-motion: reduce)').matches) setInterval(function(){ gxEl.classList.toggle('b') }, 11000);
 
   /* headline A/B: 50/50 per visitor (cookie). ?h=A or ?h=B previews one. */
   function cookie(k){var m=document.cookie.match('(?:^|; )'+k+'=([^;]*)');return m?decodeURIComponent(m[1]):''}
