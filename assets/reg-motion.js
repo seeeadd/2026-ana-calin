@@ -18,6 +18,14 @@
     marks.forEach(function (m) { mo.observe(m) });
   }
 
+  /* the Day 1-3 mechanism: the day being read is current, the ones before it are ticked, the next ones wait faded */
+  (function () {
+    var st = $$('.dm-s'), rows = $$('.days .drow'); if (!st.length || !rows.length || !('IntersectionObserver' in window)) return;
+    function set(k) { st.forEach(function (e, i) { e.classList.toggle('done', i < k); e.classList.toggle('cur', i === k) }) }
+    var io = new IntersectionObserver(function (es) { es.forEach(function (en) { if (en.isIntersecting) set(rows.indexOf(en.target)) }) }, { rootMargin: '-45% 0px -50% 0px' });
+    rows.forEach(function (r) { io.observe(r) });
+  })();
+
   if (!window.gsap || reduce) return;
   gsap.registerPlugin(ScrollTrigger);
 
@@ -126,6 +134,21 @@
         .fromTo(card, { y: 0 }, { y: 4, duration: .08, yoyo: true, repeat: 1, ease: 'power1.out' })
         .fromTo(sp, { scale: 1 }, { scale: 1.06, duration: .1, yoyo: true, repeat: 1 }, '<');
       when(st, tl, 'top 60%');
+    })();
+
+    /* host: then and now fills in row by row; the 2 gets her pink loop, then today's numbers count up */
+    (function () {
+      var c = $('.hrc'); if (!c) return;
+      var ps = $$('p', c), ring = $('.hrc-2 path', c), tl = gsap.timeline();
+      tl.from(c, { y: 50, rotation: -10, opacity: 0, duration: .8, ease: 'back.out(1.4)' });
+      ps.forEach(function (p, i) {
+        tl.from(p, { opacity: 0, x: -10, duration: .35, ease: 'power2.out' }, i ? '+=.12' : '-=.3');
+        var b = $('b[data-to]', p);
+        if (b) { var to = +b.dataset.to, dec = +(b.dataset.dec || 0), pre = b.dataset.pre || '', suf = b.dataset.suf || '';
+          tl.add(count(b, to, 1.1, function (v) { return pre + (dec ? v.toFixed(dec) : Math.round(v).toLocaleString('en-US')) + suf }), '<') }
+        if (i === 1) tl.add(draw(ring, .55), '+=.05');
+      });
+      when(c, tl, 'top 80%');
     })();
 
     /* ---------- the Day windows, as a real screen share ----------
