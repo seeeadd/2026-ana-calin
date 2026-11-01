@@ -1793,32 +1793,38 @@ mark.sk{color:inherit;padding:0 2px;margin:0 -2px;-webkit-box-decoration-break:c
 /* Nº 01 is the live VIP Q&A: a tag that says so, and the Q&A chat in its picture (questions come in, Ana answers them live) */
 .live-tag{display:inline-flex;align-items:center;gap:8px;margin:10px 0 2px;padding:6px 12px 6px 10px;border-radius:999px;background:#FFE3EE;color:#B0124F;font-weight:800;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase}
 .live-tag i{width:8px;height:8px;border-radius:50%;background:#E0263C;box-shadow:0 0 0 3px rgba(224,38,60,.18)}
-.qa{position:absolute;display:grid;grid-template-rows:auto 1fr auto;border-radius:2.2cqw;overflow:hidden;background:#fff;border:1px solid rgba(26,20,18,.1);
-  box-shadow:0 1px 2px rgba(60,40,20,.12),0 4cqw 7cqw -4cqw rgba(60,40,20,.55);font-family:var(--sans);color:var(--ink);transform:rotate(1.5deg);z-index:2}
-.qa-hd{display:flex;align-items:center;gap:1.4cqw;padding:1.7cqw 2cqw;background:var(--ink);color:#fff}
-.qa-hd b{font-size:2.3cqw;font-weight:800}
-.qa-hd small{margin-left:auto;font-size:1.6cqw;opacity:.65;white-space:nowrap}
-.qa-live{display:inline-flex;align-items:center;gap:.7cqw;padding:.4cqw 1cqw;border-radius:.7cqw;background:#E0263C;font-size:1.5cqw;font-weight:800;letter-spacing:.1em}
-.qa-live i{width:1cqw;height:1cqw;border-radius:50%;background:#fff}
-@media (prefers-reduced-motion:no-preference){.qa-live i{animation:qaBlink 1.6s ease-in-out infinite}}
-@keyframes qaBlink{50%{opacity:.25}}
-.qa-ls{display:grid;align-content:start;gap:1.6cqw;padding:2cqw 1.8cqw;background:#FBF7F1}
-.qa-q{display:grid;grid-template-columns:4.6cqw 1fr;gap:1.3cqw;align-items:start}
-.qa-av{width:4.6cqw;height:4.6cqw;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:800;font-size:2cqw}
-.qa-b{min-width:0;padding:1.2cqw 1.5cqw 1.3cqw;border-radius:0 1.6cqw 1.6cqw 1.6cqw;background:#fff;box-shadow:0 1px 2px rgba(60,40,20,.12)}
-.qa-n{display:flex;align-items:baseline;gap:1cqw}
-.qa-n b{font-size:1.75cqw;font-weight:800}
-.qa-n small{font-size:1.45cqw;color:var(--ink3)}
-.qa-b p{margin:.4cqw 0 0;font-size:2.15cqw;line-height:1.3;font-weight:600}
-.qa-st{position:relative;display:block;height:2.6cqw;margin-top:.8cqw}
-.qa-st>span{position:absolute;left:0;top:0;display:inline-flex;align-items:center;gap:.7cqw;white-space:nowrap;padding:.3cqw 1cqw;border-radius:99px;font-size:1.5cqw;font-weight:800;letter-spacing:.02em}
-.qa-st .a1{background:#FFE3EE;color:#B0124F}
+.qa{position:absolute;display:grid;grid-template-rows:auto auto 1fr auto;border-radius:1.6cqw;overflow:hidden;background:#fff;border:1px solid rgba(0,0,0,.14);
+  box-shadow:0 .2cqw .5cqw rgba(0,0,0,.08),0 4cqw 8cqw -3cqw rgba(40,30,20,.45);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Lato,Helvetica,Arial,sans-serif;color:#232333;z-index:2}
+.qa-tb{position:relative;display:flex;align-items:center;justify-content:center;height:4.4cqw;background:#EDEDF0;border-bottom:1px solid #D5D5DA}
+.qa-tb b{font-size:1.85cqw;font-weight:600;color:#3C3C46}
+.qa-tl{position:absolute;left:1.6cqw;top:50%;display:flex;gap:.8cqw;transform:translateY(-50%)}
+.qa-tl i{width:1.35cqw;height:1.35cqw;border-radius:50%;background:#FF5F57;box-shadow:inset 0 0 0 .5px rgba(0,0,0,.15)}
+.qa-tl i:nth-child(2){background:#FEBC2E}.qa-tl i:nth-child(3){background:#28C840}
+.qa-tabs{display:flex;gap:2.6cqw;padding:0 2.2cqw;border-bottom:1px solid #E6E6EA;font-size:1.75cqw;font-weight:600;color:#747487}
+.qa-tabs span{padding:1.5cqw 0 1.3cqw;border-bottom:.35cqw solid transparent}
+.qa-tabs .on{color:#232333;border-bottom-color:var(--pink)}
+.qa-ls{display:grid;align-content:start}
+.qa-q{display:grid;grid-template-columns:4.2cqw 1fr;gap:1.4cqw;align-items:start;padding:1.9cqw 2.2cqw;border-bottom:1px solid #EFEFF2}
+.qa-av{width:4.2cqw;height:4.2cqw;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:600;font-size:1.8cqw}
+.qa-b{min-width:0}
+.qa-n{display:flex;align-items:baseline;justify-content:space-between;gap:1cqw}
+.qa-n b{font-size:1.8cqw;font-weight:600}
+.qa-n small{font-size:1.5cqw;color:#8C8C9C}
+.qa-b p{margin:.5cqw 0 0;font-size:2.05cqw;line-height:1.32;color:#232333}
+.qa-ft2{display:flex;align-items:center;justify-content:space-between;gap:1cqw;margin-top:.9cqw}
+.qa-st{position:relative;display:block;flex:1;height:2.3cqw}
+.qa-st>span{position:absolute;left:0;top:0;display:inline-flex;align-items:center;gap:.7cqw;white-space:nowrap;font-size:1.5cqw;font-weight:500;color:#747487}
+.qa-st .a1{color:#C2185B}
 .qa-st .a1 i{width:.9cqw;height:.9cqw;border-radius:50%;background:var(--pink)}
-.qa-st .a2{background:#E4F5EA;color:#1E7A45}
-.qa-st .a2 svg{width:1.6cqw;height:1.6cqw}
-.qa-ft{display:flex;align-items:center;gap:1cqw;margin:1.2cqw;padding:1.1cqw 1.6cqw;border-radius:99px;border:1px solid rgba(26,20,18,.14);font-size:1.7cqw;color:var(--ink3)}
-.qa-ft span{flex:1}
-.qa-ft i{width:2.6cqw;height:2.6cqw;border-radius:50%;background:var(--sun) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 8h9M8.5 4.5 12 8l-3.5 3.5' fill='none' stroke='%231A1412' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/70% no-repeat;box-shadow:inset 0 0 0 1px var(--ink)}
+.qa-st .a2 svg{width:1.7cqw;height:1.7cqw;color:#2E9B5F}
+.qa-up{display:inline-flex;align-items:center;gap:.5cqw;font-size:1.5cqw;color:#8C8C9C}
+.qa-up svg{width:1.7cqw;height:1.7cqw}
+.qa-in{padding:1.6cqw 2.2cqw 1.8cqw;border-top:1px solid #E6E6EA;background:#FAFAFB}
+.qa-ta{display:block;height:5.2cqw;padding:1.1cqw 1.4cqw;border:1px solid #D5D5DA;border-radius:.9cqw;background:#fff;font-size:1.7cqw;color:#9A9AAA}
+.qa-row{display:flex;align-items:center;justify-content:space-between;margin-top:1.2cqw}
+.qa-cb{display:inline-flex;align-items:center;gap:.8cqw;font-size:1.55cqw;color:#5C5C6E}
+.qa-cb i{width:1.7cqw;height:1.7cqw;border-radius:.35cqw;border:1px solid #B5B5C0;background:#fff}
+.qa-send{padding:.8cqw 2.2cqw;border-radius:.8cqw;background:var(--pink);color:#fff;font-size:1.6cqw;font-weight:600}
 
 /* the chair: its card shows at once (it used to fade in while the chair moved, so nobody saw it), and no leftover offset */
 .anim .fitg[data-r]{opacity:1;transform:none;transition:none}
@@ -2114,10 +2120,11 @@ mark.sk{color:inherit;padding:0 2px;margin:0 -2px;-webkit-box-decoration-break:c
     <article class="it it1">
       <div class="art pa mv rv" aria-hidden="true">
         <div class="dev lap l1" style="left:0;top:5%;width:60%"><img src="../img/vip/paint/laptop.webp" alt="" width="600" height="420" loading="lazy"><div class="scrn2"><img src="../img/vip/raw/review.webp" alt="" loading="lazy"></div></div>
-        <div class="qa" style="right:-1%;top:0;width:40%">
-          <div class="qa-hd"><span class="qa-live"><i></i>LIVE</span><b>VIP Q&amp;A</b><small>Fri, Nov 20</small></div>
-          <div class="qa-ls"><div class="qa-q q1"><span class="qa-av" style="background:#2E7DD1">R</span><div class="qa-b"><span class="qa-n"><b>Rosa</b><small>12:04</small></span><p>Is $149 too much for my first workshop?</p><span class="qa-st"><span class="a1"><i></i>Ana is answering live</span><span class="a2"><svg viewBox="0 0 16 16"><path d="m3.5 8.5 3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Answered live</span></span></div></div><div class="qa-q q2"><span class="qa-av" style="background:#1F9D6B">M</span><div class="qa-b"><span class="qa-n"><b>Mei</b><small>12:09</small></span><p>Where should the price go in my email?</p><span class="qa-st"><span class="a1"><i></i>Ana is answering live</span><span class="a2"><svg viewBox="0 0 16 16"><path d="m3.5 8.5 3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Answered live</span></span></div></div><div class="qa-q q3"><span class="qa-av" style="background:#D9822B">C</span><div class="qa-b"><span class="qa-n"><b>Claire</b><small>12:15</small></span><p>What if nobody replies to my first email?</p><span class="qa-st"><span class="a1"><i></i>Ana is answering live</span><span class="a2"><svg viewBox="0 0 16 16"><path d="m3.5 8.5 3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Answered live</span></span></div></div></div>
-          <div class="qa-ft"><span>Ask Ana a question…</span><i></i></div>
+        <div class="qa" style="right:-1%;top:0;width:41%">
+          <div class="qa-tb"><span class="qa-tl"><i></i><i></i><i></i></span><b>Question and Answer</b></div>
+          <div class="qa-tabs"><span class="on">All questions (3)</span><span>My questions</span></div>
+          <div class="qa-ls"><div class="qa-q q1"><span class="qa-av" style="background:#5B7DB1">R</span><div class="qa-b"><span class="qa-n"><b>Rosa</b><small>12:04 PM</small></span><p>Is $149 too much for my first workshop?</p><span class="qa-ft2"><span class="qa-st"><span class="a1"><i></i>Ana Calin is answering this live</span><span class="a2"><svg viewBox="0 0 16 16"><path d="m3.5 8.5 3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Answered live</span></span><span class="qa-up"><svg viewBox="0 0 16 16"><path d="M5 7.2V14H2.6V7.2zM5 7.2l2.6-5c1.3 0 1.9.8 1.6 2.1L8.8 6h4c.9 0 1.5.8 1.3 1.6l-1.2 5.1c-.2.8-.8 1.3-1.6 1.3H5" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>6</span></span></div></div><div class="qa-q q2"><span class="qa-av" style="background:#3E8F72">M</span><div class="qa-b"><span class="qa-n"><b>Mei</b><small>12:09 PM</small></span><p>Where should the price go in my email?</p><span class="qa-ft2"><span class="qa-st"><span class="a1"><i></i>Ana Calin is answering this live</span><span class="a2"><svg viewBox="0 0 16 16"><path d="m3.5 8.5 3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Answered live</span></span><span class="qa-up"><svg viewBox="0 0 16 16"><path d="M5 7.2V14H2.6V7.2zM5 7.2l2.6-5c1.3 0 1.9.8 1.6 2.1L8.8 6h4c.9 0 1.5.8 1.3 1.6l-1.2 5.1c-.2.8-.8 1.3-1.6 1.3H5" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>4</span></span></div></div><div class="qa-q q3"><span class="qa-av" style="background:#B9773B">C</span><div class="qa-b"><span class="qa-n"><b>Claire</b><small>12:15 PM</small></span><p>What if nobody replies to my first email?</p><span class="qa-ft2"><span class="qa-st"><span class="a1"><i></i>Ana Calin is answering this live</span><span class="a2"><svg viewBox="0 0 16 16"><path d="m3.5 8.5 3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Answered live</span></span><span class="qa-up"><svg viewBox="0 0 16 16"><path d="M5 7.2V14H2.6V7.2zM5 7.2l2.6-5c1.3 0 1.9.8 1.6 2.1L8.8 6h4c.9 0 1.5.8 1.3 1.6l-1.2 5.1c-.2.8-.8 1.3-1.6 1.3H5" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>3</span></span></div></div></div>
+          <div class="qa-in"><span class="qa-ta">Type your question here…</span><span class="qa-row"><span class="qa-cb"><i></i>Send anonymously</span><b class="qa-send">Send</b></span></div>
         </div>
         <div class="mv-sheetbox" style="left:17%;top:46%;width:40%">
           <img src="../img/vip/paint/sub-sheet.webp" alt="">
