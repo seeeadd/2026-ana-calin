@@ -307,6 +307,7 @@ html,body{width:1920px;height:1080px;overflow:hidden;background:#FFF8EE}
   var doorSun = el('circle', {cx: 10, cy: -120, r: 34, fill: SUN, opacity: .95}, opening);
   el('path', {d: 'M-80 -107 l26 -18 l20 12 l18 -10 l30 16 l26 -12 l40 12 v8 h-160 z', fill: '#FFF8EE', stroke: INK, 'stroke-width': 2}, opening);
   el('path', {d: 'M-70 -70 q 20 -6 40 0 t 40 0 M0 -40 q 20 -6 40 0 t 40 0', stroke: '#fff', 'stroke-width': 3, fill: 'none', opacity: .65}, opening);
+  el('image', {href: 'tex/door-view.webp', x: -80, y: -260, width: 160, height: 260, preserveAspectRatio: 'xMidYMid slice'}, opening);
   var glow = el('circle', {cx: 0, cy: -120, r: 420, fill: 'url(#glow)', opacity: 0}, doorG);
   /* the leaf is redrawn every frame from its swing angle: hinge on the left, the free edge comes toward us */
   var leafShade = el('path', {fill: 'rgba(60,35,15,.25)'}, doorG);
@@ -412,21 +413,45 @@ html,body{width:1920px;height:1080px;overflow:hidden;background:#FFF8EE}
      THE SCENES in HTML: each is built once, then moved as a function of its own time
      ====================================================================================================== */
   function H(id, html){ $(id).innerHTML = html; return $(id) }
+  /* the sunflower character for the HTML scenes: the same face and ink legs as in the room, plus arms. BUD(id, width, x, y) puts its face centre at x, y */
+  function BUD(id, w, x, y, extra){
+    var leg = '<g class="bl"><path d="M0 0 L0 46" stroke="#1A1412" stroke-width="7" stroke-linecap="round"/><ellipse cx="8" cy="48" rx="13" ry="7" fill="#1A1412"/></g>';
+    var arm = '<g class="ba"><path d="M0 0 L0 54" stroke="#1A1412" stroke-width="6.5" stroke-linecap="round"/><circle cx="0" cy="57" r="8.5" fill="#1A1412"/></g>';
+    return '<svg id="' + id + '" width="' + w + '" height="' + (w * 1.25) + '" viewBox="-80 -100 160 200" style="position:absolute;left:' + (x - w / 2) + 'px;top:' + (y - w * .625) + 'px;overflow:visible;opacity:0;' + (extra || '') + '">'
+      + '<ellipse class="bs" cx="0" cy="96" rx="44" ry="9" fill="rgba(60,35,15,.26)"/><g class="bb">' + leg + leg + arm + arm
+      + '<g class="bh"><g transform="scale(1.05)" data-sf="1"></g></g>'
+      + '<g class="bx" opacity="0" stroke="#F72585" stroke-width="7" stroke-linecap="round"><path d="M56 -78 l14 -26 M72 -62 l26 -12 M44 -92 l2 -30"/></g></g></svg>';
+  }
+  /* o: x, y (offset px), j (jump px), o (opacity), sq (squash), r (lean), lp/la (walk phase/amp), legs [a,b], al/ar (arm raise, degrees), ht (head tilt), bang, sh (shadow 0..1) */
+  function pose(id, o){
+    var s = $(id); if (!s) return;
+    var op = o.o == null ? 1 : o.o; s.style.opacity = op; if (op <= .001) return;
+    s.style.transform = 'translate(' + (o.x || 0) + 'px,' + (o.y || 0) + 'px)';
+    var sq = o.sq || 1, j = o.j || 0;
+    s.querySelector('.bb').setAttribute('transform', 'translate(0 ' + (-j) + ') rotate(' + (o.r || 0) + ' 0 90) scale(' + (1 / sq).toFixed(3) + ' ' + sq.toFixed(3) + ')');
+    var L = s.querySelectorAll('.bl'), A = s.querySelectorAll('.ba');
+    for (var i = 0; i < 2; i++) L[i].setAttribute('transform', 'translate(' + (i ? 16 : -16) + ' 40) rotate(' + (o.legs ? o.legs[i] : Math.sin((o.lp || 0) + i * Math.PI) * (o.la || 0)) + ')');
+    A[0].setAttribute('transform', 'translate(-34 44) rotate(' + (o.al == null ? 14 : o.al) + ')');
+    A[1].setAttribute('transform', 'translate(34 44) rotate(' + (-(o.ar == null ? 14 : o.ar)) + ')');
+    s.querySelector('.bh').setAttribute('transform', 'rotate(' + (o.ht || 0) + ' 0 20)');
+    var bs = s.querySelector('.bs'); bs.setAttribute('rx', 44 * (1 - Math.min(j, 160) / 260)); bs.setAttribute('cy', 96 + j); bs.setAttribute('opacity', o.sh == null ? 1 : o.sh);
+    s.querySelector('.bx').setAttribute('opacity', o.bang || 0);
+  }
+  /* a hop: 0 on the ground, up to h, landing at time L */
+  function hop(t, L, d, h){ var p = seg(t, L - d, L); return p > 0 && p < 1 ? Math.sin(p * Math.PI) * h : 0 }
+  /* walking between stops: keys [[t, x]]; returns [x, moving] */
+  function walk(keys, t){ var x = track(keys.map(function(k){ return [k[0], [k[1], 0, 0]] }), t, function(p){ return p })[0], m = false;
+    for (var i = 0; i < keys.length - 1; i++) if (t > keys[i][0] && t < keys[i + 1][0] && keys[i][1] !== keys[i + 1][1]) m = true; return [x, m] }
   var wallBg = 'background:#F5E8D4 url(tex/paper-cream.webp) 0 0/736px 1286px;';
   var woodBg = 'background:#D9B48A url(' + WOOD + ') 0 0/800px 200px;';
   var linenBg = 'background:#EFE6DA url(tex/linen.webp) 0 0/736px 1308px;';
   var kraftBg = 'background:#C9A57A url(tex/kraft.webp) 0 0/900px 1350px;';
 
   /* ---- 3 · Ana's room in Greece (0:17 to 0:37) ---- */
-  H('s3', '<div class="cam" id="c3" style="width:3300px;height:1340px;' + linenBg + '">'
-    /* an arched window onto the Aegean */
-    + '<div class="abs" style="left:150px;top:70px;width:560px;height:600px;border-radius:280px 280px 14px 14px;border:20px solid #EFE2CC;box-shadow:inset 0 0 0 4px #1A1412,0 0 0 4px #1A1412,0 30px 60px -30px rgba(80,45,20,.45);overflow:hidden">'
-    +   '<svg width="520" height="560" viewBox="0 0 520 560" style="display:block"><defs><linearGradient id="gs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFD98A"/><stop offset=".6" stop-color="#FFF1CF"/></linearGradient><linearGradient id="gw" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#78B4CB"/><stop offset="1" stop-color="#3F7FA0"/></linearGradient></defs>'
-    +   '<rect width="520" height="560" fill="url(#gs)"/><circle id="s3sun" cx="330" cy="250" r="56" fill="#FFD400" opacity=".95"/><rect y="330" width="520" height="230" fill="url(#gw)"/>'
-    +   '<path d="M0 330 l60 -40 l40 20 l50 -30 l60 34 l40 -18 l70 30 l50 -20 l80 24 l70 -10 v10 z" fill="#E9DCC6" stroke="#1A1412" stroke-width="3"/>'
-    +   '<g fill="#FFF8EE" stroke="#1A1412" stroke-width="3"><rect x="60" y="270" width="54" height="44"/><rect x="128" y="280" width="40" height="34"/><rect x="300" y="276" width="60" height="40"/><path d="M380 300 h50 v18 h-50 z"/><path d="M60 270 l27 -18 l27 18"/></g>'
-    +   '<g id="s3waves" stroke="#fff" stroke-width="4" fill="none" opacity=".6"><path d="M20 380 q30 -8 60 0 t60 0 t60 0"/><path d="M240 430 q30 -8 60 0 t60 0 t60 0"/><path d="M80 490 q30 -8 60 0 t60 0"/></g></svg></div>'
-    + '<div class="abs" style="left:120px;top:668px;width:620px;height:30px;border-radius:6px;background:#EFE2CC;border:4px solid #1A1412"></div>'
+  H('s3', '<div class="cam" id="c3" style="width:3300px;height:1340px;background:linear-gradient(rgba(255,238,212,.3),rgba(255,238,212,.3)),#F3EDE3 url(tex/stucco-white.webp) 0 0/600px 1067px">'
+    /* a real window onto the Aegean */
+    + '<div class="abs" style="left:150px;top:46px;width:520px;height:740px;background:url(tex/window-greek-crop.webp) 50% 50%/cover;-webkit-mask-image:radial-gradient(ellipse 62% 58% at 50% 48%,#000 74%,transparent 100%);mask-image:radial-gradient(ellipse 62% 58% at 50% 48%,#000 74%,transparent 100%)"></div>'
+    + '<img class="abs" id="s3ol" src="' + CUT('olive-branch') + '" alt="" style="left:1010px;top:96px;width:150px;transform-origin:20% 0;filter:drop-shadow(0 10px 8px rgba(60,35,15,.25))">'
     /* Ana's photo, taped to the wall */
     + '<div class="abs shadow" style="left:770px;top:150px;width:280px;padding:16px 16px 70px;background:#fff;transform:rotate(4deg)"><div style="height:330px;background:url(' + ANA_WALL + ') 50% 30%/cover"></div>'
     +   '<p class="serif" style="position:absolute;left:0;right:0;bottom:16px;text-align:center;font-style:italic;font-size:32px">Ana · How We Grow</p>'
@@ -446,6 +471,7 @@ html,body{width:1920px;height:1080px;overflow:hidden;background:#FFF8EE}
     +   '<div style="height:26px;margin:0 -40px;border-radius:0 0 30px 30px;background:linear-gradient(#E6D7C1,#BCA88B);border:4px solid #1A1412"></div></div>'
     /* the readers: a fan of envelopes */
     + '<div class="abs" id="s3env" style="left:2200px;top:470px;width:360px;height:330px"></div>'
+    + BUD('b3', 150, 960, 703)
     + '<img class="abs" id="s3clip" src="' + CUT('clip-gold') + '" style="left:2290px;top:430px;width:180px;filter:drop-shadow(0 10px 8px rgba(60,35,15,.35))" alt="">'
     + '<div class="abs" id="s3rdl" style="left:2130px;top:840px;width:500px;text-align:center;opacity:0"><p class="serif" style="font-size:64px;line-height:1" id="s3rd">0</p><p class="k" style="font-size:17px;color:#3D332E;margin-top:8px">PEOPLE BOUGHT A WORKSHOP OR PROGRAM</p></div>'
     /* the phone that never rings */
@@ -476,8 +502,13 @@ html,body{width:1920px;height:1080px;overflow:hidden;background:#FFF8EE}
     /* the camera looks at one thing at a time: [centre x, centre y, zoom] */
     var c = track([[0, [900, 470, 1.0]], [4.4, [920, 480, 1.04]], [6.0, [1420, 580, 1.12]], [9.4, [1430, 585, 1.14]], [10.8, [1910, 700, 1.2]], [13.4, [1915, 705, 1.22]], [14.8, [2380, 640, 1.12]], [17.4, [2390, 645, 1.14]], [18.6, [2160, 560, 1.0]], [20.8, [2170, 562, 1.02]]], t);
     $('c3').style.transform = 'translate(' + (960 - c[0] * c[2]) + 'px,' + (540 - c[1] * c[2]) + 'px) scale(' + c[2] + ')';
-    $('s3sun').setAttribute('cy', 250 - Math.sin(t * .3) * 6);
-    $('s3waves').setAttribute('transform', 'translate(' + (Math.sin(t * 1.2) * 10) + ' 0)');
+    $('s3ol').style.transform = 'rotate(' + (18 + Math.sin(t * .8) * 2.5) + 'deg)';
+    /* the character walks the desk with the camera: waves hello, watches the count, shrugs at the phone, cheers the readers, poses for the photo */
+    var w3 = walk([[0, 960], [9.4, 960], [11.0, 2100], [17.0, 2100], [18.4, 2560]], t), mv = w3[1];
+    var wave = t > .6 && t < 4.8, cheer = t > 14.8 && t < 17.0, shrug = t > 11.0 && t < 13.3, vpose = t > 18.5;
+    pose('b3', {x: w3[0] - 960, o: io(seg(t, 0, .5)), lp: t * 13, la: mv ? 30 : 0, j: (mv ? Math.abs(Math.sin(t * 6.5)) * 10 : 0) + hop(t, 9.2, .5, 70) + (cheer ? Math.abs(Math.sin((t - 14.8) * 5)) * 46 : 0) + hop(t, 19.6, .5, 60),
+      al: shrug ? 70 : cheer || vpose ? 118 : mv ? 14 + Math.sin(t * 13) * 18 : 14, ar: wave ? 112 + Math.sin(t * 11) * 22 : shrug ? 70 : cheer || vpose || (t > 8.7 && t < 9.4) ? 118 : mv ? 14 - Math.sin(t * 13) * 18 : 14,
+      ht: shrug ? Math.sin(t * 4) * 8 : (t > 6 && t < 9.2 ? 10 : 0), r: mv ? 6 : 0, bang: t > 8.8 && t < 9.6 ? 1 : t > 10.9 && t < 11.6 ? 1 : 0});
     var rp = io(seg(t, 6.2, 9.0)), rev = rp * 1.4;
     $('s3rev').textContent = rp >= 1 ? '$1.4M' : (rev < .1 ? '$' + fmt(rev * 1e6) : '$' + rev.toFixed(1) + 'M');
     var bs = document.querySelectorAll('#s3bars .b');
@@ -502,6 +533,7 @@ html,body{width:1920px;height:1080px;overflow:hidden;background:#FFF8EE}
     +       '<path id="s4line" d="M0 320 L260 320 L300 290 L700 290 L740 260 L1360 260" fill="none" stroke="#1A1412" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>'
     +       '<circle id="s4d1" cx="300" cy="290" r="16" fill="#F72585" stroke="#1A1412" stroke-width="4" opacity="0"/><circle id="s4d2" cx="740" cy="260" r="16" fill="#F72585" stroke="#1A1412" stroke-width="4" opacity="0"/></svg>'
     +   '</div></div>'
+    + BUD('b4', 130, 1530, 91)
     + '<img id="s4st" src="' + CUT('statue-laptop') + '" alt="" style="position:absolute;left:1420px;top:596px;width:490px;opacity:0;filter:drop-shadow(0 26px 22px rgba(60,35,15,.38))">'
     + '</div>');
   var s4L = 0;
@@ -511,6 +543,8 @@ html,body{width:1920px;height:1080px;overflow:hidden;background:#FFF8EE}
     var ln = $('s4line'); if (!s4L) s4L = ln.getTotalLength(); ln.style.strokeDasharray = s4L; var lp = io(seg(t, 1.0, 7.0)); ln.style.strokeDashoffset = s4L * (1 - lp);
     $('s4d1').setAttribute('opacity', seg(lp, .22, .26)); $('s4d2').setAttribute('opacity', seg(lp, .53, .57));
     $('s4n').textContent = lp > .55 ? '2' : lp > .24 ? '1' : '0';
+    var sc = t > 5.6;
+    pose('b4', {o: io(seg(t, .2, .8)), sh: 0, legs: [Math.sin(t * 2.2) * 14, Math.sin(t * 2.2 + 1.4) * 14], j: hop(t, 3.3, .5, 40) + hop(t, 4.5, .5, 40), al: t > 2.9 && t < 4.8 ? 110 : sc ? 122 + Math.sin(t * 9) * 8 : 14, ar: t > 2.9 && t < 4.8 ? 110 : 14, ht: t > 4.9 ? -12 + (sc ? Math.sin(t * 9) * 3 : 0) : 0, bang: t > 3.0 && t < 3.6 || t > 4.2 && t < 4.8 ? 1 : 0});
     var st = io(seg(t, .6, 1.5)); $('s4st').style.opacity = st; $('s4st').style.transform = 'translateX(' + ((1 - st) * 60) + 'px)';
   }
 
@@ -527,6 +561,8 @@ html,body{width:1920px;height:1080px;overflow:hidden;background:#FFF8EE}
     +   '<span style="position:absolute;left:13px;top:12px;width:150px;height:150px;border-radius:50%;background:radial-gradient(60% 50% at 32% 28%,rgba(255,255,255,.55),rgba(255,255,255,0) 60%);box-shadow:inset 0 0 18px rgba(40,30,20,.25)"></span></div>'
     + '<div id="s5note" style="position:absolute;left:1440px;top:70px;width:330px;padding:44px 30px 32px;background:#FFE15A;transform:rotate(5deg);box-shadow:2px 3px 3px rgba(80,50,0,.18),12px 20px 26px -12px rgba(80,50,0,.4)"><p class="serif" style="font-style:italic;font-size:42px;line-height:1.1;color:#2B2130">Asked again. And again.</p></div>'
     + '<img id="s5clip" src="' + CUT('clip-gold') + '" alt="" style="position:absolute;left:1500px;top:22px;width:200px;transform:rotate(5deg);filter:drop-shadow(0 8px 6px rgba(60,35,15,.35))">'
+    + BUD('b5', 130, 395, 296)
+    + '<img id="s5sp" src="' + CUT('sprout') + '" alt="" style="position:absolute;left:1480px;top:800px;width:150px;transform-origin:50% 100%;transform:scale(0)">'
     + '<img id="s5bulb" src="' + CUT('bulb') + '" alt="" style="position:absolute;left:1600px;top:500px;width:250px;transform:rotate(8deg);filter:drop-shadow(0 18px 14px rgba(60,35,15,.3))">'
     + '</div>');
   (function(){
@@ -559,20 +595,26 @@ html,body{width:1920px;height:1080px;overflow:hidden;background:#FFF8EE}
     $('s5cl').style.transform = 'translate(' + (R - M * (L[0] - 620)) + 'px,' + (R - M * (L[1] - 110)) + 'px) scale(' + M + ')';
     var n = io(seg(t, 5.4, 6.3)); $('s5note').style.opacity = n; $('s5note').style.transform = 'translateY(' + ((1 - n) * -20) + 'px) rotate(5deg)';
     $('s5clip').style.opacity = io(seg(t, 5.9, 6.5));
+    var hj = hop(t, 2.45, .45, 60) + hop(t, 3.55, .45, 60) + hop(t, 4.65, .45, 60) + hop(t, 7.3, .6, 110);
+    pose('b5', {o: io(seg(t, .4, 1.0)), j: hj, ar: (t > 2.0 && t < 5.2) ? 92 : t > 6.9 ? 120 : 14, al: t > 6.9 ? 120 : 14, ht: t > 2.0 && t < 5.2 ? 8 : 0, bang: [2.0, 3.1, 4.2].some(function(a){ return t > a && t < a + .6 }) ? 1 : 0});
+    var sp = io(seg(t, 7.4, 8.4)); $('s5sp').style.transform = 'scale(' + (sp * (1 + Math.sin(seg(t, 7.4, 8.6) * Math.PI) * .08)) + ',' + sp + ') rotate(' + (Math.sin(t * 1.6) * 3) + 'deg)';
     var b = io(seg(t, 6.6, 7.6)); $('s5bulb').style.opacity = b; $('s5bulb').style.transform = 'translateY(' + ((1 - b) * 40) + 'px) rotate(' + (8 - (1 - b) * 10) + 'deg)';
   }
 
   /* ---- 7 · The Exit Plan, and each day as a live session (1:20 to 1:58) ---- */
   var DAYS = [['1', 'Find the problem', ['1b', '1a']], ['2', 'Put numbers on it', ['2a', '2b']], ['3', 'Put it out there', ['3a', '3b']]];
   H('s7', '<div class="cam" id="c7" style="width:1920px;height:1080px;background:radial-gradient(80% 70% at 50% 40%,rgba(255,243,214,.55),rgba(245,232,212,.75)),#FFF8EE url(tex/dotgrid-crumpled.webp) 0 0/735px 1040px">'
-    + '<div class="abs s7g" style="inset:0;opacity:0;background:radial-gradient(80% 70% at 50% 40%,rgba(255,248,238,.5),rgba(255,248,238,.2)),url(tex/grain-rainbow.webp) 50% 50%/1920px auto"></div>'
+    + '<div class="abs s7g" style="inset:0;opacity:0;background:radial-gradient(80% 70% at 50% 40%,rgba(255,250,240,.55),rgba(255,250,240,.25)),url(tex/tiles-pastel.webp) 0 0/735px 490px"></div>'
     + '<div class="abs s7g" style="inset:0;opacity:0;background:radial-gradient(80% 70% at 50% 40%,rgba(255,248,238,.5),rgba(255,248,238,.15)),url(tex/grain-pink.webp) 50% 30%/1920px auto"></div>'
     + '<div class="abs" id="s7y" style="inset:0;background:radial-gradient(60% 50% at 50% 50%,rgba(255,250,235,.8),rgba(255,250,235,.15)),#FFE27A url(tex/halftone-yellow.webp) 50% 50%/1920px auto"></div>'
     + '<div id="s7t" style="position:absolute;left:0;right:0;top:330px;text-align:center"><div id="s7sf" style="width:150px;height:150px;margin:0 auto 18px"></div><h1 class="serif" id="s7h" style="font-size:180px;line-height:.95;letter-spacing:-.015em"></h1><p class="k" id="s7p" style="margin-top:26px;font-size:28px;letter-spacing:.2em;color:#F72585">A FREE 3-DAY LIVE WORKSHOP WITH ANA CALIN</p></div>'
     + '<img id="s7wo" src="' + CUT('retro-pointing') + '" alt="" style="position:absolute;left:0;top:735px;width:540px;opacity:0;filter:drop-shadow(0 20px 18px rgba(90,60,0,.3))">'
+    + BUD('b7t', 150, 1600, 611)
     + '<div id="s7w" style="position:absolute;left:0;top:0;width:1920px;height:1080px;opacity:0">'
+    +   '<img id="s7calc" src="' + CUT('calc-graphing') + '" alt="" style="position:absolute;left:70px;top:520px;width:230px;opacity:0;filter:drop-shadow(0 18px 14px rgba(60,35,15,.3))">'
     +   '<div id="s7chip" style="position:absolute;left:340px;top:78px"></div>'
     +   '<div class="win" style="left:340px;top:170px;width:1240px" id="s7win"><div class="bar"><i></i><b>LIVE</b><span id="s7bar">Day 1 · Ana is sharing her slides</span></div><div id="s7sl" style="position:relative;width:1234px;height:694px;overflow:hidden;background:#FFF8EE"></div></div>'
+    +   BUD('b7', 130, 1190, 141)
     +   '<div class="camtile" style="left:1430px;top:760px;width:300px;height:225px"><img src="' + ANA + '" alt=""><span>Ana</span></div>'
     +   '<div id="s7beam" style="position:absolute;inset:0;opacity:0;clip-path:polygon(398px 724px,398px 788px,1180px 1080px,1180px 430px);background:linear-gradient(100deg,rgba(255,222,40,.75),rgba(255,222,40,.15) 85%);mix-blend-mode:multiply"></div>'
     +   '<img id="s7cine" src="' + CUT('cinecam') + '" alt="" style="position:absolute;left:20px;top:680px;width:380px;opacity:0;filter:drop-shadow(0 18px 14px rgba(60,35,15,.3))">'
@@ -606,6 +648,11 @@ html,body{width:1920px;height:1080px;overflow:hidden;background:#FFF8EE}
     $('s7bar').textContent = 'Day ' + d[0] + ' · Ana is sharing her slides';
     var wo = io(seg(t, .9, 1.8)) * (1 - io(seg(t, 4.8, 5.8))); $('s7wo').style.opacity = wo; $('s7wo').style.transform = 'translate(' + ((1 - io(seg(t, .9, 1.8))) * -80) + 'px,' + ((1 - io(seg(t, .9, 1.8))) * 60) + 'px) rotate(' + (Math.sin(t * 2) * 1.2) + 'deg)';
     var cn = vis(t, 27.0, 36.9, 1.0); $('s7cine').style.opacity = cn; $('s7cine').style.transform = 'translateX(' + ((1 - cn) * -60) + 'px)'; $('s7beam').style.opacity = cn * io(seg(t, 27.6, 28.6)) * (.85 + Math.sin(t * 9) * .08);
+    var w7 = walk([[0, 2100], [2.0, 2100], [2.9, 1600]], t);
+    pose('b7t', {x: w7[0] - 1600, o: 1 - io(seg(t, 4.8, 5.8)), lp: t * 14, la: w7[1] ? 30 : 0, j: w7[1] ? Math.abs(Math.sin(t * 7)) * 12 : hop(t, 3.4, .45, 50), ar: t > 3.0 && t < 4.9 ? 112 + Math.sin(t * 11) * 22 : 14, al: t > 3.0 && t < 3.5 ? 112 : 14, r: w7[1] ? -6 : 0});
+    var sn = Math.floor((t - 6.2) / 5.1), sl0 = 6.2 + Math.max(0, sn) * 5.1;
+    pose('b7', {o: 1, sh: 0, legs: [Math.sin(t * 2.4) * 16, Math.sin(t * 2.4 + 1.3) * 16], j: t > 6.6 ? hop(t, sl0 + .5, .5, 36) : 0, ht: Math.sin(t * .9) * 6 + 8, al: t - sl0 < .9 && t > 6.6 ? 110 : 14, ar: t - sl0 < .9 && t > 6.6 ? 110 : (t > 27 && t < 29 ? 112 + Math.sin(t * 11) * 22 : 14), bang: t - sl0 < .7 && t > 11 ? 1 : 0});
+    var gc = vis(t, 17.0, 26.8, 1.0); $('s7calc').style.opacity = gc; $('s7calc').style.transform = 'translateY(' + ((1 - gc) * 40) + 'px) rotate(' + (-8 + Math.sin(t * .8) * 1.5) + 'deg)';
     var cat = vis(t, 7.0, 16.6, 1.0); $('s7cat').style.opacity = cat; $('s7cat').style.transform = 'translateY(' + ((1 - cat) * 40) + 'px) rotate(-6deg)';
     var bb = vis(t, 27.4, 36.9, 1.0); $('s7bb').style.opacity = bb; $('s7bb').style.transform = 'translateY(' + ((1 - bb) * -30) + 'px) rotate(4deg)';
   }
@@ -617,6 +664,7 @@ html,body{width:1920px;height:1080px;overflow:hidden;background:#FFF8EE}
         + '<svg width="110" height="110" viewBox="-60 -60 120 120"><path d="' + o[1] + '" fill="#FFD400" stroke="#1A1412" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/></svg><b class="serif" style="font-weight:400;font-size:52px">' + o[0] + '</b>'
         + (i === 2 ? '<img id="s8pm" src="' + CUT('postmarks') + '" alt="" style="position:absolute;right:-50px;top:-46px;width:230px;opacity:0;mix-blend-mode:multiply">' : '') + '</div>' }).join('')
     + '<img id="s8f" src="' + CUT('folder-pink') + '" alt="" style="position:absolute;left:560px;top:440px;width:800px;z-index:2;filter:drop-shadow(0 30px 26px rgba(120,30,70,.35))">'
+    + BUD('b8', 150, 1660, 811)
     + '<div id="s8tag" style="position:absolute;left:780px;top:760px;z-index:3;padding:14px 34px;border-radius:999px;background:#fff;border:3px solid #1A1412;box-shadow:0 6px 0 #1A1412;font-weight:800;font-size:34px;letter-spacing:.04em;transform:rotate(-3deg)">Your proof</div>'
     + '</div>');
   function s8(t){
@@ -627,6 +675,7 @@ html,body{width:1920px;height:1080px;overflow:hidden;background:#FFF8EE}
       c.style.opacity = a; c.style.transform = 'translate(' + x + 'px,' + (y + (1 - a) * 30) + 'px) rotate(' + r + 'deg) scale(' + lerp(1, .78, e) + ')';
     });
     var pm = seg(t, 1.9, 2.15); $('s8pm').style.opacity = pm > 0 ? .9 : 0; $('s8pm').style.transform = 'scale(' + (1.5 - io(pm) * .5) + ') rotate(-8deg)';
+    pose('b8', {o: io(seg(t, .6, 1.2)), j: hop(t, 4.3, .45, 50) + hop(t, 5.0, .45, 50) + hop(t, 5.7, .45, 50) + hop(t, 6.6, .6, 90), ht: t < 4 ? -8 : 0, al: t > 5.8 ? 118 : t > 2.8 && t < 5.8 ? 60 : 14, ar: t > 5.8 ? 118 : t > 2.8 && t < 5.8 ? 60 : 14});
     var g = io(seg(t, 5.8, 6.6)); $('s8tag').style.opacity = g; $('s8tag').style.transform = 'translateY(' + ((1 - g) * 16) + 'px) rotate(-3deg)';
     $('s8f').style.transform = 'translateY(' + (Math.sin(Math.min(1, seg(t, 3.0, 6.0)) * Math.PI * 3) * 3) + 'px)';
   }
@@ -637,7 +686,8 @@ html,body{width:1920px;height:1080px;overflow:hidden;background:#FFF8EE}
     + '<div style="position:absolute;left:0;right:0;top:60px;text-align:center"><p class="k" style="font-size:22px;color:#F72585">YOUR GIFT WHEN YOU REGISTER</p><h2 class="serif" style="font-size:84px;line-height:1;margin-top:10px">The Exit Number calculator</h2></div>'
     + '<div id="calc" style="position:absolute;left:250px;top:300px;width:420px;padding:28px;border-radius:44px;background:linear-gradient(165deg,#FF5CA8,#F72585 45%,#DE1675);border:4px solid #1A1412;box-shadow:inset 0 3px 0 rgba(255,255,255,.35),0 16px 0 -2px #A80F55,0 16px 0 2px #1A1412,0 50px 60px -30px rgba(70,20,40,.6);transform:rotate(-3deg)">'
     +   '<div style="height:150px;border-radius:18px;background:linear-gradient(#C9D3A6,#B9C596);border:5px solid #2A1A22;display:flex;flex-direction:column;justify-content:center;align-items:flex-end;padding:0 26px;box-shadow:inset 0 5px 10px rgba(30,40,20,.35)"><span class="k" style="font-size:15px;color:#3A4630">BUYERS A MONTH</span><span id="calcN" style="font-family:ui-monospace,monospace;font-weight:800;font-size:84px;line-height:1;color:#25301D">00</span></div>'
-    +   '<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:22px">' + '789÷456×123−0.=+'.split('').map(function(k){ return '<span style="display:grid;place-items:center;height:56px;border-radius:14px;background:' + (k === '=' ? '#FFD400' : '÷×−+'.indexOf(k) >= 0 ? '#FFD3E7' : '#FFF8EE') + ';border:3px solid #1A1412;box-shadow:0 5px 0 #1A1412;font-weight:800;font-size:24px">' + k + '</span>' }).join('') + '</div></div>'
+    +   '<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:22px">' + '789÷456×123−0.=+'.split('').map(function(k){ return '<span' + (k === '=' ? ' id="kEq"' : '') + ' style="display:grid;place-items:center;height:56px;border-radius:14px;background:' + (k === '=' ? '#FFD400' : '÷×−+'.indexOf(k) >= 0 ? '#FFD3E7' : '#FFF8EE') + ';border:3px solid #1A1412;box-shadow:0 5px 0 #1A1412;font-weight:800;font-size:24px">' + k + '</span>' }).join('') + '</div></div>'
+    + BUD('b9', 110, 515, 640, 'z-index:4')
     + '<img id="s9bow" src="' + CUT('bow-gingham') + '" alt="" style="position:absolute;left:130px;top:215px;width:300px;z-index:3;opacity:0;filter:drop-shadow(0 12px 10px rgba(60,35,15,.35))">'
     + '<div style="position:absolute;left:820px;top:280px;width:960px;transform:rotate(2deg);filter:drop-shadow(0 34px 30px rgba(60,35,15,.35))"><img src="' + CUT('notebook-red') + '" alt="" style="width:100%;display:block">'
     +   '<div style="position:absolute;left:100px;top:70px;width:330px"><p class="k" style="font-size:15px;color:#7A6A60">EXAMPLE</p><p class="serif" style="font-style:italic;font-size:44px;line-height:1.1;margin-top:10px;color:#2A2238">A goal of<br>$3,000 a month</p></div>'
@@ -651,6 +701,9 @@ html,body{width:1920px;height:1080px;overflow:hidden;background:#FFF8EE}
   function s9(t){
     $('c9').style.transform = 'scale(' + lerp(1, 1.03, t / 10.8) + ')';
     var bw = io(seg(t, .9, 1.6)); $('s9bow').style.opacity = bw; $('s9bow').style.transform = 'translateY(' + ((1 - bw) * -60) + 'px) rotate(' + (-16 - (1 - bw) * 20) + 'deg) scale(' + (1.25 - bw * .25) + ')';
+    var drop = t < 1.6 ? (1 - io(seg(t, .7, 1.6))) * 380 : 0, pr = [1.6, 4.0, 6.4].reduce(function(m, L){ return Math.max(m, 1 - Math.abs(t - L - .06) / .14) }, 0);
+    pose('b9', {o: io(seg(t, .7, 1.0)), j: drop + hop(t, 4.0, .7, 110) + hop(t, 6.4, .7, 110), sq: 1 - Math.max(0, pr) * .12, al: t > 7 ? 118 : 30, ar: t > 7 ? 118 + Math.sin(t * 10) * 18 : 30, ht: Math.sin(t * 1.3) * 5});
+    $('kEq').style.transform = 'translateY(' + (Math.max(0, pr) * 4) + 'px)'; $('kEq').style.boxShadow = '0 ' + (5 - Math.max(0, pr) * 4) + 'px 0 #1A1412';
     var k = t < 1.6 ? -1 : t < 4.0 ? 0 : t < 6.4 ? 1 : 2;
     $('calcN').textContent = k < 0 ? '00' : String(PRICES[k][1]).padStart(2, '0');
     var ls = document.querySelectorAll('#s9lines .pl'), tip = null;
@@ -676,6 +729,8 @@ html,body{width:1920px;height:1080px;overflow:hidden;background:#FFF8EE}
     + '<div id="e10b" style="position:absolute;left:300px;top:640px;width:1180px;height:300px;transform:rotate(1.2deg)">'
     +   '<img src="' + CUT('tear-kraft') + '" alt="" style="position:absolute;inset:0;width:100%;height:100%;filter:drop-shadow(0 22px 20px rgba(120,20,60,.35))">'
     +   '<p class="serif" style="position:relative;padding-top:66px;font-size:64px;line-height:1.1">Put your name and email in the form.<br><span style="background:linear-gradient(transparent 60%,#FFD400 60%,#FFD400 92%,transparent 92%)">I’ll see you live.</span></p></div>'
+    + '<img id="e10sun" src="' + CUT('sunflower-news') + '" alt="" style="position:absolute;left:1650px;top:40px;width:250px;filter:drop-shadow(0 16px 14px rgba(110,20,60,.35))">'
+    + BUD('b10', 150, 200, 961)
     + '<img id="e10k" src="' + CUT('key-enter') + '" alt="" style="position:absolute;left:1530px;top:700px;width:240px;filter:drop-shadow(0 18px 14px rgba(90,20,50,.45))">'
     + '<img id="e10h" src="' + CUT('hand-point') + '" alt="" style="position:absolute;left:1656px;top:762px;width:430px;opacity:0;transform-origin:10.8% 1%;filter:drop-shadow(0 22px 18px rgba(90,20,50,.4))">'
     + '<svg id="e10a" width="200" height="300" viewBox="0 0 200 300" style="position:absolute;left:1560px;top:400px;overflow:visible"><path d="M20 260 C 40 160, 90 90, 170 40 M128 34 l44 4 l-8 42" fill="none" stroke="#1A1412" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg>'
@@ -687,6 +742,9 @@ html,body{width:1920px;height:1080px;overflow:hidden;background:#FFF8EE}
     var k = io(seg(t, 1.8, 2.6)), press = Math.max(0, 1 - Math.abs(t - 3.4) / .18) + Math.max(0, 1 - Math.abs(t - 5.2) / .18);
     $('e10k').style.opacity = k; $('e10k').style.transform = 'translateY(' + ((1 - k) * 30 + press * 12) + 'px) rotate(' + (-4 + (1 - k) * 8) + 'deg)';
     $('e10k').style.filter = 'drop-shadow(0 ' + (18 - press * 12) + 'px ' + (14 - press * 8) + 'px rgba(90,20,50,.45))';
+    var w10 = walk([[0, -120], [.6, -120], [1.5, 200]], t);
+    pose('b10', {x: w10[0] - 200, lp: t * 14, la: w10[1] ? 30 : 0, j: (w10[1] ? Math.abs(Math.sin(t * 7)) * 12 : 0) + hop(t, 3.5, .45, 70) + hop(t, 5.3, .45, 70), ar: t > 1.6 ? 96 + Math.sin(t * 3) * 6 : 14, al: t > 3.3 && t < 3.8 || t > 5.1 && t < 5.6 ? 118 : 14, r: w10[1] ? 6 : 0, bang: t > 3.4 && t < 4.0 || t > 5.2 && t < 5.8 ? 1 : 0});
+    $('e10sun').style.transform = 'rotate(' + (t * 8) + 'deg) scale(' + io(seg(t, .4, 1.3)) + ')';
     var hd = io(seg(t, 2.2, 3.1)); $('e10h').style.opacity = hd;
     $('e10h').style.transform = 'translate(' + ((1 - hd) * 260) + 'px,' + ((1 - hd) * 320 + press * 9) + 'px) scale(' + (1 - press * .04) + ')';
     var a = $('e10a').querySelector('path'); if (!e10L) e10L = a.getTotalLength(); a.style.strokeDasharray = e10L; a.style.strokeDashoffset = e10L * (1 - io(seg(t, 3.5, 4.4)));
