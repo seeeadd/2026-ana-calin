@@ -207,25 +207,28 @@
       when(sp, t3);
     }
 
-    /* ---------- Nº 02: your question goes into the VIP chat; Ana is typing; her answer quotes you ---------- */
+    /* ---------- Nº 02: Ana opens her 30 minutes; you ask; she's typing; her answer quotes you ---------- */
     var wac = $('.wac');
     if (wac) {
-      var m1 = $('.m1', wac), dots = $('.dots', wac), m2 = $('.m2', wac), m3 = $('.m3', wac), s0 = $('.s0', wac), s1 = $('.s1', wac);
-      gsap.set([m1, m2, m3], { opacity: 0, y: 12, scale: .94 });
+      var mm = function (c) { return $('.' + c, wac) }, dots = $('.dots', wac), s0 = $('.s0', wac), s1 = $('.s1', wac);
+      var pop = { opacity: 1, y: 0, scale: 1, duration: .4, ease: 'back.out(1.7)' };
+      gsap.set(['m1', 'm2', 'm3', 'm4', 'm5'].map(mm), { opacity: 0, y: 12, scale: .95 });
       gsap.set(dots, { opacity: 0, scale: .9, transformOrigin: '0% 0%' });
       var tc = gsap.timeline();
-      tc.to(m1, { opacity: 1, y: 0, scale: 1, duration: .45, ease: 'back.out(1.7)', transformOrigin: '100% 100%' }, .3)
-        .add(function () { m1.classList.add('read') }, 1.1)
-        .to(s0, { opacity: 0, y: -8, duration: .25 }, 1.3)
-        .fromTo(s1, { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: .25 }, 1.35)
-        .to(dots, { opacity: 1, scale: 1, duration: .3, ease: 'back.out(2)' }, 1.5)
-        .to($$('i', dots), { y: -4, duration: .28, ease: 'sine.inOut', yoyo: true, repeat: 7, stagger: .14 }, 1.6)
-        .to(dots, { opacity: 0, scale: .9, duration: .15 }, 3.9)
-        .to(m2, { opacity: 1, y: 0, scale: 1, duration: .5, ease: 'back.out(1.6)', transformOrigin: '0% 0%' }, 3.95)
-        .to(s1, { opacity: 0, y: -8, duration: .25 }, 4.1)
-        .fromTo(s0, { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: .25 }, 4.15)
-        .to(m3, { opacity: 1, y: 0, scale: 1, duration: .45, ease: 'back.out(1.7)', transformOrigin: '100% 100%' }, 5.6)
-        .add(function () { m3.classList.add('read') }, 6.3);
+      tc.to(mm('m1'), Object.assign({ transformOrigin: '100% 100%' }, pop), .4)
+        .to(mm('m2'), Object.assign({ transformOrigin: '100% 100%' }, pop), 1.1)
+        .add(function () { mm('m1').classList.add('read'); mm('m2').classList.add('read') }, 1.9)
+        .to(s0, { opacity: 0, y: -8, duration: .25 }, 2.1)
+        .fromTo(s1, { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: .25 }, 2.15)
+        .to(dots, { opacity: 1, scale: 1, duration: .3, ease: 'back.out(2)' }, 2.3)
+        .to($$('i', dots), { y: -4, duration: .28, ease: 'sine.inOut', yoyo: true, repeat: 7, stagger: .14 }, 2.4)
+        .to(dots, { opacity: 0, scale: .9, duration: .15 }, 4.7)
+        .to(mm('m3'), Object.assign({ transformOrigin: '0% 0%' }, pop), 4.75)
+        .to(mm('m4'), Object.assign({ transformOrigin: '0% 0%' }, pop), 5.5)
+        .to(s1, { opacity: 0, y: -8, duration: .25 }, 5.7)
+        .fromTo(s0, { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: .25 }, 5.75)
+        .to(mm('m5'), Object.assign({ transformOrigin: '100% 100%' }, pop), 7)
+        .add(function () { mm('m5').classList.add('read') }, 7.8);
       when(wac, tc, 'top 78%');
     }
 

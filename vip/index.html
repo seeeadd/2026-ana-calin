@@ -1721,43 +1721,57 @@ body.is-closed .cx{display:none}
 @media (max-width:440px){.it .tx p.exp{flex-wrap:nowrap;gap:7px;padding:6px 12px 6px 6px;font-size:12.5px}.exp-k{white-space:nowrap}.exp-ic{width:26px;height:26px}.exp-v em{font-size:21px}}
 @media (max-width:359px){.it .tx p.exp{font-size:11.5px;padding-right:10px}.exp-v em{font-size:19px}}
 
-/* Nº 02: the VIP chat, one on one, as WhatsApp shows it */
-.wac{margin:18px 0 8px;max-width:400px;border-radius:18px;overflow:hidden;background:#EFEAE2;border:1px solid rgba(26,20,18,.1);
-  box-shadow:0 1px 2px rgba(60,40,20,.1),0 26px 44px -30px rgba(60,40,20,.6);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;font-size:14px;line-height:1.35;color:#111B21;text-align:left}
-.wac-hd{display:flex;align-items:center;gap:10px;padding:9px 14px;background:#F6F5F3;border-bottom:1px solid rgba(0,0,0,.06)}
-.wac-av{width:34px;height:34px;border-radius:50%;background:var(--pink);display:grid;place-items:center;overflow:hidden;flex:none}
-.wac-av img{width:27px;height:27px}
-.wac-nm{display:grid;flex:1;min-width:0}
-.wac-nm b{font-weight:600;font-size:14.5px}
-.wac-nm small{position:relative;height:16px;font-size:12px;color:#667781;overflow:hidden}
+/* Nº 02: the VIP chat, one on one: WhatsApp exactly (Android), in her colours, her doodles, the VIP picture */
+.wac{margin:18px 0 8px;max-width:380px;border-radius:22px;overflow:hidden;background:#FFF6EE;border:1px solid rgba(26,20,18,.12);
+  box-shadow:0 1px 2px rgba(60,40,20,.12),0 30px 50px -32px rgba(60,40,20,.65);font-family:Roboto,"Segoe UI",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif;color:#1A1412;text-align:left;line-height:1.3}
+.wac svg{display:block}
+.wac-sb{display:flex;align-items:center;justify-content:space-between;height:24px;padding:0 14px;background:#C9156B;color:#fff;font-size:12.5px}
+.wac-sb b{font-weight:500}
+.sb-r{display:flex;align-items:center;gap:6px}
+.sb-r svg{height:11px;width:auto}
+.wac-hd{display:flex;align-items:center;gap:8px;padding:8px 6px 8px 8px;background:var(--pink);color:#fff}
+.wac-bk{width:22px;height:22px;flex:none}
+.wac-av{width:38px;height:38px;border-radius:50%;object-fit:cover;flex:none;background:var(--sun)}
+.wac-nm{display:grid;flex:1;min-width:0;padding-left:2px}
+.wac-nm b{font-weight:500;font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.wac-nm small{position:relative;height:16px;font-size:12.5px;color:rgba(255,255,255,.88);overflow:hidden}
 .wac-nm small span{position:absolute;left:0;top:0;white-space:nowrap}
-.wac-nm .s1{color:#1DAA61;opacity:0}
-.wac-ic{width:22px;height:16px;flex:none;border:2px solid #54656F;border-radius:4px;position:relative;margin-right:6px}
-.wac-ic:after{content:"";position:absolute;right:-7px;top:2px;border-left:6px solid #54656F;border-top:4px solid transparent;border-bottom:4px solid transparent}
-.wac-bd{display:grid;gap:6px;padding:10px 12px 12px;background-color:#EFEAE2;
-  background-image:radial-gradient(circle at 20% 30%,rgba(120,100,80,.06) 2px,transparent 2.5px),radial-gradient(circle at 70% 70%,rgba(120,100,80,.05) 3px,transparent 3.5px);background-size:46px 46px,58px 58px}
-.wac-day{justify-self:center;font-size:11.5px;color:#54656F;background:#fff;border-radius:7px;padding:3px 10px;box-shadow:0 1px .5px rgba(11,20,26,.13)}
-.wm{position:relative;max-width:84%;padding:6px 9px 7px;border-radius:9px;box-shadow:0 1px .5px rgba(11,20,26,.13)}
-.wm p{margin:0;font-size:14px;line-height:1.35}
-.wm.out{justify-self:end;background:#D9FDD3;border-top-right-radius:0}
-.wm.in{justify-self:start;background:#fff;border-top-left-radius:0}
-.wm.out:after,.wm.in:after{content:"";position:absolute;top:0;width:0;height:0;border-top:8px solid}
-.wm.out:after{right:-7px;border-top-color:#D9FDD3;border-right:8px solid transparent}
-.wm.in:after{left:-7px;border-top-color:#fff;border-left:8px solid transparent}
-.wm time{float:right;display:inline-flex;align-items:center;gap:3px;margin:7px 0 -5px 12px;font-size:11px;color:#667781;line-height:1}
-.wm time svg{width:16px;height:10px;stroke:#8696A0}
-.wm.read time svg{stroke:#53BDEB}
-.wst{display:grid}
-.wst>.wm{grid-area:1/1}
+.wac-nm .s1{opacity:0}
+.wac-i{width:22px;height:22px;flex:none;margin:0 7px}
+.wac-i.wac-mn{width:18px;margin:0 2px 0 0}
+.wac-bd{display:grid;align-content:start;gap:3px;min-height:330px;padding:10px 12px 12px;background:#FFF6EE url(../img/vip/wa-wall.svg) 0 0/260px 260px}
+.wac-day{justify-self:center;margin:2px 0 6px;font-size:11.5px;font-weight:500;letter-spacing:.04em;color:#7A6A60;background:#FFFDF8;border-radius:7px;padding:4px 10px;box-shadow:0 1px .5px rgba(60,40,20,.15)}
+.wm{position:relative;max-width:88%;padding:6px 8px 7px 9px;border-radius:8px;box-shadow:0 1px .6px rgba(60,40,20,.18)}
+.wm.first{margin-top:6px}
+.wm p{margin:0;font-size:14.5px;line-height:1.32;word-wrap:break-word}
+.wm p:after{content:"";display:inline-block;width:56px;height:1px}
+.wm.out p:after{width:74px}
+.tm{position:absolute;right:8px;bottom:4px;display:inline-flex;align-items:center;gap:3px;font-size:11px;color:#9A8C82;white-space:nowrap}
+.wm.out .tm{color:#9A8458}
+.tm .tk{width:16px;height:10px;stroke:#B9A98C}
+.wm.read .tm .tk{stroke:var(--pink)}
+.wm.out{justify-self:end;background:#FFF0A8}
+.wm.in{justify-self:start;background:#FFFFFF}
+.wm.first.out{border-top-right-radius:0}
+.wm.first.in{border-top-left-radius:0}
+.wm.first.out:after,.wm.first.in:after{content:"";position:absolute;top:0;width:0;height:0;border-top:9px solid}
+.wm.first.out:after{right:-8px;border-top-color:#FFF0A8;border-right:9px solid transparent}
+.wm.first.in:after{left:-8px;border-top-color:#fff;border-left:9px solid transparent}
+.wst{display:grid;margin-top:6px}
+.wst>.wm{grid-area:1/1;margin-top:0}
 .wst>.dots{align-self:start}
-.wn{display:block;font-size:13px;font-weight:600;color:#C2185B;margin-bottom:2px}
-.wq{display:block;margin:2px 0 6px;padding:5px 8px;border-left:4px solid #06CF9C;border-radius:6px;background:rgba(11,20,26,.05);font-size:12.5px;line-height:1.3;color:#54656F}
-.wq b{display:block;color:#06A77D;font-weight:600}
+.wn{display:block;font-size:13px;font-weight:500;color:#D1146E;margin-bottom:2px}
+.wq{display:block;margin:2px 0 5px;padding:5px 8px 6px;border-left:4px solid var(--sun);border-radius:6px;background:#FBF4E9;font-size:13px;line-height:1.3;color:#6E625A}
+.wq b{display:block;color:#B88A00;font-weight:500;margin-bottom:1px}
 .wm.dots{display:flex;gap:4px;padding:11px 13px}
-.wm.dots i{width:7px;height:7px;border-radius:50%;background:#8696A0}
-.wac-ft{display:flex;align-items:center;gap:8px;padding:8px 10px;background:#F6F5F3}
-.wac-in{flex:1;padding:8px 14px;border-radius:999px;background:#fff;color:#8696A0;font-size:13.5px}
-.wac-mic{width:34px;height:34px;border-radius:50%;background:#25D366 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'%3E%3Crect x='9' y='3' width='6' height='12' rx='3'/%3E%3Cpath d='M6 11a6 6 0 0 0 12 0' fill='none' stroke='%23fff' stroke-width='1.8'/%3E%3Cpath d='M12 17v4' stroke='%23fff' stroke-width='1.8'/%3E%3C/svg%3E") center/18px no-repeat;flex:none}
+.wm.dots i{width:7px;height:7px;border-radius:50%;background:#B9AAA0}
+.wac-ft{display:flex;align-items:center;gap:6px;padding:7px 7px 9px;background:#FFF6EE url(../img/vip/wa-wall.svg) 0 0/260px 260px}
+.wac-in{flex:1;display:flex;align-items:center;gap:10px;height:46px;padding:0 14px 0 12px;border-radius:999px;background:#fff;color:#8A7C72;box-shadow:0 1px .6px rgba(60,40,20,.18)}
+.wac-in svg{width:22px;height:22px;flex:none}
+.wac-in .wac-ph{flex:1;font-size:16px;color:#A0948B}
+.wac-mic{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;flex:none;background:var(--sun);color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink),0 2px 0 var(--ink)}
+.wac-mic svg{width:21px;height:21px}
+@media (max-width:420px){.wm p{font-size:14px}.wac-nm b{font-size:15px}.wac-i{margin:0 4px}}
 
 /* skimmable: the key line of each part is marked in her sunflower yellow, swept on as it comes into view */
 mark.sk{color:inherit;padding:0 2px;margin:0 -2px;-webkit-box-decoration-break:clone;box-decoration-break:clone;
@@ -2111,17 +2125,19 @@ mark.sk{color:inherit;padding:0 2px;margin:0 -2px;-webkit-box-decoration-break:c
         <p class="meta"><b>Nov 17 to Nov 20</b> · Ana in the chat</p>
         <p>Sometimes the lesson makes perfect sense. Then you open your own document and think, <b>“Yes, but what about mine?”</b> <mark class="sk">Put that question in our private VIP WhatsApp group,</mark> along with the bit you’re working on.</p>
         <div class="wac" aria-hidden="true">
-          <div class="wac-hd"><span class="wac-av"><img src="../img/mark.png" alt=""></span><span class="wac-nm"><b>VIP · how we grow</b><small><span class="s0">Ana, Claire, Mei, Rosa, You</span><span class="s1">Ana Calin is typing…</span></small></span><i class="wac-ic"></i></div>
+          <div class="wac-sb"><b>12:31</b><span class="sb-r"><svg viewBox="0 0 18 12"><path d="M1 11h2V8H1zM5 11h2V6H5zM9 11h2V4H9zM13 11h2V1h-2z" fill="currentColor"/></svg><svg viewBox="0 0 16 12"><path d="M8 11 1 4a10 10 0 0 1 14 0z" fill="currentColor"/></svg><svg viewBox="0 0 10 14"><rect x="1" y="2" width="8" height="11" rx="1.2" fill="currentColor"/><rect x="3.5" y=".5" width="3" height="2" fill="currentColor"/></svg></span></div>
+          <div class="wac-hd"><svg class="wac-bk" viewBox="0 0 24 24"><path d="M20 12H5m6-7-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><img class="wac-av" src="../img/vip/raw/vip-avatar.webp" alt=""><span class="wac-nm"><b>VIP · how we grow</b><small><span class="s0">Ana, Claire, Mei, Rosa, You</span><span class="s1">Ana is typing…</span></small></span><svg class="wac-i" viewBox="0 0 24 24"><path d="M3 7h12v10H3zM15 10.5l6-3.5v10l-6-3.5z" fill="currentColor"/></svg><svg class="wac-i" viewBox="0 0 24 24"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z" fill="currentColor"/></svg><svg class="wac-i wac-mn" viewBox="0 0 24 24"><circle cx="12" cy="5" r="2" fill="currentColor"/><circle cx="12" cy="12" r="2" fill="currentColor"/><circle cx="12" cy="19" r="2" fill="currentColor"/></svg></div>
           <div class="wac-bd">
-            <span class="wac-day">Today</span>
-            <div class="wm out m1"><p>Quick one. Do I need more subscribers before I sell anything? I only have 212.</p><time>12:31<svg viewBox="0 0 18 11"><path class="tk" d="M1 6l3 3 6-7M7 9l1 1 6-8" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></time></div>
-            <div class="wst"><div class="wm in dots"><i></i><i></i><i></i></div><div class="wm in m2"><b class="wn">Ana Calin</b><span class="wq"><b>You</b>Do I need more subscribers before I sell anything?</span><p>No. Start with the 212 who already read you. Post your one sentence here and I’ll help you tighten it.</p><time>12:33</time></div></div>
-            <div class="wm out m3"><p>Posting it now. Thank you!</p><time>12:34<svg viewBox="0 0 18 11"><path class="tk" d="M1 6l3 3 6-7M7 9l1 1 6-8" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></time></div>
+            <span class="wac-day">TODAY</span>
+            <div class="wm in first m0"><b class="wn">Ana Calin</b><p>Morning, VIPs. I’m here for the next 30 minutes. Send me what you’re working on<span class="tm">12:30 PM</span></p></div>
+            <div class="wm out first m1"><p>Quick one<span class="tm">12:31 PM<svg class="tk" viewBox="0 0 18 11"><path d="M1 6l3 3 6-7M7 9l1 1 6-8" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></p></div>
+            <div class="wm out m2"><p>Do I need more subscribers before I sell anything? I only have 212<span class="tm">12:31 PM<svg class="tk" viewBox="0 0 18 11"><path d="M1 6l3 3 6-7M7 9l1 1 6-8" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></p></div>
+            <div class="wst"><div class="wm in first dots"><i></i><i></i><i></i></div><div class="wm in first m3"><b class="wn">Ana Calin</b><span class="wq"><b>You</b>Do I need more subscribers before I sell anything?</span><p>No. Start with the 212 who already read you<span class="tm">12:33 PM</span></p></div></div>
+            <div class="wm in m4"><p>Post your one sentence here and I’ll help you tighten it<span class="tm">12:33 PM</span></p></div>
+            <div class="wm out first m5"><p>Posting it now. Thank you!!<span class="tm">12:34 PM<svg class="tk" viewBox="0 0 18 11"><path d="M1 6l3 3 6-7M7 9l1 1 6-8" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></p></div>
           </div>
-          <div class="wac-ft"><span class="wac-in">Message</span><i class="wac-mic"></i></div>
+          <div class="wac-ft"><span class="wac-in"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="9" cy="10" r="1.2" fill="currentColor"/><circle cx="15" cy="10" r="1.2" fill="currentColor"/><path d="M8 14a4.5 4.5 0 0 0 8 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span class="wac-ph">Type a message</span><svg viewBox="0 0 24 24"><path d="M16.5 6.5 8 15a2 2 0 0 0 3 3l9-9a4 4 0 0 0-6-6l-9 9a6 6 0 0 0 8.5 8.5l7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><svg viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3v11H4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span><span class="wac-mic"><svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3" fill="currentColor"/><path d="M6 11a6 6 0 0 0 12 0M12 17v4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span></div>
         </div>
-        <p><mark class="sk">I’ll be there for 30 minutes after each workshop session, plus one morning slot.</mark> The free community has your reminders. This separate group is where we talk about the work.</p>
-        <div class="cx"><button class="btn add cxb" type="button" data-cta="chat"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">Let me ask you in the VIP chat ($67)</span><svg class="ar"><use href="#arr"/></svg></button><p class="closed">VIP is closed. <em>See you live.</em></p><small>One payment of $67, added to your free seat.</small></div>
       </div>
     </article>
 
@@ -2425,7 +2441,7 @@ mark.sk{color:inherit;padding:0 2px;margin:0 -2px;-webkit-box-decoration-break:c
 <script src="../assets/vendor/DrawSVGPlugin.min.js"></script>
 <script src="../assets/vendor/MotionPathPlugin.min.js"></script>
 <script src="../assets/vendor/MorphSVGPlugin.min.js"></script>
-<script src="../assets/vip-motion.js?v=5"></script>
+<script src="../assets/vip-motion.js?v=6"></script>
 
 </body>
 </html>
