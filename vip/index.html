@@ -1777,7 +1777,10 @@ body.is-closed .cx{display:none}
 mark.sk{color:inherit;padding:0 2px;margin:0 -2px;-webkit-box-decoration-break:clone;box-decoration-break:clone;
   background:linear-gradient(transparent 52%,rgba(255,212,0,.5) 52%,rgba(255,212,0,.5) 94%,transparent 94%) no-repeat 0 0/100% 100%;transition:background-size 1.2s var(--glide)}
 .anim mark.sk:not(.on){background-size:0% 100%}
-.pq{max-width:900px;margin:0 auto;padding:70px 24px 10px;text-align:center}
+mark.sk{font-weight:700;color:var(--ink)}
+.after mark.sk,.pq mark.sk{font-weight:inherit}
+.pq{max-width:860px;margin:0 auto 64px;padding:0;text-align:center}
+.pq:after{content:"";display:block;width:56px;height:2px;margin:40px auto 0;border-radius:2px;background:rgba(236,52,134,.45)}
 .pq p{font-family:var(--serif);font-style:italic;font-size:clamp(28px,3.4vw,44px);line-height:1.14;color:var(--ink);text-wrap:balance}
 .pq-by{display:inline-flex;align-items:center;gap:10px;margin-top:16px;font-size:13.5px;font-weight:700;color:var(--ink3)}
 .pq-by img{width:34px;height:34px;border-radius:50%;object-fit:cover;object-position:50% 22%}
@@ -1841,6 +1844,7 @@ mark.sk{color:inherit;padding:0 2px;margin:0 -2px;-webkit-box-decoration-break:c
 /* the chair: its card shows at once (it used to fade in while the chair moved, so nobody saw it), and no leftover offset */
 .anim .fitg[data-r]{opacity:1;transform:none;transition:none}
 .anim .fitg .seat.two .you,.anim .fitg.in .seat.two .you{transform:none}
+.seat.two{overflow:hidden}
 
 
 /* each section CTA has a quiet way out, worded for its section; it opens the same decline flow */
@@ -2026,7 +2030,7 @@ mark.sk{color:inherit;padding:0 2px;margin:0 -2px;-webkit-box-decoration-break:c
 
     <!-- headline A/B: ?h=A or ?h=B previews one -->
     <h1 id="h1">Keep the workshop for life, <em>and work through the hard parts with me.</em></h1>
-    <p class="hsub">You’ve saved your free seat. For $67, add <b>lifetime workshop recordings</b>, <b>a live VIP Q&amp;A and group review</b>, <b>private WhatsApp access to me</b> during the workshop, and <b>my Offer Clarity Sprint course.</b></p>
+    <p class="hsub">You’ve saved your free seat. <mark class="sk">For $67, add lifetime workshop recordings, a live VIP Q&amp;A and group review, private WhatsApp access to me during the workshop, and my Offer Clarity Sprint course.</mark></p>
 
     <div class="vh-grid">
       <div class="vh-l">
@@ -2187,7 +2191,7 @@ mark.sk{color:inherit;padding:0 2px;margin:0 -2px;-webkit-box-decoration-break:c
         <span class="num">02</span>
         <h3>Ask me while the question <em>is in front of you.</em></h3>
         <p class="meta"><b>Nov 17 to Nov 20</b> · Ana in the chat</p>
-        <p>Sometimes the lesson makes perfect sense. Then you open your own document and think, <b>“Yes, but what about mine?”</b> <mark class="sk">Put that question in our private VIP WhatsApp group,</mark> along with the bit you’re working on.</p>
+        <p>Sometimes the lesson makes perfect sense. Then you open your own document and think, “Yes, but what about mine?” <mark class="sk">Put that question in our private VIP WhatsApp group,</mark> along with the bit you’re working on.</p>
         <div class="wac" aria-hidden="true">
           <div class="wac-sb"><b>12:31</b><span class="sb-r"><svg viewBox="0 0 18 12"><path d="M1 11h2V8H1zM5 11h2V6H5zM9 11h2V4H9zM13 11h2V1h-2z" fill="currentColor"/></svg><svg viewBox="0 0 16 12"><path d="M8 11 1 4a10 10 0 0 1 14 0z" fill="currentColor"/></svg><svg viewBox="0 0 10 14"><rect x="1" y="2" width="8" height="11" rx="1.2" fill="currentColor"/><rect x="3.5" y=".5" width="3" height="2" fill="currentColor"/></svg></span></div>
           <div class="wac-hd"><svg class="wac-bk" viewBox="0 0 24 24"><path d="M20 12H5m6-7-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><img class="wac-av" src="../img/vip/raw/vip-avatar.webp" alt=""><span class="wac-nm"><b>VIP · how we grow</b><small><span class="s0">Ana, Claire, Mei, Rosa, You</span><span class="s1">Ana is typing…</span></small></span><svg class="wac-i" viewBox="0 0 24 24"><path d="M3 7h12v10H3zM15 10.5l6-3.5v10l-6-3.5z" fill="currentColor"/></svg><svg class="wac-i" viewBox="0 0 24 24"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z" fill="currentColor"/></svg><svg class="wac-i wac-mn" viewBox="0 0 24 24"><circle cx="12" cy="5" r="2" fill="currentColor"/><circle cx="12" cy="12" r="2" fill="currentColor"/><circle cx="12" cy="19" r="2" fill="currentColor"/></svg></div>
@@ -2256,12 +2260,12 @@ mark.sk{color:inherit;padding:0 2px;margin:0 -2px;-webkit-box-decoration-break:c
   </div>
 </section>
 
-<!-- a line pulled from Ana's letter, so a skimmer gets the why -->
-<aside class="pq" data-r><p>“That first customer matters. It gives you something to learn from, improve and sell again.”</p><span class="pq-by"><img src="../img/real/ana-real-a.webp" alt="" loading="lazy">Ana, in her note below</span></aside>
+
 
 <!-- 4. honest fit check: two honest paths; Ana is further away on one and closer on the other -->
 <section class="vf">
   <div class="wrap">
+    <aside class="pq" data-r><p>“That first customer matters. It gives you something to learn from, improve and sell again.”</p><span class="pq-by"><img src="../img/real/ana-real-a.webp" alt="" loading="lazy">Ana, in her note below</span></aside>
     <div class="vf-hd" data-r><span class="eyebrow">Honest fit check</span><h2>Would you like me <em>a little closer while you do this?</em></h2></div>
     <div class="fitg" data-r>
       <div class="fitc yes">
@@ -2300,7 +2304,7 @@ mark.sk{color:inherit;padding:0 2px;margin:0 -2px;-webkit-box-decoration-break:c
         <div class="from"><span class="ov"><img class="ph" src="../img/real/ana-real-a.webp" alt="" loading="lazy"></span><span>A note from Ana</span></div>
         <p>I want you to find out whether people will pay for what you know, while you still have the income you rely on.</p>
         <p>That first customer matters. It gives you something to learn from, improve and sell again. Getting there can bring up questions you can’t answer by staring at your own draft.</p>
-        <p><b>That’s what VIP is for.</b> <mark class="sk">Keep the lessons, ask me about the work as you do it, and see the changes I’d make in the live review.</mark> I’d like you to use what we do together.</p>
+        <p><mark class="sk">That’s what VIP is for. Keep the lessons, ask me about the work as you do it, and see the changes I’d make in the live review.</mark> I’d like you to use what we do together.</p>
         <div class="sig">Ana</div>
       </div>
       </div>
@@ -2325,15 +2329,15 @@ mark.sk{color:inherit;padding:0 2px;margin:0 -2px;-webkit-box-decoration-break:c
     <div class="faqs">
       <h2 data-r>Questions</h2>
       <div data-r>
-        <details class="faq" open><summary>Do I need VIP to come live?<i aria-hidden="true"></i></summary><p class="a"><b>No.</b> Your free seat includes the full three-day live workshop. VIP adds lifetime recordings, the VIP Q&amp;A and group review, the private WhatsApp group and the Offer Clarity Sprint course.</p></details>
+        <details class="faq" open><summary>Do I need VIP to come live?<i aria-hidden="true"></i></summary><p class="a">No. Your free seat includes the full three-day live workshop. VIP adds lifetime recordings, the VIP Q&amp;A and group review, the private WhatsApp group and the Offer Clarity Sprint course.</p></details>
         <details class="faq"><summary>Will you review everyone’s work?<i aria-hidden="true"></i></summary><p class="a">I’ll review selected submissions during the 90-minute group session and explain the changes as I make them. Everyone can watch and use those lessons in their own work, but an individual review isn’t guaranteed.</p></details>
         <details class="faq"><summary>What if I’m just starting?<i aria-hidden="true"></i></summary><p class="a">You don’t need an audience or a finished offer to join. Day 1 includes finding your first readers and what you could sell. VIP gives you extra support while you put the teaching into practice.</p></details>
-        <details class="faq"><summary>Do I keep the recordings?<i aria-hidden="true"></i></summary><p class="a"><b>Yes.</b> VIP includes lifetime access to all three workshop recordings, plus the recording of the VIP review. The Offer Clarity Sprint course is yours to keep too.</p></details>
+        <details class="faq"><summary>Do I keep the recordings?<i aria-hidden="true"></i></summary><p class="a">Yes. VIP includes lifetime access to all three workshop recordings, plus the recording of the VIP review. The Offer Clarity Sprint course is yours to keep too.</p></details>
         <details class="faq"><summary>I already own the Sprint. Is VIP still useful?<i aria-hidden="true"></i></summary><p class="a">If you want the recordings, private WhatsApp access and live group review, yes. Bring the work you’ve already started. The package is $67, paid once.</p></details>
         <details class="faq"><summary>When is the Friday VIP Q&amp;A?<i aria-hidden="true"></i></summary><p class="a">Friday, Nov 20, for 90 minutes. The time and the link come by email with your join details.</p></details>
-        <details class="faq"><summary>What happens in the VIP WhatsApp group?<i aria-hidden="true"></i></summary><p class="a">It's an open chat for VIPs only. I'm in there Nov 17 to 20: for 30 minutes after each session, and one morning slot. Other members can see your name and number, the way any WhatsApp group works.</p></details>
+        <details class="faq"><summary>What happens in the VIP WhatsApp group?<i aria-hidden="true"></i></summary><p class="a">It's an open chat for VIPs only. I'm in there Nov 17 to 20: for 30 minutes after each session, and one morning slot.</p></details>
         <details class="faq"><summary>What if I can't make it on Friday?<i aria-hidden="true"></i></summary><p class="a">Send your work ahead for consideration and watch the recording afterward. I’ll review as many submissions as fit into 90 minutes, so a personal review isn’t guaranteed.</p></details>
-        <details class="faq"><summary>Can I get a refund?<i aria-hidden="true"></i></summary><p class="a"><b>No.</b> All sales are final. Please check what’s included and the group-review format before you buy.</p></details>
+        <details class="faq"><summary>Can I get a refund?<i aria-hidden="true"></i></summary><p class="a">No. All sales are final. Please check what’s included and the group-review format before you buy.</p></details>
         <div class="cx"><button class="btn add cxb" type="button" data-cta="faq"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">Questions answered. Add VIP ($67)</span><svg class="ar"><use href="#arr"/></svg></button><p class="closed">VIP is closed. <em>See you live.</em></p><small>One payment of $67, added to your free seat.</small><button class="decline cxn" type="button">No thanks, keep my free seat</button></div>
       </div>
     </div>
@@ -2507,7 +2511,7 @@ mark.sk{color:inherit;padding:0 2px;margin:0 -2px;-webkit-box-decoration-break:c
 <script src="../assets/vendor/DrawSVGPlugin.min.js"></script>
 <script src="../assets/vendor/MotionPathPlugin.min.js"></script>
 <script src="../assets/vendor/MorphSVGPlugin.min.js"></script>
-<script src="../assets/vip-motion.js?v=9"></script>
+<script src="../assets/vip-motion.js?v=11"></script>
 
 </body>
 </html>

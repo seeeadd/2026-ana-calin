@@ -290,7 +290,17 @@
 
     /* ---------- fit check: your chair comes a little closer to Ana's table ---------- */
     var you = $('.seat.two .you');
-    if (you) { gsap.set(you, { x: 0 }); when(you, gsap.timeline().fromTo(you, { xPercent: -30, rotation: -6 }, { xPercent: 3, rotation: 0, duration: 1.1, ease: 'back.out(1.5)' }), 'top 72%') }
+    if (you) {
+      /* it waits away from the table until the card is well in view, then scoots over, bumps closer and settles;
+         scroll back up past it and it moves away again, so it plays every time you come down */
+      gsap.set(you, { x: 0 });
+      var tch = gsap.timeline({ paused: true });
+      tch.fromTo(you, { xPercent: -24, rotation: -7 }, { xPercent: -5, rotation: 2, duration: .75, ease: 'power2.in', immediateRender: true })
+        .to(you, { xPercent: 5, rotation: -1.5, duration: .3, ease: 'power2.out' })
+        .to(you, { xPercent: 3, rotation: 0, duration: .7, ease: 'elastic.out(1,.45)' });
+      if (reduce) tch.progress(1);
+      else ScrollTrigger.create({ trigger: you, start: 'top 62%', onEnter: function () { tch.play(0) }, onLeaveBack: function () { tch.pause(0) } });
+    }
 
     /* ---------- her letter rises out of the envelope; the seal presses on ---------- */
     var lw = $('.lw');
