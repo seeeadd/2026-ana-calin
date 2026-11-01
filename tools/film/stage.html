@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The Exit Plan · film stage</title>
+<!-- The registration film, as one scene in code (Nov 1, 2026). Ana's desk in Greece, seen from above; every object is
+     paper in her ink-and-flat-colour style, made tactile: grain, layered warm shadows, print textures, real light.
+     ?f=1|2|3 shows a style frame. The animation will drive the same objects with a timeline. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@500;700;800&display=swap">
+<style>
+:root{--ink:#1A1412;--ink2:#3D332E;--cream:#FFF8EE;--paper:#FBF4E8;--sun:#FFD400;--pink:#F72585;--pk:#FF7FB6;--kraft:#C89B6D;
+  --serif:'Instrument Serif',Georgia,serif;--sans:'Manrope',system-ui,sans-serif;
+  /* warm shadows, light from the upper left */
+  --sh-sm:1px 1px 0 rgba(90,55,25,.14),2px 3px 3px rgba(80,45,20,.16),8px 12px 16px -6px rgba(80,45,20,.26);
+  --sh-md:1px 1px 0 rgba(90,55,25,.14),3px 4px 4px rgba(80,45,20,.16),14px 20px 26px -8px rgba(80,45,20,.30),34px 46px 60px -24px rgba(80,45,20,.30);}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1920px;height:1080px;overflow:hidden;background:#111}
+#stage{position:relative;width:1920px;height:1080px;overflow:hidden;font-family:var(--sans);color:var(--ink)}
+.abs{position:absolute}
+
+/* ---------- the desk: cream linen on oak, with grain ---------- */
+#desk{position:absolute;inset:-120px;background-color:#EADBC3;
+  background-image:var(--grain),
+    repeating-linear-gradient(0deg,rgba(110,80,50,.045) 0 1px,transparent 1px 4px),
+    repeating-linear-gradient(90deg,rgba(110,80,50,.035) 0 1px,transparent 1px 4px),
+    radial-gradient(120% 90% at 30% 20%,#F4E8D3 0%,#E9D8BD 55%,#DCC6A4 100%)}
+.light{position:absolute;inset:0;pointer-events:none;z-index:40}
+.vig{background:radial-gradient(120% 95% at 45% 40%,transparent 55%,rgba(70,40,20,.28) 100%);mix-blend-mode:multiply}
+.sun{background:radial-gradient(70% 60% at 12% 0%,rgba(255,236,190,.55),transparent 70%);mix-blend-mode:screen}
+.night{background:radial-gradient(55% 70% at 78% 14%,rgba(255,255,255,0) 0%,rgba(70,60,80,.42) 48%,rgba(26,24,42,.80) 100%);mix-blend-mode:multiply}
+.lamp{background:radial-gradient(40% 50% at 78% 12%,rgba(255,190,105,.38),rgba(255,160,70,.10) 50%,transparent 75%);mix-blend-mode:screen}
+.leaves{position:absolute;pointer-events:none;mix-blend-mode:multiply;filter:blur(7px)}
+
+/* ---------- paper ---------- */
+.paper{position:absolute;background-color:var(--paper);background-image:var(--fiber);box-shadow:var(--sh-md);border-radius:3px}
+.paper::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  background:linear-gradient(128deg,rgba(255,255,255,.42) 0%,rgba(255,255,255,0) 38%,rgba(120,80,40,.05) 100%)}
+.idx{width:370px;height:250px;padding:28px 28px 0;
+  background-image:var(--fiber),linear-gradient(transparent 0 62px,rgba(247,37,133,.55) 62px 64px,transparent 64px),
+    repeating-linear-gradient(transparent 0 37px,rgba(26,20,18,.10) 37px 38px);background-position:0 0,0 0,0 26px}
+.idx .k{font-weight:800;font-size:15px;letter-spacing:.16em;color:var(--pink)}
+.idx .t{margin-top:30px;font-family:var(--serif);font-size:52px;line-height:1.02;letter-spacing:-.01em}
+.idx .n{position:absolute;right:24px;top:20px;font-family:var(--serif);font-style:italic;font-size:34px;color:rgba(26,20,18,.35)}
+.sticky{width:270px;height:240px;padding:28px 26px;background-color:#FFE15A;background-image:var(--fiber);border-radius:2px;
+  box-shadow:1px 2px 2px rgba(80,50,0,.18),10px 18px 22px -10px rgba(80,50,0,.34);
+  font-family:var(--serif);font-style:italic;font-size:40px;line-height:1.08;color:#2B2130}
+.sticky::before{content:"";position:absolute;left:0;right:0;top:0;height:46px;background:linear-gradient(rgba(0,0,0,.06),transparent)}
+
+/* ink: everything drawn wobbles a little, like a pen */
+.ink{position:absolute;overflow:visible;pointer-events:none}
+.ink path,.ink circle,.ink ellipse{fill:none;stroke:var(--ink);stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+.hand{font-family:var(--serif);font-style:italic;color:#2A2238}
+
+/* yellow highlighter, with a ragged edge */
+.hl{position:relative;white-space:nowrap;isolation:isolate;display:inline-block}
+.hl::before{content:"";position:absolute;left:-.12em;right:-.14em;top:.22em;bottom:.02em;background:var(--sun);z-index:-1;
+  border-radius:3px 9px 4px 11px;transform:rotate(-1.2deg);opacity:.92;mix-blend-mode:multiply;
+  -webkit-mask-image:var(--rough);mask-image:var(--rough);-webkit-mask-size:220px 90px;mask-size:220px 90px}
+
+/* torn paper strip for the words on screen */
+.strip{position:absolute;z-index:60!important;padding:30px 54px 34px;background-color:#FFFCF5;background-image:var(--fiber);
+  filter:drop-shadow(2px 3px 2px rgba(70,40,20,.22)) drop-shadow(14px 20px 22px rgba(70,40,20,.28))}
+.strip p{position:relative;z-index:0;font-family:var(--serif);font-size:74px;line-height:1.02;letter-spacing:-.012em;color:var(--ink);white-space:nowrap}
+.strip small{display:block;margin-bottom:8px;font-weight:800;font-size:16px;letter-spacing:.18em;color:var(--pink)}
+
+/* rubber stamp, printed twice slightly off (pink over yellow) */
+.stamp{position:absolute;font-weight:800;letter-spacing:.14em;text-transform:uppercase;line-height:1;padding:12px 18px;border:5px solid currentColor;border-radius:10px;
+  -webkit-mask-image:var(--grit);mask-image:var(--grit);-webkit-mask-size:300px 300px;mask-size:300px 300px;mix-blend-mode:multiply}
+
+/* date tiles, torn from a desk calendar */
+.tile{position:absolute;width:118px;height:136px;background:var(--paper);background-image:var(--fiber);border-radius:6px;box-shadow:var(--sh-sm);text-align:center;overflow:hidden}
+.tile i{display:block;height:30px;background:var(--pink);font-style:normal;font-weight:800;font-size:14px;letter-spacing:.16em;color:#fff;line-height:30px}
+.tile b{display:block;margin-top:4px;font-family:var(--serif);font-weight:400;font-size:74px;line-height:1}
+.tile s{display:block;text-decoration:none;font-weight:800;font-size:13px;letter-spacing:.14em;color:var(--ink2)}
+</style>
+</head>
+<body>
+<div id="stage"><div id="desk"></div></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs id="defs">
+  <filter id="rough" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency=".035" numOctaves="2" seed="3"/><feDisplacementMap in="SourceGraphic" scale="3.2"/></filter>
+  <filter id="rough2" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency=".02" numOctaves="2" seed="8"/><feDisplacementMap in="SourceGraphic" scale="6"/></filter>
+  <filter id="soft"><feGaussianBlur stdDeviation="1.2"/></filter>
+</defs></svg>
+<script>
+(function(){
+  'use strict';
+  /* ---------- textures, generated (no image files): grain, paper fibre, highlighter edge, stamp grit ---------- */
+  function svgURI(s){ return 'url("data:image/svg+xml;utf8,' + encodeURIComponent(s) + '")' }
+  function noise(freq, oct, alpha, seed, w, h, tone){
+    return svgURI('<svg xmlns="http://www.w3.org/2000/svg" width="' + w + '" height="' + h + '"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="' + freq + '" numOctaves="' + oct + '" seed="' + seed + '" stitchTiles="stitch"/>'
+      + '<feColorMatrix values="0 0 0 0 ' + tone + ' 0 0 0 0 ' + (tone * .8) + ' 0 0 0 0 ' + (tone * .6) + ' 0 0 0 ' + alpha + ' 0"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>');
+  }
+  var R = document.documentElement.style;
+  R.setProperty('--grain', noise(.85, 3, .22, 4, 320, 320, .35));
+  R.setProperty('--fiber', noise(.55, 4, .10, 9, 260, 260, .45) + ',' + noise(.015, 2, .05, 2, 600, 600, .5));
+  R.setProperty('--rough', svgURI('<svg xmlns="http://www.w3.org/2000/svg" width="220" height="90"><filter id="r"><feTurbulence type="fractalNoise" baseFrequency=".06 .4" numOctaves="2" seed="5"/><feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -2.4 1.9"/></filter><rect width="100%" height="100%" filter="url(#r)"/></svg>'));
+  R.setProperty('--grit', svgURI('<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300"><filter id="g"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="11"/><feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -3 2.3"/></filter><rect width="100%" height="100%" filter="url(#g)"/></svg>'));
+
+  var stage = document.getElementById('stage');
+  function add(html){ var d = document.createElement('div'); d.innerHTML = html.trim(); var e = d.firstChild; stage.appendChild(e); return e }
+  function at(x, y, r, z){ return 'left:' + x + 'px;top:' + y + 'px;transform:rotate(' + (r || 0) + 'deg);' + (z != null ? 'z-index:' + z + ';' : '') }
+
+  /* the sunflower, from the site's own vector */
+  var SF = '', SFD = '';
+  function sunflower(size, extra){ return '<svg width="' + size + '" height="' + size + '" viewBox="-60 -60 120 120" style="' + (extra || '') + '">' + SF + '</svg>' }
+
+  /* olive branch shadows: leaves along a gently curving stem (seeded, so every render matches) */
+  function leaves(x, y, scale, rot, alpha){
+    var s = 7, rnd = function(){ s = (s * 9301 + 49297) % 233280; return s / 233280 };
+    var g = '';
+    for (var b = 0; b < 3; b++) {
+      var bx = b * 120, by = b * 160, ang = -20 + b * 18;
+      g += '<path d="M' + bx + ' ' + by + ' q 260 ' + (60 + b * 30) + ' 620 ' + (220 - b * 40) + '" stroke="rgba(60,38,20,' + alpha + ')" stroke-width="9" fill="none"/>';
+      for (var i = 0; i < 14; i++) {
+        var t = i / 14, px = bx + 620 * t, py = by + (220 - b * 40) * t * t + 60 * t;
+        var side = i % 2 ? 1 : -1, len = 70 + rnd() * 50, a = ang + side * (35 + rnd() * 25) + t * 10;
+        g += '<ellipse cx="' + px.toFixed(1) + '" cy="' + py.toFixed(1) + '" rx="' + (len / 2).toFixed(1) + '" ry="' + (9 + rnd() * 5).toFixed(1) + '" transform="rotate(' + a.toFixed(1) + ' ' + px.toFixed(1) + ' ' + py.toFixed(1) + ') translate(' + (side * len / 2.2).toFixed(1) + ' 0)" fill="rgba(60,38,20,' + alpha + ')"/>';
+      }
+    }
+    return add('<svg class="leaves" width="1100" height="900" viewBox="-80 -80 1100 900" style="left:' + x + 'px;top:' + y + 'px;transform:rotate(' + rot + 'deg) scale(' + scale + ');transform-origin:0 0">' + g + '</svg>');
+  }
+
+  /* a yellow fountain pen in her style: ink outline, flat colour, one soft highlight */
+  function pen(x, y, rot, scale){
+    return add('<svg class="abs" width="640" height="80" viewBox="0 0 640 80" style="' + at(x, y, rot) + 'transform-origin:0 0;scale:' + (scale || 1) + ';z-index:3;filter:drop-shadow(2px 4px 2px rgba(70,40,15,.30)) drop-shadow(18px 24px 16px rgba(70,40,15,.22))">'
+      + '<defs><linearGradient id="pb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFEC8A"/><stop offset=".28" stop-color="#FFD400"/><stop offset=".75" stop-color="#F0BE00"/><stop offset="1" stop-color="#C99A00"/></linearGradient>'
+      + '<linearGradient id="pn" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6DE97"/><stop offset=".5" stop-color="#D9B256"/><stop offset="1" stop-color="#A9822F"/></linearGradient>'
+      + '<linearGradient id="pk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4A403B"/><stop offset=".4" stop-color="#1A1412"/><stop offset="1" stop-color="#0E0B0A"/></linearGradient></defs>'
+      + '<path d="M44 22 H408 V58 H44 A18 18 0 0 1 44 22 Z" fill="url(#pb)" stroke="#1A1412" stroke-width="3"/>'
+      + '<rect x="60" y="28" width="330" height="4" rx="2" fill="rgba(255,255,255,.75)"/>'
+      + '<rect x="406" y="20" width="16" height="40" rx="3" fill="url(#pn)" stroke="#1A1412" stroke-width="3"/>'
+      + '<path d="M422 25 L505 31 V49 L422 55 Z" fill="url(#pk)" stroke="#1A1412" stroke-width="3" stroke-linejoin="round"/>'
+      + '<path d="M505 30 L596 40 L505 50 Z" fill="url(#pn)" stroke="#1A1412" stroke-width="3" stroke-linejoin="round"/>'
+      + '<path d="M548 40 H594" stroke="#1A1412" stroke-width="2"/><circle cx="546" cy="40" r="3" fill="#1A1412"/>'
+      + '<path d="M96 34 H262 a6 6 0 0 1 0 12 H96 Z" fill="#F72585" stroke="#1A1412" stroke-width="3"/>'
+      + '</svg>');
+  }
+
+  /* a cup of Greek coffee from above, and a ring it left earlier */
+  function cup(x, y){
+    return add('<svg class="abs" width="300" height="300" viewBox="-150 -150 300 300" style="' + at(x, y, 0) + 'filter:drop-shadow(4px 6px 4px rgba(70,40,15,.25)) drop-shadow(22px 30px 26px rgba(70,40,15,.28))"><g filter="url(#rough)">'
+      + '<circle r="128" fill="#FBF4E8" stroke="#1A1412" stroke-width="3.5"/><circle r="100" fill="#F3E9D8" stroke="rgba(26,20,18,.25)" stroke-width="2"/>'
+      + '<path d="M118 -20 q48 0 48 20 q0 20 -48 20" fill="#FBF4E8" stroke="#1A1412" stroke-width="3.5" transform="translate(-6 0)"/>'
+      + '<circle r="74" fill="#FFF8EE" stroke="#1A1412" stroke-width="3.5"/><circle r="64" fill="#5A3A22"/><circle r="64" fill="url(#crema)"/>'
+      + '</g><defs><radialGradient id="crema"><stop offset=".55" stop-color="#5A3A22" stop-opacity="0"/><stop offset=".9" stop-color="#B07A48" stop-opacity=".85"/><stop offset="1" stop-color="#C79260"/></radialGradient></defs>'
+      + '<ellipse cx="-22" cy="-20" rx="18" ry="9" fill="rgba(255,255,255,.35)" transform="rotate(-30)"/></svg>');
+  }
+  function ring(x, y, r){
+    return add('<svg class="abs" width="260" height="260" viewBox="-130 -130 260 260" style="' + at(x, y, 0) + 'mix-blend-mode:multiply;opacity:.5"><g filter="url(#rough2)"><circle r="' + r + '" fill="none" stroke="#8A5A30" stroke-width="7" stroke-dasharray="380 30 160 20"/><circle r="' + (r - 6) + '" fill="none" stroke="#8A5A30" stroke-width="2" opacity=".5"/></g></svg>');
+  }
+  function arrow(x, y, w, h, d, extra){ return add('<svg class="ink" width="' + w + '" height="' + h + '" style="left:' + x + 'px;top:' + y + 'px;' + (extra || '') + '"><g filter="url(#rough)"><path d="' + d + '"/></g></svg>') }
+
+  /* ============ the three style frames ============ */
+  var F = {};
+
+  /* 1 · Sunday night. The usual order, and the line that says it's the order. */
+  F[1] = function(){
+    ring(1440, 640, 104);
+    var cards = [['STEP 1', 'Build an<br>audience', -4], ['STEP 2', 'Turn on<br>paid', 2.5], ['STEP 3', 'Make a<br>course', -1.5], ['STEP 4', 'Hope<br>someone buys', 3.5]];
+    cards.forEach(function(c, i){
+      add('<div class="paper idx" style="' + at(110 + i * 450, 300 + (i % 2) * 30, c[2], 2) + '"><span class="k">' + c[0] + '</span><span class="n">' + (i + 1) + '</span><div class="t">' + c[1] + '</div></div>');
+    });
+    arrow(482, 380, 90, 80, 'M8 50 C 30 22, 55 22, 78 40 M62 28 l18 12 l-20 9', 'z-index:3');
+    arrow(932, 410, 90, 80, 'M8 40 C 30 62, 55 62, 78 38 M60 32 l20 5 l-10 18', 'z-index:3');
+    arrow(1382, 380, 90, 80, 'M8 50 C 30 22, 55 22, 78 40 M62 28 l18 12 l-20 9', 'z-index:3');
+    add('<div class="sticky abs" style="' + at(1580, 22, 6, 4) + '">“I need more subscribers first.”</div>');
+    pen(150, 150, -6, .85);
+    cup(1540, 690).style.zIndex = 2;
+    add('<div class="strip" style="' + at(250, 720, -1.2, 5) + 'clip-path:polygon(0 6%,3% 0,9% 4%,15% 1%,22% 5%,30% 0,38% 3%,47% 0,55% 4%,63% 1%,71% 5%,80% 0,88% 3%,95% 0,100% 5%,99% 95%,94% 100%,86% 96%,78% 100%,70% 95%,61% 100%,52% 96%,44% 100%,35% 95%,27% 100%,18% 96%,9% 100%,2% 95%)"><small>THE EXIT PLAN</small><p>It’s <span class="hl">the order</span> you’ve been told</p><p>to do things in.</p></div>');
+    add('<div class="light night"></div>'); add('<div class="light lamp"></div>'); add('<div class="light vig"></div>');
+  };
+
+  /* 2 · Day. The three days, as three stations on the desk. */
+  F[2] = function(){
+    leaves(-200, -260, 1.25, 8, .16);
+    ring(1650, 830, 96);
+    var days = [['TUE', '17', 'Day 1'], ['WED', '18', 'Day 2'], ['THU', '19', 'Day 3']];
+    days.forEach(function(d, i){ add('<div class="tile" style="' + at(190 + i * 560, 90, [-5, 3, -2][i], 6) + '"><i>' + d[0] + '</i><b>' + d[1] + '</b><s>NOV · ' + d[2].toUpperCase() + '</s></div>') });
+    /* Day 1: the reader file */
+    add('<div class="paper" style="' + at(110, 250, -3, 2) + 'width:500px;height:470px;padding:30px 34px">'
+      + '<div style="position:absolute;left:30px;top:-34px;width:190px;height:44px;background:var(--paper);background-image:var(--fiber);border-radius:10px 10px 0 0;box-shadow:0 -2px 4px rgba(80,45,20,.10);font-weight:800;font-size:14px;letter-spacing:.16em;padding:13px 18px;color:var(--pink)">READER FILE</div>'
+      + '<p style="font-weight:800;font-size:14px;letter-spacing:.14em;color:#7A6A60">READER</p><p class="hand" style="font-size:38px;line-height:1.1;margin-top:4px">Mother of two, four years out of work.</p>'
+      + '<p style="font-weight:800;font-size:14px;letter-spacing:.14em;color:#7A6A60;margin-top:22px">STUCK ON</p><p class="hand" style="font-size:38px;line-height:1.1;margin-top:4px">Freezes every time she opens her CV.</p>'
+      + '<p style="font-weight:800;font-size:14px;letter-spacing:.14em;color:#7A6A60;margin-top:22px">SHE’D PAY FOR</p><p class="hand" style="font-size:42px;line-height:1.1;margin-top:4px"><span class="hl">A clear plan back to work.</span></p></div>');
+    /* Day 2: the offer, and its price tag on a string */
+    add('<div class="paper" style="' + at(700, 280, 2, 2) + 'width:520px;height:330px;padding:34px 36px"><p style="font-weight:800;font-size:14px;letter-spacing:.16em;color:var(--pink)">YOUR OFFER</p>'
+      + '<p style="font-family:var(--serif);font-size:44px;line-height:1.08;margin-top:14px">I help mothers after a career break get back to work in six weeks.</p></div>');
+    add('<svg class="ink" width="480" height="140" style="left:770px;top:470px;z-index:3"><g filter="url(#rough)"><path d="M30 26 C 140 60, 260 8, 420 34" style="stroke:#F72585;stroke-width:4"/></g></svg>');
+    add('<div class="hand abs" style="' + at(1010, 600, -4, 4) + 'font-size:34px;color:#F72585">say the result first ✓</div>');
+    add('<svg class="abs" width="300" height="200" viewBox="0 0 300 200" style="' + at(1000, 650, 12, 5) + 'filter:drop-shadow(3px 4px 3px rgba(70,40,15,.25)) drop-shadow(14px 20px 18px rgba(70,40,15,.25))"><g filter="url(#rough)">'
+      + '<path d="M60 20 h210 a12 12 0 0 1 12 12 v136 a12 12 0 0 1 -12 12 h-210 l-50 -80 z" fill="#D9A877" stroke="#1A1412" stroke-width="3.5"/><circle cx="52" cy="100" r="10" fill="#EADBC3" stroke="#1A1412" stroke-width="3"/>'
+      + '<path d="M42 100 C -20 60, -40 150, -90 120" stroke="#1A1412" stroke-width="2.5" fill="none"/></g>'
+      + '<text x="170" y="128" text-anchor="middle" font-family="Instrument Serif" font-size="92" fill="#1A1412">$149</text></svg>');
+    /* Day 3: the email, sealed with the sunflower */
+    add('<div class="paper" style="' + at(1300, 300, -2.5, 2) + 'width:520px;height:340px;background-color:#FFFDF8;padding:30px 34px">'
+      + '<p style="font-weight:800;font-size:13px;letter-spacing:.14em;color:#7A6A60">SUBJECT</p><p style="font-family:var(--serif);font-size:46px;line-height:1.05;margin-top:6px">Back to work, by spring.</p>'
+      + '<p style="margin-top:16px;font-size:20px;line-height:1.5;color:var(--ink2)">Back to Work in Six Weeks opens Monday. So I built the thing I needed: a six-week course, $149.</p></div>');
+    add('<svg class="abs" width="560" height="300" viewBox="0 0 560 300" style="' + at(1290, 560, 3, 3) + 'filter:drop-shadow(3px 4px 3px rgba(70,40,15,.25)) drop-shadow(18px 26px 22px rgba(70,40,15,.28))"><g filter="url(#rough)">'
+      + '<rect x="10" y="10" width="540" height="280" rx="8" fill="#F1E2CB" stroke="#1A1412" stroke-width="3.5"/><path d="M10 18 L280 170 L550 18" fill="#E8D5B8" stroke="#1A1412" stroke-width="3.5"/></g>'
+      + '<circle cx="280" cy="168" r="54" fill="#F72585"/><circle cx="280" cy="168" r="54" fill="url(#wax)"/>'
+      + '<defs><radialGradient id="wax" cx=".35" cy=".3"><stop offset="0" stop-color="#fff" stop-opacity=".45"/><stop offset=".45" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#7a0a3c" stop-opacity=".45"/></radialGradient></defs>'
+      + '<path d="M280 108 c14 -4 22 6 34 4 c10 8 6 20 18 28 c2 14 -10 20 -6 34 c-8 10 -20 6 -28 18 c-14 2 -20 -10 -34 -6 c-10 -8 -6 -20 -18 -28 c-2 -14 10 -20 6 -34 c8 -10 20 -6 28 -18 z" fill="#E01A75" opacity=".55"/>'
+      + '<g transform="translate(279 167) scale(.5)" fill="#FFB3D6" opacity=".9"><path d="' + SFD + '"/></g><g transform="translate(281 169) scale(.5)" fill="#A50A52" opacity=".85"><path d="' + SFD + '"/></g><g transform="translate(280 168) scale(.5)" fill="#F2338E"><path d="' + SFD + '"/></g>'
+      + '<text x="40" y="270" font-family="Manrope" font-weight="800" font-size="15" letter-spacing="2.5" fill="#7A6A60">TO: HER TEN READERS</text></svg>');
+    add('<div class="stamp" style="' + at(250, 650, -9, 7) + 'color:#F72585;font-size:22px">Example</div>');
+    pen(560, 880, -14, .8);
+    add('<div class="strip" style="' + at(330, 905, -0.8, 8) + 'padding:22px 46px 26px;clip-path:polygon(0 8%,4% 0,11% 5%,19% 1%,27% 6%,35% 0,44% 4%,53% 0,61% 5%,70% 1%,78% 6%,87% 0,94% 4%,100% 0,99% 92%,93% 100%,84% 95%,76% 100%,67% 94%,58% 100%,49% 95%,40% 100%,31% 94%,22% 100%,13% 95%,5% 100%)"><p style="font-size:60px">By Thursday: your offer, your price, <span class="hl">your first ask.</span></p></div>');
+    add('<div class="light sun"></div>'); add('<div class="light vig"></div>');
+  };
+
+  /* 3 · Late afternoon. The ticket. */
+  F[3] = function(){
+    leaves(900, -300, 1.4, 22, .17);
+    leaves(-380, 520, 1.0, -18, .12);
+    ring(250, 760, 110);
+    var T = add('<div class="abs" style="' + at(330, 210, -2.5, 3) + 'width:1080px;height:470px;filter:drop-shadow(2px 3px 2px rgba(70,40,15,.22)) drop-shadow(20px 30px 30px rgba(70,40,15,.30)) drop-shadow(50px 70px 70px rgba(70,40,15,.20))">'
+      + '<div style="position:absolute;inset:0;background-color:#FFF8EE;background-image:var(--fiber);border-radius:26px;-webkit-mask:radial-gradient(circle 34px at 790px 0,#0000 98%,#000) top/100% 51% no-repeat,radial-gradient(circle 34px at 790px 100%,#0000 98%,#000) bottom/100% 51% no-repeat;mask:radial-gradient(circle 34px at 790px 0,#0000 98%,#000) top/100% 51% no-repeat,radial-gradient(circle 34px at 790px 100%,#0000 98%,#000) bottom/100% 51% no-repeat"></div>'
+      + '<div style="position:absolute;left:790px;top:46px;bottom:46px;border-left:4px dashed rgba(26,20,18,.28)"></div>'
+      + '<div style="position:absolute;left:64px;top:56px;right:330px">'
+      + '<p style="font-weight:800;font-size:19px;letter-spacing:.2em;color:var(--pink)">THE EXIT PLAN · FREE 3-DAY LIVE WORKSHOP</p>'
+      + '<p style="position:relative;z-index:0;font-family:var(--serif);font-size:84px;line-height:.98;margin-top:18px;letter-spacing:-.01em;color:#1A1412;text-shadow:0 1px 0 rgba(255,255,255,.8),0 -1px 0 rgba(0,0,0,.12)">How to build the income that lets you leave your job <span class="hl">in 2027</span></p>'
+      + '<p style="margin-top:24px;font-weight:800;font-size:26px;color:var(--ink)">Tue Nov 17 to Thu Nov 19</p><p style="margin-top:4px;font-weight:700;font-size:23px;color:var(--ink2)">12:00 pm New York · 7:00 pm Greece · on Zoom</p></div>'
+      + '<div style="position:absolute;left:830px;top:60px;right:40px;text-align:center"><p style="font-weight:800;font-size:15px;letter-spacing:.2em;color:#7A6A60">ADMIT ONE</p>'
+      + '<p style="font-family:var(--serif);font-size:58px;line-height:1;margin-top:16px">Your seat</p><p style="font-family:var(--serif);font-style:italic;font-size:42px;color:var(--pink);margin-top:6px">with Ana</p>'
+      + '<div style="margin:30px auto 0;width:140px;height:140px">' + sunflower(140, 'filter:drop-shadow(2px 3px 0 rgba(26,20,18,.25))') + '</div></div></div>');
+    add('<div class="stamp" style="' + at(255, 170, -12, 6) + 'color:#F72585;font-size:46px;padding:14px 22px">Free</div>');
+    var tiles = [['TUE', '17'], ['WED', '18'], ['THU', '19']];
+    tiles.forEach(function(d, i){ add('<div class="tile" style="' + at(1520 + i * 40, 120 + i * 150, [-6, 4, -3][i], 4 + i) + '"><i>' + d[0] + '</i><b>' + d[1] + '</b><s>NOV</s></div>') });
+    pen(380, 760, 6, .9);
+    add('<div class="strip" style="' + at(560, 815, -1, 8) + 'padding:22px 46px 26px;clip-path:polygon(0 8%,4% 0,11% 5%,19% 1%,27% 6%,35% 0,44% 4%,53% 0,61% 5%,70% 1%,78% 6%,87% 0,94% 4%,100% 0,99% 92%,93% 100%,84% 95%,76% 100%,67% 94%,58% 100%,49% 95%,40% 100%,31% 94%,22% 100%,13% 95%,5% 100%)"><p style="font-size:58px">Put your name and email in. <span class="hl">See you on the 17th.</span></p></div>');
+    arrow(1560, 860, 260, 160, 'M10 90 C 80 120, 170 110, 230 50 M200 44 l32 4 l-6 32', 'z-index:9;stroke-width:5');
+    add('<div class="light sun" style="background:radial-gradient(80% 70% at 85% 0%,rgba(255,214,150,.6),transparent 70%)"></div>'); add('<div class="light vig"></div>');
+  };
+
+  var f = +(new URLSearchParams(location.search).get('f') || 1);
+  fetch('../../exit-number/').then(function(r){ return r.text() }).then(function(t){
+    var m = t.match(/<symbol id="sf" viewBox="-60 -60 120 120">([\s\S]*?)<\/symbol>/); SF = m ? m[1] : '';
+    var d = SF.match(/<path d="([^"]+)"/); SFD = d ? d[1] : '';
+  }).catch(function(){}).then(function(){ (F[f] || F[1])(); document.fonts.ready.then(function(){ document.body.setAttribute('data-ready', '1') }) });
+})();
+</script>
+</body>
+</html>
