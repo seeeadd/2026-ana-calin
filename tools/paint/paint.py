@@ -150,6 +150,9 @@ if __name__ == '__main__' and sys.argv[1:2] != ['tile']:
         paint(art, man[art])
 
 
+RELIEF = 0.011   # how much the tooth shows on the page background (Sean: calmer, clearer)
+
+
 def tile(n=512, seed=4):
     """the page's own paper: a seamless tile of warm cotton paper, its tooth lit from the top left"""
     from scipy.ndimage import gaussian_filter
@@ -162,9 +165,9 @@ def tile(n=512, seed=4):
         for t in np.linspace(0, L, int(L * 2)):
             fib[int(y + np.sin(a) * t) % n, int(x + np.cos(a) * t) % n] += 1
     H += 0.5 * gaussian_filter(fib, 0.6, mode='wrap')
-    gy, gx = np.gradient(gaussian_filter(H, 0.8, mode='wrap'))
+    gy, gx = np.gradient(gaussian_filter(H, 1.6, mode='wrap'))
     light = -(gx * 0.7 + gy * 0.7)                       # lit from the top left
-    tone = 1 + 0.035 * light / (light.std() + 1e-6) - 0.012 * wn(40)
+    tone = 1 + RELIEF * light / (light.std() + 1e-6) - 0.006 * wn(40)
     base = np.array([244, 236, 221], np.float32) / 255     # warm cotton, never white
     img = np.clip(base[None, None, :] * tone[..., None], 0, 1)
     out = os.path.join(ROOT, 'img', 'vip', 'paint', 'paper.webp')
