@@ -101,7 +101,8 @@ body.is-closed .tot2{display:none}
 .oh{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
 .oh .op{font-weight:800;font-size:22px;letter-spacing:-.02em}
 .hv .order .ticks{margin:10px 0 12px;padding:10px 0 0;border-top:1.5px dashed rgba(26,20,18,.18);gap:7px}
-.hv .order .ticks li{font-size:15px;white-space:nowrap}
+.hv .order .ticks li{font-size:15px;line-height:1.35}
+.tx p + p{margin-top:12px}
 .hv .under{margin-top:0;text-align:center;font-size:16.5px;line-height:1.5;color:var(--ink2);max-width:620px}
 .dl .decline{white-space:normal;text-wrap:balance;max-width:100%;line-height:1.4}
 .hv>.order{align-self:start}
@@ -110,6 +111,7 @@ body.is-closed .tot2{display:none}
 .vq span{display:block;margin-top:6px;font-family:var(--sans);font-style:normal;font-weight:700;font-size:13.5px;color:var(--ink3)}
 .hiw{max-width:620px;margin:16px auto 0;text-align:left;background:#fff;border:1.6px solid var(--ink);border-radius:18px;padding:16px 18px 14px;box-shadow:5px 6px 0 var(--pink),5px 6px 0 1.6px var(--ink)}
 .hiw-k{font-weight:800;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--pink)}
+.hiw-h{margin:0;font-family:var(--serif);font-weight:400;font-size:24px;line-height:1.15;letter-spacing:-.005em;color:var(--ink)}
 .hiw ol{list-style:none;counter-reset:h;display:grid;gap:9px;margin:10px 0 0;padding:0}
 .hiw li{counter-increment:h;position:relative;padding-left:38px;font-size:15.5px;line-height:1.45;color:var(--ink2)}
 .hiw li b{color:var(--ink)}
@@ -708,11 +710,11 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
 <!-- 0. progress: step 2 of 3 -->
 <header class="fb">
   <div class="fb-bar">
-    <div class="fb-id"><img src="../img/mark.png" alt="" width="44" height="44"><span><small>THE EXIT PLAN · ANA CALIN</small><b>Free 3-day live workshop</b></span></div>
+    <div class="fb-id"><img src="../img/mark.png" alt="" width="44" height="44"><span><small>ANA CALIN</small><b>The Exit Plan</b></span></div>
     <div class="steps" aria-label="Step 2 of 3">
       <span class="st done"><i><svg width="12" height="12" style="color:#fff"><use href="#ck"/></svg></i><span class="t">Seat saved</span></span>
       <span class="ln on"></span>
-      <span class="st now"><i>2</i><span class="t">VIP upgrade</span></span>
+      <span class="st now"><i>2</i><span class="t">Optional VIP upgrade</span></span>
       <span class="ln"></span>
       <span class="st"><i>3</i><span class="t">Join details</span></span>
     </div>
@@ -726,15 +728,14 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
   <svg class="bgf b" aria-hidden="true"><use href="#sfo"/></svg>
   <div class="wrap hwrap">
     <div class="toprow">
-      <span class="saved"><i><svg width="14" height="14" style="color:#fff"><use href="#ck"/></svg></i><span><span id="hi">Your</span> seat is saved. <b>Day 1 is Tue, Nov 17.</b></span></span>
+      <span class="saved"><i><svg width="14" height="14" style="color:#fff"><use href="#ck"/></svg></i><span><span id="hi">Your</span> free seat is saved.</span></span>
       <span class="eyebrow" id="eyebrow">One more thing before you go</span>
     </div>
     <!-- right after signing up: the confirmation often lands in Spam or Promotions -->
     <p class="inbx" role="note"><span class="ib-i" aria-hidden="true">!</span><span><b>Important: check your Spam and Promotions folders.</b> Your confirmation is on its way from <b>anacalin@howwegrowtoday.com</b>. If it’s there, tap “Not spam” or move it to your inbox, or you’ll miss your Zoom link and reminders.</span></p>
     <!-- headline A/B: ?h=A or ?h=B previews one -->
-    <h1 id="h1">Before you send it to anyone, <em>send it to me.</em></h1>
-    <!-- [bonus name] in the guide: the Offer Clarity Sprint, as on the rest of this page -->
-    <p class="hsub">By Thursday night, you’ll have an offer, a price and an ask in a doc. <span class="hs-mid">That’s where most people stop, waiting to feel ready. I charged $97 for three years doing exactly that.</span><span class="hs-b" hidden>I charged $97 for three years while I waited.</span></p>
+    <h1 id="h1">Keep the workshop for life, <em>and work through the hard parts with me.</em></h1>
+    <p class="hsub">You’ve saved your free seat. For $67, add lifetime workshop recordings, a live group review, private WhatsApp access to me during the workshop, and my Offer Clarity Sprint course.</p>
     <div class="hv">
       <div class="hvv">
         <div class="iph" id="vsl">
@@ -749,31 +750,31 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
             </button>
           </div>
         </div>
-        <p class="under"><b>Watch this first.</b> It's a minute, and it covers who should skip VIP too.</p>
-        <!-- how VIP works, in Ana's words (from her video script) -->
+        <p class="under"><b>A minute with me before you decide.</b> Here’s what VIP adds to your free seat.</p>
+        <!-- what VIP adds, in three lines -->
         <div class="hiw">
-          <p class="hiw-k">How it works</p>
+          <h2 class="hiw-h">Use what you learn to work toward your first sales</h2>
           <ol>
-            <li><b>Your ready check: Fri Nov 20, 12:00 pm New York, 90 minutes live.</b> You send me what you wrote, and I tell you straight: it’s ready, or here’s the line to change.</li>
-            <li><b>Tue to Fri, a private WhatsApp group with me.</b></li>
-            <li><b>You keep all three sessions</b> and my Offer Clarity Sprint.</li>
+            <li><b>Keep the teaching beside you.</b> Rewatch every workshop session whenever you need it, with lifetime access to the recordings.</li>
+            <li><b>Ask me while you’re working on it.</b> Bring your questions to the private VIP WhatsApp group during the workshop.</li>
+            <li><b>See what I’d change before someone buys.</b> I’ll review selected offers, prices and sales emails live in a dedicated 90-minute group session.</li>
           </ol>
-          <p class="hiw-lh">Life happens. A meeting runs late, and you miss Day 2. It’s still yours. Friday also gives you a date to finish by.</p>
+          <p class="hiw-lh">You also keep my Offer Clarity Sprint course. Use the part you need now, and come back to it when you’re working on your next idea.</p>
         </div>
       </div>
       <aside class="order" id="order">
         <div class="oh"><p class="ok">VIP · one payment</p><span class="op">$67</span></div>
-        <h2>Add Friday, <em>Nov 20,</em> to your week.</h2>
+        <h2>Get the full <em>VIP package.</em></h2>
         <ul class="ticks">
-          <li><i><svg width="11" height="11"><use href="#ck"/></svg></i><span><b>Your ready check,</b> live with me, Fri Nov 20</span></li>
-          <li><i><svg width="11" height="11"><use href="#ck"/></svg></i><span><b>A private WhatsApp group</b> with me, Nov 17 to 20</span></li>
-          <li><i><svg width="11" height="11"><use href="#ck"/></svg></i><span><b>The Offer Clarity Sprint,</b> yours to keep</span></li>
-          <li><i><svg width="11" height="11"><use href="#ck"/></svg></i><span><b>All three sessions,</b> to keep</span></li>
+          <li><i><svg width="11" height="11"><use href="#ck"/></svg></i><span><b>Lifetime recordings,</b> all three workshop sessions</span></li>
+          <li><i><svg width="11" height="11"><use href="#ck"/></svg></i><span><b>Live group review</b> with me, 90 minutes, plus the recording</span></li>
+          <li><i><svg width="11" height="11"><use href="#ck"/></svg></i><span><b>Private WhatsApp access</b> to me, Nov 17 to 20</span></li>
+          <li><i><svg width="11" height="11"><use href="#ck"/></svg></i><span><b>The Offer Clarity Sprint</b> course, yours to keep</span></li>
         </ul>
         <div class="tot2"><span>On sale until <span class="nw">Tue, Nov 17,</span><br><span class="nw">11:59 pm New York</span></span><span>Total today <b>$67.00</b></span></div>
         <p class="closed">VIP is closed. <em>See you live.</em></p>
-        <button class="btn add" type="button" id="addBtn">Yes, check mine on Friday ($67)<svg><use href="#arr"/></svg></button>
-        <p class="meta2"><span><svg width="13" height="15" viewBox="0 0 13 15" fill="none" stroke="#7A6A60" stroke-width="1.7"><rect x="1.5" y="6.5" width="10" height="7" rx="2"/><path d="M3.8 6.5V4.6a2.7 2.7 0 0 1 5.4 0v1.9"/></svg>Secure checkout with Stripe. All sales are final.</span></p>
+        <button class="btn add" type="button" id="addBtn">I want VIP, Ana ($67)<svg><use href="#arr"/></svg></button>
+        <p class="meta2"><span>Live review covers selected submissions.</span><span><svg width="13" height="15" viewBox="0 0 13 15" fill="none" stroke="#7A6A60" stroke-width="1.7"><rect x="1.5" y="6.5" width="10" height="7" rx="2"/><path d="M3.8 6.5V4.6a2.7 2.7 0 0 1 5.4 0v1.9"/></svg>Secure checkout with Stripe. All sales are final.</span></p>
         <p class="dl"><button class="decline" type="button">Coming to see what it’s like? Keep your free seat. Either way, see you Tuesday →</button></p>
       </aside>
     </div>
@@ -781,21 +782,21 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
 </section>
 
 <main>
-<!-- 2. your week: the free days get the ask written, Friday gets it sent -->
+<!-- 2. your week: the three free days, the VIP review, then putting it in front of buyers -->
 <section class="sand week">
   <div class="wrap">
     <div class="hd2" data-r>
-      <div><span class="eyebrow">Your week, Nov 17 to 20</span><h2>Three days to write it. <em>Friday to check it.</em></h2></div>
-      <p>The three free days, at 12:00 pm New York for about 90 minutes each, get your offer, your price and your ask written. VIP is for Thursday night, and the morning after: the part where you send it.</p>
+      <div><span class="eyebrow">Your week, Nov 17 to 20</span><h2>Work toward the sale <em>that makes this feel possible.</em></h2></div>
+      <p>When someone pays for your help, you have something real to build on. The workshop helps you work toward that. VIP gives you the lessons to revisit and access to me while you put them to use.</p>
     </div>
     <div class="tl" data-r aria-label="Your week">
       <span class="brk f" aria-hidden="true"><span>Free, for everyone</span></span>
       <span class="brk v" aria-hidden="true"><span>VIP</span></span>
-      <div class="stop"><div class="dt"><b>17</b><small>Tue</small></div><span class="lb">Day 1</span><p>Choose your first offer and who it’s for.</p></div>
-      <div class="stop"><div class="dt"><b>18</b><small>Wed</small></div><span class="lb">Day 2</span><p>Put a price on it you can stand behind.</p></div>
-      <div class="stop"><div class="dt"><b>19</b><small>Thu</small></div><span class="lb">Day 3</span><p>Write the email that could bring your first buyers.</p><span class="warn">Most people stop here and wait to feel ready.</span></div>
-      <div class="stop vip"><div class="dt vip"><span class="tg">VIP</span><b>20</b><small>Fri</small></div><span class="lb">Your ready check</span><p>I tell you if it's ready, live, for 90 minutes.</p></div>
-      <div class="stop next"><div class="dt"><b>→</b><small>Next week</small></div><span class="lb">You</span><p>Send it to the first people who could buy.</p></div>
+      <div class="stop"><div class="dt"><b>17</b><small>Tue</small></div><span class="lb">Day 1</span><p>Find what you could sell and who could buy.</p></div>
+      <div class="stop"><div class="dt"><b>18</b><small>Wed</small></div><span class="lb">Day 2</span><p>Give people a reason to pay your price.</p></div>
+      <div class="stop"><div class="dt"><b>19</b><small>Thu</small></div><span class="lb">Day 3</span><p>Get ready to invite people to buy.</p><span class="warn">Bring your work to the VIP review.</span></div>
+      <div class="stop vip"><div class="dt vip"><span class="tg">VIP</span><b>20</b><small>Fri</small></div><span class="lb">Live group review</span><p>See what I’d improve in selected submissions.</p></div>
+      <div class="stop next"><div class="dt"><b>→</b></div><span class="lb">Keep going</span><p>Put it in front of potential buyers and learn from the response.</p></div>
     </div>
 
     <div class="cmp-l" data-r>
@@ -804,16 +805,16 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
         <thead><tr><th scope="col"><span class="sr">What you get</span></th><th class="c" scope="col">free seat</th><th class="c v" scope="col">VIP ($67)</th></tr></thead>
         <tbody>
           <tr><td>All three sessions, live <small>Nov 17 to 19</small></td><td class="c"><span class="y" aria-label="yes">✓</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
-          <tr><td>The Day 3 draw: five 1:1 sessions with me <small>live attendees</small></td><td class="c"><span class="y" aria-label="yes">✓</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
-          <tr><td>Your offer, price and ask, written</td><td class="c"><span class="y" aria-label="yes">✓</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
+          <tr><td>The Day 3 prize draw <small>live attendees</small></td><td class="c"><span class="y" aria-label="yes">✓</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
+          <tr><td>Live exercises to prepare what you’ll sell</td><td class="c"><span class="y" aria-label="yes">✓</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
           <tr><td>Reminders on WhatsApp <small>voice notes, short videos</small></td><td class="c"><span class="y" aria-label="yes">✓</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
-          <tr><td>Your ready check, live with me <small>90 minutes, Fri Nov 20</small></td><td class="c"><span class="n">no</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
-          <tr><td>The private VIP WhatsApp group with me <small>Nov 17 to 20</small></td><td class="c"><span class="n">no</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
+          <tr><td>Dedicated group review with me <small>Selected submissions · 90 minutes · Nov 20</small></td><td class="c"><span class="n">no</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
+          <tr><td>Private WhatsApp group with me <small>Nov 17 to 20</small></td><td class="c"><span class="n">no</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
           <tr><td>The Offer Clarity Sprint</td><td class="c"><span class="n">no</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
-          <tr><td>All three sessions, to keep <small>full length</small></td><td class="c"><span class="note">48-hour replay</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
+          <tr><td>Lifetime workshop recordings <small>Plus the recording of the VIP review</small></td><td class="c"><span class="n">no</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
         </tbody>
       </table>
-      <p class="cmp-note">Free or VIP, join my WhatsApp group on the next page, then answer seven quick questions to unlock your exit number calculator.</p>
+      <p class="cmp-note">Free or VIP, join my WhatsApp community on the next page for workshop reminders. You’ll also find the next steps for getting your exit number there.</p>
     </div>
   </div>
 </section>
@@ -822,20 +823,20 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
 <section class="inc">
   <div class="wrap">
     <div class="hd" data-r>
-      <div><span class="eyebrow">What's in VIP</span><h2>Four things, <em>in this order.</em></h2></div>
-      <p>All built around the offer you'll have written by Thursday night.</p>
+      <div><span class="eyebrow">What's in VIP</span><h2>Help while you do it. <em>The lessons to come back to.</em></h2></div>
+      <p>Keep learning when you close Zoom, and bring the questions that only turn up when you try this for yourself.</p>
     </div>
     <div class="rows">
-      <!-- 01: the live Q&A -->
+      <!-- 01: the live group review -->
       <div class="row" data-r>
         <div class="art" aria-hidden="true"><div class="stage">
           <svg class="fl" style="left:430px;top:-80px;width:240px;height:240px"><use href="#sfo"/></svg>
           <div class="call">
-            <div class="bar"><i></i>VIP Q&amp;A · live<small>FRI NOV 20</small></div>
+            <div class="bar"><i></i>VIP review · live<small>FRI NOV 20</small></div>
             <div class="gridc">
               <div class="host"><img src="../img/ana-hat.webp" alt="" width="520" height="520" loading="lazy"><em>HOST</em><b>Ana</b></div>
               <div class="doc">
-                <small>YOUR ASK, SHARED</small>
+                <small>A SALES EMAIL, SHARED</small>
                 <div class="ln2"><span class="old">I made a thing, if anyone wants it.</span></div>
                 <div class="ln2"><span class="new">It opens Monday. Here is who it's for.</span></div>
                 <div class="rest" style="width:92%"></div><div class="rest" style="width:70%"></div><div class="rest" style="width:82%"></div>
@@ -847,8 +848,8 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
         </div></div>
         <div class="tx">
           <span class="num">01</span>
-          <h3>Your ready check, <em>live with me.</em></h3>
-          <p class="meta"><b>Fri, Nov 20</b> · 12:00 pm New York · 90 minutes · VIPs only</p>
+          <h3>Let’s look at it <em>the way a buyer would.</em></h3>
+          <p class="meta"><b>Fri, Nov 20</b> · 90 minutes · VIPs only</p>
           <div class="days4" aria-label="Tue Nov 17 to Thu Nov 19 free, Fri Nov 20 for VIPs">
             <div class="dt"><b>17</b><small>Tue</small><span class="ck"><svg style="color:#fff" width="11" height="11"><use href="#ck"/></svg></span></div>
             <div class="dt"><b>18</b><small>Wed</small><span class="ck"><svg style="color:#fff" width="11" height="11"><use href="#ck"/></svg></span></div>
@@ -856,14 +857,14 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
             <span class="plus" aria-hidden="true">+</span>
             <div class="dt vip"><span class="tg">VIP</span><b>20</b><small>Fri</small></div>
           </div>
-          <p>Send me your offer, your price or your ask before the call. I go through as many as fit and tell you straight: ready, or here's the line to change. You'll hear every fix, on yours and everyone else's, which is often where the best fix for yours turns up.</p>
+          <p>You know your subject. A potential buyer still needs to understand why it matters to them, why it’s worth the price, and what they’re actually buying. I’ll work through selected offers, prices and sales emails on screen, showing you what I’d keep, what I’d change and why.</p>
           <span class="lab">What to bring</span>
           <ol class="how">
-            <li><span><b>Your offer,</b> in one sentence, from Day 2.</span></li>
-            <li><span><b>Your price,</b> and how you plan to say it.</span></li>
-            <li><span><b>Your first ask,</b> from Day 3.</span></li>
+            <li><span><b>What you want to sell,</b> even if it still needs work.</span></li>
+            <li><span><b>The price you’re considering,</b> and what makes you hesitate.</span></li>
+            <li><span><b>Your sales email,</b> or the question you keep coming back to.</span></li>
           </ol>
-          <p class="soft">Can't make it live? Send yours ahead and watch the recording.</p>
+          <p class="soft">I’ll cover as many submissions as fit into 90 minutes; a personal review isn’t guaranteed. You can submit ahead if you can’t attend, and everyone gets the recording.</p>
         </div>
       </div>
 
@@ -883,10 +884,10 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
         </div></div>
         <div class="tx">
           <span class="num">02</span>
-          <h3>Me, in your pocket <em>for four days.</em></h3>
+          <h3>Ask me while the question <em>is in front of you.</em></h3>
           <p class="meta"><b>Nov 17 to Nov 20</b> · Ana in the chat</p>
-          <p>A private WhatsApp group, just VIPs. Stuck on one sentence at 11pm? Post it. I'm in there for 30 minutes after each session and in one morning slot, so your 11pm question gets my breakfast answer. (I'm in Greece.) You get me, not a help desk.</p>
-          <p>Four days of "is this OK?" answered before you talk yourself out of it.</p>
+          <p>Sometimes the lesson makes perfect sense. Then you open your own document and think, “Yes, but what about mine?” Put that question in our private VIP WhatsApp group, along with the bit you’re working on.</p>
+          <p>I’ll be there for 30 minutes after each workshop session, plus one morning slot. The free community has your reminders. This separate group is where we talk about the work.</p>
           <p class="soft">Group members can see each other's phone numbers.</p>
         </div>
       </div>
@@ -910,14 +911,14 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
           <span class="num">03</span>
           <h3>The Offer <em>Clarity Sprint.</em></h3>
           <p class="meta"><b>Bonus</b> · yours to keep</p>
-          <p>For the part most people get stuck on: saying what they sell in one plain sentence. One offer. One sentence. One price. Not five ideas and a mood board. Work through it after Day 2, and we spend Friday on your ask.</p>
+          <p>You might have six ideas and no idea which to choose. Or you know what you want to sell, but explaining why someone should buy it takes half a page. My Offer Clarity Sprint course helps you work through choosing an offer, checking demand, making its value clear and deciding on a price.</p>
           <span class="lab">When to use it</span>
           <ol class="how">
-            <li><span><b>After Day 2,</b> while your offer is fresh.</span></li>
-            <li><span><b>Before Friday,</b> so you bring a clear version.</span></li>
-            <li><span><b>Next time</b> you write a new offer.</span></li>
+            <li><span><b>During the workshop,</b> use the lesson you need.</span></li>
+            <li><span><b>Before the review,</b> work through the part you’re stuck on.</span></li>
+            <li><span><b>When you have another idea,</b> the course is still yours.</span></li>
           </ol>
-          <p class="soft">Already own the Sprint? Bring your version to Friday.</p>
+          <p class="soft">You don’t have to finish another course before the workshop. Already own the Sprint? Bring the work you’ve started.</p>
         </div>
       </div>
 
@@ -926,24 +927,24 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
         <div class="art" aria-hidden="true"><div class="stage">
           <svg class="fl" style="left:440px;top:330px;width:230px;height:230px"><use href="#sfo"/></svg>
           <div class="player">
-            <div class="scr2"><img src="../img/ana-paris.webp" alt="" width="1000" height="671" loading="lazy"><span class="pp"><svg width="20" height="20" viewBox="0 0 26 26"><path d="M8.6 5.6v14.8c0 .9 1 1.4 1.7 1l11.6-7.4c.7-.4.7-1.4 0-1.9L10.3 4.6c-.7-.5-1.7 0-1.7 1z" fill="#fff"/></svg></span><span class="cap3"><small>RECORDING · DAY 1</small>Choose your first offer and who it’s for.</span><span class="prog"><i></i></span></div>
+            <div class="scr2"><img src="../img/ana-paris.webp" alt="" width="1000" height="671" loading="lazy"><span class="pp"><svg width="20" height="20" viewBox="0 0 26 26"><path d="M8.6 5.6v14.8c0 .9 1 1.4 1.7 1l11.6-7.4c.7-.4.7-1.4 0-1.9L10.3 4.6c-.7-.5-1.7 0-1.7 1z" fill="#fff"/></svg></span><span class="cap3"><small>RECORDING · DAY 1</small>Find what you could sell and who could buy.</span><span class="prog"><i></i></span></div>
             <ol>
-              <li class="on"><span class="dp">DAY 1</span>Choose your first offer and who it’s for.<span class="sv">SAVED</span></li>
-              <li><span class="dp">DAY 2</span>Put a price on it you can stand behind.<span class="sv">SAVED</span></li>
-              <li><span class="dp">DAY 3</span>Write the email that could bring your first buyers.<span class="sv">SAVED</span></li>
+              <li class="on"><span class="dp">DAY 1</span>Find what you could sell and who could buy.<span class="sv">SAVED</span></li>
+              <li><span class="dp">DAY 2</span>Give people a reason to pay your price.<span class="sv">SAVED</span></li>
+              <li><span class="dp">DAY 3</span>Get ready to invite people to buy.<span class="sv">SAVED</span></li>
             </ol>
           </div>
         </div></div>
         <div class="tx">
           <span class="num">04</span>
-          <h3>All three sessions, <em>to keep.</em></h3>
-          <p class="meta"><b>Nov 17, 18 and 19</b> · full length</p>
-          <p>Free seats get each replay for 48 hours. You keep all three, full length: for the night you're about to hit send and need Day 3 again, and for your next offer, and the one after.</p>
+          <h3>The workshop is yours <em>to keep for life.</em></h3>
+          <p class="meta"><b>Lifetime access</b> · all three sessions in full</p>
+          <p>A meeting runs late. You miss a session. Or you only realise which question you should have asked when you try it yourself. With VIP, you can come back to every workshop recording whenever you need it. Pause it beside your own work and take the time to use it.</p>
           <span class="lab">When you'll want them</span>
           <ol class="how">
-            <li><span><b>Before Friday,</b> to rewatch the part you're stuck on.</span></li>
-            <li><span><b>When you price</b> your next offer, Day 2 is there.</span></li>
-            <li><span><b>Before you send,</b> Day 3 is there.</span></li>
+            <li><span><b>If you miss a session,</b> catch up in your own time.</span></li>
+            <li><span><b>When you put it into practice,</b> revisit the explanation you need.</span></li>
+            <li><span><b>After the VIP review,</b> keep its recording too.</span></li>
           </ol>
         </div>
       </div>
@@ -954,55 +955,53 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
 <!-- 4. honest fit check: who should get VIP, and who should keep the free seat -->
 <section class="sand fit">
   <div class="wrap">
-    <div data-r><span class="eyebrow">Honest fit check</span><h2>VIP is worth it for some people. <em>Here's how to tell.</em></h2></div>
+    <div data-r><span class="eyebrow">Honest fit check</span><h2>Would you like me <em>a little closer while you do this?</em></h2></div>
     <div class="fitg" data-r>
       <div class="fitc yes">
         <h3>Get VIP <em>if</em></h3>
         <ul>
-          <li><i><svg width="11" height="11"><use href="#ck"/></svg></i><span>You'll have an offer or an ask written by Thursday, Nov 19.</span></li>
-          <li><i><svg width="11" height="11"><use href="#ck"/></svg></i><span>You've been waiting to feel ready to sell.</span></li>
-          <li><i><svg width="11" height="11"><use href="#ck"/></svg></i><span>You can be there Friday, Nov 20, or you'll send yours in ahead.</span></li>
-          <li><i><svg width="11" height="11"><use href="#ck"/></svg></i><span>You work for yourself and want your new offer checked before your clients see it.</span></li>
+          <li><i><svg width="11" height="11"><use href="#ck"/></svg></i><span>You want to keep the lessons and use them around your job, clients or family.</span></li>
+          <li><i><svg width="11" height="11"><use href="#ck"/></svg></i><span>You want somewhere to bring questions about your own idea, price or sales email.</span></li>
+          <li><i><svg width="11" height="11"><use href="#ck"/></svg></i><span>You’d find it useful to watch me review real work and explain the changes.</span></li>
         </ul>
       </div>
       <div class="fitc no">
         <h3>Keep the free seat <em>if</em></h3>
         <ul>
-          <li><i><svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M2 2l10 10M12 2 2 12"/></svg></i><span>You're coming to see what the workshop is like.</span></li>
-          <li><i><svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M2 2l10 10M12 2 2 12"/></svg></i><span>This week is too full to write anything.</span></li>
-          <li><i><svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M2 2l10 10M12 2 2 12"/></svg></i><span>You already sell an offer that's working.</span></li>
+          <li><i><svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M2 2l10 10M12 2 2 12"/></svg></i><span>You’re happy to take part in the live workshop without the extra support.</span></li>
+          <li><i><svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M2 2l10 10M12 2 2 12"/></svg></i><span>You don’t want lifetime access to the recordings.</span></li>
+          <li><i><svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M2 2l10 10M12 2 2 12"/></svg></i><span>You’d prefer to work through your questions independently.</span></li>
         </ul>
       </div>
     </div>
-    <p class="after" data-r>If you're in the second list, keep your free seat. I'll still see you Tuesday.</p>
+    <p class="after" data-r>You don’t need an idea or subscribers ready today. Start with the workshop and bring the questions that come up.</p>
   </div>
 </section>
 
-<!-- 5. a note from Ana (from the guide's VIP video script) + the price, with what you get -->
+<!-- 5. a note from Ana + the price, with what you get -->
 <section class="buy" id="buy">
   <div class="wrap">
     <div class="buy-g">
       <div class="letter" data-r>
         <div class="from"><img src="../img/ana-hat.webp" alt="" width="520" height="520" loading="lazy">A note from Ana</div>
-        <p>You're in. I'll see you Tuesday at noon, New York time.</p>
-        <p>Friday is the check I wish I'd had. You bring what you wrote this week, and I tell you, live, whether it's ready and what to change if it isn't.</p>
-        <p>And if free is enough, that's fine. Come live. That's where the work happens.</p>
+        <p>I want you to find out whether people will pay for what you know, while you still have the income you rely on.</p>
+        <p>That first customer matters. It gives you something to learn from, improve and sell again. Getting there can bring up questions you can’t answer by staring at your own draft.</p>
+        <p>That’s what VIP is for. Keep the lessons, ask me about the work as you do it, and see the changes I’d make in the live review. I’d like you to use what we do together.</p>
         <div class="sig">Ana</div>
-        <p class="vq">“Can I just say that you have over delivered. Wow! It’s nice to have a clear map.”<span>Gustavo Karakey, a past student</span></p>
       </div>
       <div class="bb" id="buyBlock" data-r>
         <span class="lbl">VIP</span>
         <div class="price">$67</div>
-        <p class="when">Everything in VIP: Friday with me, four days in the group, the Offer Clarity Sprint and all three sessions to keep. All of it, one payment.</p>
+        <p class="when">Get the full VIP package for one payment of $67.</p>
         <ul class="ticks">
-          <li><i><svg width="11" height="11"><use href="#ck"/></svg></i><span><b>Your ready check,</b> live with me, Fri Nov 20 (90 minutes)</span></li>
-          <li><i><svg width="11" height="11"><use href="#ck"/></svg></i><span><b>A private WhatsApp group</b> with me, Nov 17 to 20</span></li>
-          <li><i><svg width="11" height="11"><use href="#ck"/></svg></i><span><b>The Offer Clarity Sprint,</b> yours to keep</span></li>
-          <li><i><svg width="11" height="11"><use href="#ck"/></svg></i><span><b>All three sessions,</b> to keep</span></li>
+          <li><i><svg width="11" height="11"><use href="#ck"/></svg></i><span><b>Lifetime recordings,</b> all three workshop sessions</span></li>
+          <li><i><svg width="11" height="11"><use href="#ck"/></svg></i><span><b>Live group review</b> with me, 90 minutes, plus the recording</span></li>
+          <li><i><svg width="11" height="11"><use href="#ck"/></svg></i><span><b>Private WhatsApp access</b> to me, Nov 17 to 20</span></li>
+          <li><i><svg width="11" height="11"><use href="#ck"/></svg></i><span><b>The Offer Clarity Sprint</b> course, yours to keep</span></li>
         </ul>
-        <p class="aside">Less than most courses, and you’ll use it on Friday.</p>
+        <p class="aside">Lifetime access to the workshop recordings. Support while you put the teaching to use.</p>
         <p class="closed">VIP is closed. <em>See you live.</em></p>
-        <button class="btn add" type="button">Yes, check mine on Friday ($67)<svg><use href="#arr"/></svg></button>
+        <button class="btn add" type="button">I want VIP, Ana ($67)<svg><use href="#arr"/></svg></button>
         <p class="meta2"><span><svg width="13" height="15" viewBox="0 0 13 15" fill="none" stroke="#7A6A60" stroke-width="1.7"><rect x="1.5" y="6.5" width="10" height="7" rx="2"/><path d="M3.8 6.5V4.6a2.7 2.7 0 0 1 5.4 0v1.9"/></svg>Secure checkout with Stripe. All sales are final.</span><span>On sale until Tue, Nov 17 at 11:59 pm New York.</span></p>
         <p class="dl"><button class="decline" type="button">Coming to see what it’s like? Keep your free seat. Either way, see you Tuesday →</button></p>
       </div>
@@ -1011,11 +1010,15 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
     <div class="faqs">
       <h2 data-r>Questions</h2>
       <div data-r>
-        <details class="faq" open><summary>Do I need VIP to come live?<i aria-hidden="true"></i></summary><p class="a">No. All three sessions are free, and live is where the work happens.</p></details>
-        <details class="faq"><summary>When is the Friday call?<i aria-hidden="true"></i></summary><p class="a">Friday, Nov 20, at 12:00 pm New York, for 90 minutes. The link comes by email with your join details.</p></details>
+        <details class="faq" open><summary>Do I need VIP to come live?<i aria-hidden="true"></i></summary><p class="a">No. Your free seat includes the full three-day live workshop. VIP adds lifetime recordings, the dedicated group review, the private WhatsApp group and the Offer Clarity Sprint course.</p></details>
+        <details class="faq"><summary>Will you review everyone’s work?<i aria-hidden="true"></i></summary><p class="a">I’ll review selected submissions during the 90-minute group session and explain the changes as I make them. Everyone can watch and use those lessons in their own work, but an individual review isn’t guaranteed.</p></details>
+        <details class="faq"><summary>What if I’m just starting?<i aria-hidden="true"></i></summary><p class="a">You don’t need an audience or a finished offer to join. Day 1 includes finding your first readers and what you could sell. VIP gives you extra support while you put the teaching into practice.</p></details>
+        <details class="faq"><summary>Do I keep the recordings?<i aria-hidden="true"></i></summary><p class="a">Yes. VIP includes lifetime access to all three workshop recordings, plus the recording of the VIP review. The Offer Clarity Sprint course is yours to keep too.</p></details>
+        <details class="faq"><summary>I already own the Sprint. Is VIP still useful?<i aria-hidden="true"></i></summary><p class="a">If you want the recordings, private WhatsApp access and live group review, yes. Bring the work you’ve already started. The package is $67, paid once.</p></details>
+        <details class="faq"><summary>When is the Friday call?<i aria-hidden="true"></i></summary><p class="a">Friday, Nov 20, for 90 minutes. The time and the link come by email with your join details.</p></details>
         <details class="faq"><summary>What happens in the VIP WhatsApp group?<i aria-hidden="true"></i></summary><p class="a">It's an open chat for VIPs only. I'm in there Nov 17 to 20: for 30 minutes after each session, and one morning slot. Other members can see your name and number, the way any WhatsApp group works.</p></details>
-        <details class="faq"><summary>What if I can't make it on Friday?<i aria-hidden="true"></i></summary><p class="a">Send your offer or your ask ahead. I'll answer it live, and you get the recording.</p></details>
-        <details class="faq"><summary>Can I get a refund?<i aria-hidden="true"></i></summary><p class="a">No. I don't offer refunds, so only get it if you'll bring your offer on Friday.</p></details>
+        <details class="faq"><summary>What if I can't make it on Friday?<i aria-hidden="true"></i></summary><p class="a">Send your work ahead for consideration and watch the recording afterward. I’ll review as many submissions as fit into 90 minutes, so a personal review isn’t guaranteed.</p></details>
+        <details class="faq"><summary>Can I get a refund?<i aria-hidden="true"></i></summary><p class="a">No. All sales are final. Please check what’s included and the group-review format before you buy.</p></details>
       </div>
     </div>
   </div>
@@ -1030,7 +1033,7 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
   </div>
 </footer>
 
-<div class="mbar" id="mbar"><span class="pr">$67<small>Fri, Nov 20</small></span><button class="btn add" type="button">Yes, check mine<svg><use href="#arr"/></svg></button></div>
+<div class="mbar" id="mbar"><span class="pr">$67<small>one payment</small></span><button class="btn add" type="button">I want VIP, Ana<svg><use href="#arr"/></svg></button></div>
 
 <!-- leave popup 1: opens on "Free is perfect for me". Landscape: what VIP adds on the left, the choice on the right -->
 <div class="pop" id="pop1" aria-hidden="true">
@@ -1100,9 +1103,7 @@ footer .links a{text-decoration:underline;text-underline-offset:3px}
     if (v !== 'A' && v !== 'B') { v = Math.random() < .5 ? 'A' : 'B'; document.cookie = 'ana_vip_h=' + v + '; max-age=' + 60*60*24*90 + '; path=/; SameSite=Lax' }
   }
   if (v === 'B') {
-    document.getElementById('h1').innerHTML = 'Most people stop on Thursday and wait to feel ready. <em>VIPs get Friday.</em>';
-    var hm = document.querySelector('.hs-mid'); if (hm) hm.remove();   /* that headline already says it */
-    var hb2 = document.querySelector('.hs-b'); if (hb2) hb2.hidden = false;
+    document.getElementById('h1').innerHTML = 'Get my help putting this to work, <em>and keep every lesson for life.</em>';
   }
   document.documentElement.setAttribute('data-vip-headline', v);
 
