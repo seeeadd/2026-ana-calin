@@ -4,11 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
-<title>Your exit number · The Exit Plan with Ana Calin</title>
-<!-- Ana Calin, the exit number (/exit-number/). The gift for the 7 quick questions on the confirmation pages: how many people
-     would need to buy, at your price, to reach the monthly number that gives you more choice about work, and what the same goal
-     takes through paid subscriptions alone. "Save my number" downloads a picture of it; the numbers go to the Google Sheet
-     (api/ana-survey.js, tools/survey-sheet.gs). Built Oct 31, 2026. -->
+<title>The Exit Number · The Exit Plan with Ana Calin</title>
+<meta name="description" content="See the sales, audience, and hours behind your income goal.">
+<!-- Ana Calin, The Exit Number (/exit-number/), rebuilt Nov 1, 2026 to "THE EXIT NUMBER: calculator specification" v1.0.
+     See the sales, audience, and hours behind your income goal. One-time purchases, monthly targets, three prices, costs,
+     time and audience checks, recorded results. All arithmetic is in assets/exit-calc.js. Nothing typed here leaves the
+     browser: no server, no Kit fields, nothing in the URL. Saved on this device only when the visitor presses save. -->
 <meta name="theme-color" content="#FFF8EE">
 <link rel="icon" href="../img/fav/favicon.ico?v=dc986e96" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="../img/fav/favicon-32.png?v=dc986e96">
@@ -19,91 +20,238 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap">
 <link rel="stylesheet" href="../assets/conf.css">
 <style>
+/* The Exit Number (spec v1.0, Nov 1 2026): see the sales, audience and hours behind your income goal.
+   Ana's cream, ink, sunflower yellow and pink; large numbers in Instrument Serif; plain labels in Manrope. */
 .xtop{padding:18px 0 0}
 .xtop .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
 .xbrand{display:flex;align-items:center;gap:12px;font-weight:800;font-size:20px;letter-spacing:-.02em;color:var(--ink);text-decoration:none}
 .xbrand img{width:42px;height:42px}
 .xpill{display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 14px;border-radius:999px;background:#fff;border:1.5px solid var(--ink);font-weight:800;font-size:12px;letter-spacing:.12em;text-transform:uppercase}
 .xpill i{width:8px;height:8px;border-radius:50%;background:var(--pink)}
-.xmain{position:relative;padding:48px 0 100px;overflow:hidden}
+.xmain{position:relative;padding:36px 0 40px;overflow:hidden;overflow:clip}   /* clip: focus can never scroll it sideways */
+.xmain .bgf.a{left:-160px;top:40px;width:420px;height:420px;opacity:.1}
+.xmain .bgf.b{right:-180px;bottom:120px;width:380px;height:380px;opacity:.08}
 .xhead{max-width:760px;margin:0 auto;text-align:center}
 .cxlogo{display:block;overflow:visible}
 .cxlogo-sh{transform-box:view-box;transform-origin:214px 214px;transition:transform .6s cubic-bezier(.3,1.6,.5,1)}
-.cxlogo.open .cxlogo-sh,.cxlogo-on .cxlogo .cxlogo-sh{transform:translateY(-9px) rotate(-32deg)}
+.cxlogo.open .cxlogo-sh{transform:translateY(-9px) rotate(-32deg)}
+body.xlocked .xhead .cxlogo .cxlogo-sh{transform:none}
 @media (prefers-reduced-motion:no-preference){
   .cxlogo-calc{transform-box:view-box;transform-origin:160px 160px;animation:cxlogofloat 4.5s ease-in-out infinite}
   @keyframes cxlogofloat{0%,100%{transform:none}50%{transform:translateY(-5px) rotate(1.2deg)}}
 }
-.xhead .cxlogo{width:150px;height:150px;margin:0 auto 10px}
-body.xlocked .xhead .cxlogo .cxlogo-sh{transform:none}
-@media (max-width:640px){.xhead .cxlogo{width:124px;height:124px}}
-.xhead h1{font-size:clamp(44px,5.6vw,78px);line-height:.98;margin-top:14px}
+.xhead .cxlogo{width:112px;height:112px;margin:0 auto 6px}
+.xhead h1{font-size:clamp(42px,5.2vw,70px);line-height:.98;margin-top:10px}
 .xhead h1 em{display:block}
-.xhead p{max-width:600px;margin:16px auto 0;font-size:18.5px;line-height:1.55;color:var(--ink2);text-wrap:balance}
-.xgate{position:relative;z-index:3;max-width:560px;margin:40px auto -380px;text-align:center;background:#fff;border:1.8px solid var(--ink);border-radius:26px;padding:30px 30px 32px;box-shadow:8px 9px 0 var(--pink),8px 9px 0 1.8px var(--ink)}
+.xhead p{max-width:560px;margin:14px auto 0;font-size:18px;line-height:1.55;color:var(--ink2);text-wrap:balance}
+
+/* the lock, until the seven quick questions are in */
+.xgate{position:relative;z-index:3;max-width:560px;margin:34px auto -300px;text-align:center;background:#fff;border:1.8px solid var(--ink);border-radius:26px;padding:30px 30px 32px;box-shadow:8px 9px 0 var(--pink),8px 9px 0 1.8px var(--ink)}
 .xgate[hidden]{display:none}
 .xgate-pad{display:grid;place-items:center;width:64px;height:64px;margin:0 auto 14px;border-radius:50%;background:var(--sun);border:2px solid var(--ink);color:var(--ink);box-shadow:0 4px 0 var(--ink)}
 .xgate-pad svg{width:30px;height:30px}
 .xgate h2{font-size:clamp(30px,3.4vw,42px);line-height:1.05}
 .xgate h2 em{display:block;color:var(--pink)}
 .xgate p{margin:12px auto 20px;max-width:420px;font-size:17px;line-height:1.5;color:var(--ink2)}
-body.xlocked .xgrid{filter:blur(7px);opacity:.55;pointer-events:none;user-select:none}
-@media (max-width:640px){.xgate{margin:28px 0 -420px;padding:24px 18px 26px}}
-.xgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.92fr);gap:34px;align-items:start;max-width:1080px;margin:46px auto 0}
-.xin{display:grid;grid-template-columns:minmax(0,1fr);gap:18px;min-width:0}
-.xq{background:#fff;border:1.6px solid var(--ink);border-radius:22px;padding:22px 24px 24px}
-.xq h2{display:flex;gap:12px;align-items:baseline;font-size:27px;line-height:1.1}
-.xq h2 .n{flex:none;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:var(--ink);color:var(--sun);font-size:19px;transform:translateY(-3px)}
-.xq .hint{margin:6px 0 14px 44px;font-size:15px;line-height:1.5;color:var(--ink3)}
-.xmoney{display:flex;align-items:center;height:60px;margin-left:44px;border:1.6px solid #d9cab6;border-radius:16px;background:var(--cream);padding:0 16px;transition:border-color .15s,box-shadow .15s}
-.xmoney:focus-within{border-color:var(--ink);box-shadow:0 0 0 4px rgba(255,212,0,.6)}
-.xmoney span{font-family:var(--serif);font-size:30px;color:var(--ink3)}
-.xmoney input{flex:1;width:0;min-width:0;border:0;background:none;font-family:var(--serif);font-size:34px;color:var(--ink);padding:0 6px;outline:0}
-.xmoney small{font-weight:700;font-size:14px;color:var(--ink3);white-space:nowrap}
-.xchips{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 0 44px}
-.xchips button{height:36px;padding:0 14px;border-radius:999px;border:1.5px solid rgba(26,20,18,.3);background:#fff;font:inherit;font-weight:700;font-size:14px;cursor:pointer;transition:background .15s,border-color .15s}
-.xchips button:hover{border-color:var(--ink)}
-.xchips button.on{background:var(--ink);border-color:var(--ink);color:var(--sun)}
-.xout{position:sticky;top:24px}
-.xcard{position:relative;background:var(--cream);border:1.6px solid var(--ink);border-radius:26px;padding:28px 28px 26px;box-shadow:9px 10px 0 var(--sun),9px 10px 0 1.6px var(--ink);overflow:hidden}
-.xcard .fl{position:absolute;right:-60px;top:-60px;width:220px;height:220px;opacity:.12;pointer-events:none}
-.xcard small.lab{display:block;font-weight:800;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--pink)}
-.xbig{display:flex;align-items:flex-end;gap:14px;margin-top:6px}
-.xbig b{font-family:var(--serif);font-weight:400;font-size:clamp(96px,11vw,148px);line-height:.82;letter-spacing:-.03em;background:linear-gradient(transparent 58%,var(--sun) 58%,var(--sun) 92%,transparent 92%);padding:0 .06em}
-.xbig span{padding-bottom:8px;font-weight:800;font-size:18px;line-height:1.25}
-.xeq{margin-top:14px;font-size:15.5px;line-height:1.5;color:var(--ink2)}
-.xeq b{color:var(--ink)}
-.xvs{margin-top:20px;padding-top:18px;border-top:2px dashed rgba(26,20,18,.2)}
-.xvs small{display:block;font-weight:800;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
-.xvs .row{display:flex;align-items:baseline;gap:10px;margin-top:6px}
-.xvs .row b{font-family:var(--serif);font-weight:400;font-size:52px;line-height:1}
-.xvs .row span{font-weight:700;font-size:15px;line-height:1.35}
-.xvs p{margin-top:8px;font-size:14.5px;line-height:1.5;color:var(--ink2)}
-.xvs p b{color:var(--ink)}
-.xyou{margin-top:14px;padding:10px 14px;border-radius:12px;background:#fff;font-size:14.5px;line-height:1.45;color:var(--ink2)}
-.xyou[hidden]{display:none}
-.xsave{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;margin-top:22px}
-.xsave .btn{height:54px}
-.xsave .ok{font-weight:700;font-size:14px;color:#1f7a45}
-.xnote{margin-top:16px;font-size:13.5px;line-height:1.5;color:var(--ink3)}
+body.xlocked .xapp{filter:blur(7px);opacity:.5;pointer-events:none;user-select:none}
+
+/* ---------- shared bits ---------- */
+.xapp{position:relative;margin-top:34px}
+.xapp [hidden]{display:none!important}
+.vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.xpanel{background:#fff;border:1.6px solid var(--ink);border-radius:24px;padding:28px 30px 30px}
+.xfield{margin-top:22px}
+.xfield>label,.xfield>.lab,.xq legend{display:block;font-weight:800;font-size:17px;line-height:1.35;color:var(--ink)}
+.xq{border:0;margin-top:26px;min-width:0}
+.xq:first-of-type{margin-top:0}
+.xq legend{font-family:var(--serif);font-weight:400;font-size:clamp(25px,2.6vw,31px);line-height:1.1;letter-spacing:-.01em;padding:0;margin-bottom:12px}
+.xhelp{margin-top:6px;font-size:15px;line-height:1.5;color:var(--ink3)}
+.xhelp b{color:var(--ink2)}
+.xerr{margin-top:6px;font-weight:700;font-size:14.5px;line-height:1.4;color:#b0103f}
+.xerr:empty{display:none}
+.xin{display:flex;align-items:center;min-height:52px;border:1.6px solid #cdbca5;border-radius:14px;background:var(--cream);padding:0 14px;margin-top:8px;max-width:340px;transition:border-color .15s,box-shadow .15s}
+.xin:focus-within{border-color:var(--ink);box-shadow:0 0 0 4px rgba(255,212,0,.6)}
+.xin.bad{border-color:#b0103f}
+.xin .pre,.xin .suf{flex:none;font-weight:700;font-size:15px;color:var(--ink3);white-space:nowrap}
+.xin .pre{margin-right:6px}
+.xin .suf{margin-left:8px}
+.xin input,.xin select{flex:1;width:0;min-width:0;height:48px;border:0;background:none;font-size:18px;font-weight:600;color:var(--ink);outline:0;padding:0}
+.xin input::placeholder{color:#a8988c;font-weight:500}
+.xin.big{min-height:64px;max-width:420px}
+.xin.big input{font-family:var(--serif);font-weight:400;font-size:34px;height:60px}
+.xin.big .pre{font-family:var(--serif);font-weight:400;font-size:30px}
+.xsel{appearance:none;-webkit-appearance:none;min-height:52px;border:1.6px solid #cdbca5;border-radius:14px;background:var(--cream) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='m4 6 4 4 4-4' fill='none' stroke='%231A1412' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 14px center/16px;padding:0 42px 0 14px;font-size:17px;font-weight:600;color:var(--ink);margin-top:8px;max-width:100%}
+.xsel:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.xrow{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end}
+.xrow .xsel{width:118px}
+.xrow .xin{flex:1 1 220px}
+.xclr{min-height:44px;padding:0 4px;margin-top:4px;border:0;background:none;font-weight:700;font-size:14px;color:var(--ink3);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.xclr:hover{color:var(--ink)}
+.lnk{min-height:44px;border:0;background:none;padding:0 2px;font-weight:700;font-size:15px;color:var(--ink2);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.lnk:hover{color:var(--ink)}
+
+/* choice tiles (goal type, basis, delivery) */
+.xopts{display:grid;gap:10px}
+.xopts.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.xopt{position:relative;display:flex;align-items:flex-start;gap:12px;min-height:56px;padding:14px 16px;border:1.6px solid #cdbca5;border-radius:16px;background:var(--cream);cursor:pointer;font-weight:700;font-size:16px;line-height:1.35;transition:border-color .15s,background .15s}
+.xopt:hover{border-color:var(--ink)}
+.xopt input{appearance:none;-webkit-appearance:none;flex:none;width:22px;height:22px;margin:0;border:2px solid var(--ink);border-radius:50%;background:#fff;display:grid;place-items:center}
+.xopt input::after{content:"";width:10px;height:10px;border-radius:50%;background:var(--ink);transform:scale(0);transition:transform .15s}
+.xopt input:checked::after{transform:none}
+.xopt:has(input:checked){border-color:var(--ink);background:var(--ysoft);box-shadow:0 3px 0 var(--ink)}
+.xopt input:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+
+/* context chips: what the survey already told me, editable */
+.xctx{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:22px}
+.xctx>span{font-weight:800;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);margin-right:4px}
+.xchip{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:999px;border:1.5px solid rgba(26,20,18,.28);background:#fff;font-weight:700;font-size:14.5px;color:var(--ink);cursor:pointer;text-align:left}
+.xchip:hover{border-color:var(--ink)}
+.xchip i{font-style:normal;font-weight:600;color:var(--ink3)}
+.xchip[aria-expanded="true"]{border-color:var(--ink);background:var(--ysoft)}
+.xctxed{flex-basis:100%;margin-top:6px;padding:16px 18px 18px;border:1.5px dashed rgba(26,20,18,.3);border-radius:16px;background:var(--cream)}
+.xctxed .xfield:first-child{margin-top:0}
+
+/* ---------- step 1 ---------- */
+.xs1{max-width:780px;margin:0 auto}
+.xgoalhelp{margin-top:10px;padding:12px 16px;border-radius:14px;background:var(--ysoft);font-size:15.5px;line-height:1.5;color:var(--ink2)}
+.xgoalhelp:empty{display:none}
+.xs1 .btn{margin-top:30px;height:58px;padding:0 32px}
+
+/* ---------- step 2 ---------- */
+.xbar{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:flex-end;justify-content:space-between;max-width:1080px;margin:0 auto}
+.xbar h2{font-size:clamp(32px,3.6vw,46px);line-height:1.05}
+.xbar h2 b{font-weight:400;background:linear-gradient(transparent 60%,var(--sun) 60%,var(--sun) 92%,transparent 92%);padding:0 .04em}
+.xbar h2 small{display:block;margin-top:4px;font-family:var(--sans);font-size:15px;font-weight:700;letter-spacing:0;color:var(--ink3)}
+.xbar .xmeta{margin-top:8px;font-size:15.5px;line-height:1.5;color:var(--ink2)}
+.xbar .lnk{flex:none}
+.xs2>.xctx{max-width:1080px;margin:16px auto 0}
+.xs2 .xsec{max-width:1080px;margin:34px auto 0}
+.xs2 .xsec>h3{font-size:clamp(26px,2.6vw,34px);line-height:1.1}
+.xcards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:16px}
+.xc{position:relative;display:flex;flex-direction:column;background:#fff;border:1.6px solid var(--ink);border-radius:22px;padding:18px 20px 20px;transition:box-shadow .2s,transform .2s}
+.xc.on{box-shadow:7px 8px 0 var(--sun),7px 8px 0 1.6px var(--ink);transform:translate(-2px,-2px)}
+.xc-tag{align-self:flex-start;justify-self:start;padding:3px 10px;border-radius:999px;background:var(--cream);border:1px solid rgba(26,20,18,.2);font-weight:700;font-size:12.5px;color:var(--ink3)}
+.xc .xin{margin-top:12px;max-width:none}
+.xc .xin input{font-family:var(--serif);font-weight:400;font-size:30px}
+.xc .xin .pre{font-family:var(--serif);font-weight:400;font-size:26px}
+.xc-n{margin-top:14px;font-weight:700;font-size:16px;line-height:1.3}
+.xc-n b{display:block;font-family:var(--serif);font-weight:400;font-size:64px;line-height:.95;letter-spacing:-.02em}
+.xc-s{margin-top:6px;font-size:15px;line-height:1.45;color:var(--ink2)}
+.xc-go{margin-top:auto;padding-top:16px}
+.xc-go button{width:100%;min-height:48px;border-radius:999px;border:1.6px solid var(--ink);background:#fff;font-weight:800;font-size:15px;cursor:pointer;transition:background .15s}
+.xc-go button:hover{background:var(--ysoft)}
+.xc.on .xc-go button{background:var(--ink);color:#fff}
+.xnotes{margin-top:16px;display:flex;flex-wrap:wrap;gap:6px 24px;align-items:flex-start;justify-content:space-between}
+.xnotes p{flex:1 1 420px;font-size:14.5px;line-height:1.5;color:var(--ink3)}
+.xnotes .btn{flex:none;height:48px;font-size:15px;padding:0 22px}
+
+/* the plan for the price they chose */
+.xplan{margin-top:26px;background:var(--cream);border:1.6px solid var(--ink);border-radius:26px;padding:28px 30px 30px;box-shadow:9px 10px 0 var(--sun),9px 10px 0 1.6px var(--ink)}
+.xp-k{font-weight:800;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--pink)}
+.xplan h3{margin-top:8px;font-size:clamp(30px,3.4vw,44px);line-height:1.05}
+.xplan h3 b{font-weight:400;background:linear-gradient(transparent 60%,var(--sun) 60%,var(--sun) 92%,transparent 92%)}
+.xlines{margin-top:14px;display:grid;gap:10px;max-width:760px}
+.xl{position:relative;padding-left:30px;font-size:16.5px;line-height:1.5;color:var(--ink2)}
+.xl b{color:var(--ink)}
+.xl::before{content:"";position:absolute;left:4px;top:.5em;width:12px;height:12px;border-radius:50%;background:var(--sun);box-shadow:0 0 0 1.5px var(--ink)}
+.xl.warn::before{border-radius:3px;background:var(--pink)}
+.xl.info::before{background:#fff}
+.xtest{margin-top:16px;padding:14px 18px;border-radius:16px;background:#fff;border:1.5px dashed rgba(26,20,18,.35);font-size:16px;line-height:1.5;max-width:760px}
+.xtest b{color:var(--ink)}
+.xrefine{margin-top:22px;display:grid;gap:12px}
+.xd{background:#fff;border:1.6px solid var(--ink);border-radius:20px}
+.xd>summary{display:flex;align-items:center;gap:14px;min-height:60px;padding:12px 20px;cursor:pointer;list-style:none;font-weight:800;font-size:17px;line-height:1.3}
+.xd>summary::-webkit-details-marker{display:none}
+.xd>summary::after{content:"";flex:none;margin-left:auto;width:12px;height:12px;border-right:2.5px solid var(--ink);border-bottom:2.5px solid var(--ink);transform:rotate(45deg) translate(-3px,-3px);transition:transform .2s}
+.xd[open]>summary::after{transform:rotate(-135deg) translate(-3px,-3px)}
+.xd>summary small{display:block;font-weight:600;font-size:14px;color:var(--ink3)}
+.xd>summary:focus-visible{outline:3px solid var(--ink);outline-offset:3px;border-radius:20px}
+.xdb{padding:4px 22px 24px;border-top:1.5px dashed rgba(26,20,18,.2)}
+.xgrid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 24px}
+.xout{margin-top:20px;padding:16px 18px;border-radius:16px;background:var(--cream);font-size:15.5px;line-height:1.55;color:var(--ink2)}
+.xout p+p{margin-top:6px}
+.xout b{color:var(--ink)}
+.xout .k{display:flex;justify-content:space-between;gap:12px;padding:6px 0;border-bottom:1px dashed rgba(26,20,18,.18)}
+.xout .k:last-child{border-bottom:0}
+.xout .k span:last-child{font-weight:800;color:var(--ink);text-align:right}
+.xcopy{margin-top:12px;min-height:44px;padding:0 16px;border-radius:999px;border:1.5px dashed var(--ink);background:#fff;font-weight:700;font-size:14.5px;cursor:pointer}
+.xcopy:hover{background:var(--ysoft)}
+
+/* what actually happened */
+.xact{max-width:1080px;margin:34px auto 0}
+.xact .xpanel>p{margin-top:6px;font-size:15.5px;line-height:1.5;color:var(--ink2);max-width:640px}
+.xact .btn{margin-top:16px;height:50px;font-size:15.5px}
+.xrec{margin-top:18px;padding:18px 20px;border:1.5px solid rgba(26,20,18,.25);border-radius:18px;background:var(--cream)}
+.xrec h4{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px;font-family:var(--serif);font-weight:400;font-size:26px;line-height:1.1}
+.xrec h4 span{font-family:var(--sans);font-weight:700;font-size:12.5px;padding:3px 10px;border-radius:999px;background:#fff;border:1px solid rgba(26,20,18,.2);color:var(--ink3)}
+.xrec p{margin-top:6px;font-size:15.5px;line-height:1.5;color:var(--ink2)}
+.xrec p b{color:var(--ink)}
+.xrec .xrbtn{display:flex;flex-wrap:wrap;gap:4px 18px;margin-top:6px}
+
+/* Day 1 */
+.xev{max-width:1080px;margin:34px auto 0;display:flex;gap:18px;align-items:center;padding:20px 24px;border-radius:22px;background:var(--ink);color:#fff}
+.xev svg{flex:none;width:52px;height:52px}
+.xev p{font-size:16.5px;line-height:1.5}
+.xev b{color:var(--sun)}
+
+/* save, download, print: always in reach */
+.xsave{position:sticky;bottom:0;z-index:20;margin-top:34px;background:rgba(255,248,238,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1.5px solid var(--line)}
+.xsave .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px;padding-top:12px;padding-bottom:12px;max-width:1128px}
+.xsave .btn{height:48px;font-size:15px;padding:0 20px}
+.xsave .btn.ghost{box-shadow:0 0 0 1.6px var(--ink)}
+.xstat{flex:1 1 260px;font-size:14px;line-height:1.4;color:var(--ink2)}
+.xstat b{color:var(--ink)}
+.xmore{max-width:1080px;margin:18px auto 0;display:flex;flex-wrap:wrap;gap:4px 20px}
+.xfoot{max-width:1080px;margin:22px auto 0;font-size:14px;line-height:1.55;color:var(--ink3)}
+.xhow{max-width:1080px;margin:16px auto 0}
+.xhow .xdb p{margin-top:10px;font-size:15px;line-height:1.55;color:var(--ink2)}
 .xback{margin-top:26px;text-align:center;font-weight:700;font-size:15px}
 .xback a{color:var(--ink2);text-underline-offset:3px}
-.xmain .bgf.a{left:-160px;top:40px;width:420px;height:420px;opacity:.1}
-.xmain .bgf.b{right:-180px;bottom:-120px;width:380px;height:380px;opacity:.08}
+#printout{display:none}
+
 @media (max-width:900px){
-  .xgrid{grid-template-columns:minmax(0,1fr)}
-  .xout{position:static}
+  .xcards{grid-template-columns:minmax(0,1fr)}
+  .xc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 16px;align-items:end}
+  .xc-tag,.xc .xin,.xc .xerr{grid-column:1/-1}
+  .xc-n{grid-column:1}
+  .xc-s{grid-column:1}
+  .xc-go{grid-column:2;grid-row:3/5;padding-top:0}
+  .xc-n b{font-size:54px}
+}
+@media (max-width:700px){
+  .xopts.three{grid-template-columns:minmax(0,1fr)}
+  .xgrid2{grid-template-columns:minmax(0,1fr)}
 }
 @media (max-width:640px){
   .xpill{display:none}
-  .xmain{padding:30px 0 72px}
-  .xhead h1{font-size:44px}
-  .xhead p{font-size:17px}
-  .xq{padding:18px 16px 20px}
-  .xq h2{font-size:23px}
-  .xq .hint,.xmoney,.xchips{margin-left:0}
-  .xcard{padding:22px 20px}
-  .xsave .btn{width:100%}
+  .xmain{padding:24px 0 30px}
+  .xhead .cxlogo{width:92px;height:92px}
+  .xhead h1{font-size:42px}
+  .xhead p{font-size:16.5px}
+  .xgate{margin:26px 0 -340px;padding:24px 18px 26px}
+  .xpanel{padding:22px 18px 24px;border-radius:20px}
+  .xplan{padding:22px 18px 24px;border-radius:22px;box-shadow:6px 7px 0 var(--sun),6px 7px 0 1.6px var(--ink)}
+  .xc{grid-template-columns:minmax(0,1fr);padding:16px 16px 18px}
+  .xc-go{grid-column:1;grid-row:auto;padding-top:14px}
+  .xdb{padding:4px 16px 20px}
+  .xd>summary{padding:12px 16px;font-size:16px}
+  .xsave .btn{flex:1 1 30%;padding:0 10px;font-size:14px;height:46px}
+  .xstat{flex-basis:100%;order:-1}
+  .xev{flex-direction:column;align-items:flex-start;padding:18px 18px}
+  .xs1 .btn{width:100%}
+}
+@media (prefers-reduced-motion:reduce){.xc,.xopt,.xin{transition:none}}
+
+/* printed plan: a plain sheet with the assumptions and the date, none of the controls */
+@media print{
+  body>*:not(#printout){display:none!important}
+  #printout{display:block;font-family:var(--sans);color:#000;font-size:11.5pt;line-height:1.45}
+  #printout h1{font-family:var(--serif);font-size:28pt;line-height:1.05;margin:0 0 4pt}
+  #printout h2{font-family:var(--serif);font-size:16pt;margin:16pt 0 6pt}
+  #printout table{width:100%;border-collapse:collapse;margin-top:4pt}
+  #printout th,#printout td{text-align:left;padding:4pt 6pt;border-bottom:.5pt solid #999;vertical-align:top}
+  #printout .sm{font-size:9.5pt;color:#333}
+  #printout p{margin:3pt 0}
 }
 </style>
 </head>
@@ -125,6 +273,7 @@ body.xlocked .xgrid{filter:blur(7px);opacity:.55;pointer-events:none;user-select
     <span class="xpill"><i></i>The Exit Plan · Nov 17 to 19</span>
   </div>
 </header>
+
 
 <main class="xmain">
   <svg class="bgf a" aria-hidden="true"><use href="#sfo"/></svg>
@@ -154,65 +303,264 @@ body.xlocked .xgrid{filter:blur(7px);opacity:.55;pointer-events:none;user-select
           <circle cx="225" cy="224" r="3.6" fill="#1A1412"/><path d="M225 226v7" stroke="#1A1412" stroke-width="3.2" stroke-linecap="round"/>
         </g>
       </svg>
-      <span class="eyebrow">Your exit number<span data-for></span></span>
-      <h1>How many people <em>would it take?</em></h1>
-      <p>Put in the monthly number that would give you more choice about work, and a price for your offer. A guess is fine. We’ll work on the real price on Day 2.</p>
+      <span class="eyebrow"><span id="xown">The</span> Exit Number</span>
+      <h1>Your exit number <em>starts here.</em></h1>
+      <p>See what different prices would mean for your monthly goal. Then add costs and time to work out what could fit your life.</p>
     </div>
 
-
-    <!-- the calculator opens after the 7 quick questions on the confirmation page (Sean: required, a prerequisite) -->
+    <!-- the calculator opens after the 7 quick questions on the confirmation page; a plan saved on this browser opens it too -->
     <div class="xgate" id="xgate" hidden>
       <span class="xgate-pad" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2.5" fill="currentColor"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span>
-      <h2>Your calculator unlocks <em>after 7 quick questions.</em></h2>
-      <p>It’s built from your answers. All taps, about a minute, on your confirmation page.</p>
+      <h2>Your calculator opens <em>after 7 quick questions.</em></h2>
+      <p>All taps, about a minute, on your confirmation page.</p>
       <a class="btn" id="xgo" href="../confirmed/#survey">answer the 7 questions<svg aria-hidden="true"><use href="#arr"/></svg></a>
     </div>
 
-    <div class="xgrid">
-      <form class="xin" id="xform" novalidate onsubmit="return false">
-        <div class="xq">
-          <h2><span class="n">1</span><label for="goal">What would “enough” be, each month?</label></h2>
-          <p class="hint">The salary you’d replace, or the client income you’d let go of.</p>
-          <div class="xmoney"><span>$</span><input id="goal" name="goal" inputmode="numeric" autocomplete="off" value="4,000" aria-describedby="goal-u"><small id="goal-u">a month</small></div>
-          <div class="xchips" data-for="goal"><button type="button" data-v="2000">$2,000</button><button type="button" data-v="4000">$4,000</button><button type="button" data-v="6000">$6,000</button><button type="button" data-v="10000">$10,000</button></div>
-        </div>
-        <div class="xq">
-          <h2><span class="n">2</span><label for="price">What might your offer cost?</label></h2>
-          <p class="hint">One workshop, course or program, paid once.</p>
-          <div class="xmoney"><span>$</span><input id="price" name="price" inputmode="numeric" autocomplete="off" value="149"><small>each</small></div>
-          <div class="xchips" data-for="price"><button type="button" data-v="49">$49</button><button type="button" data-v="149">$149</button><button type="button" data-v="299">$299</button><button type="button" data-v="500">$500</button><button type="button" data-v="1000">$1,000</button></div>
-        </div>
-        <div class="xq">
-          <h2><span class="n">3</span><label for="sub">And if it all came from paid subscriptions?</label></h2>
-          <p class="hint">What a paid subscription to you would cost each month. Substack’s lowest is $5.</p>
-          <div class="xmoney"><span>$</span><input id="sub" name="sub" inputmode="numeric" autocomplete="off" value="8"><small>a month</small></div>
-          <div class="xchips" data-for="sub"><button type="button" data-v="5">$5</button><button type="button" data-v="8">$8</button><button type="button" data-v="10">$10</button></div>
-        </div>
+    <div class="xapp" id="xapp">
+      <!-- ================= step 1: the goal ================= -->
+      <form class="xs1 xpanel" id="step1" novalidate>
+        <div class="xctx" data-ctx></div>
+        <fieldset class="xq">
+          <legend>What would you like this income to help you do?</legend>
+          <div class="xopts three">
+            <label class="xopt"><input type="radio" name="gtype" value="extra">Build extra income of my own.</label>
+            <label class="xopt"><input type="radio" name="gtype" value="client">Replace a client commitment.</label>
+            <label class="xopt"><input type="radio" name="gtype" value="leave">Work toward leaving my job.</label>
+          </div>
+          <p class="xgoalhelp" id="gHelp" aria-live="polite"></p>
+        </fieldset>
+        <fieldset class="xq">
+          <legend id="goalL">What monthly amount would make a difference?</legend>
+          <div class="xrow">
+            <label class="vh" for="cur">Currency</label>
+            <select class="xsel" id="cur"></select>
+            <div class="xin big" id="goalBox"><span class="pre" data-sym>$</span><input id="goal" inputmode="decimal" autocomplete="off" placeholder="3,000" aria-labelledby="goalL" aria-describedby="goalHelp goalErr"><span class="suf">a month</span></div>
+          </div>
+          <p class="xerr" id="goalErr" role="alert"></p>
+          <p class="xhelp" id="goalHelp">We’ll start with sales before costs. You can add costs to work out a profit target next.</p>
+        </fieldset>
+        <fieldset class="xq">
+          <legend>Is there a month you’re working toward? <span class="xhelp" style="display:inline;font-family:var(--sans)">Optional</span></legend>
+          <label class="vh" for="tmonth">Target month</label>
+          <select class="xsel" id="tmonth" aria-describedby="tmHelp"></select>
+          <p class="xhelp" id="tmHelp">This is your target. It isn’t a forecast.</p>
+        </fieldset>
+        <button class="btn" type="submit" id="go">Show my numbers<svg aria-hidden="true"><use href="#arr"/></svg></button>
       </form>
 
-      <div class="xout">
-        <div class="xcard" id="xcard" aria-live="polite">
-          <svg class="fl" aria-hidden="true"><use href="#sfo"/></svg>
-          <small class="lab"><span data-own>Your</span> exit number</small>
-          <div class="xbig"><b id="oBuyers">27</b><span>people a month,<br>at <span id="oPrice">$149</span></span></div>
-          <p class="xeq" id="oEq"></p>
-          <div class="xvs">
-            <small>The same goal through paid subscriptions alone</small>
-            <div class="row"><b id="oSubs">500</b><span>paid subscribers<br>at <span id="oSub">$8</span> a month</span></div>
-            <p id="oFree"></p>
+      <!-- ================= step 2: the numbers ================= -->
+      <div class="xs2" id="step2" hidden>
+        <div class="xbar">
+          <div>
+            <h2 id="gTitle" tabindex="-1"></h2>
+            <p class="xmeta" id="gMeta"></p>
           </div>
-          <p class="xyou" id="oYou" hidden></p>
-          <div class="xsave">
-            <button class="btn" type="button" id="xsave">save my number<svg aria-hidden="true"><use href="#arr"/></svg></button>
-            <span class="ok" id="xok" role="status"></span>
+          <button class="lnk" type="button" id="editGoal">Edit goal</button>
+        </div>
+        <div class="xctx" data-ctx></div>
+
+        <div class="xsec">
+          <h3>What different prices would require</h3>
+          <div class="xcards" id="cards"></div>
+          <div class="xnotes">
+            <p><span id="exNote">Example prices.</span> The number of purchases changes with the price; we do not know how many people would buy at any of these prices yet. These are new purchases needed each month. One successful month does not establish recurring income.</p>
+            <button class="btn ghost" type="button" id="ownPrice">Use my own price</button>
           </div>
-          <p class="xnote">Saves a picture of your number. Bring it to Day 1, Tue Nov 17 at 12:00 pm New York. Before platform and card fees.</p>
+        </div>
+
+        <div class="xsec" id="plan" hidden>
+          <div class="xplan">
+            <p class="xp-k" id="pK"></p>
+            <h3 id="pHead"></h3>
+            <div class="xlines" id="pLines"></div>
+            <p class="xtest" id="pTest"></p>
+
+            <div class="xrefine">
+              <details class="xd" id="dA">
+                <summary><span>Make this estimate more realistic<small>Add business costs</small></span></summary>
+                <div class="xdb">
+                  <fieldset class="xq" style="margin-top:18px">
+                    <legend style="font-family:var(--sans);font-weight:800;font-size:17px">What is your monthly goal?</legend>
+                    <div class="xopts">
+                      <label class="xopt"><input type="radio" name="basis" value="sales">Sales before costs</label>
+                      <label class="xopt"><input type="radio" name="basis" value="profit">Money left after the business costs I enter, before personal tax</label>
+                    </div>
+                  </fieldset>
+                  <div class="xgrid2">
+                    <div class="xfield">
+                      <label for="f_k">Percentage selling costs and allowance</label>
+                      <div class="xin"><input id="f_k" data-sf="costs.k" data-p="k" inputmode="decimal" autocomplete="off" placeholder="I don’t know yet" aria-describedby="h_k e_k"><span class="suf">% of the price</span></div>
+                      <p class="xerr" id="e_k"></p>
+                      <p class="xhelp" id="h_k">Payment and platform percentage fees, plus any percentage you set aside for refunds or other selling costs.</p>
+                    </div>
+                    <div class="xfield">
+                      <label for="f_v">Cash cost per purchase</label>
+                      <div class="xin"><span class="pre" data-sym>$</span><input id="f_v" data-sf="costs.v" data-p="v" inputmode="decimal" autocomplete="off" placeholder="I don’t know yet" aria-describedby="h_v e_v"></div>
+                      <p class="xerr" id="e_v"></p>
+                      <p class="xhelp" id="h_v">A fixed charge per payment, plus any delivery or fulfilment cash costs for each purchase.</p>
+                    </div>
+                    <div class="xfield">
+                      <label for="f_F">Monthly fixed business costs</label>
+                      <div class="xin"><span class="pre" data-sym>$</span><input id="f_F" data-sf="costs.F" data-p="F" inputmode="decimal" autocomplete="off" placeholder="I don’t know yet" aria-describedby="h_F e_F"><span class="suf">a month</span></div>
+                      <p class="xerr" id="e_F"></p>
+                      <p class="xhelp" id="h_F">Software and other running costs for this offer.</p>
+                    </div>
+                  </div>
+                  <button class="xcopy" type="button" id="copyA" hidden></button>
+                  <div class="xout" id="aOut" aria-live="polite"></div>
+                  <p class="xhelp" style="margin-top:12px">Count each expense once. Your own time goes in the time check, so it isn’t charged here again. Personal income tax, sales tax or VAT, benefits and retirement savings are not included. Enter prices and costs without any sales tax you collect and pass on. A zero is an answer; a blank means you don’t know yet.</p>
+                </div>
+              </details>
+
+              <details class="xd" id="dB">
+                <summary><span>Check the time it would take<small>Your hours, and the hours this plan needs</small></span></summary>
+                <div class="xdb">
+                  <div class="xfield">
+                    <label for="f_W">Hours available each week</label>
+                    <div class="xin"><input id="f_W" data-cf="weeklyHours" data-p="W" inputmode="decimal" autocomplete="off" placeholder="I don’t know yet" aria-describedby="e_W"><span class="suf">hours a week</span></div>
+                    <p class="xerr" id="e_W"></p>
+                  </div>
+                  <fieldset class="xq" style="margin-top:22px">
+                    <legend style="font-family:var(--sans);font-weight:800;font-size:17px">How would you deliver it?</legend>
+                    <div class="xopts three">
+                      <label class="xopt"><input type="radio" name="mode" value="per">Time with each purchaser, or mostly self-serve</label>
+                      <label class="xopt"><input type="radio" name="mode" value="group">Shared group sessions</label>
+                      <label class="xopt"><input type="radio" name="mode" value="undecided">I haven’t decided yet</label>
+                    </div>
+                  </fieldset>
+                  <div class="xgrid2" id="tFields">
+                    <div class="xfield">
+                      <label for="f_B">Shared monthly hours</label>
+                      <div class="xin"><input id="f_B" data-sf="time.B" data-p="B" inputmode="decimal" autocomplete="off" placeholder="I don’t know yet" aria-describedby="h_B e_B"><span class="suf">hours a month</span></div>
+                      <p class="xerr" id="e_B"></p>
+                      <p class="xhelp" id="h_B">Marketing, admin and recurring preparation not counted below.</p>
+                    </div>
+                    <div class="xfield">
+                      <label for="f_d">Hours per purchaser</label>
+                      <div class="xin"><input id="f_d" data-sf="time.d" data-p="d" inputmode="decimal" autocomplete="off" placeholder="I don’t know yet" aria-describedby="h_d e_d"><span class="suf">hours each</span></div>
+                      <p class="xerr" id="e_d"></p>
+                      <p class="xhelp" id="h_d">Individual delivery, support and admin that grows with each purchaser.</p>
+                    </div>
+                    <div class="xfield" data-group>
+                      <label for="f_C">Most purchasers in one group</label>
+                      <div class="xin"><input id="f_C" data-sf="time.C" data-p="C" inputmode="numeric" autocomplete="off" placeholder="I don’t know yet" aria-describedby="e_C"><span class="suf">people</span></div>
+                      <p class="xerr" id="e_C"></p>
+                    </div>
+                    <div class="xfield" data-group>
+                      <label for="f_H">Hours per group</label>
+                      <div class="xin"><input id="f_H" data-sf="time.H" data-p="H" inputmode="decimal" autocomplete="off" placeholder="I don’t know yet" aria-describedby="h_H e_H"><span class="suf">hours a month</span></div>
+                      <p class="xerr" id="e_H"></p>
+                      <p class="xhelp" id="h_H">Delivery and group-specific preparation for one group. Leave these out of shared hours.</p>
+                    </div>
+                    <div class="xfield">
+                      <label for="f_S">One-time setup hours <span class="xhelp" style="display:inline">(optional)</span></label>
+                      <div class="xin"><input id="f_S" data-sf="time.S" data-p="S" inputmode="decimal" autocomplete="off" placeholder="I don’t know yet" aria-describedby="h_S e_S"><span class="suf">hours</span></div>
+                      <p class="xerr" id="e_S"></p>
+                      <p class="xhelp" id="h_S">Preparation for the first cycle only.</p>
+                    </div>
+                    <div class="xfield" data-client>
+                      <label for="f_cH">Hours per month this client currently takes</label>
+                      <div class="xin"><input id="f_cH" data-cf="clientHours" data-p="clientH" inputmode="decimal" autocomplete="off" placeholder="I don’t know yet" aria-describedby="h_cH e_cH"><span class="suf">hours a month</span></div>
+                      <p class="xerr" id="e_cH"></p>
+                      <p class="xhelp" id="h_cH">A comparison only. It doesn’t change the hours you have for the new offer.</p>
+                    </div>
+                  </div>
+                  <button class="xcopy" type="button" id="copyB" hidden></button>
+                  <div class="xout" id="bOut" aria-live="polite"></div>
+                </div>
+              </details>
+
+              <details class="xd" id="dC">
+                <summary><span>Check the audience assumption<small>The share of a group that would need to buy</small></span></summary>
+                <div class="xdb">
+                  <p class="xhelp" id="subsLine" style="margin-top:16px"></p>
+                  <button class="xcopy" type="button" id="useSubs" hidden></button>
+                  <div class="xfield">
+                    <label for="f_A">How many distinct people would receive this offer in one monthly sales cycle?</label>
+                    <div class="xin"><input id="f_A" data-sf="audience.A" data-p="A" inputmode="numeric" autocomplete="off" placeholder="I don’t know yet" aria-describedby="h_A e_A"><span class="suf">people</span></div>
+                    <p class="xerr" id="e_A"></p>
+                    <p class="xhelp" id="h_A">Count people once. Repeated emails to the same people do not increase this number. The calculation does not assume all recipients read the message.</p>
+                  </div>
+                  <div class="xout" id="cOut" aria-live="polite"></div>
+                  <div class="xfield" style="margin-top:26px">
+                    <label for="f_r">At a purchase rate of this many percent, how many people would need to receive the offer?</label>
+                    <div class="xin"><input id="f_r" data-sf="audience.r" data-p="r" inputmode="decimal" autocomplete="off" placeholder="Your own rate" aria-describedby="h_r e_r"><span class="suf">% buy</span></div>
+                    <p class="xerr" id="e_r"></p>
+                    <p class="xhelp" id="h_r">A what-if. No rate is normal, safe or expected; each price keeps its own.</p>
+                  </div>
+                  <div class="xout" id="rOut" aria-live="polite"></div>
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+
+        <div class="xact">
+          <div class="xpanel">
+            <h3 style="font-size:clamp(26px,2.6vw,34px);line-height:1.1">What actually happened</h3>
+            <p>After you make the offer, record a month here. Recorded results are kept apart from your estimates, and each one keeps the plan it was compared with.</p>
+            <button class="btn ghost" type="button" id="actAdd">Add what actually happened</button>
+            <form id="actForm" hidden novalidate>
+              <div class="xfield">
+                <label for="a_month">Which month?</label>
+                <select class="xsel" id="a_month"></select>
+              </div>
+              <div class="xgrid2">
+                <div class="xfield"><label for="a_collected">Money collected</label><div class="xin"><span class="pre" data-sym>$</span><input id="a_collected" data-a="collected" inputmode="decimal" autocomplete="off" placeholder="I don’t know yet" aria-describedby="h_ac ea_collected"></div><p class="xerr" id="ea_collected"></p><p class="xhelp" id="h_ac">Before refunds, without any sales tax you pass on.</p></div>
+                <div class="xfield"><label for="a_refunds">Refunds paid this month</label><div class="xin"><span class="pre" data-sym>$</span><input id="a_refunds" data-a="refunds" inputmode="decimal" autocomplete="off" placeholder="I don’t know yet" aria-describedby="ea_refunds"></div><p class="xerr" id="ea_refunds"></p></div>
+                <div class="xfield"><label for="a_fees">Selling fees</label><div class="xin"><span class="pre" data-sym>$</span><input id="a_fees" data-a="fees" inputmode="decimal" autocomplete="off" placeholder="I don’t know yet" aria-describedby="ea_fees"></div><p class="xerr" id="ea_fees"></p></div>
+                <div class="xfield"><label for="a_delivery">Delivery cash costs</label><div class="xin"><span class="pre" data-sym>$</span><input id="a_delivery" data-a="delivery" inputmode="decimal" autocomplete="off" placeholder="I don’t know yet" aria-describedby="ea_delivery"></div><p class="xerr" id="ea_delivery"></p></div>
+                <div class="xfield"><label for="a_fixed">Fixed business costs</label><div class="xin"><span class="pre" data-sym>$</span><input id="a_fixed" data-a="fixed" inputmode="decimal" autocomplete="off" placeholder="I don’t know yet" aria-describedby="ea_fixed"></div><p class="xerr" id="ea_fixed"></p></div>
+                <div class="xfield"><label for="a_hours">Hours worked</label><div class="xin"><input id="a_hours" data-a="hours" inputmode="decimal" autocomplete="off" placeholder="I don’t know yet" aria-describedby="h_ah ea_hours"><span class="suf">hours</span></div><p class="xerr" id="ea_hours"></p><p class="xhelp" id="h_ah">Setup included, if you did it that month.</p></div>
+                <div class="xfield"><label for="a_recips">People who received the offer</label><div class="xin"><input id="a_recips" data-a="recips" inputmode="numeric" autocomplete="off" placeholder="I don’t know yet" aria-describedby="h_ar ea_recips"><span class="suf">people</span></div><p class="xerr" id="ea_recips"></p><p class="xhelp" id="h_ar">Distinct people, counted once.</p></div>
+                <div class="xfield"><label for="a_buyers">Of those same people, how many bought?</label><div class="xin"><input id="a_buyers" data-a="buyers" inputmode="numeric" autocomplete="off" placeholder="I don’t know yet" aria-describedby="ea_buyers"><span class="suf">people</span></div><p class="xerr" id="ea_buyers"></p></div>
+              </div>
+              <div class="xrow" style="margin-top:22px;gap:16px;align-items:center">
+                <button class="btn" type="submit">Record this month</button>
+                <button class="lnk" type="button" id="actCancel">Cancel</button>
+              </div>
+            </form>
+            <div id="actList"></div>
+          </div>
+        </div>
+
+        <div class="xev" id="xev">
+          <svg aria-hidden="true"><use href="#sf"/></svg>
+          <p id="evText"></p>
+        </div>
+
+        <p class="xfoot">A planning illustration based on the numbers entered. Personal taxes and unentered costs are not included. It can help you plan toward more independence; it can’t tell you when you can afford to leave a job.</p>
+        <details class="xd xhow">
+          <summary><span>How this is calculated</span></summary>
+          <div class="xdb">
+            <p><b>Purchases needed.</b> Your monthly goal divided by the price, rounded up to a whole purchase.</p>
+            <p><b>With costs.</b> Each purchase leaves the price, minus the percentage selling costs and allowance, minus the cash cost per purchase. Profit is that amount times the purchases, minus monthly fixed costs. For a profit goal, purchases needed are the goal plus fixed costs, divided by what each purchase leaves, rounded up.</p>
+            <p><b>Audience.</b> Purchases needed divided by the number of distinct people who receive the offer, assuming each person buys once. Your own rate works the other way: purchases needed divided by the rate, rounded up.</p>
+            <p><b>Time.</b> Shared monthly hours, plus purchases times hours per purchaser, plus groups times hours per group when you teach in groups. Hours available a month are hours a week times 52, divided by 12.</p>
+            <p><b>What it doesn’t do.</b> It doesn’t predict how many people will buy, convert currencies, or include personal tax. Numbers are kept exactly and rounded only when shown.</p>
+          </div>
+        </details>
+        <div class="xmore">
+          <button class="lnk" type="button" id="aImp">Open a saved plan file</button>
+          <button class="lnk" type="button" id="aClr">Clear saved plan</button>
+          <input type="file" id="aFile" accept=".json,application/json" hidden>
         </div>
         <p class="xback"><a href="../confirmed/" id="xback">&larr; back to your confirmation page</a></p>
       </div>
     </div>
   </div>
 </main>
+
+<div class="xsave" id="xsave" hidden>
+  <div class="wrap">
+    <p class="xstat" id="aStat" role="status"></p>
+    <button class="btn" type="button" id="aSave">Save on this device</button>
+    <button class="btn ghost" type="button" id="aDown">Download my plan</button>
+    <button class="btn ghost" type="button" id="aPrint">Print my plan</button>
+  </div>
+</div>
+<div class="vh" id="live" aria-live="polite"></div>
+<div id="printout" aria-hidden="true"></div>
 
 <footer>
   <div class="wrap">
@@ -221,128 +569,581 @@ body.xlocked .xgrid{filter:blur(7px);opacity:.55;pointer-events:none;user-select
   </div>
 </footer>
 
+<script src="../assets/exit-calc.js?v=b6793901"></script>
 <script>
+/* The Exit Number page. Every number comes from assets/exit-calc.js. Nothing typed here leaves this browser: no server,
+   no Kit fields, nothing in the URL. "Save on this device" writes the plan to this browser; "Download my plan" gives a file. */
 (function(){
-  var API = '/api/ana-survey';
+  'use strict';
+  var X = window.ExitCalc;
+  var KEY = 'ana_exit_plan_v1';
   var qs = new URLSearchParams(location.search), reg = {};
-  try { reg = JSON.parse(sessionStorage.getItem('ana_reg') || localStorage.getItem('ana_reg') || '{}') } catch (e) {}
-  var first = (qs.get('first') || reg.first_name || '').trim().split(/\s+/)[0]; if (first.length > 30) first = '';
-  var email = (qs.get('email') || reg.email || '').trim(), ref = (qs.get('ref') || reg.ref || '').trim();
+  try { reg = JSON.parse(sessionStorage.getItem('ana_reg') || localStorage.getItem('ana_reg') || '{}') || {} } catch (e) {}
+  var first = String(qs.get('first') || reg.first_name || '').trim().split(/\s+/)[0]; if (first.length > 30) first = '';
+  var email = String(qs.get('email') || reg.email || '').trim();
   var page = qs.get('p') === 'vip' ? 'vip' : 'reg';
-  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (first) {
-    document.querySelectorAll('[data-for]').forEach(function(e){ if (e.tagName === 'SPAN') e.textContent = ', ' + first });
-    document.querySelectorAll('[data-own]').forEach(function(e){ e.textContent = first + '’s' });
-  }
-  document.getElementById('xback').href = page === 'vip' ? '../vip-confirmed/' : '../confirmed/';
+  var NOW = (function(){ var n = qs.get('now'), d = n ? new Date(n) : new Date(); return isNaN(d) ? new Date() : d })();
+  var $ = function(id){ return document.getElementById(id) };
+  var $$ = function(s, el){ return Array.prototype.slice.call((el || document).querySelectorAll(s)) };
+  function el(tag, cls, text){ var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e }
+  /* a sentence with bold parts: ['That is ', ['$3,500'], ' in sales.'] */
+  function rich(tag, cls, parts){ var e = el(tag, cls); parts.forEach(function(p){ if (Array.isArray(p)) e.appendChild(el('b', null, p[0])); else e.appendChild(document.createTextNode(p)) }); return e }
 
-  /* what they told me in the 7 quick questions (the confirmation page keeps it in this browser) */
+  if (first) $('xown').textContent = first + '’s';
+  $('xback').href = page === 'vip' ? '../vip-confirmed/' : '../confirmed/';
+
+  /* ---------- the seven quick questions, through one explicit adapter ---------- */
   var sv = null; try { sv = JSON.parse(localStorage.getItem('ana_survey2') || 'null') } catch (e) {}
   if (sv && email && (sv.email || '').toLowerCase() !== email.toLowerCase()) sv = null;   /* someone else's answers on this browser */
-  var SUBS = ['no newsletter yet', 'under 100 subscribers', '100 to 1,000 subscribers', '1,000 to 10,000 subscribers', 'more than 10,000 subscribers'];
-  /* the 7 quick questions power the calculator: question 4 sets what "enough" means, question 2 sits beside the result */
-  var w = sv && sv.a ? sv.a.q4 : null, hint = document.querySelector('#goal').closest('.xq').querySelector('.hint');
-  if (w === 0 || w === 1) hint.textContent = 'The salary you’d replace, so the job becomes a choice.';
-  else if (w === 2) hint.textContent = 'The client income you’d let go of, or the hours you’d stop selling.';
-  else if (w === 3) hint.textContent = 'What you’d want coming in each month, on your own terms.';
-  /* locked until the 7 questions are done (in this browser, or the link from the last question says sv=1) */
-  if (!(qs.get('sv') === '1' || (sv && sv.done))) {
+  var EMPLOY = {job_out: 'A job, and I want a way out', job_side: 'A job I like, plus something on the side', self: 'I work for myself', between: 'Between jobs, or retired', other: 'Something else'};
+  var Q4 = ['job_out', 'job_side', 'self', 'between', 'other'];                 /* q4 "What’s your work right now?", in its order */
+  var Q2 = [null, 'under 100', '100 to 1,000', '1,000 to 10,000', 'more than 10,000'];   /* q2: only "None yet" (0) is an exact count */
+
+  /* ---------- the plan: saved on this browser, or new ---------- */
+  var saved = null, lastSaved = null;
+  try { var raw = localStorage.getItem(KEY); if (raw) { var vr = X.validatePlan(JSON.parse(raw)); if (vr.plan) saved = vr.plan } } catch (e) {}
+  var plan = saved || X.newPlan(NOW);
+  if (!saved && sv && sv.a) {
+    if (typeof sv.a.q4 === 'number' && Q4[sv.a.q4]) { plan.context.employment = Q4[sv.a.q4]; plan.context.employmentSource = 'survey' }
+    if (sv.a.q2 === 0) { plan.context.subscribers = '0'; plan.context.subscribersSource = 'survey' }
+    else if (typeof sv.a.q2 === 'number' && Q2[sv.a.q2]) plan.context.subscribersRange = Q2[sv.a.q2];
+  }
+  function ser(){ var c = JSON.parse(JSON.stringify(plan)); delete c.updatedAt; return JSON.stringify(c) }
+  if (saved) lastSaved = ser();
+
+  /* locked until the 7 questions are done (here, or the link from the last question says sv=1), or a plan is saved here */
+  if (!(qs.get('sv') === '1' || (sv && sv.done) || saved)) {
     document.body.classList.add('xlocked');
-    document.getElementById('xgate').hidden = false;
+    $('xgate').hidden = false;
     var gp = ['first', 'email', 'ref'].filter(function(k){ return qs.get(k) }).map(function(k){ return k + '=' + encodeURIComponent(qs.get(k)) });
-    document.getElementById('xgo').href = (page === 'vip' ? '../vip-confirmed/' : '../confirmed/') + (gp.length ? '?' + gp.join('&') : '') + '#survey';
-    document.querySelectorAll('.xgrid input, .xgrid button, .xgrid a, .xgrid select').forEach(function(e){ e.tabIndex = -1 });
-    document.querySelector('.xgrid').setAttribute('aria-hidden', 'true');
+    $('xgo').href = (page === 'vip' ? '../vip-confirmed/' : '../confirmed/') + (gp.length ? '?' + gp.join('&') : '') + '#survey';
+    $$('.xapp input, .xapp button, .xapp a, .xapp select, .xapp summary').forEach(function(e){ e.tabIndex = -1 });
+    $('xapp').setAttribute('aria-hidden', 'true');
+    var lg = document.querySelector('.xhead .cxlogo'); if (lg) lg.classList.remove('open');
   }
-  if (sv && sv.done) { var lead = document.querySelector('.xhead p'); lead.textContent = 'Set up from your answers to the seven quick questions. Put in the monthly number that would give you more choice about work, and a price for your offer. A guess is fine. We’ll work on the real price on Day 2.' }
 
-  var $ = function(id){ return document.getElementById(id) };
-  var inp = {goal: $('goal'), price: $('price'), sub: $('sub')}, LIM = {goal: 1000000, price: 100000, sub: 1000};
-  var fmt = function(n){ return Math.round(n).toLocaleString('en-US') };
-  var num = function(k){ var v = parseInt(String(inp[k].value).replace(/[^0-9]/g, ''), 10); return isFinite(v) && v > 0 ? Math.min(v, LIM[k]) : 0 };
-  var state = {};
-  try { var saved = JSON.parse(localStorage.getItem('ana_exit') || 'null'), SK = {goal:'goal_month', price:'price', sub:'sub_price'}; if (saved) ['goal', 'price', 'sub'].forEach(function(k){ if (saved[SK[k]]) inp[k].value = fmt(saved[SK[k]]) }) } catch (e) {}
+  /* ---------- money and units ---------- */
+  var M = function(x, scale){ return X.money(x, plan.currency, scale) };
+  function sym(){ try { var p = new Intl.NumberFormat('en-US', {style:'currency', currency: plan.currency}).formatToParts(0); for (var i = 0; i < p.length; i++) if (p[i].type === 'currency') return p[i].value } catch (e) {} return plan.currency }
+  var purch = function(n){ return n === 1n ? 'purchase' : 'purchases' };
+  var hrsWord = function(s){ return s === '1' ? 'hour' : 'hours' };
+  var MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  function monthName(ym){ var m = /^(\d{4})-(\d{2})$/.exec(ym || ''); return m ? MONTHS[+m[2] - 1] + ' ' + m[1] : '' }
+  function sel(){ for (var i = 0; i < plan.scenarios.length; i++) if (plan.scenarios[i].id === plan.selected) return plan.scenarios[i]; return null }
+  function get(o, path){ return path.split('.').reduce(function(a, k){ return a ? a[k] : undefined }, o) }
+  function put(o, path, v){ var p = path.split('.'), last = p.pop(); p.reduce(function(a, k){ return a[k] }, o)[last] = v }
 
-  function calc(){
-    var g = num('goal'), p = num('price'), s = num('sub');
-    var bm = g && p ? Math.ceil(g / p) : 0, by = g && p ? Math.ceil(g * 12 / p) : 0;
-    var subs = g && s ? Math.ceil(g / s) : 0, free = subs ? Math.ceil(subs / 0.05) : 0;
-    if (free > 1000) free = Math.round(free / 100) * 100;
-    state = {goal_month: g, price: p, buyers_month: bm, buyers_year: by, sub_price: s, subs_needed: subs, free_needed: free};
-    $('oBuyers').textContent = bm ? fmt(bm) : '?';
-    $('oPrice').textContent = p ? '$' + fmt(p) : 'your price';
-    $('oEq').innerHTML = bm ? fmt(bm) + ' × $' + fmt(p) + ' = <b>$' + fmt(bm * p) + ' a month</b>, about <b>' + fmt(by) + ' people a year</b>.' : 'Put in a monthly number and a price.';
-    $('oSubs').textContent = subs ? fmt(subs) : '?';
-    $('oSub').textContent = s ? '$' + fmt(s) : 'your price';
-    $('oFree').innerHTML = subs ? 'If about 1 in 20 free readers pay (5%, a common rule of thumb), that’s a list of about <b>' + fmt(free) + '</b>.' : '';
-    document.querySelectorAll('.xchips').forEach(function(c){ var v = num(c.getAttribute('data-for')); c.querySelectorAll('button').forEach(function(b){ b.classList.toggle('on', +b.getAttribute('data-v') === v) }) });
-    var a = sv && sv.a && sv.a.q2;
-    if (a != null && SUBS[a]) { $('oYou').hidden = false; $('oYou').innerHTML = 'You told me you have <b>' + SUBS[a] + '</b>' + '.' }
-    try { localStorage.setItem('ana_exit', JSON.stringify(state)) } catch (e) {}
+  /* ---------- step 1 ---------- */
+  var cur = $('cur');
+  X.CURRENCIES.forEach(function(c){ var o = el('option', null, c); o.value = c; cur.appendChild(o) });
+  (function(){
+    var tm = $('tmonth'), o = el('option', null, 'I’ll choose later'); o.value = ''; tm.appendChild(o);
+    var y = NOW.getFullYear(), m = NOW.getMonth(), have = {};
+    for (var i = 0; i < 48; i++) { var d = new Date(y, m + i, 1), v = X.ym(d); have[v] = 1; var op = el('option', null, monthName(v)); op.value = v; tm.appendChild(op) }
+    if (plan.goal.targetMonth && !have[plan.goal.targetMonth]) { var po = el('option', null, monthName(plan.goal.targetMonth) + ' (passed)'); po.value = plan.goal.targetMonth; tm.insertBefore(po, tm.children[1]) }
+  })();
+  var GHELP = {
+    extra: 'This can be a first useful milestone. It does not have to be your full living income.',
+    client: 'Start with the monthly amount you want your own offer to bring in. Add costs later to compare what you would actually keep.',
+    leave: 'Start with a target you want to work toward. This calculation does not establish when you can afford to leave.'
+  };
+  function fillStep1(){
+    $$('input[name=gtype]').forEach(function(r){ r.checked = r.value === plan.goal.type });
+    $('gHelp').textContent = GHELP[plan.goal.type] || '';
+    cur.value = plan.currency;
+    $('goal').value = plan.goal.amount ? X.show(X.big('goal', plan.goal.amount), 'money') : '';
+    $('tmonth').value = plan.goal.targetMonth || '';
   }
-  Object.keys(inp).forEach(function(k){
-    inp[k].addEventListener('input', function(){ dirty = true; calc() });
-    inp[k].addEventListener('blur', function(){ var v = num(k); if (v) inp[k].value = fmt(v) });
+  $$('input[name=gtype]').forEach(function(r){ r.addEventListener('change', function(){ plan.goal.type = r.value; $('gHelp').textContent = GHELP[r.value]; changed() }) });
+  cur.addEventListener('change', function(){
+    var any = plan.goal.amount || plan.scenarios.some(function(s){ return s.priceEdited || s.costs.v || s.costs.F }) || plan.actuals.length;
+    if (any && !confirm('Amounts will keep the same numbers. This does not convert currencies.')) { cur.value = plan.currency; return }
+    plan.currency = cur.value; $$('[data-sym]').forEach(function(s){ s.textContent = sym() }); changed();
   });
-  document.querySelectorAll('.xchips').forEach(function(c){
-    c.addEventListener('click', function(e){ var b = e.target.closest('button'); if (!b) return; inp[c.getAttribute('data-for')].value = fmt(+b.getAttribute('data-v')); dirty = true; calc() });
+  $('tmonth').addEventListener('change', function(){ plan.goal.targetMonth = $('tmonth').value || null; changed() });
+  $('step1').addEventListener('submit', function(e){
+    e.preventDefault();
+    if (!readField($('goal'), 'goal', 'goalErr', 'goalBox', function(v){ plan.goal.amount = v })) { $('goal').focus(); return }
+    if (!plan.goal.amount) { $('goalErr').textContent = 'Enter the monthly amount you’re working toward.'; $('goalBox').classList.add('bad'); $('goal').focus(); return }
+    setView(2, true);
+    window.scrollTo({top: $('xapp').getBoundingClientRect().top + scrollY - 20, behavior: 'auto'});
+    $('gTitle').focus({preventScroll: true});
   });
-  calc();
+  $('editGoal').addEventListener('click', function(){ setView(1, true); $('goal').focus() });
 
-  /* the numbers go to the sheet once they save, or when they leave after changing something */
-  var dirty = false, sent = '';
-  function send(){
-    var key = JSON.stringify(state); if (key === sent || !state.buyers_month) return; sent = key; dirty = false;
-    var tz = ''; try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '' } catch (e) {}
-    try { fetch(API, {method:'POST', keepalive:true, headers:{'Content-Type':'application/json'}, body: JSON.stringify({kind:'exit', page:page, first:first, email:email, ref:ref, tz:tz, answers:state})}).catch(function(){}) } catch (e) {}
+  /* one typed value: parse, store as a string (null = unknown), show the error next to it. Returns false on an error. */
+  function readField(input, field, errId, boxId, store){
+    var r = X.parse(field, input.value), box = boxId ? $(boxId) : input.closest('.xin'), er = $(errId);
+    if (r.err) { er.textContent = r.err; box && box.classList.add('bad'); input.setAttribute('aria-invalid', 'true'); store(null); return false }
+    er.textContent = ''; box && box.classList.remove('bad'); input.removeAttribute('aria-invalid');
+    store(r.blank ? null : X.toStr(r.v, X.FIELDS[field].kind));
+    return true;
   }
-  addEventListener('pagehide', function(){ if (dirty) send() });
+  $('goal').addEventListener('input', function(){ readField($('goal'), 'goal', 'goalErr', 'goalBox', function(v){ plan.goal.amount = v }); changed() });
+  $('goal').addEventListener('blur', function(){ if (plan.goal.amount) $('goal').value = X.show(X.big('goal', plan.goal.amount), 'money') });
 
-  /* save my number: a picture of the card, 1080 x 1350 */
-  function card(){
-    var W = 1080, H = 1350, c = document.createElement('canvas'); c.width = W; c.height = H;
-    var x = c.getContext('2d'), INK = '#1A1412', SUN = '#FFD400', PINK = '#F72585', CREAM = '#FFF8EE', SER = '"Instrument Serif", Georgia, serif', SAN = 'Manrope, system-ui, sans-serif';
-    function rr(X, Y, w, h, r){ x.beginPath(); x.moveTo(X + r, Y); x.arcTo(X + w, Y, X + w, Y + h, r); x.arcTo(X + w, Y + h, X, Y + h, r); x.arcTo(X, Y + h, X, Y, r); x.arcTo(X, Y, X + w, Y, r); x.closePath() }
-    x.fillStyle = SUN; x.fillRect(0, 0, W, H);
-    x.fillStyle = INK; rr(72, 80, W - 128, H - 150, 48); x.fill();
-    x.fillStyle = CREAM; rr(60, 66, W - 128, H - 150, 48); x.fill(); x.lineWidth = 4; x.strokeStyle = INK; x.stroke();
-    var mk = document.querySelector('.xbrand img');
-    if (mk && mk.complete) x.drawImage(mk, 120, 118, 92, 92);
-    x.fillStyle = INK; x.font = '800 30px ' + SAN; x.fillText('THE EXIT PLAN', 232, 158);
-    x.fillStyle = '#7A6A60'; x.font = '600 26px ' + SAN; x.fillText('with Ana Calin · Nov 17 to 19', 232, 196);
-    x.fillStyle = PINK; x.font = '800 28px ' + SAN; x.fillText((first ? first.toUpperCase() + '’S' : 'MY') + ' EXIT NUMBER', 120, 320);
-    var big = fmt(state.buyers_month || 0); x.font = '400 300px ' + SER; var bw = x.measureText(big).width;
-    x.fillStyle = SUN; x.fillRect(110, 470, bw + 30, 110);
-    x.fillStyle = INK; x.fillText(big, 124, 560);
-    x.font = '800 46px ' + SAN; x.fillText('people a month, at $' + fmt(state.price), 120, 650);
-    x.fillStyle = '#3D332E'; x.font = '600 32px ' + SAN; x.fillText('= $' + fmt(state.buyers_month * state.price) + ' a month · about ' + fmt(state.buyers_year) + ' people a year', 120, 712);
-    x.setLineDash([14, 12]); x.strokeStyle = 'rgba(26,20,18,.3)'; x.lineWidth = 4; x.beginPath(); x.moveTo(120, 790); x.lineTo(W - 180, 790); x.stroke(); x.setLineDash([]);
-    x.fillStyle = '#7A6A60'; x.font = '800 24px ' + SAN; x.fillText('THROUGH PAID SUBSCRIPTIONS ALONE', 120, 862);
-    x.fillStyle = INK; x.font = '400 120px ' + SER; x.fillText(fmt(state.subs_needed), 120, 990);
-    var sw = x.measureText(fmt(state.subs_needed)).width;
-    x.font = '700 32px ' + SAN; x.fillText('paid subscribers', 150 + sw, 950); x.fillText('at $' + fmt(state.sub_price) + ' a month', 150 + sw, 992);
-    x.fillStyle = '#3D332E'; x.font = '600 28px ' + SAN; x.fillText('At 5% paying, a list of about ' + fmt(state.free_needed) + '.', 120, 1050);
-    x.fillStyle = PINK; x.font = 'italic 400 44px ' + SER; x.fillText('Bring it to Day 1, Tue Nov 17.', 120, 1150);
+  /* ---------- context chips: what the survey said, editable, never a repeat question ---------- */
+  var ctxOpen = null;
+  function renderCtx(){
+    $$('[data-ctx]').forEach(function(box, bi){
+      box.textContent = '';
+      box.appendChild(el('span', null, 'About you'));
+      var c = plan.context;
+      var chips = [
+        ['work', 'Work: ', c.employment ? EMPLOY[c.employment] : 'add', c.employmentSource === 'survey' ? ' (from your answers)' : ''],
+        ['subs', 'Current subscribers: ', c.subscribers != null ? X.int(X.big('subs', c.subscribers)) : (c.subscribersRange ? c.subscribersRange : 'add'), c.subscribersSource === 'survey' || (c.subscribers == null && c.subscribersRange) ? ' (from your answers)' : ''],
+        ['hours', 'Hours a week: ', c.weeklyHours != null ? X.show(X.big('W', c.weeklyHours), 'hours') : 'add', '']
+      ];
+      chips.forEach(function(ch){
+        var b = el('button', 'xchip'); b.type = 'button'; b.setAttribute('aria-expanded', ctxOpen && ctxOpen.box === bi && ctxOpen.k === ch[0] ? 'true' : 'false');
+        b.appendChild(document.createTextNode(ch[1])); b.appendChild(el('b', null, ch[2])); if (ch[3]) b.appendChild(el('i', null, ch[3]));
+        b.addEventListener('click', function(){ ctxOpen = ctxOpen && ctxOpen.box === bi && ctxOpen.k === ch[0] ? null : {box: bi, k: ch[0]}; renderCtx(); var f = box.querySelector('.xctxed input, .xctxed select'); if (f) f.focus() });
+        box.appendChild(b);
+      });
+      if (ctxOpen && ctxOpen.box === bi) box.appendChild(ctxEditor(ctxOpen.k, bi));
+    });
+  }
+  function ctxEditor(k, bi){
+    var ed = el('div', 'xctxed'), id = 'cx' + bi + k, c = plan.context;
+    var f = el('div', 'xfield'), lab = el('label'); lab.htmlFor = id; f.appendChild(lab); ed.appendChild(f);
+    if (k === 'work') {
+      lab.textContent = 'Your work right now';
+      var s = el('select', 'xsel'); s.id = id;
+      var o0 = el('option', null, 'Not set'); o0.value = ''; s.appendChild(o0);
+      Object.keys(EMPLOY).forEach(function(key){ var o = el('option', null, EMPLOY[key]); o.value = key; s.appendChild(o) });
+      s.value = c.employment || '';
+      s.addEventListener('change', function(){ c.employment = s.value || null; c.employmentSource = s.value ? 'user' : null; changed(true) });
+      f.appendChild(s);
+    } else {
+      var isS = k === 'subs', fld = isS ? 'subs' : 'W';
+      lab.textContent = isS ? 'Current subscribers (an exact count)' : 'Hours available each week';
+      var box = el('div', 'xin'), inp = el('input'); inp.id = id; inp.inputMode = isS ? 'numeric' : 'decimal'; inp.autocomplete = 'off'; inp.placeholder = 'I don’t know yet';
+      var cv = isS ? c.subscribers : c.weeklyHours; inp.value = cv != null ? X.show(X.big(fld, cv), isS ? 'count' : 'hours') : '';
+      box.appendChild(inp); box.appendChild(el('span', 'suf', isS ? 'people' : 'hours a week')); f.appendChild(box);
+      var er = el('p', 'xerr'); er.id = id + 'e'; f.appendChild(er); inp.setAttribute('aria-describedby', er.id);
+      if (isS) f.appendChild(el('p', 'xhelp', c.subscribersRange && c.subscribers == null ? 'You told me ' + c.subscribersRange + '. That’s a range, so it isn’t used in the maths. Enter an exact count if you know it.' : 'These are current subscribers. It doesn’t mean everyone will see an offer, or would buy.'));
+      inp.addEventListener('input', function(){
+        readField(inp, fld, er.id, null, function(v){ if (isS) { c.subscribers = v; c.subscribersSource = v != null ? 'user' : null } else c.weeklyHours = v });
+        if (!isS) { var w = $('f_W'); if (w && document.activeElement !== w) w.value = inp.value }
+        changed(false, true);
+      });
+    }
+    var done = el('button', 'xclr', 'Done'); done.type = 'button';
+    done.addEventListener('click', function(){ ctxOpen = null; renderCtx() });
+    ed.appendChild(done);
+    return ed;
+  }
+
+  /* ---------- step 2: the three prices ---------- */
+  var cardsEl = $('cards');
+  plan.scenarios.forEach(function(s, i){ cardsEl.appendChild(cardShell(i)) });
+  function cardShell(i){
+    var c = el('div', 'xc'); c.dataset.i = i;
+    c.appendChild(el('span', 'xc-tag'));
+    var lab = el('label', 'vh', 'Price ' + (i + 1)); lab.htmlFor = 'p' + i; c.appendChild(lab);
+    var box = el('div', 'xin'); box.appendChild(el('span', 'pre')).setAttribute('data-sym', '');
+    var inp = el('input'); inp.id = 'p' + i; inp.inputMode = 'decimal'; inp.autocomplete = 'off'; inp.placeholder = 'Price'; inp.setAttribute('aria-describedby', 'pe' + i);
+    box.appendChild(inp); box.appendChild(el('span', 'suf', 'each')); c.appendChild(box);
+    var er = el('p', 'xerr'); er.id = 'pe' + i; c.appendChild(er);
+    c.appendChild(el('p', 'xc-n')); c.appendChild(el('p', 'xc-s'));
+    var go = el('div', 'xc-go'), b = el('button'); b.type = 'button'; go.appendChild(b); c.appendChild(go);
+    inp.addEventListener('input', function(){
+      var s = plan.scenarios[i];
+      readField(inp, 'price', 'pe' + i, null, function(v){ s.price = v }); s.priceEdited = true;
+      if (s.audience.rSource) s.audience.rSource.untested = true;
+      changed();
+    });
+    inp.addEventListener('blur', function(){ var s = plan.scenarios[i]; if (s.price) inp.value = X.show(X.big('price', s.price), 'money') });
+    b.addEventListener('click', function(){ plan.selected = plan.scenarios[i].id; fillScenario(); changed(); $('plan').scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start'}) });
     return c;
   }
-  $('xsave').addEventListener('click', function(){
-    calc(); send();
-    var go = function(){
-      var c = card(), name = 'my-exit-number.png';
-      c.toBlob(function(b){
-        if (!b) return;
-        var f = window.File ? new File([b], name, {type:'image/png'}) : null;
-        if (f && navigator.canShare && navigator.canShare({files:[f]}) && matchMedia('(pointer: coarse)').matches) {
-          navigator.share({files:[f], title:'My exit number'}).catch(function(){});
-        } else {
-          var a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = name; document.body.appendChild(a); a.click();
-          setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove() }, 1500);
-        }
-        $('xok').textContent = 'Saved. See you Tue Nov 17.';
-      }, 'image/png');
-    };
-    if (document.fonts && document.fonts.load) Promise.all([document.fonts.load('400 120px "Instrument Serif"'), document.fonts.load('italic 400 44px "Instrument Serif"'), document.fonts.load('800 30px Manrope')]).then(go, go); else go();
+  $('ownPrice').addEventListener('click', function(){
+    var i = 0; plan.scenarios.forEach(function(s, n){ if (s.id === plan.selected) i = n });
+    var inp = $('p' + i); inp.focus(); inp.select();
+    $('live').textContent = 'Type your own price in any of the three cards.';
   });
+  function fillPrices(){ plan.scenarios.forEach(function(s, i){ $('p' + i).value = s.price ? X.show(X.big('price', s.price), 'money') : '' }) }
+
+  /* ---------- the selected price's own inputs (costs, time, audience) ---------- */
+  var SF = $$('[data-sf]'), CF = $$('[data-cf]');
+  function fillScenario(){
+    var s = sel(); if (!s) return;
+    SF.forEach(function(inp){ var v = get(s, inp.dataset.sf), f = inp.dataset.p; inp.value = v != null ? X.show(X.big(f, v), X.FIELDS[f].kind).replace(/%$/, '') : ''; $('e_' + inp.id.slice(2)).textContent = ''; inp.closest('.xin').classList.remove('bad') });
+    CF.forEach(function(inp){ var v = plan.context[inp.dataset.cf], f = inp.dataset.p; inp.value = v != null ? X.show(X.big(f, v), X.FIELDS[f].kind) : '' });
+    $$('input[name=mode]').forEach(function(r){ r.checked = r.value === s.time.mode });
+    $$('input[name=basis]').forEach(function(r){ r.checked = r.value === plan.goal.basis });
+  }
+  SF.forEach(function(inp){
+    inp.addEventListener('input', function(){ var s = sel(); if (!s) return; readField(inp, inp.dataset.p, 'e_' + inp.id.slice(2), null, function(v){ put(s, inp.dataset.sf, v) }); if (inp.dataset.sf === 'audience.r') s.audience.rSource = null; changed() });
+  });
+  CF.forEach(function(inp){
+    inp.addEventListener('input', function(){ readField(inp, inp.dataset.p, 'e_' + inp.id.slice(2), null, function(v){ plan.context[inp.dataset.cf] = v }); changed(true) });
+  });
+  $$('input[name=mode]').forEach(function(r){ r.addEventListener('change', function(){ var s = sel(); if (s) { s.time.mode = r.value; changed() } }) });
+  $$('input[name=basis]').forEach(function(r){ r.addEventListener('change', function(){ plan.goal.basis = r.value; changed() }) });
+  /* the same costs or hours as another price, copied only when asked */
+  function donor(part){ var s = sel(); return plan.scenarios.filter(function(o){ return o !== s && Object.keys(o[part]).some(function(k){ return o[part][k] != null && k !== 'mode' }) })[0] || null }
+  function isEmpty(s, part){ return Object.keys(s[part]).every(function(k){ return s[part][k] == null }) }
+  $('copyA').addEventListener('click', function(){ var d = donor('costs'), s = sel(); if (d && s) { s.costs = JSON.parse(JSON.stringify(d.costs)); fillScenario(); changed() } });
+  $('copyB').addEventListener('click', function(){ var d = donor('time'), s = sel(); if (d && s) { s.time = JSON.parse(JSON.stringify(d.time)); fillScenario(); changed() } });
+  $('useSubs').addEventListener('click', function(){ var s = sel(); if (s && plan.context.subscribers != null) { s.audience.A = plan.context.subscribers; fillScenario(); changed() } });
+
+  /* ---------- rendering ---------- */
+  function calcFor(s){ return X.scenario(X.inputs(plan, s)) }
+  function render(){
+    $$('[data-sym]').forEach(function(s){ s.textContent = sym() });
+    renderCtx();
+    if (view !== 2) return;
+    var G = X.big('goal', plan.goal.amount);
+    var t = $('gTitle'); t.textContent = '';
+    t.appendChild(document.createTextNode(plan.goal.basis === 'profit' ? 'Your monthly profit goal: ' : 'Your monthly sales goal: '));
+    t.appendChild(el('b', null, M(G)));
+    t.appendChild(el('small', null, plan.goal.basis === 'profit' ? 'Before personal tax, after the business costs you enter.' : 'Sales before costs. Add costs below to work out a profit target.'));
+    var meta = [];
+    if (plan.goal.type) meta.push({extra: 'Building extra income of your own.', client: 'Replacing a client commitment.', leave: 'Working toward leaving your job.'}[plan.goal.type]);
+    if (plan.goal.targetMonth) {
+      var mt = X.monthsTo(plan.goal.targetMonth, NOW);
+      meta.push('Your target month: ' + monthName(plan.goal.targetMonth) + '.');
+      meta.push(mt === 0 ? 'Target: this month.' : mt < 0 ? 'Your target month has passed. Review your results or choose a new target.' : 'Calendar months to your target month: ' + mt + '.');
+    }
+    $('gMeta').textContent = meta.join(' ');
+
+    /* the three cards */
+    var anyEdited = false;
+    plan.scenarios.forEach(function(s, i){
+      var c = cardsEl.children[i], o = calcFor(s), on = s.id === plan.selected;
+      if (s.priceEdited) anyEdited = true;
+      c.classList.toggle('on', on);
+      c.querySelector('.xc-tag').textContent = s.priceEdited ? 'Your estimate' : 'Example';
+      var n = c.querySelector('.xc-n'), sm = c.querySelector('.xc-s'); n.textContent = ''; sm.textContent = '';
+      if (!o.hasPrice) { n.appendChild(el('b', null, '?')); n.appendChild(document.createTextNode('Enter a price')) }
+      else if (o.impossible) { n.appendChild(el('b', null, '?')); n.appendChild(document.createTextNode('No count reaches the profit goal')); sm.textContent = 'These costs leave nothing per purchase.' }
+      else {
+        n.appendChild(el('b', null, X.int(o.N))); n.appendChild(document.createTextNode(purch(o.N) + ' per month'));
+        if (o.nBasis === 'profit') sm.textContent = M(o.gross) + ' in sales, about ' + M(o.profit, 10000n) + ' after the costs entered';
+        else sm.textContent = M(o.gross) + ' in sales before costs';
+      }
+      var b = c.querySelector('.xc-go button'); b.textContent = on ? 'Exploring this price' : 'Explore this price'; b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    $('exNote').textContent = anyEdited ? 'Prices you can change.' : 'Example prices.';
+
+    /* the plan for the chosen price */
+    var s = sel();
+    $('plan').hidden = !s;
+    if (s) renderPlan(s);
+    renderActuals();
+    renderEvent();
+    status();
+  }
+
+  function renderPlan(s){
+    var o = calcFor(s), P = X.big('price', s.price), L = $('pLines'); L.textContent = '';
+    $('pK').textContent = s.price ? 'Exploring ' + M(P) : 'Exploring your own price';
+    var h = $('pHead'); h.textContent = '';
+    var lines = [];
+    function line(cls, parts){ lines.push(rich('p', 'xl' + (cls ? ' ' + cls : ''), parts)) }
+    if (!o.hasPrice) { h.textContent = 'Compare the examples for now. You can enter your own price later.' }
+    else if (o.impossible) {
+      h.textContent = 'At ' + M(P) + ', no number of purchases reaches a positive profit goal with these costs.';
+      line('warn', ['At this price, the entered costs leave ', [M(o.c, 10000n)], ' per purchase before monthly fixed costs. Revisit the price or costs before treating this as a profit plan.']);
+    } else {
+      h.appendChild(document.createTextNode('At ' + M(P) + ', your plan needs '));
+      h.appendChild(el('b', null, X.int(o.N) + ' ' + purch(o.N)));
+      h.appendChild(document.createTextNode(' per month.'));
+      /* money */
+      if (o.basis === 'profit' && o.needCosts) {
+        line('', ['That is ', [M(o.gross)], ' in sales before costs.']);
+        line('info', ['Add the three cost estimates to calculate money left after costs.']);
+      } else if (o.costsKnown) {
+        if (o.unitLoss) {
+          line('', ['That is ', [M(o.gross)], ' in sales.']);
+          line('warn', ['At this price, the entered costs leave ', [M(o.c, 10000n)], ' per purchase before monthly fixed costs. Revisit the price or costs before treating this as a profit plan.']);
+        } else if (o.profit < 0n) {
+          line('warn', ['That is ', [M(o.gross)], ' in sales and a loss of about ', [M(-o.profit, 10000n)], ' after the costs you entered.']);
+        } else line('', ['That is ', [M(o.gross)], ' in sales and approximately ', [M(o.profit, 10000n)], ' after the costs you entered, before personal taxes.']);
+      } else {
+        line('', ['That is ', [M(o.gross)], ' in sales. Your current result is sales before costs.']);
+      }
+      /* audience */
+      if (o.rate) {
+        line('', ['If you offer it to ', [X.int(o.A)], ' people, about ', [X.pct(o.rate.num, o.rate.den)], ' would need to buy once.']);
+        if (o.overReach) line('warn', ['This target requires more purchases than there are people in this group, assuming one purchase per person. You would need additional reach or a different scenario.']);
+      } else if (o.audZero) line('info', ['Your first audience is still to build. Keep this as a sales scenario while you work on reaching people.']);
+      else line('info', ['Add a recipient count to see the purchase rate this scenario would require.']);
+      /* time */
+      if (o.recurring != null && o.budgetU != null) {
+        line('', ['Your recurring workload estimate is ', [X.hrs(o.recurring) + ' hours'], ' per month. Your available time is about ', [X.hoursU(o.budgetU) + ' hours'], '.']);
+        if (o.overU > 0n) line('warn', ['The current workload estimate is about ', [X.hoursU(o.overU) + ' hours'], ' over your monthly budget.']);
+        else line('', ['This fits the time estimates you entered. Real delivery time may differ.']);
+      } else if (o.recurring != null) line('info', ['Your recurring workload estimate is ', [X.hrs(o.recurring) + ' hours'], ' per month. Add the hours you have each week to see the fit.']);
+      else line('info', ['Your time fit is not calculated yet.']);
+      if (!plan.actuals.length) line('info', ['This plan is based on assumptions. Add results after your first test.']);
+    }
+    lines.forEach(function(p){ L.appendChild(p) });
+    var tst = $('pTest'); tst.textContent = '';
+    if (o.hasPrice && !o.impossible) {
+      tst.appendChild(el('b', null, 'Still to test: '));
+      tst.appendChild(document.createTextNode('whether people will buy at this price' + (o.recurring != null ? ' and whether delivery takes the time you estimated.' : '.')));
+    }
+    tst.hidden = !tst.textContent;
+    announce(h.textContent);
+
+    /* A: costs */
+    var a = $('aOut'); a.textContent = '';
+    if (!o.hasPrice) a.appendChild(el('p', null, 'Enter a price for this card first.'));
+    else if (!o.costsKnown) a.appendChild(el('p', null, 'Add the three cost estimates to calculate money left after costs.'));
+    else {
+      kv(a, 'Selling costs and allowance per purchase', M(o.sellPer, 10000n));
+      kv(a, 'Cash remaining per purchase before monthly fixed costs', M(o.c, 10000n));
+      if (o.N != null) kv(a, 'Estimated monthly profit before personal tax' + (o.nBasis === 'profit' ? '' : ' (at ' + X.int(o.N) + ' ' + purch(o.N) + ')'), M(o.profit, 10000n));
+      if (o.unitLoss) a.appendChild(el('p', null, 'At this price, the entered costs leave ' + M(o.c, 10000n) + ' per purchase before monthly fixed costs. Revisit the price or costs before treating this as a profit plan.'));
+    }
+    var dA = donor('costs'); $('copyA').hidden = !(dA && isEmpty(s, 'costs')); if (dA) $('copyA').textContent = 'Use the costs I entered for ' + (dA.price ? M(X.big('price', dA.price)) : 'another price');
+
+    /* B: time */
+    $$('[data-group]').forEach(function(f){ f.hidden = s.time.mode !== 'group' });
+    $$('[data-client]').forEach(function(f){ f.hidden = plan.goal.type !== 'client' });
+    $('tFields').hidden = s.time.mode !== 'per' && s.time.mode !== 'group';
+    var b = $('bOut'); b.textContent = '';
+    if (!s.time.mode || s.time.mode === 'undecided') b.appendChild(el('p', null, s.time.mode === 'undecided' ? 'That’s fine. Your time fit is not calculated yet, and it’s a good thing to settle during the three days.' : 'Choose how you’d deliver it to see the hours it needs.'));
+    else if (o.N == null) b.appendChild(el('p', null, 'Your time fit is not calculated yet.'));
+    else if (o.recurring == null) b.appendChild(el('p', null, 'Add ' + (s.time.mode === 'group' ? 'shared hours, hours per purchaser, group size and hours per group' : 'shared hours and hours per purchaser') + ' to estimate the hours. Zero is fine if that’s the honest answer.'));
+    else {
+      if (o.groups != null) kv(b, X.int(o.N) + ' ' + purch(o.N) + ' in groups of up to ' + X.int(X.big('C', s.time.C)), X.int(o.groups) + (o.groups === 1n ? ' group' : ' groups'));
+      kv(b, 'Recurring hours each month', X.hrs(o.recurring));
+      if (o.budgetU != null) {
+        kv(b, 'Hours you have each month', 'about ' + X.hoursU(o.budgetU));
+        kv(b, o.overU > 0n ? 'Over your monthly budget by' : 'Inside your monthly budget by', 'about ' + X.hoursU(o.overU > 0n ? o.overU : -o.overU));
+        if (o.capacity != null) b.appendChild(el('p', null, 'With these estimates, your hours cover about ' + X.int(o.capacity) + ' ' + purch(o.capacity) + ' a month.'));
+        else if (o.sharedOver) b.appendChild(el('p', null, 'Your shared monthly hours alone are more than the hours you have.'));
+        else if (o.noPerBuyerLimit) b.appendChild(el('p', null, 'With zero hours per purchaser, this estimate has no per-purchaser time limit in it. Real support time may differ.'));
+      } else b.appendChild(el('p', null, 'Add the hours you have each week to see the fit.'));
+      if (o.firstCycle != null) kv(b, 'First cycle, with setup', X.hrs(o.firstCycle) + ' hours');
+      else if (s.time.mode) b.appendChild(el('p', null, 'First-cycle hours: unknown until you add setup hours.'));
+      if (o.regained != null) b.appendChild(el('p', null, o.regained >= 0n ? 'Compared with the ' + X.hrs(X.big('clientH', plan.context.clientHours)) + ' hours the client takes, this would give back about ' + X.hrs(o.regained) + ' hours a month.' : 'This would take about ' + X.hrs(-o.regained) + ' hours a month more than the client does.'));
+      b.appendChild(el('p', null, 'Real delivery time may differ.'));
+    }
+    var dB = donor('time'); $('copyB').hidden = !(dB && isEmpty(s, 'time')); if (dB) $('copyB').textContent = 'Use the time estimates I entered for ' + (dB.price ? M(X.big('price', dB.price)) : 'another price');
+
+    /* C: audience */
+    var cx = plan.context;
+    $('subsLine').textContent = cx.subscribers != null ? 'Current subscribers: ' + X.int(X.big('subs', cx.subscribers)) + '. That is not the same as people who will see the offer, or buyers.' : cx.subscribersRange ? 'You told me ' + cx.subscribersRange + ' subscribers. That’s a range, so it isn’t used here.' : '';
+    $('subsLine').hidden = !$('subsLine').textContent;
+    $('useSubs').hidden = !(cx.subscribers != null && s.audience.A !== cx.subscribers); $('useSubs').textContent = 'Use my subscriber count (' + (cx.subscribers != null ? X.int(X.big('subs', cx.subscribers)) : '') + ')';
+    var c = $('cOut'); c.textContent = '';
+    if (o.N == null) c.appendChild(el('p', null, 'Add a price and goal first.'));
+    else if (o.rate) {
+      c.appendChild(rich('p', null, [[X.int(o.N) + ' ' + purch(o.N)], ' would require about ', [X.pct(o.rate.num, o.rate.den)], ' of those ' + X.int(o.A) + ' people to buy once.']));
+      c.appendChild(el('p', null, 'That purchase rate is an assumption to test.'));
+      if (o.overReach) c.appendChild(el('p', null, 'This target requires more purchases than there are people in this group, assuming one purchase per person. You would need additional reach or a different scenario.'));
+    } else if (o.audZero) c.appendChild(el('p', null, 'Your purchase target is calculated. Your starting audience still needs to be built.'));
+    else c.appendChild(el('p', null, 'Add a recipient count to see the purchase rate this scenario would require.'));
+    var r = $('rOut'); r.textContent = '';
+    if (s.audience.r == null) r.hidden = true;
+    else {
+      r.hidden = false;
+      if (o.N == null) r.appendChild(el('p', null, 'Add a price and goal first.'));
+      else if (o.rZero) r.appendChild(el('p', null, 'No purchases at this assumed rate.'));
+      else r.appendChild(rich('p', null, ['At ', [X.show(X.big('r', s.audience.r), 'pct')], ', ' + X.int(o.N) + ' ' + purch(o.N) + ' would need about ', [X.int(o.reachAtR) + ' people'], ' to receive the offer.']));
+      var src = s.audience.rSource;
+      if (src) r.appendChild(el('p', null, 'This rate was recorded in ' + monthName(src.month) + (src.price ? ' at ' + M(X.big('price', src.price)) : '') + '. One month is one observation.' + (src.price && src.price !== s.price ? ' Untested at this price.' : '')));
+      else if (!o.rZero) r.appendChild(el('p', null, 'Your own what-if rate, untested.'));
+    }
+  }
+  function kv(box, k, v){ var d = el('div', 'k'); d.appendChild(el('span', null, k)); d.appendChild(el('span', null, v)); box.appendChild(d) }
+  var annT = 0, lastAnn = '';
+  function announce(t){ if (t === lastAnn) return; lastAnn = t; clearTimeout(annT); annT = setTimeout(function(){ $('live').textContent = t }, 700) }
+
+  /* ---------- what actually happened ---------- */
+  var AF = $$('[data-a]');
+  $('actAdd').addEventListener('click', function(){
+    var m = $('a_month'); m.textContent = '';
+    for (var i = 0; i < 24; i++) { var d = new Date(NOW.getFullYear(), NOW.getMonth() - i, 1), v = X.ym(d), o = el('option', null, monthName(v)); o.value = v; m.appendChild(o) }
+    AF.forEach(function(inp){ inp.value = ''; $('ea_' + inp.dataset.a).textContent = ''; inp.closest('.xin').classList.remove('bad') });
+    $('actForm').hidden = false; $('actAdd').hidden = true; m.focus();
+  });
+  $('actCancel').addEventListener('click', function(){ $('actForm').hidden = true; $('actAdd').hidden = false; $('actAdd').focus() });
+  $('actForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var rec = {id: 'a' + Date.now().toString(36), month: $('a_month').value}, ok = true;
+    AF.forEach(function(inp){ if (!readField(inp, inp.dataset.a, 'ea_' + inp.dataset.a, null, function(v){ rec[inp.dataset.a] = v })) ok = false });
+    if (!ok) return;
+    if (rec.buyers != null && rec.recips != null && X.big('buyers', rec.buyers) > X.big('recips', rec.recips)) { $('ea_buyers').textContent = 'Buyers can’t be more than the people who received the offer. Check these two numbers.'; $('a_buyers').closest('.xin').classList.add('bad'); return }
+    /* the plan this month is compared with, frozen now so later edits never rewrite it */
+    var s = sel() || {price: null, costs: {}, time: {}};
+    rec.snapshot = {basis: plan.goal.basis, goal: plan.goal.amount, currency: plan.currency, price: s.price, k: s.costs.k || null, v: s.costs.v || null, F: s.costs.F || null,
+      W: plan.context.weeklyHours, mode: s.time.mode || null, B: s.time.B || null, d: s.time.d || null, C: s.time.C || null, H: s.time.H || null};
+    plan.actuals.push(rec); plan.actuals.sort(function(a, b){ return a.month < b.month ? 1 : -1 });
+    $('actForm').hidden = true; $('actAdd').hidden = false;
+    changed(); $('live').textContent = 'Recorded ' + monthName(rec.month) + '. Save on this device to keep it.';
+  });
+  function renderActuals(){
+    var box = $('actList'); box.textContent = '';
+    plan.actuals.forEach(function(r){
+      var B = function(f){ return X.big(f, r[f]) }, a = X.actual({collected: B('collected'), refunds: B('refunds'), fees: B('fees'), delivery: B('delivery'), fixed: B('fixed'), recips: B('recips'), buyers: B('buyers')});
+      var sn = r.snapshot, so = X.scenario(X.snapshotInputs(sn)), cur0 = sn.currency || plan.currency, MM = function(x, sc){ return X.money(x, cur0, sc) };
+      var d = el('div', 'xrec'), h = el('h4', null, monthName(r.month)); h.appendChild(el('span', null, 'Recorded result')); d.appendChild(h);
+      var parts = [];
+      if (r.collected != null) parts.push('Collected ' + MM(B('collected')));
+      if (r.refunds != null) parts.push('refunds ' + MM(B('refunds')));
+      if (a.netCollected != null) parts.push('after refunds ' + MM(a.netCollected));
+      if (parts.length) d.appendChild(el('p', null, parts.join(', ') + '.'));
+      if (a.refundsOver) d.appendChild(el('p', null, 'Refunds were more than this month’s collections. That happens when earlier purchases are refunded.'));
+      if (a.complete) d.appendChild(rich('p', null, ['Money left after the costs recorded: ', [MM(a.profit)], ', before personal tax.']));
+      else d.appendChild(el('p', null, 'Profit is incomplete: add every cost for this month to see it.'));
+      /* against the plan it was recorded with */
+      var G = X.big('goal', sn.goal);
+      if (G != null) {
+        if (sn.basis === 'profit') {
+          if (a.complete) d.appendChild(el('p', null, 'Planned: ' + MM(G) + ' profit before personal tax. Recorded: ' + MM(a.profit) + '.'));
+          else d.appendChild(el('p', null, 'Planned: ' + MM(G) + ' profit before personal tax. The comparison needs every cost.'));
+        } else if (r.collected != null) {
+          d.appendChild(el('p', null, 'Planned: ' + MM(G) + ' in sales' + (so.N != null ? ' (' + X.int(so.N) + ' ' + purch(so.N) + ' at ' + MM(X.big('price', sn.price)) + ')' : '') + '. Collected: ' + MM(B('collected')) + (a.netCollected != null ? ', or ' + MM(a.netCollected) + ' after refunds' : '') + '.'));
+        }
+      }
+      if (r.hours != null) {
+        var bu = sn.W != null ? X.big('W', sn.W) * 52n : null;
+        d.appendChild(el('p', null, 'Hours worked: ' + X.hrs(B('hours')) + (bu != null ? ', against about ' + X.hoursU(bu) + ' hours available that month' : '') + (so.recurring != null ? '. Your estimate was ' + X.hrs(so.recurring) + ' hours' : '') + '.'));
+      }
+      if (a.rate) {
+        d.appendChild(rich('p', null, [X.int(B('buyers')) + ' of ' + X.int(B('recips')) + ' people bought: ', [X.pct(a.rate.num, a.rate.den)], '. One month is one observation.']));
+      } else if (a.rateNone) d.appendChild(el('p', null, 'No recipients recorded, so there is no purchase rate.'));
+      else if (a.rateMismatch) d.appendChild(el('p', null, 'Buyers are more than the people who received it. Check these two numbers.'));
+      var row = el('div', 'xrbtn');
+      if (a.rate && sel()) {
+        var u = el('button', 'lnk', 'Use this observed rate as a what-if'); u.type = 'button';
+        u.addEventListener('click', function(){
+          var s = sel(); if (!s) return;
+          var bp = (B('buyers') * 10000n * 2n + B('recips')) / (B('recips') * 2n);   /* hundredths of a percent, rounded */
+          s.audience.r = X.toStr(bp, 'pct'); s.audience.rSource = {month: r.month, price: sn.price};
+          fillScenario(); $('dC').open = true; changed();
+          $('live').textContent = 'Copied into the audience check for this price.';
+        });
+        row.appendChild(u);
+      }
+      var del = el('button', 'lnk', 'Remove'); del.type = 'button';
+      del.addEventListener('click', function(){ if (confirm('Remove the result for ' + monthName(r.month) + '?')) { plan.actuals = plan.actuals.filter(function(x){ return x !== r }); changed() } });
+      row.appendChild(del); d.appendChild(row);
+      box.appendChild(d);
+    });
+  }
+
+  /* ---------- Day 1 and after ---------- */
+  function renderEvent(){
+    var t = NOW.getTime(), D1 = Date.UTC(2026, 10, 17, 17, 0), D3 = Date.UTC(2026, 10, 19, 18, 30), e = $('evText'); e.textContent = '';
+    if (t < D1) {
+      var local = '';
+      try {
+        var q = {}; new Intl.DateTimeFormat('en-US', {hour:'numeric', minute:'2-digit', hour12:true}).formatToParts(new Date(D1)).forEach(function(x){ q[x.type] = x.value });
+        var ny = new Intl.DateTimeFormat('en-US', {timeZone:'America/New_York', hour:'numeric', minute:'2-digit', hour12:true}).format(new Date(D1));
+        var mine = q.hour + ':' + q.minute + ' ' + (q.dayPeriod || '').toLowerCase();
+        if (mine.replace(/\s/g, '').toLowerCase() !== ny.replace(/\s/g, '').toLowerCase()) local = ' (' + mine + ' where you are)';
+      } catch (x) {}
+      e.appendChild(rich('span', null, ['Bring your monthly goal and the price you want to test to ', ['Day 1, Tue Nov 17 at 12:00 pm New York'], local + '. I’ll help you work on who to reach and what you could offer.']));
+    } else if (t < D3) e.appendChild(rich('span', null, ['We’re in the three days. ', ['Update your plan'], ' with what you worked on today.']));
+    else e.appendChild(rich('span', null, [['Update your plan'], ' with what happened when you made the offer.']));
+  }
+
+  /* ---------- save, download, open, print, clear ---------- */
+  var note = '';
+  function status(){
+    var s = $('aStat'), dirty = ser() !== lastSaved; s.textContent = '';
+    if (note) { s.textContent = note; return }
+    if (lastSaved == null) s.appendChild(rich('span', null, [['Not saved yet.'], ' Your plan stays on this page until you leave.']));
+    else if (dirty) s.appendChild(rich('span', null, [['You have changes that aren’t saved yet.']]));
+    else s.textContent = 'Saved on this browser. Download a copy if you want to keep it elsewhere.';
+  }
+  $('aSave').addEventListener('click', function(){
+    plan.updatedAt = new Date().toISOString();
+    var txt = JSON.stringify(plan);
+    try {
+      localStorage.setItem(KEY, txt);
+      if (localStorage.getItem(KEY) !== txt) throw new Error('readback');
+      lastSaved = ser(); note = ''; status();
+    } catch (e) { note = 'This browser didn’t let me save. Download a copy to keep your plan.'; status(); note = '' }
+  });
+  $('aDown').addEventListener('click', function(){
+    plan.updatedAt = new Date().toISOString();
+    var b = new Blob([JSON.stringify(plan, null, 2)], {type: 'application/json'}), a = document.createElement('a');
+    a.href = URL.createObjectURL(b); a.download = 'my-exit-number-' + X.ym(new Date()) + '.exitplan.json';
+    document.body.appendChild(a); a.click(); setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove() }, 1500);
+    note = 'Downloaded. You can open it here later with “Open a saved plan file”.'; status(); note = '';
+  });
+  $('aPrint').addEventListener('click', function(){ buildPrint(); window.print() });
+  addEventListener('beforeprint', buildPrint);
+  $('aImp').addEventListener('click', function(){ $('aFile').value = ''; $('aFile').click() });
+  $('aFile').addEventListener('change', function(){
+    var f = $('aFile').files[0]; if (!f) return;
+    if (f.size > 300000) { note = 'That file is too large to be a saved plan.'; status(); note = ''; return }
+    var rd = new FileReader();
+    rd.onload = function(){
+      var r; try { r = X.validatePlan(JSON.parse(String(rd.result))) } catch (e) { r = {errors: ['This file is not an exit number plan.']} }
+      if (r.errors) { note = 'Couldn’t open that plan: ' + r.errors.slice(0, 2).join(' '); status(); note = ''; return }
+      if ((plan.goal.amount || plan.actuals.length) && !confirm('Replace the plan on this page with the one in the file? Press Cancel to keep your current plan.')) return;
+      plan = r.plan; fillAll(); setView(plan.goal.amount ? 2 : 1, false);
+      note = 'Plan opened. Save on this device to keep it here.'; status(); note = '';
+    };
+    rd.readAsText(f);
+  });
+  $('aClr').addEventListener('click', function(){
+    if (!confirm('Remove the plan saved on this browser? Files you downloaded are not affected.')) return;
+    try { localStorage.removeItem(KEY) } catch (e) {}
+    lastSaved = null; note = 'Removed from this browser. The plan on this page stays until you leave.'; status(); note = '';
+  });
+
+  function buildPrint(){
+    var p = $('printout'); p.textContent = '';
+    p.appendChild(el('h1', null, (first ? first + '’s' : 'My') + ' exit number plan'));
+    p.appendChild(el('p', 'sm', 'The Exit Plan with Ana Calin. Printed ' + new Date().toLocaleDateString('en-US', {year: 'numeric', month: 'long', day: 'numeric'}) + '. Currency: ' + plan.currency + '.'));
+    var G = X.big('goal', plan.goal.amount);
+    p.appendChild(el('p', null, (plan.goal.basis === 'profit' ? 'Monthly profit goal, before personal tax: ' : 'Monthly sales goal, before costs: ') + (G != null ? M(G) : 'not set') + '.'));
+    if (plan.goal.targetMonth) p.appendChild(el('p', null, 'Target month: ' + monthName(plan.goal.targetMonth) + '. It’s a target. It isn’t a forecast.'));
+    p.appendChild(el('h2', null, 'Prices compared'));
+    var t = el('table'), hr = el('tr'); ['Price', 'Purchases a month', 'Sales', 'After the costs entered'].forEach(function(x){ hr.appendChild(el('th', null, x)) }); t.appendChild(hr);
+    plan.scenarios.forEach(function(s){
+      var o = calcFor(s), tr = el('tr');
+      [s.price ? M(X.big('price', s.price)) + (s.id === plan.selected ? ' (chosen)' : '') : 'not set', o.N != null ? X.int(o.N) : (o.impossible ? 'not reachable' : '?'), o.gross != null ? M(o.gross) : '', o.costsKnown && o.profit != null ? M(o.profit, 10000n) : 'costs not entered'].forEach(function(x){ tr.appendChild(el('td', null, x)) });
+      t.appendChild(tr);
+    });
+    p.appendChild(t);
+    var s = sel();
+    if (s) {
+      p.appendChild(el('h2', null, 'The chosen price: what it assumes'));
+      var c = s.costs, tm = s.time, au = s.audience, u = function(f, v, kind){ return v == null ? 'unknown' : (kind === 'money' ? M(X.big(f, v)) : X.show(X.big(f, v), kind)) };
+      [['Selling costs and allowance', u('k', c.k, 'pct')], ['Cash cost per purchase', u('v', c.v, 'money')], ['Monthly fixed costs', u('F', c.F, 'money')],
+       ['Hours available each week', u('W', plan.context.weeklyHours, 'hours')], ['Delivery', {per: 'time with each purchaser', group: 'shared group sessions', undecided: 'not decided yet'}[tm.mode] || 'not chosen'],
+       ['Shared monthly hours', u('B', tm.B, 'hours')], ['Hours per purchaser', u('d', tm.d, 'hours')], ['People receiving the offer', u('A', au.A, 'count')], ['What-if purchase rate', u('r', au.r, 'pct')]
+      ].forEach(function(r){ p.appendChild(el('p', null, r[0] + ': ' + r[1])) });
+      $$('#pLines .xl').forEach(function(l){ p.appendChild(el('p', null, l.textContent)) });
+      if (!$('pTest').hidden) p.appendChild(el('p', null, $('pTest').textContent));
+    }
+    if (plan.actuals.length) {
+      p.appendChild(el('h2', null, 'Recorded results'));
+      $$('#actList .xrec').forEach(function(r){ p.appendChild(el('p', null, r.querySelector('h4').firstChild.textContent + ': ' + $$('p', r).map(function(x){ return x.textContent }).join(' '))) });
+    }
+    p.appendChild(el('p', 'sm', 'A planning illustration based on the numbers entered. Personal taxes and unentered costs are not included.'));
+  }
+
+  /* ---------- views and changes ---------- */
+  var view = saved && saved.goal.amount ? 2 : 1;
+  function setView(v, push){
+    view = v; $('step1').hidden = v !== 1; $('step2').hidden = v !== 2; $('xsave').hidden = v !== 2 || document.body.classList.contains('xlocked');
+    if (push) history.pushState({xv: v}, '', v === 2 ? '#plan' : location.pathname + location.search);
+    if (v === 2) { fillPrices(); fillScenario() }
+    render();
+  }
+  addEventListener('popstate', function(e){ var v = (e.state && e.state.xv) || 1; if (v === 2 && !plan.goal.amount) v = 1; setView(v, false) });
+  var raf = 0;
+  function changed(ctx, keepCtxFocus){
+    if (raf) return;
+    raf = requestAnimationFrame(function(){ raf = 0; if (keepCtxFocus) { var a = document.activeElement, id = a && a.id; render(); if (id && $(id) && $(id) !== a) { $(id).focus(); var v = $(id).value; try { $(id).setSelectionRange(v.length, v.length) } catch (e) {} } } else render() });
+  }
+  function fillAll(){ fillStep1(); fillPrices(); fillScenario() }
+  addEventListener('beforeunload', function(e){ if (plan.goal.amount && ser() !== lastSaved && lastSaved != null) { e.preventDefault(); e.returnValue = '' } });
+
+  fillAll();
+  history.replaceState({xv: view}, '', location.href);
+  setView(view, false);
 })();
 </script>
 </body>

@@ -393,7 +393,9 @@
   if (cxt) {
     if (sv.done) cxt.classList.add('open');
     if (first) { var cxl0 = cxt.querySelector('.lab'); if (cxl0) cxl0.textContent = first + '’s exit number' }
-    var PRE = [[4000, 149, 8], [6000, 299, 5], [10000, 500, 10], [3000, 97, 8]], pi = 1, cxtOn = false;
+    /* examples: [goal a month, price, hours free a week]; the tape is the time check (8 shared hours + 45 min per purchaser) */
+    var PRE = [[4000, 149, 5], [6000, 299, 6], [10000, 500, 8], [3000, 97, 4]], pi = 1, cxtOn = false;
+    var need = function(v){ return Math.round(8 + Math.ceil(v[0] / v[1]) * 0.75) }, free = function(v){ return Math.round(v[2] * 52 / 12) };
     var nfmt = function(n){ return Math.round(n).toLocaleString('en-US') };
     var setT = function(k, v){ cxt.querySelectorAll('[data-t="' + k + '"]').forEach(function(e){ e.textContent = v }) };
     var countTo = function(k, to){
@@ -413,10 +415,10 @@
     var cxtTick = function(){
       if (!cxtOn || document.hidden) return;
       var v = PRE[pi % PRE.length]; pi++;
-      setT('goal', nfmt(v[0])); setT('price', nfmt(v[1])); setT('sub', nfmt(v[2]));
-      setT('price2', '$' + nfmt(v[1])); setT('sub2', '$' + nfmt(v[2]));
+      setT('goal', nfmt(v[0])); setT('price', nfmt(v[1])); setT('hw', nfmt(v[2]));
+      setT('price2', '$' + nfmt(v[1])); setT('hfree', nfmt(free(v)));
       cxt.classList.remove('flip'); void cxt.offsetWidth; cxt.classList.add('flip');
-      if (cxt.classList.contains('open')) { countTo('buyers', Math.ceil(v[0] / v[1])); countTo('subs', Math.ceil(v[0] / v[2])) }
+      if (cxt.classList.contains('open')) { countTo('buyers', Math.ceil(v[0] / v[1])); countTo('hneed', need(v)) }
       else scramble('buyers', Math.ceil(v[0] / v[1]));   /* locked: the answer spins like a slot machine, then hides under the blur */
     };
     if (!reduce) {
