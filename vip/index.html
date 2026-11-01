@@ -1362,6 +1362,164 @@ body{background:var(--page)}
   .src{font-size:12px}
 }
 </style>
+<style id="v5">
+/* ===== v5 (tools/paint/PLAN-v5.md): a quieter, more designed UI; balanced compositions; scroll-driven motion ===== */
+/* -- the sticky header: paper glass, the three steps on one line, "Don't close this page" kept on top -- */
+.fb{position:sticky;top:0;z-index:60;padding:0;background:rgba(248,243,235,.84);-webkit-backdrop-filter:blur(16px) saturate(1.3);backdrop-filter:blur(16px) saturate(1.3);border-bottom:1px solid rgba(26,20,18,.08);transition:box-shadow .4s ease}
+body.scrolled .fb{box-shadow:0 12px 30px -24px rgba(60,40,20,.5)}
+.fb-bar{width:auto;max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:24px;padding:12px 28px;border-radius:0;background:none;box-shadow:none;color:var(--ink);transition:padding .35s var(--glide)}
+body.scrolled .fb-bar{padding:8px 28px}
+.fb-id{gap:12px}
+.fb-id img{width:40px;height:40px;transition:width .35s var(--glide),height .35s var(--glide)}
+body.scrolled .fb-id img{width:32px;height:32px}
+.fb-id small{color:var(--ink3);font-size:10.5px;letter-spacing:.2em}
+.fb-id b{font-size:21px;margin-top:4px;color:var(--ink)}
+.steps{gap:0;font-size:13px}
+.st{gap:8px;color:var(--ink3);font-weight:600}
+.st i{width:22px;height:22px;border:1px solid rgba(26,20,18,.25);background:var(--page);color:var(--ink3);font-size:11px}
+.st.done{color:var(--ink2)}
+.st.done i{background:#2F9E5A;border-color:#2F9E5A}
+.st.now{color:var(--ink);font-weight:800}
+.st.now i{background:var(--pink);border-color:var(--pink);color:#fff;box-shadow:0 0 0 4px rgba(247,37,133,.14)}
+.steps .ln{width:40px;height:1px;margin:0 12px;background:rgba(26,20,18,.2);border-radius:0}
+.steps .ln.on{background:var(--pink)}
+.fb-r{justify-self:end;display:flex;align-items:center;gap:16px}
+.fb-keep{display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:13.5px;color:var(--ink);white-space:nowrap}
+.fb-keep i{width:8px;height:8px;border-radius:50%;background:#E0263C;box-shadow:0 0 0 3px rgba(224,38,60,.16)}
+.fb-n{padding-left:16px;border-left:1px solid rgba(26,20,18,.14);color:var(--ink3);font-size:10.5px;letter-spacing:.18em}
+
+/* -- one index rail beside "What's in VIP" (Jason's mechanism, shown once, with progress) -- */
+.vi{position:relative}
+.rail-col{position:absolute;left:max(20px,calc(50% - 680px));top:300px;bottom:120px;width:64px;display:none}
+.rail{position:sticky;top:calc(50vh - 170px);display:grid;gap:22px;justify-items:center}
+.rail span{display:grid;justify-items:center;gap:6px;opacity:.38;transform:scale(.86);transition:opacity .5s ease,transform .6s var(--glide)}
+.rail span.on{opacity:1;transform:none}
+.rail span.done{opacity:.75}
+.rail img{width:44px;height:auto;display:block}
+.rail em{font-family:var(--serif);font-style:normal;font-size:12px;letter-spacing:.08em;color:var(--ink3)}
+.rail span.on em{color:var(--pink)}
+.rail-ln{position:absolute;left:50%;top:10px;bottom:30px;width:1px;background:rgba(26,20,18,.14);z-index:-1}
+.rail-ln b{position:absolute;left:0;top:0;width:100%;height:calc(var(--rp,0) * 100%);background:var(--pink)}
+@media (min-width:1360px){.rail-col{display:block}}
+
+/* -- the items: a set measure for the text, the picture balanced on a 6:5 stage -- */
+.it{grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:24px 76px;padding:96px 0}
+.it .tx{max-width:470px}
+.it.flip .tx{justify-self:end}
+.it .art,.it.flip .art{grid-row:1 / 3}
+.it .tx,.it.flip .tx{grid-row:1 / 3;align-self:center}
+.num{margin-bottom:2px}
+.pa [data-anim]{transition:none!important;will-change:transform,opacity}
+/* 01: the review */
+.rv .l1{left:2%;top:13%;width:74%}
+.rv .coffee{right:3%;top:3%;width:21%}
+.rv .steam{right:10%;top:-9%}
+.rv .stack{right:-1%;bottom:6%;width:36%}
+.rv .pencil{left:auto;right:3%;bottom:13%;width:30%;transform:rotate(-24deg)}
+.rv .rstamp{left:3%!important;top:3%!important}
+/* 02: the question, the phone, the hours */
+.wa2 .l2{left:0;top:9%;width:68%}
+.wa2 .ph{right:3%;top:3%;width:27%}
+.wa2 .clk{left:4%;bottom:3%;width:58%}
+.wa2 .rstamp{left:auto!important;right:2%!important;top:auto!important;bottom:3%}
+/* 03: six notes, the course, one card */
+.spr .n5,.spr .n1{left:-1%;top:0;width:38%}
+.spr .l3{left:14%;top:12%;width:72%}
+.spr .c1{right:-1%;bottom:2%;width:40%}
+.spr .src{left:24%;top:auto;bottom:16%}
+/* 04: the planner, the sticky, the replay */
+.rec .plan{left:0;top:2%;width:52%}
+.rec .stk{left:17%;top:14%;width:18%}
+.rec .l4{right:0;bottom:4%;width:68%}
+
+/* -- the week: a road draws through it; each sheet comes into focus when the road reaches it -- */
+.anim .trk .stop{opacity:1;transform:none}
+.trk{position:relative}
+.lane.free:before{display:none}
+.road{position:absolute;left:10%;right:10%;top:94px;height:1px;background:repeating-linear-gradient(90deg,rgba(26,20,18,.28) 0 5px,transparent 5px 10px)}
+.road b{position:absolute;left:0;top:-.5px;height:2px;width:100%;background:var(--pink);transform-origin:0 50%;transform:scaleX(var(--wp,0))}
+.fly{display:none}
+.trk .stop{padding:0 6px}
+.trk .stop p{font-size:20px;line-height:1.22;max-width:200px;margin:8px auto 0}
+.trk .s3{position:relative}
+.trk .s3 .bring{position:absolute;left:calc(100% - 40px);top:58px;width:170px;margin:0;z-index:3;transform:rotate(-3deg);font-size:13px;box-shadow:var(--lift)}
+.trk .stop .wk{max-width:180px}
+
+/* -- fit check centred; the letter -- */
+.vf-hd{text-align:center}
+.vf-hd .eyebrow{justify-content:center}
+.vf-hd .eyebrow:before{content:"";flex:0 1 96px;height:1px;background:currentColor;opacity:.4}
+.vf h2{margin-left:auto;margin-right:auto}
+.vf .after{margin-left:auto;margin-right:auto;text-align:center}
+.vw-hd{grid-template-columns:1fr;text-align:center;justify-items:center;gap:16px}
+.vw-hd .eyebrow{justify-content:center}
+.vw-hd .eyebrow:before{content:"";flex:0 1 96px;height:1px;background:currentColor;opacity:.4}
+.vw-hd p{max-width:640px}
+
+@media (max-width:1000px){.it .tx,.it.flip .tx{grid-row:auto;justify-self:start}}
+@media (max-width:900px){.it .art,.it.flip .art{grid-row:auto}}
+@media (max-width:860px){
+  .fb-bar{grid-template-columns:auto 1fr auto;gap:12px;padding:10px 16px}
+  body.scrolled .fb-bar{padding:8px 16px}
+  .fb-id span,.fb-n{display:none}
+  .st .t{display:none}
+  .st.now .t{display:inline}
+  .steps{justify-content:center}
+  .steps .ln{width:18px;margin:0 6px}
+  .fb-keep{font-size:12.5px}
+}
+@media (max-width:760px){
+  .fb-id{display:flex}
+  .road{display:none}
+  .trk .s3 .bring{position:static;transform:none;width:auto;margin-top:10px}
+  .trk .stop p{max-width:none;margin:2px 0 0}
+}
+@media (max-width:420px){.st.now .t{display:none}.fb-keep{font-size:12px}}
+
+/* Sean: the letter in sans (Instrument Serif is too condensed for a long read) */
+.vb .letter p{font-family:var(--sans);font-size:18.5px;line-height:1.7;color:var(--ink2);letter-spacing:0}
+.vb .letter p + p{margin-top:16px}
+.vb .letter .sig{margin-top:18px}
+/* the week: the tag sits under Thursday's words, never over the pictures */
+.trk .s3 .bring{position:static;transform:rotate(-2deg);width:auto;margin:12px auto 0;display:inline-flex}
+.trk .stop p{text-wrap:balance}
+@media (max-width:760px){.vb .letter p{font-size:17px}}
+
+/* phones and tablets: one column for the items, the week as rows (picture left, words right) */
+@media (max-width:900px){
+  .it{grid-template-columns:1fr;gap:22px;padding:64px 0}
+  .it .art,.it.flip .art{grid-column:1;grid-row:1}
+  .it .tx,.it.flip .tx{grid-column:1;grid-row:2;max-width:none;justify-self:stretch}
+}
+@media (max-width:760px){
+  .trk .stop{display:grid;grid-template-columns:104px 1fr;column-gap:16px;align-items:start;text-align:left;padding:12px 0;border-top:1px solid rgba(26,20,18,.08)}
+  .trk .stop .wk{grid-column:1;grid-row:1 / span 5;max-width:104px;margin:0}
+  .trk .stop>*:not(.wk){grid-column:2}
+  .trk .stop .dt{grid-row:auto;justify-content:flex-start}
+  .trk .stop .lb{margin-top:2px}
+  .trk .stop p{font-size:19px;max-width:none;margin:4px 0 0;text-wrap:pretty}
+  .trk .s3 .bring{justify-self:start;margin:10px 0 0}
+}
+
+/* Sean: more of Ana's colours, now and then: sunshine behind the door, a sunflower-yellow week, her pink fit check,
+   a low sun behind the price. White stays the base. */
+.vh{background:radial-gradient(52% 46% at 30% 74%,rgba(255,212,0,.2),rgba(255,212,0,0) 72%),radial-gradient(40% 40% at 86% 70%,rgba(247,37,133,.06),rgba(247,37,133,0) 70%),var(--page)}
+.vw{position:relative;overflow:hidden;background:#FFF2C2}
+.vw .wrap{position:relative;z-index:1}
+.vw .sunf{position:absolute;right:-110px;top:-90px;width:420px;height:420px;opacity:.55;transform:rotate(-12deg);pointer-events:none}
+.vw .sunf2{position:absolute;left:-140px;bottom:-160px;width:360px;height:360px;opacity:.35;transform:rotate(18deg);pointer-events:none}
+.cmp tr.add2 td{background:linear-gradient(90deg,rgba(255,255,255,.7),rgba(255,255,255,0) 75%) no-repeat}
+.cmp .v{background:rgba(247,37,133,.08)}
+.trk .s3 .bring{background:#fff}
+.vf{background:#FFE3EE}
+.fitc.no{border-color:rgba(26,20,18,.28);background:rgba(255,255,255,.35)}
+.vb{position:relative;overflow:hidden}
+.vb .wrap{position:relative;z-index:1}
+.vb:before{content:"";position:absolute;right:max(-260px,calc(50% - 760px));top:40px;width:820px;height:820px;border-radius:50%;background:radial-gradient(circle,rgba(255,221,64,.55) 0,rgba(255,212,0,.32) 38%,rgba(255,212,0,0) 68%);pointer-events:none}
+.vb .bb .aside:before,.vb .bb .aside:after{background:#FBEFC9}
+footer{background:var(--sun);border-top:0}
+footer .links a,footer .links span{color:var(--ink)}
+</style>
 </head>
 <body>
 
@@ -1389,7 +1547,7 @@ body{background:var(--page)}
       <span class="ln"></span>
       <span class="st"><i>3</i><span class="t">Join details</span></span>
     </div>
-    <span class="fb-n">STEP 2 OF 3</span>
+    <div class="fb-r"><span class="fb-keep"><i aria-hidden="true"></i>Don’t close this page</span><span class="fb-n">STEP 2 OF 3</span></div>
   </div>
 </header>
 
@@ -1535,13 +1693,14 @@ body{background:var(--page)}
 <main>
 <!-- 2. your week: the free days on top, what VIP adds underneath at the moment it is used, then the side-by-side table -->
 <section class="vw">
+  <svg class="sunf" aria-hidden="true"><use href="#sfo"/></svg><svg class="sunf2" aria-hidden="true"><use href="#sfo"/></svg>
   <div class="wrap">
     <div class="vw-hd" data-r>
       <div><span class="eyebrow">Your week, Nov 17 to 20</span><h2>Work toward the sale <em>that makes this feel possible.</em></h2></div>
       <p>When someone pays for your help, you have something real to build on. The workshop helps you work toward that. VIP gives you the lessons to revisit and access to me while you put them to use.</p>
     </div>
 
-    <div class="trk" data-r aria-label="Your week">
+    <div class="trk" aria-label="Your week"><i class="road" aria-hidden="true"><b></b></i>
       <div class="lane free">
         <span class="lane-k" aria-hidden="true">Free, for everyone</span>
         <div class="stop s1"><img class="wk" src="../img/vip/paint/wk1.webp" alt="" width="240" height="190" loading="lazy" aria-hidden="true"><div class="dt"><b>17</b><small>Tue</small></div><span class="lb">Day 1</span><p>Find what you could sell and who could buy.</p></div>
@@ -1550,16 +1709,6 @@ body{background:var(--page)}
         <div class="stop s4 vip"><img class="wk" src="../img/vip/paint/wk4.webp" alt="" width="240" height="190" loading="lazy" aria-hidden="true"><div class="dt"><span class="tg">VIP</span><b>20</b><small>Fri</small></div><span class="lb">Live group review</span><p>See what I’d improve in selected submissions.</p></div>
         <div class="stop s5 next"><img class="wk" src="../img/vip/paint/wk5.webp" alt="" width="240" height="190" loading="lazy" aria-hidden="true"><span class="lb">Keep going</span><p>Put it in front of potential buyers and learn from the response.</p></div>
         <i class="fly" aria-hidden="true"><b></b><span></span><span></span></i>
-      </div>
-      <!-- VIP's lane: what is there for you on each day (pictures only, the words are in the table below) -->
-      <div class="lane vipl" aria-hidden="true">
-        <span class="lane-k">VIP</span>
-        <span class="vbar wa"><img class="stp" src="../img/vip/paint/mini-wa.webp" alt="" width="160" height="200" loading="lazy"></span>
-        <span class="vrec r1"><img class="stp" src="../img/vip/paint/mini-rec.webp" alt="" width="160" height="200" loading="lazy"></span>
-        <span class="vrec r2"><img class="stp" src="../img/vip/paint/mini-rec.webp" alt="" width="160" height="200" loading="lazy"></span>
-        <span class="vrec r3"><img class="stp" src="../img/vip/paint/mini-rec.webp" alt="" width="160" height="200" loading="lazy"></span>
-        <span class="vrv"><img class="stp" src="../img/vip/paint/mini-rev.webp" alt="" width="160" height="200" loading="lazy"></span>
-        <span class="vsp"><img class="stp" src="../img/vip/paint/mini-spr.webp" alt="" width="160" height="200" loading="lazy"></span>
       </div>
     </div>
 
@@ -1585,6 +1734,7 @@ body{background:var(--page)}
 
 <!-- 3. what's in VIP: one item per band; the four-part strip comes back on each with its progress (done, now, next) -->
 <section class="vi">
+  <div class="rail-col" aria-hidden="true"><div class="rail"><span class="r1"><img src="../img/vip/paint/mini-rev.webp" alt="" width="160" height="200" loading="lazy"><em>Nº 01</em></span><span class="r2"><img src="../img/vip/paint/mini-wa.webp" alt="" width="160" height="200" loading="lazy"><em>Nº 02</em></span><span class="r3"><img src="../img/vip/paint/mini-spr.webp" alt="" width="160" height="200" loading="lazy"><em>Nº 03</em></span><span class="r4"><img src="../img/vip/paint/mini-rec.webp" alt="" width="160" height="200" loading="lazy"><em>Nº 04</em></span><i class="rail-ln"><b></b></i></div></div>
   <div class="wrap">
     <div class="vi-hd" data-r>
       <div><span class="eyebrow">What's in VIP</span><h2>Help while you do it. <em>The lessons to come back to.</em></h2></div>
@@ -1593,7 +1743,6 @@ body{background:var(--page)}
 
     <!-- 01: the live group review -->
     <article class="it it1" data-r>
-      <div class="mst" aria-hidden="true"><span class="now"><img class="stp" src="../img/vip/paint/mini-rev.webp" alt="" width="160" height="200" loading="lazy"></span><i></i><span><img class="stp" src="../img/vip/paint/mini-wa.webp" alt="" width="160" height="200" loading="lazy"></span><i></i><span><img class="stp" src="../img/vip/paint/mini-spr.webp" alt="" width="160" height="200" loading="lazy"></span><i></i><span><img class="stp" src="../img/vip/paint/mini-rec.webp" alt="" width="160" height="200" loading="lazy"></span></div>
       <div class="art pa rv" aria-hidden="true">
         <div class="dev lap l1"><img src="../img/vip/paint/laptop.webp" alt="" width="600" height="420" loading="lazy"><div class="scrn2"><img src="../img/vip/raw/review.webp" alt="" loading="lazy"></div></div>
         <img class="prop stack" src="../img/vip/paint/stack.webp" alt="" width="320" height="260" loading="lazy">
@@ -1618,7 +1767,6 @@ body{background:var(--page)}
 
     <!-- 02: the VIP WhatsApp group: the chat, and when Ana is in it -->
     <article class="it it2 flip" data-r>
-      <div class="mst" aria-hidden="true"><span class="done"><img class="stp" src="../img/vip/paint/mini-rev.webp" alt="" width="160" height="200" loading="lazy"></span><i></i><span class="now"><img class="stp" src="../img/vip/paint/mini-wa.webp" alt="" width="160" height="200" loading="lazy"></span><i></i><span><img class="stp" src="../img/vip/paint/mini-spr.webp" alt="" width="160" height="200" loading="lazy"></span><i></i><span><img class="stp" src="../img/vip/paint/mini-rec.webp" alt="" width="160" height="200" loading="lazy"></span></div>
       <div class="art pa wa2" aria-hidden="true">
         <div class="dev lap l2"><img src="../img/vip/paint/laptop.webp" alt="" width="600" height="420" loading="lazy"><div class="scrn2"><img src="../img/vip/raw/compose.webp" alt="" loading="lazy"><span class="hl"></span></div></div>
         <div class="dev ph"><img src="../img/vip/paint/phone.webp" alt="" width="260" height="500" loading="lazy"><div class="scrn2"><img src="../img/vip/raw/vipgroup.webp" alt="" loading="lazy"></div></div>
@@ -1637,7 +1785,6 @@ body{background:var(--page)}
 
     <!-- 03: the bonus: six ideas become one, then the course and its four parts -->
     <article class="it it3" data-r>
-      <div class="mst" aria-hidden="true"><span class="done"><img class="stp" src="../img/vip/paint/mini-rev.webp" alt="" width="160" height="200" loading="lazy"></span><i></i><span class="done"><img class="stp" src="../img/vip/paint/mini-wa.webp" alt="" width="160" height="200" loading="lazy"></span><i></i><span class="now"><img class="stp" src="../img/vip/paint/mini-spr.webp" alt="" width="160" height="200" loading="lazy"></span><i></i><span><img class="stp" src="../img/vip/paint/mini-rec.webp" alt="" width="160" height="200" loading="lazy"></span></div>
       <div class="art pa spr" aria-hidden="true">
         <img class="prop n5" src="../img/vip/paint/notes5.webp" alt="" width="360" height="300" loading="lazy">
         <img class="prop n1" src="../img/vip/paint/note1.webp" alt="" width="360" height="300" loading="lazy">
@@ -1662,7 +1809,6 @@ body{background:var(--page)}
 
     <!-- 04: the recordings, for life -->
     <article class="it it4 flip" data-r>
-      <div class="mst" aria-hidden="true"><span class="done"><img class="stp" src="../img/vip/paint/mini-rev.webp" alt="" width="160" height="200" loading="lazy"></span><i></i><span class="done"><img class="stp" src="../img/vip/paint/mini-wa.webp" alt="" width="160" height="200" loading="lazy"></span><i></i><span class="done"><img class="stp" src="../img/vip/paint/mini-spr.webp" alt="" width="160" height="200" loading="lazy"></span><i></i><span class="now"><img class="stp" src="../img/vip/paint/mini-rec.webp" alt="" width="160" height="200" loading="lazy"></span></div>
       <div class="art pa rec" aria-hidden="true">
         <img class="prop plan" src="../img/vip/paint/planner.webp" alt="" width="460" height="300" loading="lazy">
         <img class="prop stk" src="../img/vip/paint/sticky.webp" alt="" width="200" height="190" loading="lazy">
@@ -1923,5 +2069,90 @@ body{background:var(--page)}
   }
 })();
 </script>
+<script>
+/* v5 motion (tools/paint/PLAN-v5.md): each scene's scroll progress is smoothed every frame, so layers glide and
+   settle; layers follow keyframes on arcs with easing, at their own depth. Reduced motion: everything at rest. */
+(function(){
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var ease = function(t){ return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2 };
+  var clamp = function(v, a, b){ return Math.max(a, Math.min(b, v)) };
+  /* keyframes: [progress, {x, y (percent of the stage width), r (deg), s (scale), o (opacity), a (arc height to the next key, %)}] */
+  var SC = [
+    { el: '.it1 .art', k: {
+      '.l1':     [[0, {y: 7, s: .94, o: .0}], [.35, {y: 0, s: 1, o: 1}], [1, {y: -2, s: 1.015, o: 1}]],
+      '.coffee': [[0, {y: -6, o: 0, r: -20}], [.4, {y: 0, o: 1, r: 0}], [1, {y: -3, r: 6, o: 1}]],
+      '.stack':  [[0, {x: 10, y: 6, r: 8, o: 0}], [.5, {x: 0, y: 0, r: 0, o: 1}], [1, {x: -1, y: -1, r: -1, o: 1}]],
+      '.pencil': [[.15, {x: 18, y: 10, r: -60, o: 0, a: 10}], [.6, {x: 0, y: 0, r: -24, o: 1}], [1, {x: -2, y: -1, r: -20, o: 1}]],
+      '.rstamp': [[.45, {s: 1.5, o: 0, r: -18}], [.6, {s: 1, o: .8, r: -7}], [1, {s: 1, o: .8, r: -7}]] } },
+    { el: '.it2 .art', k: {
+      '.l2':     [[0, {y: 6, s: .95, o: 0}], [.35, {y: 0, s: 1, o: 1}], [1, {y: -2, o: 1}]],
+      '.ph':     [[.1, {x: -22, y: 18, r: -14, s: .85, o: 0, a: 12}], [.55, {x: 0, y: 0, r: 5, s: 1, o: 1}], [1, {x: 0, y: -2, r: 4, o: 1}]],
+      '.hl':     [[.45, {sx: 0}], [.7, {sx: 1}], [1, {sx: 1}]],
+      '.clk':    [[.3, {y: 4, o: 0}], [.5, {y: 0, o: 1}], [1, {y: 0, o: 1}]],
+      '.wdg':    [[.5, {cr: 100}], [.62, {cr: 72}], [.66, {cr: 72}], [.78, {cr: 45}], [.82, {cr: 45}], [.95, {cr: 18}], [1, {cr: 18}]],
+      '.rstamp': [[.6, {s: 1.5, o: 0, r: -18}], [.72, {s: 1, o: .8, r: -6}], [1, {s: 1, o: .8, r: -6}]] } },
+    { el: '.it3 .art', k: {
+      '.l3':     [[0, {y: 6, s: .95, o: 0}], [.35, {y: 0, s: 1, o: 1}], [1, {y: -2, o: 1}]],
+      '.n5':     [[.15, {x: 0, y: 0, s: 1, o: 1}], [.65, {x: 14, y: 8, s: .82, o: .0, a: -4}], [1, {x: 14, y: 8, s: .82, o: 0}]],
+      '.n1':     [[.25, {x: 0, y: 0, r: 0, s: 1, o: 1, a: -16}], [.72, {x: 52, y: 40, r: -8, s: .9, o: 1}], [.8, {x: 54, y: 42, r: -6, s: .9, o: 0}], [1, {x: 54, y: 42, o: 0}]],
+      '.c1':     [[.7, {s: .9, o: 0, r: 4}], [.85, {s: 1, o: 1, r: 0}], [1, {s: 1, o: 1, r: 0}]],
+      '.src':    [[.35, {o: 0}], [.5, {o: 1}], [1, {o: 1}]] } },
+    { el: '.it4 .art', k: {
+      '.plan':   [[0, {y: 6, o: 0, r: -2}], [.3, {y: 0, o: 1, r: 0}], [1, {y: -2, o: 1}]],
+      '.stk':    [[.2, {x: -16, y: -26, r: -30, s: 1.35, o: 0, a: -6}], [.55, {x: 0, y: 0, r: 0, s: 1, o: 1}], [.62, {x: 0, y: .6, r: 2, s: .98, o: 1}], [.7, {x: 0, y: 0, r: 0, s: 1, o: 1}], [1, {o: 1}]],
+      '.l4':     [[.3, {x: 6, o: 0}], [.6, {x: 0, o: 1}], [1, {x: 0, y: -1, o: 1}]],
+      '.pg i':   [[.55, {w: 8}], [1, {w: 82}]] } },
+    { el: '.fitg', k: { '.seat.two .you': [[0, {x: -15}], [.7, {x: 3}], [1, {x: 3}]] } },
+    { el: '.lw', k: { '.letter': [[0, {y: 14, r: -2.4}], [.65, {y: 0, r: -1.2}], [1, {y: 0, r: -1.2}]],
+                     '.seal':   [[.55, {s: 1.6, o: 0, r: -36}], [.75, {s: 1, o: 1, r: -12}], [1, {s: 1, o: 1, r: -12}]] } }
+  ];
+  function lerpKeys(keys, p){
+    if (p <= keys[0][0]) return { v: keys[0][1], arc: 0 };
+    for (var i = 0; i < keys.length - 1; i++) { var a = keys[i], b = keys[i + 1];
+      if (p <= b[0]) { var t = ease((p - a[0]) / (b[0] - a[0])), o = {};
+        for (var k in b[1]) o[k] = (a[1][k] == null ? (k === 's' || k === 'o' || k === 'sx' ? 1 : 0) : a[1][k]) + (b[1][k] - (a[1][k] == null ? (k === 's' || k === 'o' || k === 'sx' ? 1 : 0) : a[1][k])) * t;
+        for (var k2 in a[1]) if (!(k2 in o)) o[k2] = a[1][k2];
+        return { v: o, arc: (a[1].a || 0) * Math.sin(Math.PI * t) } } }
+    return { v: keys[keys.length - 1][1], arc: 0 };
+  }
+  var scenes = [];
+  SC.forEach(function(sc){ document.querySelectorAll(sc.el).forEach(function(root){
+    var layers = []; for (var sel in sc.k) root.querySelectorAll(sel).forEach(function(n){ n.setAttribute('data-anim', ''); layers.push({ n: n, k: sc.k[sel], base: getComputedStyle(n).transform }) });
+    scenes.push({ root: root, layers: layers, p: reduce ? 1 : 0 }) }) });
+  function apply(sc){
+    var w = sc.root.clientWidth || 600;
+    sc.layers.forEach(function(L){
+      var r = lerpKeys(L.k, sc.p), v = r.v, t = '';
+      if (v.cr != null) { L.n.style.clipPath = 'inset(0 ' + v.cr.toFixed(2) + '% 0 0)'; return }
+      if (v.w != null) { L.n.style.width = v.w.toFixed(2) + '%'; return }
+      if (v.sx != null) { L.n.style.transform = 'scaleX(' + v.sx.toFixed(3) + ')'; return }
+      var x = (v.x || 0) / 100 * w, y = ((v.y || 0) - r.arc) / 100 * w;
+      t = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px) rotate(' + (v.r || 0).toFixed(2) + 'deg) scale(' + (v.s == null ? 1 : v.s).toFixed(4) + ')';
+      L.n.style.transform = t; if (v.o != null) L.n.style.opacity = v.o.toFixed(3);
+    });
+  }
+  /* the week: the road draws, each sheet focuses as the road reaches it */
+  var trk = document.querySelector('.trk'), stops = trk ? trk.querySelectorAll('.stop .wk') : [], wp = reduce ? 1 : 0;
+  /* the rail: which item is in front of you */
+  var items = document.querySelectorAll('.vi .it'), rail = document.querySelectorAll('.rail span'), railLn = document.querySelector('.rail-ln');
+  var last = performance.now();
+  function frame(now){
+    var dt = Math.min(64, now - last) / 1000; last = now; var k = 1 - Math.exp(-dt * 5.5), vh = innerHeight;
+    scenes.forEach(function(sc){ var b = sc.root.getBoundingClientRect(); if (b.bottom < -200 || b.top > vh + 200) return;
+      var target = reduce ? 1 : clamp((vh * .92 - b.top) / (vh * .5 + b.height * .5), 0, 1);
+      if (Math.abs(target - sc.p) > .0005) { sc.p += (target - sc.p) * k; apply(sc) } else if (!sc.done) { sc.p = target; apply(sc) } sc.done = Math.abs(target - sc.p) <= .0005 });
+    if (trk) { var tb = trk.getBoundingClientRect(), tt = reduce ? 1 : clamp((vh * .85 - tb.top) / (vh * .55), 0, 1); wp += (tt - wp) * k;
+      trk.style.setProperty('--wp', wp.toFixed(4));
+      stops.forEach(function(im, i){ var q = clamp((wp - i * .2) / .22, 0, 1), e = ease(q); im.style.opacity = (.15 + .85 * e).toFixed(3); im.style.transform = 'translateY(' + ((1 - e) * 14).toFixed(1) + 'px) scale(' + (.9 + .1 * e).toFixed(3) + ') rotate(' + ((1 - e) * -4).toFixed(2) + 'deg)' }) }
+    if (rail.length) { var cur = -1, prog = 0; items.forEach(function(it, i){ var b = it.getBoundingClientRect(); if (b.top < vh * .55) { cur = i; prog = clamp((vh * .55 - b.top) / b.height, 0, 1) } });
+      rail.forEach(function(r, i){ r.classList.toggle('on', i === cur); r.classList.toggle('done', i < cur) });
+      if (railLn) railLn.style.setProperty('--rp', cur < 0 ? 0 : ((cur + prog) / items.length).toFixed(3)) }
+    document.body.classList.toggle('scrolled', scrollY > 30);
+    requestAnimationFrame(frame);
+  }
+  scenes.forEach(apply); requestAnimationFrame(frame);
+})();
+</script>
+
 </body>
 </html>
