@@ -152,20 +152,25 @@
         ;
       when(rv, t1);
 
-      /* the live Q&A: questions come into the chat one by one; each is answered live while the pencil works */
+      /* the live Q&A, as Zoom shows it: Claire's question is being answered live; you type yours and send it;
+         the list moves up; Ana starts answering yours live */
       var qa = $('.qa', rv);
       if (qa) {
-        var tq = gsap.timeline(), qq = $$('.qa-q', qa);
-        tq.from(qa, { x: 40, y: -10, rotation: 6, opacity: 0, duration: .9, ease: 'power3.out' }, .3);
-        qq.forEach(function (q, i) {
-          var a1 = $('.a1', q), a2 = $('.a2', q), t0 = 1.1 + i * 2.9;
-          gsap.set(q, { opacity: 0, y: 14 }); gsap.set([a1, a2], { opacity: 0 });
-          tq.to(q, { opacity: 1, y: 0, duration: .45, ease: 'back.out(1.7)' }, t0)
-            .to(a1, { opacity: 1, duration: .3 }, t0 + .6)
-            .to($('i', a1), { scale: 1.6, duration: .35, yoyo: true, repeat: 3, ease: 'sine.inOut' }, t0 + .7)
-            .to(a1, { opacity: 0, duration: .2 }, t0 + 2.2)
-            .fromTo(a2, { opacity: 0, scale: .7, transformOrigin: '0% 50%' }, { opacity: 1, scale: 1, duration: .35, ease: 'back.out(2.2)' }, t0 + 2.25);
-        });
+        var tq = gsap.timeline(), q3 = $('.q3', qa), me = $('.q4', qa), ta = $('.qa-ta', qa), ty = $('.qa-ty', qa), ph = $('.qa-ph', qa), send = $('.qa-send', qa);
+        var line = 'Can I start selling before my offer is finished?', typed = { n: 0 };
+        gsap.set(me, { height: 0, paddingTop: 0, paddingBottom: 0, opacity: 0 });
+        var cnt = $('.qa-cnt', qa); if (cnt && !reduce) cnt.textContent = '3';
+        tq.from(qa, { x: 40, y: -10, opacity: 0, duration: .9, ease: 'power3.out' }, .3)
+          .to($('.a1 svg', q3), { scale: 1.25, duration: .4, yoyo: true, repeat: 3, ease: 'sine.inOut', transformOrigin: '50% 50%' }, 1)
+          .to($('.a1', q3), { opacity: 0, duration: .2 }, 2.6)
+          .to($('.a2', q3), { opacity: 1, duration: .3 }, 2.65)
+          .add(function () { ta.classList.add('on'); ph.style.opacity = 0 }, 3.1)
+          .to(typed, { n: line.length, duration: 2.1, ease: 'none', onUpdate: function () { ty.textContent = line.slice(0, Math.round(typed.n)); send.classList.toggle('on', typed.n > 0) } }, 3.3)
+          .to(send, { scale: .9, duration: .1, yoyo: true, repeat: 1 }, 5.7)
+          .add(function () { ty.textContent = ''; ph.style.opacity = 1; ta.classList.remove('on'); send.classList.remove('on'); if (cnt) cnt.textContent = '4' }, 5.9)
+          .to(me, { height: 'auto', paddingTop: '1.7cqw', paddingBottom: '1.5cqw', opacity: 1, duration: .55, ease: 'power2.out' }, 5.9)
+          .to($('.a1', me), { opacity: 1, duration: .3 }, 6.9)
+          .add(function () { if (!reduce) gsap.to($('.a1 svg', me), { scale: 1.25, duration: .5, yoyo: true, repeat: -1, ease: 'sine.inOut', transformOrigin: '50% 50%' }) }, 7);
         when(rv, tq);
       }
     }
