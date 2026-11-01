@@ -186,7 +186,7 @@ html,body{width:1920px;height:1080px;overflow:hidden;background:#FFF8EE}
     el('path', {d: 'M1112 330 l6 -40 h40 l6 40 z', fill: '#E7A57E', stroke: INK, 'stroke-width': 3.5}, sh);
     el('path', {d: 'M1138 290 c-2 -20 4 -34 10 -44', stroke: '#5E7A3A', 'stroke-width': 4, fill: 'none'}, sh);
     var fl = el('g', {transform: 'translate(1150 236) scale(.32)'}, sh); fl.setAttribute('data-sf', '1');
-    var pic = el('g', {transform: 'translate(1500 190)'});
+    var pic = el('g', {transform: 'translate(1790 150)'});
     el('rect', {x: 0, y: 0, width: 230, height: 176, rx: 6, fill: '#FFF8EE', stroke: INK, 'stroke-width': 6}, pic);
     el('rect', {x: 18, y: 18, width: 194, height: 140, fill: '#FFE9A8'}, pic);
     el('rect', {x: 18, y: 98, width: 194, height: 60, fill: '#6FA9C2'}, pic);
@@ -286,8 +286,8 @@ html,body{width:1920px;height:1080px;overflow:hidden;background:#FFF8EE}
   /* tower labels: the usual order, written on the wall beside it */
   var tLbl = el('g', {opacity: 0});
   [['Build an audience', 0], ['Turn on paid', 1], ['Make a course', 2], ['Hope someone buys', 3]].forEach(function(l){
-    var y = FLOOR - B / 2 - l[1] * B + 8, tx = el('text', {x: TX - 120, y: y, 'text-anchor': 'end', 'font-family': 'Instrument Serif', 'font-style': 'italic', 'font-size': 34, fill: INK}, tLbl); tx.textContent = l[0];
-    el('path', {d: 'M' + (TX - 112) + ' ' + (y - 10) + ' h22', stroke: INK, 'stroke-width': 3, 'stroke-dasharray': '2 6', 'stroke-linecap': 'round'}, tLbl);
+    var y = FLOOR - B / 2 - l[1] * B + 8, tx = el('text', {x: TX + 150, y: y, 'text-anchor': 'start', 'font-family': 'Instrument Serif', 'font-style': 'italic', 'font-size': 34, fill: INK}, tLbl); tx.textContent = l[0];
+    el('path', {d: 'M' + (TX + 112) + ' ' + (y - 10) + ' h26', stroke: INK, 'stroke-width': 3, 'stroke-dasharray': '2 6', 'stroke-linecap': 'round'}, tLbl);
   });
 
   /* the door: a plinth, a frame with depth, a real swing */
@@ -591,8 +591,8 @@ html,body{width:1920px;height:1080px;overflow:hidden;background:#FFF8EE}
     var n = t < 1.2 ? 0 : t < 3.6 ? Math.floor(((t * 13) % 1) * 90) + 10 : 7;
     $('calcN').textContent = t < 1.2 ? '00' : t < 3.6 ? String(n).padStart(2, '0') : '07';
     document.querySelectorAll('#slips .slip').forEach(function(s, i){
-      var p = seg(t, 3.4 + i * .55, 4.6 + i * .55), e = io(p), x0 = 60 + i * 120, y0 = -40, x1 = 230 + (i - 2) * 40, y1 = 196 + (i % 2) * 10;
-      var x = lerp(x0, x1, e), y = lerp(y0, y1, e) - Math.sin(p * Math.PI) * 120;
+      var p = seg(t, 3.4 + i * .55, 4.6 + i * .55), e = io(p), x0 = 60 + i * 120, y0 = 70, x1 = 230 + (i - 2) * 40, y1 = 196 + (i % 2) * 10;
+      var x = lerp(x0, x1, e), y = lerp(y0, y1, e) - Math.sin(p * Math.PI) * 60;
       s.style.opacity = io(seg(t, 3.2 + i * .55, 3.6 + i * .55)); s.style.transform = 'translate(' + x + 'px,' + y + 'px) rotate(' + lerp(-14 + i * 6, (i - 2) * 9, e) + 'deg)';
     });
   }
