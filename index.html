@@ -2208,7 +2208,8 @@ html.bdg-js .bdg.in{animation:bdgIn .6s cubic-bezier(.2,1.5,.4,1) both}
 .xvil .xb ellipse{filter:drop-shadow(0 0 2.5px var(--c))}
 @media (prefers-reduced-motion:no-preference){.xvil .xb ellipse{animation:xvt 2.4s ease-in-out infinite;animation-delay:var(--d)}}
 @keyframes xvt{0%,100%{opacity:1}50%{opacity:.45}}
-.snow{position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:40}
+.snow{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;z-index:0}
+#final > .wrap{position:relative;z-index:1}
 </style>
 </head>
 <body>
@@ -2955,37 +2956,40 @@ html.bdg-js .bdg.in{animation:bdgIn .6s cubic-bezier(.2,1.5,.4,1) both}
       /* bright ridges along each spine and the centre's ring lines, like the photos */ '<g fill="none" stroke="#FFFFFF" stroke-linecap="round">' + six(armRidge) + '</g>' +
       '<g fill="none" stroke="#C9DBEE" stroke-width=".6" stroke-opacity=".8">' + cRings + six(shapes()) + '</g>';
   }
-  /* snowfall over the whole page: the crystals above drawn once as sprites, then falling on a canvas. Depth: far flakes
-     are small, slow, soft and faint (some only a speck), near ones larger and crisper. Each sways on its own slow
-     pendulum and turns; a breeze that shifts over time carries them all; scrolling moves them by depth. The time step is
-     capped, so coming back to the tab never makes them jump or freeze. Off for reduced motion */
+  /* snowfall in two places only, the hero and the "See you Tuesday" section, behind their content, so it shows in the
+     open background and never over text or the forms. The crystals above are drawn once as sprites. Depth: far flakes
+     small, slow and faint (some only a speck), near ones larger and crisper; each sways and turns; a slow breeze carries
+     them. Each area animates only while it is on screen, the time step is capped (no jump or freeze after a tab switch),
+     and it is off for reduced motion */
   if (!matchMedia('(prefers-reduced-motion: reduce)').matches) (function(){
-    var cv = document.createElement('canvas'); cv.className = 'snow'; cv.setAttribute('aria-hidden', 'true'); document.body.appendChild(cv);
-    var ctx = cv.getContext('2d'), W = 0, H = 0, dpr = 1, sprites = [], flakes = [], KINDS = [['dendrite', 7], ['stellar', 11], ['dendrite', 31], ['dendrite', 5], ['stellar', 3], ['dendrite', 17], ['dendrite', 23]];
-    KINDS.forEach(function(k, i){ var im = new Image(); im.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="-60 -60 120 120" width="128" height="128"><defs><filter id="ds" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="1.5" stdDeviation="1.6" flood-color="#5A78A0" flood-opacity=".3"/></filter></defs><g filter="url(#ds)">' + crystal(k[0], k[1], 's' + i) + '</g></svg>'); sprites.push(im) });
-    function size(){ dpr = Math.min(2, devicePixelRatio || 1); W = innerWidth; H = innerHeight; cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0) }
-    function make(top){ var z = Math.pow(Math.random(), 1.6) * .75 + .25, speck = z < .45 && Math.random() < .55;
-      return { x: Math.random() * W, y: top ? -30 - Math.random() * 60 : Math.random() * H, z: z, speck: speck, s: speck ? 2 + z * 3 : 9 + z * 22,
-        vy: 14 + z * 34, amp: 8 + z * 22, fr: .12 + Math.random() * .25, ph: Math.random() * 6.28, rot: Math.random() * 6.28, vr: (Math.random() - .5) * (.5 + z), k: Math.floor(Math.random() * sprites.length), a: .35 + z * .6 } }
-    function fill(){ var n = Math.round(Math.min(46, Math.max(14, W * H / 34000))); while (flakes.length < n) flakes.push(make(false)); flakes.length = n }
-    size(); fill(); addEventListener('resize', function(){ size(); fill() });
-    var sy = scrollY; addEventListener('scroll', function(){ var d = scrollY - sy; sy = scrollY; for (var i = 0; i < flakes.length; i++) flakes[i].y -= d * flakes[i].z * .3 }, { passive: true });
-    var last = 0, T = 0, run = true;
-    document.addEventListener('visibilitychange', function(){ run = !document.hidden; if (run) { last = 0; requestAnimationFrame(tick) } });
-    function tick(now){ if (!run) return; var dt = last ? Math.min(.05, (now - last) / 1000) : .016; last = now; T += dt;
-      var wind = Math.sin(T * .07) * 16 + Math.sin(T * .23 + 1) * 7;
-      ctx.clearRect(0, 0, W, H);
-      for (var i = 0; i < flakes.length; i++) { var f = flakes[i];
-        f.y += f.vy * dt; f.ph += f.fr * 6.28 * dt; f.rot += f.vr * dt;
-        var x = f.x + Math.sin(f.ph) * f.amp; f.x += wind * f.z * dt;
-        if (f.y > H + 40) { var nf = make(true); flakes[i] = nf; continue } if (f.y < -80) f.y = H + 30;
-        if (f.x < -40) f.x += W + 80; else if (f.x > W + 40) f.x -= W + 80;
-        var fade = Math.min(1, (f.y + 40) / 120);
-        ctx.globalAlpha = f.a * fade;
-        if (f.speck) { ctx.fillStyle = '#FFFFFF'; ctx.shadowColor = 'rgba(90,120,160,.35)'; ctx.shadowBlur = 3; ctx.beginPath(); ctx.arc(x, f.y, f.s / 2, 0, 6.283); ctx.fill(); ctx.shadowBlur = 0 }
-        else { var im = sprites[f.k]; if (im.complete) { ctx.save(); ctx.translate(x, f.y); ctx.rotate(f.rot); ctx.drawImage(im, -f.s / 2, -f.s / 2, f.s, f.s); ctx.restore() } } }
-      ctx.globalAlpha = 1; requestAnimationFrame(tick) }
-    requestAnimationFrame(tick);
+    var sprites = [], KINDS = [['dendrite', 7], ['stellar', 11], ['dendrite', 31], ['dendrite', 5], ['stellar', 3], ['dendrite', 17], ['dendrite', 23]];
+    KINDS.forEach(function(k, i){ var im = new Image(); im.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="-60 -60 120 120" width="128" height="128"><defs><filter id="ds" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="0" stdDeviation="1.1" flood-color="#4F6F98" flood-opacity=".55"/><feDropShadow dx="0" dy="2" stdDeviation="2.2" flood-color="#5A78A0" flood-opacity=".28"/></filter></defs><g filter="url(#ds)">' + crystal(k[0], k[1], 's' + i).replace('stroke="#D3E2F2"', 'stroke="#9FBEE0"').replace('stroke="#C9DBEE"', 'stroke="#A9C6E6"') + '</g></svg>'); sprites.push(im) });
+    function snowIn(sec){ if (!sec) return;
+      if (getComputedStyle(sec).position === 'static') sec.style.position = 'relative';
+      var cv = document.createElement('canvas'); cv.className = 'snow'; cv.setAttribute('aria-hidden', 'true'); sec.insertBefore(cv, sec.firstChild);
+      var ctx = cv.getContext('2d'), W = 0, H = 0, flakes = [], on = false, last = 0, T = Math.random() * 50;
+      function size(){ var dpr = Math.min(2, devicePixelRatio || 1); W = sec.clientWidth; H = sec.clientHeight; cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        var n = Math.round(Math.min(40, Math.max(12, W * H / 32000))); while (flakes.length < n) flakes.push(make(false)); flakes.length = n }
+      function make(top){ var z = Math.pow(Math.random(), 1.2) * .75 + .25, speck = z < .4 && Math.random() < .5;
+        return { x: Math.random() * W, y: top ? -30 - Math.random() * 60 : Math.random() * H, z: z, speck: speck, s: speck ? 3 + z * 4 : 16 + z * 26,
+          vy: 12 + z * 30, amp: 8 + z * 20, fr: .12 + Math.random() * .25, ph: Math.random() * 6.28, rot: Math.random() * 6.28, vr: (Math.random() - .5) * (.5 + z), k: Math.floor(Math.random() * sprites.length), a: .4 + z * .55 } }
+      function tick(now){ if (!on || document.hidden) { last = 0; return } var dt = last ? Math.min(.05, (now - last) / 1000) : .016; last = now; T += dt;
+        var wind = Math.sin(T * .07) * 14 + Math.sin(T * .23 + 1) * 6;
+        ctx.clearRect(0, 0, W, H);
+        for (var i = 0; i < flakes.length; i++) { var f = flakes[i];
+          f.y += f.vy * dt; f.ph += f.fr * 6.28 * dt; f.rot += f.vr * dt; f.x += wind * f.z * dt;
+          if (f.y > H + 40) { flakes[i] = make(true); continue }
+          if (f.x < -40) f.x += W + 80; else if (f.x > W + 40) f.x -= W + 80;
+          var x = f.x + Math.sin(f.ph) * f.amp;
+          ctx.globalAlpha = f.a * Math.min(1, (f.y + 40) / 120, (H + 40 - f.y) / 120);
+          if (f.speck) { ctx.fillStyle = '#FFFFFF'; ctx.shadowColor = 'rgba(70,100,145,.6)'; ctx.shadowBlur = 3; ctx.beginPath(); ctx.arc(x, f.y, f.s / 2, 0, 6.283); ctx.fill(); ctx.shadowBlur = 0 }
+          else { var im = sprites[f.k]; if (im.complete) { ctx.save(); ctx.translate(x, f.y); ctx.rotate(f.rot); ctx.drawImage(im, -f.s / 2, -f.s / 2, f.s, f.s); ctx.restore() } } }
+        ctx.globalAlpha = 1; requestAnimationFrame(tick) }
+      function start(){ if (on) return; on = true; last = 0; requestAnimationFrame(tick) }
+      size(); addEventListener('resize', size); if (window.ResizeObserver) new ResizeObserver(size).observe(sec);
+      document.addEventListener('visibilitychange', function(){ if (!document.hidden && on) { last = 0; requestAnimationFrame(tick) } });
+      if ('IntersectionObserver' in window) new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) start(); else on = false }) }).observe(sec); else start() }
+    snowIn(document.getElementById('hero')); snowIn(document.getElementById('final'));
   })();
   /* holly on the Day 1 date */
   var t1 = document.querySelector('.final .tiles div'); if (t1) { var hl = new Image(); hl.className = 'holly'; hl.alt = ''; hl.src = 'img/vip/paint/xmas-holly.webp'; t1.appendChild(hl) }
