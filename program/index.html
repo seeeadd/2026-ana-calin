@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
 <link rel="stylesheet" href="../assets/offer-ui.css">
-<link rel="stylesheet" href="../assets/offer-prog.css?v=3">
+<link rel="stylesheet" href="../assets/offer-prog.css?v=4">
 <link rel="stylesheet" href="../assets/offer-sun.css">
 <link rel="stylesheet" href="../assets/wins.css">
 </head>
@@ -486,5 +486,7 @@
 (function(){ var b = document.querySelectorAll('.bdg'); if (!b.length || !('IntersectionObserver' in window)) return; document.documentElement.classList.add('bdg-js');
   var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target) } }) }, { threshold: .45 });
   b.forEach(function(x){ io.observe(x) }) })();</script>
+<script>/* Christmas, Nov to Dec only (?xmas=0 or 1 overrides) */
+(function(){ var q = (location.search.match(/[?&]xmas=([01])/) || [])[1]; if (q ? q === '1' : new Date() < new Date('2027-01-01T00:00:00')) document.documentElement.classList.add('xmas') })();</script>
 </body>
 </html>

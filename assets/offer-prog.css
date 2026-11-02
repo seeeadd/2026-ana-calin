@@ -844,3 +844,7 @@ html.bdg-js .bdg.in{animation:bdgIn .6s cubic-bezier(.2,1.5,.4,1) both}
 .nov .bdg-lock{right:-38px;top:-56px;width:136px;--r:10deg;z-index:8}
 body.is-closed .bdg-lock,body.is-soon .bdg-lock{display:none}
 @media (max-width:700px){.pc-promise h3,.pc-promise p{padding-right:64px}.bdg-promise{right:-8px;top:-40px;width:96px}.nov .bdg-lock{right:-6px;top:-70px;width:100px}}
+
+/* Christmas, Nov to Dec only (html.xmas, set by the page script): the sunflower on the buttons wears a Santa hat */
+html.xmas .btn .sf{position:relative;overflow:visible}
+html.xmas .btn .sf:after{content:"";position:absolute;left:4%;top:-36%;width:76%;aspect-ratio:90/48;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-36 -66 90 48'%3E%3Cg stroke='%231A1412' stroke-width='3.4' stroke-linejoin='round'%3E%3Cpath d='M-27 -31 C-24 -50 -6 -64 14 -63 C28 -62 40 -55 47 -45 C41 -47 33 -46 27 -42 C26 -38 26 -34 26 -30 Z' fill='%23D7263D'/%3E%3Cpath d='M-33 -34 C-33 -40 -27 -42 -20 -40 C-12 -43 -4 -43 4 -41 C12 -43 21 -43 28 -40 C35 -41 38 -36 36 -31 C37 -25 31 -22 25 -24 C17 -21 8 -21 0 -23 C-8 -21 -16 -21 -23 -24 C-30 -22 -35 -27 -33 -34 Z' fill='%23FFFDF6'/%3E%3Ccircle cx='48' cy='-43' r='7' fill='%23FFFDF6'/%3E%3C/g%3E%3C/svg%3E") center/contain no-repeat;transform:rotate(-14deg);pointer-events:none}
