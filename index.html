@@ -2092,7 +2092,12 @@ section > .tkb .flag span.t{font-weight:500}
 @media (max-width:389px){.mbar .btn .bq{display:none!important}.mbar .btn{padding-right:16px;margin-left:6px}.mbar .btn .bt{white-space:nowrap}}
 @media (max-width:1060px){.who .ipic{max-width:260px}}
 /* the hero headline with "in 2027" (Sean, Nov 2): four lines, sized so the longest one fits the column */
-.v2h .hright h1.big4.y27{font-size:min(12.4cqi,74px);line-height:.96}
+.v2h .hright h1.big4.y27{font-size:min(11.2cqi,66px);line-height:1}
+#h1 em.yr27{font-style:italic;color:var(--pink)}
+@media (max-width:640px){
+  .v2h .hright h1.big4.y27{font-size:min(13.4vw,56px);line-height:1}
+  .v2h .hright h1.y27 .l,.v2h .hright h1.y27 .br,#h1 em.yr27{display:block;white-space:nowrap}
+}
 /* the day rows (Sean: "widen some text on the top, there's a lot of space on the right"): the date, the headline and
    the first paragraph run across both columns; the slides window sits beside the rest and stays in view while you read */
 @media (min-width:1061px){
@@ -2201,7 +2206,7 @@ section > .tkb .flag span.t{font-weight:500}
 
     <div class="hright">
       <span class="hpill"><span class="dot"></span>The Exit Plan<span class="hide-s"> <i>·</i> A free 3-day live workshop with Ana Calin</span></span>
-      <h1 id="h1" class="long big4 y27"><span class="l">How to Build the</span> <span class="l">Business That Pays</span> <span class="l">You for <span class="hl">What You Know</span></span> <span class="l">in 2027</span></h1>
+      <h1 id="h1" class="long big4 y27"><span class="l">How to Build <span class="br">the Business</span></span> <span class="l">That Pays You for</span> <span class="l"><span class="hl">What You Know</span> <em class="yr27">in 2027</em></span></h1>
       <p class="hsub2" id="hk">You’d like to know you can earn on your own before you depend on it. <mark class="sk">Join me to work toward your first paying customers, using what you already know,</mark> while your current work still pays the bills.</p>
       <div class="htk">
         <div class="tkshell">
