@@ -2949,9 +2949,11 @@ section > .tkb .flag span.t{font-weight:500}
      never after they've signed up or started typing */
   (function(){
     var hEl = form.querySelector('#dlg-h'), sEl = form.querySelector('.fsub'), h0 = hEl.innerHTML, s0 = sEl.textContent, t0 = Date.now(), shown = false;
-    try { shown = sessionStorage.getItem('ep_exit') === '1' } catch (x) {}
+    /* ?exit=1 lets the team test it: the once-a-session memory is cleared and the 12-second wait drops to 2 */
+    var exTest = /[?&]exit=1\b/.test(location.search), wait = exTest ? 2000 : 12000;
+    try { if (exTest) sessionStorage.removeItem('ep_exit'); shown = sessionStorage.getItem('ep_exit') === '1' } catch (x) {}
     function exitOpen(){
-      if (shown || Date.now() - t0 < 12000 || modal.classList.contains('open') || dlg.classList.contains('done')) return;
+      if (shown || Date.now() - t0 < wait || modal.classList.contains('open') || dlg.classList.contains('done')) return;
       var f1 = form.querySelector('[name=first_name]'); if (f1 && f1.value) return;
       shown = true; try { sessionStorage.setItem('ep_exit', '1') } catch (x) {}
       hEl.innerHTML = 'Don’t go yet. <em>Your seat’s still here.</em>'; sEl.textContent = 'Put your name on it before you go. It’s free.';
@@ -2960,7 +2962,11 @@ section > .tkb .flag span.t{font-weight:500}
       setTimeout(function(){ var f = form.querySelector('[name=first_name]'); if (f) f.focus({preventScroll:true}) }, reduce ? 0 : 260);
     }
     window.__epExitReset = function(){ hEl.innerHTML = h0; sEl.textContent = s0; modal.classList.remove('exit') };
-    document.addEventListener('mouseout', function(e){ if (!e.relatedTarget && e.clientY <= 0) exitOpen() });
+    /* leaving the window through the top: a quick move often reports a few px below the edge, so anything within 24px
+       of the top counts; mouseleave on the page covers browsers that skip the mouseout */
+    function leftTop(e){ if (!e.relatedTarget && !e.toElement && e.clientY < 24) exitOpen() }
+    document.addEventListener('mouseout', leftTop);
+    document.documentElement.addEventListener('mouseleave', leftTop);
     if (matchMedia('(pointer:coarse)').matches) {
       var ly = scrollY, lt = Date.now(), deep = 0;
       addEventListener('scroll', function(){ var y = scrollY, t = Date.now(); deep = Math.max(deep, y / Math.max(1, document.body.scrollHeight - innerHeight));
