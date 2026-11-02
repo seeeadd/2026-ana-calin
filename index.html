@@ -2051,7 +2051,7 @@ section > .tkb .flag span.t{font-weight:500}
 .tkt form .fl-seat{position:absolute;top:-2px;right:2px;margin:0;gap:6px;font-size:12px;white-space:nowrap;z-index:1}
 .tkt form .fl-seat svg{width:24px;height:12px}
 .tkt form .fl-who{font-size:18px;max-width:7.5em;overflow:hidden;text-overflow:clip;vertical-align:bottom}
-.htk .tkt .just:not([hidden]){position:absolute;top:-15px;right:22px;z-index:3;margin:0;display:flex;align-items:center;gap:7px;padding:6px 12px 6px 10px;border-radius:999px;background:#fff;font-size:12.5px;white-space:nowrap;box-shadow:0 0 0 1.5px var(--ink),0 8px 16px -8px rgba(26,20,18,.45)}
+.htk .tkt .just:not([hidden]){position:absolute;top:-15px;right:22px;z-index:6;margin:0;display:flex;align-items:center;gap:7px;padding:6px 12px 6px 10px;border-radius:999px;background:#fff;font-size:12.5px;white-space:nowrap;box-shadow:0 0 0 1.5px var(--ink),0 8px 16px -8px rgba(26,20,18,.45)}
 .v2rail .tkt form .fl-seat svg{display:none}.v2rail .tkt form .fl-seat{font-size:11.5px;gap:5px}.v2rail .tkt form .fl-who{font-size:17px}
 @media (max-width:360px){.tkt form .fl-seat{position:static;margin:0 0 8px}}
 @media (max-width:640px){.htk .tkt .just:not([hidden]){right:14px;font-size:11.5px;padding:5px 10px 5px 9px}}
@@ -2191,7 +2191,7 @@ html.bdg-js .bdg.in{animation:bdgIn .6s cubic-bezier(.2,1.5,.4,1) both}
 .fb-id{position:relative}
 .fb-hat{position:absolute;left:-7px;top:calc(50% - 33px);width:34px;height:auto;pointer-events:none;transform:rotate(-14deg);transform-origin:70% 90%;transition:all .45s var(--ease);z-index:2}
 .fb.min .fb-hat{left:-6px;top:calc(50% - 28px);width:27px}
-.xl{position:absolute;left:22px;right:22px;top:-15px;height:36px;pointer-events:none;z-index:4}
+.xl{position:absolute;left:22px;right:22px;top:-15px;height:36px;pointer-events:none;z-index:2}
 .xl svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
 .xl i{position:absolute;width:8px;height:12px;margin:-1px 0 0 -4px;border-radius:45% 45% 50% 50%/40% 40% 60% 60%;background:var(--c);border:1.4px solid var(--ink);transform:rotate(var(--r));transform-origin:50% 0;box-shadow:0 0 7px 1px var(--c)}
 .xl i:before{content:"";position:absolute;left:1px;right:1px;top:-4px;height:4px;border-radius:2px 2px 0 0;background:#7A6A60;border:1.2px solid var(--ink);border-bottom:0}
@@ -2199,6 +2199,14 @@ html.bdg-js .bdg.in{animation:bdgIn .6s cubic-bezier(.2,1.5,.4,1) both}
 @keyframes xtw{0%,100%{box-shadow:0 0 8px 2px var(--c);filter:none}50%{box-shadow:0 0 0 0 transparent;filter:saturate(.55) brightness(.9)}}
 .final .tiles div:first-child{position:relative}
 .holly{position:absolute;right:-16px;top:-18px;width:46px;height:auto;transform:rotate(14deg);pointer-events:none}
+/* more small Christmas bits: a wreath on the wall above the video window, lights over the footer's village, a few
+   hand-drawn snowflakes in the margins of the hero and the last section */
+.iph.win .wreath{position:absolute;left:50%;top:-13.5%;width:12%;min-width:46px;height:auto;transform:translateX(-50%) rotate(-4deg);z-index:4;pointer-events:none;filter:drop-shadow(0 4px 4px rgba(60,40,25,.25))}
+footer .xl.ft{left:4%;right:4%;top:-14px;z-index:3}
+.flake{position:absolute;width:var(--s,22px);height:auto;pointer-events:none;opacity:.95;z-index:0}
+@media (prefers-reduced-motion:no-preference){.flake{animation:flk var(--t,9s) ease-in-out infinite alternate}}
+@keyframes flk{from{transform:translateY(-6px) rotate(-14deg)}to{transform:translateY(8px) rotate(16deg)}}
+@media (max-width:860px){.flake{display:none}}
 </style>
 </head>
 <body>
@@ -2857,14 +2865,28 @@ html.bdg-js .bdg.in{animation:bdgIn .6s cubic-bezier(.2,1.5,.4,1) both}
   /* Ana in the bar, in a Santa hat */
   var id = document.querySelector('.fb-id'); if (id) { var h = document.createElement('span'); h.innerHTML = '<svg class="fb-hat" viewBox="-36 -66 90 48" aria-hidden="true"><g stroke="' + INK + '" stroke-width="3.4" stroke-linejoin="round"><path d="M-27 -31 C-24 -50 -6 -64 14 -63 C28 -62 40 -55 47 -45 C41 -47 33 -46 27 -42 C26 -38 26 -34 26 -30 Z" fill="#D7263D"/><path d="M-33 -34 C-33 -40 -27 -42 -20 -40 C-12 -43 -4 -43 4 -41 C12 -43 21 -43 28 -40 C35 -41 38 -36 36 -31 C37 -25 31 -22 25 -24 C17 -21 8 -21 0 -23 C-8 -21 -16 -21 -23 -24 C-30 -22 -35 -27 -33 -34 Z" fill="#FFFDF6"/><circle cx="48" cy="-43" r="7" fill="#FFFDF6"/></g></svg>'; id.appendChild(h.firstChild) }
   /* fairy lights draped across the top of both seat tickets: a hand-drawn cord in four swags, a bulb on each swag */
-  function lights(card){ var w = document.createElement('span'); w.className = 'xl'; w.setAttribute('aria-hidden', 'true');
-    var d = 'M0 4', n = 4, cols = ['#F72585', '#FFD400', '#3C6FB0', '#E0243A', '#3BAA6B'], bulbs = '';
+  function lights(card, n, extra){ var w = document.createElement('span'); w.className = 'xl' + (extra ? ' ' + extra : ''); w.setAttribute('aria-hidden', 'true');
+    var d = 'M0 4'; n = n || 4; var cols = ['#F72585', '#FFD400', '#3C6FB0', '#E0243A', '#3BAA6B'], bulbs = '';
     for (var k = 0; k < n; k++) { var x0 = k * 100 / n, x1 = (k + 1) * 100 / n; d += ' Q' + ((x0 + x1) / 2).toFixed(2) + ' ' + (k % 2 ? 34 : 40) + ' ' + x1.toFixed(2) + ' 4' }
     for (var b = 0; b < n * 3; b++) { var sw = Math.floor(b / 3), t = [.22, .5, .78][b % 3], dip = sw % 2 ? 34 : 40, y = 4 + 2 * t * (1 - t) * (dip - 4);
       var x = (sw + t) * 100 / n; bulbs += '<i style="left:' + x.toFixed(2) + '%;top:' + y.toFixed(1) + 'px;--c:' + cols[b % 5] + ';--r:' + ((t - .5) * -40).toFixed(0) + 'deg;--d:' + (b * .37 % 2.4).toFixed(2) + 's"></i>' }
     w.innerHTML = '<svg viewBox="0 0 100 36" preserveAspectRatio="none"><path d="' + d + '" fill="none" stroke="' + INK + '" stroke-width="1.6" vector-effect="non-scaling-stroke" stroke-linecap="round"/></svg>' + bulbs;
     card.appendChild(w) }
   ['hcard', 'rcard'].forEach(function(k){ var c = document.getElementById(k); if (c) lights(c) });
+  var ft = document.querySelector('footer'); if (ft) lights(ft, innerWidth < 700 ? 5 : 9, 'ft');
+  /* a wreath hung on the wall above her window */
+  var win = document.querySelector('.iph.win'); if (win) { var wr = document.createElement('span'); wr.innerHTML = '<svg class="wreath" viewBox="0 0 80 90" aria-hidden="true"><g stroke="' + INK + '" stroke-width="2.2" stroke-linejoin="round">' +
+    (function(){ var o = ''; for (var k = 0; k < 14; k++) { var a = k / 14 * Math.PI * 2, x = 40 + 25 * Math.cos(a), y = 40 + 25 * Math.sin(a), r = (a * 180 / Math.PI + 90).toFixed(0);
+      o += '<ellipse cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" rx="11" ry="6" transform="rotate(' + r + ' ' + x.toFixed(1) + ' ' + y.toFixed(1) + ')" fill="' + (k % 2 ? '#3BAA6B' : '#2E8F57') + '"/>' } return o })() +
+    '<circle cx="22" cy="24" r="3.6" fill="#E0243A"/><circle cx="60" cy="30" r="3.6" fill="#E0243A"/><circle cx="56" cy="58" r="3.6" fill="#E0243A"/><circle cx="18" cy="52" r="3.6" fill="#E0243A"/>' +
+    '<path d="M40 64 C32 58 24 62 26 70 C28 76 36 72 40 66 C44 72 52 76 54 70 C56 62 48 58 40 64 Z" fill="#F72585"/><path d="M38 66 L30 86 M42 66 L50 86" stroke="#F72585" stroke-width="4" stroke-linecap="round"/><path d="M38 66 L30 86 M42 66 L50 86" fill="none" stroke-width="1"/><circle cx="40" cy="65" r="3.2" fill="#F72585"/></g></svg>'; win.appendChild(wr.firstChild) }
+  /* a few snowflakes in the margins */
+  function flake(host, x, y, sz, t, cls){ var f = document.createElementNS(NS, 'svg'); f.setAttribute('viewBox', '-12 -12 24 24'); f.setAttribute('class', 'flake' + (cls ? ' ' + cls : '')); f.setAttribute('aria-hidden', 'true');
+    f.style.cssText = 'left:' + x + ';top:' + y + ';--s:' + sz + 'px;--t:' + t + 's';
+    var g = ''; for (var k = 0; k < 6; k++) g += '<g transform="rotate(' + (k * 60) + ')"><path d="M0 0 V-10 M0 -6 L-3 -9 M0 -6 L3 -9"/></g>';
+    f.innerHTML = '<g fill="none" stroke="#6F9BCB" stroke-width="2" stroke-linecap="round">' + g + '</g>'; host.appendChild(f) }
+  var hero = document.getElementById('hero'); if (hero) { flake(hero, '1.2%', '14%', 26, 9); flake(hero, '96.5%', '9%', 22, 11, 'hm'); flake(hero, '58%', '94%', 20, 8, 'hm'); flake(hero, '97%', '74%', 28, 10) }
+  var fin = document.getElementById('final'); if (fin) { fin.style.position = fin.style.position || 'relative'; flake(fin, '3%', '18%', 24, 10); flake(fin, '94%', '12%', 28, 9, 'hm'); flake(fin, '91%', '84%', 22, 12) }
   /* holly on the Day 1 date */
   var t1 = document.querySelector('.final .tiles div'); if (t1) { var hl = document.createElement('span'); hl.innerHTML = '<svg class="holly" viewBox="0 0 60 44" aria-hidden="true"><g stroke="' + INK + '" stroke-width="1.8" stroke-linejoin="round"><path d="M30 26 C24 20 16 21 12 14 C10 18 6 18 3 17 C7 22 6 26 2 29 C8 29 12 31 14 35 C17 31 24 29 30 26 Z" fill="#3BAA6B"/><path d="M30 26 C36 19 44 19 47 11 C50 15 54 14 57 12 C54 18 56 22 59 25 C53 26 49 29 48 34 C44 30 37 29 30 26 Z" fill="#2E8F57"/><path d="M12 25 C18 25 24 26 29 26 M31 26 C37 24 44 21 52 19" fill="none" stroke-width="1.2"/><circle cx="27" cy="31" r="4.6" fill="#E0243A"/><circle cx="34" cy="31" r="4.6" fill="#E0243A"/><circle cx="30.5" cy="24.5" r="4.6" fill="#E0243A"/></g><circle cx="29" cy="23" r="1.3" fill="#fff" opacity=".8"/></svg>'; t1.appendChild(hl.firstChild) }
 })();</script>
