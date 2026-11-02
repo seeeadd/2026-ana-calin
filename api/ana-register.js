@@ -6,6 +6,16 @@
 // (the form's visual automation only runs the first time someone joins the form).
 var FORM_ID = process.env.KIT_REG_FORM_ID || '10120079';
 var FIELDS = ['ref', 'situation', 'sticky_variant', 'utm_source', 'utm_medium', 'utm_campaign'];
+var dns = require('dns').promises;
+// Can this email's domain receive mail? A made-up or misspelled domain (gmial.co, hotmal.com) has no mail server.
+// Only a clear "this domain doesn't exist" (no mail server and no address at all) says no; a slow or failed lookup
+// lets the sign-up through.
+async function canReceive(domain) {
+  var look = function (q) { return Promise.race([q, new Promise(function (ok) { setTimeout(function () { ok('slow') }, 2500) })]) };
+  try { await look(dns.resolveMx(domain)); return true } catch (e) { if (e.code !== 'ENOTFOUND') return true }
+  try { await look(dns.resolve4(domain)); return true } catch (e) { return e.code !== 'ENOTFOUND' }
+}
+var THROWAWAY = /^(mailinator\.com|guerrillamail\.(com|net)|sharklasers\.com|10minutemail\.(com|net)|temp-?mail\.(com|org|net|dev)|yopmail\.(com|fr)|trashmail\.com|getnada\.com|maildrop\.cc|throwawaymail\.com|fakeinbox\.com|dispostable\.com|example\.(com|org|net)|test\.com|domain\.com)$/;
 var ORIGINS = /^https:\/\/(2026-ana-calin[a-z0-9-]*\.vercel\.app|exitplan\.howwegrowtoday\.com)$/;
 
 // Every sign-up also goes to the "Registrants" tab of Ana's Google Sheet (tools/survey-sheet.gs), best effort: it waits
@@ -32,6 +42,9 @@ module.exports = async function handler(req, res) {
   var email = String(b.email_address || '').trim().toLowerCase();
   var name = String(b.first_name || '').trim().slice(0, 60);
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email) || email.length > 254) return res.status(400).json({ ok: false, error: 'email' });
+  var domain = email.slice(email.lastIndexOf('@') + 1);
+  if (THROWAWAY.test(domain)) return res.status(400).json({ ok: false, error: 'email_domain' });
+  if (!(await canReceive(domain))) return res.status(400).json({ ok: false, error: 'email_domain' });
   var fields = {};
   FIELDS.forEach(function (k) { var v = b['fields[' + k + ']']; if (v != null && v !== '') fields[k] = String(v).slice(0, 200) });
 
