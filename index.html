@@ -2203,7 +2203,9 @@ html.bdg-js .bdg.in{animation:bdgIn .6s cubic-bezier(.2,1.5,.4,1) both}
 /* more small Christmas bits: a wreath on the wall above the video window, lights over the footer's village, a few
    hand-drawn snowflakes in the margins of the hero and the last section */
 .iph.win .wreath{position:absolute;left:50%;top:-13.5%;width:12%;min-width:46px;height:auto;transform:translateX(-50%) rotate(-4deg);z-index:4;pointer-events:none;filter:drop-shadow(0 4px 4px rgba(60,40,25,.25))}
-footer .xl.ft{left:4%;right:4%;top:-14px;z-index:3}
+.xvil .xb ellipse{filter:drop-shadow(0 0 2.5px var(--c))}
+@media (prefers-reduced-motion:no-preference){.xvil .xb ellipse{animation:xvt 2.4s ease-in-out infinite;animation-delay:var(--d)}}
+@keyframes xvt{0%,100%{opacity:1}50%{opacity:.45}}
 .flake{position:absolute;width:var(--s,22px);height:auto;pointer-events:none;opacity:.95;z-index:0}
 @media (prefers-reduced-motion:no-preference){.flake{animation:flk var(--t,9s) ease-in-out infinite alternate}}
 @keyframes flk{from{transform:translateY(-6px) rotate(-14deg)}to{transform:translateY(8px) rotate(16deg)}}
@@ -2874,7 +2876,32 @@ footer .xl.ft{left:4%;right:4%;top:-14px;z-index:3}
     w.innerHTML = '<svg viewBox="0 0 100 36" preserveAspectRatio="none"><path d="' + d + '" fill="none" stroke="' + INK + '" stroke-width="1.6" vector-effect="non-scaling-stroke" stroke-linecap="round"/></svg>' + bulbs;
     card.appendChild(w) }
   ['hcard', 'rcard'].forEach(function(k){ var c = document.getElementById(k); if (c) lights(c) });
-  var ft = document.querySelector('footer'); if (ft) lights(ft, innerWidth < 700 ? 5 : 9, 'ft');
+  /* the footer's village dressed for Christmas, drawn into the village itself so it lines up at every width: lights along
+     each roofline, looping from roof to roof; the cypresses become little trees with a star; stars on the church crosses;
+     a wreath on every other door */
+  var vil = document.querySelector('svg.ft-vil'); if (vil) {
+    var houses = [].slice.call(vil.querySelectorAll('rect[fill="#FFFFFF"]')).map(function(r){ return { x: +r.getAttribute('x'), y: +r.getAttribute('y'), w: +r.getAttribute('width'), h: +r.getAttribute('height') } }).sort(function(a, b){ return a.x - b.x });
+    var doors = [].slice.call(vil.querySelectorAll('rect[fill="#9DBEDD"]')), firstHouse = vil.querySelector('rect[fill="#FFFFFF"]');
+    var trees = '', cy = [].slice.call(vil.querySelectorAll('path[fill="#8FAA6A"]'));
+    cy.forEach(function(c){ var m = /M(\d+) /.exec(c.getAttribute('d')); if (!m) return; var x = +m[1];
+      trees += '<g class="xtree"><path d="M' + x + ' 84 L' + (x - 13) + ' 108 H' + (x - 6) + ' L' + (x - 17) + ' 130 H' + (x - 8) + ' L' + (x - 21) + ' 154 H' + (x + 21) + ' L' + (x + 8) + ' 130 H' + (x + 17) + ' L' + (x + 6) + ' 108 H' + (x + 13) + ' Z" fill="#3BAA6B" stroke="' + INK + '" stroke-width="1.6" stroke-linejoin="round"/>' +
+        '<rect x="' + (x - 3) + '" y="154" width="6" height="16" fill="#8A5A3C"/>' +
+        '<circle cx="' + (x - 6) + '" cy="116" r="2.6" fill="#F72585"/><circle cx="' + (x + 7) + '" cy="124" r="2.6" fill="#FFD400"/><circle cx="' + (x - 9) + '" cy="140" r="2.6" fill="#E0243A"/><circle cx="' + (x + 10) + '" cy="146" r="2.6" fill="#3C6FB0"/><circle cx="' + (x + 2) + '" cy="136" r="2.6" fill="#FFF8EE"/>' +
+        '<path d="M' + x + ' 72 l3 6.5 7 .6 -5.3 4.6 1.7 6.9 -6.4-3.7 -6.4 3.7 1.7-6.9 -5.3-4.6 7-.6 Z" fill="#FFD400" stroke="' + INK + '" stroke-width="1.2" stroke-linejoin="round"/></g>'; c.style.display = 'none' });
+    var back = document.createElementNS(NS, 'g'); back.innerHTML = trees; vil.insertBefore(back, firstHouse);
+    /* the cord: along each roof in small scallops, then a loop down and up to the next roof */
+    var d = '', bulbs = [], cols = ['#F72585', '#FFD400', '#3C6FB0', '#E0243A', '#3BAA6B'], bi = 0;
+    houses.forEach(function(h, i){ var y = h.y + 3, n = Math.max(2, Math.round(h.w / 22)), step = h.w / n;
+      if (!i) d += 'M' + h.x + ' ' + y; else { var p = houses[i - 1], py = p.y + 3, mx = (p.x + p.w + h.x) / 2, low = Math.max(py, y) + 12; d += ' Q' + mx + ' ' + low + ' ' + h.x + ' ' + y; bulbs.push([mx, (py + y) / 4 + low / 2]) }
+      for (var k = 0; k < n; k++) { var x0 = h.x + k * step, x1 = x0 + step; d += ' Q' + (x0 + step / 2) + ' ' + (y + 9) + ' ' + x1 + ' ' + y; bulbs.push([x0 + step / 2, y + 4.5]) } });
+    var front = '<path d="' + d + '" fill="none" stroke="' + INK + '" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>';
+    bulbs.forEach(function(b){ var c = cols[bi % 5]; front += '<g class="xb" style="--c:' + c + ';--d:' + (bi * .29 % 2.4).toFixed(2) + 's"><rect x="' + (b[0] - 1.6) + '" y="' + (b[1] - 1) + '" width="3.2" height="2.4" fill="#7A6A60"/><ellipse cx="' + b[0] + '" cy="' + (b[1] + 4.6) + '" rx="2.9" ry="4" fill="' + c + '" stroke="' + INK + '" stroke-width=".9"/></g>'; bi++ });
+    /* stars on the church crosses, wreaths on every other door */
+    [].slice.call(vil.querySelectorAll('rect[fill="#7EA6D0"]')).forEach(function(r){ var x = +r.getAttribute('x') + 1.5, y = +r.getAttribute('y');
+      front += '<path d="M' + x + ' ' + (y - 12) + ' l2.6 5.6 6 .5 -4.6 4 1.5 6 -5.5-3.2 -5.5 3.2 1.5-6 -4.6-4 6-.5 Z" fill="#FFD400" stroke="' + INK + '" stroke-width="1" stroke-linejoin="round"/>' });
+    doors.forEach(function(r, i){ if (i % 2) return; var x = +r.getAttribute('x') + +r.getAttribute('width') / 2, y = +r.getAttribute('y') + 7;
+      front += '<circle cx="' + x + '" cy="' + y + '" r="4.6" fill="none" stroke="#2E8F57" stroke-width="3"/><circle cx="' + x + '" cy="' + y + '" r="4.6" fill="none" stroke="' + INK + '" stroke-width=".7" stroke-dasharray="2 2"/><path d="M' + (x - 2.4) + ' ' + (y + 4) + ' l2.4 -1.6 2.4 1.6" fill="none" stroke="#E0243A" stroke-width="1.6"/>' });
+    var fg = document.createElementNS(NS, 'g'); fg.setAttribute('class', 'xvil'); fg.innerHTML = front; vil.appendChild(fg) }
   /* a wreath hung on the wall above her window */
   var win = document.querySelector('.iph.win'); if (win) { var wr = document.createElement('span'); wr.innerHTML = '<svg class="wreath" viewBox="0 0 80 90" aria-hidden="true"><g stroke="' + INK + '" stroke-width="2.2" stroke-linejoin="round">' +
     (function(){ var o = ''; for (var k = 0; k < 14; k++) { var a = k / 14 * Math.PI * 2, x = 40 + 25 * Math.cos(a), y = 40 + 25 * Math.sin(a), r = (a * 180 / Math.PI + 90).toFixed(0);
