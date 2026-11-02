@@ -1923,9 +1923,11 @@ html.bdg-js .bdg.in{animation:bdgIn .6s cubic-bezier(.2,1.5,.4,1) both}
 .bdg-life{right:-30px;top:-46px;width:132px;--r:11deg}
 @media (max-width:700px){.bdg-life{right:-6px;top:-40px;width:104px}}
 body.is-closed .bdg-life{display:none}
-.bdg-life.b2{top:-54px;right:-36px;width:156px;--r:10deg}
-.bb .bb-h{padding-right:112px}
-@media (max-width:700px){.bdg-life.b2{top:-44px;right:-8px;width:112px}.bb .bb-h{padding-right:84px}}
+/* in the buy box the seal sits inside the price row, beside the $67, so nothing floats off the card */
+.bb .bb-h{align-items:center}
+.bb .bb-h .price{margin-left:auto}
+.bdg-life.b2{position:relative;right:auto;top:-6px;flex:none;width:98px;margin:-14px -8px -14px 4px;--r:8deg}
+@media (max-width:700px){.bdg-life.b2{width:84px;margin:-10px -4px -10px 2px}}
 
 </style>
 </head>
@@ -2338,9 +2340,8 @@ body.is-closed .bdg-life{display:none}
       </div>
       </div>
       <div class="bb" id="buyBlock" data-r>
-        <img class="bdg bdg-life b2" src="../img/badges/lifetime.webp" alt="Lifetime access to the recordings" width="640" height="602" loading="lazy">
         <img class="bb-pm" src="../img/vip/paint/postmark.webp" alt="" width="220" height="120" loading="lazy" aria-hidden="true">
-        <div class="bb-h"><span class="lbl">VIP</span><div class="price">$67</div></div>
+        <div class="bb-h"><span class="lbl">VIP</span><div class="price">$67</div><img class="bdg bdg-life b2" src="../img/badges/lifetime.webp" alt="Lifetime access to the recordings" width="640" height="602" loading="lazy"></div>
         <p class="when">Get the full VIP package for one payment of $67.</p>
         <ul class="stack">
           <li><img class="stp" src="../img/vip/paint/mini-rec.webp" alt="" width="160" height="200" loading="lazy"><span><b>Lifetime recordings,</b> all three workshop sessions</span></li>
