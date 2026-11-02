@@ -77,11 +77,11 @@
       count(b, v, 1.6, function (x) { return pre + (dec ? x.toFixed(dec) : Math.round(x).toLocaleString('en-US')) + suf }).delay(.5 + i * .15);
     });
 
-    /* "a life left to enjoy it": her week fills in like a real calendar. Each morning gets its two-hour block, dragged
-       out from 9 to 11; then the evenings and the weekend light up yellow, the sun comes out, and her note is written */
+    /* "a life left to enjoy it": the workshop week fills in like a real calendar. The three live sessions drop in on
+       Tue to Thu at noon; then the evenings and the weekend light up yellow, the sun comes out, and the note is tied on */
     (function () {
       var g = $('.gw'); if (!g) return;
-      var evs = $$('.gw-ev', g), fr = $$('.gw-free', g), sun = $('.gw-sun', g), arw = $('.gw-arw', g), arh = $('.gw-arh', g), hand = $('.gw-hand', g);
+      var evs = $$('.gw-ev', g), fr = $$('.gw-free', g), sun = $('.gw-sun', g), arw = $('.gw-mk', g), arh = $('.gw-arh', g), hand = $('.gw-hand', g);
       var tl = gsap.timeline();
       tl.from(g, { y: 60, rotation: 6, opacity: 0, duration: .9, ease: 'power3.out' })
         .from(evs, { scaleY: 0, duration: .42, ease: 'power2.out', stagger: .2 }, '+=.15')
@@ -89,14 +89,14 @@
         .from(fr[0], { scaleX: 0, duration: .8, ease: 'power2.inOut' }, '+=.15')
         .from(fr[1], { opacity: 0, duration: .5 }, '-=.25')
         .from(sun, { scale: 0, rotation: -120, duration: .8, ease: 'back.out(2)' }, '-=.3')
-        .add(draw(arw, .6), '-=.2').add(draw(arh, .2))
-        .fromTo(hand, { clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0% 0 0)', duration: 1.1, ease: 'power1.inOut' }, '-=.5')
+        .fromTo(hand, { y: -14, rotation: -12, opacity: 0 }, { y: 0, rotation: -3, opacity: 1, duration: .55, ease: 'back.out(2)' }, '-=.2')
+        .add(draw(arw, .9, null, 'power1.inOut'), '-=.1').fromTo(arh, { scale: 0, transformOrigin: '50% 50%' }, { scale: 1, duration: .3, ease: 'back.out(3)' })
         .to(sun, { rotation: 20, duration: 2.4, yoyo: true, repeat: -1, ease: 'sine.inOut' });
       when(g, tl, 'top 75%');
-      /* money flows: each note or coin lifts off a morning block and drifts toward the evenings and the weekend */
+      /* money flows: each note or coin lifts off a session block and drifts toward the evenings and the weekend */
       var ms = $$('.gw-m', g), cols = $('.gw-cols', g), flow = gsap.timeline({ paused: true, repeat: -1 });
       ms.forEach(function (m, k) {
-        var day = k % 5, x0 = (day + .5) / 7, y0 = 2 / 12, x1 = .62 + ((k * 37) % 30) / 100, y1 = .55 + ((k * 53) % 35) / 100, o = { t: 0 }, at = k * .55;
+        var day = [1, 2, 3][k % 3], x0 = (day + .5) / 7, y0 = 4.75 / 12, x1 = .62 + ((k * 37) % 30) / 100, y1 = .55 + ((k * 53) % 35) / 100, o = { t: 0 }, at = k * .55;
         flow.fromTo(o, { t: 0 }, { t: 1, duration: 3.2, ease: 'sine.inOut', immediateRender: false, onUpdate: function () {
             var t = o.t, W = cols.offsetWidth, H = cols.offsetHeight, x = (x0 + (x1 - x0) * t) * W + Math.sin(t * 9 + k) * 10, y = (y0 + (y1 - y0) * t) * H - Math.sin(Math.PI * t) * H * .18;
             gsap.set(m, { x: x, y: y, rotation: Math.sin(t * 6 + k) * 30 + t * 40, opacity: t < .12 ? t / .12 : t > .8 ? (1 - t) / .2 : 1 }) } }, at);

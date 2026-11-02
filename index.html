@@ -1806,6 +1806,30 @@ footer.has-vil{position:relative}
 .fit ul.nb button[aria-pressed=true]{background:rgba(255,212,0,.06);box-shadow:none;border:0}
 .fit ul.nb .tk{position:relative;z-index:1;margin-left:-13px;background:#FFFDF7}
 @media (max-width:760px){.fit ul.nb{padding:18px 0 8px 0;transform:none}.fit ul.nb:before{left:29px}.fit ul.nb button{grid-template-columns:32px 1fr;gap:6px 14px;padding:16px 16px 16px 30px}.fit ul.nb .tk{margin-left:-17px}}
+/* the life calendar's note: a little pink tag with a strip of tape, and a dotted doodle arrow with one loop */
+.gw-hand{left:39%!important;top:66%!important;padding:1.1cqw 2.2cqw 1.3cqw;border-radius:1.2cqw;background:#FFE3EF;color:#C2185B!important;font-size:3.2cqw!important;box-shadow:0 .6cqw 1.6cqw -.6cqw rgba(150,40,90,.35);transform:rotate(-3deg)!important}
+.gw-hand:before{content:"";position:absolute;left:50%;top:-1.4cqw;width:9cqw;height:2.6cqw;margin-left:-4.5cqw;background:rgba(255,226,122,.85);transform:rotate(4deg)}
+.gw-ev small{white-space:nowrap}
+/* the five 1:1 tickets: dealt in a staggered stack so all five show (each one's stub and a strip of its body), the
+   top one, with the name to fill in, fully in view; Ana's call rings on a phone beside them, covering none */
+.stay{grid-template-columns:minmax(0,1fr) 470px!important}
+.stay .tix{position:relative;height:330px!important;transform:none!important}
+.stay .tix .t{position:absolute;left:0!important;top:0!important;margin:0!important;width:240px;height:110px;transform-origin:50% 50%;
+  transform:translate(calc(var(--i) * 20px),calc(var(--i) * 46px)) rotate(calc(-7deg + var(--i) * 2.2deg))!important;transition:transform .9s cubic-bezier(.3,1.3,.5,1) calc(var(--i) * .07s)}
+html.anim-on .stay:not(.in) .tix .t{transform:translate(90px,110px) rotate(0)!important}
+.stay .tix .t svg{filter:drop-shadow(0 8px 10px rgba(70,45,25,.2))}
+.stay .call{right:0!important;left:auto!important;top:6px!important;width:138px!important}
+.stay .ring-w{right:62px!important;top:146px!important}
+@media (max-width:980px){.stay{grid-template-columns:minmax(0,1fr)!important}.stay .tix{width:100%;max-width:470px;margin:10px auto 0}}
+@media (max-width:520px){.stay .tix{height:300px!important}.stay .tix .t{transform:translate(calc(var(--i) * 12px),calc(var(--i) * 40px)) rotate(calc(-7deg + var(--i) * 2.2deg)) scale(.82)!important;transform-origin:0 0}.stay .call{width:112px!important;top:0!important}.stay .ring-w{right:50px!important;top:118px!important}}
+/* the calendar's session blocks and note fit their text */
+.gw-ev{padding:.7cqw 1cqw!important;gap:.1cqw!important}
+.gw-ev b{font-size:1.75cqw!important;line-height:1.1!important}
+.gw-ev small{font-size:1.5cqw!important}
+.gw-hand{left:32%!important;top:68%!important;font-size:2.7cqw!important;white-space:nowrap}
+.gw-ic svg{border-radius:0}
+.stay .tx-stamp{right:16px!important;top:-30px!important;width:78px!important;height:78px!important}
+@media (max-width:520px){.stay .tix .t{transform:translate(calc(var(--i) * 6px),calc(var(--i) * 38px)) rotate(calc(-6deg + var(--i) * 2deg)) scale(.8)!important}.stay .call{width:96px!important}.stay .ring-w{right:44px!important;top:100px!important}.stay .tx-stamp{right:8px!important;top:-24px!important;width:62px!important;height:62px!important}}
 /* the window in depth: the video sits back in the wall (lintel, jambs and sill drawn as a recess, shadow from the top
    left), the shutters have a painted edge and darken as they turn away from the light, and they cast soft shadows on
    the wall. The opening runs on CSS alone, from the first paint, so it never waits for the scripts. */
@@ -1880,7 +1904,7 @@ footer.has-vil{position:relative}
 <header class="fb">
   <div class="fb-bar">
     <button class="fb-id open" type="button" aria-label="The Exit Plan, a free 3-day live workshop, Dec 8 to 10, 12:00 pm New York: save my seat">
-      <img class="fb-ic" src="img/fav/header-96.png" alt="" width="44" height="44">
+      <img class="fb-ic" src="img/fav/header-ana.png" alt="" width="44" height="44">
       <span class="fb-t"><small>THE EXIT PLAN · FREE 3-DAY LIVE WORKSHOP</small><b>Dec 8 to 10 · 12:00 pm New York</b></span>
     </button>
     <button class="btn sm open" type="button"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">I’m in, Ana <small class="bq">(it’s free)</small></span><svg class="ar"><use href="#arr"/></svg></button>
@@ -2177,12 +2201,12 @@ footer.has-vil{position:relative}
       <div class="life-pic" data-r>
         <figure><img src="img/ana-paris.webp" alt="Ana Calin" width="1000" height="671" loading="lazy"></figure>
         <div class="gw" aria-hidden="true">
-          <div class="gw-top"><span class="gw-ic"><svg viewBox="0 0 24 24"><rect x="2.5" y="3.5" width="19" height="18" rx="3" fill="#fff" stroke="#F72585" stroke-width="2"/><path d="M2.5 8.5h19" stroke="#F72585" stroke-width="2"/><text x="12" y="18.4" text-anchor="middle" font-family="Manrope,sans-serif" font-weight="800" font-size="9" fill="#F72585">25</text></svg></span><b class="gw-app">Calendar</b><span class="gw-today">Today</span><span class="gw-nav">&#8249;&#8197;&#8250;</span><b class="gw-mo">November 2026</b><span class="gw-view">Week <svg viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span></div>
-          <div class="gw-days"><span class="gw-tz">GMT+2</span><span class="gw-d"><small>MON</small><b>23</b></span><span class="gw-d"><small>TUE</small><b>24</b></span><span class="gw-d now"><small>WED</small><b>25</b></span><span class="gw-d"><small>THU</small><b>26</b></span><span class="gw-d"><small>FRI</small><b>27</b></span><span class="gw-d we"><small>SAT</small><b>28</b></span><span class="gw-d we"><small>SUN</small><b>29</b></span></div>
+          <div class="gw-top"><span class="gw-ic"><svg viewBox="0 0 512 512"><defs><clipPath id="gcClip"><path d="M64 0H448Q512 0 512 64V391L391 512H64Q0 512 0 448V64Q0 0 64 0Z"/></clipPath></defs><g clip-path="url(#gcClip)"><path d="M0 0H391V121H121V391H0Z" fill="#F72585"/><rect x="391" y="0" width="121" height="121" fill="#B8155F"/><rect x="391" y="121" width="121" height="270" fill="#FFD400"/><rect x="121" y="391" width="270" height="121" fill="#FF9CC8"/><rect x="0" y="391" width="121" height="121" fill="#D41D74"/><path d="M391 391H512L391 512Z" fill="#E5A800"/><rect x="121" y="121" width="270" height="270" fill="#fff"/></g><text x="256" y="330" text-anchor="middle" font-family="Manrope,'Google Sans',sans-serif" font-weight="700" font-size="215" fill="#F72585">8</text></svg></span><b class="gw-app">Calendar</b><span class="gw-today">Today</span><span class="gw-nav">&#8249;&#8197;&#8250;</span><b class="gw-mo">December 2026</b><span class="gw-view">Week <svg viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span></div>
+          <div class="gw-days"><span class="gw-tz">GMT-5</span><span class="gw-d"><small>MON</small><b>7</b></span><span class="gw-d now"><small>TUE</small><b>8</b></span><span class="gw-d"><small>WED</small><b>9</b></span><span class="gw-d"><small>THU</small><b>10</b></span><span class="gw-d"><small>FRI</small><b>11</b></span><span class="gw-d we"><small>SAT</small><b>12</b></span><span class="gw-d we"><small>SUN</small><b>13</b></span></div>
           <div class="gw-grid"><div class="gw-hrs"><i style="top:0.0000%"><em>8 AM</em></i><i style="top:8.3333%"><em>9 AM</em></i><i style="top:16.6667%"><em>10 AM</em></i><i style="top:25.0000%"><em>11 AM</em></i><i style="top:33.3333%"><em>12 PM</em></i><i style="top:41.6667%"><em>1 PM</em></i><i style="top:50.0000%"><em>2 PM</em></i><i style="top:58.3333%"><em>3 PM</em></i><i style="top:66.6667%"><em>4 PM</em></i><i style="top:75.0000%"><em>5 PM</em></i><i style="top:83.3333%"><em>6 PM</em></i><i style="top:91.6667%"><em>7 PM</em></i></div>
-            <div class="gw-cols"><span class="gw-free ev"></span><span class="gw-free we"></span><span class="gw-ev" style="left:calc(0 * var(--cw))"><b>How We Grow</b><small>9 – 11am</small></span><span class="gw-ev" style="left:calc(1 * var(--cw))"><b>How We Grow</b><small>9 – 11am</small></span><span class="gw-ev" style="left:calc(2 * var(--cw))"><b>How We Grow</b><small>9 – 11am</small></span><span class="gw-ev" style="left:calc(3 * var(--cw))"><b>How We Grow</b><small>9 – 11am</small></span><span class="gw-ev" style="left:calc(4 * var(--cw))"><b>How We Grow</b><small>9 – 11am</small></span>
-              <svg class="gw-ink" viewBox="0 0 160 100" preserveAspectRatio="none"><path class="gw-arw" d="M70 65 C58 58 45 45 39.5 31" fill="none" stroke="#F72585" stroke-width="1.1" stroke-linecap="round"/><path class="gw-arh" d="M35.2 34.6 L39.5 31 L43.6 34.4" fill="none" stroke="#F72585" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <span class="gw-hand">about two hours a day</span><span class="gw-m n"></span><span class="gw-m n"></span><span class="gw-m c"></span><span class="gw-m n"></span><span class="gw-m n"></span><span class="gw-m c"></span><span class="gw-m n"></span><span class="gw-m n"></span><span class="gw-m c"></span><span class="gw-sun"><svg viewBox="0 0 24 24"><use href="#sf"/></svg></span>
+            <div class="gw-cols"><span class="gw-free ev"></span><span class="gw-free we"></span><span class="gw-ev" style="left:calc(1 * var(--cw));top:calc(4 / 12 * 100%);height:calc(1.5 / 12 * 100%)"><b>Exit Plan · Day 1</b><small>12 – 1:30pm</small></span><span class="gw-ev" style="left:calc(2 * var(--cw));top:calc(4 / 12 * 100%);height:calc(1.5 / 12 * 100%)"><b>Exit Plan · Day 2</b><small>12 – 1:30pm</small></span><span class="gw-ev" style="left:calc(3 * var(--cw));top:calc(4 / 12 * 100%);height:calc(1.5 / 12 * 100%)"><b>Exit Plan · Day 3</b><small>12 – 1:30pm</small></span>
+              <svg class="gw-ink" viewBox="0 0 160 100" preserveAspectRatio="none"><defs><mask id="gwMk" maskUnits="userSpaceOnUse" x="0" y="0" width="160" height="100"><path class="gw-mk" d="M61 70 C52 73 44 70 45 63 C46 56 55 57 53 63 C51 69 40 66 37.5 53" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/></mask></defs><path class="gw-arw" d="M61 70 C52 73 44 70 45 63 C46 56 55 57 53 63 C51 69 40 66 37.5 53" fill="none" stroke="#F72585" stroke-width="1.5" stroke-linecap="round" stroke-dasharray=".1 3.1" mask="url(#gwMk)"/><path class="gw-arh" d="M34.4 55.6 Q36.6 51.4 37.6 50.4 Q39.6 52.8 41 55.2 Q37.8 54.2 34.4 55.6 Z" fill="#F72585" stroke="#F72585" stroke-width=".8" stroke-linejoin="round"/></svg>
+              <span class="gw-hand">90 minutes, then back to your day</span><span class="gw-m n"></span><span class="gw-m n"></span><span class="gw-m c"></span><span class="gw-m n"></span><span class="gw-m n"></span><span class="gw-m c"></span><span class="gw-m n"></span><span class="gw-m n"></span><span class="gw-m c"></span><span class="gw-sun"><svg viewBox="0 0 24 24"><use href="#sf"/></svg></span>
             </div>
           </div>
         </div>
@@ -2340,11 +2364,11 @@ footer.has-vil{position:relative}
               <div class="call-btns"><span class="cb no"><i><svg viewBox="0 0 24 24"><path d="M3 15c5-4 13-4 18 0l-2.4 2.6c-.6.6-1.6.6-2.2.1l-1.6-1.4c-.5-.4-.6-1-.4-1.6l.5-1.3c-2-.6-4.8-.6-6.8 0l.5 1.3c.2.6.1 1.2-.4 1.6l-1.6 1.4c-.6.5-1.6.5-2.2-.1Z" fill="#fff"/></svg></i>Decline</span><span class="cb yes"><i><svg viewBox="0 0 24 24"><rect x="3" y="7" width="12" height="10" rx="2" fill="#fff"/><path d="M15 11l5-3v8l-5-3z" fill="#fff"/></svg></i>Accept</span></div></div>
             <div class="call-on"><img src="img/real/ana-real-a.webp" alt="" loading="lazy"><span class="call-me"><i></i>You</span><span class="call-t">0:01</span><span class="call-nm">Ana Calin · 1:1</span></div>
           </div></div>
-        <div class="t"><svg viewBox="0 0 240 110"><use href="#tk"/></svg></div>
-        <div class="t"><svg viewBox="0 0 240 110"><use href="#tk"/></svg></div>
-        <div class="t"><svg viewBox="0 0 240 110"><use href="#tk"/></svg></div>
-        <div class="t"><svg viewBox="0 0 240 110"><use href="#tk"/></svg></div>
-        <div class="t tx-top"><svg viewBox="0 0 240 110"><use href="#tk"/></svg><span class="tx-name">your name?</span><span class="tx-stamp"><svg viewBox="0 0 100 100"><defs><path id="txc" d="M50 50m-33 0a33 33 0 1 1 66 0a33 33 0 1 1-66 0"/></defs><circle cx="50" cy="50" r="45" fill="none" stroke="#F72585" stroke-width="4"/><circle cx="50" cy="50" r="24" fill="none" stroke="#F72585" stroke-width="2"/><text font-family="Manrope,sans-serif" font-weight="800" font-size="11.5" letter-spacing="2.4" fill="#F72585"><textPath href="#txc">DRAWN LIVE · END OF DAY 3 ·</textPath></text><text x="50" y="47" text-anchor="middle" font-family="Instrument Serif,serif" font-size="19" fill="#F72585">Dec</text><text x="50" y="65" text-anchor="middle" font-family="Instrument Serif,serif" font-size="23" fill="#F72585">10</text></svg></span></div>
+        <div style="--i:0" class="t"><svg viewBox="0 0 240 110"><use href="#tk"/></svg></div>
+        <div style="--i:1" class="t"><svg viewBox="0 0 240 110"><use href="#tk"/></svg></div>
+        <div style="--i:2" class="t"><svg viewBox="0 0 240 110"><use href="#tk"/></svg></div>
+        <div style="--i:3" class="t"><svg viewBox="0 0 240 110"><use href="#tk"/></svg></div>
+        <div style="--i:4" class="t tx-top"><svg viewBox="0 0 240 110"><use href="#tk"/></svg><span class="tx-name">your name?</span><span class="tx-stamp"><svg viewBox="0 0 100 100"><defs><path id="txc" d="M50 50m-33 0a33 33 0 1 1 66 0a33 33 0 1 1-66 0"/></defs><circle cx="50" cy="50" r="45" fill="none" stroke="#F72585" stroke-width="4"/><circle cx="50" cy="50" r="24" fill="none" stroke="#F72585" stroke-width="2"/><text font-family="Manrope,sans-serif" font-weight="800" font-size="11.5" letter-spacing="2.4" fill="#F72585"><textPath href="#txc">DRAWN LIVE · END OF DAY 3 ·</textPath></text><text x="50" y="47" text-anchor="middle" font-family="Instrument Serif,serif" font-size="19" fill="#F72585">Dec</text><text x="50" y="65" text-anchor="middle" font-family="Instrument Serif,serif" font-size="23" fill="#F72585">10</text></svg></span></div>
       </div>
     </div>
   </div>
@@ -2780,6 +2804,6 @@ footer.has-vil{position:relative}
 </script>
 <script src="assets/vendor/gsap.min.js"></script>
 <script src="assets/vendor/ScrollTrigger.min.js"></script>
-<script src="assets/reg-motion.js?v=22"></script>
+<script src="assets/reg-motion.js?v=23"></script>
 </body>
 </html>
