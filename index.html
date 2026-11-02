@@ -1744,22 +1744,19 @@ mark.sk{color:var(--ink);font-weight:700;padding:0 2px;margin:0 -2px;-webkit-box
 .lv .stage .fl{display:none}
 .where{position:relative}
 .where>.wrap{position:relative;z-index:1}
-.bk-roads{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
-.bk-roads path{fill:none;stroke:#D6C3A6;stroke-width:16;stroke-linecap:round;vector-effect:non-scaling-stroke;opacity:.55}
-.bk-roads path.in{stroke:#F72585;stroke-width:3;stroke-dasharray:2 9;opacity:.7}
 .hst-pic .bk-aeg{position:absolute;left:-16%;right:-16%;top:-10%;width:132%;height:112%;z-index:0}
 .hst-pic figure{position:relative;z-index:1}
-.life{position:relative}
+.life{position:relative;background-image:linear-gradient(90deg,rgba(255,226,140,.38),rgba(255,248,238,0) 40%,rgba(255,248,238,0) 62%,rgba(255,180,210,.34)),url(img/vip/paint/tx-linen.webp)!important;background-size:auto,380px!important}
 .life>.wrap{position:relative;z-index:1}
 .bk-arc{position:absolute;left:4%;right:4%;top:40px;width:92%;height:70%;pointer-events:none;z-index:0}
-.bk-arc path{fill:none;stroke:#E0B24A;stroke-width:3;stroke-dasharray:2 10;stroke-linecap:round;vector-effect:non-scaling-stroke;opacity:.7}
+.bk-arc path{fill:none;stroke:#E0A21A;stroke-width:4;stroke-dasharray:3 12;stroke-linecap:round;vector-effect:non-scaling-stroke;opacity:.85}
 .bk-sun{position:absolute;z-index:0;width:56px;height:56px;border-radius:50%;pointer-events:none}
-.bk-sun.am{left:14%;top:30%;background:radial-gradient(circle at 40% 38%,#FFF0A8,#FFD13A);box-shadow:0 0 0 10px rgba(255,212,0,.15),0 0 0 22px rgba(255,212,0,.07)}
-.bk-sun.pm{right:12%;top:46%;width:48px;height:48px;background:radial-gradient(circle at 40% 38%,#FFC6DE,#F7A0C4);box-shadow:0 0 0 10px rgba(247,37,133,.08)}
+.bk-sun.am{left:11%;top:27%;width:84px!important;height:84px!important;background:radial-gradient(circle at 40% 38%,#FFF0A8,#FFD13A);box-shadow:0 0 0 10px rgba(255,212,0,.15),0 0 0 22px rgba(255,212,0,.07)}
+.bk-sun.pm{right:9%;top:44%;width:70px;height:70px;background:radial-gradient(circle at 40% 38%,#FFC6DE,#F7A0C4);box-shadow:0 0 0 10px rgba(247,37,133,.08)}
 .bring{position:relative}
 .bring>.wrap{position:relative;z-index:1}
 .bk-marks{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
-.bk-marks path{fill:none;stroke:#F72585;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;opacity:.16;filter:url(#pencil)}
+.bk-marks path{fill:none;stroke:#F72585;stroke-width:7;stroke-linecap:round;stroke-linejoin:round;opacity:.3;filter:url(#pencil)}
 .gift .gcard{background-image:linear-gradient(90deg,rgba(234,223,207,0) 44%,var(--sand) 60%),radial-gradient(18% 22% at 26% 60%,#FFE7A0 0,#FFC88A 60%,rgba(255,200,138,0) 100%),linear-gradient(180deg,#FFD9E8 0%,#FFE4C2 58%,#9DBEDD 58.3%,#7EA6D0 100%)!important}
 .aw{position:relative;padding:26px 22px 20px;border-radius:22px;background:#E6D3B3 url(img/vip/paint/tx-grain.webp);box-shadow:inset 0 0 0 10px #C9A57A,inset 0 0 0 12px rgba(58,42,34,.35),0 20px 40px -26px rgba(60,40,25,.6)}
 .aw .aw-c{position:relative}
@@ -1773,6 +1770,16 @@ mark.sk{color:var(--ink);font-weight:700;padding:0 2px;margin:0 -2px;-webkit-box
 .claim .pic .bk-fsea{position:absolute;left:-25%;right:-25%;bottom:-4%;height:20%;z-index:0;border-radius:0 0 30px 30px;background:linear-gradient(180deg,#9DBEDD,#7EA6D0);-webkit-mask-image:linear-gradient(90deg,transparent,#000 18%,#000 82%,transparent);mask-image:linear-gradient(90deg,transparent,#000 18%,#000 82%,transparent)}
 .claim .pic .fr,.claim .pic .mk{position:relative;z-index:1}
 .claim .pic .mk{position:absolute}
+/* where are you right now: whichever card you pick, the plan rises behind the button; each card stands on an arch
+   in its own colour (the job blue, her own work pink, both yellow) */
+.sitgo{position:relative;padding-top:40px;margin-top:6px}
+.sitgo>*:not(.bd){position:relative;z-index:1}
+.sitgo .bk-plan{left:50%;bottom:-120px;width:520px;transform:translateX(-50%);z-index:0}
+.where{overflow:hidden}
+.sit3 .chip.sit{position:relative;overflow:visible}
+.sit3 .chip.sit:after{content:"";position:absolute;left:8%;right:8%;top:-22px;height:60%;z-index:-1;border-radius:999px 999px 0 0;background:var(--ac,#BFD7EC)}
+.sit3 .chip.sit[data-v=job]{--ac:#BFD7EC}.sit3 .chip.sit[data-v=self]{--ac:#FFC6DE}.sit3 .chip.sit[data-v=both]{--ac:#FFE27A}
+.sit3{position:relative;z-index:1;isolation:isolate}
 /* the window in depth: the video sits back in the wall (lintel, jambs and sill drawn as a recess, shadow from the top
    left), the shutters have a painted edge and darken as they turn away from the light, and they cast soft shadows on
    the wall. The opening runs on CSS alone, from the first paint, so it never waits for the scripts. */
@@ -2090,7 +2097,6 @@ mark.sk{color:var(--ink);font-weight:700;padding:0 2px;margin:0 -2px;-webkit-box
 
 <!-- 4. where are you right now? Three illustrated choices; the pick goes with the sign-up (hidden field "situation"), and the button answers it -->
 <section class="sand where" id="where">
-  <svg class="bk-roads" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d="M8 0 C14 18 20 26 23 40"/><path d="M50 0 C46 14 54 26 50 40"/><path d="M94 0 C86 18 80 28 77 40"/><path class="in" d="M23 80 C26 88 40 90 50 93"/><path class="in" d="M50 80 C50 86 50 89 50 93"/><path class="in" d="M77 80 C74 88 60 90 50 93"/></svg>
   <div class="wrap">
     <div class="head" data-r><h2>Where are you <em>right now?</em></h2></div>
     <div class="sit3" role="group" aria-label="Where are you right now?" data-r>
@@ -2098,7 +2104,7 @@ mark.sk{color:var(--ink);font-weight:700;padding:0 2px;margin:0 -2px;-webkit-box
       <button class="chip sit" type="button" data-v="self" aria-pressed="false"><span class="sit-art pt"><img src="img/vip/paint/sit-self.webp" alt="" width="440" height="300" loading="lazy"><span class="so so-self"><svg viewBox="0 0 24 24"><use href="#sf"/></svg></span></span><span class="sit-ck" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m5 10.5 3.4 3.4L15 6.8"/></svg></span><b>I work for myself.</b><span class="sit-s">I’d like to earn from what I know without taking on another client.</span></button>
       <button class="chip sit" type="button" data-v="both" aria-pressed="false"><span class="sit-art pt"><img src="img/vip/paint/sit-both.webp" alt="" width="440" height="300" loading="lazy"><span class="so so-both"><svg viewBox="0 0 24 24"><use href="#sf"/></svg></span></span><span class="sit-ck" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m5 10.5 3.4 3.4L15 6.8"/></svg></span><b>A bit of both.</b><span class="sit-s">I’m ready to build something that gives me more options.</span></button>
     </div>
-    <div class="sitgo" data-r><button class="btn open" type="button" data-sitgo><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">I want the plan</span><svg class="ar"><use href="#arr"/></svg></button><small>free · live on Zoom</small></div>
+    <div class="sitgo" data-r><i class="bd sun bk-plan" aria-hidden="true"><b class="r"></b><b class="d"></b></i><button class="btn open" type="button" data-sitgo><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">I want the plan</span><svg class="ar"><use href="#arr"/></svg></button><small>free · live on Zoom</small></div>
   </div>
 </section>
 
