@@ -831,3 +831,16 @@ body.is-closed .trust,body.is-soon .trust{display:none}
   .hero h1 mark{animation:hl 1s cubic-bezier(.6,0,.2,1) .95s both}
 }
 @keyframes heroUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+
+/* pattern-break badges (Sean, Nov 2): a familiar seal next to the thing it promises; it stamps in once, when it is in view */
+.bdg{position:absolute;z-index:6;height:auto;pointer-events:none;transform:rotate(var(--r,-8deg));filter:drop-shadow(0 10px 14px rgba(60,30,10,.28))}
+html.bdg-js .bdg:not(.in){opacity:0}
+html.bdg-js .bdg.in{animation:bdgIn .6s cubic-bezier(.2,1.5,.4,1) both}
+@keyframes bdgIn{0%{opacity:0;transform:rotate(calc(var(--r,-8deg) - 24deg)) scale(1.9)}55%{opacity:1}100%{opacity:1;transform:rotate(var(--r,-8deg)) scale(1)}}
+@media (prefers-reduced-motion:reduce){html.bdg-js .bdg:not(.in){opacity:1}html.bdg-js .bdg.in{animation:none}}
+.pc-promise{position:relative}
+.pc-promise h3,.pc-promise p{padding-right:92px}
+.bdg-promise{right:-26px;top:-46px;width:124px;--r:8deg}
+.nov .bdg-lock{right:-38px;top:-56px;width:136px;--r:10deg;z-index:8}
+body.is-closed .bdg-lock,body.is-soon .bdg-lock{display:none}
+@media (max-width:700px){.pc-promise h3,.pc-promise p{padding-right:64px}.bdg-promise{right:-8px;top:-40px;width:96px}.nov .bdg-lock{right:-6px;top:-70px;width:100px}}

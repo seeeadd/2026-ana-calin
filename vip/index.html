@@ -1913,6 +1913,20 @@ mark.sk{font-weight:700;color:var(--ink)}
   .lt2 small{font-size:11.5px}
   .pbtn{height:58px;font-size:15.5px}
 }
+/* pattern-break badges (Sean, Nov 2): a familiar seal next to the thing it promises; it stamps in once, when it is in view */
+.bdg{position:absolute;z-index:6;height:auto;pointer-events:none;transform:rotate(var(--r,-8deg));filter:drop-shadow(0 10px 14px rgba(60,30,10,.28))}
+html.bdg-js .bdg:not(.in){opacity:0}
+html.bdg-js .bdg.in{animation:bdgIn .6s cubic-bezier(.2,1.5,.4,1) both}
+@keyframes bdgIn{0%{opacity:0;transform:rotate(calc(var(--r,-8deg) - 24deg)) scale(1.9)}55%{opacity:1}100%{opacity:1;transform:rotate(var(--r,-8deg)) scale(1)}}
+@media (prefers-reduced-motion:reduce){html.bdg-js .bdg:not(.in){opacity:1}html.bdg-js .bdg.in{animation:none}}
+.order,.bb{position:relative}
+.bdg-life{right:-30px;top:-46px;width:132px;--r:11deg}
+@media (max-width:700px){.bdg-life{right:-6px;top:-40px;width:104px}}
+body.is-closed .bdg-life{display:none}
+.bdg-life.b2{top:-54px;right:-36px;width:156px;--r:10deg}
+.bb .bb-h{padding-right:112px}
+@media (max-width:700px){.bdg-life.b2{top:-44px;right:-8px;width:112px}.bb .bb-h{padding-right:84px}}
+
 </style>
 </head>
 <body>
@@ -2076,6 +2090,7 @@ mark.sk{font-weight:700;color:var(--ink)}
       </div>
 
       <aside class="order" id="order">
+        <img class="bdg bdg-life" src="../img/badges/lifetime.webp" alt="Lifetime access to the recordings" width="640" height="602" loading="lazy">
         <img class="bb-pm" src="../img/vip/paint/postmark.webp" alt="" width="220" height="120" loading="lazy" aria-hidden="true">
         <div class="oh"><p class="ok">VIP · one payment</p><span class="op">$67</span></div>
         <h2>Get the full <em>VIP package.</em></h2>
@@ -2323,6 +2338,7 @@ mark.sk{font-weight:700;color:var(--ink)}
       </div>
       </div>
       <div class="bb" id="buyBlock" data-r>
+        <img class="bdg bdg-life b2" src="../img/badges/lifetime.webp" alt="Lifetime access to the recordings" width="640" height="602" loading="lazy">
         <img class="bb-pm" src="../img/vip/paint/postmark.webp" alt="" width="220" height="120" loading="lazy" aria-hidden="true">
         <div class="bb-h"><span class="lbl">VIP</span><div class="price">$67</div></div>
         <p class="when">Get the full VIP package for one payment of $67.</p>
@@ -2527,5 +2543,9 @@ mark.sk{font-weight:700;color:var(--ink)}
 <script src="../assets/vendor/MorphSVGPlugin.min.js"></script>
 <script src="../assets/vip-motion.js?v=11"></script>
 
+<script>/* badges stamp in once, when they come into view */
+(function(){ var b = document.querySelectorAll('.bdg'); if (!b.length || !('IntersectionObserver' in window)) return; document.documentElement.classList.add('bdg-js');
+  var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target) } }) }, { threshold: .45 });
+  b.forEach(function(x){ io.observe(x) }) })();</script>
 </body>
 </html>
