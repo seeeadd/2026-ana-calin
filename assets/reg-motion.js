@@ -8,7 +8,7 @@
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)) };
 
   /* small lists, made countable: one dot per reader (built even without motion) */
-  $$('.trr-dots').forEach(function (d) { var n = +d.dataset.n, h = ''; for (var i = 0; i < n; i++) h += '<i></i>'; d.innerHTML = h });
+  $$('.trr-cash').forEach(function (d) { var n = +d.dataset.bills, h = ''; for (var i = 0; i < n; i++) h += '<i style="--r:' + (((i * 37) % 9) - 4) * .7 + 'deg"></i>'; d.innerHTML = h });
 
   /* skimmable: each key line is swept with her yellow as it comes into view */
   var marks = $$('mark.sk');
@@ -115,18 +115,17 @@
       when(st, tl, 'top 60%');
     })();
 
-    /* host: then and now fills in row by row; the 2 gets her pink loop, then today's numbers count up */
+    /* host: the overview card: the scorecards come up one by one, today's numbers count, the 2 gets her loop, and the
+       line draws from the first workshop to now */
     (function () {
-      var c = $('.hrc'); if (!c) return;
-      var ps = $$('p', c), ring = $('.hrc-2 path', c), tl = gsap.timeline();
-      tl.from(c, { y: 50, rotation: -10, opacity: 0, duration: .8, ease: 'back.out(1.4)' });
-      ps.forEach(function (p, i) {
-        tl.from(p, { opacity: 0, x: -10, duration: .35, ease: 'power2.out' }, i ? '+=.12' : '-=.3');
-        var b = $('b[data-to]', p);
-        if (b) { var to = +b.dataset.to, dec = +(b.dataset.dec || 0), pre = b.dataset.pre || '', suf = b.dataset.suf || '';
-          tl.add(count(b, to, 1.1, function (v) { return pre + (dec ? v.toFixed(dec) : Math.round(v).toLocaleString('en-US')) + suf }), '<') }
-        if (i === 1) tl.add(draw(ring, .55), '+=.05');
-      });
+      var c = $('.hrc.gads'); if (!c) return;
+      var cards = $$('.ga-c', c), ring = $('.hrc-2 path', c), tl = gsap.timeline();
+      tl.from(c, { y: 40, opacity: 0, duration: .7, ease: 'power3.out' })
+        .from(cards, { y: 10, opacity: 0, duration: .35, stagger: .1, ease: 'power2.out' }, '-=.3');
+      cards.forEach(function (cd, i) { var b = $('b[data-to]', cd); if (!b) return; var to = +b.dataset.to, dec = +(b.dataset.dec || 0), pre = b.dataset.pre || '', suf = b.dataset.suf || '';
+        tl.add(count(b, to, 1.1, function (v) { return pre + (dec ? v.toFixed(dec) : Math.round(v).toLocaleString('en-US')) + suf }), .5 + i * .12) });
+      if (ring) tl.add(draw(ring, .5), .9);
+      tl.fromTo($('.ga-ch', c), { clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 -2% 0 0)', duration: 1.3, ease: 'power2.inOut' }, 1.1);
       when(c, tl, 'top 80%');
     })();
 
@@ -162,8 +161,13 @@
       var tr = gsap.timeline();
       $$('.trr', tg).forEach(function (c, i) {
         var n = $('.trr-n', c), txt = n.textContent, v = parseInt(txt.replace(/\D/g, ''), 10), plus = /\+$/.test(txt.trim());
-        tr.add(count(n, v, 1.5, function (x) { return '$' + Math.round(x).toLocaleString('en-US') + (plus ? '+' : '') }), .2 + i * .15)
-          .from($$('.trr-dots i', c), { scale: 0, duration: .2, stagger: { amount: 1.2 } }, .3 + i * .15);
+        var bills = $$('.trr-cash i', c), per = v / Math.max(1, bills.length), at = .25 + i * .35, step = Math.min(.06, 1.7 / bills.length);
+        n.textContent = '$0';
+        bills.forEach(function (b, k) {   /* each note is flicked down onto the pile, and the amount moves on by $100 */
+          tr.fromTo(b, { y: -16, x: 6, rotation: -24, scale: 1.25, opacity: 0 }, { y: 0, x: 0, rotation: (((k * 37) % 9) - 4) * .7, scale: 1, opacity: 1, duration: .28, ease: 'back.out(2)', immediateRender: true }, at + k * step)
+            .add(function () { n.textContent = '$' + Math.round(Math.min(v, (k + 1) * per)).toLocaleString('en-US') + (plus && k === bills.length - 1 ? '+' : '') }, at + k * step + .12);
+        });
+        tr.fromTo(n, { scale: 1 }, { scale: 1.12, duration: .16, yoyo: true, repeat: 1, ease: 'power2.out' }, at + bills.length * step + .15);
       });
       when(tg, tr, 'top 70%');
     }
@@ -205,15 +209,22 @@
     /* your gift: the real calculator on a painted laptop; the camera moves in on the prices; the pencil rings one; a note asks */
     var gp = $('.gpaint');
     if (gp) {
-      var cam = $('.gp-cam', gp), gr = $('.gp-ring', gp), L = gr.getTotalLength(); gr.style.strokeDasharray = L + ' ' + (L + 2); gr.style.strokeDashoffset = L;
-      function look(rx, ry, rw) { var k = 1 / rw; return { scale: k, xPercent: -rx * k * 100, yPercent: -ry * k * 100 } }
+      var cam = $('.gp-cam', gp), doc = $('.gp-doc', gp), gr = $('.gp-ring', gp), lock = $('.gp-lock', gp), L = gr.getTotalLength(); gr.style.strokeDasharray = L + ' ' + (L + 2); gr.style.strokeDashoffset = L;
+      /* scroll the calculator so the point at fraction f of its height sits at fraction at of the screen */
+      function to(f, at) { return function () { return -(doc.offsetHeight * f - cam.offsetHeight * at) } }
+      $$('.gp-flow path', gp).forEach(function (q) { var l = q.getTotalLength(); q.style.strokeDasharray = l + ' ' + (l + 2); q.style.strokeDashoffset = l });
       var tk = gsap.timeline(), og = { t: 0 };
-      tk.from($('.dev', gp), { y: 40, rotation: -2, opacity: 0, duration: 1, ease: 'power3.out' }, 0)
-        .to(cam, Object.assign({ duration: 1.6, ease: 'power2.inOut' }, look(.18, .3, .64)), 1)
-        .to(og, { t: 1, duration: .9, ease: 'power1.inOut', onUpdate: function () { gr.style.strokeDashoffset = L * (1 - og.t) } }, 2.8)
-        .from($('.gp-note', gp), { y: -70, rotation: -16, opacity: 0, duration: .8, ease: 'back.out(1.6)' }, 3.6)
-        .from($('.gp-hand', gp), { clipPath: 'inset(0 100% 0 0)', duration: .9, ease: 'none' }, 4.3)
-        .from($('.gp-src', gp), { opacity: 0, y: 8, duration: .6 }, 4.6);
+      tk.from($('.dev', gp), { y: 40, rotation: -2, opacity: 0, duration: .9, ease: 'power3.out' }, 0)
+        .fromTo(doc, { y: 0 }, { y: to(.205, .42), duration: 1.3, ease: 'power2.inOut', immediateRender: false }, 1.2)
+        .to(og, { t: 1, duration: .8, ease: 'power1.inOut', onUpdate: function () { gr.style.strokeDashoffset = L * (1 - og.t) } }, 2.5)
+        .to(doc, { y: to(.47, .35), duration: 1.2, ease: 'power2.inOut' }, 3.5)
+        .to(doc, { y: to(.71, .5), duration: 1.1, ease: 'power2.inOut' }, 5.0)
+        .from($('span', lock), { scale: .6, opacity: 0, duration: .5, ease: 'back.out(2)' }, 5.8)
+        .from($('.gp-life', gp), { y: 70, x: 30, rotation: 14, opacity: 0, duration: .85, ease: 'back.out(1.4)' }, 6.2)
+        .to($$('.gp-flow path', gp), { strokeDashoffset: 0, duration: .6, ease: 'power1.inOut', stagger: .5 }, 6.6)
+        .from($('.gp-tag', gp), { y: -60, rotation: -60, opacity: 0, duration: 1.4, ease: 'elastic.out(1,.35)' }, 7.2)
+        .from($('.gp-num', gp), { clipPath: 'inset(0 100% 0 0)', duration: .8, ease: 'none' }, 7.7)
+        .from($('.gp-src', gp), { opacity: 0, y: 8, duration: .6 }, 7.9);
       when(gp, tk);
     }
 
