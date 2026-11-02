@@ -79,8 +79,8 @@
   <svg class="bgf b" aria-hidden="true"><use href="#sfo"/></svg>
   <div class="wrap">
     <span class="cx-pill" data-program>The Exit Lab</span>
-    <h1>You’re in<span data-first></span>. <em>Round 1 starts Tue Dec 1.</em></h1>
-    <p class="cx-lead">Your receipt is in your email, and your welcome email is right behind it. Two small things now, then the map of December.</p>
+    <h1>You’re in<span data-first></span>. <em>Round 1 starts Mon Jan 4.</em></h1>
+    <p class="cx-lead">Your receipt is in your email, and your welcome email is right behind it. Two small things now, then the map of January.</p>
     <div class="wl-steps">
       <div class="cx-step" data-card="mail">
         <span class="n">1</span>
@@ -90,7 +90,7 @@
       </div>
       <div class="cx-step" data-card="cal">
         <span class="n">2</span>
-        <h3>Put Tue Dec 1 in your calendar.</h3>
+        <h3>Put Mon Jan 4 in your calendar.</h3>
         <p>Day 1: everyone starts the same task. Open it after dinner, do it, close the laptop.</p>
         <div class="cx-go"><a class="btn" id="wlcal" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="2.5" y="4" width="15" height="13.5" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M2.5 8.5h15M6.5 2v4M13.5 2v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>add to Google Calendar</a></div>
       </div>
@@ -102,18 +102,17 @@
 <section class="sand wl-map">
   <div class="wrap">
     <div class="shead">
-      <span class="eyebrow">From today to Wed Dec 30</span>
-      <h2>Your December, <em>step by step.</em></h2>
+      <span class="eyebrow">From today to Wed Feb 3</span>
+      <h2>Your January, <em>step by step.</em></h2>
     </div>
     <ol class="wl-tl">
       <li><span class="d">Today</span><div class="t"><b>Your receipt and your welcome email.</b><p>If you’re still in the workshop, come to the rest live. The more of it you see, the further ahead you start.</p></div></li>
-      <li><span class="d">Mon Nov 30</span><div class="t"><b>Doors close.</b><p>Everyone who joins Round 1 is in by 11:59 pm New York.</p></div></li>
-      <li class="big"><span class="d">Tue Dec 1</span><div class="t"><b>Day 1. Everyone starts the same task.</b><p>A task a day from here. A missed day costs nothing; the next task waits.</p></div></li>
+      <li><span class="d">Mon Dec 21</span><div class="t"><b>Doors close.</b><p>Everyone who joins Round 1 is in by 11:59 pm New York.</p></div></li>
+      <li class="big"><span class="d">Mon Jan 4</span><div class="t"><b>Day 1. Everyone starts the same task.</b><p>A task a day from here. A missed day costs nothing; the next task waits.</p></div></li>
       <li data-calls><span class="d">Every week</span><div class="t"><b data-calls-text>A live call with me every week</b><p>Bring your sentence, your price or your page.</p></div></li>
-      <li><span class="d">Dec 21 to 27</span><div class="t"><b>Christmas week off.</b><p>Rest. Your launch is ready to go after it.</p></div></li>
-      <li class="big"><span class="d">Mon Dec 28</span><div class="t"><b>Your offer goes out.</b><p>To the readers you already have.</p></div></li>
-      <li><span class="d">Tue Dec 29</span><div class="t"><b>Your launch, in front of my readers.</b><p>One How We Grow post sends my readers to a page listing every Round 1 launch: your offer in one sentence, and a link.</p></div></li>
-      <li><span class="d">Wed Dec 30</span><div class="t"><b>Round 1 ends.</b><p>The tasks and the workshop recordings stay yours.</p></div></li>
+      <li class="big"><span class="d">Mon Feb 1</span><div class="t"><b>Your offer goes out.</b><p>To the readers you already have.</p></div></li>
+      <li><span class="d">Tue Feb 2</span><div class="t"><b>Your launch, in front of my readers.</b><p>One How We Grow post sends my readers to a page listing every Round 1 launch: your offer in one sentence, and a link.</p></div></li>
+      <li><span class="d">Wed Feb 3</span><div class="t"><b>Round 1 ends.</b><p>The tasks and the workshop recordings stay yours.</p></div></li>
     </ol>
     <div class="wl-promise" id="wlpromise" hidden><b data-safety-title>My do-the-work promise</b><p data-safety-text></p></div>
   </div>
@@ -144,7 +143,7 @@
   if (qs.get('plan') === '2') { document.getElementById('wlplan').hidden = false; if (C.PAY2_DATE) document.querySelector('[data-pay2]').textContent = 'on ' + C.PAY2_DATE }
   /* Day 1 as an all-day event, so it sits at the top of their day */
   document.getElementById('wlcal').href = 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + encodeURIComponent((C.PROGRAM || 'The Exit Lab') + ': Day 1 with Ana Calin')
-    + '&dates=20261201/20261202&details=' + encodeURIComponent('Round 1 starts today. Everyone starts the same task. Your welcome email from Ana has everything you need.');
+    + '&dates=20270104/20270105&details=' + encodeURIComponent('Round 1 starts today. Everyone starts the same task. Your welcome email from Ana has everything you need.');
   /* Meta pixel, if the page settings ever get one: the purchase */
   try { (window.dataLayer = window.dataLayer || []).push({event: 'lab_purchase', plan: qs.get('plan') === '2' ? 'plan' : 'full'}) } catch (e) {}
 })();

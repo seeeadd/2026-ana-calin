@@ -428,7 +428,7 @@ body.is-closed .tiers,body.is-closed .o-tot{display:none}
 .nov-g i.x{color:#BBB2A8}
 .nov-g i.x::after{content:"";position:absolute;left:18%;right:18%;top:50%;height:2.5px;border-radius:2px;background:#C9BFB4;transform:rotate(-38deg)}
 .nov-g i.today{background:rgba(26,20,18,.06);box-shadow:inset 0 0 0 1.5px var(--ink)}
-.nov-g i[data-n="30"]{color:var(--ink);font-size:28px}
+.nov-g i.rd{color:var(--ink);font-size:28px}
 .nov-g i.nx{color:var(--ink3);font-size:20px;background:rgba(26,20,18,.04)}
 .nov-g i.nx b{font-weight:400;line-height:1}
 .nov-g i.nx small{position:absolute;bottom:4px;font-family:var(--sans);font-size:9.5px;font-weight:700}
@@ -787,7 +787,7 @@ body.is-closed .trust,body.is-soon .trust{display:none}
   .nov{padding:32px 14px 18px}
   .nov-h b{font-size:38px}
   .nov-g i{height:40px;font-size:19px}
-  .nov-g i[data-n="30"]{font-size:22px}
+  .nov-g i.rd{font-size:22px}
   .nov-note{font-size:12px;margin-left:6px}
   .nov-g i.nx{font-size:16px}
   .nov-g i.nx b{transform:translateY(-5px)}

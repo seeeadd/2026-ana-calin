@@ -205,13 +205,13 @@
     };
     addEventListener('scroll', road, {passive: true}); road();
   }
-  /* the long page's December: on a laptop or bigger the month is pinned and moves sideways as you scroll; the
+  /* the long page's January: on a laptop or bigger the month is pinned and moves sideways as you scroll; the
      frame in the middle is lit, and the calendar under it fills to the end of that stretch. Stacked on a phone. */
   var dec = document.querySelector('[data-dec]');
   if (dec) {
     var dtrack = dec.querySelector('.dec-track'), frs = [].slice.call(dec.querySelectorAll('.fr')), cells = dec.querySelectorAll('[data-day]'), dlab = dec.querySelector('[data-daylab]');
     var mq = matchMedia('(min-width: 1101px) and (min-height: 620px)'), pin = false, span = 0, lastI = -1;
-    var LAB = ['Tue Dec 1', 'Dec 1 to 7', 'Dec 8 to 14', 'Dec 15 to 20', 'Dec 21 to 27, Christmas', 'Dec 28 to 30, launch'];
+    var LAB = ['Mon Jan 4', 'Jan 4 to 10', 'Jan 11 to 17', 'Jan 18 to 24', 'Jan 25 to Feb 3, launch'];
     var light = function(i){
       if (i === lastI) return; lastI = i;
       frs.forEach(function(f, k){ f.classList.toggle('on', k === i) });
@@ -243,15 +243,17 @@
     }, {passive: true});
     if (document.fonts) document.fonts.ready.then(size);
   }
-  /* the long page's last day: November on a wall calendar, the days already gone in New York crossed off, today marked,
-     the 30th circled (placed by script so the ring sits on the real cell at every width) */
+  /* the long page's last day: the doors-close month on a wall calendar (data-month, 12 = December), the days already gone
+     in New York crossed off, today marked, the closing day (class rd) circled (placed by script so the ring sits on the
+     real cell at every width) */
   document.querySelectorAll('[data-nov]').forEach(function(cal){
     var f = new Intl.DateTimeFormat('en-US', {timeZone: 'America/New_York', year: 'numeric', month: 'numeric', day: 'numeric'}).formatToParts(new Date(now));
     var g = {}; f.forEach(function(x){ g[x.type] = +x.value });
-    var today = g.year > 2026 || (g.year === 2026 && g.month > 11) ? 31 : (g.year === 2026 && g.month === 11 ? g.day : 0);
+    var M = +(cal.getAttribute('data-month') || 11);
+    var today = g.year > 2026 || (g.year === 2026 && g.month > M) ? 32 : (g.year === 2026 && g.month === M ? g.day : 0);
     cal.querySelectorAll('[data-n]').forEach(function(c){ var n = +c.getAttribute('data-n'); c.classList.toggle('x', n < today); c.classList.toggle('today', n === today) });
     var place = function(){
-      var box = cal.getBoundingClientRect(), d30 = cal.querySelector('[data-n="30"]'), ring = cal.querySelector('.nov-ring');
+      var box = cal.getBoundingClientRect(), d30 = cal.querySelector('.rd') || cal.querySelector('[data-n="30"]'), ring = cal.querySelector('.nov-ring');
       if (!d30 || !ring) return;
       var r = d30.getBoundingClientRect(), g = ring.getBoundingClientRect();   // an svg has no offsetWidth
       ring.style.left = (r.left - box.left + r.width / 2 - g.width / 2) + 'px'; ring.style.top = (r.top - box.top + r.height / 2 - g.height / 2) + 'px';
