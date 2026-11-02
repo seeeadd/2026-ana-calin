@@ -4,16 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
-<title>The Exit Plan · a free 3-day live workshop with Ana Calin · Nov 17 to 19</title>
+<title>The Exit Plan · a free 3-day live workshop with Ana Calin · Dec 8 to 10</title>
 <!-- Ana Calin, free 3-day live workshop registration page. Built from "Ana: registration page build guide" (Oct 24, 2026)
      and her brand kit parts 1-3. Hero = the person's client hero (Kieran Drew / Chad Carson pages), component for component,
      in Ana's skin: cream #FFF8EE, sand #EADFCF, ink #1A1412, sunflower #FFD400, hot pink #F72585, ink 3 #7A6A60.
      Type: Instrument Serif + Manrope (Google Fonts). Drawings: thick ink outlines + flat sunflower fills, her logo's style.
      Every "save my seat (free)" button opens the one registration popup: first name and email (Oct 29: name and email only, per SOP 3A). -->
-<meta name="description" content="How to build a business that pays you for what you know. Three free live sessions with Ana Calin, Nov 17 to 19, 12:00 pm New York.">
+<meta name="description" content="How to build a business that pays you for what you know. Three free live sessions with Ana Calin, Dec 8 to 10, 12:00 pm New York.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="The Exit Plan · a free 3-day live workshop with Ana Calin · Nov 17 to 19">
-<meta property="og:description" content="How to build a business that pays you for what you know. Three free live sessions with Ana Calin, Nov 17 to 19, 12:00 pm New York.">
+<meta property="og:title" content="The Exit Plan · a free 3-day live workshop with Ana Calin · Dec 8 to 10">
+<meta property="og:description" content="How to build a business that pays you for what you know. Three free live sessions with Ana Calin, Dec 8 to 10, 12:00 pm New York.">
 <meta property="og:image" content="https://exitplan.howwegrowtoday.com/img/share.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#FFF8EE">
@@ -70,7 +70,7 @@ h2 em,h1 em,h3 em{font-style:italic;color:var(--pink)}
 .fb{position:sticky;top:0;z-index:50;padding:12px 16px 0;pointer-events:none}
 .fb-bar{pointer-events:auto;margin:0 auto;width:min(1080px,100%);display:flex;align-items:center;gap:20px;padding:8px 8px 8px 10px;border-radius:16px;background:rgba(26,20,18,.95);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);color:var(--cream);box-shadow:0 18px 36px -18px rgba(26,20,18,.7)}
 .fb-id{display:flex;align-items:center;gap:12px;min-width:0;flex:1 1 auto;text-decoration:none;background:none;border:0;cursor:pointer;text-align:left}
-.fb-ic{width:44px;height:44px;flex:none}
+.fb-ic{width:44px;height:44px;flex:none;border-radius:12px}
 .fb-t{display:flex;flex-direction:column;gap:6px;min-width:0}
 .fb-t small{font-weight:800;font-size:11.5px;line-height:1;letter-spacing:.18em;color:var(--sun)}
 .fb-t b{font-family:var(--serif);font-weight:400;font-size:21px;line-height:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -1257,13 +1257,14 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
 @keyframes tksway{0%,16%,100%{transform:none}3%{transform:rotate(-1.3deg)}6.5%{transform:rotate(1.1deg)}10%{transform:rotate(-.6deg)}13%{transform:rotate(.25deg)}}
 @keyframes fglow{0%{border-color:var(--pink);background-color:#FFF3F9;box-shadow:0 0 0 0 rgba(247,37,133,.6),0 0 22px rgba(247,37,133,.4)}50%{border-color:var(--pink);background-color:#FFF3F9;box-shadow:0 0 0 10px rgba(247,37,133,0),0 0 22px rgba(247,37,133,.18)}85%,100%{border-color:#cbb9a2;background-color:#fff;box-shadow:0 0 0 0 rgba(247,37,133,0),0 0 0 rgba(247,37,133,0)}}
 .tkt .fmeta{text-wrap:balance}
-@keyframes bglow{0%{outline:3px solid rgba(247,37,133,.55);outline-offset:0}65%,100%{outline:3px solid rgba(247,37,133,0);outline-offset:10px}}
+@keyframes fhint{0%,100%{border-color:#cbb9a2;box-shadow:0 0 0 0 rgba(247,37,133,0)}45%{border-color:rgba(247,37,133,.7);box-shadow:0 0 0 4px rgba(247,37,133,.1)}}
+@keyframes bglow{0%{outline:2px solid rgba(247,37,133,.35);outline-offset:0}65%,100%{outline:2px solid rgba(247,37,133,0);outline-offset:8px}}
 @media (prefers-reduced-motion:no-preference){
   .tkshell{animation:tksway 7s ease-in-out 2.5s infinite}
   .tkshell:focus-within,.tkshell:has(input:not(:placeholder-shown)){animation:none}
-  .tkt form .field input[name=first_name]:placeholder-shown:not(:focus){animation:fglow 2.6s ease-out 1.2s infinite}
-  .tkt form:has(input[name=first_name]:not(:placeholder-shown)) .field input[name=email_address]:placeholder-shown:not(:focus){animation:fglow 2.6s ease-out .2s infinite}
-  .tkt form:has(input[name=first_name]:not(:placeholder-shown)):has(input[name=email_address]:valid) .btn.big{animation:bglow 2.2s ease-out .3s infinite}
+  .tkt form .field input[name=first_name]:placeholder-shown:not(:focus){animation:fhint 2.8s ease-in-out 1.6s 2}
+  .tkt form:has(input[name=first_name]:not(:placeholder-shown)) .field input[name=email_address]:placeholder-shown:not(:focus){animation:fhint 2.8s ease-in-out .4s 1}
+  .tkt form:has(input[name=first_name]:not(:placeholder-shown)):has(input[name=email_address]:valid) .btn.big{animation:bglow 2.4s ease-out .3s 2}
 }
 
 /* ---------- the days: Ana's own slides, as a live session (Nov 1) ---------- */
@@ -1289,7 +1290,7 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
 </style>
 <link rel="stylesheet" href="assets/wins.css">
 
-<script>(function(){var d=document.documentElement;if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;d.classList.add("wn-wait");setTimeout(function(){d.classList.remove("wn-wait")},4500)})();</script>
+<link rel="preload" as="image" href="img/vip/paint/winh.webp" fetchpriority="high"><link rel="preload" as="image" href="img/vip/paint/shut-l.webp" fetchpriority="high"><link rel="preload" as="image" href="img/vip/paint/shut-r.webp" fetchpriority="high"><link rel="preload" as="image" href="img/vip/paint/winh-flora.webp">
 <style id="vipadd">
 /* ===== Nov 1: what the VIP page taught us, added on top of this page's own look (Jason Fladlien's slide rules too) ===== */
 
@@ -1396,7 +1397,7 @@ mark.sk{color:var(--ink);font-weight:700;padding:0 2px;margin:0 -2px;-webkit-box
 
 /* the hero video sits in Ana's painted window (tools/paint: winh, winh-flora, shut-l, shut-r). The art is placed from the
    opening's position in the painting: opening x264-846 y94-470 of the 856x548 crop that starts at 96,30 */
-.iph.win{border-radius:0;padding:0;margin:9% 8% 13% 8%;background:none;box-shadow:none}
+.iph.win{border-radius:0;padding:0;margin:12.5% 8% 13% 8%;background:none;box-shadow:none}
 .iph.win:before,.iph.win .sb,.iph.win .isl{display:none}
 .iph.win .bz{position:relative;background:none;border-radius:0;padding:0;perspective:1700px}
 .iph.win .scr{border-radius:2px;aspect-ratio:1.548;box-shadow:inset 0 0 0 1px rgba(26,20,18,.2)}
@@ -1468,9 +1469,9 @@ mark.sk{color:var(--ink);font-weight:700;padding:0 2px;margin:0 -2px;-webkit-box
 .gi-go{display:flex;align-items:center;gap:2.4cqw;margin-top:4.6cqw;padding-top:3.6cqw;border-top:1px solid #e8e3dc;font-size:3.4cqw}
 .gi-go>span:first-child{font-weight:600;margin-right:1.4cqw;color:#3c4043}
 .gi-c{display:inline-flex;align-items:center;gap:1cqw;border:1px solid #d6d0c8;border-radius:999px;padding:1.4cqw 3.6cqw;font-weight:600;color:#3c4043;white-space:nowrap}
-.gi-c svg{width:0;height:3.6cqw;overflow:visible}
+.gi-c svg{width:3.6cqw;height:3.6cqw;flex:none;overflow:visible;opacity:0;margin-left:-.6cqw;transition:opacity .2s}
 .gi-y.on{background:#FDE2EE;border-color:#F72585;color:#B3135C}
-.gi-y.on svg{width:3.6cqw}
+.gi-y.on svg{opacity:1}
 .gi-cur{position:absolute;left:96%;top:104%;width:5.6cqw;opacity:0;filter:drop-shadow(0 2px 3px rgba(0,0,0,.3));pointer-events:none}
 .gi-cur svg{display:block;width:100%}
 @media (max-width:980px){.gi{position:relative;right:auto;bottom:auto;width:94%;margin:-24% 0 0 5%}}
@@ -1520,8 +1521,9 @@ mark.sk{color:var(--ink);font-weight:700;padding:0 2px;margin:0 -2px;-webkit-box
 .cs-deck .dk-f.b{transform:translateX(102%)}
 .lv .lv-win .cs-deck{position:relative;aspect-ratio:16/9;overflow:hidden;height:auto}
 /* her camera sits out on the window's corner, so it never covers what the slide is showing (Jason: the webcam moves off the highlight) */
-.lv .lv-cam{left:482px;top:410px;width:124px;height:93px}
-.drow.flip .lv .lv-cam{left:500px}
+.lv .lv-cam{left:488px;top:412px;width:104px;height:80px}
+.drow.flip .lv .lv-cam{left:488px}
+.lv .lv-cam img{object-position:50% 28%}
 /* "Where are you right now?": painted scenes (tools/paint sit-job, sit-self, sit-both). Each answers when picked:
    the after-hours notebook gets written in, the one free slot in a booked week becomes her own offer, and a sunflower
    lands on the MY OWN arm of the signpost */
@@ -1545,8 +1547,49 @@ mark.sk{color:var(--ink);font-weight:700;padding:0 2px;margin:0 -2px;-webkit-box
 .so-both svg{width:100%;height:100%;filter:drop-shadow(0 4px 4px rgba(60,40,25,.35))}
 .chip.sit:hover .so-both{opacity:.6;transform:translateY(-40%) rotate(-12deg)}
 .chip.sit[aria-pressed=true] .so-both{opacity:1;transform:translateY(0) rotate(8deg)}
-html.wn-wait .iph.win .wn-sh.l,html.wn-wait .iph.win .wn-sh.r{transform:rotateY(0)}
-html.wn-wait .iph.win .vplay{opacity:0}
+/* the ticket, drawn as one SVG behind the card (outline, notches, yellow offset). The old outline was five stacked
+   drop-shadow filters over a mask; with the field glow animating inside it, Safari and Chrome sometimes dropped the
+   whole layer, so the ticket vanished on click. --tkbg is built by the script for the card's real size. */
+.tkshell{filter:none!important}
+.tkt{-webkit-mask:none!important;mask:none!important;background:transparent!important;isolation:isolate}
+.tkt:before{content:"";position:absolute;left:-2px;top:-2px;right:-10px;bottom:-11px;z-index:-1;pointer-events:none;background:var(--tkbg,none) no-repeat 0 0/100% 100%}
+.tkt:not([style*="--tkbg"]){background:#FFF8EE!important;box-shadow:0 0 0 1.5px var(--ink),7px 8px 0 1.5px var(--sun)!important}
+/* the window in depth: the video sits back in the wall (lintel, jambs and sill drawn as a recess, shadow from the top
+   left), the shutters have a painted edge and darken as they turn away from the light, and they cast soft shadows on
+   the wall. The opening runs on CSS alone, from the first paint, so it never waits for the scripts. */
+.iph.win .bz:after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M0 0H100L97.4 4.2H2.6Z' fill='%23CFC1AC'/%3E%3Cpath d='M0 0L2.6 4.2V97.6L0 100Z' fill='%23BFAE96'/%3E%3Cpath d='M100 0L97.4 4.2V97.6L100 100Z' fill='%23EDE4D6'/%3E%3Cpath d='M0 100L2.6 97.6H97.4L100 100Z' fill='%23F3ECE1'/%3E%3C/svg%3E") 0 0/100% 100% no-repeat;
+  box-shadow:inset 0 0 0 1px rgba(58,42,34,.35)}
+.iph.win .scr:before{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;box-shadow:inset 0 26px 30px -16px rgba(40,26,16,.55),inset 26px 0 30px -18px rgba(40,26,16,.42)}
+.iph.win .scrub{bottom:13%}
+.iph.win .vplay{bottom:calc(13% + 64px)}
+.iph.win .wn-sh{transform-style:preserve-3d}
+.iph.win .wn-sh:before{content:"";position:absolute;top:4%;bottom:4%;width:3.2%;background:repeating-linear-gradient(180deg,#2E5384 0 6px,#34609A 6px 7px),#2E5384;border-radius:1px;box-shadow:inset 0 0 0 1px rgba(26,30,45,.55)}
+.iph.win .wn-sh.l:before{left:97.4%;transform-origin:0 50%;transform:rotateY(90deg)}
+.iph.win .wn-sh.r:before{right:97.4%;transform-origin:100% 50%;transform:rotateY(-90deg)}
+.iph.win .wn-sh:after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.55;background:linear-gradient(90deg,rgba(18,30,58,.55),rgba(18,30,58,.08));-webkit-mask:var(--sm) center/100% 100% no-repeat;mask:var(--sm) center/100% 100% no-repeat}
+.iph.win .wn-sh.l{--sm:url(img/vip/paint/shut-l.webp)}.iph.win .wn-sh.r{--sm:url(img/vip/paint/shut-r.webp)}
+.iph.win .wn-sh.r:after{background:linear-gradient(270deg,rgba(18,30,58,.5),rgba(18,30,58,.06))}
+.iph.win .wn-cs{position:absolute;z-index:3;top:-9%;height:118%;width:20%;pointer-events:none;opacity:1}
+.iph.win .wn-cs.l{left:-25%;background:radial-gradient(ellipse 70% 50% at 100% 52%,rgba(70,58,48,.30),transparent 72%)}
+.iph.win .wn-cs.r{right:-25%;background:radial-gradient(ellipse 70% 50% at 0 52%,rgba(70,58,48,.26),transparent 72%)}
+@media (prefers-reduced-motion:no-preference){
+  .iph.win .wn-sh.l{animation:wnL 1.05s .12s both}
+  .iph.win .wn-sh.r{animation:wnR 1.05s .17s both}
+  .iph.win .wn-sh:after{animation:wnShade 1.05s .12s both}
+  .iph.win .wn-cs{animation:wnCast .9s .35s both}
+  .iph.win .vplay{animation:wnPop .5s .95s both}
+  .iph.win .wn-pet{animation:wnPet 2.6s .6s both}
+  .iph.win .wn-pet:nth-of-type(2){animation-delay:.8s;animation-duration:3s;--dx:110px}
+  .iph.win .wn-pet:nth-of-type(3){animation-delay:1s;animation-duration:2.4s;--dx:60px}
+  .iph.win .wn-pet:nth-of-type(4){animation-delay:1.25s;animation-duration:3.2s;--dx:140px}
+}
+@keyframes wnL{0%{transform:rotateY(0);animation-timing-function:ease-in-out}9%{transform:rotateY(-5deg);animation-timing-function:ease-in}15%{transform:rotateY(-1deg);animation-timing-function:cubic-bezier(.2,.75,.25,1)}66%{transform:rotateY(-81deg);animation-timing-function:ease-in-out}84%{transform:rotateY(-69deg);animation-timing-function:ease-in-out}100%{transform:rotateY(-72deg)}}
+@keyframes wnR{0%{transform:rotateY(0);animation-timing-function:ease-in-out}9%{transform:rotateY(5deg);animation-timing-function:ease-in}15%{transform:rotateY(1deg);animation-timing-function:cubic-bezier(.2,.75,.25,1)}66%{transform:rotateY(81deg);animation-timing-function:ease-in-out}84%{transform:rotateY(69deg);animation-timing-function:ease-in-out}100%{transform:rotateY(72deg)}}
+@keyframes wnShade{0%,14%{opacity:0}100%{opacity:.55}}
+@keyframes wnCast{0%{opacity:0}100%{opacity:1}}
+@keyframes wnPop{0%{opacity:0;transform:scale(.7)}70%{opacity:1;transform:scale(1.05)}100%{opacity:1;transform:none}}
+@keyframes wnPet{0%{opacity:0;transform:translate(0,0) rotate(0)}12%{opacity:1}40%{transform:translate(calc(var(--dx,80px) * .35),70px) rotate(120deg)}70%{transform:translate(calc(var(--dx,80px) * .8),150px) rotate(230deg)}100%{opacity:0;transform:translate(var(--dx,80px),240px) rotate(330deg)}}
 .iph.win .wn-pet{position:absolute;left:-12%;top:-8%;width:12px;height:9px;border-radius:60% 40% 60% 40%;background:#E05A92;z-index:5;opacity:0;pointer-events:none}
 .iph.win .wn-pet:nth-of-type(2n){background:#A8245E;width:9px;height:7px}
 @media (max-width:980px){.iph.win{margin:7% 9% 13% 9%}}
@@ -1584,9 +1627,9 @@ html.wn-wait .iph.win .vplay{opacity:0}
 <!-- 0. floating bar: desktop only; phones get the bottom button -->
 <header class="fb">
   <div class="fb-bar">
-    <button class="fb-id open" type="button" aria-label="The Exit Plan, a free 3-day live workshop, Nov 17 to 19, 12:00 pm New York: save my seat">
-      <img class="fb-ic" src="img/mark.png" alt="" width="44" height="44">
-      <span class="fb-t"><small>THE EXIT PLAN · FREE 3-DAY LIVE WORKSHOP</small><b>Nov 17 to 19 · 12:00 pm New York</b></span>
+    <button class="fb-id open" type="button" aria-label="The Exit Plan, a free 3-day live workshop, Dec 8 to 10, 12:00 pm New York: save my seat">
+      <img class="fb-ic" src="img/fav/header-96.png" alt="" width="44" height="44">
+      <span class="fb-t"><small>THE EXIT PLAN · FREE 3-DAY LIVE WORKSHOP</small><b>Dec 8 to 10 · 12:00 pm New York</b></span>
     </button>
     <button class="btn sm open" type="button"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">I’m in, Ana <small class="bq">(it’s free)</small></span><svg class="ar"><use href="#arr"/></svg></button>
   </div>
@@ -1622,7 +1665,7 @@ html.wn-wait .iph.win .vplay{opacity:0}
           <!-- her window in Greece: the wall and frame, the flower box, and two blue shutters that swing open on load -->
           <img class="wn-art" src="img/vip/paint/winh.webp" alt="" width="856" height="548" aria-hidden="true">
           <img class="wn-flo" src="img/vip/paint/winh-flora.webp" alt="" width="856" height="548" aria-hidden="true">
-          <span class="wn-sh l" aria-hidden="true"><img src="img/vip/paint/shut-l.webp" alt="" width="321" height="406"></span><span class="wn-sh r" aria-hidden="true"><img src="img/vip/paint/shut-r.webp" alt="" width="321" height="406"></span>
+          <span class="wn-cs l" aria-hidden="true"></span><span class="wn-cs r" aria-hidden="true"></span><span class="wn-sh l" aria-hidden="true"><img src="img/vip/paint/shut-l.webp" alt="" width="321" height="406"></span><span class="wn-sh r" aria-hidden="true"><img src="img/vip/paint/shut-r.webp" alt="" width="321" height="406"></span>
           <i class="wn-pet" aria-hidden="true"></i><i class="wn-pet" aria-hidden="true"></i><i class="wn-pet" aria-hidden="true"></i><i class="wn-pet" aria-hidden="true"></i>
         </div>
       </div>
@@ -1632,7 +1675,7 @@ html.wn-wait .iph.win .vplay{opacity:0}
         <div>
           <p class="k">Free <b>/</b> live on Zoom</p>
           <h3>Join The Exit Plan, free.</h3>
-          <p class="d">Tue Nov 17 to Thu Nov 19</p>
+          <p class="d">Tue Dec 8 to Thu Dec 10</p>
           <p class="t">12:00 pm New York / 7:00 pm Greece</p>
         </div>
         <div class="go"><button class="btn open" type="button"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">I want my exit plan, free</span><svg class="ar"><use href="#arr"/></svg></button></div>
@@ -1654,7 +1697,7 @@ html.wn-wait .iph.win .vplay{opacity:0}
           <p class="just" id="just" hidden><i></i><span id="justTxt"></span></p>
         </div>
         <div class="tk-body">
-          <p class="tk-k">Free · 3 days live · Nov 17 to 19</p>
+          <p class="tk-k">Free · 3 days live · Dec 8 to 10</p>
           <h3 class="tk-h">Save your free seat<span class="tk-and">Let’s start building your own income.</span></h3>
           <div class="rslot" id="hslot"></div>
         </div>
@@ -1676,7 +1719,7 @@ html.wn-wait .iph.win .vplay{opacity:0}
           <div class="proof"><span class="faces"><img src="img/av/gustavo.webp" alt=""><img src="img/av/jeanette.webp" alt=""><img src="img/av/adora.webp" alt=""><img src="img/av/hilde.webp" alt=""><img src="img/av/stacie.webp" alt=""></span><span><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span> <b>800+</b> student wins</span></div>
         </div>
         <div class="tk-body">
-          <p class="tk-k">Free · 3 days live · Nov 17 to 19</p>
+          <p class="tk-k">Free · 3 days live · Dec 8 to 10</p>
           <h3 class="tk-h">Save your free seat<span class="tk-and">Let’s start building your own income.</span></h3>
           <div class="rslot" id="rslot"></div>
         </div>
@@ -1697,7 +1740,7 @@ html.wn-wait .iph.win .vplay{opacity:0}
         <p class="ilead">I’m Ana Calin. My newsletter business has made <b>$1.4M</b> selling workshops and programs, without sales calls.</p>
         <p>I’m running a free, three-day workshop on turning what you know into something people will buy. <mark class="sk">AI has changed the order I’d follow today.</mark> I’ll show you what changed, using my own business, and why it matters when you’re starting around a job or client work.</p>
         <p>We’ll work on what you could sell, where your first customers could come from, and how to give them a reason to buy. <mark class="sk">You don’t need an audience or an idea ready.</mark></p>
-        <div class="igo"><button class="btn open" type="button"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">I want my exit plan, free</span><svg class="ar"><use href="#arr"/></svg></button><span class="iwhen">Nov 17 to 19 · 12:00 pm New York<br>Free and live on Zoom</span></div>
+        <div class="igo"><button class="btn open" type="button"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">I want my exit plan, free</span><svg class="ar"><use href="#arr"/></svg></button><span class="iwhen">Dec 8 to 10 · 12:00 pm New York<br>Free and live on Zoom</span></div>
         <div class="inotes">
           <p><b>Already work for yourself?</b> Your exit might mean dropping the clients you keep accepting because you need the money. This is for you too.</p>
           <p><b>Been to one of my workshops before?</b> Bring the idea you worked on. This time, we’re taking it through to the people who could buy it, with the changes I’d make to the order now.</p>
@@ -1726,7 +1769,7 @@ html.wn-wait .iph.win .vplay{opacity:0}
         <span class="rail"></span>
         <div class="dbadge"><small>DAY</small><b>1</b></div>
         <div class="dtext">
-          <div class="dwhen"><span class="dcal" aria-hidden="true"><small>NOV</small><b>17</b></span><span class="dtx"><b>Tuesday, Nov 17</b><span class="dtm"><span class="pill">12:00 pm New York</span></span></span></div>
+          <div class="dwhen"><span class="dcal" aria-hidden="true"><small>DEC</small><b>8</b></span><span class="dtx"><b>Tuesday, Dec 8</b><span class="dtm"><span class="pill">12:00 pm New York</span></span></span></div>
           <h3>Where I’d start if I needed my first paying customers.</h3>
           <p class="body">You may be good at several things and still have no idea which one could become a business. <mark class="sk">I’ll show you what I’d look for before putting my evenings into any of them.</mark></p>
           <p class="body">And if nobody knows your name yet, we’ll start there too.</p>
@@ -1745,7 +1788,7 @@ html.wn-wait .iph.win .vplay{opacity:0}
           <span class="lv-tag">From the Day 1 slides</span>
           <img class="lv-back" src="img/slides/s2.webp" alt="" width="1280" height="720" loading="lazy">
           <div class="lv-win"><div class="lv-bar"><i></i><b>LIVE</b><span>Day 1 · Ana is sharing her slides</span></div><div class="cs-deck"><iframe class="dk-f a" data-src="deck/s1.html" title="" tabindex="-1" aria-hidden="true"></iframe><iframe class="dk-f b" data-src="deck/s2.html" title="" tabindex="-1" aria-hidden="true"></iframe></div></div>
-          <div class="lv-cam"><img src="img/real/ana-real-c.webp" alt="" width="405" height="720" loading="lazy"><span>Ana</span></div>
+          <div class="lv-cam"><img src="img/real/ana-real-a.webp" alt="" width="405" height="720" loading="lazy"><span>Ana</span></div>
         </div></div>
       </div>
 
@@ -1754,7 +1797,7 @@ html.wn-wait .iph.win .vplay{opacity:0}
         <span class="rail"></span>
         <div class="dbadge"><small>DAY</small><b>2</b></div>
         <div class="dtext">
-          <div class="dwhen"><span class="dcal" aria-hidden="true"><small>NOV</small><b>18</b></span><span class="dtx"><b>Wednesday, Nov 18</b><span class="dtm"><span class="pill">12:00 pm New York</span></span></span></div>
+          <div class="dwhen"><span class="dcal" aria-hidden="true"><small>DEC</small><b>9</b></span><span class="dtx"><b>Wednesday, Dec 9</b><span class="dtm"><span class="pill">12:00 pm New York</span></span></span></div>
           <h3>Stop charging as though your experience barely counts.</h3>
           <p class="body">You might have spent ten years learning something and still feel uncomfortable asking someone to pay for your help.</p>
           <p class="body"><mark class="sk">Let’s work out what your offer is worth before that discomfort chooses the price.</mark></p>
@@ -1772,7 +1815,7 @@ html.wn-wait .iph.win .vplay{opacity:0}
           <span class="lv-tag">From the Day 2 slides</span>
           <img class="lv-back" src="img/slides/s4.webp" alt="" width="1280" height="720" loading="lazy">
           <div class="lv-win"><div class="lv-bar"><i></i><b>LIVE</b><span>Day 2 · Ana is sharing her slides</span></div><div class="cs-deck"><iframe class="dk-f a" data-src="deck/s3.html" title="" tabindex="-1" aria-hidden="true"></iframe><iframe class="dk-f b" data-src="deck/s4.html" title="" tabindex="-1" aria-hidden="true"></iframe></div></div>
-          <div class="lv-cam"><img src="img/real/ana-real-c.webp" alt="" width="405" height="720" loading="lazy"><span>Ana</span></div>
+          <div class="lv-cam"><img src="img/real/ana-real-b.webp" alt="" width="405" height="720" loading="lazy"><span>Ana</span></div>
         </div></div>
       </div>
 
@@ -1780,7 +1823,7 @@ html.wn-wait .iph.win .vplay{opacity:0}
       <div class="drow" data-r>
         <div class="dbadge"><small>DAY</small><b>3</b></div>
         <div class="dtext">
-          <div class="dwhen"><span class="dcal" aria-hidden="true"><small>NOV</small><b>19</b></span><span class="dtx"><b>Thursday, Nov 19</b><span class="dtm"><span class="pill">12:00 pm New York</span></span></span></div>
+          <div class="dwhen"><span class="dcal" aria-hidden="true"><small>DEC</small><b>10</b></span><span class="dtx"><b>Thursday, Dec 10</b><span class="dtm"><span class="pill">12:00 pm New York</span></span></span></div>
           <h3>Write the email that could bring your first paying customers.</h3>
           <p class="body">One of my posts got 771 likes and made nothing. Another got 82 likes and brought in money.</p>
           <p class="body"><mark class="sk">I’ll show you both. The difference matters much more than which one looked successful.</mark></p>
@@ -1950,7 +1993,7 @@ html.wn-wait .iph.win .vplay{opacity:0}
         <p>You’ll compare your income goal with a few example prices and see how many purchases those prices would require. You’ll also see what the same goal looks like through paid newsletter subscriptions.</p>
         <p>It’s a way to put your options on paper before deciding what to build.</p>
         <p class="gline">See what different prices would mean for your goal before you decide what to sell.</p>
-        <p class="gnext"><b>From Nov 4,</b> I’ll also send a small preparation task most days, about 15 minutes each. Do what you can. They’ll help you arrive with material we can use during the workshop.</p>
+        <p class="gnext"><b>From Nov 25,</b> I’ll also send a small preparation task most days, about 15 minutes each. Do what you can. They’ll help you arrive with material we can use during the workshop.</p>
         <div class="cta2"><button class="btn open" type="button" data-cta="gift"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">Save my seat and get my number</span><svg class="ar"><use href="#arr"/></svg></button><small>your exit number comes after you register</small></div>
       </div>
     </div>
@@ -2020,7 +2063,7 @@ html.wn-wait .iph.win .vplay{opacity:0}
         <h2>Five people will get <em>a private session with me.</em></h2>
         <p class="lead">Stay until the end of Day 3 and you could be one of them.</p>
         <p>I’ll draw five names at random from the people still attending live. Each person gets a 1:1 session with me to work through their offer and questions.</p>
-        <small>Free to enter. Live attendees only. The draw happens at the end of the Nov 19 session.</small>
+        <small>Free to enter. Live attendees only. The draw happens at the end of the Dec 10 session.</small>
         <div class="cta2"><button class="btn open" type="button" data-cta="prize"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">Save my seat for the draw <small class="bq">(free)</small></span><svg class="ar"><use href="#arr"/></svg></button><small>free · live on Zoom</small></div>
       </div>
       <!-- five seats: five 1:1 tickets fanning out -->
@@ -2029,7 +2072,7 @@ html.wn-wait .iph.win .vplay{opacity:0}
         <div class="t"><svg viewBox="0 0 240 110"><use href="#tk"/></svg></div>
         <div class="t"><svg viewBox="0 0 240 110"><use href="#tk"/></svg></div>
         <div class="t"><svg viewBox="0 0 240 110"><use href="#tk"/></svg></div>
-        <div class="t tx-top"><svg viewBox="0 0 240 110"><use href="#tk"/></svg><span class="tx-name">your name?</span><span class="tx-stamp"><svg viewBox="0 0 100 100"><defs><path id="txc" d="M50 50m-33 0a33 33 0 1 1 66 0a33 33 0 1 1-66 0"/></defs><circle cx="50" cy="50" r="45" fill="none" stroke="#F72585" stroke-width="4"/><circle cx="50" cy="50" r="24" fill="none" stroke="#F72585" stroke-width="2"/><text font-family="Manrope,sans-serif" font-weight="800" font-size="11.5" letter-spacing="2.4" fill="#F72585"><textPath href="#txc">DRAWN LIVE · END OF DAY 3 ·</textPath></text><text x="50" y="47" text-anchor="middle" font-family="Instrument Serif,serif" font-size="19" fill="#F72585">Nov</text><text x="50" y="65" text-anchor="middle" font-family="Instrument Serif,serif" font-size="23" fill="#F72585">19</text></svg></span></div>
+        <div class="t tx-top"><svg viewBox="0 0 240 110"><use href="#tk"/></svg><span class="tx-name">your name?</span><span class="tx-stamp"><svg viewBox="0 0 100 100"><defs><path id="txc" d="M50 50m-33 0a33 33 0 1 1 66 0a33 33 0 1 1-66 0"/></defs><circle cx="50" cy="50" r="45" fill="none" stroke="#F72585" stroke-width="4"/><circle cx="50" cy="50" r="24" fill="none" stroke="#F72585" stroke-width="2"/><text font-family="Manrope,sans-serif" font-weight="800" font-size="11.5" letter-spacing="2.4" fill="#F72585"><textPath href="#txc">DRAWN LIVE · END OF DAY 3 ·</textPath></text><text x="50" y="47" text-anchor="middle" font-family="Instrument Serif,serif" font-size="19" fill="#F72585">Dec</text><text x="50" y="65" text-anchor="middle" font-family="Instrument Serif,serif" font-size="23" fill="#F72585">10</text></svg></span></div>
       </div>
     </div>
   </div>
@@ -2043,7 +2086,7 @@ html.wn-wait .iph.win .vplay{opacity:0}
       <div data-r>
         <details class="faq" open><summary>Is it really free?<i aria-hidden="true"></i></summary><p class="a">Yes. All three workshop sessions are free. You never have to buy anything, and everything you write during them is yours to keep.</p></details>
         <details class="faq"><summary>Do I need an audience or something ready to sell?<i aria-hidden="true"></i></summary><p class="a">No. Day 1 includes finding your first readers and exploring what you could offer. Come with your experience and the questions you’re trying to answer.</p></details>
-        <details class="faq"><summary>How much time do I need?<i aria-hidden="true"></i></summary><p class="a">About 90 minutes a day on Nov 17, 18, and 19. You’ll do the writing during the sessions.</p><p class="a">From Nov 4, I’ll also send short preparation tasks, about 15 minutes each. Do what you can; you can still attend if you haven’t completed them.</p></details>
+        <details class="faq"><summary>How much time do I need?<i aria-hidden="true"></i></summary><p class="a">About 90 minutes a day on Dec 8, 9, and 10. You’ll do the writing during the sessions.</p><p class="a">From Nov 25, I’ll also send short preparation tasks, about 15 minutes each. Do what you can; you can still attend if you haven’t completed them.</p></details>
         <details class="faq"><summary>Do I need to use Substack?<i aria-hidden="true"></i></summary><p class="a">No. I’ll demonstrate on mine because that’s where I run my newsletter. The workshop is about finding people, making an offer, and asking for the sale.</p></details>
         <details class="faq"><summary>Will this work for my subject?<i aria-hidden="true"></i></summary><p class="a">If your experience can help someone do something they want to do, or solve something they’re struggling with, there may be a paid offer worth exploring.</p><p class="a">You don’t need to teach business. Bring your subject, and we’ll look at the possibilities.</p></details>
         <details class="faq"><summary>Should I come if I’ve attended one of your workshops before?<i aria-hidden="true"></i></summary><p class="a">Yes, especially if you’re still deciding what to sell or haven’t put your offer out yet.</p><p class="a">AI has changed the order I’d recommend. We’ll follow that through to finding potential buyers, choosing your price and writing the email that puts your work up for sale.</p></details>
@@ -2066,14 +2109,14 @@ html.wn-wait .iph.win .vplay{opacity:0}
       <p>Join me for three days. We’ll work on what you could sell, who could buy it, and the sales email you can use to find out.</p>
       <div class="recap3" aria-hidden="true"><figure><img src="img/slides/s1.webp" alt="" loading="lazy"><figcaption>Day 1 · what to sell</figcaption></figure><figure><img src="img/slides/s4.webp" alt="" loading="lazy"><figcaption>Day 2 · the price</figcaption></figure><figure><img src="img/slides/s6.webp" alt="" loading="lazy"><figcaption>Day 3 · the sales email</figcaption></figure></div>
       <ul class="vstack">
-        <li><b>Three live sessions with me</b><span>Nov 17 to 19 · about 90 minutes each</span></li>
+        <li><b>Three live sessions with me</b><span>Dec 8 to 10 · about 90 minutes each</span></li>
         <li><b>Your exit number</b><span>after you register</span></li>
-        <li><b>A short preparation task most days</b><span>from Nov 4 · about 15 minutes each</span></li>
+        <li><b>A short preparation task most days</b><span>from Nov 25 · about 15 minutes each</span></li>
         <li><b>Selected work reviewed live</b><span>so you can see what I’d change</span></li>
         <li><b>A chance at one of five 1:1 sessions</b><span>live attendees, drawn at the end of Day 3</span></li>
       </ul>
       <div class="vtotal"><span>Your seat</span><b>Free</b></div>
-      <div class="askt"><b>The Exit Plan · Nov 17 to 19</b><span>Three live sessions · About 90 minutes each · Free on Zoom</span></div>
+      <div class="askt"><b>The Exit Plan · Dec 8 to 10</b><span>Three live sessions · About 90 minutes each · Free on Zoom</span></div>
       <div class="go"><button class="btn open" type="button"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">Yes, I’m coming, free</span><svg class="ar"><use href="#arr"/></svg></button></div>
     </div>
   </div>
@@ -2092,7 +2135,7 @@ html.wn-wait .iph.win .vplay{opacity:0}
         <!-- the invite, as Google Calendar shows it, in her colours: a cursor answers "Yes" -->
         <div class="gi" aria-hidden="true"><div class="gi-in">
           <div class="gi-bar"><svg viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16z M13.5 6.5l4 4" fill="none" stroke="#5f6368" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><svg viewBox="0 0 24 24"><path d="M5 7h14 M10 7V4.5h4V7 M7 7l1 13h8l1-13" fill="none" stroke="#5f6368" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><svg viewBox="0 0 24 24"><path d="M3.5 6.5h17v11h-17z M3.5 7l8.5 6 8.5-6" fill="none" stroke="#5f6368" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><svg viewBox="0 0 24 24"><circle cx="12" cy="5.5" r="1.6" fill="#5f6368"/><circle cx="12" cy="12" r="1.6" fill="#5f6368"/><circle cx="12" cy="18.5" r="1.6" fill="#5f6368"/></svg><svg viewBox="0 0 24 24"><path d="M6 6l12 12 M18 6 6 18" fill="none" stroke="#5f6368" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          <div class="gi-row gi-t"><i class="gi-sq"></i><div><b>The Exit Plan · Day 1</b><small>Tuesday, November 17 · 12:00 – 1:30pm</small><small>Daily, until Thursday, November 19</small></div></div>
+          <div class="gi-row gi-t"><i class="gi-sq"></i><div><b>The Exit Plan · Day 1</b><small>Tuesday, December 8 · 12:00 – 1:30pm</small><small>Daily, until Thursday, December 10</small></div></div>
           <div class="gi-row"><span class="gi-i"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="12" height="10" rx="2" fill="#F72585"/><path d="M15 11l5-3v8l-5-3z" fill="#F72585"/></svg></span><span class="gi-zoom">Join Zoom Meeting</span></div>
           <div class="gi-row"><span class="gi-i"><svg viewBox="0 0 24 24"><path d="M9 11a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z M2.5 20c.6-3.6 3.2-5.6 6.5-5.6s5.9 2 6.5 5.6 M16 4.6a3.4 3.4 0 0 1 0 6.4 M18 14.6c2 .7 3.2 2.5 3.5 5.4" fill="none" stroke="#5f6368" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="gi-who"><img src="img/ana-hat.webp" alt="" width="40" height="40" loading="lazy"><span><b>Ana Calin</b><small>Organizer</small></span></span></div>
           <div class="gi-row"><span class="gi-i"><svg viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z M10 20.5h4" fill="none" stroke="#5f6368" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><small class="gi-s">30 minutes before</small></div>
@@ -2101,13 +2144,13 @@ html.wn-wait .iph.win .vplay{opacity:0}
         </div>
       </div>
       <div data-r>
-        <div class="tiles" aria-label="Tuesday to Thursday, November 17 to 19">
-          <div><b>17</b><small>Tue</small></div><div><b>18</b><small>Wed</small></div><div><b>19</b><small>Thu</small></div>
+        <div class="tiles" aria-label="Tuesday to Thursday, December 8 to 10">
+          <div><b>8</b><small>Tue</small></div><div><b>9</b><small>Wed</small></div><div><b>10</b><small>Thu</small></div>
         </div>
-        <h2>See you <em class="nw">Tuesday, Nov 17.</em></h2>
+        <h2>See you <em class="nw">Tuesday, Dec 8.</em></h2>
         <p class="line">We’re doing this on Zoom. I once ran a workshop on a fancy platform and spent half of it fixing broken links. That was enough of that.</p>
         <p class="line">Bring your experience, your questions, and something to write on.</p>
-        <p class="ftimes"><b>Tue Nov 17 to Thu Nov 19</b><span>12:00 pm New York · 9:00 am Los Angeles</span><span>5:00 pm London · 7:00 pm Greece</span></p>
+        <p class="ftimes"><b>Tue Dec 8 to Thu Dec 10</b><span>12:00 pm New York · 9:00 am Los Angeles</span><span>5:00 pm London · 7:00 pm Greece</span></p>
         <button class="btn open shine" type="button" id="finalBtn"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">See you Tuesday, Ana!</span><svg class="ar"><use href="#arr"/></svg></button>
         <p class="note">free · live on Zoom</p>
       </div>
@@ -2125,7 +2168,7 @@ html.wn-wait .iph.win .vplay{opacity:0}
   </div>
 </footer>
 
-<div class="mbar" id="mbar"><span class="mcd"><span class="ld"><i></i><b class="md">Nov 17 to 19</b></span><b class="md">12:00 pm New York</b></span><button class="btn open" type="button"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">I’m in, Ana <small class="bq">(it’s free)</small></span><svg class="ar"><use href="#arr"/></svg></button></div>
+<div class="mbar" id="mbar"><span class="mcd"><span class="ld"><i></i><b class="md">Dec 8 to 10</b></span><b class="md">12:00 pm New York</b></span><button class="btn open" type="button"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">I’m in, Ana <small class="bq">(it’s free)</small></span><svg class="ar"><use href="#arr"/></svg></button></div>
 
 <!-- Ana's videos play here (YouTube, no cookies) -->
 <div class="vmodal" id="vmodal" aria-hidden="true"><div class="fr" role="dialog" aria-modal="true" aria-label="Video"></div><button class="x" type="button" aria-label="Close video"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#1A1412" stroke-width="2.2" stroke-linecap="round"><path d="M2 2l10 10M12 2 2 12"/></svg></button></div>
@@ -2139,7 +2182,7 @@ html.wn-wait .iph.win .vplay{opacity:0}
     <img class="mk" src="img/mark.png" alt="" width="76" height="76">
     <button class="x" type="button" aria-label="Close"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#1A1412" stroke-width="2.2" stroke-linecap="round"><path d="M2 2l10 10M12 2 2 12"/></svg></button>
     <form id="join" novalidate>
-      <span class="ey">FREE · 3 DAYS LIVE · NOV 17 TO 19</span>
+      <span class="ey">FREE · 3 DAYS LIVE · DEC 8 TO 10</span>
       <h3 id="dlg-h">Save your free seat</h3>
       <p class="fsub">Let’s start building your own income.</p>
       <div class="field"><label class="flbl" for="jFirst">First name</label><input type="text" id="jFirst" name="first_name" placeholder="Your first name" autocomplete="given-name" required><span class="err">add your first name</span></div>
@@ -2153,7 +2196,7 @@ html.wn-wait .iph.win .vplay{opacity:0}
     <div class="thanks" role="status">
       <span><svg width="26" height="26" viewBox="0 0 16 16" fill="none" stroke="#1A1412" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m3.5 8.5 3 3 6-7"/></svg></span>
       <h3>Your seat is <em>saved.</em></h3>
-      <p>See you Tuesday, Nov 17.</p>
+      <p>See you Tuesday, Dec 8.</p>
     </div>
   </div>
 </div>
@@ -2209,9 +2252,9 @@ html.wn-wait .iph.win .vplay{opacity:0}
     }).catch(function(){});
   }
 
-  /* the visitor's own time, from 2026-11-17 17:00 UTC (12:00 pm New York); hidden if it can't be worked out */
+  /* the visitor's own time, from 2026-12-08 17:00 UTC (12:00 pm New York); hidden if it can't be worked out */
   try {
-    var parts = new Intl.DateTimeFormat('en-US',{weekday:'short',hour:'numeric',minute:'2-digit',hour12:true}).formatToParts(new Date(Date.UTC(2026,10,17,17,0)));
+    var parts = new Intl.DateTimeFormat('en-US',{weekday:'short',hour:'numeric',minute:'2-digit',hour12:true}).formatToParts(new Date(Date.UTC(2026,11,8,17,0)));
     var p = {}; parts.forEach(function(x){p[x.type]=x.value});
     if (p.weekday && p.hour && p.minute && p.dayPeriod) {
       var lt = p.weekday + ' ' + p.hour + ':' + p.minute + ' ' + p.dayPeriod.toLowerCase();
@@ -2279,8 +2322,15 @@ html.wn-wait .iph.win .vplay{opacity:0}
     if (form.parentNode === hslot || form.parentNode === rslot) form.parentNode.style.minHeight = form.offsetHeight + 'px';
     h.style.minHeight = ''; h.appendChild(form); perf(); railOn();
   }
-  function perf(){ [hcard, rcard].forEach(function(t){ var hd = t.querySelector('.tk-head'); if (t.offsetParent) t.style.setProperty('--py', (hd.offsetTop + hd.offsetHeight - 1) + 'px') }) }
-  if (window.ResizeObserver) { var tro = new ResizeObserver(function(){ perf() }); [hcard, rcard].forEach(function(t){ tro.observe(t.querySelector('.tk-head')) }) }
+  function tkSvg(w, h, py){ var r = 20, n = 12, W = w + 12, H = h + 13;
+    function shape(x, y){ return 'M' + (x + r) + ' ' + y + 'H' + (x + w - r) + 'a' + r + ' ' + r + ' 0 0 1 ' + r + ' ' + r + 'V' + (y + py - n) + 'a' + n + ' ' + n + ' 0 0 0 0 ' + (2 * n) +
+      'V' + (y + h - r) + 'a' + r + ' ' + r + ' 0 0 1 -' + r + ' ' + r + 'H' + (x + r) + 'a' + r + ' ' + r + ' 0 0 1 -' + r + ' -' + r + 'V' + (y + py + n) + 'a' + n + ' ' + n + ' 0 0 0 0 -' + (2 * n) + 'V' + (y + r) + 'a' + r + ' ' + r + ' 0 0 1 ' + r + ' -' + r + 'Z' }
+    var svg = '<svg xmlns="http://www.w3.org/2000/svg" width="' + W + '" height="' + H + '" viewBox="0 0 ' + W + ' ' + H + '"><path d="' + shape(9, 10) + '" fill="#FFD400" stroke="#FFD400" stroke-width="3"/><path d="' + shape(2, 2) + '" fill="#FFF8EE" stroke="#1A1412" stroke-width="3"/></svg>';
+    return 'url("data:image/svg+xml,' + encodeURIComponent(svg) + '")' }
+  function perf(){ [hcard, rcard].forEach(function(t){ var hd = t.querySelector('.tk-head'); if (!t.offsetParent) return;
+    var py = hd.offsetTop + hd.offsetHeight - 1; t.style.setProperty('--py', py + 'px');
+    var w = t.offsetWidth, h = t.offsetHeight; if (w && h && (t._tw !== w || t._th !== h || t._tp !== py)) { t._tw = w; t._th = h; t._tp = py; t.style.setProperty('--tkbg', tkSvg(w, h, py)) } }) }
+  if (window.ResizeObserver) { var tro = new ResizeObserver(function(){ perf() }); [hcard, rcard].forEach(function(t){ tro.observe(t.querySelector('.tk-head')); tro.observe(t) }) }
   function railOn(){ document.getElementById('v2rail').classList.toggle('on', form.parentNode === rslot) }
   /* the frozen ticket is centred on the screen top to bottom: its height sets its sticky top (v2.css .tksticky) */
   var tks = rcard.closest ? rcard.closest('.tksticky') : null;
@@ -2432,6 +2482,6 @@ html.wn-wait .iph.win .vplay{opacity:0}
 </script>
 <script src="assets/vendor/gsap.min.js"></script>
 <script src="assets/vendor/ScrollTrigger.min.js"></script>
-<script src="assets/reg-motion.js?v=10"></script>
+<script src="assets/reg-motion.js?v=11"></script>
 </body>
 </html>

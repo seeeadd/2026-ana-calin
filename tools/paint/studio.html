@@ -415,14 +415,27 @@ svg[data-art]{background:transparent;display:block}
 </svg>
 
 <svg data-art="winh-flora" width="856" height="548" viewBox="96 30 856 548">
-  <g data-mat="shadow" fill="#8E7F70" data-density=".45"><path d="M300 548 H816 L808 556 H306 Z"/></g>
-  <g data-mat="gouache" data-angle="0"><path d="M286 500 H826 L812 548 H300 Z" fill="#C9614E"/></g>
-  <g data-mat="wash" fill="#A9483A" data-density=".55"><path d="M290 512 H822 L819 520 H293 Z"/></g>
-  <g data-mat="wash" fill="#7E9A4E" data-rim="2.2" id="winhLeaves"></g>
-  <g data-mat="gouache" data-angle="0" id="winhFlowers"></g>
-  <g data-mat="wash" fill="#E05A92" data-rim="2" data-density=".8" id="winhBoug"></g>
-  <g data-mat="wash" fill="#A8245E" data-rim="1.6" data-density=".55" id="winhBoug2"></g>
-  <g data-mat="ink" stroke="#3A2A22" stroke-width="1.1" fill="none"><path d="M286 500 H826 L812 548 H300 Z"/></g>
+  <!-- the flower box: a terracotta trough with a rolled rim, a painted blue key band, soil, trailing ivy; geraniums with
+       separate petals, two sunflowers with seed heads, buds; bougainvillea bracts with tiny white centres over the corner -->
+  <g data-mat="shadow" fill="#7E6E62" data-density=".55"><path d="M292 552 H822 L812 566 H300 Z"/><path d="M262 498 H852 V506 H262 Z"/></g>
+  <g data-mat="gouache" data-angle="0" data-streak=".02"><path d="M282 504 H832 L818 552 H296 Z" fill="#C25B47"/></g>
+  <g data-mat="wash" fill="#9E4434" data-density=".7"><path d="M296 540 H820 L818 552 H296 Z M282 504 H300 L310 552 H296 Z"/></g>
+  <g data-mat="gouache" data-angle="0"><path d="M274 494 H840 Q846 494 846 500 V506 Q846 510 840 510 H274 Q268 510 268 506 V500 Q268 494 274 494 Z" fill="#D56F58"/></g>
+  <g data-mat="white" fill="none" stroke="#F6C9B8" stroke-width="2.2" stroke-linecap="round"><path d="M278 498 H836" opacity=".8"/><path d="M300 512 L312 548" stroke-width="1.4" opacity=".6"/></g>
+  <g data-mat="wash" fill="#3C6FB0" data-density=".85" id="flKey"></g>
+  <g data-mat="wash" fill="#5A3E2A" data-density=".8"><path d="M286 492 C360 484 460 490 560 486 C660 482 760 490 830 492 L830 496 H286 Z"/></g>
+  <g data-mat="gouache" data-angle="40" id="flIvy"></g>
+  <g data-mat="wash" fill="#7E9A4E" data-rim="2.2" id="flLeaves"></g>
+  <g data-mat="ink" stroke="#5E7F3A" stroke-width=".5" fill="none" data-density=".45" id="flVeins"></g>
+  <g data-mat="gouache" data-angle="0" id="flGer"></g>
+  <g data-mat="wash" fill="#A82A44" data-density=".6" id="flGerDk"></g>
+  <g data-mat="gouache" data-angle="30" id="flSun"></g>
+  <g data-mat="wash" fill="#4A2E18" data-rim="2.2" id="flSunC"></g>
+  <g data-mat="ink" fill="#2E2014" stroke="none" data-density=".7" id="flSeeds"></g>
+  <g data-mat="wash" fill="#E05A92" data-rim="2" data-density=".85" id="flBoug"></g>
+  <g data-mat="wash" fill="#A8245E" data-rim="1.6" data-density=".6" id="flBoug2"></g>
+  <g data-mat="white" fill="#FFFDF4" id="flBougW"></g>
+  <g data-mat="ink" stroke="#3A2A22" stroke-width="1.1" fill="none"><path d="M282 504 H832 L818 552 H296 Z"/><path d="M274 494 H840 Q846 494 846 500 V506 Q846 510 840 510 H274 Q268 510 268 506 V500 Q268 494 274 494 Z" stroke-width=".9"/></g>
 </svg>
 
 <!-- hero · her door in Greece: the video sits in the arched opening (x170 y110 w670 h420); the blue door leaf swings open toward us -->
@@ -1149,7 +1162,7 @@ document.fonts.ready.then(() => {
         if (rnd() < .3) B2 += sh; else B += sh }
       if (rnd() < .6) L += `<ellipse cx="${cx + (rnd() - .5) * 30}" cy="${cy + 8 + rnd() * 8}" rx="${8 + rnd() * 4}" ry="${3.6 + rnd() * 1.4}" transform="rotate(${rnd() * 180} ${cx} ${cy + 10})"/>` }
     wl.innerHTML = L; document.getElementById('winFlowers').innerHTML = F; document.getElementById('winBoug').innerHTML = B; document.getElementById('winBoug2').innerHTML = B2;
-    ['Leaves', 'Flowers', 'Boug', 'Boug2'].forEach(k => { const t = document.getElementById('winh' + k); if (t) t.innerHTML = document.getElementById('win' + k).innerHTML }) }
+    }
   const ol = document.getElementById('waOlive');
   if (ol) { let h = ''; const P = t => [430 + t * 156 - t * t * 20, 470 - t * 50 + t * t * 12];
     for (let i = 0; i < 9; i++) { const t = .08 + i * .1, [x, y] = P(t), side = i % 2 ? 1 : -1, a = -18 + side * 48;
@@ -1237,6 +1250,44 @@ document.fonts.ready.then(() => {
   if (sbl) { let B = '', I = ''; for (let c = 0; c < 5; c++) for (let r = 0; r < 4; r++) { if (c === 4 && r === 2) continue; if (rnd() < .12) continue;
       const x = 32 + c * 76 + 4, y = 72 + r * 46 + 4; B += `<rect x="${x}" y="${y}" width="68" height="${38 + (rnd() < .3 ? 0 : 0)}" rx="5"/>`; I += `<path d="M${x + 8} ${y + 14} h${30 + rnd() * 20} M${x + 8} ${y + 26} h${18 + rnd() * 16}"/>` }
     sbl.innerHTML = B; document.getElementById('sitBlockInk').innerHTML = I }
+
+  // the hero window's flower box, in detail
+  const flk = document.getElementById('flKey');
+  if (flk) { let K = '', I = '', L = '', V = '', G = '', GD = '', SU = '', SC = '', SE = '', B = '', B2 = '', BW = '';
+    for (let x = 310; x < 800; x += 26) K += `<path d="M${x} 516 h18 v12 h-12 v-6 h6" fill="none" stroke="#3C6FB0" stroke-width="2.4"/>`;
+    // trailing ivy over the front
+    [[300, 0], [420, 1], [560, 2], [700, 3], [800, 4]].forEach(([x0, k]) => { let x = x0, y = 500;
+      for (let n = 0; n < 6 + (k % 2) * 2; n++) { x += (rnd() - .4) * 14; y += 8 + rnd() * 5; const a = rnd() * 360; I += `<path fill="${n % 2 ? '#6E9A48' : '#5E8A3C'}" d="M${x.toFixed(1)} ${y.toFixed(1)} c-7 -6 -9 -14 0 -16 c9 2 7 10 0 16 Z" transform="rotate(${a.toFixed(0)} ${x.toFixed(1)} ${y.toFixed(1)})"/>` } });
+    // leaves along the box
+    for (let i = 0; i < 40; i++) { const x = 292 + i * 13.5 + (rnd() - .5) * 8, y = 492 - rnd() * 26, a = (rnd() - .5) * 80, rx = 12 + rnd() * 7, ry = 6 + rnd() * 3;
+      L += `<ellipse cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" rx="${rx.toFixed(1)}" ry="${ry.toFixed(1)}" transform="rotate(${a.toFixed(0)} ${x.toFixed(1)} ${y.toFixed(1)})"/>`;
+      V += `<path d="M${(x - rx * .5 * Math.cos(a * Math.PI / 180)).toFixed(1)} ${(y - rx * .5 * Math.sin(a * Math.PI / 180)).toFixed(1)} L${(x + rx * .5 * Math.cos(a * Math.PI / 180)).toFixed(1)} ${(y + rx * .5 * Math.sin(a * Math.PI / 180)).toFixed(1)}"/>` }
+    // geranium clusters: five-petal florets, a darker eye
+    [[316, 466], [384, 458], [470, 470], [532, 456], [604, 468], [668, 458], [742, 470], [802, 460]].forEach(([cx, cy], k) => {
+      const col = ['#E8455A', '#F06A8C', '#D7324A'][k % 3];
+      for (let f = 0; f < 7; f++) { const fx = cx + (rnd() - .5) * 26, fy = cy + (rnd() - .5) * 18;
+        for (let p = 0; p < 5; p++) { const a = p * 72 + rnd() * 20; G += `<ellipse cx="${(fx + Math.cos(a * Math.PI / 180) * 4.2).toFixed(1)}" cy="${(fy + Math.sin(a * Math.PI / 180) * 4.2).toFixed(1)}" rx="3.6" ry="2.6" fill="${col}" transform="rotate(${a.toFixed(0)} ${(fx + Math.cos(a * Math.PI / 180) * 4.2).toFixed(1)} ${(fy + Math.sin(a * Math.PI / 180) * 4.2).toFixed(1)})"/>` }
+        GD += `<circle cx="${fx.toFixed(1)}" cy="${fy.toFixed(1)}" r="1.6"/>` }
+      L += `<path d="M${cx} ${cy + 10} C${cx + 2} ${cy + 20} ${cx - 2} ${cy + 26} ${cx} ${cy + 34}" stroke="#5E7F3A" stroke-width="3" fill="none"/>` });
+    // two sunflowers with layered petals and seed heads
+    [[438, 440, 22], [714, 436, 24]].forEach(([cx, cy, r]) => {
+      L += `<path d="M${cx} ${cy + r * .6} C${cx + 3} ${cy + r + 14} ${cx - 3} ${cy + r + 30} ${cx} ${cy + r + 52}" stroke="#5E7F3A" stroke-width="4.5" fill="none"/><path d="M${cx} ${cy + r + 26} c14 -10 28 -8 34 2 c-12 10 -26 10 -34 -2 Z"/>`;
+      for (let p = 0; p < 18; p++) { const a = p * 20 + rnd() * 8; SU += `<ellipse cx="${cx}" cy="${cy - r * .78}" rx="${(r * .2).toFixed(1)}" ry="${(r * .52).toFixed(1)}" fill="${p % 2 ? '#EFB321' : '#F5C518'}" transform="rotate(${a.toFixed(0)} ${cx} ${cy})"/>` }
+      for (let p = 0; p < 12; p++) { const a = p * 30 + 10; SU += `<ellipse cx="${cx}" cy="${cy - r * .62}" rx="${(r * .16).toFixed(1)}" ry="${(r * .4).toFixed(1)}" fill="#E2A214" transform="rotate(${a} ${cx} ${cy})"/>` }
+      SC += `<circle cx="${cx}" cy="${cy}" r="${(r * .48).toFixed(1)}"/>`;
+      for (let q = 2; q < r * .46; q += 2.4) for (let k = 0; k < q * 1.5; k++) { const a = k / (q * 1.5) * 6.283 + q; SE += `<circle cx="${(cx + Math.cos(a) * q).toFixed(1)}" cy="${(cy + Math.sin(a) * q).toFixed(1)}" r=".9"/>` } });
+    // a few buds
+    [[356, 446], [580, 444], [778, 448]].forEach(([x, y]) => { G += `<ellipse cx="${x}" cy="${y}" rx="4" ry="6" fill="#C9354E"/>`; L += `<path d="M${x} ${y + 5} V${y + 30}" stroke="#5E7F3A" stroke-width="2" fill="none"/>` });
+    // bougainvillea: papery three-bract clusters with tiny white florets
+    for (let i = 0; i < 64; i++) { const t = Math.pow(rnd(), 1.25), cx = 150 + t * 300 + (rnd() - .5) * 30, cy = 40 + (1 - t) * (t < .25 ? 180 + rnd() * 120 : 60) + (rnd() - .5) * 30;
+      for (let j = 0; j < 3; j++) { const a = j * 120 + rnd() * 30, x = cx + Math.cos(a * Math.PI / 180) * 5, y = cy + Math.sin(a * Math.PI / 180) * 5, r = 5 + rnd() * 2.6;
+        const sh = `<path d="M${x.toFixed(1)} ${y.toFixed(1)} c${r.toFixed(1)} ${(-r * 1.3).toFixed(1)} ${(r * 2.1).toFixed(1)} ${(-r * .2).toFixed(1)} ${(r * .2).toFixed(1)} ${(r * 1.5).toFixed(1)} c${(-r * 1.5).toFixed(1)} ${(r * .4).toFixed(1)} ${(-r * 1.7).toFixed(1)} ${(-r).toFixed(1)} ${(-r * .2).toFixed(1)} ${(-r * 1.5).toFixed(1)} Z" transform="rotate(${a.toFixed(0)} ${x.toFixed(1)} ${y.toFixed(1)})"/>`;
+        if (rnd() < .32) B2 += sh; else B += sh }
+      if (rnd() < .5) BW += `<circle cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" r="1.5"/>`;
+      if (rnd() < .55) L += `<ellipse cx="${(cx + (rnd() - .5) * 30).toFixed(1)}" cy="${(cy + 8 + rnd() * 8).toFixed(1)}" rx="${(8 + rnd() * 4).toFixed(1)}" ry="${(3.6 + rnd() * 1.4).toFixed(1)}" transform="rotate(${(rnd() * 180).toFixed(0)} ${cx.toFixed(1)} ${(cy + 10).toFixed(1)})"/>` }
+    flk.innerHTML = K; document.getElementById('flIvy').innerHTML = I; document.getElementById('flLeaves').innerHTML = L; document.getElementById('flVeins').innerHTML = V;
+    document.getElementById('flGer').innerHTML = G; document.getElementById('flGerDk').innerHTML = GD; document.getElementById('flSun').innerHTML = SU; document.getElementById('flSunC').innerHTML = SC;
+    document.getElementById('flSeeds').innerHTML = SE; document.getElementById('flBoug').innerHTML = B; document.getElementById('flBoug2').innerHTML = B2; document.getElementById('flBougW').innerHTML = BW }
   document.body.dataset.ready = '1';
 });
 </script>

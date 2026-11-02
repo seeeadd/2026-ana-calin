@@ -57,30 +57,6 @@
     return self;
   }
 
-  /* the hero: her window's shutters are closed at first; they rattle on the latch, swing open toward us with a settle,
-     a few bougainvillea petals fall, and the play button arrives */
-  (function () {
-    var w = $('.iph.win'); if (!w) return;
-    var L = $('.wn-sh.l', w), R = $('.wn-sh.r', w), play = $('.vplay', w), pets = $$('.wn-pet', w);
-    gsap.set([L, R], { rotationY: 0 }); gsap.set(play, { opacity: 0, scale: .7 });
-    document.documentElement.classList.remove('wn-wait');
-    var tl = gsap.timeline({ delay: .45 });
-    tl.to(L, { rotationY: -4, duration: .08, yoyo: true, repeat: 3, ease: 'sine.inOut' })
-      .to(R, { rotationY: 4, duration: .08, yoyo: true, repeat: 3, ease: 'sine.inOut' }, '<.04')
-      .to(L, { rotationY: -76, duration: 1.05, ease: 'back.out(1.3)' }, '+=.06')
-      .to(R, { rotationY: 76, duration: 1.05, ease: 'back.out(1.3)' }, '<.09')
-      .to(L, { rotationY: -72, duration: .5, ease: 'sine.inOut' }, '>-.2')
-      .to(R, { rotationY: 72, duration: .5, ease: 'sine.inOut' }, '<.05')
-      .to(play, { opacity: 1, scale: 1, duration: .55, ease: 'back.out(2)', clearProps: 'transform' }, 1.1);
-    pets.forEach(function (p, i) {
-      var x0 = 6 + i * 9, drift = 30 + i * 22, o = { t: 0 };
-      tl.fromTo(p, { opacity: 0 }, { opacity: 1, duration: .2 }, .9 + i * .22)
-        .to(o, { t: 1, duration: 2.6 + i * .3, ease: 'none', onUpdate: function () {
-          var t = o.t; gsap.set(p, { x: x0 + drift * t + Math.sin(t * 7 + i) * 14, y: 10 + t * (150 + i * 40), rotation: t * 260 * (i % 2 ? -1 : 1) }) } }, '<')
-        .to(p, { opacity: 0, duration: .5 }, '>-.5');
-    });
-  })();
-
   document.fonts.ready.then(function () {
 
     /* the hero's numbers count once */
