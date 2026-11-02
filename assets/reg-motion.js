@@ -252,6 +252,8 @@
       var fl = $$('.gp-flow path', gp); fl.forEach(function (q) { var l = q.getTotalLength(); q.style.strokeDasharray = l + ' ' + (l + 2); q.style.strokeDashoffset = l });
       var tk = gsap.timeline(), og = { t: 0 };
       tk.from($('.dev', gp), { y: 40, rotation: -2, opacity: 0, duration: .9, ease: 'power3.out' }, 0)
+        .fromTo($('.gp-logo', gp), { scale: 1.8, rotation: -40, opacity: 0 }, { scale: 1, rotation: -10, opacity: 1, duration: .5, ease: 'back.out(2.2)', immediateRender: false }, .7)
+        .to($('.gp-logo', gp), { rotation: -6, duration: 2.6, ease: 'sine.inOut', yoyo: true, repeat: -1 }, 1.3)
         .fromTo(doc, Object.assign({ scale: 1, x: 0, y: 0 }), Object.assign({ duration: 1.2, ease: 'power2.inOut', immediateRender: false }, frame(0, 230, 1)), 1.0)
         .to(doc, Object.assign({ duration: 1.1, ease: 'power2.inOut' }, frame(.3, 300, .45)), 2.5)
         .to(og, { t: 1, duration: .8, ease: 'power1.inOut', onUpdate: function () { gr.style.strokeDashoffset = L * (1 - og.t) } }, 3.5)

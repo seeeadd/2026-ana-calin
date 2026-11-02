@@ -1830,6 +1830,8 @@ html.anim-on .stay:not(.in) .tix .t{transform:translate(90px,110px) rotate(0)!im
 .gw-ic svg{border-radius:0}
 .stay .tx-stamp{right:16px!important;top:-30px!important;width:78px!important;height:78px!important}
 @media (max-width:520px){.stay .tix .t{transform:translate(calc(var(--i) * 6px),calc(var(--i) * 38px)) rotate(calc(-6deg + var(--i) * 2deg)) scale(.8)!important}.stay .call{width:96px!important}.stay .ring-w{right:44px!important;top:100px!important}.stay .tx-stamp{right:8px!important;top:-24px!important;width:62px!important;height:62px!important}}
+/* the gift: Ana's Exit Number calculator badge, stamped below the laptop beside the postcard */
+.gp-logo{position:absolute;left:9%;top:63%;width:23%;height:auto;z-index:5;transform:rotate(-10deg);filter:drop-shadow(0 10px 14px rgba(90,40,60,.3))}
 /* the window in depth: the video sits back in the wall (lintel, jambs and sill drawn as a recess, shadow from the top
    left), the shutters have a painted edge and darken as they turn away from the light, and they cast soft shadows on
    the wall. The opening runs on CSS alone, from the first paint, so it never waits for the scripts. */
@@ -2270,7 +2272,7 @@ html.anim-on .stay:not(.in) .tix .t{transform:translate(90px,110px) rotate(0)!im
           <svg class="gp-str" viewBox="0 0 100 60" preserveAspectRatio="none"><path d="M88 14 C76 20 70 32 66 44"/></svg>
           <div class="gp-tag"><img src="img/vip/paint/gift-tag.webp" alt="" loading="lazy"><span class="gp-num"><b>$3,000</b><small>a month</small></span></div></div>
         <svg class="gp-flow" viewBox="0 0 100 100" preserveAspectRatio="none" style="position:absolute;left:0;top:0;width:100%;height:100%"><path d="M40 33 C50 33 57 40 60 49"/><path d="M56.6 46.6 L60 49 L61.4 44.6"/></svg>
-        <span class="gp-src">The Exit Number calculator, with a $3,000 goal</span>
+        <img class="gp-logo" src="img/exit-number-calculator-logo.svg" alt="" width="160" height="160" loading="lazy"><span class="gp-src">The Exit Number calculator, with a $3,000 goal</span>
       </div>
       <div class="gtx">
         <span class="eyebrow">Your gift: the Exit Number calculator</span>
@@ -2804,6 +2806,6 @@ html.anim-on .stay:not(.in) .tix .t{transform:translate(90px,110px) rotate(0)!im
 </script>
 <script src="assets/vendor/gsap.min.js"></script>
 <script src="assets/vendor/ScrollTrigger.min.js"></script>
-<script src="assets/reg-motion.js?v=23"></script>
+<script src="assets/reg-motion.js?v=24"></script>
 </body>
 </html>
