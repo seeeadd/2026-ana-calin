@@ -2004,34 +2004,56 @@ section > .tkb .flag span.t{font-weight:500}
 .tkt form .note{margin:3px auto 0!important;padding-left:0!important;font-size:11px!important;line-height:1.45;color:var(--ink3);opacity:.85;text-align:center;max-width:36em}
 .tkt form .note:before{display:none}
 @media (max-width:420px){.tkt form .fl-ticks{gap:4px 10px}.tkt form .fl-ticks li{font-size:12px}}
-/* the sticky bar as frosted glass, and slimmer once you scroll (Sean: "a lot more narrow, thinner, and smaller once I
-   scroll", "a bit more glassmorphism"): at the top it is the full bar; scrolled, it becomes a thin pill, the eyebrow and
-   the "Starts in" label fold away, the countdown goes to one line, and the button gets smaller */
-.fb-bar{position:relative;background:linear-gradient(180deg,rgba(255,255,255,.1),rgba(255,255,255,0) 55%),linear-gradient(90deg,rgba(247,37,133,.08),rgba(255,212,0,.05)),rgba(32,20,21,.8);
-  backdrop-filter:blur(22px) saturate(1.7);-webkit-backdrop-filter:blur(22px) saturate(1.7);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.18),inset 0 0 0 1px rgba(255,255,255,.1),0 18px 40px -20px rgba(26,20,18,.55);
-  transition:width .45s var(--ease),padding .45s var(--ease),gap .45s var(--ease),border-radius .45s var(--ease),background-color .45s}
+/* the sticky bar as real frosted glass (Sean: "no depth", "not a fan of the color"): a light pane of glass over the
+   page, a white top edge catching the light, a glossy sheen on its upper half, a soft pink-tinted shadow under it; dark
+   ink on it. Slimmer once you scroll ("narrow, thinner, smaller"), the "Free 3-day live workshop" line stays */
+.fb-bar{position:relative;color:var(--ink);
+  background:radial-gradient(120% 160% at 0% 0%,rgba(255,184,217,.35),transparent 55%),radial-gradient(90% 160% at 100% 100%,rgba(255,212,0,.22),transparent 60%),linear-gradient(180deg,rgba(255,255,255,.74),rgba(255,250,242,.5));
+  backdrop-filter:blur(20px) saturate(1.8);-webkit-backdrop-filter:blur(20px) saturate(1.8);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.95),inset 0 0 0 1px rgba(255,255,255,.55),inset 0 -1px 0 rgba(26,20,18,.05),0 0 0 1px rgba(26,20,18,.07),0 2px 4px rgba(26,20,18,.05),0 14px 28px -12px rgba(150,40,90,.25),0 32px 60px -28px rgba(26,20,18,.3);
+  transition:width .45s var(--ease),padding .45s var(--ease),gap .45s var(--ease),border-radius .45s var(--ease)}
+.fb-bar:before{content:"";position:absolute;left:1px;right:1px;top:1px;height:48%;border-radius:inherit;border-bottom-left-radius:40% 30%;border-bottom-right-radius:40% 30%;background:linear-gradient(180deg,rgba(255,255,255,.6),rgba(255,255,255,0));pointer-events:none;z-index:-1}
+.fb-ic{box-shadow:0 0 0 2px #fff,0 6px 12px -6px rgba(26,20,18,.45)}
+.fb-t small{color:#D81B6E}
+.fb-t b{color:var(--ink)}
+.fb-cd{border-left-color:rgba(26,20,18,.1)!important}
+.fb-cdk{color:var(--ink3)}
+.cdu{background:rgba(255,255,255,.7);box-shadow:inset 0 1px 0 #fff,0 0 0 1px rgba(26,20,18,.08),0 3px 6px -3px rgba(26,20,18,.18)}
+.cdu b{color:var(--ink)}
+.cdu small{color:var(--ink3)}
+.cdu.s{background:linear-gradient(180deg,#FFE04D,#FFD400);box-shadow:inset 0 1px 0 rgba(255,255,255,.7),0 0 0 1px rgba(150,110,0,.25),0 3px 8px -3px rgba(180,130,0,.45)}
+.cdu.s b{color:var(--ink)}
+.cdu.s small{color:rgba(26,20,18,.65)}
 .fb{transition:padding .45s var(--ease)}
-.fb-ic,.fb-t b,.cdu,.cdu b,.fb .btn.sm,.fb .btn.sm .sf-b,.fb .btn.sm .sf-b svg,.fb-cd{transition:all .45s var(--ease)}
-.fb-t small,.fb-cdk{transition:opacity .25s,max-height .45s var(--ease),max-width .45s var(--ease),margin .45s var(--ease)}
-.fb-t small{max-height:14px;overflow:hidden}
-.fb-cdk{max-width:120px;overflow:hidden}
+.fb-ic,.fb-t,.fb-t b,.fb-t small,.cdu,.cdu b,.fb .btn.sm,.fb .btn.sm .sf-b,.fb .btn.sm .sf-b svg,.fb-cd{transition:all .45s var(--ease)}
+.fb-cdk{transition:opacity .25s,max-width .45s var(--ease),margin .45s var(--ease);max-width:120px;overflow:hidden}
 .fb.min{padding-top:8px}
-.fb.min .fb-bar{width:min(840px,100%);padding:4px 4px 4px 5px;gap:12px;border-radius:999px;background-color:rgba(32,20,21,.74)}
-.fb.min .fb-ic{width:32px;height:32px;border-radius:50%}
-.fb.min .fb-t{gap:0}
-.fb.min .fb-t small{max-height:0;opacity:0}
-.fb.min .fb-t b{font-size:16px}
+.fb.min .fb-bar{width:min(880px,100%);padding:4px 4px 4px 5px;gap:12px;border-radius:999px}
+.fb.min .fb-ic{width:34px;height:34px;border-radius:50%}
+.fb.min .fb-t{gap:3px}
+.fb.min .fb-t small{font-size:9px;letter-spacing:.14em}
+.fb.min .fb-t b{font-size:15.5px}
 .fb.min .fb-cd{gap:4px;padding-left:12px;margin-right:2px}
-.fb.min .fb-cdk{max-width:12px;margin-right:0;opacity:1;color:transparent}
-.fb.min .cdu{flex-direction:row;align-items:baseline;gap:2px;width:auto;height:28px;padding:0 7px;border-radius:999px;align-items:center}
+.fb.min .fb-cdk{max-width:0;margin-right:-4px;opacity:0}
+.fb.min .cdu{flex-direction:row;align-items:center;gap:2px;width:auto;height:28px;padding:0 8px;border-radius:999px}
 .fb.min .cdu b{font-size:13.5px}
 .fb.min .cdu small{margin:0;font-size:0;letter-spacing:0;text-transform:none}
-.fb.min .cdu small:after{font-size:10.5px;font-weight:700;color:rgba(255,248,238,.65)}
-.fb.min .cdu:nth-child(2) small:after{content:"d"}.fb.min .cdu:nth-child(3) small:after{content:"h"}.fb.min .cdu:nth-child(4) small:after{content:"m"}.fb.min .cdu:nth-child(5) small:after{content:"s";color:rgba(255,212,0,.8)}
-.fb.min .btn.sm{height:36px;font-size:13.5px;padding-right:14px}
-.fb.min .btn.sm .sf-b{width:26px;height:26px}
-.fb.min .btn.sm .sf-b svg{width:20px;height:20px}
+.fb.min .cdu small:after{font-size:10.5px;font-weight:700;color:var(--ink3)}
+.fb.min .cdu:nth-child(2) small:after{content:"d"}.fb.min .cdu:nth-child(3) small:after{content:"h"}.fb.min .cdu:nth-child(4) small:after{content:"m"}.fb.min .cdu:nth-child(5) small:after{content:"s";color:rgba(26,20,18,.65)}
+.fb.min .btn.sm{height:38px;font-size:13.5px;padding-right:14px}
+.fb.min .btn.sm .sf-b{width:28px;height:28px}
+.fb.min .btn.sm .sf-b svg{width:21px;height:21px}
+/* the seat ticket, less piled up on the left (Sean: "too much going on on the left... send some stuff on the right"):
+   "just saved a seat" becomes a small live pill on the ticket's top edge, right side, and "Seat reserved for <name>"
+   sits on the right of the First name label, next to the field it fills from */
+.tkt form{position:relative}
+.tkt form .fl-seat{position:absolute;top:-2px;right:2px;margin:0;gap:6px;font-size:12px;white-space:nowrap;z-index:1}
+.tkt form .fl-seat svg{width:24px;height:12px}
+.tkt form .fl-who{font-size:18px;max-width:7.5em;overflow:hidden;text-overflow:clip;vertical-align:bottom}
+.htk .tkt .just:not([hidden]){position:absolute;top:-15px;right:22px;z-index:3;margin:0;display:flex;align-items:center;gap:7px;padding:6px 12px 6px 10px;border-radius:999px;background:#fff;font-size:12.5px;white-space:nowrap;box-shadow:0 0 0 1.5px var(--ink),0 8px 16px -8px rgba(26,20,18,.45)}
+.v2rail .tkt form .fl-seat svg{display:none}.v2rail .tkt form .fl-seat{font-size:11.5px;gap:5px}.v2rail .tkt form .fl-who{font-size:17px}
+@media (max-width:360px){.tkt form .fl-seat{position:static;margin:0 0 8px}}
+@media (max-width:640px){.htk .tkt .just:not([hidden]){right:14px;font-size:11.5px;padding:5px 10px 5px 9px}}
 </style>
 </head>
 <body>
