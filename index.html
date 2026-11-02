@@ -2973,9 +2973,15 @@ html.bdg-js .bdg.in{animation:bdgIn .6s cubic-bezier(.2,1.5,.4,1) both}
   /* the form moves across as soon as the hero ticket's button slides under the floating bar (Sean: "the form doesn't
      appear right away"); only the ticks and small print are left in the hero ticket by then */
   function homeSlot(){ return (wide.matches && hcard.getBoundingClientRect().bottom < 270) ? rslot : hslot }
+  /* the form lives in whichever ticket is on screen. While someone is typing it stays put, but only as long as the ticket
+     it is in can still be seen: once they scroll that ticket away, it moves (what they typed moves with it), so a
+     visible ticket is never left empty */
+  function shown(card){ var r = card.getBoundingClientRect(); return card.offsetParent && r.bottom > 90 && r.top < innerHeight }
   function placeForm(){
-    if (modal.classList.contains('open') || (form.contains(document.activeElement) && form.parentNode !== dlg)) return;
+    if (modal.classList.contains('open')) return;
     var h = homeSlot(); if (form.parentNode === h) return;
+    var here = form.parentNode === rslot ? rcard : form.parentNode === hslot ? hcard : null;
+    if (here && form.contains(document.activeElement) && shown(here)) return;
     if (form.parentNode === hslot || form.parentNode === rslot) form.parentNode.style.minHeight = form.offsetHeight + 'px';
     h.style.minHeight = ''; h.appendChild(form); perf(); railOn();
   }
