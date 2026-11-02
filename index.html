@@ -1691,13 +1691,10 @@ mark.sk{color:var(--ink);font-weight:700;padding:0 2px;margin:0 -2px;-webkit-box
 /* backgrounds: one painted texture per section (the VIP page's family: her village's stucco, halftone, gingham, linen,
    kraft grain), soft blooms of her yellow and pink, and scalloped awning edges where the sand sections begin */
 .hero{background-image:radial-gradient(46% 42% at 26% 44%,rgba(255,212,0,.18),rgba(255,212,0,0) 70%),radial-gradient(30% 30% at 92% 12%,rgba(247,37,133,.07),rgba(247,37,133,0) 70%),url(img/vip/paint/tx-stucco.webp);background-size:auto,auto,460px}
-.who{background-image:url(img/vip/paint/tx-halftone.webp);background-repeat:no-repeat;background-position:right -260px top -180px;background-size:820px auto}
 .days{background-image:radial-gradient(rgba(26,20,18,.13) 1.1px,transparent 1.4px);background-size:26px 26px;background-position:13px 13px}
 .sand{position:relative;background-color:var(--sand)}
 .where{background-image:linear-gradient(rgba(234,223,207,.82),rgba(234,223,207,.82)),url(img/vip/paint/tx-gingham.webp);background-size:auto,230px}
 .life{background-image:radial-gradient(40% 50% at 12% 40%,rgba(247,37,133,.08),rgba(247,37,133,0) 70%),url(img/vip/paint/tx-linen.webp);background-size:auto,380px}
-.host{background-image:radial-gradient(38% 46% at 86% 50%,rgba(255,212,0,.22),rgba(255,212,0,0) 70%),url(img/vip/paint/tx-halftone.webp);background-repeat:no-repeat;background-position:0 0,left -320px bottom -260px;background-size:auto,760px auto}
-.bring{background-image:repeating-linear-gradient(180deg,rgba(0,0,0,0) 0 39px,rgba(120,150,190,.14) 39px 40px)}
 .gift .gcard{background-image:url(img/vip/paint/tx-grain.webp)}
 .fit{background-image:linear-gradient(rgba(234,223,207,.86),rgba(234,223,207,.86)),url(img/vip/paint/tx-gingham.webp);background-size:auto,190px;filter:hue-rotate(0)}
 .revs{background-image:radial-gradient(34% 40% at 50% 8%,rgba(255,212,0,.16),rgba(255,212,0,0) 70%),url(img/vip/paint/tx-stucco.webp);background-size:auto,460px}
@@ -1705,6 +1702,77 @@ mark.sk{color:var(--ink);font-weight:700;padding:0 2px;margin:0 -2px;-webkit-box
 /* where a sand section begins, its top edge is an awning's scallops */
 .sand:before{content:"";position:absolute;left:0;right:0;top:-17px;height:18px;background:radial-gradient(circle at 50% 0,transparent 0 11px,var(--sand) 11.5px) 0 0/34px 18px repeat-x;pointer-events:none}
 .sand.where:before{background:radial-gradient(circle at 50% 0,transparent 0 11px,#EADFCF 11.5px) 0 0/34px 18px repeat-x}
+/* backdrops in Ana's colours, behind pictures only (never behind text): a rising sun with a dotted halo and slowly
+   turning rays (the VIP page's sun), a full sun, a Greek arch, a band of sea. Each section gets one. */
+.bdh{position:relative}
+.bd{position:absolute;pointer-events:none;z-index:0}
+.bd .r{position:absolute;left:50%;bottom:0;width:250%;aspect-ratio:2/1;transform:translateX(-50%);transform-origin:50% 100%;background:repeating-conic-gradient(from -90deg at 50% 100%,var(--ray) 0deg 3deg,transparent 3deg 9deg);-webkit-mask-image:radial-gradient(farthest-side at 50% 100%,#000 22%,transparent 90%);mask-image:radial-gradient(farthest-side at 50% 100%,#000 22%,transparent 90%)}
+.bd .d{position:absolute;inset:0;border-radius:50% 50% 0 0/100% 100% 0 0;background:radial-gradient(farthest-side at 50% 100%,var(--c1) 0,var(--c2) 88%,var(--c3) 100%)}
+.bd .d:after{content:"";position:absolute;left:-24px;right:-24px;top:-24px;bottom:0;border-radius:50% 50% 0 0/100% 100% 0 0;background:radial-gradient(circle,var(--c3) 1.6px,transparent 2.1px) 0 0/9px 9px;-webkit-mask-image:radial-gradient(farthest-side at 50% 100%,transparent 90%,#000 92%,transparent 100%);mask-image:radial-gradient(farthest-side at 50% 100%,transparent 90%,#000 92%,transparent 100%)}
+.bd.sun{aspect-ratio:2/1;--ray:rgba(255,212,0,.2);--c1:#FFE88E;--c2:#FFDA55;--c3:#FFD13A}
+.bd.sun.pk{--ray:rgba(247,37,133,.1);--c1:#FFE1EE;--c2:#FFC6DE;--c3:#FFAED0}
+.bd.full{aspect-ratio:1}
+.bd.full .r{width:300%;aspect-ratio:1;top:50%;bottom:auto;transform:translate(-50%,-50%);transform-origin:50% 50%;background:repeating-conic-gradient(from 0deg at 50% 50%,var(--ray) 0deg 3deg,transparent 3deg 9deg);-webkit-mask-image:radial-gradient(closest-side,#000 30%,transparent 100%);mask-image:radial-gradient(closest-side,#000 30%,transparent 100%)}
+.bd.full .d,.bd.full .d:after{border-radius:50%}
+.bd.full .d{background:radial-gradient(circle at 42% 38%,var(--c1) 0,var(--c2) 75%,var(--c3) 100%)}
+.bd.full .d:after{bottom:-24px;-webkit-mask-image:radial-gradient(closest-side,transparent 90%,#000 92%,transparent 100%);mask-image:radial-gradient(closest-side,transparent 90%,#000 92%,transparent 100%)}
+.bd.arch{border-radius:999px 999px 0 0;background:linear-gradient(180deg,var(--a1,#FFC6DE),var(--a2,#FFE1EE))}
+.bd.arch:after{content:"";position:absolute;inset:-16px -16px 0;border-radius:999px 999px 0 0;background:radial-gradient(circle,var(--a3,#FFAED0) 1.5px,transparent 2px) 0 0/9px 9px;-webkit-mask-image:radial-gradient(farthest-side at 50% 50%,transparent 0);-webkit-mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);padding:12px 12px 0;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0)}
+.bd.arch.bl{--a1:#BFD7EC;--a2:#E2EEF8;--a3:#9DBEDD}
+.bd.sea{height:120px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='120' viewBox='0 0 160 120'%3E%3Cpath d='M0 30 C20 18 40 18 60 30 S100 42 120 30 S150 20 160 26 V120 H0Z' fill='%23BFD7EC'/%3E%3Cpath d='M0 62 C20 50 40 50 60 62 S100 74 120 62 S150 52 160 58 V120 H0Z' fill='%239DBEDD'/%3E%3Cpath d='M0 94 C20 82 40 82 60 94 S100 106 120 94 S150 84 160 90 V120 H0Z' fill='%237EA6D0'/%3E%3C/svg%3E") 0 0/160px 120px repeat-x}
+@media (prefers-reduced-motion:no-preference){.bd .r{animation:bdTurn 200s linear infinite}.bd.full .r{animation-name:bdTurnC}}
+@keyframes bdTurn{to{transform:translateX(-50%) rotate(360deg)}}
+@keyframes bdTurnC{to{transform:translate(-50%,-50%) rotate(360deg)}}
+/* backgrounds, one idea per section:
+   hero: her village along the bottom, warm light on the wall · days: the sky moves with the days (sunrise, midday,
+   sunset over the sea) · where: three roads, one from each card, meeting at the button · host: the Aegean in a Greek
+   arch behind her photo · life: the sun's arc from morning to evening · bring: her editing marks at the edges ·
+   gift: the life you want (sunset sea) behind the laptop · wins: a pinboard · the 1:1s: the call rings out ·
+   see you Tuesday: the sun rising over the sea behind her photo */
+.hero{background-image:linear-gradient(115deg,rgba(255,212,0,0) 30%,rgba(255,212,0,.1) 45%,rgba(255,212,0,0) 62%),radial-gradient(46% 42% at 26% 44%,rgba(255,212,0,.16),rgba(255,212,0,0) 70%),url(img/vip/paint/tx-stucco.webp)!important;background-size:auto,auto,460px!important}
+.bk-vil{position:absolute;left:0;right:0;bottom:0;width:100%;height:170px;opacity:.6;pointer-events:none;z-index:0}
+.hero .hwrap{position:relative;z-index:1}
+.stage .sky{position:absolute;inset:0;overflow:hidden}
+.sky.s1{background:linear-gradient(180deg,#FFF5DA 0%,#FFE7C2 60%,#FFD9AE 100%)}
+.sky.s2{background:linear-gradient(180deg,#D6E8F6 0%,#EEF4F4 62%,#FFF6E6 100%)}
+.sky.s3{background:linear-gradient(180deg,#FFD3E5 0%,#FFCBB0 58%,#F9B98A 76%)}
+.sky .cl{position:absolute;height:34px;border-radius:999px;background:#fff;opacity:.9;box-shadow:24px -14px 0 -2px #fff,52px 0 0 -6px #fff}
+.sky .sea{position:absolute;left:0;right:0;bottom:0;height:24%;background:linear-gradient(180deg,#7EA6D0,#5E8FC6);box-shadow:0 -1px 0 rgba(255,255,255,.6)}
+.sky .sea:before{content:"";position:absolute;left:30%;right:30%;top:14%;height:40%;background:repeating-linear-gradient(180deg,rgba(255,226,170,.75) 0 3px,transparent 3px 11px);-webkit-mask-image:linear-gradient(90deg,transparent,#000 30%,#000 70%,transparent);mask-image:linear-gradient(90deg,transparent,#000 30%,#000 70%,transparent)}
+.bd.sun.st{--ray:rgba(247,37,133,.12);--c1:#FFE0A8;--c2:#FFB48A;--c3:#FF9A7A}
+.bd.full{--ray:rgba(255,212,0,.24);--c1:#FFF0A8;--c2:#FFDA55;--c3:#FFD13A}
+.lv .stage .fl{display:none}
+.where{position:relative}
+.where>.wrap{position:relative;z-index:1}
+.bk-roads{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.bk-roads path{fill:none;stroke:#D6C3A6;stroke-width:16;stroke-linecap:round;vector-effect:non-scaling-stroke;opacity:.55}
+.bk-roads path.in{stroke:#F72585;stroke-width:3;stroke-dasharray:2 9;opacity:.7}
+.hst-pic .bk-aeg{position:absolute;left:-16%;right:-16%;top:-10%;width:132%;height:112%;z-index:0}
+.hst-pic figure{position:relative;z-index:1}
+.life{position:relative}
+.life>.wrap{position:relative;z-index:1}
+.bk-arc{position:absolute;left:4%;right:4%;top:40px;width:92%;height:70%;pointer-events:none;z-index:0}
+.bk-arc path{fill:none;stroke:#E0B24A;stroke-width:3;stroke-dasharray:2 10;stroke-linecap:round;vector-effect:non-scaling-stroke;opacity:.7}
+.bk-sun{position:absolute;z-index:0;width:56px;height:56px;border-radius:50%;pointer-events:none}
+.bk-sun.am{left:14%;top:30%;background:radial-gradient(circle at 40% 38%,#FFF0A8,#FFD13A);box-shadow:0 0 0 10px rgba(255,212,0,.15),0 0 0 22px rgba(255,212,0,.07)}
+.bk-sun.pm{right:12%;top:46%;width:48px;height:48px;background:radial-gradient(circle at 40% 38%,#FFC6DE,#F7A0C4);box-shadow:0 0 0 10px rgba(247,37,133,.08)}
+.bring{position:relative}
+.bring>.wrap{position:relative;z-index:1}
+.bk-marks{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.bk-marks path{fill:none;stroke:#F72585;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;opacity:.16;filter:url(#pencil)}
+.gift .gcard{background-image:linear-gradient(90deg,rgba(234,223,207,0) 44%,var(--sand) 60%),radial-gradient(18% 22% at 26% 60%,#FFE7A0 0,#FFC88A 60%,rgba(255,200,138,0) 100%),linear-gradient(180deg,#FFD9E8 0%,#FFE4C2 58%,#9DBEDD 58.3%,#7EA6D0 100%)!important}
+.aw{position:relative;padding:26px 22px 20px;border-radius:22px;background:#E6D3B3 url(img/vip/paint/tx-grain.webp);box-shadow:inset 0 0 0 10px #C9A57A,inset 0 0 0 12px rgba(58,42,34,.35),0 20px 40px -26px rgba(60,40,25,.6)}
+.aw .aw-c{position:relative}
+.aw .aw-c:before{content:"";position:absolute;left:50%;top:-7px;width:14px;height:14px;margin-left:-7px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#FF7AB4,#E0247A 60%,#A8135A);box-shadow:0 3px 4px rgba(60,20,30,.45);z-index:3}
+.aw .aw-c:nth-child(3n+2):before{background:radial-gradient(circle at 35% 35%,#FFF0A0,#FFD400 60%,#C9A000)}
+.ring-w{position:absolute;right:62px;top:120px;width:10px;height:10px;z-index:3;pointer-events:none}
+.ring-w i{position:absolute;left:-90px;top:-90px;width:190px;height:190px;border-radius:50%;border:3px solid rgba(247,37,133,.5);opacity:0}
+@media (prefers-reduced-motion:no-preference){.ring-w i{animation:ringW 2.4s ease-out infinite}.ring-w i:nth-child(2){animation-delay:.8s}.ring-w i:nth-child(3){animation-delay:1.6s}}
+@keyframes ringW{0%{transform:scale(.35);opacity:.9}100%{transform:scale(1.25);opacity:0}}
+.claim .pic .bk-rise{position:absolute;left:50%;bottom:16%;width:150%;transform:translateX(-50%);z-index:0}
+.claim .pic .bk-fsea{position:absolute;left:-25%;right:-25%;bottom:-4%;height:20%;z-index:0;border-radius:0 0 30px 30px;background:linear-gradient(180deg,#9DBEDD,#7EA6D0);-webkit-mask-image:linear-gradient(90deg,transparent,#000 18%,#000 82%,transparent);mask-image:linear-gradient(90deg,transparent,#000 18%,#000 82%,transparent)}
+.claim .pic .fr,.claim .pic .mk{position:relative;z-index:1}
+.claim .pic .mk{position:absolute}
 /* the window in depth: the video sits back in the wall (lintel, jambs and sill drawn as a recess, shadow from the top
    left), the shutters have a painted edge and darken as they turn away from the light, and they cast soft shadows on
    the wall. The opening runs on CSS alone, from the first paint, so it never waits for the scripts. */
@@ -1788,6 +1856,7 @@ mark.sk{color:var(--ink);font-weight:700;padding:0 2px;margin:0 -2px;-webkit-box
 
 <!-- 1. HERO: the client hero layout (Kieran Drew / Chad Carson), component for component, in Ana's skin -->
 <section class="hero" id="hero">
+  <svg class="bk-vil" viewBox="0 0 1440 170" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><path d="M0 170 V150 C200 130 420 142 720 128 C1000 116 1250 134 1440 120 V170 Z" fill="#EFE6D8"/><path d="M86 170 C77 140 80 110 86 92 C92 110 95 140 86 170 Z" fill="#8FAA6A"/><path d="M540 170 C531 140 534 110 540 92 C546 110 549 140 540 170 Z" fill="#8FAA6A"/><path d="M1040 170 C1031 140 1034 110 1040 92 C1046 110 1049 140 1040 170 Z" fill="#8FAA6A"/><path d="M1350 170 C1341 140 1344 110 1350 92 C1356 110 1359 140 1350 170 Z" fill="#8FAA6A"/><rect x="20" y="112" width="70" height="58" fill="#FFFFFF" stroke="#E2D6C6" stroke-width="1.2"/><rect x="47" y="138" width="15" height="32" fill="#9DBEDD"/><rect x="28" y="122" width="11" height="11" fill="#BFD7EC"/><rect x="96" y="96" width="54" height="74" fill="#FFFFFF" stroke="#E2D6C6" stroke-width="1.2"/><rect x="117" y="129" width="12" height="41" fill="#9DBEDD"/><circle cx="140" cy="100" r="9" fill="#F7A8C8"/><circle cx="148" cy="106" r="7" fill="#F28AB2"/><rect x="156" y="118" width="80" height="52" fill="#FFFFFF" stroke="#E2D6C6" stroke-width="1.2"/><rect x="186" y="141" width="18" height="29" fill="#9DBEDD"/><rect x="244" y="104" width="60" height="66" fill="#FFFFFF" stroke="#E2D6C6" stroke-width="1.2"/><rect x="267" y="134" width="13" height="36" fill="#9DBEDD"/><rect x="251" y="116" width="10" height="10" fill="#BFD7EC"/><rect x="310" y="122" width="90" height="48" fill="#FFFFFF" stroke="#E2D6C6" stroke-width="1.2"/><rect x="344" y="144" width="20" height="26" fill="#9DBEDD"/><rect x="410" y="100" width="56" height="70" fill="#FFFFFF" stroke="#E2D6C6" stroke-width="1.2"/><rect x="431" y="132" width="12" height="38" fill="#9DBEDD"/><circle cx="456" cy="104" r="9" fill="#F7A8C8"/><circle cx="464" cy="110" r="7" fill="#F28AB2"/><rect x="474" y="114" width="74" height="56" fill="#FFFFFF" stroke="#E2D6C6" stroke-width="1.2"/><rect x="502" y="139" width="16" height="31" fill="#9DBEDD"/><rect x="483" y="124" width="12" height="12" fill="#BFD7EC"/><rect x="560" y="108" width="64" height="62" fill="#FFFFFF" stroke="#E2D6C6" stroke-width="1.2"/><rect x="584" y="136" width="14" height="34" fill="#9DBEDD"/><rect x="632" y="120" width="88" height="50" fill="#FFFFFF" stroke="#E2D6C6" stroke-width="1.2"/><rect x="665" y="142" width="19" height="28" fill="#9DBEDD"/><rect x="732" y="98" width="58" height="72" fill="#FFFFFF" stroke="#E2D6C6" stroke-width="1.2"/><rect x="754" y="130" width="13" height="40" fill="#9DBEDD"/><rect x="739" y="111" width="9" height="9" fill="#BFD7EC"/><circle cx="780" cy="102" r="9" fill="#F7A8C8"/><circle cx="788" cy="108" r="7" fill="#F28AB2"/><rect x="798" y="116" width="76" height="54" fill="#FFFFFF" stroke="#E2D6C6" stroke-width="1.2"/><rect x="827" y="140" width="17" height="30" fill="#9DBEDD"/><rect x="886" y="106" width="62" height="64" fill="#FFFFFF" stroke="#E2D6C6" stroke-width="1.2"/><rect x="910" y="135" width="14" height="35" fill="#9DBEDD"/><rect x="956" y="120" width="84" height="50" fill="#FFFFFF" stroke="#E2D6C6" stroke-width="1.2"/><rect x="988" y="142" width="18" height="28" fill="#9DBEDD"/><rect x="966" y="129" width="13" height="13" fill="#BFD7EC"/><rect x="1048" y="100" width="58" height="70" fill="#FFFFFF" stroke="#E2D6C6" stroke-width="1.2"/><rect x="1070" y="132" width="13" height="38" fill="#9DBEDD"/><circle cx="1096" cy="104" r="9" fill="#F7A8C8"/><circle cx="1104" cy="110" r="7" fill="#F28AB2"/><rect x="1114" y="114" width="72" height="56" fill="#FFFFFF" stroke="#E2D6C6" stroke-width="1.2"/><rect x="1141" y="139" width="16" height="31" fill="#9DBEDD"/><rect x="1194" y="108" width="66" height="62" fill="#FFFFFF" stroke="#E2D6C6" stroke-width="1.2"/><rect x="1219" y="136" width="15" height="34" fill="#9DBEDD"/><rect x="1202" y="119" width="11" height="11" fill="#BFD7EC"/><rect x="1268" y="118" width="86" height="52" fill="#FFFFFF" stroke="#E2D6C6" stroke-width="1.2"/><rect x="1301" y="141" width="19" height="29" fill="#9DBEDD"/><rect x="1362" y="102" width="60" height="68" fill="#FFFFFF" stroke="#E2D6C6" stroke-width="1.2"/><rect x="1385" y="133" width="13" height="37" fill="#9DBEDD"/><circle cx="1412" cy="106" r="9" fill="#F7A8C8"/><circle cx="1420" cy="112" r="7" fill="#F28AB2"/><path d="M316 122 a22 22 0 0 1 44 0 Z" fill="#7EA6D0"/><rect x="336.5" y="88" width="3" height="12" fill="#7EA6D0"/><path d="M962 120 a24 24 0 0 1 48 0 Z" fill="#7EA6D0"/><rect x="984.5" y="84" width="3" height="12" fill="#7EA6D0"/></svg>
   <svg class="bgflower" aria-hidden="true"><use href="#sfo"/></svg>
   <svg class="bgflower b" aria-hidden="true"><use href="#sfo"/></svg>
   <div class="hwrap hgrid v2h">
@@ -1935,6 +2004,7 @@ mark.sk{color:var(--ink);font-weight:700;padding:0 2px;margin:0 -2px;-webkit-box
           <div class="cta2"><button class="btn open" type="button" data-cta="day1"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">Show me where to start <small class="bq">(it’s free)</small></span><svg class="ar"><use href="#arr"/></svg></button><small>free · live on Zoom</small></div>
         </div>
         <div class="art lv" id="art1" aria-hidden="true"><div class="stage">
+          <div class="sky s1"><i class="bd sun" style="left:50%;bottom:0;width:420px;transform:translateX(-50%)"><b class="r"></b><b class="d"></b></i></div>
           <svg class="fl" style="left:420px;top:330px;width:230px;height:230px"><use href="#sfo"/></svg>
           <span class="lv-tag">From the Day 1 slides</span>
           <img class="lv-back" src="img/slides/s2.webp" alt="" width="1280" height="720" loading="lazy">
@@ -1962,6 +2032,7 @@ mark.sk{color:var(--ink);font-weight:700;padding:0 2px;margin:0 -2px;-webkit-box
           <div class="cta2"><button class="btn open" type="button" data-cta="day2"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">Help me name my price <small class="bq">(it’s free)</small></span><svg class="ar"><use href="#arr"/></svg></button><small>free · live on Zoom</small></div>
         </div>
         <div class="art lv" id="art2" aria-hidden="true"><div class="stage">
+          <div class="sky s2"><i class="bd full" style="right:-30px;top:-30px;width:190px"><b class="r"></b><b class="d"></b></i><i class="cl" style="left:40px;top:44px;width:150px"></i><i class="cl" style="left:330px;top:250px;width:110px"></i></div>
           <svg class="fl" style="left:420px;top:330px;width:230px;height:230px"><use href="#sfo"/></svg>
           <span class="lv-tag">From the Day 2 slides</span>
           <img class="lv-back" src="img/slides/s4.webp" alt="" width="1280" height="720" loading="lazy">
@@ -1988,6 +2059,7 @@ mark.sk{color:var(--ink);font-weight:700;padding:0 2px;margin:0 -2px;-webkit-box
           <div class="cta2"><button class="btn open" type="button" data-cta="day3"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">I want to write that email <small class="bq">(it’s free)</small></span><svg class="ar"><use href="#arr"/></svg></button><small>free · live on Zoom</small></div>
         </div>
         <div class="art lv" id="art3" aria-hidden="true"><div class="stage">
+          <div class="sky s3"><i class="bd sun st" style="left:50%;bottom:24%;width:300px;transform:translateX(-50%)"><b class="r"></b><b class="d"></b></i><i class="sea"></i></div>
           <svg class="fl" style="left:420px;top:330px;width:230px;height:230px"><use href="#sfo"/></svg>
           <span class="lv-tag">From the Day 3 slides</span>
           <img class="lv-back" src="img/slides/s6.webp" alt="" width="1280" height="720" loading="lazy">
@@ -2018,6 +2090,7 @@ mark.sk{color:var(--ink);font-weight:700;padding:0 2px;margin:0 -2px;-webkit-box
 
 <!-- 4. where are you right now? Three illustrated choices; the pick goes with the sign-up (hidden field "situation"), and the button answers it -->
 <section class="sand where" id="where">
+  <svg class="bk-roads" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d="M8 0 C14 18 20 26 23 40"/><path d="M50 0 C46 14 54 26 50 40"/><path d="M94 0 C86 18 80 28 77 40"/><path class="in" d="M23 80 C26 88 40 90 50 93"/><path class="in" d="M50 80 C50 86 50 89 50 93"/><path class="in" d="M77 80 C74 88 60 90 50 93"/></svg>
   <div class="wrap">
     <div class="head" data-r><h2>Where are you <em>right now?</em></h2></div>
     <div class="sit3" role="group" aria-label="Where are you right now?" data-r>
@@ -2045,6 +2118,7 @@ mark.sk{color:var(--ink);font-weight:700;padding:0 2px;margin:0 -2px;-webkit-box
         <div class="cta2"><button class="btn open" type="button" data-cta="host"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">Show me your numbers, Ana <small class="bq">(free)</small></span><svg class="ar"><use href="#arr"/></svg></button><small>free · live on Zoom</small></div>
       </div>
       <div class="hst-pic" data-r>
+        <svg class="bk-aeg" viewBox="0 0 400 480" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><clipPath id="aegA"><path d="M0 480 V170 A200 170 0 0 1 400 170 V480 Z"/></clipPath><linearGradient id="aegS" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#CFE3F3"/><stop offset="1" stop-color="#F5F1E8"/></linearGradient></defs><g clip-path="url(#aegA)"><rect width="400" height="480" fill="url(#aegS)"/><circle cx="318" cy="92" r="34" fill="#FFD966"/><circle cx="318" cy="92" r="46" fill="none" stroke="#FFD966" stroke-width="2" stroke-dasharray="2 7"/><path d="M0 300 C80 292 160 306 240 298 C300 292 360 300 400 296 V480 H0Z" fill="#7EA6D0"/><path d="M0 340 C80 332 160 346 240 338 S360 340 400 336 V480 H0Z" fill="#5E8FC6"/><path d="M30 322 h40 M130 352 h52 M260 326 h44 M300 372 h56 M60 392 h40" stroke="#BFD7EC" stroke-width="3" stroke-linecap="round"/><path d="M0 300 V250 H34 V232 H70 V262 H96 V300 Z" fill="#fff"/><path d="M34 232 a18 18 0 0 1 36 0Z" fill="#3F7FB8"/><path d="M332 300 V262 H362 V244 H400 V300 Z" fill="#fff"/><path d="M196 330 L232 330 L226 340 L202 340 Z" fill="#F72585"/><path d="M214 330 V306 L230 326 Z" fill="#fff"/></g><path d="M0 480 V170 A200 170 0 0 1 400 170 V480" fill="none" stroke="#FFFFFF" stroke-width="10"/></svg>
         <figure class="sq"><img src="img/ana-hat.webp" alt="Ana Calin" width="520" height="520" loading="lazy"></figure>
         <!-- then and now (Jason: an old-vs-new table that grows row by row): her own figures, as in the footer note -->
         <div class="hrc gads" aria-hidden="true">
@@ -2066,6 +2140,7 @@ mark.sk{color:var(--ink);font-weight:700;padding:0 2px;margin:0 -2px;-webkit-box
 
 <!-- 6. a life left to enjoy it (from Rose's message to Ana: she wants the income, not a business that eats her up) -->
 <section class="sand life" id="life">
+  <svg class="bk-arc" viewBox="0 0 100 50" preserveAspectRatio="none" aria-hidden="true"><path d="M2 49 Q50 -22 98 49"/></svg><span class="bk-sun am" aria-hidden="true"></span><span class="bk-sun pm" aria-hidden="true"></span>
   <div class="wrap">
     <div class="lifeg">
       <div class="life-pic" data-r>
@@ -2094,6 +2169,7 @@ mark.sk{color:var(--ink);font-weight:700;padding:0 2px;margin:0 -2px;-webkit-box
 
 <!-- 7. bring the part you're stuck on -->
 <section class="bring" id="bring">
+  <svg class="bk-marks" viewBox="0 0 1440 700" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><path d="M60 120 C30 160 40 230 110 236 C190 242 210 160 160 120 C120 90 70 100 66 130"/><path d="M40 560 l30 34 l62 -84"/><path d="M1300 90 C1330 140 1380 150 1410 120 M1392 108 l18 12 l-6 20"/><path d="M1290 560 C1330 548 1360 570 1400 556 M1286 586 C1330 574 1366 598 1404 582"/><path d="M1340 330 l22 26 l46 -64"/><path d="M90 380 C110 350 140 350 150 380"/></svg>
   <div class="wrap">
     <div class="bringg two" data-r>
       <div class="bring-l">
@@ -2228,7 +2304,7 @@ mark.sk{color:var(--ink);font-weight:700;padding:0 2px;margin:0 -2px;-webkit-box
       <!-- five seats: five 1:1 tickets fanning out -->
       <div class="tix" aria-hidden="true">
         <!-- a 1:1 with Ana, as it would arrive: her video call rings, it's accepted, and she's there -->
-        <div class="call" id="call"><img class="call-ph" src="img/vip/paint/phone.webp" alt="" width="260" height="500" loading="lazy">
+        <span class="ring-w" aria-hidden="true"><i></i><i></i><i></i></span><div class="call" id="call"><img class="call-ph" src="img/vip/paint/phone.webp" alt="" width="260" height="500" loading="lazy">
           <div class="call-scr">
             <div class="call-in"><img src="img/ana-hat.webp" alt="" loading="lazy"><div class="call-tx"><small>video call</small><b>Ana Calin</b><span>Your 1:1 session</span></div>
               <div class="call-btns"><span class="cb no"><i><svg viewBox="0 0 24 24"><path d="M3 15c5-4 13-4 18 0l-2.4 2.6c-.6.6-1.6.6-2.2.1l-1.6-1.4c-.5-.4-.6-1-.4-1.6l.5-1.3c-2-.6-4.8-.6-6.8 0l.5 1.3c.2.6.1 1.2-.4 1.6l-1.6 1.4c-.6.5-1.6.5-2.2-.1Z" fill="#fff"/></svg></i>Decline</span><span class="cb yes"><i><svg viewBox="0 0 24 24"><rect x="3" y="7" width="12" height="10" rx="2" fill="#fff"/><path d="M15 11l5-3v8l-5-3z" fill="#fff"/></svg></i>Accept</span></div></div>
@@ -2295,7 +2371,7 @@ mark.sk{color:var(--ink);font-weight:700;padding:0 2px;margin:0 -2px;-webkit-box
   <div class="wrap">
     <div class="claim">
       <div class="pic" data-r>
-        <svg class="sun" aria-hidden="true"><use href="#sfo"/></svg>
+        <i class="bd sun bk-rise" aria-hidden="true"><b class="r"></b><b class="d"></b></i><i class="bk-fsea" aria-hidden="true"></i>
         <div class="fr"><img src="img/ana-cabin.webp" alt="Ana Calin" width="612" height="744" loading="lazy"></div>
         <img class="mk" src="img/mark.png" alt="" width="96" height="96" loading="lazy">
         <!-- the invite, as Google Calendar shows it, in her colours: a cursor answers "Yes" -->
