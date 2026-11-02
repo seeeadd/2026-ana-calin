@@ -465,17 +465,17 @@ html.anim-on .ch:not(.in) .p-b{transform:translateX(40px) rotate(-8deg)}
 
 /* ---------- 4. fit check ---------- */
 .fit ul{list-style:none;margin-top:44px;display:grid;gap:10px}
-.fit button{width:100%;display:grid;grid-template-columns:36px 1fr 1fr;gap:22px;align-items:center;text-align:left;background:var(--cream);border:1.5px solid transparent;border-radius:20px;padding:20px 28px 20px 20px;cursor:pointer;transition:border-color .2s,background .2s,transform .25s var(--ease),box-shadow .25s}
-.fit button:hover{border-color:var(--ink);transform:translateY(-2px)}
+.fit ul button{width:100%;display:grid;grid-template-columns:36px 1fr 1fr;gap:22px;align-items:center;text-align:left;background:var(--cream);border:1.5px solid transparent;border-radius:20px;padding:20px 28px 20px 20px;cursor:pointer;transition:border-color .2s,background .2s,transform .25s var(--ease),box-shadow .25s}
+.fit ul button:hover{border-color:var(--ink);transform:translateY(-2px)}
 .fit .tk{width:36px;height:36px;border-radius:50%;border:1.8px solid var(--ink);display:grid;place-items:center;background:#fff;transition:background .2s,transform .3s var(--ease)}
 .fit .tk svg{width:18px;height:18px;stroke:var(--ink);stroke-width:2.8;fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:24;stroke-dashoffset:24;transition:stroke-dashoffset .35s ease .05s}
-.fit button[aria-pressed=true]{background:#fff;border-color:var(--ink);box-shadow:0 16px 28px -20px rgba(70,45,25,.5)}
-.fit button[aria-pressed=true] .tk{background:var(--sun);transform:rotate(-8deg) scale(1.06)}
-.fit button[aria-pressed=true] .tk svg{stroke-dashoffset:0}
+.fit ul button[aria-pressed=true]{background:#fff;border-color:var(--ink);box-shadow:0 16px 28px -20px rgba(70,45,25,.5)}
+.fit ul button[aria-pressed=true] .tk{background:var(--sun);transform:rotate(-8deg) scale(1.06)}
+.fit ul button[aria-pressed=true] .tk svg{stroke-dashoffset:0}
 .fit .pain{font-weight:800;font-size:17px;line-height:1.4}
 .fit .fix{font-family:var(--serif);font-size:24px;line-height:1.25;color:var(--ink2)}
 .fit .fix span{background:linear-gradient(var(--sun),var(--sun)) no-repeat 0 88%/0% 42%;transition:background-size .5s var(--ease);-webkit-box-decoration-break:clone;box-decoration-break:clone}
-.fit button[aria-pressed=true] .fix span{background-size:100% 42%}
+.fit ul button[aria-pressed=true] .fix span{background-size:100% 42%}
 .fit .tip{margin-top:18px;font-size:16px;color:var(--ink3);font-weight:700}
 .fit .not{margin-top:30px;font-size:15px;color:var(--ink3);text-align:center;text-wrap:balance}
 
@@ -760,7 +760,7 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
   .drow .art,.drow.flip .art{grid-column:1/-1}
   .dtext h3{font-size:36px}
   .art{border-radius:20px}
-  .fit button{grid-template-columns:32px 1fr;gap:6px 14px;padding:18px 16px}
+  .fit ul button{grid-template-columns:32px 1fr;gap:6px 14px;padding:18px 16px}
   .fit .tk{width:32px;height:32px}
   .fit .fix{grid-column:2;font-size:21px}
   .band{padding:100px 0}
@@ -1789,6 +1789,25 @@ mark.sk{color:var(--ink);font-weight:700;padding:0 2px;margin:0 -2px;-webkit-box
 .sitgo .btn{position:relative;z-index:2}
 .sitgo .bk-plan{bottom:-150px!important}
 @media (max-width:900px){.sitgo .bk-roads{display:none}.sitgo{padding-top:40px!important}}
+/* you can start from here: a road runs through every card behind the tick circles (each one a stop), from a
+   chequered start line down to the button; the stretch up to the furthest line you tick fills in pink */
+.fit ul.has-road{position:relative}
+.fit ul .rd-wrap{position:absolute;left:0;right:0;top:-46px;bottom:-84px;pointer-events:none;z-index:0;list-style:none}
+.fit-road{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.fit-road path{fill:none;vector-effect:non-scaling-stroke;stroke-linecap:round}
+.fit-road .e{stroke:#EFA3C4;stroke-width:40}
+.fit-road .r{stroke:#FCDCE9;stroke-width:34}
+.fit-road .c{stroke:#fff;stroke-width:3;stroke-dasharray:9 11}
+.fit-road .p{stroke:#F72585;stroke-width:6;stroke-dasharray:var(--rl,0) 99999;transition:stroke-dasharray .7s cubic-bezier(.3,.8,.3,1)}
+.fit-start{position:absolute;left:calc(3.7% - 20px);top:-14px;display:flex;align-items:center;gap:10px}
+.fit-start i{display:block;width:40px;height:14px;background:repeating-conic-gradient(#1A1412 0 25%,#fff 0 50%) 0 0/10px 10px;border:1.5px solid #1A1412;border-radius:2px}
+.fit-start b{font-family:'Nothing You Could Do',cursive;font-weight:400;font-size:20px;color:#D81B6E;transform:rotate(-4deg)}
+.fit ul.has-road>li:not(.rd-wrap){position:relative;z-index:1}
+.fit ul.has-road button{background:linear-gradient(90deg,transparent 0 66px,var(--cream) 66px)}
+.fit ul.has-road button[aria-pressed=true]{background:linear-gradient(90deg,transparent 0 66px,#fff 66px)}
+.fit .tk{position:relative;z-index:1}
+.fitgo{position:relative;z-index:1}
+@media (max-width:760px){.fit-road .e{stroke-width:34}.fit-road .r{stroke-width:28}.fit ul.has-road button{background:linear-gradient(90deg,transparent 0 56px,var(--cream) 56px)}.fit ul.has-road button[aria-pressed=true]{background:linear-gradient(90deg,transparent 0 56px,#fff 56px)}}
 /* the window in depth: the video sits back in the wall (lintel, jambs and sill drawn as a recess, shadow from the top
    left), the shutters have a painted edge and darken as they turn away from the light, and they cast soft shadows on
    the wall. The opening runs on CSS alone, from the first paint, so it never waits for the scripts. */
@@ -2256,7 +2275,7 @@ mark.sk{color:var(--ink);font-weight:700;padding:0 2px;margin:0 -2px;-webkit-box
       <h2><span class="l">You can start</span> <span class="l"><em>from here.</em></span></h2>
       <p class="tip">Tap the ones that sound like you.</p>
     </div>
-    <ul data-r>
+    <ul data-r class="has-road"><li class="rd-wrap" aria-hidden="true"><svg class="fit-road" viewBox="0 0 1000 1000" preserveAspectRatio="none"><path class="e" d="M37 -40 V860 C37 950 200 990 392 1000"/><path class="r" d="M37 -40 V860 C37 950 200 990 392 1000"/><path class="c" d="M37 -40 V860 C37 950 200 990 392 1000"/><path class="p" d="M37 -40 V860 C37 950 200 990 392 1000"/></svg><span class="fit-start"><i></i><b>start here</b></span></li>
       <li><button type="button" aria-pressed="false"><span class="tk"><svg viewBox="0 0 20 20"><path d="m5 10.5 3.4 3.4L15 6.8"/></svg></span><span class="pain">“I haven’t started a newsletter. I wouldn’t know where to find readers.”</span><span class="fix"><span>We’ll cover where your first subscribers could come from on Day 1.</span></span></button></li>
       <li><button type="button" aria-pressed="false"><span class="tk"><svg viewBox="0 0 20 20"><path d="m5 10.5 3.4 3.4L15 6.8"/></svg></span><span class="pain">“I write, but it hasn’t turned into money.”</span><span class="fix"><span>Let’s look at what you could offer and what would give someone a reason to buy.</span></span></button></li>
       <li><button type="button" aria-pressed="false"><span class="tk"><svg viewBox="0 0 20 20"><path d="m5 10.5 3.4 3.4L15 6.8"/></svg></span><span class="pain">“I’m good at my job. Starting something of my own feels completely different.”</span><span class="fix"><span>You can bring the experience you already have. We’ll work on the business part.</span></span></button></li>
@@ -2739,6 +2758,6 @@ mark.sk{color:var(--ink);font-weight:700;padding:0 2px;margin:0 -2px;-webkit-box
 </script>
 <script src="assets/vendor/gsap.min.js"></script>
 <script src="assets/vendor/ScrollTrigger.min.js"></script>
-<script src="assets/reg-motion.js?v=18"></script>
+<script src="assets/reg-motion.js?v=19"></script>
 </body>
 </html>
