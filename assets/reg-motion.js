@@ -26,20 +26,6 @@
     rows.forEach(function (r) { io.observe(r) });
   })();
 
-  /* you can start from here: the road fills in pink down to the furthest line ticked */
-  (function () {
-    var ul = $('.fit ul.has-road'); if (!ul) return; var pp = $('.fit-road .p', ul), svg = $('.fit-road', ul);
-    function upd() { var on = $$('li:not(.rd-wrap) button[aria-pressed="true"]', ul), y = -1;
-      on.forEach(function (b) { var r = $('.tk', b).getBoundingClientRect(); y = Math.max(y, r.top + r.height / 2) });
-      if (y < 0) { pp.style.setProperty('--rl', '0'); return }
-      var sr = svg.getBoundingClientRect(), L = pp.getTotalLength(), lo = 0, hi = L;
-      for (var k = 0; k < 18; k++) { var m = (lo + hi) / 2, pt = pp.getPointAtLength(m), py = sr.top + (pt.y / 1000) * sr.height; if (py < y) lo = m; else hi = m }
-      var len = lo / L * (sr.height + sr.width * .3); pp.style.setProperty('--rl', Math.round(lo / L * pathPx()) + 'px') }
-    function pathPx() { var sr = svg.getBoundingClientRect(), L = pp.getTotalLength(), n = 60, d = 0, a = pp.getPointAtLength(0);
-      for (var i = 1; i <= n; i++) { var b = pp.getPointAtLength(L * i / n); d += Math.hypot((b.x - a.x) / 1000 * sr.width, (b.y - a.y) / 1000 * sr.height); a = b } return d }
-    ul.addEventListener('click', function () { setTimeout(upd, 30) }); addEventListener('resize', upd);
-  })();
-
   /* the Day windows without motion: each shows its first slide, finished */
   if (!window.gsap || reduce) $$('.dk-f.a').forEach(function (f) { f.src = f.dataset.src + '?still=1' });
 

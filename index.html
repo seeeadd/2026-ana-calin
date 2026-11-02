@@ -1789,25 +1789,19 @@ mark.sk{color:var(--ink);font-weight:700;padding:0 2px;margin:0 -2px;-webkit-box
 .sitgo .btn{position:relative;z-index:2}
 .sitgo .bk-plan{bottom:-150px!important}
 @media (max-width:900px){.sitgo .bk-roads{display:none}.sitgo{padding-top:40px!important}}
-/* you can start from here: a road runs through every card behind the tick circles (each one a stop), from a
-   chequered start line down to the button; the stretch up to the furthest line you tick fills in pink */
-.fit ul.has-road{position:relative}
-.fit ul .rd-wrap{position:absolute;left:0;right:0;top:-46px;bottom:-84px;pointer-events:none;z-index:0;list-style:none}
-.fit-road{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
-.fit-road path{fill:none;vector-effect:non-scaling-stroke;stroke-linecap:round}
-.fit-road .e{stroke:#EFA3C4;stroke-width:40}
-.fit-road .r{stroke:#FCDCE9;stroke-width:34}
-.fit-road .c{stroke:#fff;stroke-width:3;stroke-dasharray:9 11}
-.fit-road .p{stroke:#F72585;stroke-width:6;stroke-dasharray:var(--rl,0) 99999;transition:stroke-dasharray .7s cubic-bezier(.3,.8,.3,1)}
-.fit-start{position:absolute;left:calc(3.7% - 20px);top:-14px;display:flex;align-items:center;gap:10px}
-.fit-start i{display:block;width:40px;height:14px;background:repeating-conic-gradient(#1A1412 0 25%,#fff 0 50%) 0 0/10px 10px;border:1.5px solid #1A1412;border-radius:2px}
-.fit-start b{font-family:'Nothing You Could Do',cursive;font-weight:400;font-size:20px;color:#D81B6E;transform:rotate(-4deg)}
-.fit ul.has-road>li:not(.rd-wrap){position:relative;z-index:1}
-.fit ul.has-road button{background:linear-gradient(90deg,transparent 0 66px,var(--cream) 66px)}
-.fit ul.has-road button[aria-pressed=true]{background:linear-gradient(90deg,transparent 0 66px,#fff 66px)}
-.fit .tk{position:relative;z-index:1}
-.fitgo{position:relative;z-index:1}
-@media (max-width:760px){.fit-road .e{stroke-width:34}.fit-road .r{stroke-width:28}.fit ul.has-road button{background:linear-gradient(90deg,transparent 0 56px,var(--cream) 56px)}.fit ul.has-road button[aria-pressed=true]{background:linear-gradient(90deg,transparent 0 56px,#fff 56px)}}
+/* you can start from here: the list is one page of Ana's notebook. Each worry is an entry on its own ruled line,
+   the tick circles sit on the pink margin, a strip of tape holds the page; a ticked entry is highlighted in yellow */
+.fit ul.nb{position:relative;gap:0;margin-top:40px;padding:26px 0 14px 0;overflow:visible;background:#FFFDF7;border-radius:4px;transform:rotate(-.5deg);
+  box-shadow:0 1px 0 rgba(26,20,18,.04),0 28px 50px -30px rgba(90,60,30,.45),0 2px 6px rgba(90,60,30,.08)}
+.fit ul.nb:before{content:"";position:absolute;left:45px;top:0;bottom:0;border-left:2px solid rgba(240,110,150,.55);pointer-events:none}
+.fit ul.nb:after{content:"";position:absolute;left:50%;top:-14px;width:130px;height:28px;margin-left:-65px;background:rgba(255,226,122,.75);transform:rotate(2deg);box-shadow:0 1px 2px rgba(0,0,0,.08)}
+.fit ul.nb li{border-bottom:1.5px solid rgba(120,160,205,.38)}
+.fit ul.nb li:last-child{border-bottom:0}
+.fit ul.nb button{grid-template-columns:36px 1fr 1fr;gap:22px 30px;background:transparent;border:0;border-radius:0;padding:18px 30px 18px 40px;box-shadow:none;transform:none}
+.fit ul.nb button:hover{transform:none;background:rgba(255,212,0,.08)}
+.fit ul.nb button[aria-pressed=true]{background:rgba(255,212,0,.09);box-shadow:none;border:0}
+.fit ul.nb .tk{position:relative;z-index:1;margin-left:-13px;background:#FFFDF7}
+@media (max-width:760px){.fit ul.nb{padding:18px 0 8px 0;transform:none}.fit ul.nb:before{left:29px}.fit ul.nb button{grid-template-columns:32px 1fr;gap:6px 14px;padding:16px 16px 16px 30px}.fit ul.nb .tk{margin-left:-17px}}
 /* the window in depth: the video sits back in the wall (lintel, jambs and sill drawn as a recess, shadow from the top
    left), the shutters have a painted edge and darken as they turn away from the light, and they cast soft shadows on
    the wall. The opening runs on CSS alone, from the first paint, so it never waits for the scripts. */
@@ -2275,7 +2269,7 @@ mark.sk{color:var(--ink);font-weight:700;padding:0 2px;margin:0 -2px;-webkit-box
       <h2><span class="l">You can start</span> <span class="l"><em>from here.</em></span></h2>
       <p class="tip">Tap the ones that sound like you.</p>
     </div>
-    <ul data-r class="has-road"><li class="rd-wrap" aria-hidden="true"><svg class="fit-road" viewBox="0 0 1000 1000" preserveAspectRatio="none"><path class="e" d="M37 -40 V860 C37 950 200 990 392 1000"/><path class="r" d="M37 -40 V860 C37 950 200 990 392 1000"/><path class="c" d="M37 -40 V860 C37 950 200 990 392 1000"/><path class="p" d="M37 -40 V860 C37 950 200 990 392 1000"/></svg><span class="fit-start"><i></i><b>start here</b></span></li>
+    <ul data-r class="nb">
       <li><button type="button" aria-pressed="false"><span class="tk"><svg viewBox="0 0 20 20"><path d="m5 10.5 3.4 3.4L15 6.8"/></svg></span><span class="pain">“I haven’t started a newsletter. I wouldn’t know where to find readers.”</span><span class="fix"><span>We’ll cover where your first subscribers could come from on Day 1.</span></span></button></li>
       <li><button type="button" aria-pressed="false"><span class="tk"><svg viewBox="0 0 20 20"><path d="m5 10.5 3.4 3.4L15 6.8"/></svg></span><span class="pain">“I write, but it hasn’t turned into money.”</span><span class="fix"><span>Let’s look at what you could offer and what would give someone a reason to buy.</span></span></button></li>
       <li><button type="button" aria-pressed="false"><span class="tk"><svg viewBox="0 0 20 20"><path d="m5 10.5 3.4 3.4L15 6.8"/></svg></span><span class="pain">“I’m good at my job. Starting something of my own feels completely different.”</span><span class="fix"><span>You can bring the experience you already have. We’ll work on the business part.</span></span></button></li>
@@ -2758,6 +2752,6 @@ mark.sk{color:var(--ink);font-weight:700;padding:0 2px;margin:0 -2px;-webkit-box
 </script>
 <script src="assets/vendor/gsap.min.js"></script>
 <script src="assets/vendor/ScrollTrigger.min.js"></script>
-<script src="assets/reg-motion.js?v=19"></script>
+<script src="assets/reg-motion.js?v=20"></script>
 </body>
 </html>
