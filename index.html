@@ -2091,6 +2091,23 @@ section > .tkb .flag span.t{font-weight:500}
 @media (max-width:340px){.mbar .mcd-t{font-size:12.5px;letter-spacing:-.01em}.mbar .md{font-size:13.5px}}
 @media (max-width:389px){.mbar .btn .bq{display:none!important}.mbar .btn{padding-right:16px;margin-left:6px}.mbar .btn .bt{white-space:nowrap}}
 @media (max-width:1060px){.who .ipic{max-width:260px}}
+/* the hero headline with "in 2027" (Sean, Nov 2): four lines, sized so the longest one fits the column */
+.v2h .hright h1.big4.y27{font-size:min(12.4cqi,74px);line-height:.96}
+/* the day rows (Sean: "widen some text on the top, there's a lot of space on the right"): the date, the headline and
+   the first paragraph run across both columns; the slides window sits beside the rest and stays in view while you read */
+@media (min-width:1061px){
+  .drow{align-items:start}
+  .drow .dtext{display:contents}
+  .drow .dtext > *{grid-column:2}
+  .drow.flip .dtext > *{grid-column:3}
+  .drow .dtext > .dwhen,.drow .dtext > h3,.drow .dtext > p.body:first-of-type{grid-column:2 / 4!important}
+  .drow .dtext > .dwhen{grid-row:1}
+  .drow .dtext > h3{grid-row:2;max-width:15.5em;margin-bottom:16px}
+  .drow .dtext > p.body:first-of-type{grid-row:3;max-width:40em;margin-bottom:6px}
+  .drow .art{grid-column:3;grid-row:4 / span 12;align-self:start;position:sticky;top:170px;margin-top:20px}
+  .drow.flip .art{grid-column:2}
+  .drow .dbadge{grid-row:1;grid-column:1}
+}
 </style>
 </head>
 <body>
@@ -2184,7 +2201,7 @@ section > .tkb .flag span.t{font-weight:500}
 
     <div class="hright">
       <span class="hpill"><span class="dot"></span>The Exit Plan<span class="hide-s"> <i>·</i> A free 3-day live workshop with Ana Calin</span></span>
-      <h1 id="h1" class="long big4"><span class="l">How to Build</span> <span class="l">a Business That</span> <span class="l">Pays You for</span> <span class="l"><span class="hl">What You Know</span></span></h1>
+      <h1 id="h1" class="long big4 y27"><span class="l">How to Build the</span> <span class="l">Business That Pays</span> <span class="l">You for <span class="hl">What You Know</span></span> <span class="l">in 2027</span></h1>
       <p class="hsub2" id="hk">You’d like to know you can earn on your own before you depend on it. <mark class="sk">Join me to work toward your first paying customers, using what you already know,</mark> while your current work still pays the bills.</p>
       <div class="htk">
         <div class="tkshell">
