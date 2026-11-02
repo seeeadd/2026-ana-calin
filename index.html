@@ -2015,7 +2015,7 @@ section > .tkb .flag span.t{font-weight:500}
 .fb-bar:before{content:"";position:absolute;left:1px;right:1px;top:1px;height:48%;border-radius:inherit;border-bottom-left-radius:40% 30%;border-bottom-right-radius:40% 30%;background:linear-gradient(180deg,rgba(255,255,255,.6),rgba(255,255,255,0));pointer-events:none;z-index:-1}
 .fb-ic{box-shadow:0 0 0 2px #fff,0 6px 12px -6px rgba(26,20,18,.45)}
 .fb-t small{color:#D81B6E}
-.fb-t b{color:var(--ink)}
+.fb-t b{color:var(--ink);font-family:var(--sans);font-weight:800;font-size:17px;letter-spacing:-.01em}
 .fb-cd{border-left-color:rgba(26,20,18,.1)!important}
 .fb-cdk{color:var(--ink3)}
 .cdu{background:rgba(255,255,255,.7);box-shadow:inset 0 1px 0 #fff,0 0 0 1px rgba(26,20,18,.08),0 3px 6px -3px rgba(26,20,18,.18)}
@@ -2028,20 +2028,21 @@ section > .tkb .flag span.t{font-weight:500}
 .fb-ic,.fb-t,.fb-t b,.fb-t small,.cdu,.cdu b,.fb .btn.sm,.fb .btn.sm .sf-b,.fb .btn.sm .sf-b svg,.fb-cd{transition:all .45s var(--ease)}
 .fb-cdk{transition:opacity .25s,max-width .45s var(--ease),margin .45s var(--ease);max-width:120px;overflow:hidden}
 .fb.min{padding-top:8px}
-.fb.min .fb-bar{width:min(744px,100%);padding:4px 4px 4px 5px;gap:10px;border-radius:999px}
-.fb.min .fb-ic{width:34px;height:34px;border-radius:50%}
+.fb.min .fb-bar{width:min(648px,100%);padding:4px 4px 4px 5px;gap:9px;border-radius:999px}
+.fb.min .fb-ic{width:32px;height:32px;border-radius:50%}
 .fb.min .fb-t{gap:3px}
-.fb.min .fb-t small{font-size:9px;letter-spacing:.14em}
-.fb.min .fb-t b{font-size:15.5px}
-.fb.min .fb-cd{gap:4px;padding-left:12px;margin-right:2px}
+.fb.min .fb-t small{font-size:8.5px;letter-spacing:.1em}
+.fb.min .fb-t b{font-family:var(--sans);font-weight:800;font-size:13px;letter-spacing:-.005em}
+.fb.min .fb-cd{gap:0;height:30px;padding:0 3px;margin-right:0;border-left:0!important;border-radius:999px;background:rgba(255,255,255,.72);box-shadow:inset 0 1px 0 #fff,0 0 0 1px rgba(26,20,18,.08),0 3px 6px -3px rgba(26,20,18,.18)}
 .fb.min .fb-cdk{max-width:0;margin-right:-4px;opacity:0}
-.fb.min .cdu{flex-direction:row;align-items:center;gap:1px;width:auto;height:28px;padding:0 7px;border-radius:999px}
-.fb.min .cdu b{font-size:13.5px}
+.fb.min .cdu{flex-direction:row;align-items:center;gap:1px;width:auto;height:24px;padding:0 5px;border-radius:999px;background:none;box-shadow:none}
+.fb.min .cdu.s{background:linear-gradient(180deg,#FFE04D,#FFD400);padding:0 7px}
+.fb.min .cdu b{font-size:13px}
 .fb.min .cdu small{margin:0;font-size:0;letter-spacing:0;text-transform:none}
 .fb.min .cdu small:after{font-size:10.5px;font-weight:700;color:var(--ink3)}
 .fb.min .cdu:nth-child(2) small:after{content:"d"}.fb.min .cdu:nth-child(3) small:after{content:"h"}.fb.min .cdu:nth-child(4) small:after{content:"m"}.fb.min .cdu:nth-child(5) small:after{content:"s";color:rgba(26,20,18,.65)}
-.fb.min .btn.sm{height:38px;font-size:13.5px;padding-right:13px;gap:8px}
-.fb.min .btn.sm .sf-b{width:28px;height:28px}
+.fb.min .btn.sm{height:36px;font-size:13px;padding-right:12px;gap:7px}
+.fb.min .btn.sm .sf-b{width:26px;height:26px}
 .fb.min .btn.sm .sf-b svg{width:21px;height:21px}
 /* the seat ticket, less piled up on the left (Sean: "too much going on on the left... send some stuff on the right"):
    "just saved a seat" becomes a small live pill on the ticket's top edge, right side, and "Seat reserved for <name>"
