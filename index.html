@@ -1932,6 +1932,28 @@ html:not(.tk-a) .tkb-board{display:flex;align-items:center;gap:14px;height:38px;
 .dlg .fsub{margin:-2px 0 12px!important}
 .dlg .note{font-size:11.5px!important;margin-top:10px!important}
 .dlg{padding:50px 36px 26px!important}
+/* the ticker, simpler: it lives along the top edge of a section, in that section's own ground and colour; a pulsing
+   dot and 'live', then small pennants between real first names */
+section:has(> .tkb){position:relative}
+section > .tkb{position:absolute;left:0;right:0;top:14px;height:30px;margin:0;background:none!important;--tka:#F72585;--tkb2:#FFD400}
+section > .tkb:before,section > .tkb:after{display:none}
+.where > .tkb,.final > .tkb{--tka:#F72585;--tkb2:#9DBEDD}
+.host > .tkb,.revs > .tkb{--tka:#FFD400;--tkb2:#F72585}
+.prize > .tkb{--tka:#F72585;--tkb2:#FFFFFF}
+section > .tkb .tkb-live{margin-left:20px;padding:0;border:0;background:none;box-shadow:none;gap:7px;font-size:10.5px;letter-spacing:.16em;color:var(--ink3)}
+section > .tkb .tkb-live:before{display:none}
+section > .tkb .tkb-live i{order:0;width:7px;height:7px;background:var(--tka)}
+section > .tkb .tkb-track{background:none;padding-left:14px}
+section > .tkb .flag{padding:0 22px 0 0;gap:6px;font-size:12.5px;color:var(--ink3)}
+section > .tkb .flag .pn{width:9px;height:12px;margin-top:0;align-self:center}
+section > .tkb .flag .pn svg path:first-child{stroke:none}
+section > .tkb .flag .pn svg path:last-child{display:none}
+section > .tkb .flag:nth-child(odd) .pn svg path:first-child{fill:var(--tka)}
+section > .tkb .flag:nth-child(even) .pn svg path:first-child{fill:var(--tkb2)}
+section > .tkb .flag .av{display:none}
+section > .tkb .flag b{font-size:16px;color:var(--ink)}
+section > .tkb .flag span.t{font-weight:500}
+@media (max-width:600px){section > .tkb{top:8px}section > .tkb .tkb-live{margin-left:14px}}
 /* the window in depth: the video sits back in the wall (lintel, jambs and sill drawn as a recess, shadow from the top
    left), the shutters have a painted edge and darken as they turn away from the light, and they cast soft shadows on
    the wall. The opening runs on CSS alone, from the first paint, so it never waits for the scripts. */
@@ -1971,6 +1993,45 @@ html:not(.tk-a) .tkb-board{display:flex;align-items:center;gap:14px;height:38px;
 .iph.win .wn-pet{position:absolute;left:-12%;top:-8%;width:12px;height:9px;border-radius:60% 40% 60% 40%;background:#E05A92;z-index:5;opacity:0;pointer-events:none}
 .iph.win .wn-pet:nth-of-type(2n){background:#A8245E;width:9px;height:7px}
 @media (max-width:980px){.iph.win{margin:7% 9% 13% 9%}}
+/* the ticket form's small print, calmer (Sean: "a little bit too much"): one quiet row of ticks, then a ticket
+   perforation and the time and email note as fine print under it; nothing in it bold except the ticks */
+.tkt form .fl-ticks{flex-wrap:wrap;gap:4px 14px;margin-top:12px}
+.tkt form .fl-ticks li{font-size:12.5px;font-weight:700;letter-spacing:0;text-transform:none;color:var(--ink2);white-space:nowrap}
+.tkt form .fl-ticks li:before{width:13px;height:13px}
+.tkt form .fmeta{position:relative;margin-top:12px;padding-top:11px;font-size:12px!important;font-weight:600;line-height:1.45;color:var(--ink3);text-align:center}
+.tkt form .fmeta:before{content:"";position:absolute;left:-6px;right:-6px;top:0;border-top:1.5px dashed rgba(26,20,18,.18)}
+.tkt form .fmeta .lt{font-weight:500}
+.tkt form .note{margin:3px auto 0!important;padding-left:0!important;font-size:11px!important;line-height:1.45;color:var(--ink3);opacity:.85;text-align:center;max-width:36em}
+.tkt form .note:before{display:none}
+@media (max-width:420px){.tkt form .fl-ticks{gap:4px 10px}.tkt form .fl-ticks li{font-size:12px}}
+/* the sticky bar as frosted glass, and slimmer once you scroll (Sean: "a lot more narrow, thinner, and smaller once I
+   scroll", "a bit more glassmorphism"): at the top it is the full bar; scrolled, it becomes a thin pill, the eyebrow and
+   the "Starts in" label fold away, the countdown goes to one line, and the button gets smaller */
+.fb-bar{position:relative;background:linear-gradient(180deg,rgba(255,255,255,.1),rgba(255,255,255,0) 55%),linear-gradient(90deg,rgba(247,37,133,.08),rgba(255,212,0,.05)),rgba(32,20,21,.8);
+  backdrop-filter:blur(22px) saturate(1.7);-webkit-backdrop-filter:blur(22px) saturate(1.7);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.18),inset 0 0 0 1px rgba(255,255,255,.1),0 18px 40px -20px rgba(26,20,18,.55);
+  transition:width .45s var(--ease),padding .45s var(--ease),gap .45s var(--ease),border-radius .45s var(--ease),background-color .45s}
+.fb{transition:padding .45s var(--ease)}
+.fb-ic,.fb-t b,.cdu,.cdu b,.fb .btn.sm,.fb .btn.sm .sf-b,.fb .btn.sm .sf-b svg,.fb-cd{transition:all .45s var(--ease)}
+.fb-t small,.fb-cdk{transition:opacity .25s,max-height .45s var(--ease),max-width .45s var(--ease),margin .45s var(--ease)}
+.fb-t small{max-height:14px;overflow:hidden}
+.fb-cdk{max-width:120px;overflow:hidden}
+.fb.min{padding-top:8px}
+.fb.min .fb-bar{width:min(840px,100%);padding:4px 4px 4px 5px;gap:12px;border-radius:999px;background-color:rgba(32,20,21,.74)}
+.fb.min .fb-ic{width:32px;height:32px;border-radius:50%}
+.fb.min .fb-t{gap:0}
+.fb.min .fb-t small{max-height:0;opacity:0}
+.fb.min .fb-t b{font-size:16px}
+.fb.min .fb-cd{gap:4px;padding-left:12px;margin-right:2px}
+.fb.min .fb-cdk{max-width:12px;margin-right:0;opacity:1;color:transparent}
+.fb.min .cdu{flex-direction:row;align-items:baseline;gap:2px;width:auto;height:28px;padding:0 7px;border-radius:999px;align-items:center}
+.fb.min .cdu b{font-size:13.5px}
+.fb.min .cdu small{margin:0;font-size:0;letter-spacing:0;text-transform:none}
+.fb.min .cdu small:after{font-size:10.5px;font-weight:700;color:rgba(255,248,238,.65)}
+.fb.min .cdu:nth-child(2) small:after{content:"d"}.fb.min .cdu:nth-child(3) small:after{content:"h"}.fb.min .cdu:nth-child(4) small:after{content:"m"}.fb.min .cdu:nth-child(5) small:after{content:"s";color:rgba(255,212,0,.8)}
+.fb.min .btn.sm{height:36px;font-size:13.5px;padding-right:14px}
+.fb.min .btn.sm .sf-b{width:26px;height:26px}
+.fb.min .btn.sm .sf-b svg{width:20px;height:20px}
 </style>
 </head>
 <body>
@@ -2088,7 +2149,6 @@ html:not(.tk-a) .tkb-board{display:flex;align-items:center;gap:14px;height:38px;
 </section>
 
 
-<div class="tkb" data-ticker hidden aria-label="Who just saved a seat"><span class="tkb-live"><i></i>Live seats</span><div class="tkb-rope"><div class="tkb-track"></div></div><div class="tkb-board" aria-hidden="true"><span class="bd-k">Now boarding <em>· Dec 8</em></span><span class="bd-row"><span class="bd-name"></span><span class="bd-txt">saved a seat</span><span class="bd-when"></span></span></div></div>
 <main class="v2page">
 <div class="v2body">
 <!-- the frozen column: the seat ticket the form moves into once the hero's ticket has scrolled away (1280 px and wider) -->
@@ -2250,8 +2310,8 @@ html:not(.tk-a) .tkb-board{display:flex;align-items:center;gap:14px;height:38px;
 </section>
 
 <!-- 4. where are you right now? Three illustrated choices; the pick goes with the sign-up (hidden field "situation"), and the button answers it -->
-<div class="tkb" data-ticker hidden aria-label="Who just saved a seat"><span class="tkb-live"><i></i>Live seats</span><div class="tkb-rope"><div class="tkb-track"></div></div><div class="tkb-board" aria-hidden="true"><span class="bd-k">Now boarding <em>· Dec 8</em></span><span class="bd-row"><span class="bd-name"></span><span class="bd-txt">saved a seat</span><span class="bd-when"></span></span></div></div>
 <section class="sand where" id="where">
+  <div class="tkb" data-ticker hidden aria-label="Who just saved a seat"><span class="tkb-live"><i></i>live</span><div class="tkb-rope"><div class="tkb-track"></div></div><div class="tkb-board" aria-hidden="true"><span class="bd-k">Now boarding <em>· Dec 8</em></span><span class="bd-row"><span class="bd-name"></span><span class="bd-txt">saved a seat</span><span class="bd-when"></span></span></div></div>
   <div class="wrap">
     <div class="head" data-r><h2>Where are you <em>right now?</em></h2></div>
     <div class="sit3" role="group" aria-label="Where are you right now?" data-r>
@@ -2416,6 +2476,7 @@ html:not(.tk-a) .tkb-board{display:flex;align-items:center;gap:14px;height:38px;
 
 <!-- 10. see the work behind the numbers, then what readers and students say (verified words only) -->
 <section class="revs" id="reviews">
+  <div class="tkb" data-ticker hidden aria-label="Who just saved a seat"><span class="tkb-live"><i></i>live</span><div class="tkb-rope"><div class="tkb-track"></div></div><div class="tkb-board" aria-hidden="true"><span class="bd-k">Now boarding <em>· Dec 8</em></span><span class="bd-row"><span class="bd-name"></span><span class="bd-txt">saved a seat</span><span class="bd-when"></span></span></div></div>
   <div class="wrap">
     <div class="head" data-r>
       <span class="rv-stars" aria-hidden="true"><img style="--i:0;--r:-10deg;--z:0.92" src="img/vip/paint/star-a.webp" alt="" width="70" height="70"><img style="--i:1;--r:6deg;--z:1.00" src="img/vip/paint/star-b.webp" alt="" width="70" height="70"><img style="--i:2;--r:-3deg;--z:1.12" src="img/vip/paint/star-c.webp" alt="" width="70" height="70"><img style="--i:3;--r:9deg;--z:1.00" src="img/vip/paint/star-a.webp" alt="" width="70" height="70"><img style="--i:4;--r:-7deg;--z:0.90" src="img/vip/paint/star-b.webp" alt="" width="70" height="70"></span>
@@ -2527,8 +2588,8 @@ html:not(.tk-a) .tkb-board{display:flex;align-items:center;gap:14px;height:38px;
 </main>
 
 <!-- 9. final CTA: claim your seat -->
-<div class="tkb" data-ticker hidden aria-label="Who just saved a seat"><span class="tkb-live"><i></i>Live seats</span><div class="tkb-rope"><div class="tkb-track"></div></div><div class="tkb-board" aria-hidden="true"><span class="bd-k">Now boarding <em>· Dec 8</em></span><span class="bd-row"><span class="bd-name"></span><span class="bd-txt">saved a seat</span><span class="bd-when"></span></span></div></div>
 <section class="sand final" id="final">
+  <div class="tkb" data-ticker hidden aria-label="Who just saved a seat"><span class="tkb-live"><i></i>live</span><div class="tkb-rope"><div class="tkb-track"></div></div><div class="tkb-board" aria-hidden="true"><span class="bd-k">Now boarding <em>· Dec 8</em></span><span class="bd-row"><span class="bd-name"></span><span class="bd-txt">saved a seat</span><span class="bd-when"></span></span></div></div>
   <div class="wrap">
     <div class="claim">
       <div class="pic" data-r>
@@ -2687,6 +2748,12 @@ html:not(.tk-a) .tkb-board{display:flex;align-items:center;gap:14px;height:38px;
       var v = { d: String(d), h: pad(h), m: pad(m), s: pad(sx) };
       Object.keys(v).forEach(function(k){ els[k].forEach(function(e){ if (e.textContent !== v[k]) { e.textContent = v[k]; if (e.tagName === 'B' && !reduce) { e.classList.remove('flip'); void e.offsetWidth; e.classList.add('flip') } } }) }) }
     tick(); setInterval(tick, 1000);
+  })();
+  /* the sticky bar slims down once you scroll past the top of the page (a little gap between on and off so it never flickers) */
+  (function(){
+    var fb = document.querySelector('.fb'); if (!fb) return; var on = false, q = false;
+    function upd(){ q = false; var y = window.scrollY; if (!on && y > 160) { on = true; fb.classList.add('min') } else if (on && y < 90) { on = false; fb.classList.remove('min') } }
+    addEventListener('scroll', function(){ if (!q) { q = true; requestAnimationFrame(upd) } }, { passive: true }); upd();
   })();
   /* the bunting tickers: one flag per real first name, the set doubled so it loops without a seam */
   function fillTickers(rec){
