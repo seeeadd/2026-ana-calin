@@ -26,6 +26,17 @@
     rows.forEach(function (r) { io.observe(r) });
   })();
 
+  /* I'm Ana: the sunflower behind her photo is sized to the room around it, so its petals never reach the text */
+  (function () {
+    var sf = $('.hst-pic .bk-sf'), fig = $('.hst-pic figure'); if (!sf || !fig) return;
+    function fit() { sf.style.width = ''; var f = fig.getBoundingClientRect(), cx = f.left + f.width / 2, cy = f.top + f.height * .5, want = f.width * .76, room = 1e9;
+      $$('.hst-tx p, .hst-tx h2, .hst-tx .cta2').forEach(function (e) { var r = e.getBoundingClientRect(); if (!r.width) return;
+        var dx = Math.max(r.left - cx, 0, cx - r.right), dy = Math.max(r.top - cy, 0, cy - r.bottom); room = Math.min(room, Math.hypot(dx, dy)) });
+      var R = Math.max(f.width * .52, Math.min(want, room - 18)); sf.style.width = (2 * R / .97) + 'px';
+      sf.style.opacity = R < f.width * .56 ? '0' : '' }
+    fit(); addEventListener('resize', fit); if (document.fonts) document.fonts.ready.then(fit);
+  })();
+
   /* the Day windows without motion: each shows its first slide, finished */
   if (!window.gsap || reduce) $$('.dk-f.a').forEach(function (f) { f.src = f.dataset.src + '?still=1' });
 
@@ -234,20 +245,32 @@
     var gp = $('.gpaint');
     if (gp) {
       var cam = $('.gp-cam', gp), doc = $('.gp-doc', gp), gr = $('.gp-ring', gp), lock = $('.gp-lock', gp), L = gr.getTotalLength(); gr.style.strokeDasharray = L + ' ' + (L + 2); gr.style.strokeDashoffset = L;
-      /* scroll the calculator so the point at fraction f of its height sits at fraction at of the screen */
-      function to(f, at) { return function () { return -(doc.offsetHeight * f - cam.offsetHeight * at) } }
-      $$('.gp-flow path', gp).forEach(function (q) { var l = q.getTotalLength(); q.style.strokeDasharray = l + ' ' + (l + 2); q.style.strokeDashoffset = l });
+      /* the camera on her calculator (doc units: the image is 1080 wide): xf = left edge as a share of the width,
+         yd = top edge in doc units, wf = how much of the width fills the screen */
+      function frame(xf, yd, wf) { return { scale: function () { return 1 / wf }, x: function () { return -xf * cam.offsetWidth / wf }, y: function () { return -yd * (cam.offsetWidth / 1080) / wf } } }
+      gsap.set(doc, { transformOrigin: '0 0' });
+      var fl = $$('.gp-flow path', gp); fl.forEach(function (q) { var l = q.getTotalLength(); q.style.strokeDasharray = l + ' ' + (l + 2); q.style.strokeDashoffset = l });
       var tk = gsap.timeline(), og = { t: 0 };
       tk.from($('.dev', gp), { y: 40, rotation: -2, opacity: 0, duration: .9, ease: 'power3.out' }, 0)
-        .fromTo(doc, { y: 0 }, { y: to(.205, .42), duration: 1.3, ease: 'power2.inOut', immediateRender: false }, 1.2)
-        .to(og, { t: 1, duration: .8, ease: 'power1.inOut', onUpdate: function () { gr.style.strokeDashoffset = L * (1 - og.t) } }, 2.5)
-        .to(doc, { y: to(.47, .35), duration: 1.2, ease: 'power2.inOut' }, 3.5)
-        .to(doc, { y: to(.71, .5), duration: 1.1, ease: 'power2.inOut' }, 5.0)
-        .from($('span', lock), { scale: .6, opacity: 0, duration: .5, ease: 'back.out(2)' }, 5.8)
-        .from($('.gp-life', gp), { y: 70, x: 30, rotation: 14, opacity: 0, duration: .85, ease: 'back.out(1.4)' }, 6.2)
-        .to($$('.gp-flow path', gp), { strokeDashoffset: 0, duration: .6, ease: 'power1.inOut', stagger: .5 }, 6.6)
-        .from($('.gp-tag', gp), { y: -60, rotation: -60, opacity: 0, duration: 1.4, ease: 'elastic.out(1,.35)' }, 7.2)
-        .from($('.gp-num', gp), { clipPath: 'inset(0 100% 0 0)', duration: .8, ease: 'none' }, 7.7)
+        .fromTo(doc, Object.assign({ scale: 1, x: 0, y: 0 }), Object.assign({ duration: 1.2, ease: 'power2.inOut', immediateRender: false }, frame(0, 230, 1)), 1.0)
+        .to(doc, Object.assign({ duration: 1.1, ease: 'power2.inOut' }, frame(.3, 300, .45)), 2.5)
+        .to(og, { t: 1, duration: .8, ease: 'power1.inOut', onUpdate: function () { gr.style.strokeDashoffset = L * (1 - og.t) } }, 3.5)
+        .to(doc, Object.assign({ duration: 1.3, ease: 'power2.inOut' }, frame(0, 716, 1)), 4.7)
+        .from(lock, { yPercent: 100, opacity: 0, duration: .5, ease: 'power2.out' }, 5.9)
+        .from($('span', lock), { scale: .6, opacity: 0, duration: .45, ease: 'back.out(2)' }, 6.1)
+        .from($('.gp-life', gp), { y: 70, x: 30, rotation: 14, opacity: 0, duration: .85, ease: 'back.out(1.4)' }, 6.3)
+        .add(function () {   /* the arrow runs from the $3,000 tile on the screen to the postcard's tag */
+          var g = gp.getBoundingClientRect(), c = cam.getBoundingClientRect(), r = c.width / 1080, tg = $('.gp-tag', gp).getBoundingClientRect();
+          var x0 = (c.left + 380 * r - g.left) / g.width * 100, y0 = (c.top + (972 - 716) * r - g.top) / g.height * 100;
+          var x1 = (tg.left + tg.width * .2 - g.left) / g.width * 100, y1 = (tg.top + tg.height * .3 - g.top) / g.height * 100;
+          var mx = (x0 + x1) / 2 + 4, my = Math.min(y0, y1) - 2;
+          fl[0].setAttribute('d', 'M' + x0.toFixed(1) + ' ' + y0.toFixed(1) + ' Q' + mx.toFixed(1) + ' ' + my.toFixed(1) + ' ' + x1.toFixed(1) + ' ' + y1.toFixed(1));
+          var a = Math.atan2(y1 - my, x1 - mx), h = 2.6;
+          fl[1].setAttribute('d', 'M' + (x1 - h * Math.cos(a - .5)).toFixed(1) + ' ' + (y1 - h * Math.sin(a - .5)).toFixed(1) + ' L' + x1.toFixed(1) + ' ' + y1.toFixed(1) + ' L' + (x1 - h * Math.cos(a + .5)).toFixed(1) + ' ' + (y1 - h * Math.sin(a + .5)).toFixed(1));
+          fl.forEach(function (q) { var l = q.getTotalLength(); q.style.strokeDasharray = l + ' ' + (l + 2); q.style.strokeDashoffset = l });
+          gsap.to(fl, { strokeDashoffset: 0, duration: .6, ease: 'power1.inOut', stagger: .5 }) }, 7.1)
+        .from($('.gp-tag', gp), { y: -60, rotation: -60, opacity: 0, duration: 1.4, ease: 'elastic.out(1,.35)' }, 7.0)
+        .from($('.gp-num', gp), { clipPath: 'inset(0 100% 0 0)', duration: .8, ease: 'none' }, 7.6)
         .from($('.gp-src', gp), { opacity: 0, y: 8, duration: .6 }, 7.9);
       when(gp, tk);
     }
