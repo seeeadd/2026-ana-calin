@@ -7,7 +7,7 @@ window.OFFER = {
   PAY2_DATE:     '',              // e.g. 'Thu Dec 31'. Empty = "in 30 days".
   LIVE_CALLS:    'A live call with me every week, except Christmas week',  // spine v28, approved by Ana Oct 29. Empty = no live calls shown anywhere.
   HOURS:         '',              // e.g. 'about 4 hours a week'. Empty = "built for the evenings you have".
-  BONUS2_NAME:   'The audit: my notes on your offer, price and first ask',  // [Ana confirms] the one live bonus: 50 seats, Day 2 buyers first, last seats Thu Nov 19, 11:59 pm New York (spine v23)
+  BONUS2_NAME:   'The audit: my notes on your offer, price and first ask',  // [Ana confirms] the one live bonus: 50 seats, Day 2 buyers first, last seats Thu Dec 10, 11:59 pm New York (spine v23)
   BONUS2_SEATS:  '50',            // e.g. 50. Empty = no seat count shown.
   BONUS3_NAME:   '',              // [revealed live on Day 3] Empty = no Day 3 bonus tile.
   BONUS3_SEATS:  '',
@@ -15,7 +15,7 @@ window.OFFER = {
   SAFETY_TEXT:   'Do the daily tasks and come to the calls. If by Dec 30 you don\'t have your offer, your price and your launch ready to send, email me. We fix it with you first, and if you still want out, you get a full refund. No tasks done, no refund.',
   SAFETY_LINE:   'my do-the-work promise',  // one line under the button
   SKIP_TEXT:     '',              // for 10K Launch Lab students: which days they can skip. Empty = row hidden.
-  VIDEO_SRC:     '',              // the offer video (long page), cut from Day 2 the night of Wed Nov 18
+  VIDEO_SRC:     '',              // the offer video (long page), cut from Day 2 the night of Wed Dec 9
   METHOD:        'Find it, price it, ask it',  // the method name in spine v28, approved by Ana Oct 29. Empty = "How it works".
   BACKUP_PAY_URL:  '',            // a second way to pay (PayPal or similar) if a card fails. Empty = the line stays hidden.
   BACKUP_PAY_TEXT: '',            // e.g. 'Card not going through?' (that's the default)

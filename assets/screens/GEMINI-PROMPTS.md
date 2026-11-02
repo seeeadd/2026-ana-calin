@@ -34,7 +34,7 @@ text is sharp and right. The Day 2 sheet photo waits until the VIP deliverables 
 
 **Screen that goes in:** `channel.png` (free page) or `vipgroup.png` (VIP page).
 
-## Photo 2 · Tue Nov 17, Day 1 · live on the call (laptop) · v3, zoomed in
+## Photo 2 · Tue Dec 8, Day 1 · live on the call (laptop) · v3, zoomed in
 
 > Close, slightly off-centre photo of an open laptop screen taken from her seat, about 50 cm away, the screen
 > filling most of the frame (about 70 percent of the width). Only the top of the keyboard is visible at the bottom
@@ -46,7 +46,7 @@ text is sharp and right. The Day 2 sheet photo waits until the VIP deliverables 
 
 **Screen that goes in:** `call.png` (Ana sharing her Day 1 slide).
 
-## Photo 3 · Thu Nov 19, Day 3 · about to send the ask (laptop) · v3, zoomed in
+## Photo 3 · Thu Dec 10, Day 3 · about to send the ask (laptop) · v3, zoomed in
 
 > Close photo over her shoulder of a laptop screen, the screen filling most of the frame, seen slightly from the
 > right. Her right index finger rests on the trackpad at the bottom edge of the frame, about to click. Only a sliver
@@ -55,7 +55,7 @@ text is sharp and right. The Day 2 sheet photo waits until the VIP deliverables 
 
 **Screen that goes in:** `compose.png` (her ask as a Substack post, pointer on Continue).
 
-## Photo 4 · Fri Nov 20, VIP · Ana reviews her offer live (laptop) · v3, zoomed in
+## Photo 4 · Fri Dec 11, VIP · Ana reviews her offer live (laptop) · v3, zoomed in
 
 > Close photo of a laptop screen from her seat, the screen filling most of the frame, seen slightly from the left.
 > In the bottom-left corner, out of focus, her hand holds a yellow sticky note with a word written on it. Only a

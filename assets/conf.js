@@ -33,7 +33,7 @@
     var tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
     if (tz && tz !== 'America/New_York' && tz !== 'Europe/Athens') {
       var p = {};
-      new Intl.DateTimeFormat('en-US', {weekday:'short', hour:'numeric', minute:'2-digit', hour12:true}).formatToParts(new Date(Date.UTC(2026,10,17,17,0))).forEach(function(x){ p[x.type] = x.value });
+      new Intl.DateTimeFormat('en-US', {weekday:'short', hour:'numeric', minute:'2-digit', hour12:true}).formatToParts(new Date(Date.UTC(2026,11,8,17,0))).forEach(function(x){ p[x.type] = x.value });
       if (p.weekday && p.hour && p.dayPeriod) document.querySelectorAll('.lt').forEach(function(s){ s.textContent = ' · that’s ' + p.weekday + ' ' + p.hour + ':' + p.minute + ' ' + p.dayPeriod.toLowerCase() + ' for you' });
     }
   } catch (e) {}
@@ -41,10 +41,10 @@
   /* Google Calendar: one link per day (Google can't add several events from one link) */
   var SHEET = location.origin + location.pathname.replace(/[^\/]*\/[^\/]*$/, '') + 'assets/sheet.pdf';
   var EV = {
-    '20261117': ['Free 3-day live workshop · Day 1 with Ana Calin', 'Day 1: find what your readers would pay for. You leave with your one reader, and the problem she\'d pay you to fix.'],
-    '20261118': ['Free 3-day live workshop · Day 2 with Ana Calin', 'Day 2: turn it into an offer, with a price. You leave with your offer, in one sentence, priced.'],
-    '20261119': ['Free 3-day live workshop · Day 3 with Ana Calin', 'Day 3: write the ask. You leave with your first ask, written, ready to send. Stay to the end: five people there live win a 1:1 with Ana.'],
-    '20261120': ['VIP Q&A with Ana Calin', 'Bring your offer, your price or your ask. Ana works on it with you live.']
+    '20261208': ['Free 3-day live workshop · Day 1 with Ana Calin', 'Day 1: find what your readers would pay for. You leave with your one reader, and the problem she\'d pay you to fix.'],
+    '20261209': ['Free 3-day live workshop · Day 2 with Ana Calin', 'Day 2: turn it into an offer, with a price. You leave with your offer, in one sentence, priced.'],
+    '20261210': ['Free 3-day live workshop · Day 3 with Ana Calin', 'Day 3: write the ask. You leave with your first ask, written, ready to send. Stay to the end: five people there live win a 1:1 with Ana.'],
+    '20261211': ['VIP Q&A with Ana Calin', 'Bring your offer, your price or your ask. Ana works on it with you live.']
   };
   function gcal(text, d0, details, recur){
     return 'https://calendar.google.com/calendar/render?action=TEMPLATE'
@@ -54,18 +54,18 @@
       + '&details=' + encodeURIComponent(details)
       + '&location=' + encodeURIComponent('Your Zoom link is in your email from Ana');
   }
-  /* one Google link for every day: a repeating event (daily, 3 times, or 4 with the VIP Q&A on Fri Nov 20),
+  /* one Google link for every day: a repeating event (daily, 3 times, or 4 with the VIP Q&A on Fri Dec 11),
      in their own calendar so their usual reminders fire. The notes hold each day, with its own lines and links. */
-  var vipCal = C.PAGE === 'vip', days = ['20261117', '20261118', '20261119'].concat(vipCal ? ['20261120'] : []);
+  var vipCal = C.PAGE === 'vip', days = ['20261208', '20261209', '20261210'].concat(vipCal ? ['20261211'] : []);
   var notes = 'Every day at 12:00 pm New York (7:00 pm Greece), live on Zoom. Your Zoom link is in your email from Ana.\n';
   days.forEach(function(d, i){
-    var lab = ['DAY 1 · Tue Nov 17', 'DAY 2 · Wed Nov 18', 'DAY 3 · Thu Nov 19', 'VIP Q&A · Fri Nov 20'][i];
+    var lab = ['DAY 1 · Tue Dec 8', 'DAY 2 · Wed Dec 9', 'DAY 3 · Thu Dec 10', 'VIP Q&A · Fri Dec 11'][i];
     notes += '\n' + lab + '\n' + EV[d][1] + '\n';
   });
   notes += '\nPrint your Head start page before Day 1: ' + SHEET;
   var waLink = vipCal ? C.VIP_GROUP_URL : C.CHANNEL_URL;
   if (waLink) notes += '\n' + (vipCal ? 'Your VIP WhatsApp group: ' : 'Reminders on WhatsApp: ') + waLink;
-  var gAll = gcal(vipCal ? 'Ana Calin: live workshop + VIP Q&A (Nov 17 to 20)' : 'Ana Calin: free live workshop (Nov 17 to 19)', '20261117', notes, 'RRULE:FREQ=DAILY;COUNT=' + days.length);
+  var gAll = gcal(vipCal ? 'Ana Calin: live workshop + VIP Q&A (Dec 8 to 11)' : 'Ana Calin: free live workshop (Dec 8 to 10)', '20261208', notes, 'RRULE:FREQ=DAILY;COUNT=' + days.length);
   document.querySelectorAll('a[data-gall]').forEach(function(a){ a.href = gAll; a.target = '_blank'; a.rel = 'noopener' });
   /* a single day (the VIP Q&A card) */
   document.querySelectorAll('a[data-g]').forEach(function(a){
@@ -83,8 +83,8 @@
   if (qs.get('reset') === 'survey') st = {owner: email.toLowerCase()};
   var ticket = document.querySelector('.cxa, .tkt, .pcard'), wasReady = null;
   var CAPS = C.PAGE === 'vip'
-    ? ['Your VIP seat is saved. 4 quick steps to go.', '3 steps to go.', '2 steps to go.', 'One step to go: your exit number.', 'All set. See you Tue Nov 17.']
-    : ['Your seat is saved. 4 quick steps to go.', '3 steps to go.', '2 steps to go.', 'One step to go: your exit number.', 'All set. See you Tue Nov 17.'];
+    ? ['Your VIP seat is saved. 4 quick steps to go.', '3 steps to go.', '2 steps to go.', 'One step to go: your exit number.', 'All set. See you Tue Dec 8.']
+    : ['Your seat is saved. 4 quick steps to go.', '3 steps to go.', '2 steps to go.', 'One step to go: your exit number.', 'All set. See you Tue Dec 8.'];
   function renderReady(){
     var n = 0;
     ALL.forEach(function(s){
@@ -219,12 +219,12 @@
     var tz2 = Intl.DateTimeFormat().resolvedOptions().timeZone;
     if (tz2 && tz2 !== 'America/New_York') {
       var q = {};
-      new Intl.DateTimeFormat('en-US', {hour:'numeric', minute:'2-digit', hour12:true}).formatToParts(new Date(Date.UTC(2026,10,17,17,0))).forEach(function(x){ q[x.type] = x.value });
+      new Intl.DateTimeFormat('en-US', {hour:'numeric', minute:'2-digit', hour12:true}).formatToParts(new Date(Date.UTC(2026,11,8,17,0))).forEach(function(x){ q[x.type] = x.value });
       if (q.hour && q.dayPeriod) localTime = 'That’s ' + q.hour + ':' + q.minute + ' ' + q.dayPeriod.toLowerCase() + ' where you are.';
     }
   } catch (e) {}
   var QS = [
-    {id:'q1', q:'Can you be there live, 12:00 to 1:30 pm New York, Tue Nov 17 to Thu Nov 19?', note: localTime,
+    {id:'q1', q:'Can you be there live, 12:00 to 1:30 pm New York, Tue Dec 8 to Thu Dec 10?', note: localTime,
      o:['Yes, all three days', 'Some of it, around work', 'Probably not']},
     {id:'q2', q:'How many subscribers do you have right now?', note:'No newsletter? Pick “None yet.” Every answer here is a normal place to start.',
      o:['None yet', 'Under 100', '100 to 1,000', '1,000 to 10,000', 'More than 10,000']},
@@ -236,7 +236,7 @@
      o:['“It feels wrong to charge for something that comes easy to me.”', '“I wouldn’t know what to sell.”', '“I need more subscribers first.”', '“Asking for money feels pushy.”', '“I don’t have the time.”', '“This works for other people, not for people like me.”']},
     {id:'q6', q:'What do people come to you for help with?', note:'Pick the closest.',
      o:['Work and career', 'Writing and creativity', 'Health, food or fitness', 'Money and business', 'Family, home and relationships', 'Something else']},
-    {id:'q7', q:'By Nov 19, these three days were worth it if I...',
+    {id:'q7', q:'By Dec 10, these three days were worth it if I...',
      o:['know what I’d sell', 'have a price I can say without wincing', 'have my first ask written', 'actually send it to someone', 'all of the above, obviously']}
   ];
   var SV_KEY = 'ana_survey2', sv = {a:{}, i:1, done:false};
@@ -438,7 +438,7 @@
     if (!reduce) setInterval(function(){ if (!gxPinned) gxShow(!gxEl.classList.contains('b')) }, 11000);
   }
 
-  /* second chance at VIP: back to the VIP page with the name and email, gone after Tue Nov 17, 11:59 pm New York */
+  /* second chance at VIP: back to the VIP page with the name and email, gone after Tue Dec 8, 11:59 pm New York */
   var now0 = qs.get('now') ? Date.parse(qs.get('now')) : Date.now();
   if (C.CLOSES && now0 >= C.CLOSES) document.body.classList.add('vip-closed');
   document.querySelectorAll('a.vipback').forEach(function(a){

@@ -426,7 +426,7 @@ button.xtile:hover{transform:translateY(-2px);box-shadow:0 5px 0 var(--ink)}
 <header class="xtop">
   <div class="wrap">
     <a class="xbrand" href="../"><img src="../img/mark.png" alt="" width="42" height="42">how we grow</a>
-    <span class="xpill"><i></i>The Exit Plan · Nov 17 to 19</span>
+    <span class="xpill"><i></i>The Exit Plan · Dec 8 to 10</span>
   </div>
 </header>
 
@@ -1291,7 +1291,7 @@ button.xtile:hover{transform:translateY(-2px);box-shadow:0 5px 0 var(--ink)}
 
   /* ---------- Day 1 and after ---------- */
   function renderEvent(){
-    var t = NOW.getTime(), D1 = Date.UTC(2026, 10, 17, 17, 0), D3 = Date.UTC(2026, 10, 19, 18, 30), e = $('evText'); e.textContent = '';
+    var t = NOW.getTime(), D1 = Date.UTC(2026, 11, 8, 17, 0), D3 = Date.UTC(2026, 11, 10, 18, 30), e = $('evText'); e.textContent = '';
     if (t < D1) {
       var local = '';
       try {
@@ -1300,7 +1300,7 @@ button.xtile:hover{transform:translateY(-2px);box-shadow:0 5px 0 var(--ink)}
         var mine = q.hour + ':' + q.minute + ' ' + (q.dayPeriod || '').toLowerCase();
         if (mine.replace(/\s/g, '').toLowerCase() !== ny.replace(/\s/g, '').toLowerCase()) local = ' (' + mine + ' where you are)';
       } catch (x) {}
-      e.appendChild(rich('span', null, ['Bring your monthly goal and the price you want to test to ', ['Day 1, Tue Nov 17 at 12:00 pm New York'], local + '. I’ll help you work on who to reach and what you could offer.']));
+      e.appendChild(rich('span', null, ['Bring your monthly goal and the price you want to test to ', ['Day 1, Tue Dec 8 at 12:00 pm New York'], local + '. I’ll help you work on who to reach and what you could offer.']));
     } else if (t < D3) e.appendChild(rich('span', null, ['We’re in the three days. ', ['Update your plan'], ' with what you worked on today.']));
     else e.appendChild(rich('span', null, [['Update your plan'], ' with what happened when you made the offer.']));
   }

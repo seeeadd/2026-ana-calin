@@ -429,7 +429,7 @@ footer .help{width:100%;font-size:14px;color:var(--ink2)}
 .hg .tiles{justify-content:flex-start}
 body.vipc .hero{background:linear-gradient(180deg,var(--pk3) 0%,var(--cream) 82%)}
 
-/* the free ticket: four punches, one per thing to do before Tue Nov 17 */
+/* the free ticket: four punches, one per thing to do before Tue Dec 8 */
 .tkw{width:min(440px,100%);margin:0 auto;filter:drop-shadow(7px 8px 0 var(--ink));transform:rotate(2.5deg);animation:tkin .9s var(--ease) both .15s}
 @keyframes tkin{from{opacity:0;transform:translateY(34px) rotate(9deg) scale(.92)}to{opacity:1;transform:rotate(2.5deg)}}
 .tkt{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 124px;background:#fff;border:2px solid var(--ink);border-radius:22px;

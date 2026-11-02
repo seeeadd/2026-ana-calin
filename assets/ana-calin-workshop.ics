@@ -5,10 +5,10 @@ CALSCALE:GREGORIAN
 METHOD:PUBLISH
 X-WR-CALNAME:Ana Calin · free 3-day live workshop
 BEGIN:VEVENT
-UID:ana-calin-20261117@howwegrowtoday.com
-DTSTAMP:20261024T120000Z
-DTSTART:20261117T170000Z
-DTEND:20261117T183000Z
+UID:ana-calin-20261208@howwegrowtoday.com
+DTSTAMP:20261102T120000Z
+DTSTART:20261208T170000Z
+DTEND:20261208T183000Z
 SUMMARY:Free 3-day live workshop · Day 1 with Ana Calin
 DESCRIPTION:Do this first: join Ana's WhatsApp community\, so you don't mis
  s the reminders: https://exitplan.howwegrowtoday.com/whatsapp/\n(Email rem
@@ -26,10 +26,10 @@ TRIGGER:-PT30M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:ana-calin-20261118@howwegrowtoday.com
-DTSTAMP:20261024T120000Z
-DTSTART:20261118T170000Z
-DTEND:20261118T183000Z
+UID:ana-calin-20261209@howwegrowtoday.com
+DTSTAMP:20261102T120000Z
+DTSTART:20261209T170000Z
+DTEND:20261209T183000Z
 SUMMARY:Free 3-day live workshop · Day 2 with Ana Calin
 DESCRIPTION:Do this first: join Ana's WhatsApp community\, so you don't mis
  s the reminders: https://exitplan.howwegrowtoday.com/whatsapp/\n(Email rem
@@ -47,10 +47,10 @@ TRIGGER:-PT30M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:ana-calin-20261119@howwegrowtoday.com
-DTSTAMP:20261024T120000Z
-DTSTART:20261119T170000Z
-DTEND:20261119T183000Z
+UID:ana-calin-20261210@howwegrowtoday.com
+DTSTAMP:20261102T120000Z
+DTSTART:20261210T170000Z
+DTEND:20261210T183000Z
 SUMMARY:Free 3-day live workshop · Day 3 with Ana Calin
 DESCRIPTION:Do this first: join Ana's WhatsApp community\, so you don't mis
  s the reminders: https://exitplan.howwegrowtoday.com/whatsapp/\n(Email rem
