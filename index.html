@@ -1877,37 +1877,32 @@ html.anim-on .stay:not(.in) .tix .t{transform:translate(90px,110px) rotate(0)!im
 .mcd-t{color:var(--pink)!important;font-variant-numeric:tabular-nums;font-size:12px!important}
 /* who just saved a seat: village festival bunting strung across the page, each flag a real first name from the
    Kit feed (never invented), drifting past under a LIVE tag; shown only when the feed has recent names */
-.tkb{position:relative;z-index:2;display:flex;align-items:center;height:42px;margin:6px 0;overflow:hidden;border-top:1px solid rgba(26,20,18,.08);border-bottom:1px solid rgba(26,20,18,.08);background:rgba(255,241,201,.45)}
+.tkb{position:relative;z-index:2;display:flex;align-items:center;height:54px;margin:8px 0;overflow:hidden}
+.tkb:before,.tkb:after{content:"";position:absolute;left:0;right:0;height:0;border-top:1.5px dashed rgba(247,37,133,.28)}
+.tkb:before{top:4px}.tkb:after{bottom:4px}
 .tkb[hidden]{display:none}
-.tkb-live{position:relative;z-index:3;flex:none;display:flex;align-items:center;gap:6px;margin-left:max(16px,calc(50% - 560px));padding:3px 9px;border-radius:999px;background:#1A1412;color:#fff;font-weight:800;font-size:10px;letter-spacing:.14em}
-.tkb-live i{width:7px;height:7px;border-radius:50%;background:#FF3B5C}
+/* the live badge: her sunflower turning in a yellow coin, a pink pulse, and 'live seats' */
+.tkb-live{position:relative;z-index:3;flex:none;display:flex;align-items:center;gap:8px;margin-left:max(16px,calc(50% - 560px));padding:4px 12px 4px 4px;border-radius:999px;background:#FFFDF8;border:1.5px solid #1A1412;box-shadow:2px 2px 0 #FFD400;font-weight:800;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#1A1412}
+.tkb-live:before{content:"";width:26px;height:26px;border-radius:50%;background:#FFD400 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 26 26'%3E%3Cg fill='%231A1412'%3E%3Ccircle cx='13' cy='13' r='4.2'/%3E%3Cg opacity='.85'%3E%3Cellipse cx='13' cy='4.6' rx='2' ry='3.2'/%3E%3Cellipse cx='13' cy='21.4' rx='2' ry='3.2'/%3E%3Cellipse cx='4.6' cy='13' rx='3.2' ry='2'/%3E%3Cellipse cx='21.4' cy='13' rx='3.2' ry='2'/%3E%3Cellipse cx='7' cy='7' rx='2' ry='3' transform='rotate(-45 7 7)'/%3E%3Cellipse cx='19' cy='19' rx='2' ry='3' transform='rotate(-45 19 19)'/%3E%3Cellipse cx='19' cy='7' rx='2' ry='3' transform='rotate(45 19 7)'/%3E%3Cellipse cx='7' cy='19' rx='2' ry='3' transform='rotate(45 7 19)'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") center/80% no-repeat;border:1.5px solid #1A1412}
+@media (prefers-reduced-motion:no-preference){.tkb-live:before{animation:tkSpin 9s linear infinite}}
+@keyframes tkSpin{to{transform:rotate(360deg)}}
+.tkb-live i{order:3;width:7px;height:7px;border-radius:50%;background:var(--pink)}
 @media (prefers-reduced-motion:no-preference){.tkb-live i{animation:cdPing 1.6s ease-out infinite}}
 .tkb-rope{position:relative;flex:1;height:100%;-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
-.tkb-track{position:absolute;left:0;top:0;height:100%;display:flex;align-items:center;width:max-content;padding-left:16px}
+/* the string: a thin twine line along the top, the pennants hang from it */
+.tkb-track{position:absolute;left:0;top:0;height:100%;display:flex;align-items:center;width:max-content;padding-left:12px;background:linear-gradient(#A8865E,#A8865E) 0 13px/100% 1.2px no-repeat}
 @media (prefers-reduced-motion:no-preference){.tkb-track{animation:tkbRun var(--dur,80s) linear infinite}.tkb:hover .tkb-track{animation-play-state:paused}}
 @keyframes tkbRun{to{transform:translateX(-50%)}}
-.flag{display:flex;align-items:center;gap:7px;padding-right:18px;font-size:13px;color:var(--ink2);white-space:nowrap}
-.flag:before{content:"";flex:none;width:11px;height:13px;margin-right:4px;background:var(--fc,#FFD400);clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:50% 0}
-@media (prefers-reduced-motion:no-preference){.flag:before{animation:flagSway 2.8s ease-in-out infinite;animation-delay:var(--fd,0s)}}
-@keyframes flagSway{0%,100%{transform:rotate(-12deg)}50%{transform:rotate(12deg)}}
-.flag b{font-family:'Nothing You Could Do',cursive;font-weight:400;font-size:17px;color:#1A1412;line-height:1}
-.flag span{font-weight:600}
+.flag{display:flex;align-items:center;gap:8px;padding:10px 26px 0 0;font-size:13px;color:var(--ink2);white-space:nowrap}
+.flag .pn{flex:none;align-self:flex-start;margin-top:-9px;width:16px;height:22px;transform-origin:50% 0}
+.flag .pn svg{display:block;width:100%;height:100%;overflow:visible}
+@media (prefers-reduced-motion:no-preference){.flag .pn{animation:flagSway 2.8s ease-in-out infinite;animation-delay:var(--fd,0s)}}
+@keyframes flagSway{0%,100%{transform:rotate(-10deg)}50%{transform:rotate(10deg)}}
+.flag .av{flex:none;display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--fa,#FFE27A);border:1.2px solid #1A1412;font-weight:800;font-size:11px;color:#1A1412}
+.flag b{font-family:'Nothing You Could Do',cursive;font-weight:400;font-size:18px;color:#1A1412;line-height:1}
+.flag span.t{font-weight:600}
 .flag small{font-size:11.5px;color:var(--ink3)}
-.flag.p{--fc:#F72585}.flag.w{--fc:#9DBEDD}.flag.b{--fc:#FFB8D9}
-/* the popup, lighter: one live line, the seat tag stands in for the field labels, no time line or signature */
-.dlg .fl-live{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:4px 8px;margin:0 0 14px;padding:0;background:none;border:0;font-size:13.5px;color:var(--ink2)}
-.dlg .fl-live i{flex:none;width:9px;height:9px;border-radius:50%;background:#2FB36A;position:relative}
-.dlg .fl-live i:after{content:"";position:absolute;inset:-4px;border-radius:50%;background:inherit;opacity:.25}
-@media (prefers-reduced-motion:no-preference){.dlg .fl-live i:after{animation:flPing 1.8s ease-out infinite}}
-.dlg .fl-live b{color:var(--ink);font-weight:800}
-.dlg .fl-sep{color:var(--ink3);margin-right:6px}
-.dlg .fl-seat{justify-content:center}
-.dlg .flbl{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
-.dlg .fmeta,.dlg .bye{display:none}
-.dlg .fsub{margin:-2px 0 12px!important}
-.dlg .note{font-size:11.5px!important;margin-top:10px!important}
-.dlg{padding:50px 36px 26px!important}
-/* ticker, version B (default; ?tk=a shows the bunting): a ferry-port departures board, ink with yellow flip letters,
+/* ticker, the departures board (?tk=b; the bunting is the default): a ferry-port departures board, ink with yellow flip letters,
    one real name at a time, each letter flipping into place */
 html:not(.tk-a) .tkb{justify-content:center;background:none;border:0;height:52px}
 html:not(.tk-a) .tkb .tkb-rope{display:none}
@@ -1925,6 +1920,18 @@ html:not(.tk-a) .tkb-board{display:flex;align-items:center;gap:14px;height:38px;
 .bd-txt{font-size:12.5px;font-weight:700;color:var(--cream)}
 .bd-when{font-size:11px;color:rgba(255,248,238,.5)}
 @media (max-width:600px){html:not(.tk-a) .tkb .tkb-live{display:none}.bd-k{display:none}.bd-when{display:none}}
+/* the popup, lighter: one live line, no time line or signature (the field labels stay) */
+.dlg .fl-live{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:4px 8px;margin:0 0 14px;padding:0;background:none;border:0;font-size:13.5px;color:var(--ink2)}
+.dlg .fl-live i{flex:none;width:9px;height:9px;border-radius:50%;background:#2FB36A;position:relative}
+.dlg .fl-live i:after{content:"";position:absolute;inset:-4px;border-radius:50%;background:inherit;opacity:.25}
+@media (prefers-reduced-motion:no-preference){.dlg .fl-live i:after{animation:flPing 1.8s ease-out infinite}}
+.dlg .fl-live b{color:var(--ink);font-weight:800}
+.dlg .fl-sep{color:var(--ink3);margin-right:6px}
+.dlg .fl-seat{justify-content:center}
+.dlg .fmeta,.dlg .bye{display:none}
+.dlg .fsub{margin:-2px 0 12px!important}
+.dlg .note{font-size:11.5px!important;margin-top:10px!important}
+.dlg{padding:50px 36px 26px!important}
 /* the window in depth: the video sits back in the wall (lintel, jambs and sill drawn as a recess, shadow from the top
    left), the shutters have a painted edge and darken as they turn away from the light, and they cast soft shadows on
    the wall. The opening runs on CSS alone, from the first paint, so it never waits for the scripts. */
@@ -2081,7 +2088,7 @@ html:not(.tk-a) .tkb-board{display:flex;align-items:center;gap:14px;height:38px;
 </section>
 
 
-<div class="tkb" data-ticker hidden aria-label="Who just saved a seat"><span class="tkb-live"><i></i>LIVE</span><div class="tkb-rope"><div class="tkb-track"></div></div><div class="tkb-board" aria-hidden="true"><span class="bd-k">Now boarding <em>· Dec 8</em></span><span class="bd-row"><span class="bd-name"></span><span class="bd-txt">saved a seat</span><span class="bd-when"></span></span></div></div>
+<div class="tkb" data-ticker hidden aria-label="Who just saved a seat"><span class="tkb-live"><i></i>Live seats</span><div class="tkb-rope"><div class="tkb-track"></div></div><div class="tkb-board" aria-hidden="true"><span class="bd-k">Now boarding <em>· Dec 8</em></span><span class="bd-row"><span class="bd-name"></span><span class="bd-txt">saved a seat</span><span class="bd-when"></span></span></div></div>
 <main class="v2page">
 <div class="v2body">
 <!-- the frozen column: the seat ticket the form moves into once the hero's ticket has scrolled away (1280 px and wider) -->
@@ -2243,7 +2250,7 @@ html:not(.tk-a) .tkb-board{display:flex;align-items:center;gap:14px;height:38px;
 </section>
 
 <!-- 4. where are you right now? Three illustrated choices; the pick goes with the sign-up (hidden field "situation"), and the button answers it -->
-<div class="tkb" data-ticker hidden aria-label="Who just saved a seat"><span class="tkb-live"><i></i>LIVE</span><div class="tkb-rope"><div class="tkb-track"></div></div><div class="tkb-board" aria-hidden="true"><span class="bd-k">Now boarding <em>· Dec 8</em></span><span class="bd-row"><span class="bd-name"></span><span class="bd-txt">saved a seat</span><span class="bd-when"></span></span></div></div>
+<div class="tkb" data-ticker hidden aria-label="Who just saved a seat"><span class="tkb-live"><i></i>Live seats</span><div class="tkb-rope"><div class="tkb-track"></div></div><div class="tkb-board" aria-hidden="true"><span class="bd-k">Now boarding <em>· Dec 8</em></span><span class="bd-row"><span class="bd-name"></span><span class="bd-txt">saved a seat</span><span class="bd-when"></span></span></div></div>
 <section class="sand where" id="where">
   <div class="wrap">
     <div class="head" data-r><h2>Where are you <em>right now?</em></h2></div>
@@ -2520,7 +2527,7 @@ html:not(.tk-a) .tkb-board{display:flex;align-items:center;gap:14px;height:38px;
 </main>
 
 <!-- 9. final CTA: claim your seat -->
-<div class="tkb" data-ticker hidden aria-label="Who just saved a seat"><span class="tkb-live"><i></i>LIVE</span><div class="tkb-rope"><div class="tkb-track"></div></div><div class="tkb-board" aria-hidden="true"><span class="bd-k">Now boarding <em>· Dec 8</em></span><span class="bd-row"><span class="bd-name"></span><span class="bd-txt">saved a seat</span><span class="bd-when"></span></span></div></div>
+<div class="tkb" data-ticker hidden aria-label="Who just saved a seat"><span class="tkb-live"><i></i>Live seats</span><div class="tkb-rope"><div class="tkb-track"></div></div><div class="tkb-board" aria-hidden="true"><span class="bd-k">Now boarding <em>· Dec 8</em></span><span class="bd-row"><span class="bd-name"></span><span class="bd-txt">saved a seat</span><span class="bd-when"></span></span></div></div>
 <section class="sand final" id="final">
   <div class="wrap">
     <div class="claim">
@@ -2686,7 +2693,8 @@ html:not(.tk-a) .tkb-board{display:flex;align-items:center;gap:14px;height:38px;
     if (rec.length < 3) return;
     var cols = ['', 'p', 'w', 'b'], h = '';
     for (var r = 0; r < 2; r++) rec.concat(rec.length < 6 ? rec : []).forEach(function(x, i){ var nm = String(x.name).replace(/[<>&"]/g, '');
-      h += '<span class="flag ' + cols[i % 4] + '" style="--fd:' + (i * .37).toFixed(2) + 's"><b>' + nm + '</b><span>saved a seat</span><small>· ' + ago(x.at) + '</small></span>' });
+      var pc = ['#F72585', '#FFD400', '#9DBEDD', '#FFB8D9'][i % 4], ac = ['#FFE27A', '#FFD3E6', '#D6E6F4', '#FFF1C9'][i % 4];
+      h += '<span class="flag" style="--fd:' + (i * .37).toFixed(2) + 's;--fa:' + ac + '"><span class="pn"><svg viewBox="0 0 16 22"><path d="M1 1H15L8 21Z" fill="' + pc + '" stroke="#1A1412" stroke-width="1.1" stroke-linejoin="round"/><path d="M4 3.6H12L8 15.2Z" fill="none" stroke="#fff" stroke-width=".8" stroke-dasharray="1.4 1.4" opacity=".7"/></svg></span><span class="av">' + nm.charAt(0) + '</span><b>' + nm + '</b><span class="t">saved a seat</span><small>· ' + ago(x.at) + '</small></span>' });
     /* version B: one name at a time on the departures board */
     var bi = 0;
     function board(){ var x = rec[bi++ % rec.length], nm = String(x.name).slice(0, 12);
@@ -2717,7 +2725,7 @@ html:not(.tk-a) .tkb-board{display:flex;align-items:center;gap:14px;height:38px;
     function toast(){ var x = rec[k++ % rec.length]; document.getElementById('ltN').textContent = x.name; document.getElementById('ltI').textContent = x.name.charAt(0); document.getElementById('ltT').textContent = ago(x.at); lt.classList.add('on'); setTimeout(function(){lt.classList.remove('on')}, 4200) }
     if (!reduce) {setTimeout(toast, 9000); setInterval(toast, 26000)}
   }
-  if (qs.get('tk') === 'a') document.documentElement.classList.add('tk-a');
+  if (qs.get('tk') !== 'b') document.documentElement.classList.add('tk-a');
   if (qs.get('demo') === '1') {
     var now = Date.now();
     useFeed({ok:true, count:1204, recent:[{name:'Maya',at:now-4*6e4},{name:'Daniela',at:now-9*6e4},{name:'Priya',at:now-17*6e4},{name:'Sofia',at:now-26*6e4},{name:'Hannah',at:now-41*6e4}]});
