@@ -1894,6 +1894,37 @@ html.anim-on .stay:not(.in) .tix .t{transform:translate(90px,110px) rotate(0)!im
 .flag span{font-weight:600}
 .flag small{font-size:11.5px;color:var(--ink3)}
 .flag.p{--fc:#F72585}.flag.w{--fc:#9DBEDD}.flag.b{--fc:#FFB8D9}
+/* the popup, lighter: one live line, the seat tag stands in for the field labels, no time line or signature */
+.dlg .fl-live{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:4px 8px;margin:0 0 14px;padding:0;background:none;border:0;font-size:13.5px;color:var(--ink2)}
+.dlg .fl-live i{flex:none;width:9px;height:9px;border-radius:50%;background:#2FB36A;position:relative}
+.dlg .fl-live i:after{content:"";position:absolute;inset:-4px;border-radius:50%;background:inherit;opacity:.25}
+@media (prefers-reduced-motion:no-preference){.dlg .fl-live i:after{animation:flPing 1.8s ease-out infinite}}
+.dlg .fl-live b{color:var(--ink);font-weight:800}
+.dlg .fl-sep{color:var(--ink3);margin-right:6px}
+.dlg .fl-seat{justify-content:center}
+.dlg .flbl{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.dlg .fmeta,.dlg .bye{display:none}
+.dlg .fsub{margin:-2px 0 12px!important}
+.dlg .note{font-size:11.5px!important;margin-top:10px!important}
+.dlg{padding:50px 36px 26px!important}
+/* ticker, version B (default; ?tk=a shows the bunting): a ferry-port departures board, ink with yellow flip letters,
+   one real name at a time, each letter flipping into place */
+html:not(.tk-a) .tkb{justify-content:center;background:none;border:0;height:52px}
+html:not(.tk-a) .tkb .tkb-rope{display:none}
+html:not(.tk-a) .tkb .tkb-live{margin-left:0;margin-right:10px}
+.tkb-board{display:none}
+html:not(.tk-a) .tkb-board{display:flex;align-items:center;gap:14px;height:38px;padding:0 16px 0 14px;border-radius:10px;background:#1A1412;box-shadow:0 10px 20px -14px rgba(26,20,18,.8),inset 0 0 0 1px rgba(255,255,255,.06);color:#FFD400;max-width:calc(100vw - 120px);overflow:hidden}
+.bd-k{font-weight:800;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,248,238,.6);white-space:nowrap}
+.bd-k em{font-style:normal;color:var(--pink)}
+.bd-row{display:flex;align-items:center;gap:10px;white-space:nowrap}
+.bd-name{display:flex;gap:2px}
+.bd-name i{display:inline-grid;place-items:center;width:15px;height:22px;border-radius:3px;background:#2A221E;font-style:normal;font-weight:800;font-size:13px;color:#FFD400;text-transform:uppercase;position:relative;box-shadow:inset 0 -1px 0 rgba(0,0,0,.5)}
+.bd-name i:after{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:rgba(0,0,0,.55)}
+.bd-name i.fl{animation:bdFlip .32s cubic-bezier(.3,1.3,.5,1) both}
+@keyframes bdFlip{0%{transform:rotateX(90deg);opacity:.3}100%{transform:none;opacity:1}}
+.bd-txt{font-size:12.5px;font-weight:700;color:var(--cream)}
+.bd-when{font-size:11px;color:rgba(255,248,238,.5)}
+@media (max-width:600px){html:not(.tk-a) .tkb .tkb-live{display:none}.bd-k{display:none}.bd-when{display:none}}
 /* the window in depth: the video sits back in the wall (lintel, jambs and sill drawn as a recess, shadow from the top
    left), the shutters have a painted edge and darken as they turn away from the light, and they cast soft shadows on
    the wall. The opening runs on CSS alone, from the first paint, so it never waits for the scripts. */
@@ -2050,7 +2081,7 @@ html.anim-on .stay:not(.in) .tix .t{transform:translate(90px,110px) rotate(0)!im
 </section>
 
 
-<div class="tkb" data-ticker hidden aria-label="Who just saved a seat"><span class="tkb-live"><i></i>LIVE</span><div class="tkb-rope"><div class="tkb-track"></div></div></div>
+<div class="tkb" data-ticker hidden aria-label="Who just saved a seat"><span class="tkb-live"><i></i>LIVE</span><div class="tkb-rope"><div class="tkb-track"></div></div><div class="tkb-board" aria-hidden="true"><span class="bd-k">Now boarding <em>· Dec 8</em></span><span class="bd-row"><span class="bd-name"></span><span class="bd-txt">saved a seat</span><span class="bd-when"></span></span></div></div>
 <main class="v2page">
 <div class="v2body">
 <!-- the frozen column: the seat ticket the form moves into once the hero's ticket has scrolled away (1280 px and wider) -->
@@ -2212,7 +2243,7 @@ html.anim-on .stay:not(.in) .tix .t{transform:translate(90px,110px) rotate(0)!im
 </section>
 
 <!-- 4. where are you right now? Three illustrated choices; the pick goes with the sign-up (hidden field "situation"), and the button answers it -->
-<div class="tkb" data-ticker hidden aria-label="Who just saved a seat"><span class="tkb-live"><i></i>LIVE</span><div class="tkb-rope"><div class="tkb-track"></div></div></div>
+<div class="tkb" data-ticker hidden aria-label="Who just saved a seat"><span class="tkb-live"><i></i>LIVE</span><div class="tkb-rope"><div class="tkb-track"></div></div><div class="tkb-board" aria-hidden="true"><span class="bd-k">Now boarding <em>· Dec 8</em></span><span class="bd-row"><span class="bd-name"></span><span class="bd-txt">saved a seat</span><span class="bd-when"></span></span></div></div>
 <section class="sand where" id="where">
   <div class="wrap">
     <div class="head" data-r><h2>Where are you <em>right now?</em></h2></div>
@@ -2489,7 +2520,7 @@ html.anim-on .stay:not(.in) .tix .t{transform:translate(90px,110px) rotate(0)!im
 </main>
 
 <!-- 9. final CTA: claim your seat -->
-<div class="tkb" data-ticker hidden aria-label="Who just saved a seat"><span class="tkb-live"><i></i>LIVE</span><div class="tkb-rope"><div class="tkb-track"></div></div></div>
+<div class="tkb" data-ticker hidden aria-label="Who just saved a seat"><span class="tkb-live"><i></i>LIVE</span><div class="tkb-rope"><div class="tkb-track"></div></div><div class="tkb-board" aria-hidden="true"><span class="bd-k">Now boarding <em>· Dec 8</em></span><span class="bd-row"><span class="bd-name"></span><span class="bd-txt">saved a seat</span><span class="bd-when"></span></span></div></div>
 <section class="sand final" id="final">
   <div class="wrap">
     <div class="claim">
@@ -2549,9 +2580,9 @@ html.anim-on .stay:not(.in) .tix .t{transform:translate(90px,110px) rotate(0)!im
     <button class="x" type="button" aria-label="Close"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#1A1412" stroke-width="2.2" stroke-linecap="round"><path d="M2 2l10 10M12 2 2 12"/></svg></button>
     <form id="join" novalidate>
       <span class="ey"><span class="ey-a">FREE · 3 DAYS LIVE ·</span> <span class="ey-b">DEC 8 TO 10 · 12 PM ET</span></span>
-      <h3 id="dlg-h">Your seat is <em>already pulled out.</em></h3>
-      <p class="fsub">Don’t be shy. Put your name on it and try the three days with me. It’s free.</p>
-      <div class="fl-live" aria-live="polite"><p class="fl-row"><i class="g"></i><span><b data-feed="n">800+</b> <span data-feed="l">wins from my past students</span></span></p><p class="fl-row fl-just" hidden><i class="p"></i><span class="fl-jt"></span></p></div>
+      <h3 id="dlg-h">You’re almost in. <em>Just add your name.</em></h3>
+      <p class="fsub">Three days live with me, free.</p>
+      <p class="fl-live" aria-live="polite"><i class="g"></i><span><b data-feed="n">800+</b> <span data-feed="l">wins from my past students</span></span><span class="fl-just" hidden><span class="fl-sep">·</span><span class="fl-jt"></span></span></p>
       <p class="fl-seat" aria-hidden="true"><svg viewBox="0 0 40 20"><path d="M4 2h32a2 2 0 0 1 2 2v3.5a2.5 2.5 0 0 0 0 5V16a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-3.5a2.5 2.5 0 0 0 0-5V4a2 2 0 0 1 2-2Z" fill="#FFD400" stroke="#1A1412" stroke-width="1.6"/><path d="M12 3v14" stroke="#1A1412" stroke-width="1.2" stroke-dasharray="2 2"/></svg><span>Seat reserved for</span><b class="fl-who">you</b></p>
       <div class="field"><label class="flbl" for="jFirst">First name</label><input type="text" id="jFirst" name="first_name" placeholder="Your first name" autocomplete="given-name" required><span class="err">add your first name</span></div>
       <div class="field"><label class="flbl" for="jEmail">Email</label><input type="email" id="jEmail" name="email_address" placeholder="The email you actually check" autocomplete="email" inputmode="email" required><span class="err">Almost. Check that email once more.</span></div>
@@ -2656,6 +2687,13 @@ html.anim-on .stay:not(.in) .tix .t{transform:translate(90px,110px) rotate(0)!im
     var cols = ['', 'p', 'w', 'b'], h = '';
     for (var r = 0; r < 2; r++) rec.concat(rec.length < 6 ? rec : []).forEach(function(x, i){ var nm = String(x.name).replace(/[<>&"]/g, '');
       h += '<span class="flag ' + cols[i % 4] + '" style="--fd:' + (i * .37).toFixed(2) + 's"><b>' + nm + '</b><span>saved a seat</span><small>· ' + ago(x.at) + '</small></span>' });
+    /* version B: one name at a time on the departures board */
+    var bi = 0;
+    function board(){ var x = rec[bi++ % rec.length], nm = String(x.name).slice(0, 12);
+      document.querySelectorAll('.tkb-board').forEach(function(bd, j){ var n = bd.querySelector('.bd-name'), h2 = '';
+        for (var c = 0; c < nm.length; c++) h2 += '<i class="fl" style="animation-delay:' + (c * .05 + j * .15).toFixed(2) + 's">' + nm.charAt(c).replace(/[<>&"]/g, '') + '</i>';
+        n.innerHTML = h2; bd.querySelector('.bd-when').textContent = ago(x.at) }) }
+    board(); if (!reduce) setInterval(board, 4200);
     document.querySelectorAll('[data-ticker]').forEach(function(t, j){ var tr = t.querySelector('.tkb-track'); tr.innerHTML = h; tr.style.setProperty('--dur', (rec.length * 9 + j * 8) + 's'); if (j % 2) tr.style.animationDirection = 'reverse'; t.hidden = false });
   }
   function useFeed(f){
@@ -2671,7 +2709,7 @@ html.anim-on .stay:not(.in) .tix .t{transform:translate(90px,110px) rotate(0)!im
     fillTickers(rec);
     var just = document.getElementById('just'), jt = document.getElementById('justTxt'), i = 0;
     function show(){ var x = rec[i % rec.length]; jt.innerHTML = '<b></b> just saved a seat · ' + ago(x.at); jt.querySelector('b').textContent = x.name; i++ }
-    function showFl(){ var x = rec[(i + rec.length - 1) % rec.length]; document.querySelectorAll('.fl-jt').forEach(function(t){ t.innerHTML = '<b></b> just saved a seat · ' + ago(x.at); t.querySelector('b').textContent = x.name }); document.querySelectorAll('.fl-just').forEach(function(r){ r.hidden = false }) }
+    function showFl(){ var x = rec[(i + rec.length - 1) % rec.length]; document.querySelectorAll('.fl-jt').forEach(function(t){ t.innerHTML = '<b></b> just joined'; t.querySelector('b').textContent = x.name }); document.querySelectorAll('.fl-just').forEach(function(r){ r.hidden = false }) }
     show(); showFl(); just.hidden = false;
     if (!reduce) setInterval(function(){ just.classList.add('fade'); document.querySelectorAll('.fl-just').forEach(function(r){r.classList.add('fade')}); setTimeout(function(){ show(); showFl(); just.classList.remove('fade'); document.querySelectorAll('.fl-just').forEach(function(r){r.classList.remove('fade')}) }, 350) }, 5000);
     /* a small toast now and then, desktop and phone */
@@ -2679,6 +2717,7 @@ html.anim-on .stay:not(.in) .tix .t{transform:translate(90px,110px) rotate(0)!im
     function toast(){ var x = rec[k++ % rec.length]; document.getElementById('ltN').textContent = x.name; document.getElementById('ltI').textContent = x.name.charAt(0); document.getElementById('ltT').textContent = ago(x.at); lt.classList.add('on'); setTimeout(function(){lt.classList.remove('on')}, 4200) }
     if (!reduce) {setTimeout(toast, 9000); setInterval(toast, 26000)}
   }
+  if (qs.get('tk') === 'a') document.documentElement.classList.add('tk-a');
   if (qs.get('demo') === '1') {
     var now = Date.now();
     useFeed({ok:true, count:1204, recent:[{name:'Maya',at:now-4*6e4},{name:'Daniela',at:now-9*6e4},{name:'Priya',at:now-17*6e4},{name:'Sofia',at:now-26*6e4},{name:'Hannah',at:now-41*6e4}]});
@@ -2761,7 +2800,7 @@ html.anim-on .stay:not(.in) .tix .t{transform:translate(90px,110px) rotate(0)!im
       if (shown || Date.now() - t0 < 12000 || modal.classList.contains('open') || dlg.classList.contains('done')) return;
       var f1 = form.querySelector('[name=first_name]'); if (f1 && f1.value) return;
       shown = true; try { sessionStorage.setItem('ep_exit', '1') } catch (x) {}
-      hEl.innerHTML = 'Don’t go yet. <em>Your seat’s still here.</em>'; sEl.textContent = 'Put your name on it before you leave. Three days live with me on Zoom, free.';
+      hEl.innerHTML = 'Don’t go yet. <em>Your seat’s still here.</em>'; sEl.textContent = 'Put your name on it before you go. It’s free.';
       dlg.insertBefore(form, thanksEl); lastBtn = null;
       modal.classList.add('open', 'exit'); modal.setAttribute('aria-hidden','false'); document.body.classList.add('noscroll');
       setTimeout(function(){ var f = form.querySelector('[name=first_name]'); if (f) f.focus({preventScroll:true}) }, reduce ? 0 : 260);
