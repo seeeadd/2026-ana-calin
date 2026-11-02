@@ -11,9 +11,9 @@
 canvas{position:absolute;left:0;top:0;width:1920px;height:1080px;z-index:2}
 .wm{left:96px;top:118px;z-index:5}
 .type{z-index:5}
-.big{position:absolute;left:1270px;top:560px;width:540px;z-index:4}
+.big{position:absolute;left:1324px;top:556px;width:500px;z-index:4}
 .big img{width:100%;height:auto}
-.pm{position:absolute;left:1360px;top:770px;width:330px;z-index:6;transform:rotate(-9deg);mix-blend-mode:multiply}
+.pm{position:absolute;left:1407px;top:750px;width:306px;z-index:6;transform:rotate(-9deg);mix-blend-mode:multiply}
 .pm img{width:100%;height:auto}
 </style></head>
 <body>
@@ -44,7 +44,7 @@ DECK.start(function (D) {
   /* her 300: the ones nearest a point in the field, with a little noise so the group looks chosen, not cut */
   var cx = 1460, cy = 300; E.forEach(function (e) { e.d = Math.hypot(e.x - cx, (e.y - cy) * 1.25) + rnd() * 60 });
   var sorted = E.slice().sort(function (a, b) { return a.d - b.d }), P = sorted.slice(0, 300); P.forEach(function (e, i) { e.sel = 1; e.k = i });
-  var maxD = P[P.length - 1].d, T = { show: 0, ripple: 0, fly: 0 }, TGT = { x: 1545, y: 690 };
+  var maxD = P[P.length - 1].d, T = { show: 0, ripple: 0, fly: 0 }, TGT = { x: 1579, y: 676 };
   function env(x, y, r, sc, fill, stroke) { ctx.save(); ctx.translate(x, y); ctx.rotate(r); ctx.scale(sc, sc);
     ctx.fillStyle = fill; ctx.strokeStyle = stroke; ctx.lineWidth = 1.3; ctx.beginPath(); ctx.rect(-12, -8, 24, 16); ctx.fill(); ctx.stroke();
     ctx.beginPath(); ctx.moveTo(-12, -8); ctx.lineTo(0, 1.5); ctx.lineTo(12, -8); ctx.stroke(); ctx.restore() }

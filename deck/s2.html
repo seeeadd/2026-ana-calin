@@ -15,7 +15,7 @@
 .head .wm{position:static;margin-bottom:34px}
 .head .mk{position:static;margin-bottom:14px}
 .head .hl{position:relative;top:auto}
-.scene{position:absolute;left:0;top:340px;width:2440px;height:860px;transform-origin:70% 60%}
+.scene{position:absolute;left:0;top:360px;width:2440px;height:860px;transform-origin:70% 60%}
 .scene img{position:absolute}
 .row3{opacity:.78}.row2{opacity:.9}
 .spot{position:absolute;z-index:1;width:340px;height:420px;border-radius:50%;background:radial-gradient(closest-side,rgba(255,212,0,.42),rgba(255,212,0,.16) 55%,transparent);mix-blend-mode:multiply;pointer-events:none}
@@ -23,11 +23,11 @@
 .bk img{position:static;width:100%}
 .tg{position:absolute;z-index:4;width:120px;transform-origin:8% 4%}
 .tg img{position:static;width:100%}
-.flip{position:absolute;left:2040px;top:96px;width:330px;z-index:2}
-.note{position:absolute;left:2088px;top:196px;width:236px;height:214px;z-index:4;transform:rotate(3deg);background:#F9B6D2 url(../img/vip/paint/tx-grain.webp);background-blend-mode:multiply;box-shadow:0 16px 24px -14px rgba(90,30,60,.5),inset 0 -14px 18px -12px rgba(170,40,100,.25);padding:30px 24px}
+.flip{position:absolute;left:1970px;top:-21px;width:400px;z-index:2}
+.note{position:absolute;left:2028px;top:100px;width:286px;height:259px;z-index:4;transform:rotate(3deg);background:#F9B6D2 url(../img/vip/paint/tx-grain.webp);background-blend-mode:multiply;box-shadow:0 16px 24px -14px rgba(90,30,60,.5),inset 0 -14px 18px -12px rgba(170,40,100,.25);padding:36px 29px}
 .note:before{content:"";position:absolute;left:30%;top:-13px;width:40%;height:26px;background:rgba(255,248,236,.75);transform:rotate(-3deg)}
-.note em{display:block;font-family:'Nothing You Could Do',cursive;font-style:normal;font-size:27px;line-height:1.1;color:#5A1638}
-.note i{display:block;height:16px;border-radius:3px;background:#2A2420;margin-top:14px}
+.note em{display:block;font-family:'Nothing You Could Do',cursive;font-style:normal;font-size:33px;line-height:1.1;color:#5A1638}
+.note i{display:block;height:19px;border-radius:3px;background:#2A2420;margin-top:17px}
 .note i+i{width:70%}
 </style></head>
 <body>
@@ -69,7 +69,7 @@ DECK.start(function (D) {
   A.fromTo('.head .wm, .head .mk', { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .45, stagger: .1, immediateRender: false }, .1);
   D.wordsIn(A, hA, .3);
   /* the camera walks along the empty rows, slow in and slow out, and arrives on the two taken seats and the flip chart */
-  A.fromTo('#scene', { x: 60, scale: 1.06 }, { x: -520, scale: 1, duration: 5.4, ease: 'power2.inOut', immediateRender: false }, .2);
+  A.fromTo('#scene', { x: 60, scale: 1.06 }, { x: -546, scale: 1, duration: 5.4, ease: 'power2.inOut', immediateRender: false }, .2);
   /* the two copies that sold: a workbook set on each seat, then its SOLD tag drops and swings */
   if (!D.still) gsap.set('.spot', { opacity: 0 });
   [['#bk1', '#tg1', 2.6], ['#bk2', '#tg2', 3.5]].forEach(function (b, i) {

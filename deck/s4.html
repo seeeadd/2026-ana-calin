@@ -7,19 +7,20 @@
 <style>
 /* Day 2, slide 2 · the price tag. Her offer's tag hangs from a Greek market awning, checked before it goes on sale:
    it swings in on its string and settles; her pencil ticks two of the five checks; three wait for Day 2.
-   Layout: one object hanging from the top edge, the headline low on the left. */
+   Layout: one object hanging from the awning; the type block and the tag share the band between the awning (y 168)
+   and the stall counter (y 960), each centred in it, with 96 px outer margins. */
 .aw{position:absolute;top:0;height:auto;z-index:6}
 .awsh{position:absolute;left:0;right:0;top:150px;height:120px;background:linear-gradient(180deg,rgba(90,40,50,.16),transparent);z-index:1}
-.wm{left:96px;top:248px}
+.wm{left:96px;top:230px}
 .mk{left:2px}
-.hang{position:absolute;left:0;top:0;width:1920px;height:1080px;z-index:4;transform-origin:1310px 168px;pointer-events:none}
+.hang{position:absolute;left:0;top:0;width:1920px;height:1080px;z-index:4;transform-origin:1190px 168px;pointer-events:none}
 .hang svg.str{position:absolute;inset:0;width:1920px;height:1080px;overflow:visible}
-.tag{position:absolute;left:1170px;top:316px;width:640px;transform-origin:102px 252px;transform:rotate(-10deg)}
+.tag{position:absolute;left:1067px;top:281px;width:720px;transform-origin:115px 283px;transform:rotate(-10deg)}
 .tag img{width:100%;height:auto}
 .tag svg.loc{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
 .tick{fill:none;stroke:#D81B6E;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round;filter:url(#pencilTex)}
-.more{position:absolute;left:1380px;top:830px;z-index:5;font-family:'Nothing You Could Do',cursive;font-size:42px;color:#D81B6E;transform:rotate(-5deg);white-space:nowrap}
-.more svg{position:absolute;left:-60px;top:-70px;width:70px;height:60px;overflow:visible}
+.more{position:absolute;left:1274px;top:792px;padding-top:70px;z-index:5;font-family:'Nothing You Could Do',cursive;font-size:40px;color:#D81B6E;transform:rotate(-5deg);white-space:nowrap}
+.more svg{position:absolute;left:40px;top:0;width:70px;height:70px;overflow:visible}
 .crate{position:absolute;left:-40px;right:-40px;bottom:-30px;height:150px;z-index:2;background:repeating-linear-gradient(90deg,transparent 0 238px,rgba(58,42,34,.55) 238px 240px),linear-gradient(180deg,#DDBC90 0 18%,#C9A27A 18.5%,#C29A70);box-shadow:0 -2px 0 #3A2A22,0 -14px 30px -12px rgba(60,40,25,.4)}
 .crate:before{content:"";position:absolute;inset:0;background:url(../img/vip/paint/tx-linen.webp);opacity:.45;mix-blend-mode:multiply}
 .pen{z-index:8}
@@ -36,11 +37,11 @@
   <div class="type"><p class="mk">Day 2<i>·</i>The Exit Plan</p>
     <h1 class="hl" id="hA"><span class="ln">The pricing</span><span class="ln">check before</span><span class="ln key">it’s for sale.</span></h1></div>
   <div class="hang" id="hang">
-    <svg class="str" viewBox="0 0 1920 1080"><path d="M1310 168 C1300 300 1284 420 1276 548" fill="none" stroke="#8A6A48" stroke-width="5" stroke-linecap="round"/><circle cx="1310" cy="168" r="9" fill="#5A3A1E"/></svg>
+    <svg class="str" viewBox="0 0 1920 1080"><path d="M1190 168 C1186 300 1184 430 1182 562" fill="none" stroke="#8A6A48" stroke-width="5" stroke-linecap="round"/><circle cx="1190" cy="168" r="9" fill="#5A3A1E"/></svg>
     <div class="tag" id="tag"><img src="../img/vip/paint/dk-tagback.webp" alt="">
       <svg class="loc" viewBox="0 0 300 230"><path class="tick" id="t1" d="M98 68 L103 74 L116 56"/><path class="tick" id="t2" d="M98 98 L103 104 L116 86"/></svg></div>
   </div>
-  <p class="more" id="more"><svg viewBox="0 0 70 60"><path d="M66 56 C40 50 20 36 10 8 M10 8 L6 22 M10 8 L22 14" fill="none" stroke="#D81B6E" stroke-width="3" stroke-linecap="round"/></svg>three more, live on Day 2</p>
+  <p class="more" id="more"><svg viewBox="0 0 70 70"><path d="M12 66 C10 44 18 22 36 6 M36 6 L22 10 M36 6 L34 20" fill="none" stroke="#D81B6E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>three more, live on Day 2</p>
   <div class="pen" id="pen"><img src="../img/vip/paint/pencil.webp" alt=""></div>
   <svg class="grain" viewBox="0 0 1920 1080" preserveAspectRatio="none"><filter id="gr"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter><rect width="1920" height="1080" filter="url(#gr)"/></svg>
 </div>
@@ -49,7 +50,7 @@
 <script>
 DECK.start(function (D) {
   var $ = D.$, $$ = D.$$, hA = $('#hA');
-  D.setHeadline(hA, { width: 860, top: 420, max: 170 }); $('.mk').style.top = '352px';
+  D.setHeadline(hA, { width: 860, top: 398, max: 170 }); $('.mk').style.top = '338px';
   var pen = D.Pencil($('#pen')), off = { x: 2080, y: 760 };
   pen.at(off.x, off.y, -30);
   D.hide($('#t1')); D.hide($('#t2'));
