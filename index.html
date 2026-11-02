@@ -1573,12 +1573,14 @@ mark.sk{color:var(--ink);font-weight:700;padding:0 2px;margin:0 -2px;-webkit-box
 .hst-tx p:before{content:"";position:absolute;left:-2px;top:.3em;width:calc(31px * var(--s,1));height:calc(20px * var(--s,1));background:var(--pt,url(img/vip/paint/petal-1.webp)) center/contain no-repeat;transform-origin:30% 50%;transform:rotate(var(--r,-10deg))}
 .hst-tx p:nth-of-type(1){--pt:url(img/vip/paint/petal-1.webp);--r:-14deg;--s:1.12}
 .hst-tx p:nth-of-type(2){--pt:url(img/vip/paint/petal-3.webp);--r:16deg;--s:.94}
-.hst-tx p:nth-of-type(3){--pt:url(img/vip/paint/petal-2.webp);--r:-30deg;--s:1.05}
+.hst-tx p:nth-of-type(3){--pt:url(img/vip/paint/petal-2.webp);--r:-26deg;--s:1.1}
 .hst-tx p:nth-of-type(4){--pt:url(img/vip/paint/petal-4.webp);--r:9deg;--s:.92}
-.hst-tx p:nth-of-type(5){--pt:url(img/vip/paint/petal-1.webp);--r:34deg;--s:.96}
+.hst-tx p:nth-of-type(5){--pt:url(img/vip/paint/petal-4.webp);--r:30deg;--s:1}
 .hst-tx p:nth-of-type(6){--pt:url(img/vip/paint/petal-3.webp);--r:-6deg;--s:1.08}
 .hst-tx p:nth-of-type(7){--pt:url(img/vip/paint/petal-2.webp);--r:22deg;--s:.98}
 .hst-tx p.big:before{top:.48em}
+.hst-tx p:not(.big):not(.hpl):before{display:none}
+.hst-tx p.hpl:before{top:.42em}
 @media (prefers-reduced-motion:no-preference){
   html.anim-on .hst-tx:not(.in) p:before{transform:scale(0) rotate(calc(var(--r,0deg) - 70deg))}
   .hst-tx p:before{transition:transform .55s cubic-bezier(.3,1.6,.5,1)}
@@ -1657,6 +1659,52 @@ mark.sk{color:var(--ink);font-weight:700;padding:0 2px;margin:0 -2px;-webkit-box
 .gp-lock{position:absolute;left:0;right:0;top:64%;bottom:0;display:flex;align-items:flex-start;justify-content:center;padding-top:2.2%;background:linear-gradient(180deg,rgba(255,248,238,0),rgba(255,248,238,.32) 6%);-webkit-backdrop-filter:blur(2.6px);backdrop-filter:blur(2.6px)}
 .gp-lock span{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:999px;background:#FFD400;border:1.5px solid #1A1412;font:800 11.5px/1.1 Manrope,sans-serif;color:#1A1412;box-shadow:3px 3px 0 #1A1412;white-space:nowrap}
 .gp-lock span svg{width:13px;height:13px}
+/* the life calendar: money lifts off the two-hour blocks and drifts toward the free evenings and the weekend */
+.gw-m{position:absolute;left:0;top:0;opacity:0;pointer-events:none;z-index:3}
+.gw-m.n{width:4.6cqw;height:2.4cqw;border-radius:.4cqw;background:linear-gradient(180deg,#DDEBD3,#C7DDBA);border:1px solid #5E7F4E;box-shadow:0 2px 3px rgba(40,60,30,.2)}
+.gw-m.n:before{content:"";position:absolute;left:30%;right:30%;top:18%;bottom:18%;border-radius:50%;border:1px solid rgba(70,100,60,.55)}
+.gw-m.c{width:2.6cqw;height:2.6cqw;border-radius:50%;background:radial-gradient(circle at 40% 35%,#FCE38A,#E8B930 60%,#C9971E);border:1px solid #8A6A20}
+/* the five 1:1 sessions: a video call from Ana rings on a phone beside the tickets, is accepted, and she's there */
+.stay .tix{height:300px}
+.call{position:absolute;right:-6px;top:-18px;width:150px;z-index:4;transform:rotate(5deg);filter:drop-shadow(0 22px 26px rgba(60,40,25,.35))}
+.call-ph{display:block;width:100%;height:auto}
+.call-scr{position:absolute;left:11.9%;top:4.2%;width:76.2%;height:91.6%;border-radius:16px;overflow:hidden;background:#1A1412;container-type:inline-size}
+.call-in,.call-on{position:absolute;inset:0}
+.call-in>img{position:absolute;inset:-10%;width:120%;height:120%;object-fit:cover;filter:blur(7px) brightness(.55)}
+.call-tx{position:absolute;left:0;right:0;top:16%;text-align:center;color:#fff}
+.call-tx small{display:block;font:600 7cqw/1.2 Manrope,sans-serif;opacity:.8}
+.call-tx b{display:block;font:500 13cqw/1.1 Manrope,sans-serif;margin-top:3cqw}
+.call-tx span{display:block;font:600 7cqw/1.2 Manrope,sans-serif;opacity:.85;margin-top:2cqw;color:#FFD400}
+.call-btns{position:absolute;left:0;right:0;bottom:9%;display:flex;justify-content:space-around}
+.cb{display:flex;flex-direction:column;align-items:center;gap:3cqw;font:600 6.5cqw/1 Manrope,sans-serif;color:#fff}
+.cb i{width:24cqw;height:24cqw;border-radius:50%;display:grid;place-items:center}
+.cb i svg{width:13cqw;height:13cqw}
+.cb.no i{background:#EB4D3D}.cb.yes i{background:#34C759}
+.call-on{opacity:0}
+.call-on>img{width:100%;height:100%;object-fit:cover;object-position:50% 28%}
+.call-me{position:absolute;right:5cqw;bottom:6cqw;width:30cqw;height:42cqw;border-radius:4cqw;background:linear-gradient(160deg,#D9C8B6,#B9A48E);border:1.5px solid rgba(255,255,255,.8);display:flex;align-items:flex-end;justify-content:center;font:700 6cqw/1 Manrope,sans-serif;color:#fff;padding-bottom:3cqw}
+.call-me i{position:absolute;left:50%;top:26%;width:13cqw;height:13cqw;margin-left:-6.5cqw;border-radius:50%;background:#F2E6DA}
+.call-t{position:absolute;left:0;right:0;top:6cqw;text-align:center;font:700 7cqw/1 Manrope,sans-serif;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.5)}
+.call-nm{position:absolute;left:5cqw;bottom:6cqw;font:700 6cqw/1.2 Manrope,sans-serif;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.6)}
+.stay .tix .t{margin-left:-196px}
+@media (max-width:900px){.stay .tix{height:280px}.call{right:4%;width:130px}.stay .tix .t{margin-left:-160px}}
+/* backgrounds: one painted texture per section (the VIP page's family: her village's stucco, halftone, gingham, linen,
+   kraft grain), soft blooms of her yellow and pink, and scalloped awning edges where the sand sections begin */
+.hero{background-image:radial-gradient(46% 42% at 26% 44%,rgba(255,212,0,.18),rgba(255,212,0,0) 70%),radial-gradient(30% 30% at 92% 12%,rgba(247,37,133,.07),rgba(247,37,133,0) 70%),url(img/vip/paint/tx-stucco.webp);background-size:auto,auto,460px}
+.who{background-image:url(img/vip/paint/tx-halftone.webp);background-repeat:no-repeat;background-position:right -260px top -180px;background-size:820px auto}
+.days{background-image:radial-gradient(rgba(26,20,18,.13) 1.1px,transparent 1.4px);background-size:26px 26px;background-position:13px 13px}
+.sand{position:relative;background-color:var(--sand)}
+.where{background-image:linear-gradient(rgba(234,223,207,.82),rgba(234,223,207,.82)),url(img/vip/paint/tx-gingham.webp);background-size:auto,230px}
+.life{background-image:radial-gradient(40% 50% at 12% 40%,rgba(247,37,133,.08),rgba(247,37,133,0) 70%),url(img/vip/paint/tx-linen.webp);background-size:auto,380px}
+.host{background-image:radial-gradient(38% 46% at 86% 50%,rgba(255,212,0,.22),rgba(255,212,0,0) 70%),url(img/vip/paint/tx-halftone.webp);background-repeat:no-repeat;background-position:0 0,left -320px bottom -260px;background-size:auto,760px auto}
+.bring{background-image:repeating-linear-gradient(180deg,rgba(0,0,0,0) 0 39px,rgba(120,150,190,.14) 39px 40px)}
+.gift .gcard{background-image:url(img/vip/paint/tx-grain.webp)}
+.fit{background-image:linear-gradient(rgba(234,223,207,.86),rgba(234,223,207,.86)),url(img/vip/paint/tx-gingham.webp);background-size:auto,190px;filter:hue-rotate(0)}
+.revs{background-image:radial-gradient(34% 40% at 50% 8%,rgba(255,212,0,.16),rgba(255,212,0,0) 70%),url(img/vip/paint/tx-stucco.webp);background-size:auto,460px}
+.final{background-image:repeating-conic-gradient(from 0deg at 30% 46%,rgba(255,212,0,.12) 0 6deg,rgba(255,212,0,0) 6deg 18deg),url(img/vip/paint/tx-linen.webp);background-size:auto,380px}
+/* where a sand section begins, its top edge is an awning's scallops */
+.sand:before{content:"";position:absolute;left:0;right:0;top:-17px;height:18px;background:radial-gradient(circle at 50% 0,transparent 0 11px,var(--sand) 11.5px) 0 0/34px 18px repeat-x;pointer-events:none}
+.sand.where:before{background:radial-gradient(circle at 50% 0,transparent 0 11px,#EADFCF 11.5px) 0 0/34px 18px repeat-x}
 /* the window in depth: the video sits back in the wall (lintel, jambs and sill drawn as a recess, shadow from the top
    left), the shutters have a painted edge and darken as they turn away from the light, and they cast soft shadows on
    the wall. The opening runs on CSS alone, from the first paint, so it never waits for the scripts. */
@@ -2028,7 +2076,7 @@ mark.sk{color:var(--ink);font-weight:700;padding:0 2px;margin:0 -2px;-webkit-box
           <div class="gw-grid"><div class="gw-hrs"><i style="top:0.0000%"><em>8 AM</em></i><i style="top:8.3333%"><em>9 AM</em></i><i style="top:16.6667%"><em>10 AM</em></i><i style="top:25.0000%"><em>11 AM</em></i><i style="top:33.3333%"><em>12 PM</em></i><i style="top:41.6667%"><em>1 PM</em></i><i style="top:50.0000%"><em>2 PM</em></i><i style="top:58.3333%"><em>3 PM</em></i><i style="top:66.6667%"><em>4 PM</em></i><i style="top:75.0000%"><em>5 PM</em></i><i style="top:83.3333%"><em>6 PM</em></i><i style="top:91.6667%"><em>7 PM</em></i></div>
             <div class="gw-cols"><span class="gw-free ev"></span><span class="gw-free we"></span><span class="gw-ev" style="left:calc(0 * var(--cw))"><b>How We Grow</b><small>9 – 11am</small></span><span class="gw-ev" style="left:calc(1 * var(--cw))"><b>How We Grow</b><small>9 – 11am</small></span><span class="gw-ev" style="left:calc(2 * var(--cw))"><b>How We Grow</b><small>9 – 11am</small></span><span class="gw-ev" style="left:calc(3 * var(--cw))"><b>How We Grow</b><small>9 – 11am</small></span><span class="gw-ev" style="left:calc(4 * var(--cw))"><b>How We Grow</b><small>9 – 11am</small></span>
               <svg class="gw-ink" viewBox="0 0 160 100" preserveAspectRatio="none"><path class="gw-arw" d="M70 65 C58 58 45 45 39.5 31" fill="none" stroke="#F72585" stroke-width="1.1" stroke-linecap="round"/><path class="gw-arh" d="M35.2 34.6 L39.5 31 L43.6 34.4" fill="none" stroke="#F72585" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <span class="gw-hand">about two hours a day</span><span class="gw-sun"><svg viewBox="0 0 24 24"><use href="#sf"/></svg></span>
+              <span class="gw-hand">about two hours a day</span><span class="gw-m n"></span><span class="gw-m n"></span><span class="gw-m c"></span><span class="gw-m n"></span><span class="gw-m n"></span><span class="gw-m c"></span><span class="gw-m n"></span><span class="gw-m n"></span><span class="gw-m c"></span><span class="gw-sun"><svg viewBox="0 0 24 24"><use href="#sf"/></svg></span>
             </div>
           </div>
         </div>
@@ -2179,6 +2227,13 @@ mark.sk{color:var(--ink);font-weight:700;padding:0 2px;margin:0 -2px;-webkit-box
       </div>
       <!-- five seats: five 1:1 tickets fanning out -->
       <div class="tix" aria-hidden="true">
+        <!-- a 1:1 with Ana, as it would arrive: her video call rings, it's accepted, and she's there -->
+        <div class="call" id="call"><img class="call-ph" src="img/vip/paint/phone.webp" alt="" width="260" height="500" loading="lazy">
+          <div class="call-scr">
+            <div class="call-in"><img src="img/ana-hat.webp" alt="" loading="lazy"><div class="call-tx"><small>video call</small><b>Ana Calin</b><span>Your 1:1 session</span></div>
+              <div class="call-btns"><span class="cb no"><i><svg viewBox="0 0 24 24"><path d="M3 15c5-4 13-4 18 0l-2.4 2.6c-.6.6-1.6.6-2.2.1l-1.6-1.4c-.5-.4-.6-1-.4-1.6l.5-1.3c-2-.6-4.8-.6-6.8 0l.5 1.3c.2.6.1 1.2-.4 1.6l-1.6 1.4c-.6.5-1.6.5-2.2-.1Z" fill="#fff"/></svg></i>Decline</span><span class="cb yes"><i><svg viewBox="0 0 24 24"><rect x="3" y="7" width="12" height="10" rx="2" fill="#fff"/><path d="M15 11l5-3v8l-5-3z" fill="#fff"/></svg></i>Accept</span></div></div>
+            <div class="call-on"><img src="img/real/ana-real-a.webp" alt="" loading="lazy"><span class="call-me"><i></i>You</span><span class="call-t">0:01</span><span class="call-nm">Ana Calin · 1:1</span></div>
+          </div></div>
         <div class="t"><svg viewBox="0 0 240 110"><use href="#tk"/></svg></div>
         <div class="t"><svg viewBox="0 0 240 110"><use href="#tk"/></svg></div>
         <div class="t"><svg viewBox="0 0 240 110"><use href="#tk"/></svg></div>
@@ -2593,6 +2648,6 @@ mark.sk{color:var(--ink);font-weight:700;padding:0 2px;margin:0 -2px;-webkit-box
 </script>
 <script src="assets/vendor/gsap.min.js"></script>
 <script src="assets/vendor/ScrollTrigger.min.js"></script>
-<script src="assets/reg-motion.js?v=16"></script>
+<script src="assets/reg-motion.js?v=18"></script>
 </body>
 </html>

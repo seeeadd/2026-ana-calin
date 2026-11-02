@@ -82,6 +82,16 @@
         .fromTo(hand, { clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0% 0 0)', duration: 1.1, ease: 'power1.inOut' }, '-=.5')
         .to(sun, { rotation: 20, duration: 2.4, yoyo: true, repeat: -1, ease: 'sine.inOut' });
       when(g, tl, 'top 75%');
+      /* money flows: each note or coin lifts off a morning block and drifts toward the evenings and the weekend */
+      var ms = $$('.gw-m', g), cols = $('.gw-cols', g), flow = gsap.timeline({ paused: true, repeat: -1 });
+      ms.forEach(function (m, k) {
+        var day = k % 5, x0 = (day + .5) / 7, y0 = 2 / 12, x1 = .62 + ((k * 37) % 30) / 100, y1 = .55 + ((k * 53) % 35) / 100, o = { t: 0 }, at = k * .55;
+        flow.fromTo(o, { t: 0 }, { t: 1, duration: 3.2, ease: 'sine.inOut', immediateRender: false, onUpdate: function () {
+            var t = o.t, W = cols.offsetWidth, H = cols.offsetHeight, x = (x0 + (x1 - x0) * t) * W + Math.sin(t * 9 + k) * 10, y = (y0 + (y1 - y0) * t) * H - Math.sin(Math.PI * t) * H * .18;
+            gsap.set(m, { x: x, y: y, rotation: Math.sin(t * 6 + k) * 30 + t * 40, opacity: t < .12 ? t / .12 : t > .8 ? (1 - t) / .2 : 1 }) } }, at);
+      });
+      ScrollTrigger.create({ trigger: g, start: 'top bottom', end: 'bottom top', onToggle: function (st) { if (st.isActive && tl.time() > 3.4) flow.play(); else flow.pause() } });
+      tl.add(function () { flow.play() }, 3.4);
     })();
 
     /* "See you Tuesday": the Day 1 invite drops onto her photo, a cursor comes in and answers Yes, and Tuesday lights up */
@@ -113,6 +123,20 @@
         .fromTo(card, { y: 0 }, { y: 4, duration: .08, yoyo: true, repeat: 1, ease: 'power1.out' })
         .fromTo(sp, { scale: 1 }, { scale: 1.06, duration: .1, yoyo: true, repeat: 1 }, '<');
       when(st, tl, 'top 60%');
+      /* her call rings (the phone buzzes twice), Accept is pressed, and the call opens on her face; the timer runs */
+      var call = $('#call');
+      if (call) {
+        var ct = $('.call-t', call), ctl = gsap.timeline({ delay: .4 }), sec = { v: 1 };
+        ctl.fromTo(call, { y: 40, rotation: 14, opacity: 0 }, { y: 0, rotation: 5, opacity: 1, duration: .7, ease: 'back.out(1.5)' })
+          .to(call, { keyframes: { rotation: [7, 3, 7, 3, 6, 4, 5] }, duration: .55, ease: 'none' }, '+=.2')
+          .to(call, { keyframes: { rotation: [7, 3, 7, 3, 6, 4, 5] }, duration: .55, ease: 'none' }, '+=.35')
+          .to($('.cb.yes i', call), { scale: .8, duration: .12, yoyo: true, repeat: 1, ease: 'power2.out' }, '+=.3')
+          .to($('.call-in', call), { opacity: 0, scale: 1.06, duration: .45, ease: 'power2.in' }, '>-.05')
+          .fromTo($('.call-on', call), { opacity: 0, scale: .94 }, { opacity: 1, scale: 1, duration: .5, ease: 'power2.out' }, '<.2')
+          .fromTo($('.call-me', call), { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: .4, ease: 'back.out(1.6)' }, '>-.1')
+          .to(sec, { v: 14, duration: 13, ease: 'none', onUpdate: function () { ct.textContent = '0:' + String(Math.floor(sec.v)).padStart(2, '0') } }, '<');
+        when(st, ctl, 'top 60%');
+      }
     })();
 
     /* host: the overview card: the scorecards come up one by one, today's numbers count, the 2 gets her loop, and the
