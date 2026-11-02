@@ -1832,6 +1832,68 @@ html.anim-on .stay:not(.in) .tix .t{transform:translate(90px,110px) rotate(0)!im
 @media (max-width:520px){.stay .tix .t{transform:translate(calc(var(--i) * 6px),calc(var(--i) * 38px)) rotate(calc(-6deg + var(--i) * 2deg)) scale(.8)!important}.stay .call{width:96px!important}.stay .ring-w{right:44px!important;top:100px!important}.stay .tx-stamp{right:8px!important;top:-24px!important;width:62px!important;height:62px!important}}
 /* the gift: Ana's Exit Number calculator badge, stamped below the laptop beside the postcard */
 .gp-logo{position:absolute;left:9%;top:63%;width:23%;height:auto;z-index:5;transform:rotate(-10deg);filter:drop-shadow(0 10px 14px rgba(90,40,60,.3))}
+/* the sign-up, made to feel like you're already in: two-tone dates, a live panel (the real seat count and who just
+   saved a seat, from the Kit feed only), a seat tag that fills with your name as you type, ticks under the button */
+.dlg .ey{font-size:12px;letter-spacing:.14em}
+.dlg .ey .ey-a{color:var(--ink)}.dlg .ey .ey-b{color:var(--pink)}
+.dlg h3{margin:10px 0 12px!important}
+.dlg h3 em{color:var(--pink)}
+.fl-live{margin:0 0 16px;padding:12px 16px;border-radius:16px;background:#fff;border:1.5px solid rgba(26,20,18,.12);display:grid;gap:8px}
+.fl-row{display:flex;align-items:center;gap:10px;font-size:14.5px;color:var(--ink2);line-height:1.3}
+.fl-row b{color:var(--ink);font-weight:800}
+.fl-row i{flex:none;width:10px;height:10px;border-radius:50%;position:relative}
+.fl-row i.g{background:#2FB36A}.fl-row i.p{background:var(--pink)}
+.fl-row i:after{content:"";position:absolute;inset:-4px;border-radius:50%;background:inherit;opacity:.25}
+@media (prefers-reduced-motion:no-preference){.fl-row i:after{animation:flPing 1.8s ease-out infinite}}
+@keyframes flPing{0%{transform:scale(.6);opacity:.45}100%{transform:scale(1.9);opacity:0}}
+.fl-just .fl-jt{transition:opacity .3s}.fl-just.fade .fl-jt{opacity:0}
+.fl-seat{display:flex;align-items:center;gap:8px;margin:0 0 12px;font-size:13px;font-weight:700;color:var(--ink3)}
+.fl-seat svg{flex:none;width:30px;height:15px;transform:rotate(-6deg)}
+.fl-who{font-family:'Nothing You Could Do',cursive;font-weight:400;font-size:20px;color:var(--pink);line-height:1;transform:rotate(-2deg);display:inline-block;min-width:3ch;border-bottom:1.5px dashed rgba(247,37,133,.45);padding:0 4px 1px}
+.fl-who.typed{animation:flPop .35s cubic-bezier(.3,1.8,.5,1)}
+@keyframes flPop{50%{transform:rotate(-2deg) scale(1.15)}}
+.fl-ticks{list-style:none;display:flex;justify-content:center;flex-wrap:wrap;gap:6px 18px;margin:12px 0 0;padding:0}
+.fl-ticks li{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)}
+.fl-ticks li:before{content:"";width:14px;height:14px;border-radius:50%;background:var(--sun) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath d='m3.5 7.3 2.3 2.3L10.6 4.6' fill='none' stroke='%231A1412' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% no-repeat;border:1px solid var(--ink)}
+.tkt form .fl-live,.tkt form .fsub{display:none}
+.tkt form .fl-seat{margin:0 0 8px}
+.tkt form .fl-ticks{gap:4px 12px;margin-top:9px}.tkt form .fl-ticks li{font-size:10.5px}
+@media (max-width:600px){.dlg .fsub{font-size:15px}.fl-row{font-size:13.5px}.fl-ticks li{font-size:11px}}
+/* the countdown: ticking tiles in the sticky header (to Tue Dec 8, 12:00 pm New York); seconds flip */
+.fb-cd{display:flex;align-items:center;gap:6px;flex:none;margin-right:6px}
+.fb-cdk{display:flex;align-items:center;gap:7px;margin-right:4px;font-weight:800;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,248,238,.7);white-space:nowrap}
+.fb-cdk i{width:8px;height:8px;border-radius:50%;background:var(--pink);box-shadow:0 0 0 0 rgba(247,37,133,.6)}
+@media (prefers-reduced-motion:no-preference){.fb-cdk i{animation:cdPing 1.6s ease-out infinite}}
+@keyframes cdPing{0%{box-shadow:0 0 0 0 rgba(247,37,133,.6)}100%{box-shadow:0 0 0 9px rgba(247,37,133,0)}}
+.cdu{display:flex;flex-direction:column;align-items:center;justify-content:center;width:46px;height:46px;border-radius:9px;background:rgba(255,248,238,.08);box-shadow:inset 0 0 0 1px rgba(255,248,238,.14);overflow:hidden}
+.cdu.s{background:rgba(255,212,0,.16);box-shadow:inset 0 0 0 1px rgba(255,212,0,.5)}
+.cdu b{font-family:var(--serif);font-weight:400;font-size:22px;line-height:1;color:var(--cream);font-variant-numeric:tabular-nums}
+.cdu.s b{color:var(--sun)}
+.cdu small{margin-top:3px;font-weight:700;font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,248,238,.55)}
+.cdu b.flip{animation:cdFlip .45s cubic-bezier(.3,1.4,.5,1)}
+@keyframes cdFlip{0%{transform:translateY(-70%);opacity:0}100%{transform:none;opacity:1}}
+@media (max-width:1100px){.fb-cdk{display:none}}
+@media (max-width:860px){.fb-cd{display:none}}
+.mcd-t{color:var(--pink)!important;font-variant-numeric:tabular-nums;font-size:12px!important}
+/* who just saved a seat: village festival bunting strung across the page, each flag a real first name from the
+   Kit feed (never invented), drifting past under a LIVE tag; shown only when the feed has recent names */
+.tkb{position:relative;z-index:2;display:flex;align-items:center;height:42px;margin:6px 0;overflow:hidden;border-top:1px solid rgba(26,20,18,.08);border-bottom:1px solid rgba(26,20,18,.08);background:rgba(255,241,201,.45)}
+.tkb[hidden]{display:none}
+.tkb-live{position:relative;z-index:3;flex:none;display:flex;align-items:center;gap:6px;margin-left:max(16px,calc(50% - 560px));padding:3px 9px;border-radius:999px;background:#1A1412;color:#fff;font-weight:800;font-size:10px;letter-spacing:.14em}
+.tkb-live i{width:7px;height:7px;border-radius:50%;background:#FF3B5C}
+@media (prefers-reduced-motion:no-preference){.tkb-live i{animation:cdPing 1.6s ease-out infinite}}
+.tkb-rope{position:relative;flex:1;height:100%;-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
+.tkb-track{position:absolute;left:0;top:0;height:100%;display:flex;align-items:center;width:max-content;padding-left:16px}
+@media (prefers-reduced-motion:no-preference){.tkb-track{animation:tkbRun var(--dur,80s) linear infinite}.tkb:hover .tkb-track{animation-play-state:paused}}
+@keyframes tkbRun{to{transform:translateX(-50%)}}
+.flag{display:flex;align-items:center;gap:7px;padding-right:18px;font-size:13px;color:var(--ink2);white-space:nowrap}
+.flag:before{content:"";flex:none;width:11px;height:13px;margin-right:4px;background:var(--fc,#FFD400);clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:50% 0}
+@media (prefers-reduced-motion:no-preference){.flag:before{animation:flagSway 2.8s ease-in-out infinite;animation-delay:var(--fd,0s)}}
+@keyframes flagSway{0%,100%{transform:rotate(-12deg)}50%{transform:rotate(12deg)}}
+.flag b{font-family:'Nothing You Could Do',cursive;font-weight:400;font-size:17px;color:#1A1412;line-height:1}
+.flag span{font-weight:600}
+.flag small{font-size:11.5px;color:var(--ink3)}
+.flag.p{--fc:#F72585}.flag.w{--fc:#9DBEDD}.flag.b{--fc:#FFB8D9}
 /* the window in depth: the video sits back in the wall (lintel, jambs and sill drawn as a recess, shadow from the top
    left), the shutters have a painted edge and darken as they turn away from the light, and they cast soft shadows on
    the wall. The opening runs on CSS alone, from the first paint, so it never waits for the scripts. */
@@ -1909,6 +1971,7 @@ html.anim-on .stay:not(.in) .tix .t{transform:translate(90px,110px) rotate(0)!im
       <img class="fb-ic" src="img/fav/header-ana.png" alt="" width="44" height="44">
       <span class="fb-t"><small>THE EXIT PLAN · FREE 3-DAY LIVE WORKSHOP</small><b>Dec 8 to 10 · 12:00 pm New York</b></span>
     </button>
+    <div class="fb-cd" aria-label="Time until Day 1"><span class="fb-cdk"><i></i>Starts in</span><span class="cdu"><b data-cd="d">00</b><small>days</small></span><span class="cdu"><b data-cd="h">00</b><small>hrs</small></span><span class="cdu"><b data-cd="m">00</b><small>min</small></span><span class="cdu s"><b data-cd="s">00</b><small>sec</small></span></div>
     <button class="btn sm open" type="button"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">I’m in, Ana <small class="bq">(it’s free)</small></span><svg class="ar"><use href="#arr"/></svg></button>
   </div>
 </header>
@@ -1986,6 +2049,8 @@ html.anim-on .stay:not(.in) .tix .t{transform:translate(90px,110px) rotate(0)!im
   </div>
 </section>
 
+
+<div class="tkb" data-ticker hidden aria-label="Who just saved a seat"><span class="tkb-live"><i></i>LIVE</span><div class="tkb-rope"><div class="tkb-track"></div></div></div>
 <main class="v2page">
 <div class="v2body">
 <!-- the frozen column: the seat ticket the form moves into once the hero's ticket has scrolled away (1280 px and wider) -->
@@ -2147,6 +2212,7 @@ html.anim-on .stay:not(.in) .tix .t{transform:translate(90px,110px) rotate(0)!im
 </section>
 
 <!-- 4. where are you right now? Three illustrated choices; the pick goes with the sign-up (hidden field "situation"), and the button answers it -->
+<div class="tkb" data-ticker hidden aria-label="Who just saved a seat"><span class="tkb-live"><i></i>LIVE</span><div class="tkb-rope"><div class="tkb-track"></div></div></div>
 <section class="sand where" id="where">
   <div class="wrap">
     <div class="head" data-r><h2>Where are you <em>right now?</em></h2></div>
@@ -2423,6 +2489,7 @@ html.anim-on .stay:not(.in) .tix .t{transform:translate(90px,110px) rotate(0)!im
 </main>
 
 <!-- 9. final CTA: claim your seat -->
+<div class="tkb" data-ticker hidden aria-label="Who just saved a seat"><span class="tkb-live"><i></i>LIVE</span><div class="tkb-rope"><div class="tkb-track"></div></div></div>
 <section class="sand final" id="final">
   <div class="wrap">
     <div class="claim">
@@ -2467,7 +2534,7 @@ html.anim-on .stay:not(.in) .tix .t{transform:translate(90px,110px) rotate(0)!im
   </div>
 </footer>
 
-<div class="mbar" id="mbar"><span class="mcd"><span class="ld"><i></i><b class="md">Dec 8 to 10</b></span><b class="md">12:00 pm New York</b></span><button class="btn open" type="button"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">I’m in, Ana <small class="bq">(it’s free)</small></span><svg class="ar"><use href="#arr"/></svg></button></div>
+<div class="mbar" id="mbar"><span class="mcd"><span class="ld"><i></i><b class="md">Dec 8 to 10</b></span><b class="md mcd-t">starts in <span data-cd="d">0</span>d <span data-cd="h">00</span>h <span data-cd="m">00</span>m</b></span><button class="btn open" type="button"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">I’m in, Ana <small class="bq">(it’s free)</small></span><svg class="ar"><use href="#arr"/></svg></button></div>
 
 <!-- Ana's videos play here (YouTube, no cookies) -->
 <div class="vmodal" id="vmodal" aria-hidden="true"><div class="fr" role="dialog" aria-modal="true" aria-label="Video"></div><button class="x" type="button" aria-label="Close video"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#1A1412" stroke-width="2.2" stroke-linecap="round"><path d="M2 2l10 10M12 2 2 12"/></svg></button></div>
@@ -2481,13 +2548,16 @@ html.anim-on .stay:not(.in) .tix .t{transform:translate(90px,110px) rotate(0)!im
     <img class="mk" src="img/mark.png" alt="" width="76" height="76">
     <button class="x" type="button" aria-label="Close"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#1A1412" stroke-width="2.2" stroke-linecap="round"><path d="M2 2l10 10M12 2 2 12"/></svg></button>
     <form id="join" novalidate>
-      <span class="ey">FREE · 3 DAYS LIVE · DEC 8 TO 10</span>
-      <h3 id="dlg-h">Save your free seat</h3>
-      <p class="fsub">Let’s start building your own income.</p>
+      <span class="ey"><span class="ey-a">FREE · 3 DAYS LIVE ·</span> <span class="ey-b">DEC 8 TO 10 · 12 PM ET</span></span>
+      <h3 id="dlg-h">Your seat is <em>already pulled out.</em></h3>
+      <p class="fsub">Don’t be shy. Put your name on it and try the three days with me. It’s free.</p>
+      <div class="fl-live" aria-live="polite"><p class="fl-row"><i class="g"></i><span><b data-feed="n">800+</b> <span data-feed="l">wins from my past students</span></span></p><p class="fl-row fl-just" hidden><i class="p"></i><span class="fl-jt"></span></p></div>
+      <p class="fl-seat" aria-hidden="true"><svg viewBox="0 0 40 20"><path d="M4 2h32a2 2 0 0 1 2 2v3.5a2.5 2.5 0 0 0 0 5V16a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-3.5a2.5 2.5 0 0 0 0-5V4a2 2 0 0 1 2-2Z" fill="#FFD400" stroke="#1A1412" stroke-width="1.6"/><path d="M12 3v14" stroke="#1A1412" stroke-width="1.2" stroke-dasharray="2 2"/></svg><span>Seat reserved for</span><b class="fl-who">you</b></p>
       <div class="field"><label class="flbl" for="jFirst">First name</label><input type="text" id="jFirst" name="first_name" placeholder="Your first name" autocomplete="given-name" required><span class="err">add your first name</span></div>
       <div class="field"><label class="flbl" for="jEmail">Email</label><input type="email" id="jEmail" name="email_address" placeholder="The email you actually check" autocomplete="email" inputmode="email" required><span class="err">Almost. Check that email once more.</span></div>
       <input type="text" name="ep_check" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
       <button class="btn big send" type="submit"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">I’m in, Ana <small class="bq">(it’s free)</small></span><svg class="ar"><use href="#arr"/></svg></button>
+      <ul class="fl-ticks" aria-label="What you get"><li>Free</li><li>3 days live with me</li><li>Come as you are</li></ul>
       <p class="fmeta">12:00 pm New York · About 90 minutes a day<span class="lt"></span></p>
       <p class="note">You’ll get emails from me, including workshop details and reminders. Unsubscribe anytime.</p>
       <div class="bye"><img src="img/ana-sea.webp" alt="" width="52" height="52" loading="lazy"><p>See you there,<b>Ana</b></p></div>
@@ -2571,6 +2641,23 @@ html.anim-on .stay:not(.in) .tix .t{transform:translate(90px,110px) rotate(0)!im
 
   /* live registrations: the count and the latest first names, only when the feed has real data */
   function ago(at){var m = Math.max(1, Math.round((Date.now() - new Date(at).getTime())/60000)); return m < 60 ? m + ' min ago' : (m < 1440 ? Math.round(m/60) + ' h ago' : Math.round(m/1440) + ' d ago')}
+  /* the countdown to Day 1 (Tue Dec 8, 12:00 pm New York = 17:00 UTC) */
+  (function(){
+    var T = Date.UTC(2026, 11, 8, 17, 0, 0), els = {}; ['d','h','m','s'].forEach(function(k){ els[k] = document.querySelectorAll('[data-cd="' + k + '"]') });
+    function pad(n){ return (n < 10 ? '0' : '') + n }
+    function tick(){ var t = Math.max(0, T - Date.now()), d = Math.floor(t / 864e5), h = Math.floor(t / 36e5) % 24, m = Math.floor(t / 6e4) % 60, sx = Math.floor(t / 1e3) % 60;
+      var v = { d: String(d), h: pad(h), m: pad(m), s: pad(sx) };
+      Object.keys(v).forEach(function(k){ els[k].forEach(function(e){ if (e.textContent !== v[k]) { e.textContent = v[k]; if (e.tagName === 'B' && !reduce) { e.classList.remove('flip'); void e.offsetWidth; e.classList.add('flip') } } }) }) }
+    tick(); setInterval(tick, 1000);
+  })();
+  /* the bunting tickers: one flag per real first name, the set doubled so it loops without a seam */
+  function fillTickers(rec){
+    if (rec.length < 3) return;
+    var cols = ['', 'p', 'w', 'b'], h = '';
+    for (var r = 0; r < 2; r++) rec.concat(rec.length < 6 ? rec : []).forEach(function(x, i){ var nm = String(x.name).replace(/[<>&"]/g, '');
+      h += '<span class="flag ' + cols[i % 4] + '" style="--fd:' + (i * .37).toFixed(2) + 's"><b>' + nm + '</b><span>saved a seat</span><small>· ' + ago(x.at) + '</small></span>' });
+    document.querySelectorAll('[data-ticker]').forEach(function(t, j){ var tr = t.querySelector('.tkb-track'); tr.innerHTML = h; tr.style.setProperty('--dur', (rec.length * 9 + j * 8) + 's'); if (j % 2) tr.style.animationDirection = 'reverse'; t.hidden = false });
+  }
   function useFeed(f){
     if (!f || !f.ok) return;
     if (f.count && f.count >= FEED_MIN) {
@@ -2581,10 +2668,12 @@ html.anim-on .stay:not(.in) .tix .t{transform:translate(90px,110px) rotate(0)!im
     }
     var rec = (f.recent || []).filter(function(x){return x && x.name});
     if (!rec.length) return;
+    fillTickers(rec);
     var just = document.getElementById('just'), jt = document.getElementById('justTxt'), i = 0;
     function show(){ var x = rec[i % rec.length]; jt.innerHTML = '<b></b> just saved a seat · ' + ago(x.at); jt.querySelector('b').textContent = x.name; i++ }
-    show(); just.hidden = false;
-    if (!reduce) setInterval(function(){ just.classList.add('fade'); setTimeout(function(){ show(); just.classList.remove('fade') }, 350) }, 5000);
+    function showFl(){ var x = rec[(i + rec.length - 1) % rec.length]; document.querySelectorAll('.fl-jt').forEach(function(t){ t.innerHTML = '<b></b> just saved a seat · ' + ago(x.at); t.querySelector('b').textContent = x.name }); document.querySelectorAll('.fl-just').forEach(function(r){ r.hidden = false }) }
+    show(); showFl(); just.hidden = false;
+    if (!reduce) setInterval(function(){ just.classList.add('fade'); document.querySelectorAll('.fl-just').forEach(function(r){r.classList.add('fade')}); setTimeout(function(){ show(); showFl(); just.classList.remove('fade'); document.querySelectorAll('.fl-just').forEach(function(r){r.classList.remove('fade')}) }, 350) }, 5000);
     /* a small toast now and then, desktop and phone */
     var lt = document.getElementById('ltoast'), k = 0;
     function toast(){ var x = rec[k++ % rec.length]; document.getElementById('ltN').textContent = x.name; document.getElementById('ltI').textContent = x.name.charAt(0); document.getElementById('ltT').textContent = ago(x.at); lt.classList.add('on'); setTimeout(function(){lt.classList.remove('on')}, 4200) }
@@ -2666,18 +2755,18 @@ html.anim-on .stay:not(.in) .tix .t{transform:translate(90px,110px) rotate(0)!im
      (phones), the sign-up opens once, with its own first line. Never in the first 12 seconds, never twice, and
      never after they've signed up or started typing */
   (function(){
-    var hEl = form.querySelector('#dlg-h'), sEl = form.querySelector('.fsub'), h0 = hEl.textContent, s0 = sEl.textContent, t0 = Date.now(), shown = false;
+    var hEl = form.querySelector('#dlg-h'), sEl = form.querySelector('.fsub'), h0 = hEl.innerHTML, s0 = sEl.textContent, t0 = Date.now(), shown = false;
     try { shown = sessionStorage.getItem('ep_exit') === '1' } catch (x) {}
     function exitOpen(){
       if (shown || Date.now() - t0 < 12000 || modal.classList.contains('open') || dlg.classList.contains('done')) return;
       var f1 = form.querySelector('[name=first_name]'); if (f1 && f1.value) return;
       shown = true; try { sessionStorage.setItem('ep_exit', '1') } catch (x) {}
-      hEl.textContent = 'Don’t go yet.'; sEl.textContent = 'Save your free seat first. Three days live with me on Zoom, Dec\u00a08\u00a0to\u00a010.';
+      hEl.innerHTML = 'Don’t go yet. <em>Your seat’s still here.</em>'; sEl.textContent = 'Put your name on it before you leave. Three days live with me on Zoom, free.';
       dlg.insertBefore(form, thanksEl); lastBtn = null;
       modal.classList.add('open', 'exit'); modal.setAttribute('aria-hidden','false'); document.body.classList.add('noscroll');
       setTimeout(function(){ var f = form.querySelector('[name=first_name]'); if (f) f.focus({preventScroll:true}) }, reduce ? 0 : 260);
     }
-    window.__epExitReset = function(){ hEl.textContent = h0; sEl.textContent = s0; modal.classList.remove('exit') };
+    window.__epExitReset = function(){ hEl.innerHTML = h0; sEl.textContent = s0; modal.classList.remove('exit') };
     document.addEventListener('mouseout', function(e){ if (!e.relatedTarget && e.clientY <= 0) exitOpen() });
     if (matchMedia('(pointer:coarse)').matches) {
       var ly = scrollY, lt = Date.now(), deep = 0;
@@ -2702,6 +2791,7 @@ html.anim-on .stay:not(.in) .tix .t{transform:translate(90px,110px) rotate(0)!im
   var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
   var fn = form.querySelector('[name=first_name]'), em = form.querySelector('[name=email_address]');
   [fn,em].forEach(function(i){i.addEventListener('input',function(){i.parentNode.classList.remove('bad')})});
+  fn.addEventListener('input', function(){ var w = (fn.value.trim().split(/\s+/)[0] || '').slice(0, 16); document.querySelectorAll('.fl-who').forEach(function(b){ var t = w || 'you'; if (b.textContent !== t) { b.textContent = t; b.classList.remove('typed'); void b.offsetWidth; b.classList.add('typed') } }) });
   form.addEventListener('submit',function(e){
     e.preventDefault();
     var ok = true;
