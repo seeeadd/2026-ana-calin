@@ -2206,7 +2206,7 @@ html.bdg-js .bdg.in{animation:bdgIn .6s cubic-bezier(.2,1.5,.4,1) both}
 .xvil .xb ellipse{filter:drop-shadow(0 0 2.5px var(--c))}
 @media (prefers-reduced-motion:no-preference){.xvil .xb ellipse{animation:xvt 2.4s ease-in-out infinite;animation-delay:var(--d)}}
 @keyframes xvt{0%,100%{opacity:1}50%{opacity:.45}}
-.flake{position:absolute;width:var(--s,22px);height:auto;pointer-events:none;opacity:.95;z-index:0}
+.flake{position:absolute;width:calc(var(--s,22px) * 2.2);height:auto;pointer-events:none;opacity:.95;z-index:0;filter:drop-shadow(0 1px 1.5px rgba(90,120,160,.28)) drop-shadow(0 3px 8px rgba(111,155,203,.22))}
 @media (prefers-reduced-motion:no-preference){.flake{animation:flk var(--t,9s) ease-in-out infinite alternate}}
 @keyframes flk{from{transform:translateY(-6px) rotate(-14deg)}to{transform:translateY(8px) rotate(16deg)}}
 @media (max-width:860px){.flake{display:none}}
@@ -2902,12 +2902,68 @@ html.bdg-js .bdg.in{animation:bdgIn .6s cubic-bezier(.2,1.5,.4,1) both}
   /* a wreath hung on the wall above her window */
   var win = document.querySelector('.iph.win'); if (win) { var wr = new Image(); wr.className = 'wreath'; wr.alt = ''; wr.src = 'img/vip/paint/xmas-wreath.webp'; win.appendChild(wr) }
   /* a few snowflakes in the margins */
-  function flake(host, x, y, sz, t, cls){ var f = document.createElementNS(NS, 'svg'); f.setAttribute('viewBox', '-12 -12 24 24'); f.setAttribute('class', 'flake' + (cls ? ' ' + cls : '')); f.setAttribute('aria-hidden', 'true');
+  /* snowflakes after Wilson Bentley's photographs: real crystal forms, each flake a different one */
+  /* Bentley-style snow crystals, generated: one arm is built, mirrored, and turned six times. Kinds:
+     'dendrite' (fern arms, branches with twigs), 'stellar' (straight arms, wide plate tips, short branches),
+     'sectored' (a hexagon plate with broad sectors and ridges), 'plate' (hexagon with six little plate arms) */
+  function crystal(kind, seed, id){
+    var r = seed; function rnd(){ r = (r * 16807) % 2147483647; return (r - 1) / 2147483646 }
+    var arm = [], plates = [], R = 46;
+    function seg(x1, y1, x2, y2, w){ arm.push([x1, y1, x2, y2, w]) }
+    function hex(cx, cy, s, rot){ var p = []; for (var k = 0; k < 6; k++){ var a = (k * 60 + (rot || 0)) * Math.PI / 180; p.push((cx + s * Math.cos(a)).toFixed(2) + ',' + (cy + s * Math.sin(a)).toFixed(2)) } return p.join(' ') }
+    var c60 = Math.cos(Math.PI / 3), s60 = Math.sin(Math.PI / 3);
+    // the arm points up (0,-1); a branch leaves at +-60 degrees
+    function branch(y0, len, w, twigs){ var x1 = len * s60, y1 = y0 - len * c60;
+      seg(0, y0, x1, y1, w);
+      if (twigs) for (var t = .4; t < .9; t += .3){ var bx = x1 * t, by = y0 + (y1 - y0) * t, tl = len * (1 - t) * .5;
+        seg(bx, by, bx, by - tl, w * .6) } }
+    if (kind === 'dendrite') {
+      seg(0, -6, 0, -R, 3);
+      var n = 4 + Math.floor(rnd() * 2), env = function(t){ return Math.sin(Math.PI * (.18 + .82 * t)) };
+      for (var i = 0; i < n; i++){ var t = (i + .6) / (n + .4), y = -9 - t * (R - 12), L = Math.min(15 * env(t) * (.85 + rnd() * .3) + 3, -y * .5); branch(y, L, 2 - t * .8, L > 8) }
+      plates.push(['tip', 0, -R + 1, 2.6]);
+      plates.push(['hex', 0, 0, 7.5, 30]);
+    } else if (kind === 'stellar') {
+      seg(0, -5, 0, -R + 9, 3.8);
+      branch(-20, 9, 2.6); branch(-30, 7, 2.2);
+      plates.push(['tip', 0, -R + 6, 7]);
+      plates.push(['hex', 0, 0, 10, 30]);
+    } else if (kind === 'sectored') {
+      plates.push(['sector', R * .78]); seg(0, -4, 0, -R * .78, 1.6);
+      for (var j = 1; j < 4; j++){ var yy = -R * .78 * j / 4; seg(0, yy, (R * .78 + yy) * .45, yy - (R * .78 + yy) * .26, .9) }
+      seg(0, -R * .78, 0, -R, 3); plates.push(['tip', 0, -R + 2, 4]);
+    } else {
+      plates.push(['hex', 0, 0, R * .52, 30]); seg(0, -R * .5, 0, -R * .8, 4); plates.push(['tip', 0, -R * .86, 8]);
+    }
+    // mirror each segment (except the spine) and turn the arm six times
+    var segs = []; arm.forEach(function(a){ segs.push(a); if (Math.abs(a[0]) + Math.abs(a[2]) > .01) segs.push([-a[0], a[1], -a[2], a[3], a[4]]) });
+    function lines(width, extra){ var o = ''; segs.forEach(function(a){ var w = a[4] || .7; o += '<path d="M' + a[0].toFixed(2) + ' ' + a[1].toFixed(2) + 'L' + a[2].toFixed(2) + ' ' + a[3].toFixed(2) + '" stroke-width="' + (w * width + extra).toFixed(2) + '"/>' }); return o }
+    function shapes(){ var o = ''; plates.forEach(function(p){
+      if (p[0] === 'tip') o += '<polygon points="' + hex(p[1], p[2], p[3], 30) + '"/>';
+      if (p[0] === 'sector') o += '<polygon points="0,0 ' + (-p[1] * .5).toFixed(2) + ',' + (-p[1] * .866).toFixed(2) + ' ' + (p[1] * .5).toFixed(2) + ',' + (-p[1] * .866).toFixed(2) + '"/>' }); return o }
+    var armBody = lines(1, 0) + shapes(), armRidge = lines(.32, 0);
+    var six = function(inner){ var o = ''; for (var k = 0; k < 6; k++) o += '<g transform="rotate(' + (k * 60) + ')">' + inner + '</g>'; return o };
+    var centre = plates.filter(function(p){ return p[0] === 'hex' })[0], cHex = centre ? '<polygon points="' + hex(0, 0, centre[3], 30) + '"/>' : '';
+    var cRings = centre ? '<polygon points="' + hex(0, 0, centre[3] * .62, 30) + '"/><polygon points="' + hex(0, 0, centre[3] * .3, 30) + '"/>' : '<polygon points="' + hex(0, 0, 4, 30) + '"/>';
+    return '<defs><filter id="' + id + 'b" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="2.4"/></filter>' +
+      '<linearGradient id="' + id + 'g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".7" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1F6FC"/></linearGradient></defs>' +
+      /* frost glow */ '<g filter="url(#' + id + 'b)" opacity=".9" fill="#FFFFFF" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round">' + six(lines(1.9, 2)) + '</g>' +
+      /* the ice: milky, see-through, with a pale blue edge */ '<g fill="url(#' + id + 'g)" fill-opacity=".92" stroke="#D3E2F2" stroke-opacity=".9" stroke-linecap="round" stroke-linejoin="round">' + six(lines(1, .9)) + '</g>' +
+      '<g fill="url(#' + id + 'g)" fill-opacity="1" stroke="url(#' + id + 'g)" stroke-linecap="round" stroke-linejoin="round">' + six(lines(1, 0) + shapes()) + cHex + '</g>' +
+      /* bright ridges along each spine and the centre's ring lines, like the photos */ '<g fill="none" stroke="#FFFFFF" stroke-linecap="round">' + six(armRidge) + '</g>' +
+      '<g fill="none" stroke="#C9DBEE" stroke-width=".6" stroke-opacity=".8">' + cRings + six(shapes()) + '</g>';
+  }
+  var fid = 0, KINDS = [['dendrite', 7], ['stellar', 11], ['dendrite', 31], ['dendrite', 5], ['stellar', 3], ['dendrite', 17], ['dendrite', 23]];
+  function flake(host, x, y, sz, t, cls){ var f = document.createElementNS(NS, 'svg'), k = KINDS[fid % KINDS.length]; f.setAttribute('viewBox', '-54 -54 108 108'); f.setAttribute('class', 'flake' + (cls ? ' ' + cls : '')); f.setAttribute('aria-hidden', 'true');
     f.style.cssText = 'left:' + x + ';top:' + y + ';--s:' + sz + 'px;--t:' + t + 's';
-    var g = ''; for (var k = 0; k < 6; k++) g += '<g transform="rotate(' + (k * 60) + ')"><path d="M0 0 V-10 M0 -6 L-3 -9 M0 -6 L3 -9"/></g>';
-    f.innerHTML = '<g fill="none" stroke="#6F9BCB" stroke-width="2" stroke-linecap="round">' + g + '</g>'; host.appendChild(f) }
-  var hero = document.getElementById('hero'); if (hero) { flake(hero, '1.2%', '14%', 26, 9); flake(hero, '96.5%', '9%', 22, 11, 'hm'); flake(hero, '58%', '94%', 20, 8, 'hm'); flake(hero, '97%', '74%', 28, 10) }
-  var fin = document.getElementById('final'); if (fin) { fin.style.position = fin.style.position || 'relative'; flake(fin, '3%', '18%', 24, 10); flake(fin, '94%', '12%', 28, 9, 'hm'); flake(fin, '91%', '84%', 22, 12) }
+    f.innerHTML = crystal(k[0], k[1], 'xf' + (fid++)); host.appendChild(f) }
+  /* only where the page has a real margin: each flake is placed, then dropped if it touches content */
+  function clearOf(f, sel){ var r = f.getBoundingClientRect(); var bad = [].some.call(document.querySelectorAll(sel), function(e){ if (!e.offsetParent && getComputedStyle(e).position !== 'fixed') return false; var q = e.getBoundingClientRect(); return r.left < q.right + 8 && r.right > q.left - 8 && r.top < q.bottom + 8 && r.bottom > q.top - 8 }); if (bad) f.remove() }
+  var BUSY = '.iph.win,.wn-art,.tkt,#h1,.hsub2,.tstrip,.book,.hpill,.claim .pic,.claim h2,.claim p,.claim .btn,.tiles,.gi,.note,.hright > *';
+  var hero = document.getElementById('hero'); if (hero) { flake(hero, '0.6%', '6%', 24, 9); flake(hero, '96.8%', '6%', 22, 11, 'hm'); flake(hero, '58%', '95%', 20, 8, 'hm'); flake(hero, '97.2%', '74%', 26, 10) }
+  var fin = document.getElementById('final'); if (fin) { fin.style.position = fin.style.position || 'relative'; flake(fin, '3%', '18%', 24, 10); flake(fin, '94%', '12%', 28, 9, 'hm'); flake(fin, '91%', '66%', 22, 12) }
+  function tidy(){ document.querySelectorAll('.flake').forEach(function(f){ clearOf(f, BUSY) }) }
+  tidy(); addEventListener('load', tidy); if (document.fonts) document.fonts.ready.then(tidy);
   /* holly on the Day 1 date */
   var t1 = document.querySelector('.final .tiles div'); if (t1) { var hl = new Image(); hl.className = 'holly'; hl.alt = ''; hl.src = 'img/vip/paint/xmas-holly.webp'; t1.appendChild(hl) }
 })();</script>
