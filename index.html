@@ -2131,7 +2131,7 @@ footer{background-image:url(img/vip/paint/tx-grain.webp);background-size:256px}
 .fb.min .fb-cd{display:grid;grid-template-columns:repeat(4,auto);justify-content:center;align-content:center;row-gap:1px;height:44px;padding:3px 6px 3px;border-radius:14px}
 .fb.min .fb-cdk{grid-column:1 / -1;max-width:none;display:flex;align-items:center;justify-content:center;gap:5px;margin:0;opacity:1;color:var(--ink3);font-size:8px;letter-spacing:.16em;line-height:1;height:10px}
 .fb.min .fb-t small{white-space:nowrap}
-.fb.min .fb-cdk i{flex:none;width:5px;height:5px;animation:none;box-shadow:none}
+.fb.min .fb-cdk i{flex:none;width:6px;height:6px}
 .fb.min .cdu{height:24px}
 /* the email field's "Did you mean …?" line */
 .esug{display:block;margin-top:6px;padding:0 0 0 4px;font-size:13px;line-height:1.45;color:var(--ink2)}
@@ -2139,6 +2139,28 @@ footer{background-image:url(img/vip/paint/tx-grain.webp);background-size:256px}
 .esug button{margin-left:4px;padding:3px 10px;border-radius:999px;border:1.5px solid var(--ink);background:var(--sun);font:inherit;font-weight:800;font-size:12px;color:var(--ink);cursor:pointer}
 .esug button:hover{background:#ffe04d}
 .tkt form .esug{font-size:11.5px}
+/* the frozen ticket arrives quickly */
+@media (min-width:1280px){
+  .v2rail .tksticky{transition:opacity .18s var(--ease),transform .18s var(--ease),visibility 0s .18s}
+  .v2rail.on .tksticky{transition:opacity .18s var(--ease),transform .18s var(--ease)}
+}
+/* the "Starting soon" dot lights up and pulses, full bar and slim bar (Sean) */
+.fb-cdk,.fb.min .fb-cdk{overflow:visible}
+.fb-cdk i{border-radius:50%;background:#F72585}
+@media (prefers-reduced-motion:no-preference){ .fb-cdk i{animation:sdot 1.6s ease-in-out infinite} }
+@keyframes sdot{0%{opacity:.55;box-shadow:0 0 0 0 rgba(247,37,133,.55)}45%{opacity:1;box-shadow:0 0 6px 2px rgba(247,37,133,.65),0 0 0 4px rgba(247,37,133,.18)}100%{opacity:.55;box-shadow:0 0 0 7px rgba(247,37,133,0)}}
+/* the frozen column starts a little higher, so on short screens its button is in view the moment the form moves across */
+@media (min-width:1280px){ .v2rail{top:20px} }
+/* the trust strip over the video, compact (Sean: "it's bulky"): thinner padding, a smaller badge, tighter numbers */
+@media (min-width:1061px){
+  .v2h .tstrip{padding:6px 14px 6px 6px;gap:12px;border-radius:14px;margin-bottom:18px}
+  .v2h .award{padding:6px 12px 6px 6px;gap:9px;border-radius:9px}
+  .v2h .award img{width:32px;height:32px}
+  .v2h .award small{font-size:8.5px;letter-spacing:.18em}
+  .v2h .award b{font-size:17px}
+  .v2h .stat b{font-size:16px}
+  .v2h .stat small{font-size:9px;letter-spacing:.12em;margin-top:2px}
+}
 </style>
 </head>
 <body>
@@ -2922,7 +2944,9 @@ footer{background-image:url(img/vip/paint/tx-grain.webp);background-size:256px}
      A button focuses it where it is, or opens the popup when no ticket is in view. */
   var wide = matchMedia('(min-width: 1280px)'), hslot = document.getElementById('hslot'), rslot = document.getElementById('rslot'),
       hcard = document.getElementById('hcard'), rcard = document.getElementById('rcard'), thanksEl = dlg.querySelector('.thanks');
-  function homeSlot(){ return (wide.matches && hcard.getBoundingClientRect().bottom < 110) ? rslot : hslot }
+  /* the form moves across as soon as the hero ticket's button slides under the floating bar (Sean: "the form doesn't
+     appear right away"); only the ticks and small print are left in the hero ticket by then */
+  function homeSlot(){ return (wide.matches && hcard.getBoundingClientRect().bottom < 270) ? rslot : hslot }
   function placeForm(){
     if (modal.classList.contains('open') || (form.contains(document.activeElement) && form.parentNode !== dlg)) return;
     var h = homeSlot(); if (form.parentNode === h) return;
