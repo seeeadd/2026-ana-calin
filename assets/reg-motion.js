@@ -238,6 +238,7 @@
         .add(pen.go(380, -60, .8, 30, -60), 7.8)
         .from($('.rv-q', rv), { y: 24, scale: .9, opacity: 0, duration: .5, ease: 'back.out(1.8)' }, 3.2)
         .add(function () { gsap.to($('.rv-st i', rv), { scale: 1.6, duration: .5, yoyo: true, repeat: -1, ease: 'sine.inOut' }) }, 3.8);
+      tv.timeScale(1.9); /* Sean: faster (about 4.5 s instead of 8.6) */
       when(rv, tv);
     }
 

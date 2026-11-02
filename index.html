@@ -2983,14 +2983,9 @@ footer{background-image:url(img/vip/paint/tx-grain.webp);background-size:256px}
   perf(); addEventListener('resize', perf); if (document.fonts) document.fonts.ready.then(perf);
   function openM(e){
     if (e) e.preventDefault();
-    var home = homeSlot(), card = home === rslot ? rcard : hcard, rr = card.getBoundingClientRect();
-    if (card.offsetParent && rr.bottom > 120 && rr.top < innerHeight - 120) {
-      if (form.parentNode !== home) { home.style.minHeight = ''; home.appendChild(form); perf(); railOn() }
-      if (rr.top < 90 || rr.bottom > innerHeight) card.scrollIntoView({block:'center', behavior: reduce ? 'auto' : 'smooth'});
-      var f1 = form.querySelector('[name=first_name]'); f1.focus({preventScroll:true});
-      card.classList.remove('pulse'); void card.offsetWidth; card.classList.add('pulse');
-      return;
-    }
+    /* every button opens the popup now (Sean: "show the pop-up form when they click any of the CTA buttons"); the
+       ticket it leaves keeps its height so the page behind doesn't jump */
+    if (form.parentNode === hslot || form.parentNode === rslot) form.parentNode.style.minHeight = form.offsetHeight + 'px';
     dlg.insertBefore(form, thanksEl);
     lastBtn = e && e.currentTarget;
     modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); document.body.classList.add('noscroll');
@@ -3204,6 +3199,6 @@ footer{background-image:url(img/vip/paint/tx-grain.webp);background-size:256px}
 </script>
 <script src="assets/vendor/gsap.min.js"></script>
 <script src="assets/vendor/ScrollTrigger.min.js"></script>
-<script src="assets/reg-motion.js?v=24"></script>
+<script src="assets/reg-motion.js?v=25"></script>
 </body>
 </html>
