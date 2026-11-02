@@ -2192,9 +2192,11 @@ html.bdg-js .bdg.in{animation:bdgIn .6s cubic-bezier(.2,1.5,.4,1) both}
 /* the hat sits on her head: brim on the hairline, centred over the face in the icon (44px, 40px in the slim bar) */
 .fb-hat{position:absolute;left:5px;top:calc(50% - 29px);width:40px;height:auto;pointer-events:none;transform:rotate(-9deg);transform-origin:45% 95%;transition:all .45s var(--ease);z-index:2}
 .fb.min .fb-hat{left:4px;top:calc(50% - 26px);width:36px}
-.xl{position:absolute;left:22px;right:22px;top:-15px;height:36px;pointer-events:none;z-index:2}
+.xl{position:absolute;left:18px;right:18px;top:-1px;height:34px;pointer-events:none;z-index:2}
+.xl b{position:absolute;top:-2px;width:7px;height:7px;margin-left:-3.5px;border-radius:50%;background:#D7263D;border:1.4px solid var(--ink);z-index:1}
+#rcard.lit{padding-top:34px}
 .xl svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
-.xl i{position:absolute;width:8px;height:12px;margin:-1px 0 0 -4px;border-radius:45% 45% 50% 50%/40% 40% 60% 60%;background:var(--c);border:1.4px solid var(--ink);transform:rotate(var(--r));transform-origin:50% 0;box-shadow:0 0 7px 1px var(--c)}
+.xl i{position:absolute;width:8px;height:12px;margin:2px 0 0 -4px;border-radius:45% 45% 50% 50%/40% 40% 60% 60%;background:var(--c);border:1.4px solid var(--ink);box-shadow:0 0 7px 1px var(--c)}
 .xl i:before{content:"";position:absolute;left:1px;right:1px;top:-4px;height:4px;border-radius:2px 2px 0 0;background:#7A6A60;border:1.2px solid var(--ink);border-bottom:0}
 @media (prefers-reduced-motion:no-preference){.xl i{animation:xtw 2.4s ease-in-out infinite;animation-delay:var(--d)}}
 @keyframes xtw{0%,100%{box-shadow:0 0 8px 2px var(--c);filter:none}50%{box-shadow:0 0 0 0 transparent;filter:saturate(.55) brightness(.9)}}
@@ -2868,14 +2870,18 @@ html.bdg-js .bdg.in{animation:bdgIn .6s cubic-bezier(.2,1.5,.4,1) both}
   /* Ana in the bar, in a Santa hat */
   var id = document.querySelector('.fb-id'); if (id) { var h = new Image(); h.className = 'fb-hat'; h.alt = ''; h.src = 'img/vip/paint/xmas-hat.webp'; id.appendChild(h) }
   /* fairy lights draped across the top of both seat tickets: a hand-drawn cord in four swags, a bulb on each swag */
-  function lights(card, n, extra){ var w = document.createElement('span'); w.className = 'xl' + (extra ? ' ' + extra : ''); w.setAttribute('aria-hidden', 'true');
-    var d = 'M0 4'; n = n || 4; var cols = ['#F72585', '#FFD400', '#3C6FB0', '#E0243A', '#3BAA6B'], bulbs = '';
-    for (var k = 0; k < n; k++) { var x0 = k * 100 / n, x1 = (k + 1) * 100 / n; d += ' Q' + ((x0 + x1) / 2).toFixed(2) + ' ' + (k % 2 ? 34 : 40) + ' ' + x1.toFixed(2) + ' 4' }
-    for (var b = 0; b < n * 3; b++) { var sw = Math.floor(b / 3), t = [.22, .5, .78][b % 3], dip = sw % 2 ? 34 : 40, y = 4 + 2 * t * (1 - t) * (dip - 4);
-      var x = (sw + t) * 100 / n; bulbs += '<i style="left:' + x.toFixed(2) + '%;top:' + y.toFixed(1) + 'px;--c:' + cols[b % 5] + ';--r:' + ((t - .5) * -40).toFixed(0) + 'deg;--d:' + (b * .37 % 2.4).toFixed(2) + 's"></i>' }
-    w.innerHTML = '<svg viewBox="0 0 100 36" preserveAspectRatio="none"><path d="' + d + '" fill="none" stroke="' + INK + '" stroke-width="1.6" vector-effect="non-scaling-stroke" stroke-linecap="round"/></svg>' + bulbs;
-    card.appendChild(w) }
-  ['hcard', 'rcard'].forEach(function(k){ var c = document.getElementById(k); if (c) lights(c) });
+  /* fairy lights on the frozen side ticket only: the cord is pinned to the ticket's top border with a small tack at each
+     corner and between, and sags in three swags; each bulb hangs straight down from the cord. The ticket gets a little
+     more room at the top (html.xmas #rcard) so the bulbs never cover the faces */
+  function lights(card){ var w = document.createElement('span'); w.className = 'xl'; w.setAttribute('aria-hidden', 'true');
+    var n = 3, sag = 15, cols = ['#F72585', '#FFD400', '#3C6FB0', '#E0243A', '#3BAA6B'], d = 'M0 2', bulbs = '', tacks = '';
+    for (var k = 0; k < n; k++) { var x0 = k * 100 / n, x1 = (k + 1) * 100 / n; d += ' Q' + ((x0 + x1) / 2).toFixed(2) + ' ' + (2 + 2 * sag) + ' ' + x1.toFixed(2) + ' 2' }
+    for (var k2 = 0; k2 <= n; k2++) tacks += '<b style="left:' + (k2 * 100 / n).toFixed(2) + '%"></b>';
+    for (var bi = 0; bi < n * 3; bi++) { var sw = Math.floor(bi / 3), t = [.25, .5, .75][bi % 3], y = 2 + 2 * t * (1 - t) * 2 * sag;
+      bulbs += '<i style="left:' + ((sw + t) * 100 / n).toFixed(2) + '%;top:' + y.toFixed(1) + 'px;--c:' + cols[bi % 5] + ';--d:' + (bi * .37 % 2.4).toFixed(2) + 's"></i>' }
+    w.innerHTML = '<svg viewBox="0 0 100 34" preserveAspectRatio="none"><path d="' + d + '" fill="none" stroke="' + INK + '" stroke-width="1.5" vector-effect="non-scaling-stroke" stroke-linecap="round"/></svg>' + bulbs + tacks;
+    card.appendChild(w); card.classList.add('lit') }
+  var rc = document.getElementById('rcard'); if (rc) lights(rc);
   /* the footer's village dressed for Christmas, drawn into the village itself so it lines up at every width: lights along
      each roofline, looping from roof to roof; the cypresses become little trees with a star; stars on the church crosses;
      a wreath on every other door */
