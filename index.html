@@ -1525,6 +1525,7 @@ mark.sk{color:var(--ink);font-weight:700;padding:0 2px;margin:0 -2px;-webkit-box
 @media (max-width:360px){.btn.open{max-width:100%;padding-left:6px;padding-right:16px}.btn.open .bt{white-space:normal;text-align:left;line-height:1.2}}
 /* the Day 1-3 mechanism, sticky while the days are read (Jason: done small and ticked, today big, next faded) */
 .dmap{position:sticky;top:88px;z-index:6;display:flex;justify-content:center;margin:-30px 0 46px;pointer-events:none}
+@media (min-width:1061px){.dmap{justify-content:flex-end;top:96px}.dmap .dm-in{transform:scale(.82);transform-origin:100% 0}}
 .dm-in{display:flex;align-items:center;gap:14px;background:#fff;border:1.6px solid var(--ink);border-radius:999px;padding:8px 22px 8px 9px;box-shadow:0 16px 30px -18px rgba(60,40,25,.45)}
 .dm-s{display:flex;align-items:center;gap:10px;opacity:.36;transition:opacity .4s}
 .dm-c{position:relative;flex:none;width:28px;height:28px;border-radius:50%;border:1.6px solid var(--ink);display:grid;place-items:center;font-style:normal;transition:transform .45s cubic-bezier(.3,1.5,.5,1),background .3s,border-color .3s}
@@ -1901,8 +1902,8 @@ html.anim-on .stay:not(.in) .tix .t{transform:translate(90px,110px) rotate(0)!im
 .stay .tix .t svg{filter:drop-shadow(0 8px 10px rgba(70,45,25,.2))}
 .stay .call{right:0!important;left:auto!important;top:6px!important;width:138px!important}
 .stay .ring-w{right:62px!important;top:146px!important}
-/* FaceTime: the 1:1 prize arrives as a FaceTime video call */
-.ft-app{position:absolute;right:128px;top:-6px;width:58px;height:58px;z-index:5;transform:rotate(-9deg);filter:drop-shadow(0 12px 14px rgba(20,90,40,.3))}
+/* the 1:1 prize arrives as a video call: our own call icon, pink with a cream camera */
+.ft-app{position:absolute;right:128px;top:-6px;width:58px;height:58px;z-index:5;transform:rotate(-9deg);filter:drop-shadow(0 12px 14px rgba(120,20,60,.28))}
 .ft-app .ft-svg{display:block;width:100%;height:100%}
 .call-tx small.ft-l{display:inline-flex;align-items:center;gap:2.4cqw}
 .call-tx small.ft-l .ft-svg{width:9cqw;height:9cqw;flex:none}
@@ -2892,9 +2893,9 @@ html.bdg-js .bdg.in{animation:bdgIn .6s cubic-bezier(.2,1.5,.4,1) both}
       <!-- five seats: five 1:1 tickets fanning out -->
       <div class="tix" aria-hidden="true">
         <!-- a 1:1 with Ana, as it would arrive: her video call rings, it's accepted, and she's there -->
-        <span class="ft-app" aria-hidden="true"><svg class="ft-svg" viewBox="0 0 96 96" aria-hidden="true"><defs><linearGradient id="ftg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#63F97C"/><stop offset="1" stop-color="#0BBD2B"/></linearGradient></defs><rect width="96" height="96" rx="22" fill="url(#ftg)"/><rect x="14.6" y="27" width="46.6" height="42" rx="9" fill="#fff"/><path d="M64.8 41.6c0-1.3.6-2.5 1.6-3.3l9.2-7.4c2-1.6 5.6-.6 5.6 2.1v30c0 2.7-3.6 3.7-5.6 2.1l-9.2-7.4c-1-.8-1.6-2-1.6-3.3Z" fill="#fff"/></svg></span><span class="ring-w" aria-hidden="true"><i></i><i></i><i></i></span><div class="call" id="call"><img class="call-ph" src="img/vip/paint/phone.webp" alt="" width="260" height="500" loading="lazy">
+        <span class="ft-app" aria-hidden="true"><svg class="ft-svg" viewBox="0 0 96 96" aria-hidden="true"><rect x="3" y="3" width="90" height="90" rx="30" fill="#F72585" stroke="#1A1412" stroke-width="5"/><rect x="18" y="31" width="40" height="34" rx="11" fill="#FFF6E5" stroke="#1A1412" stroke-width="4"/><path d="M60 44l16-10c2-1.2 4 .2 4 2.4v23.2c0 2.2-2 3.6-4 2.4L60 52Z" fill="#FFD400" stroke="#1A1412" stroke-width="4" stroke-linejoin="round"/><circle cx="29" cy="42" r="3.4" fill="#F72585"/></svg></span><span class="ring-w" aria-hidden="true"><i></i><i></i><i></i></span><div class="call" id="call"><img class="call-ph" src="img/vip/paint/phone.webp" alt="" width="260" height="500" loading="lazy">
           <div class="call-scr">
-            <div class="call-in"><img src="img/ana-hat.webp" alt="" loading="lazy"><div class="call-tx"><small class="ft-l"><svg class="ft-svg" viewBox="0 0 96 96" aria-hidden="true"><defs><linearGradient id="ftg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#63F97C"/><stop offset="1" stop-color="#0BBD2B"/></linearGradient></defs><rect width="96" height="96" rx="22" fill="url(#ftg2)"/><rect x="14.6" y="27" width="46.6" height="42" rx="9" fill="#fff"/><path d="M64.8 41.6c0-1.3.6-2.5 1.6-3.3l9.2-7.4c2-1.6 5.6-.6 5.6 2.1v30c0 2.7-3.6 3.7-5.6 2.1l-9.2-7.4c-1-.8-1.6-2-1.6-3.3Z" fill="#fff"/></svg>FaceTime Video</small><b>Ana Calin</b><span>Your 1:1 session</span></div>
+            <div class="call-in"><img src="img/ana-hat.webp" alt="" loading="lazy"><div class="call-tx"><small class="ft-l"><svg class="ft-svg" viewBox="0 0 96 96" aria-hidden="true"><rect x="3" y="3" width="90" height="90" rx="30" fill="#F72585" stroke="#1A1412" stroke-width="5"/><rect x="18" y="31" width="40" height="34" rx="11" fill="#FFF6E5" stroke="#1A1412" stroke-width="4"/><path d="M60 44l16-10c2-1.2 4 .2 4 2.4v23.2c0 2.2-2 3.6-4 2.4L60 52Z" fill="#FFD400" stroke="#1A1412" stroke-width="4" stroke-linejoin="round"/><circle cx="29" cy="42" r="3.4" fill="#F72585"/></svg>Video call</small><b>Ana Calin</b><span>Your 1:1 session</span></div>
               <div class="call-btns"><span class="cb no"><i><svg viewBox="0 0 24 24"><path d="M3 15c5-4 13-4 18 0l-2.4 2.6c-.6.6-1.6.6-2.2.1l-1.6-1.4c-.5-.4-.6-1-.4-1.6l.5-1.3c-2-.6-4.8-.6-6.8 0l.5 1.3c.2.6.1 1.2-.4 1.6l-1.6 1.4c-.6.5-1.6.5-2.2-.1Z" fill="#fff"/></svg></i>Decline</span><span class="cb yes"><i><svg viewBox="0 0 24 24"><rect x="3" y="7" width="12" height="10" rx="2" fill="#fff"/><path d="M15 11l5-3v8l-5-3z" fill="#fff"/></svg></i>Accept</span></div></div>
             <div class="call-on"><img src="img/real/ana-studio.webp?v=2" alt="" loading="lazy"><span class="call-me"><i></i>You</span><span class="call-t">0:01</span><span class="call-nm">Ana Calin · 1:1</span></div>
           </div></div>
