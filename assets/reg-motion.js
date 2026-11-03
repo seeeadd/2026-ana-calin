@@ -190,8 +190,8 @@
     var sw = $('.swall');
     if (sw) when(sw, gsap.timeline().from($$('.sw-g img', sw), { y: 26, opacity: 0, duration: .6, ease: 'power3.out', stagger: .08 }), 'top 80%');
 
-    /* small lists, real results: the amounts count, then each list fills in dot by dot */
-    var tg = $('.trio-g');
+    /* Jill's result: the amount counts up as the notes land on the pile */
+    var tg = $('.jill');
     if (tg) {
       var tr = gsap.timeline();
       $$('.trr', tg).forEach(function (c, i) {
