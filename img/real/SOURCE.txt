@@ -5,3 +5,4 @@ ana-live-*: the 16:9 still as YouTube publishes it (her vertical video over a bl
 ana-real-*: the sharp vertical centre only.
 ana-real-c: https://www.youtube.com/shorts/vxGJ8TjtnC4, a second published still (maxres2.jpg), sharp vertical centre.
 ana-studio: a still Sean sent on Nov 2, Ana at her painting wall (replaces ana-real-a on the registration page)
+ana-studio: replaced Nov 3 with Ana's new photo (Sean): copper hair, red lips, mauve satin wrap top, same painting wall
