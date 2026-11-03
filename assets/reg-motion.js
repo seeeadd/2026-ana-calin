@@ -191,8 +191,7 @@
     if (sw) when(sw, gsap.timeline().from($$('.sw-g img', sw), { y: 26, opacity: 0, duration: .6, ease: 'power3.out', stagger: .08 }), 'top 80%');
 
     /* Jill's result: the amount counts up as the notes land on the pile */
-    var tg = $('.jill');
-    if (tg) {
+    $$('.jill, .jill-more').forEach(function (tg) {
       var tr = gsap.timeline();
       $$('.trr', tg).forEach(function (c, i) {
         var n = $('.trr-n', c), txt = n.textContent, v = parseInt(txt.replace(/\D/g, ''), 10), plus = /\+$/.test(txt.trim());
@@ -205,7 +204,7 @@
         tr.fromTo(n, { scale: 1 }, { scale: 1.12, duration: .16, yoyo: true, repeat: 1, ease: 'power2.out' }, at + bills.length * step + .15);
       });
       when(tg, tr, 'top 70%');
-    }
+    });
 
     /* bring the part you're stuck on: the attendee's draft on the laptop; the shared sheet arrives; Ana's pencil marks it */
     var rv = $('.rvp');
