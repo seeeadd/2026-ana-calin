@@ -1779,7 +1779,7 @@ footer.has-vil{position:relative}
 .bring>.wrap{position:relative;z-index:1}
 .bk-marks{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
 .bk-marks path{fill:none;stroke:#F72585;stroke-width:7;stroke-linecap:round;stroke-linejoin:round;opacity:.3;filter:url(#pencil)}
-.gift .gcard{position:relative;overflow:hidden;isolation:isolate;background-image:linear-gradient(90deg,rgba(255,241,201,0) 44%,var(--sand) 60%),radial-gradient(22% 26% at 26% 52%,#FFE7A0 0,#FFC88A 55%,rgba(255,200,138,0) 100%),linear-gradient(180deg,#FFD9E8 0%,#FFE4C2 70%)!important}
+.gift .gcard{position:relative;overflow:hidden;isolation:isolate;background-image:linear-gradient(90deg,rgba(255,241,201,0) 44%,var(--sand) 60%),radial-gradient(24% 20% at 28% 24%,rgba(255,236,170,.9) 0,rgba(255,214,160,.55) 55%,rgba(255,214,160,0) 100%),linear-gradient(180deg,#FFDCEA 0%,#FFEBD2 46%,#FFF1DC 62%,#FFF4E4 100%)!important}
 /* the painted table the laptop stands on: a tilted top with brush grain, a lit back edge and a front lip */
 .gpaint .gp-desk{position:absolute;left:-12%;right:-6%;top:69%;height:27%;z-index:-1;pointer-events:none;transform:rotate(-2.5deg);transform-origin:50% 0;filter:drop-shadow(0 26px 22px rgba(60,70,110,.28))}
 .gpaint .gp-desk:before,.gpaint .gp-desk:after{content:"";position:absolute;left:0;right:0}
@@ -2197,9 +2197,7 @@ footer{background-image:url(img/vip/paint/tx-grain.webp);background-size:256px}
 .fb.min .fb-t small{white-space:nowrap}
 .fb .fb-t small,.fb.min .fb-t small{text-transform:none;letter-spacing:0;font-weight:700;font-size:12.5px;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:clip}
 .fb.min .fb-t small{font-size:11.5px}
-@media (max-width:1100px){.fb-t small .fb-w2{display:none}}
-@media (max-width:1380px){.fb.min .fb-t small .fb-w2{display:none}}
-@media (max-width:520px){.fb-t small .fb-w{display:none}}
+.fb-t small .fb-w.off,.fb-t small .fb-w2.off{display:none}
 .fb.min .fb-cdk i{flex:none;width:6px;height:6px}
 .fb.min .cdu{height:24px}
 /* the email field's "Did you mean …?" line */
@@ -2252,7 +2250,8 @@ html.bdg-js .bdg.in{animation:bdgIn .6s cubic-bezier(.2,1.5,.4,1) both}
 @keyframes bdgIn{0%{opacity:0;transform:rotate(calc(var(--r,-8deg) - 24deg)) scale(1.9)}55%{opacity:1}100%{opacity:1;transform:rotate(var(--r,-8deg)) scale(1)}}
 @media (prefers-reduced-motion:reduce){html.bdg-js .bdg:not(.in){opacity:1}html.bdg-js .bdg.in{animation:none}}
 .stay .tix .bdg-give{left:-4%;top:-12%;width:clamp(104px,11vw,150px);--r:-12deg;z-index:7}
-.gpaint .bdg-gift{left:85%;top:-7%;width:19%;--r:9deg;z-index:5}
+.gpaint .bdg-gift{left:35%;top:63%;width:26%;--r:-7deg;z-index:5}
+@media (max-width:900px){.gpaint .bdg-gift{left:36%;top:62%;width:24%}}
 @media (max-width:980px){.stay .tix .bdg-give{left:0;top:-14%}}
 /* ---------- Christmas (Sean, Nov 2): a little seasonal spice, only while html.xmas is on (the Christmas script turns it
    on until New Year): the sunflower in a Santa hat with a candy cane, a Santa hat on Ana in the bar, fairy lights on the
@@ -3521,5 +3520,15 @@ html.bdg-js .bdg.in{animation:bdgIn .6s cubic-bezier(.2,1.5,.4,1) both}
 (function(){ var b = document.querySelectorAll('.bdg'); if (!b.length || !('IntersectionObserver' in window)) return; document.documentElement.classList.add('bdg-js');
   var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target) } }) }, { threshold: .45 });
   b.forEach(function(x){ io.observe(x) }) })();</script>
+
+<script>
+/* header line: drop whole phrases (never a cut word) when the bar is too narrow */
+(function(){var sm=document.querySelector('.fb-t small');if(!sm)return;var w2=sm.querySelector('.fb-w2'),w=sm.querySelector('.fb-w');
+ function fit(){w.classList.remove('off');w2.classList.remove('off');if(sm.scrollWidth>sm.clientWidth+1)w2.classList.add('off');if(sm.scrollWidth>sm.clientWidth+1)w.classList.add('off')}
+ var t;function later(){clearTimeout(t);t=setTimeout(fit,60)}
+ addEventListener('resize',later);if(window.ResizeObserver)new ResizeObserver(later).observe(sm.parentNode);
+ var fb=document.querySelector('.fb');if(fb)new MutationObserver(function(){setTimeout(fit,500)}).observe(fb,{attributes:true,attributeFilter:['class']});
+ if(document.fonts)document.fonts.ready.then(fit);fit()})();
+</script>
 </body>
 </html>
