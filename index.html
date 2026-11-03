@@ -1009,6 +1009,7 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
 /* ---------- 9. the Day 3 prize ---------- */
 .prize{padding:60px 0 100px}
 .stay h2{font-size:clamp(32px,3.2vw,44px);line-height:1.06;margin:0 0 14px;text-wrap:balance}
+.stay h2 .pz-b{font-family:var(--sans);font-weight:800;font-style:normal;font-size:.8em;letter-spacing:-.015em;color:var(--ink)}
 .stay p{font-family:var(--sans);font-size:18px;line-height:1.55;color:var(--ink2);letter-spacing:0}
 .stay small{font-weight:700}
 
@@ -1826,6 +1827,15 @@ html.anim-on .stay:not(.in) .tix .t{transform:translate(90px,110px) rotate(0)!im
 .stay .tix .t svg{filter:drop-shadow(0 8px 10px rgba(70,45,25,.2))}
 .stay .call{right:0!important;left:auto!important;top:6px!important;width:138px!important}
 .stay .ring-w{right:62px!important;top:146px!important}
+/* FaceTime: the 1:1 prize arrives as a FaceTime video call */
+.ft-app{position:absolute;right:128px;top:-6px;width:58px;height:58px;z-index:5;transform:rotate(-9deg);filter:drop-shadow(0 12px 14px rgba(20,90,40,.3))}
+.ft-app .ft-svg{display:block;width:100%;height:100%}
+.call-tx small.ft-l{display:inline-flex;align-items:center;gap:2.4cqw}
+.call-tx small.ft-l .ft-svg{width:9cqw;height:9cqw;flex:none}
+@media (prefers-reduced-motion:no-preference){.ft-app{animation:ftBob 3.2s ease-in-out infinite}}
+@keyframes ftBob{0%,100%{transform:rotate(-9deg) translateY(0)}50%{transform:rotate(-6deg) translateY(-6px)}}
+@media (max-width:520px){.ft-app{right:84px;width:44px;height:44px}}
+
 @media (max-width:980px){.stay{grid-template-columns:minmax(0,1fr)!important}.stay .tix{width:100%;max-width:470px;margin:10px auto 0}}
 @media (max-width:520px){.stay .tix{height:300px!important}.stay .tix .t{transform:translate(calc(var(--i) * 12px),calc(var(--i) * 40px)) rotate(calc(-7deg + var(--i) * 2.2deg)) scale(.82)!important;transform-origin:0 0}.stay .call{width:112px!important;top:0!important}.stay .ring-w{right:50px!important;top:118px!important}}
 /* the calendar's session blocks and note fit their text */
@@ -2245,12 +2255,23 @@ html.bdg-js .bdg.in{animation:bdgIn .6s cubic-bezier(.2,1.5,.4,1) both}
 .bring-qs li{font-family:Manrope,system-ui,sans-serif;font-style:normal;font-weight:700;font-size:19px;line-height:1.35;color:var(--ink)}
 .bring-tx .bring-b{font-weight:800;color:var(--ink)}
 .bring-tx p:not(.bring-that){text-align:justify;text-align-last:left;hyphens:manual}
+/* desktop: heading + questions left, the review scene right; "Bring those questions" and the paragraphs run across the full width below */
+@media (min-width:901px){
+  .bringg.two{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);row-gap:0;max-width:1080px}
+  .bringg.two .bring-l,.bringg.two .bring-tx{display:contents}
+  .bringg.two .bring-l > *,.bringg.two .bring-tx > *{grid-column:1}
+  .bringg.two .rvp{grid-column:2;grid-row:1 / span 4;align-self:center}
+  .bringg.two .bring-tx .bring-that{grid-column:1;margin-top:22px}
+  .bringg.two .bring-cols{grid-column:1 / -1;columns:2;column-gap:56px;margin-top:30px}
+  .bringg.two .bring-cols p{break-inside:avoid}
+  .bringg.two .cta2{grid-column:1 / -1;margin-top:26px}
+}
 .host p.hq{font-weight:700;color:var(--ink)}
 .recap p.ask-b{font-weight:700;color:var(--ink)}
 .gtx .gnote{margin-top:14px;font-size:13px;font-style:italic;color:var(--ink3)}
 .where .head{text-align:center}
 .rgrid2{columns:3 280px;column-gap:22px;margin-top:22px}
-.rgrid2 .rq{break-inside:avoid;margin:0 0 22px;padding:20px 20px 18px;box-shadow:4px 4px 0 var(--ink);gap:16px}
+.rgrid2 .rq{break-inside:avoid;display:inline-flex;width:calc(100% - 6px);vertical-align:top;margin:0 0 22px;padding:20px 20px 18px;box-shadow:4px 4px 0 var(--ink);gap:16px}
 .rgrid2 .rq blockquote{font-size:19px;line-height:1.32}
 .rgrid2 .rq blockquote:before{font-size:52px;height:24px}
 @media (max-width:860px){.rgrid2{max-width:620px;margin-left:auto;margin-right:auto}}
@@ -2622,9 +2643,11 @@ html.bdg-js .bdg.in{animation:bdgIn .6s cubic-bezier(.2,1.5,.4,1) both}
       <div class="bring-tx">
         <ul class="bring-qs"><li>“What if I have two completely different ideas?”</li><li>“What if people already get this advice for free?”</li><li>“What if I can only work on it after my job?”</li></ul>
         <p class="bring-that">Bring those questions.</p>
+        <div class="bring-cols">
         <p>During the teaching sessions, you’ll have time to work on your own direction. <mark class="sk">I’ll review selected attendees’ work on screen</mark> and explain what I’d keep, what I’d question, and what I’d change.</p>
         <p>Even when it’s someone else’s work, you’ll see how I make the decision.</p>
         <p class="bring-b">Come with the part you haven’t figured out. You don’t need to tidy it up for me first.</p>
+        </div>
         <div class="cta2"><button class="btn open" type="button" data-cta="bring"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">I’ll bring mine <small class="bq">(it’s free)</small></span><svg class="ar"><use href="#arr"/></svg></button><small>free · live on Zoom</small></div>
       </div>
       </div>
@@ -2753,7 +2776,7 @@ html.bdg-js .bdg.in{animation:bdgIn .6s cubic-bezier(.2,1.5,.4,1) both}
   <div class="wrap">
     <div class="stay" id="stay">
       <div>
-        <h2>Five people will win <em>a 1:1 session with me.</em></h2>
+        <h2>Five (5) people will win <strong class="pz-b">a <mark class="sk">1:1 session</mark> with me.</strong></h2>
         <p class="lead">Bring the idea you’re considering, the decision you’re stuck on, or the question you’d like more time to discuss.</p>
         <p>We’ll have a private session to work through it together.</p>
         <p>I’ll draw five names at random from <b>the people still attending live at the end of Day 3.</b></p>
@@ -2763,9 +2786,9 @@ html.bdg-js .bdg.in{animation:bdgIn .6s cubic-bezier(.2,1.5,.4,1) both}
       <!-- five seats: five 1:1 tickets fanning out -->
       <div class="tix" aria-hidden="true">
         <!-- a 1:1 with Ana, as it would arrive: her video call rings, it's accepted, and she's there -->
-        <span class="ring-w" aria-hidden="true"><i></i><i></i><i></i></span><div class="call" id="call"><img class="call-ph" src="img/vip/paint/phone.webp" alt="" width="260" height="500" loading="lazy">
+        <span class="ft-app" aria-hidden="true"><svg class="ft-svg" viewBox="0 0 96 96" aria-hidden="true"><defs><linearGradient id="ftg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#63F97C"/><stop offset="1" stop-color="#0BBD2B"/></linearGradient></defs><rect width="96" height="96" rx="22" fill="url(#ftg)"/><rect x="14.6" y="27" width="46.6" height="42" rx="9" fill="#fff"/><path d="M64.8 41.6c0-1.3.6-2.5 1.6-3.3l9.2-7.4c2-1.6 5.6-.6 5.6 2.1v30c0 2.7-3.6 3.7-5.6 2.1l-9.2-7.4c-1-.8-1.6-2-1.6-3.3Z" fill="#fff"/></svg></span><span class="ring-w" aria-hidden="true"><i></i><i></i><i></i></span><div class="call" id="call"><img class="call-ph" src="img/vip/paint/phone.webp" alt="" width="260" height="500" loading="lazy">
           <div class="call-scr">
-            <div class="call-in"><img src="img/ana-hat.webp" alt="" loading="lazy"><div class="call-tx"><small>video call</small><b>Ana Calin</b><span>Your 1:1 session</span></div>
+            <div class="call-in"><img src="img/ana-hat.webp" alt="" loading="lazy"><div class="call-tx"><small class="ft-l"><svg class="ft-svg" viewBox="0 0 96 96" aria-hidden="true"><defs><linearGradient id="ftg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#63F97C"/><stop offset="1" stop-color="#0BBD2B"/></linearGradient></defs><rect width="96" height="96" rx="22" fill="url(#ftg2)"/><rect x="14.6" y="27" width="46.6" height="42" rx="9" fill="#fff"/><path d="M64.8 41.6c0-1.3.6-2.5 1.6-3.3l9.2-7.4c2-1.6 5.6-.6 5.6 2.1v30c0 2.7-3.6 3.7-5.6 2.1l-9.2-7.4c-1-.8-1.6-2-1.6-3.3Z" fill="#fff"/></svg>FaceTime Video</small><b>Ana Calin</b><span>Your 1:1 session</span></div>
               <div class="call-btns"><span class="cb no"><i><svg viewBox="0 0 24 24"><path d="M3 15c5-4 13-4 18 0l-2.4 2.6c-.6.6-1.6.6-2.2.1l-1.6-1.4c-.5-.4-.6-1-.4-1.6l.5-1.3c-2-.6-4.8-.6-6.8 0l.5 1.3c.2.6.1 1.2-.4 1.6l-1.6 1.4c-.6.5-1.6.5-2.2-.1Z" fill="#fff"/></svg></i>Decline</span><span class="cb yes"><i><svg viewBox="0 0 24 24"><rect x="3" y="7" width="12" height="10" rx="2" fill="#fff"/><path d="M15 11l5-3v8l-5-3z" fill="#fff"/></svg></i>Accept</span></div></div>
             <div class="call-on"><img src="img/real/ana-studio.webp" alt="" loading="lazy"><span class="call-me"><i></i>You</span><span class="call-t">0:01</span><span class="call-nm">Ana Calin · 1:1</span></div>
           </div></div>
