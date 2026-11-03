@@ -2257,18 +2257,17 @@ html.bdg-js .bdg.in{animation:bdgIn .6s cubic-bezier(.2,1.5,.4,1) both}
 .bring-qs{list-style:none;margin:22px 0 6px;padding:0;display:grid;gap:8px}
 .bring-qs li{font-family:Manrope,system-ui,sans-serif;font-style:normal;font-weight:700;font-size:19px;line-height:1.35;color:var(--ink)}
 .bring-tx .bring-b{font-weight:800;color:var(--ink)}
-.bring-tx p:not(.bring-that){text-align:justify;text-align-last:left;hyphens:manual}
-/* desktop: heading + questions left, the review scene right; "Bring those questions" and the paragraphs run across the full width below */
+@media (min-width:601px){.bring-tx p:not(.bring-that){text-align:justify;text-align-last:left;hyphens:manual}}
+/* desktop: heading + questions beside the review scene; the paragraphs run in two columns across the full width below */
 @media (min-width:901px){
-  .bringg.two{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);row-gap:0;max-width:1080px}
-  .bringg.two .bring-l,.bringg.two .bring-tx{display:contents}
-  .bringg.two .bring-l > *,.bringg.two .bring-tx > *{grid-column:1}
-  .bringg.two .rvp{grid-column:2;grid-row:1 / span 4;align-self:center}
-  .bringg.two .bring-tx .bring-that{grid-column:1;margin-top:22px}
-  .bringg.two .bring-cols{grid-column:1 / -1;columns:2;column-gap:56px;margin-top:30px}
+  .bringg.two{grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);column-gap:48px;row-gap:44px;align-items:center;max-width:1080px}
+  .bringg.two .bring-more{grid-column:1 / -1;padding-top:30px;border-top:1.5px dashed rgba(26,20,18,.18)}
+  .bringg.two .bring-cols{columns:2;column-gap:56px}
   .bringg.two .bring-cols p{break-inside:avoid}
-  .bringg.two .cta2{grid-column:1 / -1;margin-top:26px}
+  .bringg.two .cta2{margin-top:26px}
 }
+.bring-tx .bring-that{margin-top:18px}
+.bring-qs{margin:20px 0 0!important}
 .host p.hq{font-weight:700;color:var(--ink)}
 .recap p.ask-b{font-weight:700;color:var(--ink)}
 .gtx .gnote{margin-top:14px;font-size:13px;font-style:italic;color:var(--ink3)}
@@ -2646,12 +2645,6 @@ html.bdg-js .bdg.in{animation:bdgIn .6s cubic-bezier(.2,1.5,.4,1) both}
       <div class="bring-tx">
         <ul class="bring-qs"><li>“What if I have two completely different ideas?”</li><li>“What if people already get this advice for free?”</li><li>“What if I can only work on it after my job?”</li></ul>
         <p class="bring-that">Bring those questions.</p>
-        <div class="bring-cols">
-        <p>During the teaching sessions, you’ll have time to work on your own direction. <mark class="sk">I’ll review selected attendees’ work on screen</mark> and explain what I’d keep, what I’d question, and what I’d change.</p>
-        <p>Even when it’s someone else’s work, you’ll see how I make the decision.</p>
-        <p class="bring-b">Come with the part you haven’t figured out. You don’t need to tidy it up for me first.</p>
-        </div>
-        <div class="cta2"><button class="btn open" type="button" data-cta="bring"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">I’ll bring mine <small class="bq">(it’s free)</small></span><svg class="ar"><use href="#arr"/></svg></button><small>free · live on Zoom</small></div>
       </div>
       </div>
       <div class="pnt rvp" aria-hidden="true">
@@ -2673,6 +2666,14 @@ html.bdg-js .bdg.in{animation:bdgIn .6s cubic-bezier(.2,1.5,.4,1) both}
           </svg>
         </div>
         <div class="rv-q"><span class="rv-av">Y</span><div><b>You</b><p>Is my opening line clear enough?</p><small class="rv-st"><i></i>Ana is answering this live</small></div></div>
+      </div>
+      <div class="bring-tx bring-more">
+        <div class="bring-cols">
+        <p>During the teaching sessions, you’ll have time to work on your own direction. <mark class="sk">I’ll review selected attendees’ work on screen</mark> and explain what I’d keep, what I’d question, and what I’d change.</p>
+        <p>Even when it’s someone else’s work, you’ll see how I make the decision.</p>
+        <p class="bring-b">Come with the part you haven’t figured out. You don’t need to tidy it up for me first.</p>
+        </div>
+        <div class="cta2"><button class="btn open" type="button" data-cta="bring"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">I’ll bring mine <small class="bq">(it’s free)</small></span><svg class="ar"><use href="#arr"/></svg></button><small>free · live on Zoom</small></div>
       </div>
     </div>
   </div>
