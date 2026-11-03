@@ -1383,6 +1383,14 @@ mark.sk{color:var(--ink);font-weight:700;padding:0 2px;margin:0 -2px;-webkit-box
 .rvp .rv-st{display:inline-flex;align-items:center;gap:.8cqw;margin-top:.8cqw;font-size:1.7cqw;font-weight:700;color:var(--pink)}
 .rvp .rv-st i{width:1.2cqw;height:1.2cqw;border-radius:50%;background:var(--pink)}
 .gcard:has(.gpaint){grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);align-items:center}
+/* gift: heading and the first lines beside the laptop; the rest across the full width below */
+.gift .gmore{grid-column:1 / -1;padding-top:26px;border-top:1.5px dashed rgba(26,20,18,.18)}
+.gift .gcols{columns:2;column-gap:56px}
+.gift .gcols p{break-inside:avoid;font-size:18px;line-height:1.6;color:var(--ink2);margin:0 0 14px}
+.gift .gcols p b{color:var(--ink)}
+.gift .gmore .cta2{margin-top:14px}
+.gift .gcols .gnote{font-size:13px;font-style:italic;color:var(--ink3)}
+@media (max-width:900px){.gift .gcols{columns:1}.gift .gmore{border-top:0;padding-top:0;margin-top:-18px}}
 .gpaint .gp-cam{position:absolute;inset:0;transform-origin:0 0}
 .gpaint .gp-cam img{width:100%;height:100%;object-fit:cover;object-position:0 0}
 .gpaint .gp-ink{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
@@ -2739,11 +2747,15 @@ html.bdg-js .bdg.in{animation:bdgIn .6s cubic-bezier(.2,1.5,.4,1) both}
         <h2><span class="l">How many sales would you need</span> <span class="l"><em>to reach your monthly income goal?</em></span></h2>
         <p>Perhaps you want to replace one client. Cover your bills. Eventually, match your salary.</p>
         <p><mark class="sk">After you register, answer seven quick questions to get your exit-number calculator.</mark></p>
+      </div>
+      <div class="gmore">
+        <div class="gcols">
         <p>Put in your income goal, try different prices, and see <b>how many purchases each would require.</b> You can compare that with earning the same amount through paid newsletter subscriptions, too.</p>
         <p><b>Bring those numbers to Day 2.</b> As we look at what you could sell, you’ll have your own target in front of you.</p>
         <p>Would you want to find that many customers? Could you deliver what they’re buying alongside your current work?</p>
         <p>Come back and adjust the numbers as your idea develops. That’s what it’s there for.</p>
         <p class="gnote">Planning estimates based on the figures you enter.</p>
+        </div>
         <div class="cta2"><button class="btn open" type="button" data-cta="gift"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">Save my seat and get my number</span><svg class="ar"><use href="#arr"/></svg></button><small>your exit number comes after you register</small></div>
       </div>
     </div>
