@@ -1009,7 +1009,10 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
 /* ---------- 9. the Day 3 prize ---------- */
 .prize{padding:60px 0 100px}
 .stay h2{font-size:clamp(32px,3.2vw,44px);line-height:1.06;margin:0 0 14px;text-wrap:balance}
-.stay h2 .pz-b{font-family:var(--sans);font-weight:800;font-style:normal;font-size:.8em;letter-spacing:-.015em;color:var(--ink)}
+.stay h2 .pz-b{display:block;margin-top:.12em;font-family:var(--sans);font-weight:800;font-style:normal;font-size:.8em;letter-spacing:-.015em;color:var(--ink)}
+.stay h2 .pz-hl{display:inline-block;white-space:nowrap;margin:0 .08em;padding:.06em .32em .1em;border-radius:.28em;background:var(--pink);color:#fff;border:2px solid var(--ink);box-shadow:4px 4px 0 var(--ink);transform:rotate(-2.5deg)}
+@media (prefers-reduced-motion:no-preference){.stay.in h2 .pz-hl{animation:pzPop .55s cubic-bezier(.3,1.6,.5,1) .2s both}}
+@keyframes pzPop{0%{transform:rotate(-12deg) scale(.6);opacity:0}100%{transform:rotate(-2.5deg) scale(1);opacity:1}}
 .stay p{font-family:var(--sans);font-size:18px;line-height:1.55;color:var(--ink2);letter-spacing:0}
 .stay small{font-weight:700}
 
@@ -2776,7 +2779,7 @@ html.bdg-js .bdg.in{animation:bdgIn .6s cubic-bezier(.2,1.5,.4,1) both}
   <div class="wrap">
     <div class="stay" id="stay">
       <div>
-        <h2>Five (5) people will win <strong class="pz-b">a <mark class="sk">1:1 session</mark> with me.</strong></h2>
+        <h2>Five (5) people will win <strong class="pz-b">a <span class="pz-hl">1:1 session</span> with me.</strong></h2>
         <p class="lead">Bring the idea you’re considering, the decision you’re stuck on, or the question you’d like more time to discuss.</p>
         <p>We’ll have a private session to work through it together.</p>
         <p>I’ll draw five names at random from <b>the people still attending live at the end of Day 3.</b></p>
