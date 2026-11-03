@@ -1822,12 +1822,14 @@ footer.has-vil{position:relative}
 /* final section: the photo shows in full; the invite sits off its lower-left edge (over the console), the mark top right */
 @media (min-width:981px){
   .claim .pic{max-width:420px;margin-bottom:60px}
-  .claim .gi{right:auto!important;left:-12%;bottom:-24%;width:62%;transform:rotate(2deg)}
+  .claim{max-width:1180px;column-gap:120px}
+  .claim .gi{right:auto!important;left:-16%;bottom:-46%;width:84%;transform:rotate(2deg)}
+  .claim .pic{margin-bottom:210px!important}
+  .claim .pic .mk{left:auto!important;right:-34px;top:-30px;bottom:auto!important;transform:rotate(10deg)}
 }
 @media (min-width:981px) and (max-width:1240px){
-  .claim .gi{left:-2%}
-  .claim .pic{margin-bottom:120px}
-  .claim .pic .mk{left:auto!important;right:-34px;top:-30px;bottom:auto!important;transform:rotate(10deg)}
+  .claim{column-gap:80px}
+  .claim .gi{left:-2%;width:78%}
 }
 @media (max-width:980px){
   .claim .gi{width:78%!important;margin:-5% auto 0 -6%!important;transform:rotate(-2deg)}
