@@ -87,6 +87,10 @@ HOOK=T(206.94); XF=.07
 place(0,.95,16.2,.05,2.6)
 place(180.3,HOOK-180.3 and 16.6-(HOOK-180.3),16.6+XF,1.3,XF)
 place(HOOK,26.18,26.18+(N/SR-HOOK),XF,.55)
+# room for her words: the music gives up the band her consonants live in, and dips while she speaks
+Xm=np.fft.rfft(mus,axis=0); frq=np.fft.rfftfreq(N,1/SR); Xm*=np.interp(frq,[0,900,1500,5000,7500,24000],[1,1,.42,.42,.8,.8])[:,None]; mus=np.fft.irfft(Xm,N,axis=0).astype(np.float32)
+vm=v.mean(1); hp=int(.03*SR); env=np.sqrt(np.convolve(vm**2,np.ones(hp)/hp,'same')); act=(env>10**(-36/20)).astype(float)
+ka=int(.04*SR); kr=int(.28*SR); dk=np.convolve(act,np.ones(ka+kr)/(ka+kr),'same'); dk=np.clip(dk*1.6,0,1); mus*=(1-.42*dk)[:,None]
 mix=v+fx+bed+mus; print('peak before limiter',round(float(np.abs(mix).max()),3),'clips',len(log))
 tmp=OUT+'.tmp.wav'; subprocess.run(['ffmpeg','-nostdin','-v','error','-y','-f','f32le','-ar',str(SR),'-ac','2','-i','-','-af','alimiter=limit=0.84:level=disabled:attack=3:release=60','-c:a','pcm_s16le',OUT],input=mix.astype(np.float32).tobytes())
 json.dump(log,open(os.path.expanduser('~/AnaVideo/work/sfx/cues.json'),'w'))
