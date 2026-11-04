@@ -201,8 +201,8 @@ def arrow(name, P, box, w0, w1, head, headlen):
   <g data-mat="white" fill="none" stroke="#FFD3E6" stroke-width="3" stroke-linecap="round"><path d="{hi}"/></g>
   <g data-mat="ink" stroke="{INK}" stroke-width="2.4" fill="none" stroke-linejoin="round"><path d="{smooth(Lp)}"/><path d="{smooth(Rp)}"/><path d="M{Lp[0][0]:.1f} {Lp[0][1]:.1f} L{Rp[0][0]:.1f} {Rp[0][1]:.1f}"/></g>
 </svg>'''
-va_d = arrow('varrow-d', [(1190, 512), (1060, 230), (600, 210), (420, 392)], (360, 180, 880, 370), 26, 34, 0, 0)
-va_p = arrow('varrow-p', [(680, 880), (540, 800), (350, 880), (324, 1226)], (270, 780, 450, 480), 28, 36, 0, 0)
+va_d = arrow('varrow-d', [(840, 190), (700, 420), (420, 300), (250, 410)], (170, 160, 720, 360), 26, 34, 0, 0)
+va_p = arrow('varrow-p', [(330, 210), (640, 420), (470, 760), (230, 860)], (170, 180, 520, 780), 28, 36, 0, 0)
 
 # ---------- the free sticker: yellow, ink letters, a raw white die-cut edge
 def cut(pts, amp):
