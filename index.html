@@ -103,7 +103,7 @@ h2 em,h1 em,h3 em{font-style:italic;color:var(--pink)}
 .fb-jt small{font-weight:700;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,248,238,.6);margin-top:3px}
 .fb .btn{position:relative;overflow:hidden}
 .btn.shine:after,.fb .btn:after{content:"";position:absolute;top:0;bottom:0;left:-60%;width:40%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-20deg);animation:shine 4.5s ease-in-out infinite}
-@keyframes shine{0%,62%{left:-60%}82%,100%{left:130%}}
+@keyframes shine{0%,62%{transform:translateX(0) skewX(-20deg)}82%,100%{transform:translateX(475%) skewX(-20deg)}}
 .faces{display:flex;flex:none}
 .faces img{width:36px;height:36px;border-radius:50%;object-fit:cover;border:2px solid #fff;margin-left:-10px;background:var(--sand)}
 .faces img:first-child{margin-left:0}
@@ -737,7 +737,7 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
   .iph .isl{width:12px;height:44px;margin-top:-22px;left:6px}
   .iph .scr img.mkv{width:38px;height:38px;right:12px;top:10px}
   .vplay{left:26px;top:10px;bottom:auto;height:36px;font-size:13px;gap:7px;padding:0 14px 0 4px}
-  .vplay i{width:28px;height:28px}
+  .vplay i{width:28px;height:28px;--rs:2}
   .vplay i svg{width:14px;height:14px}
   .scrub{left:28px;right:10px;bottom:9px;padding:6px 12px;font-size:11px;gap:8px}
   .scrub svg{width:13px;height:13px}
@@ -2438,6 +2438,23 @@ picture{display:contents}
 .dtm .dme svg{width:.85em;height:.85em;fill:var(--pink);flex:none}
 .dtm .dme svg circle{fill:#fff}
 .dtm .dny{font-size:13.5px;font-weight:600;color:var(--ink3);white-space:nowrap}
+/* speed (Nov 4): the pulses, rings and twinkles drawn with transform and opacity only, so the graphics card runs them
+   and the page isn't repainted every frame; they look the same as before */
+@keyframes dotp{0%{transform:scale(1);opacity:1}70%,100%{transform:scale(3);opacity:0}}
+.fb-l i,.hpill .dot{position:relative;animation:none}
+.fb-l i:after,.hpill .dot:after{content:"";position:absolute;inset:0;border-radius:50%;background:rgba(247,37,133,.5);animation:dotp 2s ease-out infinite}
+.hpill .dot:after{animation-duration:2.2s}
+@keyframes sdotp{0%,100%{opacity:.55}45%{opacity:1}}
+@keyframes sdoth{0%{transform:scale(1);opacity:.9}100%{transform:scale(2.3);opacity:0}}
+.fb-cdk i{position:relative;box-shadow:none;animation:sdotp 1.6s ease-in-out infinite}
+.fb-cdk i:after{content:"";position:absolute;inset:0;border-radius:50%;background:rgba(247,37,133,.45);animation:sdoth 1.6s ease-out infinite}
+@keyframes ringp{0%{transform:scale(1);opacity:1}70%,100%{transform:scale(var(--rs,1.667));opacity:0}}
+.vplay i{isolation:isolate}
+.vplay i:before{z-index:-1;background:rgba(255,255,255,.7);animation:ringp 2.4s ease-out infinite}
+@keyframes xtwf{0%,100%{filter:none}50%{filter:saturate(.55) brightness(.9)}}
+@keyframes xtwg{0%,100%{opacity:1}50%{opacity:0}}
+.xl i{box-shadow:none;animation:xtwf 2.4s ease-in-out infinite;animation-delay:var(--d)}
+.xl i:after{content:"";position:absolute;inset:-1.4px;border-radius:inherit;box-shadow:0 0 8px 2px var(--c);animation:xtwg 2.4s ease-in-out infinite;animation-delay:var(--d);pointer-events:none}
 </style>
 </head>
 <body>
