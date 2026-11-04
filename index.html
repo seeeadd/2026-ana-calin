@@ -21,6 +21,9 @@
 <link rel="icon" type="image/png" sizes="32x32" href="img/fav/favicon-32.png?v=dc986e96">
 <link rel="icon" type="image/png" sizes="192x192" href="img/fav/favicon-192.png?v=dc986e96">
 <link rel="apple-touch-icon" href="img/fav/apple-touch-icon.png?v=dc986e96">
+<script>/* big monitors (Sean, Nov 4): from 1800 px wide the whole page is enlarged evenly (CSS zoom), by the screen's width
+   and height so the hero still fits, up to 2x. Lengths that follow the screen (100vw, 100vh) divide by --z. */
+(function(){var d=document.documentElement;function z(){var w=innerWidth,h=innerHeight,k=1;if(w>=1800){k=Math.min(w/1600,h/1075,2);if(k<1.05)k=1}k=Math.round(k*100)/100;d.style.setProperty('--z',k);d.style.zoom=k===1?'':k;window.__z=k}z();addEventListener('resize',z)})();</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&family=Nothing+You+Could+Do&family=Roboto:wght@400;500&display=swap">
@@ -1029,12 +1032,12 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
 
 /* ---------- desktop: the page beside the frozen ticket ---------- */
 @media (min-width:1280px){
-  .v2page{--edge:max(28px,calc((100vw - 1640px) / 2));--rw:284px;--rg:44px;--rightc:calc(var(--edge) + var(--rw) + var(--rg))}
+  .v2page{--edge:max(28px,calc((100vw / var(--z,1) - 1640px) / 2));--rw:284px;--rg:44px;--rightc:calc(var(--edge) + var(--rw) + var(--rg))}
   .v2body{position:relative}
   .v2rail{position:absolute;top:120px;bottom:80px;right:var(--edge);width:var(--rw);z-index:20}
   /* the frozen ticket stays in the middle of the screen under the 74px floating bar, top to bottom (Sean); its height
      (--tkh) comes from the page script */
-  .tksticky{position:sticky;top:max(92px,calc((100vh + 74px - var(--tkh,480px)) / 2))}
+  .tksticky{position:sticky;top:max(92px,calc((100vh / var(--z,1) + 74px - var(--tkh,480px)) / 2))}
   .v2body .wrap{max-width:none;margin-left:var(--edge);margin-right:var(--rightc);padding:0}
   .v2body .wrap.narrow > *{max-width:none}
   /* the frozen ticket shows once the form has moved into it, so two tickets are never on screen with one empty */
@@ -3214,7 +3217,7 @@ html.bdg-js .bdg.in{animation:bdgIn .6s cubic-bezier(.2,1.5,.4,1) both}
       if (getComputedStyle(sec).position === 'static') sec.style.position = 'relative';
       var cv = document.createElement('canvas'); cv.className = 'snow'; cv.setAttribute('aria-hidden', 'true'); sec.insertBefore(cv, sec.firstChild);
       var ctx = cv.getContext('2d'), dpr = 1, W = 0, H = 0, flakes = [], on = false, last = 0, T = Math.random() * 50;
-      function size(){ dpr = Math.min(2, devicePixelRatio || 1); W = sec.clientWidth; H = sec.clientHeight; cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      function size(){ dpr = Math.min(2.5, (devicePixelRatio || 1) * (window.__z || 1)); W = sec.clientWidth; H = sec.clientHeight; cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
         var n = Math.round(Math.min(40, Math.max(12, W * H / 32000))); while (flakes.length < n) flakes.push(make(false)); flakes.length = n }
       function make(top){ var z = Math.pow(Math.random(), 1.2) * .75 + .25, speck = z < .4 && Math.random() < .5;
         return { x: Math.random() * W, y: top ? -30 - Math.random() * 60 : Math.random() * H, z: z, speck: speck, s: speck ? 3 + z * 4 : 16 + z * 26,
