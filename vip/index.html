@@ -2563,7 +2563,7 @@ body.is-closed .bdg-life{display:none}
   document.querySelectorAll('.sf-b use').forEach(function(u){ if ((u.getAttribute('href') || '') === '#sf') u.setAttribute('href', '#sfx') }) })();</script>
 <script>/* the VIP page's dates follow the visitor too (Sean, Nov 4), like the registration page: the free days, the
    gmail demo's day chips, "See you ...", and the real deadline (Tue Dec 8, 11:59 pm New York) in their own time and city.
-   Friday's VIP call keeps its New York date (its time comes by email). New York and unreadable zones see the page as it is */
+   Friday's call and the WhatsApp group follow too (Sean). New York and unreadable zones see the page as it is */
 (function(){try{var tz=Intl.DateTimeFormat().resolvedOptions().timeZone||'';if(!tz||tz==='America/New_York'||tz.indexOf('/')<0)return;
  var S=new Date(Date.UTC(2026,11,8,17,0)),E=new Date(Date.UTC(2026,11,10,17,0)),DL=new Date(Date.UTC(2026,11,9,4,59));
  var place=tz.split('/').pop().replace(/_/g,' '),M=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
@@ -2571,13 +2571,21 @@ body.is-closed .bdg-life{display:none}
   W=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],WF=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
  var t=function(d){return d.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'}).toLowerCase()};
  var span=M[S.getMonth()]+' '+S.getDate()+' to '+(E.getMonth()===S.getMonth()?'':M[E.getMonth()]+' ')+E.getDate();
+ var F=new Date(Date.UTC(2026,11,11,17,0)),FE=new Date(Date.UTC(2026,11,11,18,30)),wa=M[S.getMonth()]+' '+S.getDate()+' to '+(FE.getMonth()===S.getMonth()?'':M[FE.getMonth()]+' ')+FE.getDate();
  var dl=W[DL.getDay()]+', '+M[DL.getMonth()]+' '+DL.getDate(),dlt=t(DL)+' in '+place;
  var R=[['Tue, Dec 8, 11:59 pm New York',dl+', '+dlt],['Tue, Dec 8 at 11:59 pm New York',dl+' at '+dlt],['Tue, Dec 8 · 11:59 pm New York',dl+' · '+dlt],
-  ['Tuesday, Dec 8 at 11:59 pm New York',WF[DL.getDay()]+', '+M[DL.getMonth()]+' '+DL.getDate()+' at '+dlt],['See you Tue Dec 8.','See you '+W[S.getDay()]+' '+M[S.getMonth()]+' '+S.getDate()+'.'],['Dec 8 to 10',span],['Tue, Dec 8,',dl+','],['11:59 pm New York',dlt]];
+  ['Tuesday, Dec 8 at 11:59 pm New York',WF[DL.getDay()]+', '+M[DL.getMonth()]+' '+DL.getDate()+' at '+dlt],['See you Tue Dec 8.','See you '+W[S.getDay()]+' '+M[S.getMonth()]+' '+S.getDate()+'.'],['Dec 8 to 10',span],['Tue, Dec 8,',dl+','],['11:59 pm New York',dlt],
+  /* Friday's VIP call (12:00 pm New York, as the VIP confirmation page says) and the WhatsApp group, which runs from Day 1
+     to the end of Friday's call */
+  ['Friday, Dec 11',WF[F.getDay()]+', '+M[F.getMonth()]+' '+F.getDate()],['Fri, Dec 11 ·',W[F.getDay()]+', '+M[F.getMonth()]+' '+F.getDate()+' · '+t(F)+' in '+place+' ·'],
+  ['Fri, Dec 11',W[F.getDay()]+', '+M[F.getMonth()]+' '+F.getDate()],['Fri Dec 11',W[F.getDay()]+' '+M[F.getMonth()]+' '+F.getDate()],
+  ['Dec 8 to Dec 11',M[S.getMonth()]+' '+S.getDate()+' to '+M[FE.getMonth()]+' '+FE.getDate()],['Dec 8 to 11',wa],
+  ['Friday’s call',WF[F.getDay()]+'’s call'],["Friday's call",WF[F.getDay()]+"'s call"],['Dec 11',M[F.getMonth()]+' '+F.getDate()],['Friday',WF[F.getDay()]]];
  var w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT),n,list=[];while(n=w.nextNode())list.push(n);
  list.forEach(function(n){var v=n.nodeValue,o=v;R.forEach(function(r){if(v.indexOf(r[0])>-1)v=v.split(r[0]).join(r[1])});if(v!==o)n.nodeValue=v});
  /* day chips in the gmail demo and the free days in "Your week" */
  document.querySelectorAll('.gx-md > span').forEach(function(c,i){var d=new Date(S.getTime()+i*864e5),a=c.querySelector('small'),b=c.querySelector('b'),m=c.querySelector('i');if(a)a.textContent=W[d.getDay()].toUpperCase();if(b)b.textContent=d.getDate();if(m)m.textContent=MF[d.getMonth()]});
+ var s4=document.querySelector('.stop.s4 .dt');if(s4){s4.querySelector('b').textContent=F.getDate();s4.querySelector('small').textContent=W[F.getDay()]}
  ['.stop.s1','.stop.s2','.stop.s3'].forEach(function(sel,i){var dt=document.querySelector(sel+' .dt');if(!dt)return;var d=new Date(S.getTime()+i*864e5);dt.querySelector('b').textContent=d.getDate();dt.querySelector('small').textContent=W[d.getDay()]});
 }catch(e){}})();</script>
 </body>
