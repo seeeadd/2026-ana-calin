@@ -2465,6 +2465,11 @@ picture{display:contents}
 .xl i{box-shadow:none;animation:xtwf 2.4s ease-in-out infinite;animation-delay:var(--d)}
 .xl i:after{content:"";position:absolute;inset:-1.4px;border-radius:inherit;box-shadow:0 0 8px 2px var(--c);animation:xtwg 2.4s ease-in-out infinite;animation-delay:var(--d);pointer-events:none}
 .hpill .hp-lz{font-weight:500;margin-left:-.3em}
+.ftimes .ft-d .ft-ny{display:inline;font-size:14px;font-weight:600;color:var(--ink3);margin-left:8px;white-space:nowrap}
+.ftimes .ft-d .nw{display:inline;white-space:nowrap}
+.ftz li.me{grid-column:1 / -1}
+.ftz li.me .hl{display:inline;padding:0 .2em;border-radius:3px;background:linear-gradient(180deg,transparent 52%,rgba(255,212,0,.45) 52%,rgba(255,212,0,.45) 90%,transparent 90%);color:var(--ink)}
+.ftz li.me .hl b{font-weight:800}
 </style>
 </head>
 <body>
@@ -3763,5 +3768,26 @@ picture{display:contents}
    var c=w.querySelector('.dcal');if(c){c.querySelector('small').textContent=M[d.getMonth()].toUpperCase();c.querySelector('b').textContent=d.getDate()}}
   pill.innerHTML='';var me=document.createElement('span');me.className='dme';me.appendChild(document.createTextNode(t+' in '));me.insertAdjacentHTML('beforeend',PIN);me.appendChild(document.createTextNode(place));pill.appendChild(me);
   var n=document.createElement('span');n.className='dny';n.textContent=(moved?ny+' · ':'')+'12:00 pm New York';dtm.appendChild(n)})}catch(e){}})();</script>
+<script>/* "See you live" times: the visitor's own time and city lead, highlighted (Sean, Nov 4), the same way as the header and
+   the day cards. In one of the four listed cities their row is highlighted; anywhere else a row for their city is added
+   first and the date line shows their dates, New York's beside it */
+(function(){try{var ft=document.querySelector('.ftimes'),ul=ft&&ft.querySelector('.ftz');if(!ul)return;
+ var tz=Intl.DateTimeFormat().resolvedOptions().timeZone||'';if(!tz||tz.indexOf('/')<0)return;
+ var hi=function(li){var b=li.querySelector('b'),t=b?b.textContent:'',rest=li.textContent.replace(t,'').trim(),pin=li.querySelector('svg');
+  li.classList.add('me');li.innerHTML='';if(pin)li.appendChild(pin);var h=document.createElement('i');h.className='hl';h.style.fontStyle='normal';
+  var bb=document.createElement('b');bb.textContent=t;h.appendChild(bb);h.appendChild(document.createTextNode(' '+rest));li.appendChild(h);ul.insertBefore(li,ul.firstChild)};
+ var known={'America/New_York':'New York','America/Los_Angeles':'Los Angeles','Europe/London':'London','Europe/Athens':'Greece'};
+ var lis=[].slice.call(ul.children);
+ /* Sean: once we know where they are, only their city (highlighted) and New York (the emails' time); all four stay for
+    anyone whose zone we can't read */
+ var keepNY=function(){lis.forEach(function(li){if(!li.classList.contains('me')&&li.textContent.indexOf('New York')<0)li.remove()})};
+ if(known[tz]){lis.forEach(function(li){if(li.textContent.indexOf(known[tz])>-1)hi(li)});keepNY();return}
+ var start=new Date(Date.UTC(2026,11,8,17,0)),end=new Date(Date.UTC(2026,11,10,17,0)),place=tz.split('/').pop().replace(/_/g,' ');
+ var t=start.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'}).toLowerCase();
+ var li=lis[0].cloneNode(true);li.innerHTML=lis[0].querySelector('svg').outerHTML+'<b></b>';li.querySelector('b').textContent=t;li.appendChild(document.createTextNode(' if you’re in '+place));hi(li);keepNY();
+ if(start.getDate()!==8||start.getMonth()!==11){var W=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],M=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],b=ft.querySelector(':scope > b');
+  if(b){b.className='ft-d';b.innerHTML='<span class="nw"></span> <span class="nw"></span><span class="ft-ny">Tue Dec 8 to Thu Dec 10 New York</span>';var n=b.querySelectorAll('.nw');
+   n[0].textContent=W[start.getDay()]+' '+M[start.getMonth()]+' '+start.getDate()+' to';n[1].textContent=W[end.getDay()]+' '+M[end.getMonth()]+' '+end.getDate()}}
+}catch(e){}})();</script>
 </body>
 </html>
