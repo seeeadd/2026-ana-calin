@@ -97,6 +97,8 @@ mark{color:inherit;background:linear-gradient(transparent 52%,rgba(255,212,0,.62
   <div id="far" class="sc"></div><div id="near" class="sc"></div><div id="sea" class="sc"></div><img id="boat" class="sc" src="paint/vboat.webp" alt=""><div id="g1" class="sc"></div><div id="g2" class="sc"></div>
   <div id="paper"></div>
   <div id="wash"></div>
+  <div id="rooms" style="position:absolute;inset:0;z-index:5;overflow:hidden"></div>
+  <img id="shL" src="../../img/vip/paint/shut-l.webp" alt="" style="position:absolute;z-index:8;left:0;top:0;transform-origin:0 50%;display:none"><img id="shR" src="../../img/vip/paint/shut-r.webp" alt="" style="position:absolute;z-index:8;left:0;top:0;transform-origin:100% 50%;display:none">
   <svg id="wallsvg">
     <defs>
       <pattern id="stucco" patternUnits="userSpaceOnUse" width="600" height="1067"><image href="tex/stucco-white.webp" width="600" height="1067"/></pattern>
@@ -189,6 +191,34 @@ mark{color:inherit;background:linear-gradient(transparent 52%,rgba(255,212,0,.62
   var JO = [40, 152, 258, 334].map(function(v){ return [v, R() * 6 - 3, R() * 4 - 2] });
   for (var x0 = 0; x0 < L.W + 800; x0 += 400) JO.forEach(function(j){ var l = document.createElementNS(SVGNS, 'path'); l.setAttribute('d', 'M' + (x0 + j[0]) + ' ' + (L.capT + 2) + ' q' + j[1] + ' ' + ((L.capB - L.capT) / 2) + ' ' + j[2] + ' ' + (L.capB - L.capT - 4)); $('capT').appendChild(l) });
 
+  /* ---------- her world: the coast, her studio, her desk. The rooms' windows are holes, so the same sea moves behind them ---------- */
+  var RL = PHONE ? [-160, L.capB - 798] : [-200, 0];
+  function room(id, art, props){
+    var e = document.createElement('div'); e.id = id; e.style.cssText = 'position:absolute;left:' + RL[0] + 'px;top:' + RL[1] + 'px;width:2000px;height:1008px;visibility:hidden';
+    var h = '<div style="position:absolute;left:0;width:2000px;bottom:100%;height:' + (RL[1] + 10) + 'px;background:#FAF6EE"></div><img src="paint/' + art + '.webp" alt="" style="position:absolute;left:0;top:0;width:2000px;height:1008px;max-width:none">';
+    props.forEach(function(q){ h += '<img src="' + q[0] + '" alt="" style="position:absolute;left:' + q[1] + 'px;top:' + q[2] + 'px;width:' + q[3] + 'px;max-width:none;transform:rotate(' + (q[4] || 0) + 'deg);' + (q[5] || '') + '">' });
+    e.innerHTML = h; $('rooms').appendChild(e); return e;
+  }
+  var AP = '../../img/vip/paint/', CT = 'cut/', SHD = 'filter:drop-shadow(0 12px 12px rgba(50,35,20,.3))';
+  var STUDIO = room('studio', 'vstudio.webp'.replace('.webp', ''), [
+    [AP + 'ana-painting-sticker.svg', 255, 106, 352, 0, SHD], [CT + 'lights-string.png', 200, 66, 1500, 0], [CT + 'frame-oval.png', 1560, 170, 210, 0, SHD], [CT + 'chaise.png', 1230, 560, 540, 0, SHD], [CT + 'lamp-roses.png', 1040, 470, 110, 0, ''], [AP + 'dk-sunflower.webp', 300, 660, 150, -18, '']
+  ]);
+  var DESK = room('desk', 'vdesk', [
+    [AP + 'note-y.webp', 730, 186, 140, -4, SHD], [AP + 'note-p.webp', 880, 180, 130, 3, SHD], [AP + 'note-b.webp', 1000, 200, 110, -2, SHD], [AP + 'sticky.webp', 740, 330, 150, 3, SHD], [AP + 'stack.webp', 890, 320, 170, -2, ''], [AP + 'postmark.webp', 730, 490, 190, -5, ''], [AP + 'env.webp', 940, 470, 150, 4, ''],
+    [AP + 'laptop.webp', 700, 516, 430, 0, ''], [CT + 'lamp-roses.png', 1240, 450, 250, 0, SHD], [CT + 'cat-reading.png', 1380, 660, 120, 0, '']
+  ]);
+  var laptopSlide = document.createElement('img'); laptopSlide.src = '../../img/slides/day1b.webp'; laptopSlide.style.cssText = 'position:absolute;left:748px;top:532px;width:334px;max-width:none'; DESK.insertBefore(laptopSlide, DESK.lastChild.previousSibling);
+  var SC = [[0, 'coast'], [52.54, 'studio'], [90.98, 'desk'], [121.84, 'coast'], [161.92, 'desk'], [202.96, 'coast']].map(function(k){ return [T(k[0]), k[1]] });
+  function scene(t){
+    var cur = SC[0][1], tc = null, near = 1e9; SC.forEach(function(k){ if (t >= k[0]) cur = k[1]; if (k[0] > 0 && Math.abs(t - k[0]) < near) { near = Math.abs(t - k[0]); tc = k[0] } });
+    STUDIO.style.visibility = cur === 'studio' ? 'visible' : 'hidden'; DESK.style.visibility = cur === 'desk' ? 'visible' : 'hidden'; $('wallsvg').style.visibility = cur === 'coast' ? 'visible' : 'hidden';
+    var pan = 'translateX(' + (Math.sin(t * .09) * 22).toFixed(1) + 'px)'; STUDIO.style.transform = pan; DESK.style.transform = pan;
+    /* the page's blue shutters swing closed and open on the new place */
+    var sl = $('shL'), sr = $('shR'), u = t - tc, on = tc !== null && u > -.26 && u < .32; sl.style.display = sr.style.display = on ? 'block' : 'none'; if (!on) return;
+    var ty = mix(tc + .4).type, W0 = PHONE ? L.W : ty === 'M' ? 700 : ty === 'F' ? 760 : L.W, top = PHONE && ty === 'M' ? L.M[3] - 20 : 0, hh = L.H - top, ang = u < 0 ? 88 * (1 - io(seg(u, -.26, 0))) : 88 * io(seg(u, 0, .32));
+    [sl, sr].forEach(function(e, i){ e.style.width = (W0 / 2 + 2) + 'px'; e.style.height = hh + 'px'; e.style.top = top + 'px'; e.style.left = (i ? W0 / 2 - 1 : 0) + 'px'; e.style.transform = 'perspective(1500px) rotateY(' + (i ? ang : -ang).toFixed(2) + 'deg)' });
+  }
+
   /* Ana and her frame */
   var a = $('ana'), vb = $('vb'), afr = a.querySelector('.fr'); vb.style.zIndex = L.zV; a.style.zIndex = L.zV + 1;
   a.style.width = L.box[0] + 'px'; a.style.height = L.box[1] + 'px';
@@ -222,7 +252,7 @@ mark{color:inherit;background:linear-gradient(transparent 52%,rgba(255,212,0,.62
   /* his path in recording seconds: he runs at every change of beat, and only leaves for "only two people" */
   var RX = (PHONE
     ? [[0, 130], [29.22, 130], [32.3, 960], [32.6, 960], [34.88, 100], [35.6, 130], [77, 130], [77.24, -130], [83.84, -130], [84.4, 130], [132.74, 130], [133.1, 540], [135.48, 540], [135.9, 130], [139.42, 130], [139.9, 540], [145.32, 540], [145.84, 950], [148.32, 950], [148.9, 130], [202.96, 130], [203.6, 985], [210, 985]]
-    : [[0, 320], [29.22, 320], [32.3, 1100], [32.6, 1100], [34.88, 96], [35.9, 320], [76.7, 320], [77.2, -130], [83.84, -130], [84.7, 320], [95.54, 320], [96.2, 150], [117.94, 150], [118.4, 320], [121.84, 320], [122.3, 200], [132.74, 200], [133.1, 560], [135.48, 560], [135.9, 320], [139.42, 320], [139.9, 560], [145.32, 560], [145.84, 940], [148.32, 940], [148.9, 320], [161.92, 320], [162.4, 150], [183.18, 150], [183.7, 300], [202.96, 300], [204.1, 1130], [205.76, 1130], [206.2, 560], [210, 560]]
+    : [[0, 320], [29.22, 320], [32.3, 1100], [32.6, 1100], [34.88, 96], [35.9, 320], [52.3, 320], [52.8, 420], [76.7, 420], [77.2, -130], [83.84, -130], [84.7, 320], [95.54, 320], [96.2, 150], [117.94, 150], [118.4, 320], [121.84, 320], [122.3, 200], [132.74, 200], [133.1, 560], [135.48, 560], [135.9, 320], [139.42, 320], [139.9, 560], [145.32, 560], [145.84, 940], [148.32, 940], [148.9, 320], [161.92, 320], [162.4, 150], [183.18, 150], [183.7, 300], [202.96, 300], [204.1, 1130], [205.76, 1130], [206.2, 560], [210, 560]]
   ).map(function(k){ return [T(k[0]), k[1]] });
   var DS = [];
   function rx(t){ for (var i = 0; i < RX.length - 1; i++) if (t <= RX[i + 1][0]) { var a0 = RX[i], b0 = RX[i + 1], d0 = b0[0] - a0[0]; return d0 <= 0 ? b0[1] : lerp(a0[1], b0[1], clamp((t - a0[0]) / d0, 0, 1)) } return RX[RX.length - 1][1] }
@@ -428,7 +458,7 @@ mark{color:inherit;background:linear-gradient(transparent 52%,rgba(255,212,0,.62
     var c = CAPS[k], sp = capP.querySelectorAll('span'), P = type === 'C' ? L.cC : type === 'F' ? L.cF : L.cM;
     cap.style.left = P.x + 'px'; cap.style.top = P.y + 'px'; cap.style.width = P.w + 'px'; capP.style.fontSize = P.fs + 'px'; capP.style.textAlign = P.align;
     capP.style.opacity = io(seg(t, c.t0 - .02, c.t0 + .1));
-    c.w.forEach(function(w, i){ var pw = seg(t, w.t - .05, w.t + .16); sp[i].style.opacity = lerp(.55, 1, pw).toFixed(3); if (w.h) sp[i].style.setProperty('--p', io(seg(t, w.t - .02, w.t + .3)).toFixed(3)) });
+    c.w.forEach(function(w, i){ var pw = seg(t, w.t - .05, w.t + .16); sp[i].style.opacity = lerp(.72, 1, pw).toFixed(3); if (w.h) sp[i].style.setProperty('--p', io(seg(t, w.t - .02, w.t + .3)).toFixed(3)) });
   }
 
   /* her frames: exact, one image per frame of the cut */
@@ -452,7 +482,7 @@ mark{color:inherit;background:linear-gradient(transparent 52%,rgba(255,212,0,.62
     gulls(t);
     /* the sky itself drifts too */
     $('sky').style.transform = 'scale(1.16) translateX(' + (Math.sin(t * .07) * 5 - 1).toFixed(2) + '%)';
-    petals(t); var waits = [], mx = ana(t); pieces(t, waits); runner(t); pointer(t); captions(t, mx.type); frames(t, waits);
+    petals(t); var waits = [], mx = ana(t); scene(t); pieces(t, waits); runner(t); pointer(t); captions(t, mx.type); frames(t, waits);
     return Promise.all(waits);
   };
 

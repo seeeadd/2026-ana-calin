@@ -288,7 +288,127 @@ vpot = f'''<svg data-art="vpot" width="150" height="190" viewBox="0 0 150 190">
   <g data-mat="ink" stroke="{INK}" stroke-width="2.4" fill="none" stroke-linejoin="round"><path d="M36 116 L46 180 L104 180 L114 116"/><path d="M28 98 L122 98 L120 116 L30 116 Z"/><circle cx="72" cy="24" r="17"/></g>
 </svg>'''
 
-block = '<!-- VSCENE start: written by vscene_art.py -->\n' + '\n'.join([vfar, vland, vboat, vpot, vsea, vglint, va_d, va_p, vfree, vtag, vhead, venv, vnote, vtorn] + vdays) + '\n<!-- VSCENE end -->\n'
+
+# ---------- her rooms. The windows are real holes, so the moving sea shows through
+RW, RH = 2000, 1008
+def plaster(hx0, hy0, hx1, hy1):
+    return f'M-10 -10 H{RW+10} V{RH+10} H-10 Z M{hx0} {hy0} V{hy1} H{hx1} V{hy0} Z'
+def window(x0, y0, x1, y1):
+    mx = (x0 + x1) / 2
+    sheer = ''
+    for k in range(7):
+        w = (x1 - x0) * .2 * (k + 1) / 7
+        sheer += f'<path d="M{x0-6+w:.0f} {y0} C{x0+w+R.uniform(-5,5):.0f} {y0+120} {x0+w*1.2+R.uniform(-8,8):.0f} {y1-120} {x0-4+w*1.1:.0f} {y1}"/><path d="M{x1+6-w:.0f} {y0} C{x1-w+R.uniform(-5,5):.0f} {y0+120} {x1-w*1.2+R.uniform(-8,8):.0f} {y1-120} {x1+4-w*1.1:.0f} {y1}"/>'
+    return dict(
+      frame=f'<path d="M{x0-22} {y0-24} H{x1+22} V{y1+6} H{x0-22} Z M{x0} {y0} V{y1} H{x1} V{y0} Z" fill="#FBF8F1" fill-rule="evenodd"/><path d="M{mx-5} {y0} h10 V{y1} h-10 Z M{x0} {y0+(y1-y0)*.42:.0f} H{x1} v9 H{x0} Z" fill="#FBF8F1"/><path d="M{x0-40} {y1+6} H{x1+40} L{x1+32} {y1+30} H{x0-32} Z" fill="#F3EEE3"/>',
+      shade=f'<path d="M{x0} {y0} H{x1} V{y0+12} H{x0} Z M{x0} {y0} H{x0+10} V{y1} H{x0} Z" fill="#9FB0C6"/><path d="M{x0-32} {y1+30} H{x1+32} L{x1+20} {y1+46} H{x0-20} Z" fill="#B7BFCA"/>',
+      ink=f'<path d="M{x0-22} {y0-24} H{x1+22} V{y1+6} M{x0-22} {y0-24} V{y1+6}"/><path d="M{x0} {y0} H{x1} V{y1} H{x0} Z" stroke-width="1.4"/><path d="M{mx-5} {y0} V{y1} M{mx+5} {y0} V{y1} M{x0} {y0+(y1-y0)*.42:.0f} H{x1}" stroke-width="1.2"/><path d="M{x0-40} {y1+6} H{x1+40} L{x1+32} {y1+30} H{x0-32} Z"/>',
+      sheer=sheer,
+      rod=f'<path d="M{x0-70} {y0-42} H{x1+70}" stroke="#3A2A22" stroke-width="6" stroke-linecap="round" fill="none"/>',
+      sheerpanel=f'<path d="M{x0-46} {y0-40} H{x0+(x1-x0)*.16:.0f} C{x0+(x1-x0)*.2:.0f} {y0+200} {x0+(x1-x0)*.13:.0f} {y1-160} {x0+(x1-x0)*.17:.0f} {y1+90} H{x0-52} Z M{x1+46} {y0-40} H{x1-(x1-x0)*.16:.0f} C{x1-(x1-x0)*.2:.0f} {y0+200} {x1-(x1-x0)*.13:.0f} {y1-160} {x1-(x1-x0)*.17:.0f} {y1+90} H{x1+52} Z" fill="#FFFFFF" fill-opacity=".86"/>')
+def floor_planks(y0, y1):
+    p = ''
+    for i in range(38):
+        x = -60 + i * 58
+        p += f'<path d="M{x} {y0} L{(x-1000)*1.5+1000:.0f} {y1}"/>'
+    for y in (y0 + 34, y0 + 84, y0 + 150):
+        for i in range(12):
+            x = R.uniform(0, RW); p += f'<path d="M{x:.0f} {y} h{R.uniform(30,90):.0f}"/>'
+    return p
+def bottle(x, base, w, h, col):
+    return f'<path d="M{x-w/2} {base} V{base-h*.62} C{x-w/2} {base-h*.74} {x-w*.18} {base-h*.74} {x-w*.18} {base-h*.84} V{base-h} H{x+w*.18} V{base-h*.84} C{x+w*.18} {base-h*.74} {x+w/2} {base-h*.74} {x+w/2} {base-h*.62} V{base} Z" fill="{col}"/>'
+def jar(x, base, w, h, col): return f'<path d="M{x-w/2} {base} V{base-h} H{x+w/2} V{base} Z" fill="{col}"/>'
+def brushes(x, base, n=5):
+    o = ''
+    for i in range(n):
+        dx = (i - n / 2) * 7; o += f'<path d="M{x+dx*.5:.0f} {base} L{x+dx:.0f} {base-92-R.uniform(0,26):.0f}"/>'
+    return o
+
+W1 = window(700, 240, 1020, 690)
+cab_x0, cab_x1 = 640, 1060
+studio_doors = ''.join(f'<path d="M{x} 612 V770 M{x+10} 628 h{(cab_x1-cab_x0)/3-40:.0f} v124 h-{(cab_x1-cab_x0)/3-40:.0f} Z"/>' for x in (cab_x0, cab_x0 + 140, cab_x0 + 280))
+tubes = ''.join(f'<path d="M{x} 598 l18 -8 l22 6 l-20 8 Z" fill="{c}"/>' for x, c in ((690, '#F72585'), (732, '#1FB5B0'), (800, '#FFD400')))
+small = f'<path d="M1150 330 H1470 V640 H1150 Z" fill="#46C2B8"/><path d="M1168 350 C1250 330 1380 360 1452 342 C1460 450 1440 540 1454 622 C1360 640 1260 612 1166 626 C1176 520 1158 430 1168 350 Z" fill="#F46FA8"/>'
+smallw = ''.join(f'<path d="M{R.uniform(1180,1430):.0f} {R.uniform(360,600):.0f} q{R.uniform(10,50):.0f} {R.uniform(-30,30):.0f} {R.uniform(30,90):.0f} {R.uniform(-20,20):.0f}" stroke="{R.choice(["#FFD400","#FFFFFF","#1FB5B0","#F9B4CF"])}" stroke-width="{R.uniform(6,14):.0f}" stroke-linecap="round" fill="none"/>' for _ in range(34))
+bigstrokes = ''.join(f'<path d="M{R.uniform(250,580):.0f} {R.uniform(130,670):.0f} q{R.uniform(10,50):.0f} {R.uniform(-30,30):.0f} {R.uniform(30,90):.0f} {R.uniform(-20,20):.0f}" stroke="{R.choice(["#FFD400","#FFFFFF","#1FB5B0","#F9B4CF","#F72585"])}" stroke-width="{R.uniform(6,13):.0f}" stroke-linecap="round" fill="none"/>' for _ in range(46))
+vstudio = f"""<svg data-art="vstudio" width="{RW}" height="{RH}" viewBox="0 0 {RW} {RH}">
+  <g data-mat="gouache" data-angle="4" data-streak=".02"><path d="{plaster(700, 240, 1020, 690)}" fill="#FAF6EE" fill-rule="evenodd"/></g>
+  <g data-mat="wash" fill="#D8DEE6" data-density=".42"><path d="M0 0 H{RW} V70 H0 Z"/><path d="M0 70 H180 V770 H0 Z"/><path d="M1700 70 H{RW} V770 H1700 Z"/></g>
+  <g data-mat="ink" stroke="#7A6A60" stroke-width="1.6" fill="none" data-density=".7"><path d="M0 70 H{RW}"/></g>
+  <g data-mat="gouache" data-angle="2" data-streak=".05"><path d="M-10 770 H{RW+10} V{RH+10} H-10 Z" fill="#CF9A68"/><path d="M-10 752 H{RW+10} V772 H-10 Z" fill="#FBF8F1"/></g>
+  <g data-mat="wash" fill="#8F5F36" data-density=".42"><path d="M-10 772 H{RW+10} V800 H-10 Z"/></g>
+  <g data-mat="ink" stroke="#6E4A2C" stroke-width="1.5" fill="none" data-density=".7">{floor_planks(772, RH + 40)}</g>
+  <g data-mat="ink" stroke="{INK}" stroke-width="1.5" fill="none"><path d="M-10 752 H{RW+10} M-10 772 H{RW+10}"/></g>
+  <g data-mat="gouache" data-angle="0" data-streak=".015">{W1['frame']}</g>
+  <g data-mat="wash" data-density=".6">{W1['shade']}</g>
+  <g data-mat="flat">{W1['sheerpanel']}</g>
+  <g data-mat="ink" stroke="#B9BDC6" stroke-width="1.5" fill="none" data-density=".8">{W1['sheer']}</g>
+  <g data-mat="ink" stroke="{INK}" stroke-width="2" fill="none">{W1['ink']}{W1['rod']}</g>
+  <g data-mat="shadow" fill="#7E8798" data-density=".42"><path d="M{cab_x0-10} 772 H{cab_x1+22} L{cab_x1+60} 796 H{cab_x0} Z"/><path d="M1150 646 H1500 V664 H1150 Z"/><path d="M212 700 H660 L650 718 H212 Z"/></g>
+  <g data-mat="gouache" data-angle="90" data-streak=".015"><path d="M{cab_x0} 612 H{cab_x1} V772 H{cab_x0} Z" fill="#FDFBF5"/><path d="M{cab_x0-12} 596 H{cab_x1+12} V614 H{cab_x0-12} Z" fill="#F5F0E6"/></g>
+  <g data-mat="wash" fill="#B9C2CE" data-density=".5"><path d="M{cab_x1-26} 614 H{cab_x1} V772 H{cab_x1-26} Z"/><path d="M{cab_x0} 612 H{cab_x1} V622 H{cab_x0} Z"/></g>
+  <g data-mat="ink" stroke="{INK}" stroke-width="1.8" fill="none"><path d="M{cab_x0} 612 V772 H{cab_x1} V612 M{cab_x0-12} 596 H{cab_x1+12} V614 H{cab_x0-12} Z"/>{studio_doors}</g>
+  <g data-mat="gouache" data-angle="90" data-streak=".03">{bottle(1000, 596, 34, 110, '#2F5E43')}{bottle(950, 596, 28, 84, '#C25B47')}{jar(880, 596, 56, 52, '#BFD7EC')}{jar(760, 596, 48, 46, '#FFE27A')}{tubes}</g>
+  <g data-mat="white" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"><path d="M992 586 V510 M944 586 V530 M862 586 V556"/></g>
+  <g data-mat="ink" stroke="#8A5A32" stroke-width="4" fill="none" stroke-linecap="round">{brushes(880, 548)}{brushes(760, 552, 4)}</g>
+  <g data-mat="ink" stroke="{INK}" stroke-width="1.6" fill="none"><path d="M852 596 V544 H908 V596 M736 596 V550 H784 V596"/></g>
+  <g data-mat="gouache" data-angle="20" data-streak=".05">{small}</g>
+  <g data-mat="gouache" data-angle="30" data-streak=".06">{smallw}</g>
+  <g data-mat="gouache" data-angle="0"><path d="M1130 642 H1520 V660 H1130 Z" fill="#D7A66F"/><path d="M1150 660 L1136 770 M1500 660 L1514 770" stroke="#8A5A32" stroke-width="12" fill="none"/></g>
+  <g data-mat="ink" stroke="{INK}" stroke-width="2" fill="none"><path d="M1150 330 H1470 V640 H1150 Z M1130 642 H1520 V660 H1130 Z"/></g>
+  <g data-mat="gouache" data-angle="25" data-streak=".06"><path d="M236 110 H626 V690 H236 Z" fill="#E77FB0"/><path d="M430 470 C500 440 590 470 626 450 V690 H420 C410 610 440 540 430 470 Z" fill="#46C2B8"/><path d="M236 110 C300 150 340 120 420 130 C380 200 300 210 236 230 Z" fill="#F4A6C8"/></g>
+  <g data-mat="gouache" data-angle="30" data-streak=".06">{bigstrokes}</g>
+  <g data-mat="ink" stroke="{INK}" stroke-width="2.2" fill="none"><path d="M236 110 H626 V690 H236 Z"/></g>
+  <g data-mat="gouache" data-angle="40" data-streak=".04"><path d="M360 110 L410 18 L446 18 L500 110 H462 L452 90 H404 L394 110 Z M416 66 H440 L428 40 Z" fill="#C9A03C" fill-rule="evenodd"/></g>
+  <g data-mat="ink" stroke="{INK}" stroke-width="1.6" fill="none"><path d="M360 110 L410 18 L446 18 L500 110 H462 L452 90 H404 L394 110 Z"/></g>
+  <g data-mat="gouache" data-angle="0"><path d="M196 690 H676 V708 H196 Z" fill="#E3B987"/><path d="M226 708 L212 770 M646 708 L660 770" stroke="#8A5A32" stroke-width="11" fill="none"/></g>
+  <g data-mat="ink" stroke="{INK}" stroke-width="1.8" fill="none"><path d="M196 690 H676 V708 H196 Z"/></g>
+</svg>"""
+W2 = window(240, 200, 620, 660)
+book_cols = ['#F72585', '#2E5DA8', '#FFD400', '#46C2B8', '#C25B47', '#FFFBF0', '#2F5E43', '#F9B4CF']
+books = ''; bk = ''; x = 1210
+while x < 1660:
+    w = R.uniform(20, 38); h = R.uniform(92, 136)
+    books += f'<path d="M{x:.0f} 344 V{344-h:.0f} H{x+w:.0f} V344 Z" fill="{R.choice(book_cols)}"/>'; bk += f'<path d="M{x:.0f} 344 V{344-h:.0f} H{x+w:.0f} V344"/>'; x += w + R.uniform(0, 3)
+books2 = ''; x = 1720
+while x < 1960:
+    w = R.uniform(20, 36); h = R.uniform(92, 130)
+    books2 += f'<path d="M{x:.0f} 560 V{560-h:.0f} H{x+w:.0f} V560 Z" fill="{R.choice(book_cols)}"/>'; bk += f'<path d="M{x:.0f} 560 V{560-h:.0f} H{x+w:.0f} V560"/>'; x += w + R.uniform(0, 3)
+grain = ''.join(f'<path d="M{R.uniform(-20,RW):.0f} {R.uniform(810,RH):.0f} q{R.uniform(60,160):.0f} {R.uniform(-5,5):.1f} {R.uniform(140,360):.0f} {R.uniform(-4,4):.1f}"/>' for _ in range(90))
+drawers = ''.join(f'<path d="M{x} 836 H{x+300} V980 H{x} Z M{x+120} 906 h60"/>' for x in (420, 760, 1120, 1460))
+pencils = ''.join(f'<path d="M{1040+i*7} 786 L{1030+i*14} {700-(i%3)*14}" stroke="{c}" stroke-width="6" stroke-linecap="round" fill="none"/>' for i, c in enumerate(('#F72585', '#FFD400', '#2E5DA8', '#46C2B8')))
+vdesk = f"""<svg data-art="vdesk" width="{RW}" height="{RH}" viewBox="0 0 {RW} {RH}">
+  <g data-mat="gouache" data-angle="4" data-streak=".02"><path d="{plaster(240, 200, 620, 660)}" fill="#FBF6EA" fill-rule="evenodd"/></g>
+  <g data-mat="wash" fill="#FFE9A8" data-density=".4"><path d="M640 0 H{RW} V770 H640 Z"/></g>
+  <g data-mat="wash" fill="#D8DEE6" data-density=".38"><path d="M0 0 H{RW} V60 H0 Z"/></g>
+  <g data-mat="gouache" data-angle="0" data-streak=".015">{W2['frame']}</g>
+  <g data-mat="wash" data-density=".6">{W2['shade']}</g>
+  <g data-mat="flat">{W2['sheerpanel']}</g>
+  <g data-mat="ink" stroke="#B9BDC6" stroke-width="1.5" fill="none" data-density=".8">{W2['sheer']}</g>
+  <g data-mat="ink" stroke="{INK}" stroke-width="2" fill="none">{W2['ink']}{W2['rod']}</g>
+  <g data-mat="shadow" fill="#7E8798" data-density=".4"><path d="M712 616 H1150 V634 H712 Z"/><path d="M1190 356 H1680 V372 H1190 Z"/><path d="M1700 572 H1990 V588 H1700 Z"/></g>
+  <g data-mat="gouache" data-angle="20" data-streak=".04"><path d="M700 150 H1140 V610 H700 Z" fill="#C79A6B"/></g>
+  <g data-mat="wash" fill="#8A5A32" data-density=".35"><path d="M716 166 H1124 V594 H716 Z"/></g>
+  <g data-mat="ink" stroke="#6E4A2C" stroke-width="1" fill="none" data-density=".6">{''.join(f'<path d="M{R.uniform(716,1100):.0f} {R.uniform(170,590):.0f} h{R.uniform(4,16):.0f}"/>' for _ in range(90))}</g>
+  <g data-mat="gouache" data-angle="0"><path d="M700 150 H1140 V168 H700 Z M700 592 H1140 V610 H700 Z M700 150 H718 V610 H700 Z M1122 150 H1140 V610 H1122 Z" fill="#FBF8F1"/></g>
+  <g data-mat="ink" stroke="{INK}" stroke-width="1.8" fill="none"><path d="M700 150 H1140 V610 H700 Z M718 168 H1122 V592 H718 Z"/></g>
+  <g data-mat="gouache" data-angle="0"><path d="M1190 344 H1680 V360 H1190 Z M1700 560 H1990 V576 H1700 Z" fill="#D7A66F"/></g>
+  <g data-mat="gouache" data-angle="90" data-streak=".04">{books}{books2}</g>
+  <g data-mat="ink" stroke="{INK}" stroke-width="1.5" fill="none">{bk}<path d="M1190 344 H1680 V360 H1190 Z M1700 560 H1990 V576 H1700 Z"/></g>
+  <g data-mat="gouache" data-angle="70" data-streak=".05"><path d="M1740 344 C1730 300 1790 280 1800 220 C1830 270 1880 280 1860 344 Z" fill="#6F8C52"/><path d="M1760 344 H1850 L1840 420 H1770 Z" fill="#D2704E"/></g>
+  <g data-mat="ink" stroke="{INK}" stroke-width="1.6" fill="none"><path d="M1760 344 H1850 L1840 420 H1770 Z"/></g>
+  <g data-mat="gouache" data-angle="2" data-streak=".06"><path d="M-10 770 H{RW+10} V800 H-10 Z" fill="#E6BC8C"/><path d="M-10 800 H{RW+10} V{RH+10} H-10 Z" fill="#C48B57"/></g>
+  <g data-mat="wash" fill="#7C4E2A" data-density=".42"><path d="M-10 800 H{RW+10} V822 H-10 Z"/></g>
+  <g data-mat="ink" stroke="#6E4A2C" stroke-width="1.3" fill="none" data-density=".6">{grain}</g>
+  <g data-mat="ink" stroke="{INK}" stroke-width="2" fill="none"><path d="M-10 770 H{RW+10} M-10 800 H{RW+10}"/>{drawers}</g>
+  <g data-mat="shadow" fill="#6E5A44" data-density=".5"><path d="M1012 784 H1100 L1120 794 H1012 Z"/><path d="M1590 784 H1750 L1770 794 H1590 Z"/></g>
+  <g data-mat="flat">{pencils}</g>
+  <g data-mat="gouache" data-angle="90" data-streak=".03"><path d="M1016 786 V712 H1096 V786 Z" fill="#2E5DA8"/><path d="M1596 786 V716 H1716 V786 Z" fill="#FFFBF0"/><path d="M1716 730 C1752 730 1752 772 1716 772 V760 C1736 760 1736 742 1716 742 Z" fill="#FFFBF0"/></g>
+  <g data-mat="ink" stroke="{INK}" stroke-width="1.8" fill="none"><path d="M1016 786 V712 H1096 V786 Z M1596 786 V716 H1716 V786 Z M1716 730 C1752 730 1752 772 1716 772 M1716 742 C1736 742 1736 760 1716 760"/></g>
+  <g data-mat="gouache" data-angle="90"><path d="M1656 748 m-20 0 a20 20 0 1 0 40 0 a20 20 0 1 0 -40 0" fill="#FFD400"/><circle cx="1656" cy="748" r="7" fill="#7A4A1E"/></g>
+</svg>"""
+
+block = '<!-- VSCENE start: written by vscene_art.py -->\n' + '\n'.join([vstudio, vdesk, vfar, vland, vboat, vpot, vsea, vglint, va_d, va_p, vfree, vtag, vhead, venv, vnote, vtorn] + vdays) + '\n<!-- VSCENE end -->\n'
 p = os.path.join(HERE, 'studio.html'); s = open(p).read()
 a = s.find('<!-- VSCENE start'); b = s.find('<!-- VSCENE end -->')
 if a >= 0: s = s[:a] + block + s[b + len('<!-- VSCENE end -->\n'):]
