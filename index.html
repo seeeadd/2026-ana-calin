@@ -1073,11 +1073,10 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
 /* ================= Oct 31, third copy version: the new sections ================= */
 /* the form: the compact registration copy */
 .tk-k{margin:0 0 6px;font-weight:800;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--pink)}
-/* two-row eyebrow when the visitor's dates differ */
-.tk-k.tz2 .r1,.ey.tz2 .r1{display:block;font-size:1.18em;letter-spacing:.12em}
-.ey.tz2 .r1{color:var(--ink)}
-.tk-k.tz2 .r2,.ey.tz2 .r2{display:block;margin-top:4px;text-transform:uppercase;font-size:.92em;letter-spacing:.1em;color:var(--ink3)}
-.tk-k.tz2 .r2 b,.ey.tz2 .r2 b{color:var(--ink);font-weight:800;white-space:nowrap;padding:0 .2em;background:linear-gradient(180deg,transparent 45%,rgba(255,212,0,.6) 45%,rgba(255,212,0,.6) 92%,transparent 92%)}
+/* two-row eyebrow when the visitor's dates differ: their dates + city in the pink row, New York small below */
+.tk-k.tz2 .r1,.ey.tz2 .r1{display:block}
+.tk-k.tz2 .r1 b,.ey.tz2 .r1 b{display:inline-block;white-space:nowrap;text-transform:uppercase;color:var(--ink);font-weight:800;padding:0 .2em;background:linear-gradient(180deg,transparent 45%,rgba(255,212,0,.6) 45%,rgba(255,212,0,.6) 92%,transparent 92%)}
+.tk-k.tz2 .r2,.ey.tz2 .r2{display:block;margin-top:4px;font-size:.88em;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3)}
 .tk-s{margin:5px 0 0;font-size:13.5px;line-height:1.4;color:var(--ink2)}
 .htk .tk-s{font-size:14.5px}
 .tkt form .fsub{display:none}
@@ -3622,7 +3621,7 @@ html.bdg-js .bdg.in{animation:bdgIn .6s cubic-bezier(.2,1.5,.4,1) both}
   var t=start.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'}).toLowerCase();
   var d=start.getDate()!==8?' '+start.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'}):'';
   lab=t+d+' in '+place;yt.textContent=' · '+lab;yt.hidden=false;sm.classList.add('loc');
-  if(d){var end=new Date(Date.UTC(2026,11,10,17,0)),dt=sm.querySelector('.fb-dt2');if(dt){dt.innerHTML=' · <span class="fb-hl2"></span>';dt.firstElementChild.textContent=start.toLocaleDateString('en-US',{month:'short',day:'numeric'})+' to '+end.getDate()+' your time'}}
+  if(d){var end=new Date(Date.UTC(2026,11,10,17,0)),dt=sm.querySelector('.fb-dt2');if(dt){dt.innerHTML=' · <span class="fb-hl2"></span>';dt.firstElementChild.textContent=start.toLocaleDateString('en-US',{month:'short',day:'numeric'})+' to '+end.getDate()+' in '+place}}
  }catch(e){return}
  var hl=document.createElement('span');hl.className='fb-hl';hl.textContent=lab;function fit(){sm.classList.remove('nodt');if(sm.scrollWidth>sm.clientWidth+1)sm.classList.add('nodt');b.classList.remove('fb-2l');yt.textContent=' · ';yt.appendChild(hl);if(b.scrollWidth>b.clientWidth+1){b.classList.add('fb-2l');yt.textContent='';yt.appendChild(hl)}}
  var tm;addEventListener('resize',function(){clearTimeout(tm);tm=setTimeout(fit,60)});
@@ -3650,13 +3649,15 @@ html.bdg-js .bdg.in{animation:bdgIn .6s cubic-bezier(.2,1.5,.4,1) both}
 </script>
 
 <script>
-/* form eyebrows: when the visitor's dates aren't Dec 8 to 10, two rows: "Free · 3 days live", then New York's dates and theirs, highlighted */
+/* form eyebrows: when the visitor's dates aren't Dec 8 to 10, the pink row carries THEIR dates and city (highlighted),
+   and New York's dates sit small underneath (they match the emails) */
 (function(){try{
  var a=new Date(Date.UTC(2026,11,8,17,0)),z=new Date(Date.UTC(2026,11,10,17,0));if(a.getDate()===8)return;
- var mine=a.toLocaleDateString('en-US',{month:'short',day:'numeric'})+' to '+z.getDate();
- function two(el,lead){el.classList.add('tz2');el.innerHTML='<span class="r1"></span><span class="r2">Dec 8 to 10 New York · <b></b></span>';el.querySelector('.r1').textContent=lead;el.querySelector('b').textContent=mine+' your time'}
- document.querySelectorAll('.tk-k').forEach(function(el){two(el,'Free · 3 days live')});
- document.querySelectorAll('.ey').forEach(function(ey){if(ey.querySelector('.ey-b'))two(ey,'FREE · 3 DAYS LIVE')});
+ var tz=Intl.DateTimeFormat().resolvedOptions().timeZone||'';if(tz.indexOf('/')<0)return;
+ var mine=a.toLocaleDateString('en-US',{month:'short',day:'numeric'})+' to '+z.getDate()+' in '+tz.split('/').pop().replace(/_/g,' ');
+ function two(el,lead){el.classList.add('tz2');el.innerHTML='<span class="r1"><span class="r1a"></span> <b></b></span><span class="r2">Dec 8 to 10 New York</span>';el.querySelector('.r1a').textContent=lead;el.querySelector('b').textContent=mine}
+ document.querySelectorAll('.tk-k').forEach(function(el){two(el,'Free · 3 days live ·')});
+ document.querySelectorAll('.ey').forEach(function(ey){if(ey.querySelector('.ey-b'))two(ey,'FREE · 3 DAYS LIVE ·')});
 }catch(e){}})();
 </script>
 </body>
