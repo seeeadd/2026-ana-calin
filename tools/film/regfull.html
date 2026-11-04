@@ -489,8 +489,8 @@ mark{color:inherit;background:linear-gradient(transparent 52%,rgba(255,212,0,.62
     var R0 = [f[0] + L.ins[0] * f[2], f[1] + L.ins[1] * f[2], L.ins[2] * f[2], L.ins[3] * f[2]], Vr = R0.map(function(v, i){ return lerp(v, L.M[i], m) });
     vb.style.left = Vr[0].toFixed(2) + 'px'; vb.style.top = Vr[1].toFixed(2) + 'px'; vb.style.width = Vr[2].toFixed(2) + 'px'; vb.style.height = Vr[3].toFixed(2) + 'px';
     vb.style.transformOrigin = (f[0] + hx * f[2] - Vr[0]).toFixed(1) + 'px ' + (f[1] - Vr[1]).toFixed(1) + 'px'; vb.style.transform = 'rotate(' + (sw * (1 - m)).toFixed(3) + 'deg)';
-    var t2 = $('torn2'); t2.style.display = PHONE && m > .02 ? 'block' : 'none'; if (PHONE) { t2.style.left = (L.W / 2 - 45) + 'px'; t2.style.top = (Vr[1] + Vr[3] - 46 - 560) + 'px'; t2.style.opacity = clamp(m * 2.5, 0, 1).toFixed(3) }
-    var tn = $('torn'); tn.style.display = PHONE || m < .02 ? 'none' : 'block'; tn.style.opacity = clamp(m * 2.5, 0, 1).toFixed(3); tn.style.left = (Vr[0] - 36).toFixed(1) + 'px';
+    var t2 = $('torn2'); t2.style.display = PHONE && m > .02 ? 'block' : 'none'; if (PHONE) { t2.style.left = (L.W / 2 - 45) + 'px'; t2.style.top = (Vr[1] + Vr[3] - 34 - 560) + 'px'; t2.style.opacity = clamp(m * 2.5, 0, 1).toFixed(3) }
+    var tn = $('torn'); tn.style.display = PHONE || m < .02 ? 'none' : 'block'; tn.style.opacity = clamp(m * 2.5, 0, 1).toFixed(3); tn.style.left = (Vr[0] - 12).toFixed(1) + 'px';
     var dy = (L.wallM - L.capT) * m, tf = 'translateY(' + dy.toFixed(1) + 'px)'; $('wallsvg').style.transform = tf; $('bud-wrap').style.transform = tf;
     $('wash').style.opacity = (c * .1).toFixed(3);
     /* crop: closer on her in landscape, following her face; shot 20 pushes in the most */
