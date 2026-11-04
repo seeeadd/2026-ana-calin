@@ -16,6 +16,7 @@ def rd(p):
     return x.reshape(-1,2).copy()
 F={'key':'Brass Key Ring Sound Effect.mp3','sea':'Calm Sea Waves.mp3','tick':'Clock Ticking Sound Effect (1).mp3','stamp':'Ink Stamp Sound Effect.mp3','kal':'Kalimba Octave Pluck Effect.mp3','mar':'Marimba Sound Effect.mp3','pen':'Pen on Paper Sound Effect.mp3','run':'Run on Wood Sound Effect.mp3','bell':'Small Bell Ringing Sound Effect.mp3','ship':'Two Small Ship Bells.mp3','type':'Typewriter Sound Effect.mp3','chime':'Wind Chimes Sound Effect.mp3','door':'Wooden Swinging Door Sound Effect (1).mp3'}
 F['click']=[f for f in os.listdir(DIR) if f.startswith('Magic Mouse')][0]
+F['song']='Each Day Gets Better.mp3'
 S={k:rd(os.path.join(DIR,v)) for k,v in F.items()}
 v=rd(VOICE); N=len(v); fx=np.zeros((N,2),np.float32); log=[]
 def put(name,at,a,b,db,semi=0,fin=.004,fout=.04):
@@ -65,15 +66,24 @@ A=A[:N]; A/=np.sqrt(np.mean(A**2))+1e-9
 def lowpass(x,fc):
     X=np.fft.rfft(x,axis=0); fr=np.fft.rfftfreq(len(x),1/SR); X*=(1/np.sqrt(1+(fr/fc)**4))[:,None]; return np.fft.irfft(X,len(x),axis=0).astype(np.float32)
 AL=lowpass(A,650); AL/=np.sqrt(np.mean(AL**2))+1e-9
+A=lowpass(A,3800); A/=np.sqrt(np.mean(A**2))+1e-9   # less hiss, so the waves sit further back
 CH=[(0,1),(T(52.54),0),(T(90.98),0),(T(121.84),1),(T(161.92),0),(T(202.96),1)]
 t=np.arange(N)/SR; coast=np.ones(N); 
 for k,(t0,st) in enumerate(CH[1:]): coast=np.where(t>=t0,st,coast)
 kn=int(.5*SR); coast=np.convolve(np.pad(coast,(kn,kn),mode='edge'),np.ones(kn)/kn,'same')[kn:kn+N]
-lv=np.full(N,10**(-35/20)); room=10**(-40/20); lv=lv*coast+room*(1-coast)
+lv=np.full(N,10**(-47/20)); room=10**(-52/20); lv=lv*coast+room*(1-coast)
 quiet=(t>=T(77.3))&(t<T(83.9)); qs=np.convolve(np.pad(quiet.astype(float),(kn,kn),mode='edge'),np.ones(kn)/kn,'same')[kn:kn+N]; lv*=1-.45*qs
 bed=(A*coast[:,None]+AL*(1-coast)[:,None])*lv[:,None]
 print('sea rms dB coast/room:',round(20*np.log10(float(np.sqrt(np.mean(bed[t<T(50)]**2)))),1),round(20*np.log10(float(np.sqrt(np.mean(bed[(t>T(60))&(t<T(75)) ]**2)))),1))
-mix=v+fx+bed; print('peak before limiter',round(float(np.abs(mix).max()),3),'clips',len(log))
+# music at the two ends only, barely above the sea: the instrumental intro, then her close lands on "each day gets better"
+MUSIC_DB=-43.0
+def music(at,a,b,fi,fo):
+    x=S['song'][int(a*SR):int(b*SR)].copy(); L=len(x); w=np.ones(L); i,o=int(fi*SR),int(fo*SR); w[:i]=np.linspace(0,1,i)**2; w[-o:]=np.linspace(1,0,o)**2
+    gain=10**(MUSIC_DB/20)/(float(np.sqrt(np.mean(S['song'][int(a*SR):int(b*SR)]**2)))+1e-9); start=int(at*SR); j=min(start+L,N); return start,j,(x*w[:,None]*gain)[:j-start]
+mus=np.zeros((N,2),np.float32)
+for at,a,b,fi,fo in ((0,.95,7.15,.05,1.3),(T(205.76),25.0,28.64,.5,.5)):
+    i,j,x=music(at,a,b,fi,fo); mus[i:j]+=x
+mix=v+fx+bed+mus; print('peak before limiter',round(float(np.abs(mix).max()),3),'clips',len(log))
 tmp=OUT+'.tmp.wav'; subprocess.run(['ffmpeg','-nostdin','-v','error','-y','-f','f32le','-ar',str(SR),'-ac','2','-i','-','-af','alimiter=limit=0.84:level=disabled:attack=3:release=60','-c:a','pcm_s16le',OUT],input=mix.astype(np.float32).tobytes())
 json.dump(log,open(os.path.expanduser('~/AnaVideo/work/sfx/cues.json'),'w'))
 for n,a,b,c,db,s in log[:0]: pass
