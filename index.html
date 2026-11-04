@@ -3202,10 +3202,11 @@ picture{display:contents}
   if (!on) return; document.documentElement.classList.add('xmas');
   var INK = '#1A1412', NS = 'http://www.w3.org/2000/svg';
   /* the sunflower on every button wears the hat */
-  /* Nov 4 (Ana: "looks very christmasy"; Sean: "less christmas stuff"): no Santa hats on the buttons or on Ana, no lights on
+  /* Nov 4 (Ana: "looks very christmasy"; Sean: "less christmas stuff"): no Santa hat on Ana, no lights on
      the form, snow only in the last section. Kept: the wreath over her window, the village lights, holly on the Day 1 date */
   var LESS = true;
-  if (!LESS) document.querySelectorAll('.sf-b use').forEach(function(u){ if ((u.getAttribute('href') || '') === '#sf') u.setAttribute('href', '#sfx') });
+  /* Sean, Nov 4: the sunflower keeps its Santa hat on the buttons */
+  document.querySelectorAll('.sf-b use').forEach(function(u){ if ((u.getAttribute('href') || '') === '#sf') u.setAttribute('href', '#sfx') });
   /* Ana in the bar, in a Santa hat */
   var id = !LESS && document.querySelector('.fb-id'); if (id) { var h = new Image(); h.className = 'fb-hat'; h.alt = ''; h.src = 'img/o/vip/paint/xmas-hat.webp'; id.appendChild(h) }
   /* fairy lights draped across the top of both seat tickets: a hand-drawn cord in four swags, a bulb on each swag */
