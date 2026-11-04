@@ -71,7 +71,7 @@ def ticket(tid, slot, hero):
           """ + pr.strip() + (('\n          ' + just) if hero else '') + """
         </div>
         <div class="tk-body">
-          <p class="tk-k">Free · 3 days live · Nov 17 to 19</p>
+          <p class="tk-k">Free · 3 days live · Dec 8 to 10</p>
           <h3 class="tk-h">Save your free seat<span class="tk-and">Let’s work on your exit plan.</span></h3>
           <div class="rslot" id="%s"></div>
         </div>
@@ -172,9 +172,9 @@ INTRO = """<!-- 2. the opening, after the hero: the three questions as one state
       </div>
       <div class="itx" data-r>
         <p class="ilead">I’m Ana Calin. My newsletter business has made <b>$1.4M</b> selling workshops and programs, without sales calls.</p>
-        <p>On Nov 17 to 19, I’ll show you the starting point I’d choose today, including what AI has changed about the order I teach. We’ll work on your first paid offer, its price, and the email that puts it up for sale.</p>
+        <p>On Dec 8 to 10, I’ll show you the starting point I’d choose today, including what AI has changed about the order I teach. We’ll work on your first paid offer, its price, and the email that puts it up for sale.</p>
         <p>You can start while your current work still pays the bills. You don’t need an audience or an idea ready.</p>
-        <div class="igo"><button class="btn open" type="button">I want my exit plan, free""" + ARR + """</button><span class="iwhen">Nov 17 to 19 · 12:00 pm New York<br>Free and live on Zoom</span></div>
+        <div class="igo"><button class="btn open" type="button">I want my exit plan, free""" + ARR + """</button><span class="iwhen">Dec 8 to 10 · 12:00 pm New York<br>Free and live on Zoom</span></div>
         <div class="inotes">
           <p><b>Already work for yourself?</b> Your exit might mean dropping the clients you keep accepting because you need the money. This is for you too.</p>
           <p><b>Been to one of my workshops before?</b> Come see why I’d now start differently, and what that changes about your next offer.</p>
@@ -188,7 +188,7 @@ INTRO = """<!-- 2. the opening, after the hero: the three questions as one state
 R(between('<!-- 2. who\'s Ana:', '<!-- 3. the three days,'), INTRO)
 
 # ---------- 3. the three days ----------
-R(between('    <div class="head" data-r>\n      <span class="eyebrow">Tue Nov 17 to Thu Nov 19', '    <div class="rows">'),
+R(between('    <div class="head" data-r>\n      <span class="eyebrow">Tue Dec 8 to Thu Dec 10', '    <div class="rows">'),
   """    <div class="head" data-r>
       <h2><span class="l">The first offer. The price.</span> <span class="l"><em>The first people who could buy.</em></span></h2>
       <p class="dlede">Three days to work out how what you know could become the beginning of an income of your own.</p>
@@ -197,16 +197,16 @@ R(between('    <div class="head" data-r>\n      <span class="eyebrow">Tue Nov 17
 
 """)
 DAYS = [
-    ('17', 'Tuesday, Nov 17', 'The first offer I’d make if I wanted out in 2027.',
+    ('8', 'Tuesday, Dec 8', 'The first offer I’d make if I wanted out in 2027.',
      ['If you’re fitting this around a job or client work, the idea you choose matters. You want something you can see yourself selling, to people you know how to reach.',
       'I’ll show you where I’d begin today.'],
      [('Where I’d find my first subscribers if nobody knew my name.', 'A starting point for finding people who could need what you know, before you commit to months of writing and hoping.'),
       ('The paid opportunity you might overlook because it comes easily to you.', 'Years of experience can make something feel obvious. I’ll show you what I look for before dismissing it.'),
       ('What my two-sale workshop taught me about choosing an offer.', 'I knew the subject and had done the work. There was something else I should have checked first.'),
-      ('The change that made me rethink the starting point.', 'AI is part of the reason. On Nov 17, I’ll show you what I’d do differently and why it matters when your time is limited.')],
+      ('The change that made me rethink the starting point.', 'AI is part of the reason. On Dec 8, I’ll show you what I’d do differently and why it matters when your time is limited.')],
      None, ('You’ll leave with', 'a direction for your offer and the people you want to reach.'),
      'On Day 2, we put a price on it that makes this worth doing.'),
-    ('18', 'Wednesday, Nov 18', 'Stop charging as though your experience barely counts.',
+    ('9', 'Wednesday, Dec 9', 'Stop charging as though your experience barely counts.',
      ['You might have spent ten years learning something and still feel uncomfortable asking someone to pay for your help.',
       'Let’s work out what your offer is worth before that discomfort chooses the price.'],
      [('What makes someone willing to pay you when advice on your subject is everywhere.', 'I’ll show you the part of an offer that makes free advice the wrong comparison.'),
@@ -214,7 +214,7 @@ DAYS = [
       ('The four words I used when a client asked for my best price.', 'They accepted. I’ll show you the exchange and what matters about it when you’re naming your own number.')],
      None, ('You’ll leave with', 'a defined offer and a price you can stand behind.'),
      'Then comes the moment that turns all this into a real possibility: asking someone to buy.'),
-    ('19', 'Thursday, Nov 19', 'Write the email that could bring your first paying customers.',
+    ('10', 'Thursday, Dec 10', 'Write the email that could bring your first paying customers.',
      ['One of my posts got 771 likes and made nothing. Another got 82 likes and brought in money.',
       'I’ll show you both. The difference matters much more than which one looked successful.'],
      [('What the popular post was missing.', 'You’ll see what changed when my writing gave someone a reason to buy.'),
@@ -228,7 +228,7 @@ dtexts = re.findall(r'<div class="dtext">.*?</div>\s*(?=<div class="art")', s, r
 assert len(dtexts) == 3, len(dtexts)
 for old, (dd, dname, h3, body, lis, after, out, nxt) in zip(dtexts, DAYS):
     new = ('<div class="dtext">\n'
-           '          <div class="dwhen"><span class="dcal" aria-hidden="true"><small>NOV</small><b>%s</b></span><span class="dtx"><b>%s</b><span class="dtm"><span class="pill">12:00 pm New York</span></span></span></div>\n'
+           '          <div class="dwhen"><span class="dcal" aria-hidden="true"><small>DEC</small><b>%s</b></span><span class="dtx"><b>%s</b><span class="dtm"><span class="pill">12:00 pm New York</span></span></span></div>\n'
            '          <h3>%s</h3>\n%s'
            '          <ul>\n%s\n          </ul>\n%s'
            '          <p class="out"><span>%s</span>%s</p>\n%s'
@@ -430,7 +430,7 @@ PRIZE = """<!-- 11. the Day 3 draw -->
         <h2>Five people will get <em>a private session with me.</em></h2>
         <p class="lead">Stay until the end of Day 3 and you could be one of them.</p>
         <p>I’ll draw five names at random from the people still attending live. Each person gets a 1:1 session with me to work through their offer and questions.</p>
-        <small>Free to enter. Live attendees only. The draw happens at the end of the Nov 19 session.</small>
+        <small>Free to enter. Live attendees only. The draw happens at the end of the Dec 10 session.</small>
       </div>
       <!-- five seats: five 1:1 tickets fanning out -->
       <div class="tix" aria-hidden="true">
@@ -447,7 +447,7 @@ PRIZE = """<!-- 11. the Day 3 draw -->
 """
 QS = [("Is it really free?", ["Yes. All three workshop sessions are free. You never have to buy anything, and everything you write during them is yours to keep."]),
       ("Do I need an audience or something ready to sell?", ["No. Day 1 includes finding your first readers and exploring what you could offer. Come with your experience and the questions you’re trying to answer."]),
-      ("How much time do I need?", ["About 90 minutes a day on Nov 17, 18, and 19. You’ll do the writing during the sessions.",
+      ("How much time do I need?", ["About 90 minutes a day on Dec 8, 9, and 10. You’ll do the writing during the sessions.",
                                    "From Nov 4, I’ll also send short preparation tasks, about 15 minutes each. Do what you can; you can still attend if you haven’t completed them."]),
       ("Do I need to use Substack?", ["No. I’ll demonstrate on mine because that’s where I run my newsletter. The workshop is about finding people, making an offer, and asking for the sale."]),
       ("Will this work for my subject?", ["If your experience can help someone do something they want to do, or solve something they’re struggling with, there may be a paid offer worth exploring.",
@@ -478,7 +478,7 @@ ASK = """<!-- 13. the closing ask -->
       <p class="ask-big">Being able to leave a job. Turning down the client you dread hearing from. Having more say over the hours in your week.</p>
       <p>Those are worthwhile reasons to build something of your own.</p>
       <p>Join me for three days and let’s work out what your first paid offer could be, who it could help, and how you’ll put it in front of them.</p>
-      <div class="askt"><b>The Exit Plan · Nov 17 to 19</b><span>Three live sessions · About 90 minutes each · Free on Zoom</span></div>
+      <div class="askt"><b>The Exit Plan · Dec 8 to 10</b><span>Three live sessions · About 90 minutes each · Free on Zoom</span></div>
       <div class="go"><button class="btn open" type="button">Yes, I’m coming, free""" + ARR + """</button></div>
     </div>
   </div>
@@ -492,29 +492,29 @@ R(tail, WHERE + HOST + LIFE + BRING + GIFT + FIT + REVIEWS + PRIZE + FAQ + ASK)
 R('</main>\n\n<footer>', '\n<footer>')
 
 # ---------- the final ----------
-R('<h2>See you <em class="nw">Tuesday, Nov 17.</em></h2>\n        <p class="line">Free. Three live sessions with me. You leave with your offer, your price and your first ask.</p>',
-  '<h2>See you <em class="nw">Tuesday, Nov 17.</em></h2>\n'
+R('<h2>See you <em class="nw">Tuesday, Dec 8.</em></h2>\n        <p class="line">Free. Three live sessions with me. You leave with your offer, your price and your first ask.</p>',
+  '<h2>See you <em class="nw">Tuesday, Dec 8.</em></h2>\n'
   '        <p class="line">We’re doing this on Zoom. I once ran a workshop on a fancy platform and spent half of it fixing broken links. That was enough of that.</p>\n'
   '        <p class="line">Bring your experience, your questions, and something to write on.</p>\n'
-  '        <p class="ftimes"><b>Tue Nov 17 to Thu Nov 19</b><span>12:00 pm New York · 9:00 am Los Angeles</span><span>5:00 pm London · 7:00 pm Greece</span></p>')
+  '        <p class="ftimes"><b>Tue Dec 8 to Thu Dec 10</b><span>12:00 pm New York · 9:00 am Los Angeles</span><span>5:00 pm London · 7:00 pm Greece</span></p>')
 R('<button class="btn open shine" type="button" id="finalBtn">save my seat (free)', '<button class="btn open shine" type="button" id="finalBtn">See you Tuesday, Ana!')
 fin = between('<p class="conf">', '      </div>\n    </div>\n  </div>\n</section>\n\n<footer>')
 R(fin, '<p class="note">free · live on Zoom</p>\n')
 
 # ---------- the top bar and the phone's bottom bar ----------
 R('<button class="fb-id open" type="button" aria-label="The Exit Plan, a free 3-day live workshop with Ana Calin: save my seat">',
-  '<button class="fb-id open" type="button" aria-label="The Exit Plan, a free 3-day live workshop, Nov 17 to 19, 12:00 pm New York: save my seat">')
+  '<button class="fb-id open" type="button" aria-label="The Exit Plan, a free 3-day live workshop, Dec 8 to 10, 12:00 pm New York: save my seat">')
 R('<span class="fb-t"><small>THE EXIT PLAN · ANA CALIN</small><b>Free 3-day live workshop</b></span>',
-  '<span class="fb-t"><small>THE EXIT PLAN · FREE 3-DAY LIVE WORKSHOP</small><b>Nov 17 to 19 · 12:00 pm New York</b></span>')
+  '<span class="fb-t"><small>THE EXIT PLAN · FREE 3-DAY LIVE WORKSHOP</small><b>Dec 8 to 10 · 12:00 pm New York</b></span>')
 fbcd = between('    <div class="fb-cd">', '    <button class="btn sm open" type="button">save my seat (free)')
 R(fbcd, '')
 R('<button class="btn sm open" type="button">save my seat (free)', '<button class="btn sm open" type="button">I’m in, Ana (it’s free)')
-R('<span class="mcd"><span class="ld"><i></i>Day 1 · <b class="md">Tue, Nov 17</b></span><b class="md">12:00 pm New York</b></span><button class="btn open" type="button">save my seat (free)',
-  '<span class="mcd"><span class="ld"><i></i><b class="md">Nov 17 to 19</b></span><b class="md">12:00 pm New York</b></span><button class="btn open" type="button">I’m in, Ana (it’s free)')
+R('<span class="mcd"><span class="ld"><i></i>Day 1 · <b class="md">Tue, Dec 8</b></span><b class="md">12:00 pm New York</b></span><button class="btn open" type="button">save my seat (free)',
+  '<span class="mcd"><span class="ld"><i></i><b class="md">Dec 8 to 10</b></span><b class="md">12:00 pm New York</b></span><button class="btn open" type="button">I’m in, Ana (it’s free)')
 
 # ---------- the form: the compact registration form copy ----------
-R('<span class="ey">STEP 1 OF 3 · FREE · 3 DAYS LIVE<br>NOV 17 TO 19 · 12:00 PM NEW YORK</span>\n      <h3 id="dlg-h">Save your seat for <em>all three days.</em></h3>',
-  '<span class="ey">FREE · 3 DAYS LIVE · NOV 17 TO 19</span>\n      <h3 id="dlg-h">Let’s work on <em>your exit plan.</em></h3>\n      <p class="fsub">Save your seat for all three sessions with Ana.</p>')
+R('<span class="ey">STEP 1 OF 3 · FREE · 3 DAYS LIVE<br>DEC 8 TO 10 · 12:00 PM NEW YORK</span>\n      <h3 id="dlg-h">Save your seat for <em>all three days.</em></h3>',
+  '<span class="ey">FREE · 3 DAYS LIVE · DEC 8 TO 10</span>\n      <h3 id="dlg-h">Let’s work on <em>your exit plan.</em></h3>\n      <p class="fsub">Save your seat for all three sessions with Ana.</p>')
 R('<button class="btn big send" type="submit">save my seat (free)<svg><use href="#arr"/></svg></button>',
   '<button class="btn big send" type="submit"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">I’m in, Ana (it’s free)</span><svg class="ar"><use href="#arr"/></svg></button>')
 R("<p class=\"note\">You'll get my emails about the workshop and my program. Unsubscribe anytime. No hard feelings, no guilt email.</p>\n      <p class=\"note\">free · live on Zoom<span class=\"lt\"></span></p>",

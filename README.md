@@ -1,6 +1,6 @@
 # 2026-ana-calin
 
-Ana Calin's pages for The Exit Plan, her free 3-day live workshop (Tue Nov 17 to Thu Nov 19, 2026, 12:00 pm New York),
+Ana Calin's pages for The Exit Plan, her free 3-day live workshop (Tue Dec 8 to Thu Dec 10, 2026, 12:00 pm New York),
 and The Exit Lab, the program she offers after it. Plain HTML, CSS and JavaScript, no build step. Moved here on Oct 30,
 2026 from `seeeadd/2026-or-afterharvest` (folder `ana-calin/workshop/`), where the same pages still run.
 
@@ -23,7 +23,7 @@ The project `2026-ana-calin` serves them on https://exitplan.howwegrowtoday.com.
 | Exit number calculator (after the 7 quick questions) | https://2026-ana-calin.vercel.app/exit-number/ |
 | Program welcome (after paying for the program) | https://2026-ana-calin.vercel.app/welcome/ |
 
-Add `?now=2026-11-18T17:00:00Z` (any date and time) to see a page as it looks at that moment: countdowns, doors open
+Add `?now=2026-12-09T17:00:00Z` (any date and time) to see a page as it looks at that moment: countdowns, doors open
 or closed, the VIP deadline.
 
 ## Setting up Vercel

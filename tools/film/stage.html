@@ -176,8 +176,8 @@ html,body{width:1920px;height:1080px;overflow:hidden;background:#111}
   F[2] = function(){
     leaves(-200, -260, 1.25, 8, .16);
     ring(1650, 830, 96);
-    var days = [['TUE', '17', 'Day 1'], ['WED', '18', 'Day 2'], ['THU', '19', 'Day 3']];
-    days.forEach(function(d, i){ add('<div class="tile" style="' + at(190 + i * 560, 90, [-5, 3, -2][i], 6) + '"><i>' + d[0] + '</i><b>' + d[1] + '</b><s>NOV · ' + d[2].toUpperCase() + '</s></div>') });
+    var days = [['TUE', '8', 'Day 1'], ['WED', '9', 'Day 2'], ['THU', '10', 'Day 3']];
+    days.forEach(function(d, i){ add('<div class="tile" style="' + at(190 + i * 560, 90, [-5, 3, -2][i], 6) + '"><i>' + d[0] + '</i><b>' + d[1] + '</b><s>DEC · ' + d[2].toUpperCase() + '</s></div>') });
     /* Day 1: the reader file */
     add('<div class="paper" style="' + at(110, 250, -3, 2) + 'width:500px;height:470px;padding:30px 34px">'
       + '<div style="position:absolute;left:30px;top:-34px;width:190px;height:44px;background:var(--paper);background-image:var(--fiber);border-radius:10px 10px 0 0;box-shadow:0 -2px 4px rgba(80,45,20,.10);font-weight:800;font-size:14px;letter-spacing:.16em;padding:13px 18px;color:var(--pink)">READER FILE</div>'
@@ -221,13 +221,13 @@ html,body{width:1920px;height:1080px;overflow:hidden;background:#111}
       + '<div style="position:absolute;left:64px;top:56px;right:330px">'
       + '<p style="font-weight:800;font-size:19px;letter-spacing:.2em;color:var(--pink)">THE EXIT PLAN · FREE 3-DAY LIVE WORKSHOP</p>'
       + '<p style="position:relative;z-index:0;font-family:var(--serif);font-size:84px;line-height:.98;margin-top:18px;letter-spacing:-.01em;color:#1A1412;text-shadow:0 1px 0 rgba(255,255,255,.8),0 -1px 0 rgba(0,0,0,.12)">How to build the income that lets you leave your job <span class="hl">in 2027</span></p>'
-      + '<p style="margin-top:24px;font-weight:800;font-size:26px;color:var(--ink)">Tue Nov 17 to Thu Nov 19</p><p style="margin-top:4px;font-weight:700;font-size:23px;color:var(--ink2)">12:00 pm New York · 7:00 pm Greece · on Zoom</p></div>'
+      + '<p style="margin-top:24px;font-weight:800;font-size:26px;color:var(--ink)">Tue Dec 8 to Thu Dec 10</p><p style="margin-top:4px;font-weight:700;font-size:23px;color:var(--ink2)">12:00 pm New York · 7:00 pm Greece · on Zoom</p></div>'
       + '<div style="position:absolute;left:830px;top:60px;right:40px;text-align:center"><p style="font-weight:800;font-size:15px;letter-spacing:.2em;color:#7A6A60">ADMIT ONE</p>'
       + '<p style="font-family:var(--serif);font-size:58px;line-height:1;margin-top:16px">Your seat</p><p style="font-family:var(--serif);font-style:italic;font-size:42px;color:var(--pink);margin-top:6px">with Ana</p>'
       + '<div style="margin:30px auto 0;width:140px;height:140px">' + sunflower(140, 'filter:drop-shadow(2px 3px 0 rgba(26,20,18,.25))') + '</div></div></div>');
     add('<div class="stamp" style="' + at(255, 170, -12, 6) + 'color:#F72585;font-size:46px;padding:14px 22px">Free</div>');
-    var tiles = [['TUE', '17'], ['WED', '18'], ['THU', '19']];
-    tiles.forEach(function(d, i){ add('<div class="tile" style="' + at(1520 + i * 40, 120 + i * 150, [-6, 4, -3][i], 4 + i) + '"><i>' + d[0] + '</i><b>' + d[1] + '</b><s>NOV</s></div>') });
+    var tiles = [['TUE', '8'], ['WED', '9'], ['THU', '10']];
+    tiles.forEach(function(d, i){ add('<div class="tile" style="' + at(1520 + i * 40, 120 + i * 150, [-6, 4, -3][i], 4 + i) + '"><i>' + d[0] + '</i><b>' + d[1] + '</b><s>DEC</s></div>') });
     pen(380, 760, 6, .9);
     add('<div class="strip" style="' + at(560, 815, -1, 8) + 'padding:22px 46px 26px;clip-path:polygon(0 8%,4% 0,11% 5%,19% 1%,27% 6%,35% 0,44% 4%,53% 0,61% 5%,70% 1%,78% 6%,87% 0,94% 4%,100% 0,99% 92%,93% 100%,84% 95%,76% 100%,67% 94%,58% 100%,49% 95%,40% 100%,31% 94%,22% 100%,13% 95%,5% 100%)"><p style="font-size:58px">Put your name and email in. <span class="hl">See you on the 17th.</span></p></div>');
     arrow(1560, 860, 260, 160, 'M10 90 C 80 120, 170 110, 230 50 M200 44 l32 4 l-6 32', 'z-index:9;stroke-width:5');
