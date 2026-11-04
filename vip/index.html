@@ -1933,11 +1933,16 @@ body.is-closed .bdg-life{display:none}
 .bdg-life.b2{position:relative;right:auto;top:-6px;flex:none;width:98px;margin:-14px -8px -14px 4px;--r:8deg}
 @media (max-width:700px){.bdg-life.b2{width:84px;margin:-10px -4px -10px 2px}}
 
-/* Sean, Nov 4: "make it a whole lot bigger on page, i want video to look bigger, bigger column too" */
+/* Sean, Nov 4: "how the hell do I scale the video more? it's still small": on desktop the door and its video take the
+   full width, centred; under it, the "what VIP adds" list on the left and the order card on the right */
 @media (min-width:1101px){
   .vh .wrap{max-width:1480px}
-  .vh-grid{grid-template-columns:minmax(0,1fr) 400px;gap:28px}
-  .vh-l .door{width:calc(100% + 30px);margin-left:-26px}
+  .vh-grid{grid-template-columns:minmax(0,1fr) 420px;grid-template-areas:"door door" "under under" "hiw order";column-gap:40px;row-gap:0}
+  .vh-l{display:contents}
+  .vh-l .door{grid-area:door;justify-self:center;width:min(1320px,100%);margin:0}
+  .vh-l .under{grid-area:under;text-align:center;margin:18px 0 34px}
+  .vh-l .hiw{grid-area:hiw;margin-top:0;align-self:start}
+  .vh-grid .order{grid-area:order;align-self:start;margin-top:0}
 }
 .door-potr{position:absolute;inset:0;width:100%;height:auto;pointer-events:none;z-index:3}
 </style>
