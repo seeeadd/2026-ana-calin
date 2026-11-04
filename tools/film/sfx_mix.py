@@ -18,7 +18,10 @@ F={'key':'Brass Key Ring Sound Effect.mp3','sea':'Calm Sea Waves.mp3','tick':'Cl
 F['click']=[f for f in os.listdir(DIR) if f.startswith('Magic Mouse')][0]
 F['song']='Each Day Gets Better.mp3'
 S={k:rd(os.path.join(DIR,v)) for k,v in F.items()}
-v=rd(VOICE); N=len(v); fx=np.zeros((N,2),np.float32); log=[]
+v=rd(VOICE); N=len(v)
+# her first words ease in, so the video doesn't open with a jolt
+FI=int(2.0*SR); v[:FI]*=(.22+.78*np.sin(np.linspace(0,np.pi/2,FI))**1.4)[:,None]
+ fx=np.zeros((N,2),np.float32); log=[]
 def put(name,at,a,b,db,semi=0,fin=.004,fout=.04):
     x=S[name][int(a*SR):int(b*SR)].copy(); pk=float(np.abs(S[name][int(a*SR):int(b*SR)]).max())+1e-9; x/=pk
     if semi:
@@ -84,7 +87,7 @@ mus=np.zeros((N,2),np.float32)
 def place(at,a,b,fi,fo):
     x=SONG[int(a*SR):int(b*SR)].copy(); L=len(x); w=np.ones(L); i,o=int(fi*SR),int(fo*SR); w[:i]=np.linspace(0,1,i)**.5 if fi<.2 else np.sin(np.linspace(0,np.pi/2,i)); w[-o:]=np.cos(np.linspace(0,np.pi/2,o)); st=int(at*SR); e=min(st+L,N); mus[st:e]+=(x*w[:,None]*g)[:e-st]
 HOOK=T(206.94); XF=.07
-place(0,.95,16.2,.05,2.6)
+place(0,.95,16.2,.7,2.6)
 place(180.3,HOOK-180.3 and 16.6-(HOOK-180.3),16.6+XF,1.3,XF)
 place(HOOK,26.18,26.18+(N/SR-HOOK),XF,.55)
 # room for her words: the music gives up the band her consonants live in, and dips while she speaks
