@@ -112,3 +112,4 @@ correction and every approval-with-reason (SOP section D). The full raw messages
 - 11-04 · props · "why is the olive plant there? it looks out of place, it doesn't even need to be there" → every object in a video has a job or it comes out; string lights, bow, daisy and sprout removed too · video-editing §5
 - 11-04 · legibility · "I can't even read free, it's so small, it's pink on pink" → key words on stickers are big, ink on yellow; never same-colour text · video-editing §5
 - 11-04 · landscape · "make the water more textured and detailed, and the landscaping behind it" → scenery is painted in the paint engine, not flat shapes: layered gouache sea, wave marks, moving light, a real Greek coast · video-editing §5
+- 11-04 · framing · "crop her a bit, you're showing too many clouds, we should show her face" → landscape shots sit closer (about 14% in) and the crop follows her face, so head and face fill the frame and sky stays a sliver · video-editing §3

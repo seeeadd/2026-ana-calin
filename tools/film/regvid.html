@@ -26,11 +26,10 @@ html,body{overflow:hidden;background:#FFF8EE}
 .title .ln{display:block;white-space:nowrap}
 .title b{font-weight:400;background:linear-gradient(transparent 58%,rgba(255,212,0,.62) 58% 92%,transparent 92%);padding:0 .06em}
 .day{position:absolute;z-index:5}
-.day svg{position:absolute;inset:0;overflow:visible}
 .day>span{position:absolute;left:0;right:0;text-align:center;font-family:var(--serif);line-height:1;color:var(--ink)}
-.stampmark{position:absolute;transform-origin:50% 50%}
+.stampmark{position:absolute;z-index:6;transform-origin:50% 50%}
 .stampmark img{position:absolute;inset:0;width:100%;height:100%}
-.stampmark span{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--sans);font-weight:800;letter-spacing:.2em;padding-left:.2em;color:#D8232A;opacity:.92}
+.stampmark span{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--sans);font-weight:800;letter-spacing:.34em;padding-left:.34em;color:#A5121A}
 #thread{position:absolute;inset:0;z-index:5;overflow:visible;pointer-events:none}
 #sign{position:absolute;z-index:4;transform-origin:50% 100%}
 #sign svg{position:absolute;inset:0;overflow:visible}
@@ -40,7 +39,7 @@ html,body{overflow:hidden;background:#FFF8EE}
 .env{position:absolute;z-index:9;left:0;top:0;opacity:0}
 #cnote{position:absolute;left:0;top:0;z-index:9;opacity:0}
 #cnote img{position:absolute;inset:0;width:100%;height:100%}
-#cnote span{position:absolute;left:8%;right:8%;top:29%;text-align:center;font-family:var(--hand);line-height:1.05;color:var(--ink)}
+#cnote span{position:absolute;left:8%;right:8%;top:22%;text-align:center;font-family:var(--serif);line-height:1;color:var(--ink)}
 #cnote svg{position:absolute;inset:0;overflow:visible}
 #bud-wrap{position:absolute;inset:0;z-index:10;pointer-events:none}
 #ana{position:absolute;left:0;top:0;transform-origin:0 0;will-change:transform;filter:drop-shadow(0 18px 20px rgba(58,44,30,.28))}
@@ -74,14 +73,15 @@ html,body{overflow:hidden;background:#FFF8EE}
   <div class="title" id="t2"><span class="ln">The <b>Exit Plan.</b></span></div>
   <div class="title" id="t3"><span class="ln">Bring</span><span class="ln"><i>what you know.</i></span></div>
 
-  <div class="day" id="d1"><span>Day 1</span><div class="stampmark" id="pm" style="opacity:0"><img src="cut/stamp-red.png" alt=""><span>PROOF</span></div></div>
+  <div class="day" id="d1"><span>Day 1</span></div>
   <div class="day" id="d2"><span>Day 2</span></div>
   <div class="day" id="d3"><span>Day 3</span></div>
+  <div class="stampmark" id="pm" style="opacity:0"><img src="cut/stamp-red.png" alt=""><span>PROOF</span></div>
 
-  <div id="sign"><svg><path id="stick" stroke="#1A1412" fill="none" stroke-linecap="round"/></svg>
+  <div id="sign"><svg><path id="stick" stroke="#1A1412" fill="none" stroke-linecap="round"/><path id="stick2" stroke="#C9935F" fill="none" stroke-linecap="round"/></svg>
     <img src="paint/vtag.webp" alt=""><span id="signT">the income<br>you want</span></div>
 
-  <svg id="thread"><defs><mask id="am" maskUnits="userSpaceOnUse"><path id="amP" fill="none" stroke="#fff" stroke-width="210"/></mask></defs><image id="arw" mask="url(#am)"/></svg>
+  <svg id="thread"><defs><mask id="am" maskUnits="userSpaceOnUse"><path id="amP" fill="none" stroke="#fff" stroke-width="210"/></mask></defs><image id="arw" mask="url(#am)"/><image id="arH" href="paint/vhead.webp"/></svg>
 
   <svg id="wallsvg" style="overflow:visible">
     <defs>
@@ -94,14 +94,14 @@ html,body{overflow:hidden;background:#FFF8EE}
     <g id="capT" stroke="#A85F3D" stroke-opacity=".55" stroke-width="2.5" fill="none"></g>
     <path id="ink1" fill="none" stroke="#1A1412" stroke-width="3.6" stroke-linecap="round"/>
     <path id="ink2" fill="none" stroke="#1A1412" stroke-width="2.6" stroke-linecap="round"/>
-    <g id="cracks" fill="none" stroke="#3D332E" stroke-opacity=".32" stroke-width="2" stroke-linecap="round"></g>
   </svg>
 
-  <img class="env" src="../../img/vip/paint/wk3.webp" alt=""><img class="env" src="../../img/vip/paint/wk3.webp" alt=""><img class="env" src="../../img/vip/paint/wk3.webp" alt=""><img class="env" src="../../img/vip/paint/wk3.webp" alt=""><img class="env" src="../../img/vip/paint/wk3.webp" alt="">
-  <div id="cnote"><img src="../../img/vip/paint/note-g.webp" alt=""><span>course<br>idea</span><svg viewBox="0 0 176 170"><path id="strike" d="M18 96 C60 74 112 92 160 66" fill="none" stroke="#F72585" stroke-width="7" stroke-linecap="round"/></svg></div>
+  <img class="env" src="paint/venv.webp" alt=""><img class="env" src="paint/venv.webp" alt=""><img class="env" src="paint/venv.webp" alt=""><img class="env" src="paint/venv.webp" alt=""><img class="env" src="paint/venv.webp" alt="">
+  <div id="cnote"><img src="paint/vnote.webp" alt=""><span>course<br>idea</span><svg viewBox="0 0 176 170"><path id="strike" d="M18 96 C60 74 112 92 160 66" fill="none" stroke="#F72585" stroke-width="7" stroke-linecap="round"/></svg></div>
   <div id="bud-wrap"></div>
 
   <div id="vb"><img id="vid" alt="Ana"></div>
+  <img id="torn" src="paint/vtorn.webp" alt="" style="position:absolute;top:0;width:90px;height:1008px;z-index:13">
   <div id="ov"><img src="paint/vfree.webp" alt=""></div>
   <div id="ana"><div class="fr"></div></div>
 
@@ -109,6 +109,7 @@ html,body{overflow:hidden;background:#FFF8EE}
   <div id="grain"></div>
 </div>
 <script src="_local/regvid-data.js"></script>
+<script src="_local/regvid-face.js"></script>
 <script>
 (function(){
   'use strict';
@@ -116,25 +117,25 @@ html,body{overflow:hidden;background:#FFF8EE}
   var PHONE = new URLSearchParams(location.search).get('v') === 'p';
   /* the two shapes: same story, its own staging */
   var L = PHONE ? {
-    M: [0, 0, 1080, 1253], wallM: 1236, zV: 6, cM: {x: 50, y: 1272, w: 980, fs: 84, align: 'center'}, ov: [24, 44, 440],
-    W: 1080, H: 1920, land: [-40, .82], skyH: 1560, hor: 1532, capT: 1700, capB: 1736, bud: 216, k: 1.42,
-    ins: [100, 118, 860, 997], box: [1060, 1240], FA: [10, -30, 1], FB: [575, 8, .46], bw: [100, 118, 100, 125],
-    cA: {x: 50, y: 1156, w: 980, fs: 80, align: 'center'}, cB: {x: 50, y: 590, w: 980, fs: 80, align: 'center'},
-    t: {x: 195, y: 1486, fs: 112},
-    days: [[186, 326], [474, 614], [762, 902]], day: [282, 372, 46, 100], stamp: [22, 186, 238, 88, 46],
-    sign: [640, 800, 390, 900], signTop: 66, signFs: 74, stick: 'M198 262 C202 500 194 700 199 910', stickW: 8,
-    arw: ['paint/varrow-p.webp', 230, 820, 490, 530], arP: 'M660 1000 C500 860 352 960 338 1230 L334 1340',
-    RX: [[0, 150], [8.62, 150], [9.18, 240], [9.45, 326], [9.95, 614], [10.4, 902], [10.95, 960], [11.55, 960], [14.3, 110], [14.9, 96], [17.25, 96], [17.95, 170], [25.9, 170], [26.5, 150], [40, 150]],
+    M: [0, 0, 1080, 1253], wallM: 1236, zV: 6, cM: {x: 50, y: 1322, w: 980, fs: 84, align: 'center'}, ov: [24, 44, 440],
+    W: 1080, H: 1920, land: [-40, .82], skyH: 1560, hor: 1532, capT: 1700, capB: 1736, bud: 190, k: 1.42,
+    ins: [100, 118, 860, 997], box: [1060, 1256], FA: [10, -30, 1], FB: [575, 8, .46], bw: [118, 100, 141, 100],
+    cA: {x: 50, y: 1172, w: 980, fs: 80, align: 'center'}, cB: {x: 50, y: 590, w: 980, fs: 80, align: 'center'},
+    t: {x: 0, y: 1590, fs: 112},
+    days: [[190, 321], [462, 593], [734, 865]], day: [262, 340, 44, 96], stamp: [186, 1534, 812, 120, 84],
+    sign: [640, 800, 390, 900], signTop: 74, signFs: 64, stick: 'M198 262 C202 500 194 700 199 910', stickW: 8,
+    arw: ['paint/varrow-p.webp', 270, 780, 450, 480], arP: 'M680 880 C540 800 350 880 324 1226', head: 104,
+    RX: [[0, 150], [8.62, 150], [9.18, 230], [9.45, 321], [9.95, 593], [10.4, 865], [10.95, 930], [11.55, 930], [14.3, 118], [14.9, 100], [17.25, 100], [17.95, 170], [25.9, 170], [26.5, 150], [40, 150]],
     env: 368, envW: 230, noteX: 660
   } : {
     M: [691, 0, 869, 1008], wallM: 770, zV: 12, cM: {x: 62, y: 316, w: 612, fs: 60, align: 'left'}, ov: [712, 52, 350],
     W: 1560, H: 1008, land: [-120, .8], skyH: 680, hor: 640, capT: 770, capB: 798, bud: 150, k: 1,
-    ins: [97, 114, 650, 754], box: [844, 989], FA: [715, -21, 1], FB: [1150, 30, .47], bw: [97, 114, 97, 121],
+    ins: [97, 114, 650, 754], box: [844, 1005], FA: [715, -21, 1], FB: [1150, 30, .47], bw: [114, 97, 137, 97],
     cA: {x: 62, y: 332, w: 672, fs: 66, align: 'left'}, cB: {x: 62, y: 96, w: 1060, fs: 66, align: 'left'},
     t: {x: 62, y: 92, fs: 96},
-    days: [[190, 340], [510, 660], [830, 980]], day: [300, 290, 56, 104], stamp: [28, 170, 244, 90, 44],
-    sign: [1150, 490, 340, 286], signTop: 58, signFs: 64, stick: 'M172 230 C174 250 170 270 173 292', stickW: 7,
-    arw: ['paint/varrow-d.webp', 270, 190, 930, 350], arP: 'M1140 500 C1010 214 560 214 372 408 L300 480',
+    days: [[190, 340], [510, 660], [830, 980]], day: [300, 290, 50, 104], stamp: [186, 640, 950, 118, 86],
+    sign: [1150, 490, 340, 286], signTop: 66, signFs: 56, stick: 'M172 230 C174 250 170 270 173 292', stickW: 7,
+    arw: ['paint/varrow-d.webp', 360, 180, 880, 370], arP: 'M1190 512 C1060 230 600 210 420 392', head: 100,
     RX: [[0, 320], [8.62, 320], [9.18, 250], [9.45, 340], [9.95, 660], [10.4, 980], [10.95, 1120], [11.55, 1120], [14.3, 120], [14.9, 96], [17.25, 96], [17.95, 250], [40, 250]],
     env: 340, envW: 170, noteX: 410
   };
@@ -177,31 +178,24 @@ html,body{overflow:hidden;background:#FFF8EE}
   /* tile joints repeat every 400 px, so the cap can slide forever while he runs */
   var JO = [40, 152, 258, 334].map(function(v){ return [v, R() * 6 - 3, R() * 4 - 2] });
   for (var x0 = 0; x0 < L.W + 800; x0 += 400) JO.forEach(function(j){ var l = document.createElementNS(SVGNS, 'path'); l.setAttribute('d', 'M' + (x0 + j[0]) + ' ' + (L.capT + 2) + ' q' + j[1] + ' ' + ((L.capB - L.capT) / 2) + ' ' + j[2] + ' ' + (L.capB - L.capT - 4)); $('capT').appendChild(l) });
-  [[140, L.capB + 48, 'c18 10 30 4 44 16 c10 8 26 6 34 18'], [L.W * .65, L.capB + 100, 'c-14 12 -30 8 -42 22 c-8 8 -20 10 -30 8'], [L.W * .4, L.capB + 150, 'c20 -6 38 2 56 -6']].forEach(function(c){ var e = document.createElementNS(SVGNS, 'path'); e.setAttribute('d', 'M' + c[0] + ' ' + c[1] + ' ' + c[2]); $('cracks').appendChild(e) });
-
-  /* the day sheets: a wash that misses the line, an ink line that overshoots */
-  [['d1', '#FFE27A', '#F4C93F'], ['d2', '#FFC6DE', '#F39CC2'], ['d3', '#BFD7EC', '#93BBDD']].forEach(function(d, n){
-    var w = L.day[0], h = L.day[1], c = [[10, 12], [w - 8, 6], [w - 4, h - 8], [6, h - 4]], pts = [], side, k;
-    for (side = 0; side < 4; side++) { var A = c[side], B = c[(side + 1) % 4]; for (k = 0; k < 6; k++) { var f = k / 6; pts.push([lerp(A[0], B[0], f) + (R() - .5) * 7, lerp(A[1], B[1], f) + (R() - .5) * 7]) } }
-    var dd = 'M' + pts.map(function(q){ return q[0].toFixed(1) + ' ' + q[1].toFixed(1) }).join(' L') + ' Z', id = 'g' + d[0];
-    var e = $(d[0]); e.style.width = w + 'px'; e.style.height = h + 'px'; e.style.top = (L.capT + 6 - h) + 'px'; e.style.left = L.days[n][0] + 'px';
-    e.insertAdjacentHTML('afterbegin', '<svg width="' + w + '" height="' + h + '"><defs><linearGradient id="' + id + '" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="' + d[1] + '"/><stop offset="1" stop-color="' + d[2] + '"/></linearGradient></defs>'
-      + '<path d="' + dd + '" transform="translate(5 8)" fill="#3D4E66" fill-opacity=".14"/><path d="' + dd + '" transform="translate(3 -3)" fill="url(#' + id + ')"/>'
-      + '<path d="' + dd + '" fill="none" stroke="#1A1412" stroke-width="3.2" stroke-linejoin="round"/></svg>');
+  /* the day sheets are painted; only their tops show above the wall */
+  ['d1', 'd2', 'd3'].forEach(function(id, n){
+    var e = $(id), w = L.day[0], h = L.day[1]; e.style.width = w + 'px'; e.style.height = h + 'px'; e.style.top = (L.capT + 6 - h) + 'px'; e.style.left = L.days[n][0] + 'px';
+    e.insertAdjacentHTML('afterbegin', '<img src="paint/vday' + (n + 1) + '.webp" alt="" style="position:absolute;left:0;top:0;width:100%">');
     var sp = e.querySelector(':scope>span'); sp.style.top = L.day[2] + 'px'; sp.style.fontSize = L.day[3] + 'px';
   });
   var pmEl = $('pm'); pmEl.style.left = L.stamp[0] + 'px'; pmEl.style.top = L.stamp[1] + 'px'; pmEl.style.width = L.stamp[2] + 'px'; pmEl.style.height = L.stamp[3] + 'px'; pmEl.querySelector('span').style.fontSize = L.stamp[4] + 'px';
   var sg = $('sign'); sg.style.left = L.sign[0] + 'px'; sg.style.top = L.sign[1] + 'px'; sg.style.width = L.sign[2] + 'px'; sg.style.height = L.sign[3] + 'px'; $('signT').style.fontSize = L.signFs + 'px'; $('signT').style.top = L.signTop + 'px';
-  $('stick').setAttribute('d', L.stick); $('stick').setAttribute('stroke-width', L.stickW); sg.querySelector('svg').setAttribute('width', L.sign[2]); sg.querySelector('svg').setAttribute('height', L.sign[3]);
+  $('stick').setAttribute('d', L.stick); $('stick').setAttribute('stroke-width', L.stickW + 8); $('stick2').setAttribute('d', L.stick); $('stick2').setAttribute('stroke-width', L.stickW + 2); sg.querySelector('svg').setAttribute('width', L.sign[2]); sg.querySelector('svg').setAttribute('height', L.sign[3]);
   var arw = $('arw'), amP = $('amP'), am = $('am'); arw.setAttribute('href', L.arw[0]); arw.setAttribute('x', L.arw[1]); arw.setAttribute('y', L.arw[2]); arw.setAttribute('width', L.arw[3]); arw.setAttribute('height', L.arw[4]);
   am.setAttribute('x', 0); am.setAttribute('y', 0); am.setAttribute('width', L.W); am.setAttribute('height', L.H); amP.setAttribute('d', L.arP);
-  ['t1', 't2', 't3'].forEach(function(i){ var e = $(i); e.style.left = L.t.x + 'px'; e.style.top = L.t.y + 'px'; e.style.fontSize = L.t.fs + 'px' });
+  ['t1', 't2', 't3'].forEach(function(i){ var e = $(i); e.style.left = L.t.x + 'px'; e.style.top = L.t.y + 'px'; e.style.fontSize = L.t.fs + 'px'; if (PHONE) { e.style.width = L.W + 'px'; e.querySelectorAll('.ln').forEach(function(l){ l.style.width = 'fit-content'; l.style.margin = '0 auto' }) } });
   var a = $('ana'), vb = $('vb'), ovl = $('ov'), afr = a.querySelector('.fr');
   vb.style.zIndex = L.zV; a.style.zIndex = L.zV + 1;
   ovl.style.width = L.ov[2] + 'px'; ovl.style.height = (L.ov[2] * .565) + 'px';
   a.style.width = L.box[0] + 'px'; a.style.height = L.box[1] + 'px';
   var bw = L.bw.map(function(v){ return v + 'px' }).join(' ');
-  afr.style.borderWidth = bw; afr.style.borderImage = 'url(../../img/vip/paint/ana-frame.webp) 208 177 220 176/' + bw + ' stretch';
+  afr.style.borderWidth = bw; afr.style.borderImage = 'url(paint/ana-frame-open.webp) 208 176 248 176/' + bw + ' stretch';
 
   /* the world slides while he runs */
   var V = L.W * .28;
@@ -271,13 +265,19 @@ html,body{overflow:hidden;background:#FFF8EE}
     vb.style.left = V[0].toFixed(2) + 'px'; vb.style.top = V[1].toFixed(2) + 'px'; vb.style.width = V[2].toFixed(2) + 'px'; vb.style.height = V[3].toFixed(2) + 'px';
     vb.style.transformOrigin = (f[0] + hx * f[2] - V[0]).toFixed(1) + 'px ' + (y - V[1]).toFixed(1) + 'px';
     vb.style.transform = 'rotate(' + (sw * (1 - m)).toFixed(3) + 'deg)';
-    if (!PHONE) { var fe = (m * 90).toFixed(1), mk = m > .001 ? 'linear-gradient(90deg,transparent 0,#000 ' + fe + 'px)' : 'none'; vb.style.webkitMaskImage = mk; vb.style.maskImage = mk }
+    var tn = $('torn'); tn.style.display = PHONE || m < .02 ? 'none' : 'block'; tn.style.opacity = clamp(m * 2.5, 0, 1).toFixed(3); tn.style.left = (V[0] - 36).toFixed(1) + 'px';
     /* on the phone the wall comes up in front of her for the main shot; on desktop it runs behind her */
     var dy = (L.wallM - L.capT) * m, tf = 'translateY(' + dy.toFixed(1) + 'px)';
     $('wallsvg').style.transform = tf; $('bud-wrap').style.transform = tf;
     /* a slow push-in inside each shot */
     var sh = t < 8.66 ? t / 8.66 : t < 17.3 ? (t - 8.66) / 8.64 : t < 25.9 ? (t - 17.3) / 8.6 : (t - 25.9) / 4.2;
-    $('vid').style.transform = 'scale(' + (1 + sh * .03).toFixed(4) + ')';
+    /* landscape: closer on her, less sky, and the crop follows her face */
+    if (PHONE) { $('vid').style.transform = 'scale(' + (1 + sh * .03).toFixed(4) + ')' }
+    else {
+      var zoom = 1.14 * (1 + sh * .03), seen = 835 / zoom, fc = window.FACE[Math.min(Math.floor(t * 30), window.FACE.length - 1)];
+      var top = clamp(fc - seen * .47, 0, 835 - seen);
+      $('vid').style.transformOrigin = '50% 0'; $('vid').style.transform = 'translateY(' + (-top / 835 * zoom * 100).toFixed(3) + '%) scale(' + zoom.toFixed(4) + ')';
+    }
     /* a graphic on top of her video: the tag lands on "free", swings, and leaves */
     var A1 = seg(t, 5.86, 6.42), O1 = seg(t, 7.2, 7.62);
     if (A1 <= 0 || O1 >= 1) ovl.style.opacity = 0;
@@ -304,7 +304,7 @@ html,body{overflow:hidden;background:#FFF8EE}
     [['d1', 9.3, -3.2], ['d2', 9.82, 2.2], ['d3', 10.26, -1.6]].forEach(function(d){
       var r = rise(t, d[1], .62), e = $(d[0]);
       e.style.visibility = r <= 0 || out >= 1 ? 'hidden' : 'visible';
-      var press = d[0] === 'd1' ? Math.sin(seg(t, 16.34, 16.62) * Math.PI) * 8 : 0;
+      var press = Math.sin(seg(t, 16.34, 16.62) * Math.PI) * 8;
       e.style.transform = 'translateY(' + (((1 - r) * hh + out * hh + press).toFixed(1)) + 'px) rotate(' + d[2] + 'deg)';
     });
     var sr = rise(t, 10.5, .6);
@@ -316,19 +316,26 @@ html,body{overflow:hidden;background:#FFF8EE}
     /* the words on the tag write as she says them */
     $('signT').style.clipPath = 'inset(-10% ' + ((1 - io(seg(t, 12.9, 13.55))) * 103).toFixed(1) + '% -10% 0)';
     /* the arrow paints itself from the income back to Day 1, just ahead of him */
-    var Lt = amP.getTotalLength(), pr = io(seg(t, 11.65, 14.5)) * (1 - io(seg(t, 17.05, 17.4)));
-    amP.style.strokeDasharray = Lt + ' ' + (Lt + 20); amP.style.strokeDashoffset = (Lt * (1 - pr)).toFixed(1); arw.style.visibility = pr > 0 ? 'visible' : 'hidden';
+    var Lt = amP.getTotalLength(), pr = io(seg(t, 11.65, 14.5)), gone = t >= 17.3, arH = $('arH');
+    amP.style.strokeDasharray = Lt + ' ' + (Lt + 20); amP.style.strokeDashoffset = (Lt * (1 - pr)).toFixed(1);
+    arw.style.visibility = arH.style.visibility = pr > 0 && !gone ? 'visible' : 'hidden';
+    var q0 = amP.getPointAtLength(Lt * pr), q1 = amP.getPointAtLength(Math.max(0, Lt * pr - 3)), q2 = pr < .002 ? amP.getPointAtLength(3) : q0, q3 = pr < .002 ? amP.getPointAtLength(0) : q1;
+    var ang = Math.atan2(q2.y - q3.y, q2.x - q3.x) * 180 / Math.PI, hw = L.head, hh2 = hw * 150 / 140;
+    arH.setAttribute('width', hw); arH.setAttribute('height', hh2);
+    arH.setAttribute('transform', 'translate(' + q0.x.toFixed(1) + ' ' + q0.y.toFixed(1) + ') rotate(' + ang.toFixed(2) + ') translate(' + (-hw * .16).toFixed(1) + ' ' + (-hh2 * .5).toFixed(1) + ')');
+    /* the arrow leaves with the row */
+    $('thread').style.transform = 'translateY(' + (out * hh).toFixed(1) + 'px)';
     /* the proof stamp: hovers, presses on the word, settles */
     var press2 = seg(t, 16.12, 16.36);
     if (t < 16.12) pmEl.style.opacity = 0;
-    else { pmEl.style.opacity = t < 16.36 ? lerp(0, .55, press2) : 1; var sc = t < 16.36 ? lerp(1.34, 1, inq(press2)) : 1 + Math.sin(seg(t, 16.36, 16.62) * Math.PI) * -.025; pmEl.style.transform = 'rotate(-8deg) scale(' + sc.toFixed(3) + ')' }
+    else { pmEl.style.opacity = t < 16.36 ? lerp(0, .55, press2) : 1; var sc = t < 16.36 ? lerp(1.16, 1, inq(press2)) : 1 + Math.sin(seg(t, 16.36, 16.62) * Math.PI) * -.012; pmEl.style.transform = 'translateY(' + (out * hh).toFixed(1) + 'px) rotate(-2deg) scale(' + sc.toFixed(3) + ')' }
   }
 
   /* envelopes land for "an audience", the wind takes them on "without one" */
   var envs = Array.prototype.slice.call(document.querySelectorAll('.env'));
   envs.forEach(function(e){ e.style.width = L.envW + 'px' });
   var eh = L.envW * .86, ES = [[0, 0, -5], [118, 0, 4], [58, -18, -2], [20, -38, 7], [92, -54, -6]];
-  var cnote = $('cnote'), nw = 176 * L.k; cnote.style.width = nw + 'px'; cnote.style.height = (170 * L.k) + 'px'; cnote.querySelector('span').style.fontSize = (31 * L.k) + 'px';
+  var cnote = $('cnote'), nw = 240 * L.k; cnote.style.width = nw + 'px'; cnote.style.height = (197 * L.k) + 'px'; cnote.querySelector('span').style.fontSize = (62 * L.k) + 'px';
   function envelopes(t){
     envs.forEach(function(e, i){
       var E = 19.55 + i * .15, G = 22.85 + (4 - i) * .07, p = seg(t, E - .55, E), g = seg(t, G, G + 1.05);
@@ -341,7 +348,7 @@ html,body{overflow:hidden;background:#FFF8EE}
     var A2 = seg(t, 24.0, 24.55), G2 = seg(t, 25.95, 26.85);
     if (A2 <= 0 || G2 >= 1) cnote.style.opacity = 0;
     else {
-      var q2 = outq(A2), nh = 170 * L.k, ny0 = L.capT - nh + 6, nx = L.noteX + (1 - q2) * 130 - G2 * G2 * (L.W * .6), ny = lerp(ny0 - 360, ny0, q2 * q2) - Math.sin(G2 * Math.PI * .6) * 340, nr = 5 - (1 - q2) * 24 + G2 * G2 * 150;
+      var q2 = outq(A2), nh = 197 * L.k, ny0 = L.capT - nh + 6, nx = L.noteX + (1 - q2) * 130 - G2 * G2 * (L.W * .6), ny = lerp(ny0 - 360, ny0, q2 * q2) - Math.sin(G2 * Math.PI * .6) * 340, nr = 5 - (1 - q2) * 24 + G2 * G2 * 150;
       cnote.style.opacity = 1; cnote.style.transform = 'translate(' + nx.toFixed(1) + 'px,' + ny.toFixed(1) + 'px) rotate(' + nr.toFixed(2) + 'deg)';
     }
     var st = $('strike'), Ls = st.getTotalLength(); st.style.strokeDasharray = Ls; st.style.strokeDashoffset = (Ls * (1 - io(seg(t, 25.2, 25.55)))).toFixed(1);
@@ -351,12 +358,12 @@ html,body{overflow:hidden;background:#FFF8EE}
   var capP = $('capP'), cap = $('cap'), capCur = -1, CAPS = window.CAPS;
   function captions(t){
     var k = -1; for (var i = 0; i < CAPS.length; i++) if (t >= CAPS[i].t0 - .001 && t < CAPS[i].t1 + .001) k = i;
-    if (k !== capCur) { capCur = k; capP.innerHTML = k < 0 ? '' : CAPS[k].w.map(function(w){ return '<span class="' + (w.h ? 'h' : '') + '">' + w.x + ' </span>' }).join('') }
+    if (k !== capCur) { capCur = k; capP.innerHTML = k < 0 ? '' : CAPS[k].w.map(function(w, i, A){ var nx = A[i + 1]; return w.h && nx && nx.h ? '<span class="h">' + w.x + ' </span>' : '<span class="' + (w.h ? 'h' : '') + '">' + w.x + '</span> ' }).join('') }
     if (k < 0) { capP.style.opacity = 0; return }
     var c = CAPS[k], sp = capP.querySelectorAll('span'), P = t < 8.66 || t >= 25.9 ? L.cM : t < 17.3 ? L.cB : L.cA;
     cap.style.left = P.x + 'px'; cap.style.top = P.y + 'px'; cap.style.width = P.w + 'px'; capP.style.fontSize = P.fs + 'px'; capP.style.textAlign = P.align;
     capP.style.opacity = c.t0 < .01 ? 1 : PHONE && t < 9.3 && t > 8.66 ? io(seg(t, 9.02, 9.2)) : io(seg(t, c.t0 - .02, c.t0 + .1));
-    c.w.forEach(function(w, i){ var p = c.t0 < .01 ? 1 : seg(t, w.t - .05, w.t + .16); sp[i].style.opacity = lerp(.3, 1, p).toFixed(3) });
+    c.w.forEach(function(w, i){ var p = c.t0 < .01 ? 1 : seg(t, w.t - .05, w.t + .16); sp[i].style.opacity = lerp(.55, 1, p).toFixed(3) });
   }
 
   /* her frames: exact, one image per frame of the cut */

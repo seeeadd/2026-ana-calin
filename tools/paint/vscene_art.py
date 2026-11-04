@@ -191,22 +191,18 @@ def arrow(name, P, box, w0, w1, head, headlen):
         dx, dy = b[0] - a[0], b[1] - a[1]; m = math.hypot(dx, dy) or 1; nx, ny = -dy / m, dx / m
         t = i / n; hw = (w0 + (w1 - w0) * t) / 2 + math.sin(i * .7) * 1.1 + R.uniform(-.7, .7)
         Lp.append((x + nx * hw, y + ny * hw)); Rp.append((x - nx * hw, y - ny * hw))
-    ax, ay = C[-1]; bx, by = C[-4]; dx, dy = ax - bx, ay - by; m = math.hypot(dx, dy); ux, uy = dx / m, dy / m; nx, ny = -uy, ux
-    tip = (ax + ux * headlen, ay + uy * headlen)
-    h1 = (ax + nx * head - ux * 8, ay + ny * head - uy * 8); h2 = (ax - nx * (head + 3) - ux * 11, ay - ny * (head + 3) - uy * 11)
     body = smooth(Lp) + ' L' + ' L'.join(f'{p[0]:.1f} {p[1]:.1f}' for p in reversed(Rp)) + ' Z'
-    hd = f'M{h1[0]:.1f} {h1[1]:.1f} Q{(h1[0]+tip[0])/2+ux*2:.1f} {(h1[1]+tip[1])/2+uy*2:.1f} {tip[0]:.1f} {tip[1]:.1f} Q{(h2[0]+tip[0])/2+ux*3:.1f} {(h2[1]+tip[1])/2+uy*3:.1f} {h2[0]:.1f} {h2[1]:.1f} Q{ax-ux*2:.1f} {ay-uy*2:.1f} {h1[0]:.1f} {h1[1]:.1f} Z'
     x0, y0, bw, bh = box
     hi = smooth([(p[0] * .5 + c[0] * .5, p[1] * .5 + c[1] * .5) for p, c in zip(Lp[6:n - 4], C[6:n - 4])])
     return f'''<svg data-art="{name}" width="{bw}" height="{bh}" viewBox="{x0} {y0} {bw} {bh}">
-  <g data-mat="shadow" fill="#6F7F9C" data-density=".4"><g transform="translate(4 7)"><path d="{body}"/><path d="{hd}"/></g></g>
-  <g data-mat="gouache" data-angle="20" data-streak=".05"><path d="{body}" fill="#F72585"/><path d="{hd}" fill="#F72585"/></g>
+  <g data-mat="shadow" fill="#6F7F9C" data-density=".4"><g transform="translate(4 7)"><path d="{body}"/></g></g>
+  <g data-mat="gouache" data-angle="20" data-streak=".05"><path d="{body}" fill="#F72585"/></g>
   <g data-mat="wash" fill="#B5125F" data-density=".55"><path d="M{Rp[2][0]:.1f} {Rp[2][1]:.1f} L{' L'.join(f'{p[0]:.1f} {p[1]:.1f}' for p in Rp[3:])} L{' L'.join(f'{(p[0]*.55+c[0]*.45):.1f} {(p[1]*.55+c[1]*.45):.1f}' for p, c in reversed(list(zip(Rp[2:], C[2:]))))} Z"/></g>
   <g data-mat="white" fill="none" stroke="#FFD3E6" stroke-width="3" stroke-linecap="round"><path d="{hi}"/></g>
-  <g data-mat="ink" stroke="{INK}" stroke-width="2.4" fill="none" stroke-linejoin="round"><path d="{smooth(Lp[:n-1])}"/><path d="{smooth(Rp[:n-1])}"/><path d="M{Lp[0][0]:.1f} {Lp[0][1]:.1f} L{Rp[0][0]:.1f} {Rp[0][1]:.1f}"/><path d="{hd}"/></g>
+  <g data-mat="ink" stroke="{INK}" stroke-width="2.4" fill="none" stroke-linejoin="round"><path d="{smooth(Lp)}"/><path d="{smooth(Rp)}"/><path d="M{Lp[0][0]:.1f} {Lp[0][1]:.1f} L{Rp[0][0]:.1f} {Rp[0][1]:.1f}"/></g>
 </svg>'''
-va_d = arrow('varrow-d', [(1140, 500), (1010, 214), (560, 214), (372, 408)], (270, 190, 930, 350), 34, 52, 66, 78)
-va_p = arrow('varrow-p', [(660, 1000), (500, 860), (352, 960), (338, 1230)], (230, 820, 490, 530), 36, 54, 70, 84)
+va_d = arrow('varrow-d', [(1190, 512), (1060, 230), (600, 210), (420, 392)], (360, 180, 880, 370), 26, 34, 0, 0)
+va_p = arrow('varrow-p', [(680, 880), (540, 800), (350, 880), (324, 1226)], (270, 780, 450, 480), 28, 36, 0, 0)
 
 # ---------- the free sticker: yellow, ink letters, a raw white die-cut edge
 def cut(pts, amp):
@@ -229,7 +225,51 @@ vtag = f'''<svg data-art="vtag" width="360" height="256" viewBox="0 0 360 256">
   <g data-mat="ink" stroke="{INK}" stroke-width="2.6" fill="none" stroke-linejoin="round"><path d="M72 22 L348 14 L352 238 L72 238 L12 134 Z"/><circle cx="62" cy="130" r="12"/></g>
 </svg>'''
 
-block = '<!-- VSCENE start: written by vscene_art.py -->\n' + '\n'.join([vland, vsea, vglint, va_d, va_p, vfree, vtag]) + '\n<!-- VSCENE end -->\n'
+# the arrow's head, one piece, carried along the line so the arrow is whole from its first frame
+vhead = f'''<svg data-art="vhead" width="140" height="150" viewBox="0 0 140 150">
+  <g data-mat="shadow" fill="#6F7F9C" data-density=".4"><path d="M14 8 Q24 74 12 142 Q78 112 132 76 Q76 38 14 8 Z" transform="translate(3 6)"/></g>
+  <g data-mat="gouache" data-angle="20" data-streak=".05"><path d="M14 8 Q24 74 12 142 Q78 112 132 76 Q76 38 14 8 Z" fill="#F72585"/></g>
+  <g data-mat="wash" fill="#B5125F" data-density=".5"><path d="M18 78 Q78 88 132 76 Q78 112 12 142 Q22 110 18 78 Z"/></g>
+  <g data-mat="ink" stroke="{INK}" stroke-width="2.6" fill="none" stroke-linejoin="round"><path d="M14 8 Q24 74 12 142 Q78 112 132 76 Q76 38 14 8 Z"/></g>
+</svg>'''
+# the day sheets: her cream paper, a wash that misses the line, pencil, a wobbly ink edge
+def day(name, col, dark, dens):
+    edge = cut([(10, 12), (290, 6), (294, 374), (6, 378)], 2.4)
+    blot = smooth(ridge([(26, 34), (140, 24), (270, 40)], 44, 9)) + ' ' + ' '.join(f'L{x} {y}' for x, y in [(276, 150), (252, 230), (120, 244), (30, 216)]) + ' Z'
+    hatch = ''.join(f'<path d="M{x} {R.uniform(248, 262):.0f} l{R.uniform(16, 30):.0f} {-R.uniform(16, 30):.0f}"/>' for x in range(30, 262, 11))
+    return f'''<svg data-art="{name}" width="300" height="390" viewBox="0 0 300 390">
+  <g data-mat="shadow" fill="#6F7F9C" data-density=".45"><path d="{edge}" transform="translate(5 8)"/></g>
+  <g data-mat="sheet" fill="#FFFBF0"><path d="{edge}"/></g>
+  <g data-mat="wash" fill="{col}" data-density="{dens}" data-rim="3"><path d="{blot}"/></g>
+  <g data-mat="pencil" stroke="{dark}" stroke-width="3" fill="none" stroke-linecap="round">{hatch}</g>
+  <g data-mat="ink" stroke="{INK}" stroke-width="1.9" fill="none" stroke-linejoin="round"><path d="{edge}"/></g>
+</svg>'''
+vdays = [day('vday1', '#FFD84A', '#E2B400', '1'), day('vday2', '#FFC6DE', '#F08DB9', '.62'), day('vday3', '#BFD7EC', '#8DB6DA', '.62')]
+# a solid envelope: opaque paper, a clean silhouette, a wax dot
+venv = f'''<svg data-art="venv" width="240" height="206" viewBox="0 0 240 206">
+  <g data-mat="shadow" fill="#55617A" data-density=".55"><path d="M14 40 L228 32 L232 186 L10 192 Z" transform="translate(3 9)"/></g>
+  <g data-mat="sheet" fill="#FFF9EA"><path d="M14 40 L228 32 L232 186 L10 192 Z"/></g>
+  <g data-mat="wash" fill="#BFD0E2" data-density=".55"><path d="M14 40 L120 118 L228 32 L232 60 L120 142 L12 66 Z"/></g>
+  <g data-mat="gouache" data-angle="30"><circle cx="120" cy="120" r="19" fill="#F72585"/></g>
+  <g data-mat="ink" stroke="{INK}" stroke-width="2.3" fill="none" stroke-linejoin="round"><path d="M14 40 L228 32 L232 186 L10 192 Z"/><path d="M14 40 L104 110 M228 32 L136 110 M12 190 L86 128 M232 184 L154 128"/><circle cx="120" cy="120" r="19"/></g>
+</svg>'''
+vnote = f'''<svg data-art="vnote" width="280" height="230" viewBox="0 0 280 230">
+  <g data-mat="shadow" fill="#55617A" data-density=".5"><path d="{cut([(14,14),(266,8),(270,212),(10,218)],2.4)}" transform="translate(4 8)"/></g>
+  <g data-mat="sheet" fill="#FFFBF0"><path d="{cut([(14,14),(266,8),(270,212),(10,218)],2.4)}"/></g>
+  <g data-mat="wash" fill="#CFE3B0" data-density=".7"><path d="M28 28 L252 22 L256 198 L24 204 Z"/></g>
+  <g data-mat="ink" stroke="{INK}" stroke-width="2" fill="none"><path d="{cut([(14,14),(266,8),(270,212),(10,218)],1.6)}"/></g>
+</svg>'''
+# the torn edge of the scene's paper, lying over her video in the desktop main shot
+tp = [(R.uniform(26, 44) + 7 * math.sin(y / 61), y) for y in range(-6, 1020, 14)]
+tear = 'M0 -6 L' + ' L'.join(f'{x:.1f} {y}' for x, y in tp) + ' L0 1020 Z'
+inner = 'M0 -6 L' + ' L'.join(f'{x-R.uniform(9, 17):.1f} {y}' for x, y in tp) + ' L0 1020 Z'
+vtorn = f'''<svg data-art="vtorn" width="90" height="1008" viewBox="0 0 90 1008">
+  <g data-mat="shadow" fill="#3C4A63" data-density=".65"><path d="{tear}" transform="translate(9 0)"/></g>
+  <g data-mat="sheet" fill="#FFFDF6"><path d="{tear}"/></g>
+  <g data-mat="wash" fill="#E7DCC6" data-density=".5"><path d="{inner}"/></g>
+</svg>'''
+
+block = '<!-- VSCENE start: written by vscene_art.py -->\n' + '\n'.join([vland, vsea, vglint, va_d, va_p, vfree, vtag, vhead, venv, vnote, vtorn] + vdays) + '\n<!-- VSCENE end -->\n'
 p = os.path.join(HERE, 'studio.html'); s = open(p).read()
 a = s.find('<!-- VSCENE start'); b = s.find('<!-- VSCENE end -->')
 if a >= 0: s = s[:a] + block + s[b + len('<!-- VSCENE end -->\n'):]

@@ -2064,6 +2064,8 @@ section > .tkb .flag span.t{font-weight:500}
   box-shadow:inset 0 0 0 1px rgba(58,42,34,.35)}
 .iph.win .scr:before{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;box-shadow:inset 0 26px 30px -16px rgba(40,26,16,.55),inset 26px 0 30px -18px rgba(40,26,16,.42)}
 .iph.win .scrub{bottom:13%}
+.iph.win.playing .scrub{opacity:0;pointer-events:none;transition:opacity .3s}
+.iph.win.playing:hover .scrub{opacity:1}
 .iph.win .vplay{bottom:calc(13% + 64px)}
 .iph.win .wn-sh{transform-style:preserve-3d}
 .iph.win .wn-sh:before{content:"";position:absolute;top:4%;bottom:4%;width:3.2%;background:repeating-linear-gradient(180deg,#2E5384 0 6px,#34609A 6px 7px),#2E5384;border-radius:1px;box-shadow:inset 0 0 0 1px rgba(26,30,45,.55)}

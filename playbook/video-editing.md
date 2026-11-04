@@ -48,6 +48,7 @@ every video round.
   window, painted picture frame or a modern phone), with a soft close shadow, on a built background (painted room,
   paper, Greek window). A raw blurred copy of the same video behind her is the last resort; if used, tint it
   toward the cream paper so it doesn't read as "phone video in a landscape box".
+- **Crop for the face, not the location:** in landscape, sit closer and let the crop follow her face (smoothed within each take). Sky is a sliver.
 - **Look:** warm, even exposure on her face; skin natural, not smoothed. Don't recolour her clothes or lips.
 
 ## 4. Captions (the video autoplays muted)
