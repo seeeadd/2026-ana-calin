@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The Exit Plan · registration video</title>
+<!-- Ana's real opt-in video on our painted world. One edit, two shapes; every frame is render(t).
+       desktop  1560 x 1008 (the page window's 1.548:1)    W=1560 H=1008 FILM=regvid.html
+       phone    1080 x 1920 (portrait), ?v=p               W=1080 H=1920 FILM="regvid.html?v=p"
+     Sky: her own sky turned into a two-colour wash. Sea and wall: painted. Ana stays in her gold frame, or shrinks to a
+     small one for cut-aways. Captions are her real words, straight on the scene, no paper behind them.
+     Frames and timed words live in _local/ (not in git). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@600;700;800&family=Nothing+You+Could+Do&display=swap">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{overflow:hidden;background:#FFF8EE}
+:root{--ink:#1A1412;--pink:#F72585;--serif:'Instrument Serif',Georgia,serif;--sans:'Manrope',system-ui,sans-serif;--hand:'Nothing You Could Do',cursive}
+#film{position:relative;overflow:hidden;font-family:var(--sans);color:var(--ink);background:#FFF8EE}
+#sky{position:absolute;left:0;top:0;display:block}
+#world{position:absolute;inset:0;z-index:2}
+.sc{position:absolute;z-index:2;max-width:none}
+#paper{position:absolute;inset:0;z-index:3;pointer-events:none;background:url(tex/paper-cream.webp) 0 0/100% auto;mix-blend-mode:multiply;opacity:.42}
+.title{position:absolute;z-index:9;font-family:var(--serif);line-height:1.02;letter-spacing:-.012em;color:var(--ink);text-shadow:0 0 22px rgba(255,248,238,.8)}
+.title i{color:var(--pink);font-style:italic}
+.title .ln{display:block;white-space:nowrap}
+.title b{font-weight:400;background:linear-gradient(transparent 58%,rgba(255,212,0,.62) 58% 92%,transparent 92%);padding:0 .06em}
+.day{position:absolute;z-index:5}
+.day svg{position:absolute;inset:0;overflow:visible}
+.day>span{position:absolute;left:0;right:0;text-align:center;font-family:var(--serif);line-height:1;color:var(--ink)}
+.stampmark{position:absolute;transform-origin:50% 50%}
+.stampmark img{position:absolute;inset:0;width:100%;height:100%}
+.stampmark span{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--sans);font-weight:800;letter-spacing:.2em;padding-left:.2em;color:#D8232A;opacity:.92}
+#thread{position:absolute;inset:0;z-index:5;overflow:visible;pointer-events:none}
+#sign{position:absolute;z-index:4;transform-origin:50% 100%}
+#sign svg{position:absolute;inset:0;overflow:visible}
+#sign img{position:absolute;left:0;top:0;width:100%}
+#sign span{position:absolute;left:22%;width:72%;font-family:var(--serif);line-height:1;color:var(--ink);text-align:center}
+#wallsvg{position:absolute;inset:0;z-index:7}
+.env{position:absolute;z-index:9;left:0;top:0;opacity:0}
+#cnote{position:absolute;left:0;top:0;z-index:9;opacity:0}
+#cnote img{position:absolute;inset:0;width:100%;height:100%}
+#cnote span{position:absolute;left:8%;right:8%;top:29%;text-align:center;font-family:var(--hand);line-height:1.05;color:var(--ink)}
+#cnote svg{position:absolute;inset:0;overflow:visible}
+#bud-wrap{position:absolute;inset:0;z-index:10;pointer-events:none}
+#ana{position:absolute;left:0;top:0;transform-origin:0 0;will-change:transform;filter:drop-shadow(0 18px 20px rgba(58,44,30,.28))}
+#ana .fr{position:absolute;inset:0;border:0 solid transparent}
+#vb{position:absolute;left:0;top:0;overflow:hidden;background:#D9E4EC}
+#vb img{position:absolute;left:0;top:0;width:100%;height:100%;display:block;transform-origin:50% 42%}
+#ov{position:absolute;left:0;top:0;z-index:14;opacity:0}
+#ov img{position:absolute;left:0;top:0;width:100%}
+/* captions: her words on the scene. Bold ink with a soft cream glow; key words get the soft yellow */
+#cap{position:absolute;z-index:20;pointer-events:none}
+#capP{display:block;font-family:var(--sans);font-weight:800;line-height:1.13;letter-spacing:-.022em;color:var(--ink);text-wrap:balance;
+  text-shadow:0 0 2px rgba(255,248,238,1),0 0 10px rgba(255,248,238,.98),0 0 24px rgba(255,248,238,.92),0 0 44px rgba(255,248,238,.7)}
+#capP span{display:inline-block;white-space:pre}
+#capP span.h{background:linear-gradient(transparent 14%,rgba(255,212,0,.62) 14% 90%,transparent 90%);margin:0 -.04em;padding:0 .04em}
+#grain{position:absolute;inset:0;z-index:30;pointer-events:none;background:url(../../img/vip/paint/tx-grain.webp) 0 0/100% auto;mix-blend-mode:multiply;opacity:.14}
+</style>
+</head>
+<body>
+<div id="film">
+  <img id="sky" alt="">
+  <svg id="world">
+    <defs>
+      <linearGradient id="skyFade" x1="0" y1="0" x2="0" y2="1"><stop offset=".8" stop-color="#FFF8EE" stop-opacity="0"/><stop offset="1" stop-color="#FFF8EE" stop-opacity=".9"/></linearGradient>
+    </defs>
+    <rect id="skyF" x="0" y="0" fill="url(#skyFade)"/>
+  </svg>
+  <img id="land" class="sc" src="paint/vland.webp" alt=""><img id="sea" class="sc" src="paint/vsea.webp" alt=""><img id="g1" class="sc" src="paint/vglint.webp" alt=""><img id="g2" class="sc" src="paint/vglint.webp" alt="">
+  <div id="paper"></div>
+
+  <div class="title" id="t1"><span class="ln">Build proof</span><span class="ln"><i>before you leave.</i></span></div>
+  <div class="title" id="t2"><span class="ln">The <b>Exit Plan.</b></span></div>
+  <div class="title" id="t3"><span class="ln">Bring</span><span class="ln"><i>what you know.</i></span></div>
+
+  <div class="day" id="d1"><span>Day 1</span><div class="stampmark" id="pm" style="opacity:0"><img src="cut/stamp-red.png" alt=""><span>PROOF</span></div></div>
+  <div class="day" id="d2"><span>Day 2</span></div>
+  <div class="day" id="d3"><span>Day 3</span></div>
+
+  <div id="sign"><svg><path id="stick" stroke="#1A1412" fill="none" stroke-linecap="round"/></svg>
+    <img src="paint/vtag.webp" alt=""><span id="signT">the income<br>you want</span></div>
+
+  <svg id="thread"><defs><mask id="am" maskUnits="userSpaceOnUse"><path id="amP" fill="none" stroke="#fff" stroke-width="210"/></mask></defs><image id="arw" mask="url(#am)"/></svg>
+
+  <svg id="wallsvg" style="overflow:visible">
+    <defs>
+      <pattern id="stucco" patternUnits="userSpaceOnUse" width="600" height="1067"><image href="tex/stucco-white.webp" width="600" height="1067"/></pattern>
+      <linearGradient id="wallShade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8FA8C4" stop-opacity=".38"/><stop offset=".14" stop-color="#FFF8EE" stop-opacity=".5"/><stop offset="1" stop-color="#FFF4E2" stop-opacity=".62"/></linearGradient>
+      <linearGradient id="capG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F0B48C"/><stop offset="1" stop-color="#D98A60"/></linearGradient>
+    </defs>
+    <path id="wallF" fill="url(#stucco)"/><path id="wallS" fill="url(#wallShade)"/>
+    <path id="capF" fill="url(#capG)"/>
+    <g id="capT" stroke="#A85F3D" stroke-opacity=".55" stroke-width="2.5" fill="none"></g>
+    <path id="ink1" fill="none" stroke="#1A1412" stroke-width="3.6" stroke-linecap="round"/>
+    <path id="ink2" fill="none" stroke="#1A1412" stroke-width="2.6" stroke-linecap="round"/>
+    <g id="cracks" fill="none" stroke="#3D332E" stroke-opacity=".32" stroke-width="2" stroke-linecap="round"></g>
+  </svg>
+
+  <img class="env" src="../../img/vip/paint/wk3.webp" alt=""><img class="env" src="../../img/vip/paint/wk3.webp" alt=""><img class="env" src="../../img/vip/paint/wk3.webp" alt=""><img class="env" src="../../img/vip/paint/wk3.webp" alt=""><img class="env" src="../../img/vip/paint/wk3.webp" alt="">
+  <div id="cnote"><img src="../../img/vip/paint/note-g.webp" alt=""><span>course<br>idea</span><svg viewBox="0 0 176 170"><path id="strike" d="M18 96 C60 74 112 92 160 66" fill="none" stroke="#F72585" stroke-width="7" stroke-linecap="round"/></svg></div>
+  <div id="bud-wrap"></div>
+
+  <div id="vb"><img id="vid" alt="Ana"></div>
+  <div id="ov"><img src="paint/vfree.webp" alt=""></div>
+  <div id="ana"><div class="fr"></div></div>
+
+  <div id="cap"><p id="capP"></p></div>
+  <div id="grain"></div>
+</div>
+<script src="_local/regvid-data.js"></script>
+<script>
+(function(){
+  'use strict';
+  var $ = function(id){ return document.getElementById(id) };
+  var PHONE = new URLSearchParams(location.search).get('v') === 'p';
+  /* the two shapes: same story, its own staging */
+  var L = PHONE ? {
+    M: [0, 0, 1080, 1253], wallM: 1236, zV: 6, cM: {x: 50, y: 1272, w: 980, fs: 84, align: 'center'}, ov: [24, 44, 440],
+    W: 1080, H: 1920, land: [-40, .82], skyH: 1560, hor: 1532, capT: 1700, capB: 1736, bud: 216, k: 1.42,
+    ins: [100, 118, 860, 997], box: [1060, 1240], FA: [10, -30, 1], FB: [575, 8, .46], bw: [100, 118, 100, 125],
+    cA: {x: 50, y: 1156, w: 980, fs: 80, align: 'center'}, cB: {x: 50, y: 590, w: 980, fs: 80, align: 'center'},
+    t: {x: 195, y: 1486, fs: 112},
+    days: [[186, 326], [474, 614], [762, 902]], day: [282, 372, 46, 100], stamp: [22, 186, 238, 88, 46],
+    sign: [640, 800, 390, 900], signTop: 66, signFs: 74, stick: 'M198 262 C202 500 194 700 199 910', stickW: 8,
+    arw: ['paint/varrow-p.webp', 230, 820, 490, 530], arP: 'M660 1000 C500 860 352 960 338 1230 L334 1340',
+    RX: [[0, 150], [8.62, 150], [9.18, 240], [9.45, 326], [9.95, 614], [10.4, 902], [10.95, 960], [11.55, 960], [14.3, 110], [14.9, 96], [17.25, 96], [17.95, 170], [25.9, 170], [26.5, 150], [40, 150]],
+    env: 368, envW: 230, noteX: 660
+  } : {
+    M: [691, 0, 869, 1008], wallM: 770, zV: 12, cM: {x: 62, y: 316, w: 612, fs: 60, align: 'left'}, ov: [712, 52, 350],
+    W: 1560, H: 1008, land: [-120, .8], skyH: 680, hor: 640, capT: 770, capB: 798, bud: 150, k: 1,
+    ins: [97, 114, 650, 754], box: [844, 989], FA: [715, -21, 1], FB: [1150, 30, .47], bw: [97, 114, 97, 121],
+    cA: {x: 62, y: 332, w: 672, fs: 66, align: 'left'}, cB: {x: 62, y: 96, w: 1060, fs: 66, align: 'left'},
+    t: {x: 62, y: 92, fs: 96},
+    days: [[190, 340], [510, 660], [830, 980]], day: [300, 290, 56, 104], stamp: [28, 170, 244, 90, 44],
+    sign: [1150, 490, 340, 286], signTop: 58, signFs: 64, stick: 'M172 230 C174 250 170 270 173 292', stickW: 7,
+    arw: ['paint/varrow-d.webp', 270, 190, 930, 350], arP: 'M1140 500 C1010 214 560 214 372 408 L300 480',
+    RX: [[0, 320], [8.62, 320], [9.18, 250], [9.45, 340], [9.95, 660], [10.4, 980], [10.95, 1120], [11.55, 1120], [14.3, 120], [14.9, 96], [17.25, 96], [17.95, 250], [40, 250]],
+    env: 340, envW: 170, noteX: 410
+  };
+  var film = $('film'); film.style.width = L.W + 'px'; film.style.height = L.H + 'px'; document.body.style.width = L.W + 'px'; document.body.style.height = L.H + 'px';
+  ['world', 'wallsvg', 'thread'].forEach(function(i){ $(i).setAttribute('width', L.W); $(i).setAttribute('height', L.H); $(i).setAttribute('viewBox', '0 0 ' + L.W + ' ' + L.H) });
+  $('sky').style.width = L.W + 'px'; $('sky').style.height = L.skyH + 'px';
+  $('skyF').setAttribute('width', L.W); $('skyF').setAttribute('height', L.skyH);
+
+  /* easing: everything glides */
+  var clamp = function(x, a, b){ return Math.max(a, Math.min(b, x)) };
+  var io = function(p){ return p < .5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2 };
+  var outq = function(p){ return 1 - Math.pow(1 - p, 4) };
+  var inq = function(p){ return p * p * p };
+  var seg = function(t, a, b){ return clamp((t - a) / (b - a), 0, 1) };
+  var lerp = function(a, b, p){ return a + (b - a) * p };
+  function track(keys, t, ease){
+    ease = ease || io;
+    if (t <= keys[0][0]) return keys[0][1];
+    for (var i = 0; i < keys.length - 1; i++) {
+      var k0 = keys[i], k1 = keys[i + 1];
+      if (t <= k1[0]) { var p = ease((t - k0[0]) / (k1[0] - k0[0])); return Array.isArray(k0[1]) ? k0[1].map(function(v, j){ return lerp(v, k1[1][j], p) }) : lerp(k0[1], k1[1], p) }
+    }
+    return keys[keys.length - 1][1];
+  }
+  /* a rise with anticipation, a small overshoot and a settle */
+  function rise(t, a, d){ var p = seg(t, a, a + d); if (p <= 0) return 0; if (p >= 1) return 1; var dip = Math.sin(clamp(p / .18, 0, 1) * Math.PI) * -.04, q = seg(p, .14, 1); return dip + outq(q) + Math.sin(q * Math.PI) * .07 * (1 - q) }
+
+  /* ---------- painted scenery, hand-wobbled once from a seed ---------- */
+  var s = 7331, R = function(){ s = (s * 16807) % 2147483647; return s / 2147483647 };
+  function wobble(y, amp, step){ var p = [], x = -20, end = L.W + 20; while (x <= end) { p.push([x, y + (R() - .5) * amp]); x += step * (.7 + R() * .6) } p.push([end, y + (R() - .5) * amp]); return p }
+  function smooth(pts){ var d = 'M' + pts[0][0].toFixed(1) + ' ' + pts[0][1].toFixed(1); for (var i = 1; i < pts.length; i++) { var a = pts[i - 1], b = pts[i], mx = (a[0] + b[0]) / 2, my = (a[1] + b[1]) / 2; d += ' Q' + a[0].toFixed(1) + ' ' + a[1].toFixed(1) + ' ' + mx.toFixed(1) + ' ' + my.toFixed(1) } return d + ' L' + pts[pts.length - 1][0].toFixed(1) + ' ' + pts[pts.length - 1][1].toFixed(1) }
+  var SVGNS = 'http://www.w3.org/2000/svg', Wp = L.W + 20;
+  /* the painted coast sits on the horizon; the sea runs from it down to the wall */
+  var land = $('land'), lw = 2400 * L.land[1], lh = 240 * L.land[1]; land.style.width = lw + 'px'; land.style.height = lh + 'px'; land.style.left = L.land[0] + 'px'; land.style.top = (L.hor + 8 - lh) + 'px';
+  ['sea', 'g1', 'g2'].forEach(function(i){ var e = $(i); e.style.width = '2000px'; e.style.height = (L.capT + 12 - L.hor) + 'px'; e.style.left = ((L.W - 2000) / 2) + 'px'; e.style.top = L.hor + 'px' });
+  var ct = smooth(wobble(L.capT, 3, 170)), cb = smooth(wobble(L.capB, 3, 190)), wb = 'L' + Wp + ' ' + (L.H + 560) + ' L-20 ' + (L.H + 560) + ' Z';
+  $('capF').setAttribute('d', ct + ' L' + Wp + ' ' + (L.capB + 2) + ' L-20 ' + (L.capB + 2) + ' Z');
+  $('wallF').setAttribute('d', cb + ' ' + wb); $('wallS').setAttribute('d', cb + ' ' + wb);
+  $('ink1').setAttribute('d', ct); $('ink2').setAttribute('d', cb);
+  /* tile joints repeat every 400 px, so the cap can slide forever while he runs */
+  var JO = [40, 152, 258, 334].map(function(v){ return [v, R() * 6 - 3, R() * 4 - 2] });
+  for (var x0 = 0; x0 < L.W + 800; x0 += 400) JO.forEach(function(j){ var l = document.createElementNS(SVGNS, 'path'); l.setAttribute('d', 'M' + (x0 + j[0]) + ' ' + (L.capT + 2) + ' q' + j[1] + ' ' + ((L.capB - L.capT) / 2) + ' ' + j[2] + ' ' + (L.capB - L.capT - 4)); $('capT').appendChild(l) });
+  [[140, L.capB + 48, 'c18 10 30 4 44 16 c10 8 26 6 34 18'], [L.W * .65, L.capB + 100, 'c-14 12 -30 8 -42 22 c-8 8 -20 10 -30 8'], [L.W * .4, L.capB + 150, 'c20 -6 38 2 56 -6']].forEach(function(c){ var e = document.createElementNS(SVGNS, 'path'); e.setAttribute('d', 'M' + c[0] + ' ' + c[1] + ' ' + c[2]); $('cracks').appendChild(e) });
+
+  /* the day sheets: a wash that misses the line, an ink line that overshoots */
+  [['d1', '#FFE27A', '#F4C93F'], ['d2', '#FFC6DE', '#F39CC2'], ['d3', '#BFD7EC', '#93BBDD']].forEach(function(d, n){
+    var w = L.day[0], h = L.day[1], c = [[10, 12], [w - 8, 6], [w - 4, h - 8], [6, h - 4]], pts = [], side, k;
+    for (side = 0; side < 4; side++) { var A = c[side], B = c[(side + 1) % 4]; for (k = 0; k < 6; k++) { var f = k / 6; pts.push([lerp(A[0], B[0], f) + (R() - .5) * 7, lerp(A[1], B[1], f) + (R() - .5) * 7]) } }
+    var dd = 'M' + pts.map(function(q){ return q[0].toFixed(1) + ' ' + q[1].toFixed(1) }).join(' L') + ' Z', id = 'g' + d[0];
+    var e = $(d[0]); e.style.width = w + 'px'; e.style.height = h + 'px'; e.style.top = (L.capT + 6 - h) + 'px'; e.style.left = L.days[n][0] + 'px';
+    e.insertAdjacentHTML('afterbegin', '<svg width="' + w + '" height="' + h + '"><defs><linearGradient id="' + id + '" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="' + d[1] + '"/><stop offset="1" stop-color="' + d[2] + '"/></linearGradient></defs>'
+      + '<path d="' + dd + '" transform="translate(5 8)" fill="#3D4E66" fill-opacity=".14"/><path d="' + dd + '" transform="translate(3 -3)" fill="url(#' + id + ')"/>'
+      + '<path d="' + dd + '" fill="none" stroke="#1A1412" stroke-width="3.2" stroke-linejoin="round"/></svg>');
+    var sp = e.querySelector(':scope>span'); sp.style.top = L.day[2] + 'px'; sp.style.fontSize = L.day[3] + 'px';
+  });
+  var pmEl = $('pm'); pmEl.style.left = L.stamp[0] + 'px'; pmEl.style.top = L.stamp[1] + 'px'; pmEl.style.width = L.stamp[2] + 'px'; pmEl.style.height = L.stamp[3] + 'px'; pmEl.querySelector('span').style.fontSize = L.stamp[4] + 'px';
+  var sg = $('sign'); sg.style.left = L.sign[0] + 'px'; sg.style.top = L.sign[1] + 'px'; sg.style.width = L.sign[2] + 'px'; sg.style.height = L.sign[3] + 'px'; $('signT').style.fontSize = L.signFs + 'px'; $('signT').style.top = L.signTop + 'px';
+  $('stick').setAttribute('d', L.stick); $('stick').setAttribute('stroke-width', L.stickW); sg.querySelector('svg').setAttribute('width', L.sign[2]); sg.querySelector('svg').setAttribute('height', L.sign[3]);
+  var arw = $('arw'), amP = $('amP'), am = $('am'); arw.setAttribute('href', L.arw[0]); arw.setAttribute('x', L.arw[1]); arw.setAttribute('y', L.arw[2]); arw.setAttribute('width', L.arw[3]); arw.setAttribute('height', L.arw[4]);
+  am.setAttribute('x', 0); am.setAttribute('y', 0); am.setAttribute('width', L.W); am.setAttribute('height', L.H); amP.setAttribute('d', L.arP);
+  ['t1', 't2', 't3'].forEach(function(i){ var e = $(i); e.style.left = L.t.x + 'px'; e.style.top = L.t.y + 'px'; e.style.fontSize = L.t.fs + 'px' });
+  var a = $('ana'), vb = $('vb'), ovl = $('ov'), afr = a.querySelector('.fr');
+  vb.style.zIndex = L.zV; a.style.zIndex = L.zV + 1;
+  ovl.style.width = L.ov[2] + 'px'; ovl.style.height = (L.ov[2] * .565) + 'px';
+  a.style.width = L.box[0] + 'px'; a.style.height = L.box[1] + 'px';
+  var bw = L.bw.map(function(v){ return v + 'px' }).join(' ');
+  afr.style.borderWidth = bw; afr.style.borderImage = 'url(../../img/vip/paint/ana-frame.webp) 208 177 220 176/' + bw + ' stretch';
+
+  /* the world slides while he runs */
+  var V = L.W * .28;
+  function dist(t){ var T1 = 3.7, T2 = 4.7; return t < T1 ? V * t : V * T1 + V * (T2 - T1) * (1 - Math.pow(1 - seg(t, T1, T2), 2)) * .5 }
+
+  /* ---------- the sunflower (from film.html) ---------- */
+  function BUD(id, w, y){
+    var leg = '<g class="bl"><path d="M0 0 L0 46" stroke="#1A1412" stroke-width="7" stroke-linecap="round"/><ellipse cx="8" cy="48" rx="13" ry="7" fill="#1A1412"/></g>';
+    var arm = '<g class="ba"><path d="M0 0 L0 30" stroke="#1A1412" stroke-width="6" stroke-linecap="round"/><circle cx="0" cy="32" r="6.5" fill="#1A1412"/></g>';
+    return '<svg id="' + id + '" width="' + w + '" height="' + (w * 1.25) + '" viewBox="-80 -100 160 200" style="position:absolute;left:' + (-w / 2) + 'px;top:' + (y - w * .625) + 'px;overflow:visible">'
+      + '<ellipse class="bs" cx="0" cy="96" rx="44" ry="9" fill="rgba(60,35,15,.3)"/><g class="bb">' + leg + leg + arm + arm
+      + '<g class="bh"><g transform="scale(1.05)" data-sf="1"></g></g></g></svg>';
+  }
+  function pose(id, o){
+    var e = $(id); e.style.transform = 'translate(' + (o.x || 0).toFixed(1) + 'px,0)';
+    var sq = o.sq || 1, j = o.j || 0;
+    e.querySelector('.bb').setAttribute('transform', 'translate(0 ' + (-j).toFixed(2) + ') rotate(' + (o.r || 0).toFixed(2) + ' 0 90) scale(' + (1 / sq).toFixed(3) + ' ' + sq.toFixed(3) + ')');
+    var Lg = e.querySelectorAll('.bl'), Ar = e.querySelectorAll('.ba');
+    for (var i = 0; i < 2; i++) Lg[i].setAttribute('transform', 'translate(' + (i ? 16 : -16) + ' 40) rotate(' + (Math.sin((o.lp || 0) + i * Math.PI) * (o.la || 0)).toFixed(2) + ')');
+    Ar[0].setAttribute('transform', 'translate(-34 44) rotate(' + (o.al == null ? 14 : o.al).toFixed(1) + ')');
+    Ar[1].setAttribute('transform', 'translate(34 44) rotate(' + (-(o.ar == null ? 14 : o.ar)).toFixed(1) + ')');
+    e.querySelector('.bh').setAttribute('transform', 'rotate(' + (o.ht || 0).toFixed(2) + ' 0 20)');
+    e.querySelector('.bs').setAttribute('rx', (44 * (1 - Math.min(j, 160) / 260)).toFixed(1));
+  }
+  /* feet on the wall's cap */
+  var budScale = L.bud * 1.25 / 200, budY = (L.capT + L.capB) / 2 + 2 - 95 * budScale;
+  $('bud-wrap').innerHTML = BUD('bud', L.bud, budY);
+  function hop(t, E, d, h){ var p = seg(t, E - d, E); return p > 0 && p < 1 ? Math.sin(p * Math.PI) * h : 0 }
+  function rx(t){ return track(L.RX, t, function(p){ return p * p * (3 - 2 * p) * .5 + p * .5 }) }
+  function runner(t){
+    var x = rx(t), v = (rx(t + .02) - rx(t - .02)) / .04, sp = Math.abs(v), fast = L.W * .115;
+    var runs = t < 3.7 ? 1 : t < 4.7 ? 1 - seg(t, 3.7, 4.7) : clamp(sp / fast, 0, 1);
+    var backward = t > 11.55 && t < 14.9;
+    var ph = t * (backward ? 20 : 16), o = {x: x, lp: backward ? -ph : ph, la: 38 * runs, j: Math.abs(Math.sin(ph)) * 13 * runs, sq: 1};
+    o.r = (t < 4.7 ? 7 * runs : v > 0 ? 8 * runs : -9 * runs) + Math.sin(t * 1.3) * 1.2 * (1 - runs);
+    o.al = lerp(14, 40, runs); o.ar = lerp(14, 40, runs);
+    /* free: a small jump, arms up */
+    var c1 = hop(t, 7.0, .55, 58); if (c1 > 0) { o.j += c1; o.al = o.ar = 150 }
+    if (t > 7.0 && t < 7.3) o.sq = 1 - (1 - seg(t, 7.0, 7.3)) * .08;
+    /* looks up at the title */
+    if (t > 7.3 && t < 8.7) o.ht = -9 * io(seg(t, 7.3, 7.7));
+    /* turning at the sign: anticipation before he runs backward */
+    if (t > 11.0 && t < 11.55) { var p = seg(t, 11.0, 11.55); o.r = -4 * Math.sin(p * Math.PI); o.sq = 1 + Math.sin(p * Math.PI) * .03 }
+    /* proof lands: he jumps */
+    var c2 = hop(t, 16.95, .5, 66); if (c2 > 0) { o.j += c2; o.al = o.ar = 155 }
+    /* envelopes blow away: he shrugs */
+    if (t > 23.6 && t < 25.0) { var q = Math.sin(seg(t, 23.6, 25.0) * Math.PI); o.al = lerp(14, 72, q); o.ar = lerp(14, 72, q); o.ht = 5 * q }
+    /* a small cheer on "know" */
+    var c3 = hop(t, 28.0, .55, 48); if (c3 > 0) { o.j += c3; o.al = o.ar = 150 }
+    pose('bud', o);
+  }
+
+  /* ---------- Ana: main shot (her video big, graphics on top), framed, or small in a cut-away ---------- */
+  function main(t){ return 1 - io(seg(t, 8.6, 9.28)) + io(seg(t, 25.88, 26.46)) }
+  function ana(t){
+    var f = track([[0, L.FB], [17.10, L.FB], [17.86, L.FA], [40, L.FA]], t), m = main(t);
+    var arcB = Math.sin(seg(t, 17.10, 17.86) * Math.PI), y = f[1] + arcB * 22;
+    /* a swing from the hook after each move */
+    var sw = 0; if (t > 9.1) sw += Math.sin((t - 9.1) * 7) * 1.5 * Math.exp(-(t - 9.1) * 2.6); if (t > 17.7) sw += Math.sin((t - 17.7) * 6) * 1.1 * Math.exp(-(t - 17.7) * 2.8);
+    /* the frame drops onto her from above, and lifts off the same way */
+    var off = m * (L.H + 260), hx = L.box[0] / 2;
+    a.style.visibility = m >= .999 ? 'hidden' : 'visible';
+    a.style.transformOrigin = hx + 'px 0';
+    a.style.transform = 'translate(' + (f[0] + hx * f[2] - hx).toFixed(2) + 'px,' + (y - off).toFixed(2) + 'px) rotate(' + sw.toFixed(3) + 'deg) scale(' + f[2].toFixed(4) + ')';
+    /* her video grows from the frame's opening to the main shot */
+    var R0 = [f[0] + L.ins[0] * f[2], y + L.ins[1] * f[2], L.ins[2] * f[2], L.ins[3] * f[2]], V = R0.map(function(v, i){ return lerp(v, L.M[i], m) });
+    vb.style.left = V[0].toFixed(2) + 'px'; vb.style.top = V[1].toFixed(2) + 'px'; vb.style.width = V[2].toFixed(2) + 'px'; vb.style.height = V[3].toFixed(2) + 'px';
+    vb.style.transformOrigin = (f[0] + hx * f[2] - V[0]).toFixed(1) + 'px ' + (y - V[1]).toFixed(1) + 'px';
+    vb.style.transform = 'rotate(' + (sw * (1 - m)).toFixed(3) + 'deg)';
+    if (!PHONE) { var fe = (m * 90).toFixed(1), mk = m > .001 ? 'linear-gradient(90deg,transparent 0,#000 ' + fe + 'px)' : 'none'; vb.style.webkitMaskImage = mk; vb.style.maskImage = mk }
+    /* on the phone the wall comes up in front of her for the main shot; on desktop it runs behind her */
+    var dy = (L.wallM - L.capT) * m, tf = 'translateY(' + dy.toFixed(1) + 'px)';
+    $('wallsvg').style.transform = tf; $('bud-wrap').style.transform = tf;
+    /* a slow push-in inside each shot */
+    var sh = t < 8.66 ? t / 8.66 : t < 17.3 ? (t - 8.66) / 8.64 : t < 25.9 ? (t - 17.3) / 8.6 : (t - 25.9) / 4.2;
+    $('vid').style.transform = 'scale(' + (1 + sh * .03).toFixed(4) + ')';
+    /* a graphic on top of her video: the tag lands on "free", swings, and leaves */
+    var A1 = seg(t, 5.86, 6.42), O1 = seg(t, 7.2, 7.62);
+    if (A1 <= 0 || O1 >= 1) ovl.style.opacity = 0;
+    else {
+      var q = outq(A1), ox = L.ov[0] - (1 - q) * L.ov[2] * 1.2 - O1 * O1 * L.ov[2] * 1.6, oy = L.ov[1] - Math.sin(A1 * Math.PI) * 40 - O1 * 60, or = -7 + (1 - q) * -26 + (t > 6.42 ? Math.sin((t - 6.42) * 6) * 2.4 * Math.exp(-(t - 6.42) * 2.4) : 0) - O1 * O1 * 30;
+      ovl.style.opacity = 1; ovl.style.transform = 'translate(' + ox.toFixed(1) + 'px,' + oy.toFixed(1) + 'px) rotate(' + or.toFixed(2) + 'deg)';
+    }
+  }
+
+  /* titles write on left to right, and wipe off the same way */
+  function title(id, t, a0, d, b){
+    var e = $(id), ln = e.querySelectorAll('.ln');
+    if (t < a0 - .01 || t > b + .4) { e.style.visibility = 'hidden'; return }
+    e.style.visibility = 'visible';
+    ln.forEach(function(l, i){
+      var inP = a0 === 0 ? 1 : io(seg(t, a0 + i * d, a0 + (i + 1) * d)), outP = io(seg(t, b, b + .36));
+      l.style.clipPath = 'inset(-20% ' + ((1 - inP) * 103).toFixed(2) + '% -30% ' + (outP * 103).toFixed(2) + '%)';
+    });
+  }
+
+  /* the three days rise as she says them; the sign comes up as he reaches it */
+  function days(t){
+    var out = io(seg(t, 17.05, 17.6)), hh = L.day[1] + 40;
+    [['d1', 9.3, -3.2], ['d2', 9.82, 2.2], ['d3', 10.26, -1.6]].forEach(function(d){
+      var r = rise(t, d[1], .62), e = $(d[0]);
+      e.style.visibility = r <= 0 || out >= 1 ? 'hidden' : 'visible';
+      var press = d[0] === 'd1' ? Math.sin(seg(t, 16.34, 16.62) * Math.PI) * 8 : 0;
+      e.style.transform = 'translateY(' + (((1 - r) * hh + out * hh + press).toFixed(1)) + 'px) rotate(' + d[2] + 'deg)';
+    });
+    var sr = rise(t, 10.5, .6);
+    sg.style.visibility = sr <= 0 || out >= 1 ? 'hidden' : 'visible';
+    var sway = t > 11 ? Math.sin((t - 11) * 5) * 3.2 * Math.exp(-(t - 11) * 1.4) : 0;
+    if (t > 12.85) sway += Math.sin((t - 12.85) * 6) * 2.2 * Math.exp(-(t - 12.85) * 2);
+    var dropS = L.capT - L.sign[1] + 40;
+    sg.style.transform = 'translateY(' + ((1 - sr) * dropS + out * dropS).toFixed(1) + 'px) rotate(' + (sway * (PHONE ? .4 : 1)).toFixed(2) + 'deg)';
+    /* the words on the tag write as she says them */
+    $('signT').style.clipPath = 'inset(-10% ' + ((1 - io(seg(t, 12.9, 13.55))) * 103).toFixed(1) + '% -10% 0)';
+    /* the arrow paints itself from the income back to Day 1, just ahead of him */
+    var Lt = amP.getTotalLength(), pr = io(seg(t, 11.65, 14.5)) * (1 - io(seg(t, 17.05, 17.4)));
+    amP.style.strokeDasharray = Lt + ' ' + (Lt + 20); amP.style.strokeDashoffset = (Lt * (1 - pr)).toFixed(1); arw.style.visibility = pr > 0 ? 'visible' : 'hidden';
+    /* the proof stamp: hovers, presses on the word, settles */
+    var press2 = seg(t, 16.12, 16.36);
+    if (t < 16.12) pmEl.style.opacity = 0;
+    else { pmEl.style.opacity = t < 16.36 ? lerp(0, .55, press2) : 1; var sc = t < 16.36 ? lerp(1.34, 1, inq(press2)) : 1 + Math.sin(seg(t, 16.36, 16.62) * Math.PI) * -.025; pmEl.style.transform = 'rotate(-8deg) scale(' + sc.toFixed(3) + ')' }
+  }
+
+  /* envelopes land for "an audience", the wind takes them on "without one" */
+  var envs = Array.prototype.slice.call(document.querySelectorAll('.env'));
+  envs.forEach(function(e){ e.style.width = L.envW + 'px' });
+  var eh = L.envW * .86, ES = [[0, 0, -5], [118, 0, 4], [58, -18, -2], [20, -38, 7], [92, -54, -6]];
+  var cnote = $('cnote'), nw = 176 * L.k; cnote.style.width = nw + 'px'; cnote.style.height = (170 * L.k) + 'px'; cnote.querySelector('span').style.fontSize = (31 * L.k) + 'px';
+  function envelopes(t){
+    envs.forEach(function(e, i){
+      var E = 19.55 + i * .15, G = 22.85 + (4 - i) * .07, p = seg(t, E - .55, E), g = seg(t, G, G + 1.05);
+      if (p <= 0 || g >= 1) { e.style.opacity = 0; return }
+      var S = ES[i], q = outq(p), X = L.env + S[0] * L.k, Y = L.capT - eh + 10 + S[1] * L.k;
+      var sx = X + (i % 2 ? 150 : -120) * (1 - q), sy = lerp(Y - 420, Y, q * q), rot = S[2] + (1 - q) * (i % 2 ? 40 : -34);
+      var gg = g * g; sx += -gg * (L.W * .75 + i * 80) + Math.sin(g * 5 + i) * 26 * g; sy += -Math.sin(g * Math.PI * .62) * (300 + i * 40) - gg * 90; rot += gg * (i % 2 ? -210 : 170);
+      e.style.opacity = 1; e.style.transform = 'translate(' + sx.toFixed(1) + 'px,' + sy.toFixed(1) + 'px) rotate(' + rot.toFixed(2) + 'deg)';
+    });
+    var A2 = seg(t, 24.0, 24.55), G2 = seg(t, 25.95, 26.85);
+    if (A2 <= 0 || G2 >= 1) cnote.style.opacity = 0;
+    else {
+      var q2 = outq(A2), nh = 170 * L.k, ny0 = L.capT - nh + 6, nx = L.noteX + (1 - q2) * 130 - G2 * G2 * (L.W * .6), ny = lerp(ny0 - 360, ny0, q2 * q2) - Math.sin(G2 * Math.PI * .6) * 340, nr = 5 - (1 - q2) * 24 + G2 * G2 * 150;
+      cnote.style.opacity = 1; cnote.style.transform = 'translate(' + nx.toFixed(1) + 'px,' + ny.toFixed(1) + 'px) rotate(' + nr.toFixed(2) + 'deg)';
+    }
+    var st = $('strike'), Ls = st.getTotalLength(); st.style.strokeDasharray = Ls; st.style.strokeDashoffset = (Ls * (1 - io(seg(t, 25.2, 25.55)))).toFixed(1);
+  }
+
+  /* ---------- captions: the whole thought is readable, each word inks in as she says it ---------- */
+  var capP = $('capP'), cap = $('cap'), capCur = -1, CAPS = window.CAPS;
+  function captions(t){
+    var k = -1; for (var i = 0; i < CAPS.length; i++) if (t >= CAPS[i].t0 - .001 && t < CAPS[i].t1 + .001) k = i;
+    if (k !== capCur) { capCur = k; capP.innerHTML = k < 0 ? '' : CAPS[k].w.map(function(w){ return '<span class="' + (w.h ? 'h' : '') + '">' + w.x + ' </span>' }).join('') }
+    if (k < 0) { capP.style.opacity = 0; return }
+    var c = CAPS[k], sp = capP.querySelectorAll('span'), P = t < 8.66 || t >= 25.9 ? L.cM : t < 17.3 ? L.cB : L.cA;
+    cap.style.left = P.x + 'px'; cap.style.top = P.y + 'px'; cap.style.width = P.w + 'px'; capP.style.fontSize = P.fs + 'px'; capP.style.textAlign = P.align;
+    capP.style.opacity = c.t0 < .01 ? 1 : PHONE && t < 9.3 && t > 8.66 ? io(seg(t, 9.02, 9.2)) : io(seg(t, c.t0 - .02, c.t0 + .1));
+    c.w.forEach(function(w, i){ var p = c.t0 < .01 ? 1 : seg(t, w.t - .05, w.t + .16); sp[i].style.opacity = lerp(.3, 1, p).toFixed(3) });
+  }
+
+  /* her frames: exact, one image per frame of the cut */
+  var vid = $('vid'), sky = $('sky'), lastF = -1;
+  function pad(n){ return ('0000' + n).slice(-5) }
+  function frames(t){
+    var f = Math.min(Math.floor(t * 30 + 1e-6), 901) + 1;
+    if (f === lastF) return Promise.resolve();
+    lastF = f;
+    vid.src = '_local/f/' + pad(f) + '.jpg'; sky.src = '_local/' + (PHONE ? 'b2/' : 'b/') + pad(f) + '.jpg';
+    return Promise.all([vid.decode(), sky.decode()]);
+  }
+
+  window.DUR = window.DUR || 30;
+  window.render = function(t){
+    t = clamp(t, 0, window.DUR);
+    var d = dist(t);
+    $('capT').setAttribute('transform', 'translate(' + (-(d % 400)).toFixed(1) + ' 0)');
+    $('land').style.transform = 'translateX(' + (-d * .09).toFixed(1) + 'px)';
+    /* light on the water: two layers of white strokes, drifting apart and trading places */
+    var sh = Math.sin(t * 1.5);
+    $('g1').style.transform = 'translateX(' + (-t * 7 - d * .22).toFixed(1) + 'px)'; $('g1').style.opacity = (.6 + .4 * sh).toFixed(3);
+    $('g2').style.transform = 'translateX(' + (t * 6 - d * .22).toFixed(1) + 'px) scaleX(-1)'; $('g2').style.opacity = (.6 - .4 * sh).toFixed(3);
+    title('t1', t, 0, 0, 7.0);
+    title('t2', t, 7.42, .72, 8.5);
+    title('t3', t, 25.98, .78, 99);
+    days(t); envelopes(t); runner(t); ana(t); captions(t);
+    return frames(t);
+  };
+
+  fetch('../../exit-number/').then(function(r){ return r.text() }).then(function(txt){
+    var m = txt.match(/<symbol id="sf" viewBox="-60 -60 120 120">([\s\S]*?)<\/symbol>/); var SF = m ? m[1] : '';
+    document.querySelectorAll('[data-sf]').forEach(function(g){ g.innerHTML = SF });
+    var imgs = Array.prototype.slice.call(document.images);
+    return Promise.all(imgs.map(function(im){ return im.complete ? 0 : new Promise(function(r){ im.onload = im.onerror = r }) }));
+  }).then(function(){ return document.fonts.ready }).then(function(){ return window.render(+(new URLSearchParams(location.search).get('t') || 0)) }).then(function(){ document.body.setAttribute('data-ready', '1') });
+})();
+</script>
+</body>
+</html>

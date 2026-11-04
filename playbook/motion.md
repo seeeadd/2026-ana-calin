@@ -65,3 +65,4 @@ See `video-editing.md`. The same principles apply, plus:
 - **His posing:** posed with `pose()` in `tools/film/film.html`, with squash, lean, walk phase and a shadow that
   shrinks when he lifts.
 - **His job:** a guide that carries the viewer between beats, never decoration. Sean wants him in the video.
+- **His proportions:** arms always shorter than his legs, with small hands ("so much longer than his legs").

@@ -6,7 +6,7 @@ const fs = require('fs'), path = require('path');
   const only = (process.argv[2] || '').split(',').filter(Boolean);
   const out = path.join(__dirname, 'layers'); fs.mkdirSync(out, { recursive: true });
   const b = await chromium.launch();
-  const p = await b.newPage({ viewport: { width: 1600, height: 1200 }, deviceScaleFactor: 2 });
+  const p = await b.newPage({ viewport: { width: +(process.env.VW || 1600), height: 1200 }, deviceScaleFactor: 2 });
   const errs = []; p.on('pageerror', e => errs.push(e.message));
   await p.goto('http://localhost:8767/tools/paint/studio.html', { waitUntil: 'networkidle' });
   await p.addStyleTag({ content: 'html,body{background:transparent!important}' });

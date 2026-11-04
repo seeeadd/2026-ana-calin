@@ -3,16 +3,18 @@
 // node tools/film/render.js --sheet <out.png> t1,t2,...     a contact sheet of single frames, to check staging
 const { chromium } = require('playwright');
 const { spawn } = require('child_process');
-const URL0 = 'http://localhost:8767/tools/film/' + (process.env.FILM || 'motion.html');
+const URL0 = "http://localhost:" + (process.env.PORT || 8767) + "/tools/film/" + (process.env.FILM || "motion.html");
+const VW = +(process.env.W || 1920), VH = +(process.env.H || 1080);
 
 (async () => {
   const args = process.argv.slice(2);
   const sheet = args[0] === '--sheet';
   const b = await chromium.launch();
-  const p = await b.newPage({ viewport: { width: 1920, height: 1080 } });
+  const p = await b.newPage({ viewport: { width: VW, height: VH } });
   const errs = []; p.on('pageerror', e => errs.push(e.message));
+  p.on('requestfailed', q => { if (!/fonts\.g/.test(q.url())) { console.error('FAILED', q.url()); process.exit(2) } });
   await p.goto(sheet ? URL0 : (args[2] || URL0), { waitUntil: 'networkidle' });
-  await p.waitForSelector('body[data-ready]', { timeout: 20000 });
+  await p.waitForSelector('body[data-ready]', { timeout: 90000 });
   if (sheet) {
     const times = args[2].split(',').map(Number), shots = [];
     for (const t of times) { await p.evaluate(t => window.render(t), t); shots.push(await p.screenshot({ type: 'png' })); }

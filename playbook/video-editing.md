@@ -22,6 +22,14 @@ every video round.
   page), so she's never gone for long.
 - Stay on her for humour and pattern interrupts. On "My first workshop sold two copies", stay on her face.
 - Remove repeated takes and setup chatter; keep natural breaths. Cut on the thought, not on the word.
+- **Do a cut pass first** and report it: word gaps from the transcript, audio silences, false starts, garbled lines,
+  self-corrections. Say which cuts land under a shot change and which would show as a jump.
+- **Three shot types, alternating** (Nov 4):
+  - **main:** her video big, with graphics, stickers and the character on top of it. On a phone this is true full
+    screen. In a landscape frame she fills the full height and blends into the scene on one side (edge to edge would
+    crop her face).
+  - **framed:** her video inside a painted frame on the painted world.
+  - **cut-away:** the graphics big, her small.
 
 ## 3. Frame and format
 
@@ -33,6 +41,9 @@ every video round.
   - or render at about 1.55:1 (1560 x 1008).
 
   Ask once, then note the answer here.
+- **Two renders of one edit (Nov 4):** the page-window shape for desktop and 9:16 for phones, chosen by the player.
+- **Filling the frame around a portrait source:** a graphic, not AI expand or plain blur. Her real sky recoloured into
+  a two-colour wash on paper, with a painted world in front.
 - **Portrait placement:** her 9:16 clip about 60 to 70% of the frame height, inside a brand frame (painted
   window, painted picture frame or a modern phone), with a soft close shadow, on a built background (painted room,
   paper, Greek window). A raw blurred copy of the same video behind her is the last resort; if used, tint it
@@ -44,7 +55,9 @@ every video round.
 - The first lines must work with no sound. First frame: her speaking plus a readable caption. No logo intro.
 - One short line at a time, two lines max, words appearing as said (each word fades and unblurs in about 0.5 s,
   70 ms apart).
-- On torn paper strips (kraft, pink, cream from `tools/film/cut/`), slightly rotated, rotating through the three.
+- ~~On torn paper strips (kraft, pink, cream from `tools/film/cut/`), slightly rotated, rotating through the three.~~
+  (Nov 4: no paper behind captions.) Straight on the scene: bold ink with a soft cream glow, soft yellow on key words.
+  The whole thought is readable at once and each word inks in as she says it.
 - **Font:** the film used Instrument Serif at 64 px on 1080p; for a talking head Sean prefers sans for reading,
   so use Manrope 700 to 800 for body captions and keep the serif for single big words or numbers.
 - Key numbers get their own caption ($1.4M; 16,907 buyers; 771 likes vs 82).
@@ -65,6 +78,10 @@ every video round.
 - **No generic AI visuals.** For "AI changed the order", show her real working material (questions, comments,
   replies sorted), never a glowing brain or robot.
 - No dates baked into the core video. Dates are a separate insert recorded later.
+- **Every object has a job or it comes out.** No props placed to fill space ("why is it there?").
+- **Arrows are painted objects:** thick, hand-made, with a real head. Never a thin annotation line.
+- **Words on graphics are big and high contrast:** ink on yellow, never pink on pink.
+- **Scenery comes from the paint engine,** with texture and detail, never flat vector shapes.
 
 ## 6. Transitions
 
