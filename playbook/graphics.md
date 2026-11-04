@@ -124,3 +124,49 @@ Leave room for shadows inside the canvas so nothing gets cut at the edge.
 "A little cute seasonal spice, not over the top", made with our own painted techniques: a tree, a wreath,
 holly, string lights hanging on the frozen form, glassy white snowflakes in two sections only (not the whole
 page), and a hat on the sunflower. It switches off automatically after the date.
+
+## 8. At least 2 make-and-judge cycles for every new graphic
+
+Sean, Nov 4: "the cycles for the graphics, at least 2 cycles, and graphic rules."
+
+Applies to every new location, illustration, scene, key prop or sticker, for pages and videos.
+
+1. **Study first:** the client's page, her real room or world, and Sean's references.
+2. **Cycle 1:** make it, view it where it will really be used (in the film or on the page, every shape), and judge it
+   with a fresh eye against the references and the rules below. Write down what to keep and what to fix.
+3. **Cycle 2:** redo it with every fix, compiling the best of what came before. Judge again. Run more cycles only if it
+   still fails. Sean decides when it's enough.
+4. **Then show Sean stills,** in context, with a one-line status. No video render until he has approved the stills.
+
+A draft that Sean asks to see goes to him straight away, labelled as a draft. Cycles never become a reason to go quiet.
+
+## 9. Graphic rules in video
+
+Learned on Ana's registration video, Nov 4. All of them were corrections.
+
+**Finish**
+- Everything goes through the client's material treatment, with real texture and effort per object. Flat vector fails
+  ("clip art"). Lines vary in weight and take a darker local colour rather than one black outline.
+- One light source with cast and contact shadows, falloff on walls and warm pools under lamps.
+- Interiors come from real references: furniture, decor, floors, carpets, wallpaper, paint, textures, lighting fixtures,
+  wall art, mirrors, reflections, flowers. Compose around what the shot actually shows, not the whole picture.
+- Windows are real holes showing the world's own moving scene, framed so land and water stay in view, and only in the
+  glass. Walls are never see-through.
+
+**Every piece has a job**
+- Use the real page piece first. Make something new only where the page has nothing.
+- No props without a job, no thin generic arrows, no decorative sparkles, no pink on pink, no paper behind subtitles.
+- Stock and Pinterest pieces land only on the line they mean.
+- Cut-outs of hands or arms reach in from the frame's edge, so a cut wrist never shows.
+
+**Placement**
+- Info pieces sit on top, never buried, and up high where there's space, clear of landscape detail.
+- A person's face is always whole and never covered, by a card, a label or a crop. That includes camera tiles.
+- Nothing is clipped by a capture: check what overhangs an element's edge. Pieces don't overlap each other or clip at
+  the frame. A paper or torn edge fully hides the video edge behind it.
+- Text is readable on the busiest background it crosses (sticker outline). Check every text moment in every shape.
+
+**Alive**
+- Backgrounds keep moving. Every location has its own motion, and the character interacts with its objects.
+- The mascot stays on screen throughout with a job, never hidden behind a piece or missing, and never covers a piece.
+- The opening and the closing are showpieces.
