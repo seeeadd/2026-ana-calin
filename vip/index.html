@@ -1105,6 +1105,8 @@ body{background:#F4ECDD var(--paper) 0 0/512px}
 .door .scr{height:100%;aspect-ratio:auto;border-radius:0}
 .door .scr img.mk{display:none}
 .door.playing .scr video{opacity:1}
+.scr video.pv{opacity:1}
+.door.playing .scr video.pv{opacity:0}
 .door.playing .vplay{opacity:0}
 .door .vplay{left:7%;bottom:8%}
 .vh .under{margin-top:6px}
@@ -2444,6 +2446,7 @@ body.is-closed .bdg-life{display:none}
   var PROMO_CODE   = '';  // keep empty. ExitPlan99 and ExitPlan100 are test codes: type them on the Stripe checkout to test the payment (the link needs "Allow promotion codes" on).
   var CONFIRM_URL  = '../confirmed/';  // the registered confirmation page (after the decline). After paying, Stripe sends them to /vip-confirmed/ (the page knows their name from this browser)
   var VSL_SRC      = '/assets/video/vip-desktop.mp4';  // Ana's VIP video, plays in the door.
+  var VSL_PREVIEW  = '/assets/video/vip-preview.mp4';  // the first seconds, silent, looping until they press play. About 1 MB.
   var VSL_SRC_P    = '/assets/video/vip-phone.mp4';    // the same edit in portrait: on a phone it opens full screen.
   var CLOSES       = Date.UTC(2026, 11, 9, 4, 59); // Tue Dec 8, 11:59 pm New York
   /* ---------------------------------- */
@@ -2521,21 +2524,29 @@ body.is-closed .bdg-life{display:none}
   /* popup 1 shows the real deadline as plain text: no countdown (Ana's rule) */
 
   /* the video: click to play, with sound; click again to pause */
-  var vsl = document.getElementById('vsl'), vv = vsl.querySelector('video');
+  var vsl = document.getElementById('vsl'), vv = vsl.querySelector('video'), pv0 = null;
+  if (VSL_PREVIEW && !reduce) {
+    pv0 = document.createElement('video'); pv0.className = 'pv'; pv0.muted = true; pv0.loop = true; pv0.playsInline = true; pv0.setAttribute('playsinline', ''); pv0.setAttribute('aria-hidden', 'true'); pv0.src = VSL_PREVIEW;
+    vv.parentNode.insertBefore(pv0, vv); var pv1 = pv0.play(); if (pv1 && pv1.catch) pv1.catch(function(){});
+  }
+  function previewOn(on){ if (!pv0) return; if (on) { var q = pv0.play(); if (q && q.catch) q.catch(function(){}) } else pv0.pause() }
+  /* when she finishes, back to the preview: the next press starts her again from the top */
+  vv.addEventListener('ended', function(){ vv.currentTime = 0; vsl.classList.remove('playing'); previewOn(true) });
   vsl.querySelector('.scr').addEventListener('click', function(){
     if (!VSL_SRC) return;
     if (VSL_SRC_P && matchMedia('(max-width:640px)').matches) {
       var ov = document.createElement('div'); ov.style.cssText = 'position:fixed;inset:0;z-index:9999;background:#000';
       ov.innerHTML = '<video src="' + VSL_SRC_P + '" playsinline controls autoplay style="width:100%;height:100%;object-fit:contain"></video><button type="button" aria-label="Close the video" style="position:absolute;top:calc(12px + env(safe-area-inset-top));right:12px;width:44px;height:44px;border:0;border-radius:50%;background:rgba(0,0,0,.6);color:#fff;font-size:26px;line-height:1;cursor:pointer">&times;</button>';
       document.body.appendChild(ov); document.documentElement.style.overflow = 'hidden';
-      var pv = ov.firstChild, shut = function(){ pv.pause(); ov.remove(); document.documentElement.style.overflow = '' }, pp = pv.play(); if (pp && pp.catch) pp.catch(function(){});
+      previewOn(false);
+      var pv = ov.firstChild, shut = function(){ pv.pause(); ov.remove(); document.documentElement.style.overflow = ''; previewOn(true) }, pp = pv.play(); if (pp && pp.catch) pp.catch(function(){});
       ov.lastChild.addEventListener('click', shut);
       /* she ends on "choose it below": take them to it */
       pv.addEventListener('ended', function(){ shut(); document.getElementById('order').scrollIntoView({behavior:'smooth', block:'center'}) });
       return;
     }
     if (!vv.src) vv.src = VSL_SRC;
-    if (vv.paused) { vv.muted = false; var pr = vv.play(); if (pr && pr.catch) pr.catch(function(){}); vsl.classList.add('playing') }
+    if (vv.paused) { previewOn(false); vv.muted = false; var pr = vv.play(); if (pr && pr.catch) pr.catch(function(){}); vsl.classList.add('playing') }
     else vv.pause();
   });
 

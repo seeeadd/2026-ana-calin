@@ -142,6 +142,8 @@ h2 em,h1 em,h3 em{font-style:italic;color:var(--pink)}
 .iph .scr img,.iph .scr video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%}
 .iph .scr video{opacity:0;transition:opacity .4s}
 .iph.playing .scr video{opacity:1}
+.iph .scr video.pv{opacity:1}
+.iph.playing .scr video.pv{opacity:0}
 .iph .scr:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,20,18,0) 55%,rgba(26,20,18,.5));pointer-events:none;z-index:1}
 .iph .isl{position:absolute;left:12px;top:50%;width:22px;height:84px;margin-top:-42px;border-radius:14px;background:#000;z-index:3}
 .iph .scr img.mkv{inset:auto;right:20px;top:18px;left:auto;bottom:auto;z-index:2;width:58px;height:58px;object-fit:contain;filter:drop-shadow(0 6px 10px rgba(0,0,0,.25))}
@@ -3353,6 +3355,8 @@ picture{display:contents}
   var REG_URL     = '/api/ana-register'; // sends the sign-up to Kit through the API (api/ana-register.js); Kit's own form address is only the fallback
   var VIP_URL     = 'vip/'; // the VIP page (step 2); first_name and email go on the query string for the checkout prefill
   var VSL_SRC     = 'assets/video/ana-exit-plan-desktop.mp4';   // Ana's video, plays in the window. Empty = the still with the play button.
+  var VSL_PREVIEW = 'assets/video/ana-exit-plan-preview.mp4';   // the first seconds, silent, looping until they press play. About 1 MB.
+  var vslPreviewOn = null;
   var VSL_SRC_P   = 'assets/video/ana-exit-plan-phone.mp4';     // the same edit in portrait: on a phone it opens full screen.
   var PARTNERS    = 'partners.json'; // { "ref": "Partner newsletter name" }, from us by Wed Oct 28
   var FEED_URL    = '/api/ana-feed'; // live registrations from Kit (api/ana-feed.js); shows only real data. ?demo=1 previews it with sample data
@@ -3482,7 +3486,7 @@ picture{display:contents}
 
   /* Ana's videos: YouTube in a lightbox, loaded only on click */
   var vm = document.getElementById('vmodal'), vfr = vm.querySelector('.fr');
-  function closeV(){ vm.classList.remove('open','tall'); vm.setAttribute('aria-hidden','true'); vfr.innerHTML = ''; document.body.classList.remove('noscroll') }
+  function closeV(){ vm.classList.remove('open','tall'); vm.setAttribute('aria-hidden','true'); vfr.innerHTML = ''; document.body.classList.remove('noscroll'); if (vslPreviewOn) vslPreviewOn(true) }
   document.querySelectorAll('[data-yt]').forEach(function(b){ b.addEventListener('click', function(){
     vfr.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + b.dataset.yt + '?autoplay=1&rel=0&modestbranding=1" title="' + b.getAttribute('aria-label') + '" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';
     vm.classList.add('open'); vm.setAttribute('aria-hidden','false'); document.body.classList.add('noscroll'); vm.querySelector('.x').focus();
@@ -3680,9 +3684,18 @@ picture{display:contents}
   /* the VSL: click to play, with sound; click again to pause */
   var vsl = document.getElementById('vsl'), vv = vsl.querySelector('video'), cur = vsl.querySelector('.cur'), rem = vsl.querySelector('.rem'), bar = vsl.querySelector('.scrub .ln i');
   function fmt(s){s=Math.max(0,Math.round(s));return Math.floor(s/60)+':'+('0'+s%60).slice(-2)}
+  var pv0 = null;
+  if (VSL_SRC && VSL_PREVIEW && !reduce) {
+    pv0 = document.createElement('video'); pv0.className = 'pv'; pv0.muted = true; pv0.loop = true; pv0.playsInline = true; pv0.setAttribute('playsinline', ''); pv0.setAttribute('aria-hidden', 'true'); pv0.src = VSL_PREVIEW;
+    vv.parentNode.insertBefore(pv0, vv); var pv1 = pv0.play(); if (pv1 && pv1.catch) pv1.catch(function(){});
+    vslPreviewOn = function(on){ if (on) { var q = pv0.play(); if (q && q.catch) q.catch(function(){}) } else pv0.pause() };
+  }
+  /* when she finishes, back to the preview: the next press starts her again from the top */
+  vv.addEventListener('ended', function(){ vv.currentTime = 0; vsl.classList.remove('playing'); if (vslPreviewOn) vslPreviewOn(true) });
   vsl.querySelector('.scr').addEventListener('click',function(){
     if (!VSL_SRC) return;
     if (VSL_SRC_P && matchMedia('(max-width:640px)').matches) {
+      if (vslPreviewOn) vslPreviewOn(false);
       vfr.innerHTML = '<video src="' + VSL_SRC_P + '" playsinline controls autoplay></video>';
       vm.classList.add('open','tall'); vm.setAttribute('aria-hidden','false'); document.body.classList.add('noscroll');
       var pv = vfr.firstChild, pp = pv.play(); if (pp && pp.catch) pp.catch(function(){});
@@ -3691,7 +3704,7 @@ picture{display:contents}
       return;
     }
     if (!vv.src) {vv.src = VSL_SRC}
-    if (vv.paused) {vv.muted = false; var pr = vv.play(); if (pr && pr.catch) pr.catch(function(){}); vsl.classList.add('playing')}
+    if (vv.paused) {if (vslPreviewOn) vslPreviewOn(false); vv.muted = false; var pr = vv.play(); if (pr && pr.catch) pr.catch(function(){}); vsl.classList.add('playing')}
     else vv.pause();
   });
   vv.addEventListener('timeupdate',function(){if(vv.duration){bar.style.width=(vv.currentTime/vv.duration*100)+'%';cur.textContent=fmt(vv.currentTime);rem.textContent='-'+fmt(vv.duration-vv.currentTime)}});
