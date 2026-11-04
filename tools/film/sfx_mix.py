@@ -21,7 +21,7 @@ S={k:rd(os.path.join(DIR,v)) for k,v in F.items()}
 v=rd(VOICE); N=len(v)
 # her first words ease in, so the video doesn't open with a jolt
 FI=int(2.0*SR); v[:FI]*=(.22+.78*np.sin(np.linspace(0,np.pi/2,FI))**1.4)[:,None]
- fx=np.zeros((N,2),np.float32); log=[]
+fx=np.zeros((N,2),np.float32); log=[]
 def put(name,at,a,b,db,semi=0,fin=.004,fout=.04):
     x=S[name][int(a*SR):int(b*SR)].copy(); pk=float(np.abs(S[name][int(a*SR):int(b*SR)]).max())+1e-9; x/=pk
     if semi:
