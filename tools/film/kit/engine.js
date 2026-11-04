@@ -34,15 +34,16 @@
   /* ---------- the shots: start (recording seconds), type, crop ---------- */
   var S = CFG.shots.map(function(s){ return s.slice() });
   S.forEach(function(s){ s.t = T(s[0]) });
+  var isM = function(x){ return x === 'M' || x === 'W' }, HH = CFG.herH || 835;  /* herH: how tall her frames are, when the whole recording is kept */
   function shotAt(t){ var k = 0; for (var i = 0; i < S.length; i++) if (t >= S[i].t - 1e-4) k = i; return k }
   var CROP = [[1, 0], [1.07, -3], [1.07, 3]];
   /* how much main (m) and how much cut-away (c) at time t; a move takes .45 s around the shot change */
   function mix(t){
-    var k = shotAt(t), s = S[k], nx = S[k + 1], m = s[1] === 'M' ? 1 : 0, c = s[1] === 'C' ? 1 : 0;
+    var k = shotAt(t), s = S[k], nx = S[k + 1], m = isM(s[1]) ? 1 : 0, c = s[1] === 'C' ? 1 : 0, w = s[1] === 'W' ? 1 : 0;
     var pv = S[k - 1];
-    if (pv && pv[1] !== s[1] && t < s.t + .3) { var p = io(seg(t, s.t - .15, s.t + .3)); m = lerp(pv[1] === 'M' ? 1 : 0, m, p); c = lerp(pv[1] === 'C' ? 1 : 0, c, p) }
-    else if (nx && nx[1] !== s[1] && t > nx.t - .15) { var q = io(seg(t, nx.t - .15, nx.t + .3)); m = lerp(m, nx[1] === 'M' ? 1 : 0, q); c = lerp(c, nx[1] === 'C' ? 1 : 0, q) }
-    return {m: m, c: c, k: k, type: s[1]};
+    if (pv && pv[1] !== s[1] && t < s.t + .3) { var p = io(seg(t, s.t - .15, s.t + .3)); m = lerp(isM(pv[1]) ? 1 : 0, m, p); c = lerp(pv[1] === 'C' ? 1 : 0, c, p); w = lerp(pv[1] === 'W' ? 1 : 0, w, p) }
+    else if (nx && nx[1] !== s[1] && t > nx.t - .15) { var q = io(seg(t, nx.t - .15, nx.t + .3)); m = lerp(m, isM(nx[1]) ? 1 : 0, q); c = lerp(c, nx[1] === 'C' ? 1 : 0, q); w = lerp(w, nx[1] === 'W' ? 1 : 0, q) }
+    return {m: m, c: c, w: w, k: k, type: s[1]};
   }
 
   /* ---------- painted scenery ---------- */
@@ -67,7 +68,7 @@
   for (var x0 = 0; x0 < L.W + 800; x0 += 400) JO.forEach(function(j){ var l = document.createElementNS(SVGNS, 'path'); l.setAttribute('d', 'M' + (x0 + j[0]) + ' ' + (L.capT + 2) + ' q' + j[1] + ' ' + ((L.capB - L.capT) / 2) + ' ' + j[2] + ' ' + (L.capB - L.capT - 4)); $('capT').appendChild(l) });
 
   /* ---------- her world: the coast, her studio, her desk. The rooms' windows are holes, so the same sea moves behind them ---------- */
-  var RL = PHONE ? [-160, L.capB - 798] : [-200, 0];
+  var RL = L.RL || (PHONE ? [-160, L.capB - 798] : [-200, 0]);
   /* the bay outside: the coast's own painted hills, sea, light and boat, seen only through the glass of the door */
   function tiles(par, src, w, h, top){ var d = document.createElement('div'); d.style.cssText = 'position:absolute;left:0;top:' + top + 'px;width:' + (w * 4) + 'px;height:' + h + 'px'; [0, 1, 2, 3].forEach(function(i){ var m = document.createElement('img'); m.src = src; m.alt = ''; m.style.cssText = 'position:absolute;top:0;left:' + (i * w) + 'px;width:' + w + 'px;height:' + h + 'px;max-width:none;' + (i % 2 ? 'transform:scaleX(-1)' : ''); d.appendChild(m) }); par.appendChild(d); return {e: d, per: w * 2} }
   function room(id, art, sprites, hor, fx){
@@ -89,6 +90,8 @@
     GL('gLamp', '#FFE29A') + BEAM + '<ellipse class="lamp" cx="1704" cy="360" rx="170" ry="140" fill="url(#gLamp)"/>' + motes(18) + pets);
   var DESK = room('desk', 'vdesk', [['vd-sl', 128, 82, 138, 648, 69, 0], ['vd-sr', 476, 82, 132, 648, 66, 0, 'clip-path:polygon(0 0,100% 0,100% 100%,0 100%,0 0,26.4% 47.4%,26.4% 72%,100% 72%,100% 47.4%,26.4% 47.4%,0 0)'], ['vd-pend', 700, 0, 680, 420, 340, 0]], 430,
     GL('gLamp2', '#FFE9A8') + GL('gFlame', '#FFD27A') + BEAM + '<ellipse class="lamp" cx="1340" cy="630" rx="210" ry="150" fill="url(#gLamp2)"/><circle class="glow" cx="495" cy="726" r="52" fill="url(#gFlame)"/><ellipse class="flame" cx="0" cy="-11" rx="6" ry="12" fill="#FFB84A"/><path class="cursor" d="M0 0 L0 17 L4.6 13 L8 20.6 L11 19.2 L7.8 12 L13.4 12 Z" fill="#191512" stroke="#FFF" stroke-width="1.6"/>' + motes(18));
+  var RM = {studio: STUDIO, desk: DESK}, RV = CFG.roomViews || {};  /* roomViews: {room: [x, y, scale, flip, phone x in the room]}: another angle on the same room */
+  (CFG.extraRooms || []).forEach(function(q){ RM[q[0]] = room(q[0], q[1], q[2], q[3], GL('gLampX', '#FFE29A') + BEAM + '<ellipse class="lamp" cx="' + q[4] + '" cy="' + q[5] + '" rx="170" ry="140" fill="url(#gLampX)"/>' + motes(18) + pets) });
   var SC = CFG.rooms.map(function(k){ return [T(k[0]), k[1]] });
   window.__T = T;
   function roomAt(t){ var cur = SC[0][1]; SC.forEach(function(k){ if (t >= k[0]) cur = k[1] }); return cur }
@@ -114,16 +117,19 @@
   }
   function scene(t, type){
     var cur = roomAt(t), tc = null, near = 1e9; SC.forEach(function(k){ if (k[0] > 0 && Math.abs(t - k[0]) < near) { near = Math.abs(t - k[0]); tc = k[0] } });
-    STUDIO.style.visibility = cur === 'studio' ? 'visible' : 'hidden'; DESK.style.visibility = cur === 'desk' ? 'visible' : 'hidden'; $('wallsvg').style.visibility = cur === 'coast' ? 'visible' : 'hidden';
+    Object.keys(RM).forEach(function(k){ RM[k].style.visibility = cur === k ? 'visible' : 'hidden' }); $('wallsvg').style.visibility = cur === 'coast' ? 'visible' : 'hidden';
     var pn = 'translateX(' + pan(t).toFixed(1) + 'px)', big = PHONE && type === 'C', Z = L.H / 1008;
-    [STUDIO, DESK].forEach(function(ro, i){ ro.style.transformOrigin = '0 0'; ro.style.transform = big ? 'translate(' + (-RL[0] - (i ? 170 : 160) * Z + pan(t) * Z).toFixed(1) + 'px,' + (-RL[1]) + 'px) scale(' + Z.toFixed(4) + ')' : pn }); if (cur !== 'coast') roomLife(cur === 'studio' ? STUDIO : DESK, t);
+    Object.keys(RM).forEach(function(k){ var ro = RM[k], v = RV[k]; ro.style.transformOrigin = '0 0'; ro.style.transform = big ? 'translate(' + (-RL[0] - (v && v[4] != null ? v[4] : k === 'desk' ? 170 : 160) * Z + pan(t) * Z).toFixed(1) + 'px,' + (-RL[1]) + 'px) scale(' + Z.toFixed(4) + ')' : pn + (v ? ' translate(' + v[0] + 'px,' + v[1] + 'px) scale(' + (v[3] ? -v[2] : v[2]) + ',' + v[2] + ')' : '') }); if (cur !== 'coast') roomLife(RM[cur], t);
     /* the page's blue shutters swing closed and open on the new place */
     var sl = $('shL'), sr = $('shR'), u = t - tc, on = tc !== null && u > -.26 && u < .32; sl.style.display = sr.style.display = on ? 'block' : 'none'; if (!on) return;
-    var ty = mix(tc + .4).type, W0 = PHONE ? L.W : ty === 'M' ? 700 : ty === 'F' ? 760 : L.W, top = PHONE && ty === 'M' ? L.M[3] - 20 : 0, hh = L.H - top, ang = u < 0 ? 88 * (1 - io(seg(u, -.26, 0))) : 88 * io(seg(u, 0, .32));
+    var ty = mix(tc + .4).type, W0 = PHONE ? L.W : ty === 'M' ? L.M[0] + 9 : ty === 'F' ? L.FA[0] + 45 : L.W, top = PHONE && ty === 'M' ? (L.shM != null ? L.shM : L.M[3] - 20) : 0, hh = L.H - top, ang = u < 0 ? 88 * (1 - io(seg(u, -.26, 0))) : 88 * io(seg(u, 0, .32));
     [sl, sr].forEach(function(e, i){ e.style.width = (W0 / 2 + 2) + 'px'; e.style.height = hh + 'px'; e.style.top = top + 'px'; e.style.left = (i ? W0 / 2 - 1 : 0) + 'px'; e.style.transform = 'perspective(1500px) rotateY(' + (i ? ang : -ang).toFixed(2) + 'deg)' });
   }
 
   /* Ana and her frame */
+  var TN2 = document.createElement('img'); TN2.id = 'torn3'; TN2.src = 'paint/vtorn.webp'; TN2.alt = ''; TN2.style.cssText = 'position:absolute;top:0;width:90px;height:' + L.H + 'px;z-index:13;transform:scaleX(-1);display:none'; film.appendChild(TN2);
+  /* strips: on the phone her video is the whole frame, so each place's floor is laid over her, under the sunflower. [recording second, image] */
+  var FG = null, FGS = (CFG.strips || []).map(function(k){ return [T(k[0]), k[1]] }); if (PHONE && FGS.length) { FG = document.createElement('img'); FG.id = 'fg'; FG.alt = ''; FG.style.cssText = 'position:absolute;left:0;bottom:0;width:100%;z-index:9'; film.appendChild(FG) }
   var a = $('ana'), vb = $('vb'), afr = a.querySelector('.fr'); vb.style.zIndex = L.zV; a.style.zIndex = L.zV + 1;
   a.style.width = L.box[0] + 'px'; a.style.height = L.box[1] + 'px';
   var bw = L.bw.map(function(v){ return v + 'px' }).join(' ');
@@ -136,7 +142,7 @@
   function BUD(id, w, y){
     var leg = '<g class="bl"><path d="M0 0 L0 46" stroke="#1A1412" stroke-width="7" stroke-linecap="round"/><ellipse cx="8" cy="48" rx="13" ry="7" fill="#1A1412"/></g>';
     var arm = '<g class="ba"><path d="M0 0 L0 30" stroke="#1A1412" stroke-width="6" stroke-linecap="round"/><circle cx="0" cy="32" r="6.5" fill="#1A1412"/></g>';
-    return '<svg id="' + id + '" width="' + w + '" height="' + (w * 1.25) + '" viewBox="-80 -100 160 200" style="position:absolute;left:' + (-w / 2) + 'px;top:' + (y - w * .625) + 'px;overflow:visible"><ellipse class="bs" cx="0" cy="96" rx="44" ry="9" fill="rgba(60,35,15,.3)"/><g class="bb">' + leg + leg + arm + arm + '<g class="bh"><g transform="scale(1.05)" data-sf="1"></g></g></g></svg>';
+    return '<svg id="' + id + '" width="' + w + '" height="' + (w * 1.25) + '" viewBox="-80 -100 160 200" style="position:absolute;left:' + (-w / 2) + 'px;top:' + (y - w * .625) + 'px;overflow:visible"><ellipse class="bs" cx="0" cy="96" rx="44" ry="9" fill="rgba(60,35,15,.3)"/><g class="bb">' + leg + leg + arm + arm + '<g class="bh"><g transform="scale(1.05)" data-sf="1"></g>' + (CFG.crown ? '<g transform="translate(5 -71) rotate(9) scale(.74)"><path d="M-37 20 L-44 -20 L-21 -3 L0 -32 L21 -3 L44 -20 L37 20 Z" fill="#F2BE27" stroke="#6B4310" stroke-width="3.6" stroke-linejoin="round"/><path d="M-38 12 L38 12 L37 20 L-37 20 Z" fill="#C98F1E" stroke="#6B4310" stroke-width="2.4" stroke-linejoin="round"/><circle cx="0" cy="-34" r="5.5" fill="#F72585" stroke="#6B4310" stroke-width="2.4"/><circle cx="-44" cy="-22" r="4.5" fill="#46C2B8" stroke="#6B4310" stroke-width="2.2"/><circle cx="44" cy="-22" r="4.5" fill="#46C2B8" stroke="#6B4310" stroke-width="2.2"/><circle cx="0" cy="3" r="5" fill="#F72585" stroke="#6B4310" stroke-width="2.2"/><path d="M-30 -3 Q-22 -8 -14 -3" fill="none" stroke="#FFF2B8" stroke-width="3" stroke-linecap="round"/></g>' : '') + '</g></g></svg>';
   }
   var budScale = L.bud * 1.25 / 200, budY = (L.capT + L.capB) / 2 + 2 - 95 * budScale;
   $('bud-wrap').innerHTML = BUD('bud', L.bud, budY);
@@ -250,20 +256,20 @@
   function ana(t){
     var mx = mix(t), m = mx.m, c = mx.c, s = S[mx.k], nxt = S[mx.k + 1], dur = (nxt ? nxt.t : window.DUR) - s.t, sh = clamp((t - s.t) / dur, 0, 1);
     var f = [lerp(L.FA[0], L.FB[0], c), lerp(L.FA[1], L.FB[1], c), lerp(L.FA[2], L.FB[2], c)];
-    var since = t - s.t, sw = since > 0 && since < 2.2 && s[1] !== 'M' ? Math.sin(since * 7) * 1.3 * Math.exp(-since * 2.6) : 0, off = m * (L.H + 260), hx = L.box[0] / 2;
+    var since = t - s.t, sw = since > 0 && since < 2.2 && !isM(s[1]) ? Math.sin(since * 7) * 1.3 * Math.exp(-since * 2.6) : 0, off = m * (L.H + 260), hx = L.box[0] / 2;
     a.style.visibility = m >= .999 ? 'hidden' : 'visible'; a.style.transformOrigin = hx + 'px 0';
     a.style.transform = 'translate(' + (f[0] + hx * f[2] - hx).toFixed(2) + 'px,' + (f[1] - off).toFixed(2) + 'px) rotate(' + sw.toFixed(3) + 'deg) scale(' + f[2].toFixed(4) + ')';
-    var R0 = [f[0] + L.ins[0] * f[2], f[1] + L.ins[1] * f[2], L.ins[2] * f[2], L.ins[3] * f[2]], Vr = R0.map(function(v, i){ return lerp(v, L.M[i], m) });
+    var R0 = [f[0] + L.ins[0] * f[2], f[1] + L.ins[1] * f[2], L.ins[2] * f[2], L.ins[3] * f[2]], Vr = R0.map(function(v, i){ return lerp(v, L.M[i], m) }); if (mx.w > 0) { var WR = PHONE ? L.M : [(L.W - 1000) / 2, 0, 1000, L.H]; Vr = Vr.map(function(v, i){ return lerp(v, WR[i], mx.w) }) }
     vb.style.left = Vr[0].toFixed(2) + 'px'; vb.style.top = Vr[1].toFixed(2) + 'px'; vb.style.width = Vr[2].toFixed(2) + 'px'; vb.style.height = Vr[3].toFixed(2) + 'px';
     vb.style.transformOrigin = (f[0] + hx * f[2] - Vr[0]).toFixed(1) + 'px ' + (f[1] - Vr[1]).toFixed(1) + 'px'; vb.style.transform = 'rotate(' + (sw * (1 - m)).toFixed(3) + 'deg)';
     var t2 = $('torn2'); t2.style.display = PHONE && m > .02 ? 'block' : 'none'; if (PHONE) { t2.style.left = (L.W / 2 - 45) + 'px'; t2.style.top = (Vr[1] + Vr[3] - 34 - 560) + 'px'; t2.style.opacity = clamp(m * 2.5, 0, 1).toFixed(3) }
-    var tn = $('torn'); tn.style.display = PHONE || m < .02 ? 'none' : 'block'; tn.style.opacity = clamp(m * 2.5, 0, 1).toFixed(3); tn.style.left = (Vr[0] - 12).toFixed(1) + 'px';
+    var tn = $('torn'); tn.style.display = PHONE || m < .02 ? 'none' : 'block'; tn.style.opacity = clamp(m * 2.5, 0, 1).toFixed(3); TN2.style.display = !PHONE && mx.w > .02 ? 'block' : 'none'; TN2.style.left = (Vr[0] + Vr[2] - 78).toFixed(1) + 'px'; TN2.style.opacity = mx.w.toFixed(3); tn.style.left = (Vr[0] - 12).toFixed(1) + 'px';
     var dy = (L.wallM - L.capT) * m, tf = 'translateY(' + dy.toFixed(1) + 'px)'; $('wallsvg').style.transform = tf; $('bud-wrap').style.transform = tf;
     $('wash').style.opacity = (c * .1).toFixed(3);
     /* crop: closer on her in landscape, following her face; shot 20 pushes in the most */
-    var cr = CROP[s[2]], push = s[3] || .03, zoom = (PHONE ? 1 : 1.14) * cr[0] * (1 + sh * push) * punch(t, s, nxt), seen = 835 / zoom;
-    var fc = window.FACE[clamp(Math.floor(t * 30), 0, window.FACE.length - 1)], top = clamp(fc - seen * .47, 0, 835 - seen), mxd = (zoom - 1) / 2 * 100 / zoom, dx = clamp(cr[1], -mxd, mxd);
-    $('vid').style.transform = 'translate(' + dx.toFixed(2) + '%,' + (-top / 835 * zoom * 100).toFixed(3) + '%) scale(' + zoom.toFixed(4) + ')';
+    var cr = CROP[s[2]], push = s[3] || .03, zoom = (PHONE ? 1 : 1.14 - mx.w * .14) * cr[0] * (1 + sh * push) * punch(t, s, nxt), seen = (CFG.herH ? Vr[3] / Vr[2] * 720 : 835) / zoom;
+    var fc = window.FACE[clamp(Math.floor(t * 30), 0, window.FACE.length - 1)], top = clamp(fc - seen * .47, 0, HH - seen), mxd = (zoom - 1) / 2 * 100 / zoom, dx = clamp(cr[1], -mxd, mxd);
+    $('vid').style.transform = 'translate(' + dx.toFixed(2) + '%,' + (-top / HH * zoom * 100).toFixed(3) + '%) scale(' + zoom.toFixed(4) + ')'; if (CFG.herH) $('vid').style.height = (Vr[2] * HH / 720).toFixed(1) + 'px';
     return mx;
   }
 
@@ -275,7 +281,7 @@
     var k = -1; for (var i = 0; i < CAPS.length; i++) if (t >= CAPS[i].t0 - .001 && t < CAPS[i].t1 + .001) k = i;
     if (k < 0 || CAPS[k].hide) { capP.style.opacity = 0; capCur = -2; return }
     if (k !== capCur) { capCur = k; capP.innerHTML = CAPS[k].w.map(function(w, i, A){ var nx = A[i + 1], cl = w.h ? (PINK.indexOf(w.x) >= 0 ? 'pk' : 'h') : ''; return w.h && nx && nx.h ? '<span class="' + cl + '">' + w.x + ' </span>' : '<span class="' + cl + '">' + w.x + '</span> ' }).join('') }
-    var c = CAPS[k], sp = capP.querySelectorAll('span'), P = type === 'C' ? L.cC : type === 'F' ? L.cF : L.cM;
+    var c = CAPS[k], sp = capP.querySelectorAll('span'), P = type === 'C' ? L.cC : type === 'F' ? L.cF : type === 'W' && L.cW ? L.cW : L.cM;
     var titled = !PHONE && type !== 'C' && TITLED.some(function(k){ return t >= k[0] && t < k[1] }); cap.style.left = P.x + 'px'; cap.style.top = (titled ? 316 : P.y) + 'px'; cap.style.width = P.w + 'px'; capP.style.fontSize = P.fs + 'px'; capP.style.textAlign = P.align;
     if (PHONE && type === 'C') { var chh = capP.offsetHeight; if (P.y + chh > L.H - 22) cap.style.top = (L.H - 22 - chh) + 'px' }
     capP.style.opacity = io(seg(t, c.t0 - .02, c.t0 + .1));
@@ -288,6 +294,7 @@
   function frames(t, waits){
     var f = clamp(Math.floor(t * 30 + 1e-6), 0, NF - 1) + 1;
     if (ACT.her) setImg(vid, CFG.frames + '/f/' + pad(f) + '.jpg', waits);
+    if (FG && ACT.her) { var fgs = FGS[0][1]; FGS.forEach(function(k){ if (t >= k[0]) fgs = k[1] }); setImg(FG, fgs, waits) }
     if (ACT.world) setImg(sky, CFG.frames + (PHONE ? '/b2/' : '/b/') + pad(f) + '.jpg', waits);
   }
 
@@ -295,7 +302,7 @@
   var ROOTS = {
     world: ['#sky', '#world', '#gulls', '#far', '#near', '#sea', '#boat', '#g1', '#g2', '#paper', '#wash', '#rooms', '#wallsvg', '#pieces > .under'],
     actor: ['#shL', '#shR', '#bud-wrap'],
-    her: ['#vb', '#torn', '#torn2', '#ana'],
+    her: ['#vb', '#torn', '#torn2', '#torn3', '#ana', '#fg'],
     graphics: ['#thread', '#pieces > :not(.under)', '#cursor', '#tap'],
     captions: ['#cap'],
     grain: ['#grain']
@@ -322,7 +329,7 @@
       var d = DS[clamp(Math.floor(t * 30), 0, DS.length - 1)];
       $('capT').setAttribute('transform', 'translate(' + (-(d % 400)).toFixed(1) + ' 0)');
       /* everything keeps moving: far hills slowly, the near coast faster, the sea and its light on their own */
-      slide('far', d * .05 + t * 1.2); slide('near', d * .22 + t * 3.4); slide('sea', d * .34 + t * 10);
+      slide('far', d * .05 + t * 1.2 + (CFG.coastX || 0) * .25); slide('near', d * .22 + t * 3.4 + (CFG.coastX || 0)); slide('sea', d * .34 + t * 10);
       var sn = Math.sin(t * 1.5); slide('g1', d * .34 + t * 26); $('g1').style.opacity = (.6 + .4 * sn).toFixed(3);
       slide('g2', d * .34 + t * 4); $('g2').style.opacity = (.6 - .4 * sn).toFixed(3);
       var bspan = L.W + 340, bx = L.W + 120 - ((t * 15 + d * .22 + bspan * .3) % bspan); boat.style.transform = 'translate(' + bx.toFixed(1) + 'px,' + (L.hor + 4 + Math.sin(t * 1.3) * 3).toFixed(1) + 'px) rotate(' + (Math.sin(t * 1.1) * 1.8).toFixed(2) + 'deg)';

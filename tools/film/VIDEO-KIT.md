@@ -14,6 +14,10 @@ One engine, one small config per video. Every video is `kit.html?video=<id>`. St
 
 The local server `ana-render` (port 8768) starts by itself if it is down. Add `--from s --to s --shape d` to any render for a piece of the film. For a sped-up delivery set `"speed": 1.25` in `audio.json`, run `mix`, then add `--speed 1.25 --audio <that mix>` to the render: her voice and the picture speed up, music and effects don't. The renderer retries a stalled browser and uses fewer workers on a busy machine; still, don't run two renders at once.
 
+## Added for the VIP video (see `videos/vip/config.js`)
+
+`desktopW` for a page window that isn't 1560 wide. `herH: 1280` keeps her whole recording, for the phone running her full under everything (`layout.p.M`, `strips`). Shot type `W` is her big, centred, torn paper both sides. `roomViews` is another angle on a room, `extraRooms` a new one, `crown` is his hat. A song that needs looping goes through a built bed (`videos/vip/music.py`): measure the bar, line the joins up to the sample. Before each draft, check overlaps in the DOM per shape, and scan every final's text for dates.
+
 ## New graphics
 
 Every new location, illustration or key prop gets at least 2 make-and-judge cycles, viewed in context in both shapes, before stills go to Sean, and no video render until he approves the stills. The rules are in `playbook/graphics.md` sections 8 and 9: read those two sections before drawing anything. Keep cycles cheap: stills, a contact sheet, one fresh judge per cycle at most.

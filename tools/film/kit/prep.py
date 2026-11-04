@@ -9,7 +9,9 @@ import numpy as np
 FILM=os.path.dirname(os.path.dirname(os.path.abspath(__file__))); VIDEO,STEP=sys.argv[1:3]; V=f'{FILM}/videos/{VIDEO}'; C=json.load(open(f'{V}/cut.json')); ex=os.path.expanduser
 L=ex(C.get('local',f'{FILM}/_local/{VIDEO}')); os.makedirs(L,exist_ok=True); W=f'{L}/transcript.json'; REC=ex(C['recording']); FPS=30
 EDL=[];p=0
-for a,b in C['cuts']: EDL.append([p,a]); p=b
+for a,b in C['cuts']:
+    if a>p: EDL.append([p,a])   # a cut from the very start leaves no empty piece
+    p=b
 EDL.append([p,C['end']])
 def T(s):
     o=0

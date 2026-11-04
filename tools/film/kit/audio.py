@@ -122,7 +122,7 @@ def step_mix():
         SONG=S[z['file']]; g=10**(z['db']/20)/(float(np.sqrt(np.mean(SONG[int(z['ref'][0]*SR):int(z['ref'][1]*SR)]**2)))+1e-9)
         for when,a,b,fi,fo in z['clips']:
             st0=at(when); b=a+(N/SR-st0) if b=='end' else b
-            x=SONG[int(a*SR):int(b*SR)].copy(); L=len(x); w=np.ones(L); i,o=int(fi*SR),int(fo*SR); w[:i]=np.linspace(0,1,i)**.5 if fi<.2 else np.sin(np.linspace(0,np.pi/2,i)); w[-o:]=np.cos(np.linspace(0,np.pi/2,o)); st=int(st0*SR); e=min(st+L,N); mus[st:e]+=(x*w[:,None]*g)[:e-st]
+            x=SONG[int(a*SR):int(b*SR)].copy(); x=x[:max(0,N-int(st0*SR))] if int(st0*SR)+len(x)>N and fo>.3 else x; L=len(x); w=np.ones(L); i,o=int(fi*SR),int(fo*SR); w[:i]=np.linspace(0,1,i)**.5 if fi<.2 else np.sin(np.linspace(0,np.pi/2,i)); w[-o:]=np.cos(np.linspace(0,np.pi/2,o)); st=int(st0*SR); e=min(st+L,N); mus[st:e]+=(x*w[:,None]*g)[:e-st]
         for a,b in z.get('fade_out',[]): i,j=int(a*SR),int(b*SR); mus[i:j]*=np.cos(np.linspace(0,np.pi/2,j-i))[:,None]
         for a,b in z.get('silence',[]): mus[int(a*SR):int(b*SR)]=0
         # the music gives up the band her consonants live in, and dips while she speaks
