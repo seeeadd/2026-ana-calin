@@ -2443,7 +2443,8 @@ body.is-closed .bdg-life{display:none}
   var CHECKOUT_URL = 'https://buy.stripe.com/28EcN57sQcyC54k6vBc7u0G';  // Stripe Payment Link, VIP access, $67 one-time. In Stripe, "After payment" redirects to https://exitplan.howwegrowtoday.com/vip-confirmed/
   var PROMO_CODE   = '';  // keep empty. ExitPlan99 and ExitPlan100 are test codes: type them on the Stripe checkout to test the payment (the link needs "Allow promotion codes" on).
   var CONFIRM_URL  = '../confirmed/';  // the registered confirmation page (after the decline). After paying, Stripe sends them to /vip-confirmed/ (the page knows their name from this browser)
-  var VSL_SRC      = '';  // Ana's VIP video (mp4), 60 to 90 seconds. Required for launch.
+  var VSL_SRC      = '/assets/video/vip-desktop.mp4';  // Ana's VIP video, plays in the door.
+  var VSL_SRC_P    = '/assets/video/vip-phone.mp4';    // the same edit in portrait: on a phone it opens full screen.
   var CLOSES       = Date.UTC(2026, 11, 9, 4, 59); // Tue Dec 8, 11:59 pm New York
   /* ---------------------------------- */
 
@@ -2523,6 +2524,16 @@ body.is-closed .bdg-life{display:none}
   var vsl = document.getElementById('vsl'), vv = vsl.querySelector('video');
   vsl.querySelector('.scr').addEventListener('click', function(){
     if (!VSL_SRC) return;
+    if (VSL_SRC_P && matchMedia('(max-width:640px)').matches) {
+      var ov = document.createElement('div'); ov.style.cssText = 'position:fixed;inset:0;z-index:9999;background:#000';
+      ov.innerHTML = '<video src="' + VSL_SRC_P + '" playsinline controls autoplay style="width:100%;height:100%;object-fit:contain"></video><button type="button" aria-label="Close the video" style="position:absolute;top:calc(12px + env(safe-area-inset-top));right:12px;width:44px;height:44px;border:0;border-radius:50%;background:rgba(0,0,0,.6);color:#fff;font-size:26px;line-height:1;cursor:pointer">&times;</button>';
+      document.body.appendChild(ov); document.documentElement.style.overflow = 'hidden';
+      var pv = ov.firstChild, shut = function(){ pv.pause(); ov.remove(); document.documentElement.style.overflow = '' }, pp = pv.play(); if (pp && pp.catch) pp.catch(function(){});
+      ov.lastChild.addEventListener('click', shut);
+      /* she ends on "choose it below": take them to it */
+      pv.addEventListener('ended', function(){ shut(); document.getElementById('order').scrollIntoView({behavior:'smooth', block:'center'}) });
+      return;
+    }
     if (!vv.src) vv.src = VSL_SRC;
     if (vv.paused) { vv.muted = false; var pr = vv.play(); if (pr && pr.catch) pr.catch(function(){}); vsl.classList.add('playing') }
     else vv.pause();
