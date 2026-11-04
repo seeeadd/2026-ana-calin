@@ -1100,7 +1100,9 @@ body{background:#F4ECDD var(--paper) 0 0/512px}
 /* hero: her door in Greece, the video in the opening */
 .door{position:relative;width:calc(100% + 110px);margin-left:-110px}
 .door-art{display:block;width:100%;height:auto;pointer-events:none}
-.door-v{position:absolute;left:15.315%;top:17.742%;width:60.36%;height:67.74%;overflow:hidden;border-radius:35.8% 35.8% 0 0 / 23.8% 23.8% 0 0}
+/* Nov 4 (Sean: "i want everything to be visible ... i like the curves"): the video sits fully under the arch, 16:9, so
+   nothing in it is cut; the arch keeps its rounded top above it */
+.door-v{position:absolute;left:15.766%;top:25.645%;width:59.459%;height:59.839%;overflow:hidden;border-radius:3px}
 .door-v:after{content:"";position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 10px 18px -8px rgba(60,35,15,.45),inset 8px 0 14px -10px rgba(60,35,15,.35)}
 .door .scr{height:100%;aspect-ratio:auto;border-radius:0}
 .door .scr img.mk{display:none}
@@ -1245,7 +1247,7 @@ body{background:var(--page)}
 /* ---- hero: the door opens on her ---- */
 .door-leaf,.door-closed{position:absolute;inset:0;width:100%;height:auto;pointer-events:none}
 .door-leaf{opacity:0;animation:leafin .5s ease-out 1.75s forwards}
-.door-closed{transform-origin:75.68% 50%;animation:dswing 1.6s var(--swing) .55s forwards;z-index:2}
+.door-closed{transform-origin:78.38% 50%;animation:dswing 1.6s var(--swing) .55s forwards;z-index:2}
 @keyframes dswing{0%{transform:perspective(1600px) rotateY(0)}12%{transform:perspective(1600px) rotateY(4deg)}80%{opacity:1}100%{transform:perspective(1600px) rotateY(-84deg);opacity:0}}
 @keyframes leafin{from{opacity:0;transform:translateX(-1.2%) scaleX(.94)}to{opacity:1;transform:none}}
 .door .door-v .scr img{animation:warm 1.6s var(--glide) .9s both}
