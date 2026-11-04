@@ -2502,6 +2502,11 @@ picture{display:contents}
 .convos .cv-ph img.cv-pfp{position:absolute;right:-12px;bottom:-14px;width:34%;height:auto;aspect-ratio:1;object-fit:cover;border-radius:50%;border:3px solid #fff;box-shadow:0 0 0 1.5px var(--ink),0 8px 14px -8px rgba(26,20,18,.55);transform:rotate(4deg);z-index:2}
 /* Sean, Nov 4: their dates bigger on the forms */
 .tk-k.tz2 .r1 b,.ey.tz2 .r1 b{font-size:1.32em;letter-spacing:.06em;line-height:1.3}
+/* Sean, Nov 4: the other cities two per row */
+.ftz li.ft-also{display:grid;grid-template-columns:max-content repeat(2,max-content);column-gap:22px;row-gap:4px;align-items:baseline;justify-content:start}
+.ftz li.ft-also .ft-k{grid-row:span 2;margin-right:0}
+.ftz li.ft-also .ft-c:not(:last-child):after{content:none}
+@media (max-width:380px){.ftz li.ft-also{grid-template-columns:repeat(2,max-content);column-gap:12px;font-size:13px;padding-left:0}.ftz li.ft-also .ft-k{grid-row:auto;grid-column:1 / -1}}
 </style>
 </head>
 <body>
