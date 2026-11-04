@@ -8,7 +8,7 @@ const fs = require('fs'), path = require('path');
   const b = await chromium.launch();
   const p = await b.newPage({ viewport: { width: +(process.env.VW || 1600), height: 1200 }, deviceScaleFactor: 2 });
   const errs = []; p.on('pageerror', e => errs.push(e.message));
-  await p.goto('http://localhost:8767/tools/paint/studio.html', { waitUntil: 'networkidle' });
+  await p.goto(process.env.PAGE || 'http://localhost:8767/tools/paint/studio.html', { waitUntil: 'networkidle' });
   await p.addStyleTag({ content: 'html,body{background:transparent!important}' });
   await p.evaluate(() => document.fonts.ready);
   await p.waitForFunction(() => document.body.dataset.ready === '1');

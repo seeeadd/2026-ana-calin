@@ -71,13 +71,20 @@ def load(f):
 def paint(art, layers):
     first = Image.open(os.path.join(LAY, layers[0]['file'])); w, h = first.size
     seed = sum(map(ord, art))
-    H = paper(h, w, seed)
-    rgb = np.ones((h, w, 3), np.float32)      # the picture over white
-    cov = np.zeros((h, w), np.float32)        # how much of each pixel is paint or object paper
+    Hf = paper(h, w, seed); hf, wf = h, w
+    rgbf = np.ones((h, w, 3), np.float32)     # the picture over white
+    covf = np.zeros((h, w), np.float32)       # how much of each pixel is paint or object paper
+    PAD = int(48 * S)
     for i, L in enumerate(layers):
+        if i: rgbf[y0:y1, x0:x1] = rgb; covf[y0:y1, x0:x1] = cov
         col, a = load(L['file']); o = L.get('opt', {}); mat = L['mat']; sd = seed + 101 * (i + 1)
         dens = float(o.get('density', 1))
-        if a.max() < 0.01: continue
+        ys, xs = np.where(a > 0.01)
+        if not len(ys): y0, y1, x0, x1 = 0, 0, 0, 0; rgb = rgbf[0:0, 0:0]; cov = covf[0:0, 0:0]; continue
+        # work only on the part of the sheet this layer touches: hundreds of small layers stay quick
+        y0, y1, x0, x1 = max(ys.min() - PAD, 0), min(ys.max() + PAD, hf), max(xs.min() - PAD, 0), min(xs.max() + PAD, wf)
+        col, a, H = col[y0:y1, x0:x1], a[y0:y1, x0:x1], Hf[y0:y1, x0:x1]; h, w = y1 - y0, x1 - x0
+        rgb = rgbf[y0:y1, x0:x1].copy(); cov = covf[y0:y1, x0:x1].copy()
         if mat in ('wash', 'shadow'):
             amp = float(o.get('bleed', 3.2 if mat == 'wash' else 3.5)) * S
             a2 = warp(a, h, w, 14 * S, amp, sd); col = warp(col, h, w, 14 * S, amp, sd)
@@ -130,6 +137,7 @@ def paint(art, layers):
                 A = A * (1 - 0.5 * smooth(1 - H + 0.15 * noise(h, w, 0.8 * S, sd + 5), 0.62, 0.9))[..., None]
             rgb = rgb * (1 - A) + c * A
             cov = np.maximum(cov, A[..., 0])
+    rgbf[y0:y1, x0:x1] = rgb; covf[y0:y1, x0:x1] = cov; rgb, cov = rgbf, covf
     # un-premultiply against white, so the picture sits on any page colour
     al = np.clip(cov, 0, 1)[..., None]
     out = np.where(al > 0.004, 1 - (1 - rgb) / np.maximum(al, 1e-3), 1)

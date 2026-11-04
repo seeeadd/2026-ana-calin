@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Ana's rooms</title>
+<!-- Her two rooms for the registration video, for the paint engine: each picture is <g data-mat> layers, so the rooms get
+     the same gouache, wash and ink as the coast. The French doors are real holes, so the moving bay shows through.
+     VW=2600 PAGE=http://localhost:8768/tools/film/rooms.html node tools/paint/render.js vstudio,vdesk; python3 tools/paint/paint.py vstudio vdesk
+     Interior references from Sean, Nov 4: fluted arched oak, petal glass pendant, organic gold mirror, marble, velvet, fish rug,
+     vintage rug, travertine oval desk, pleated lamp, ranunculus in ribbed glass, leaning mirror, sheers, wainscot. -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@600;800&display=swap">
+<style>html,body{margin:0;background:transparent}svg{display:block}</style></head>
+<body><div id="host"></div>
+<script>
+(function(){
+'use strict';
+var s0 = 90210, R = function(){ s0 = (s0 * 16807) % 2147483647; return s0 / 2147483647 }, RR = function(a, b){ return a + (b - a) * R() }, pick = function(a){ return a[Math.floor(R() * a.length)] };
+var layers, defs, UID = 0;
+/* layers: consecutive pieces with the same material merge into one painted layer */
+function L(mat, svg, opt){ opt = opt || ''; var last = layers[layers.length - 1]; if (last && last.mat === mat && last.opt === opt) last.svg += svg; else layers.push({mat: mat, opt: opt, svg: svg}) }
+var G = function(s, o){ L('gouache', s, o || 'data-angle="90" data-streak=".03"') }, W = function(s, dn){ L('wash', s, 'data-density="' + (dn || .5) + '"') }, I = function(s, dn){ L('ink', s, dn ? 'data-density="' + dn + '"' : '') }, H = function(s){ L('white', s) }, S = function(s, dn){ L('shadow', s, 'data-density="' + (dn || .5) + '"') }, F = function(s){ L('flat', s) };
+function P(d, fill, x){ return '<path d="' + d + '" fill="' + (fill || 'none') + '" ' + (x || '') + '/>' }
+function LN(d, c, w, x){ return '<path d="' + d + '" fill="none" stroke="' + c + '" stroke-width="' + (w || 1.6) + '" stroke-linecap="round" stroke-linejoin="round" ' + (x || '') + '/>' }
+function RC(x, y, w, h, fill, x2){ return '<rect x="' + x + '" y="' + y + '" width="' + w + '" height="' + h + '" fill="' + fill + '" ' + (x2 || '') + '/>' }
+function grad(a, b, vert, mid){ var id = 'g' + (UID++); defs.push('<linearGradient id="' + id + '" x1="0" y1="0" x2="' + (vert ? 0 : 1) + '" y2="' + (vert ? 1 : 0) + '"><stop offset="0" stop-color="' + a + '"/>' + (mid ? '<stop offset=".5" stop-color="' + mid + '"/>' : '') + '<stop offset="1" stop-color="' + b + '"/></linearGradient>'); return 'url(#' + id + ')' }
+function radial(c, o){ var id = 'g' + (UID++); defs.push('<radialGradient id="' + id + '"><stop offset="0" stop-color="' + c + '" stop-opacity="' + o + '"/><stop offset=".55" stop-color="' + c + '" stop-opacity="' + (o * .32) + '"/><stop offset="1" stop-color="' + c + '" stop-opacity="0"/></radialGradient>'); return 'url(#' + id + ')' }
+
+var OAK = '#6E4524', ROSE = '#8C4C42', GREY = '#8F8A80', GOLD = '#7C5A1E', UMB = '#4A3122';
+
+/* plaster: colour blooms that pool, and a soft fall of light away from the door */
+function plaster(x0, y0, x1, y1, base, dark, lightX){ var o = ''; for (var i = 0; i < 26; i++) { var rx = RR(60, 220), ry = RR(30, 110); o += '<ellipse cx="' + RR(x0, x1).toFixed(0) + '" cy="' + RR(y0, y1).toFixed(0) + '" rx="' + rx.toFixed(0) + '" ry="' + ry.toFixed(0) + '" fill="' + dark + '" opacity=".24"/>' } W(o, .32); var f = ''; for (var i = 0; i < 90; i++) { var x = RR(x0, x1), y = RR(y0, y1); f += LN('M' + x.toFixed(0) + ' ' + y.toFixed(0) + ' q' + RR(4, 22).toFixed(0) + ' ' + RR(-6, 6).toFixed(0) + ' ' + RR(14, 46).toFixed(0) + ' ' + RR(-4, 4).toFixed(0), base, RR(.8, 1.6).toFixed(1), 'opacity=".5"') } H(f) }
+/* honey oak boards converging on the door side, each board its own tone, with grain */
+function boards(y0, y1, vx, cols, gr){ var n = 34, o = '', wash = '', g = '', ln = ''; for (var i = -8; i < n; i++) { var a = vx + (i - 14) * 62, b = vx + (i - 14) * 62 * 2.7, a2 = a + 62, b2 = b + 62 * 2.7; o += P('M' + a + ' ' + y0 + ' L' + a2 + ' ' + y0 + ' L' + b2 + ' ' + y1 + ' L' + b + ' ' + y1 + ' Z', pick(cols)); ln += LN('M' + a + ' ' + y0 + ' L' + b + ' ' + y1, OAK, 1.3, 'opacity=".75"'); for (var k = 0; k < 5; k++) { var t = R(), tt = t + RR(.05, .2); g += LN('M' + (lerp(a, b, t) + RR(5, 55) * (1 + t * 1.7)).toFixed(0) + ' ' + (y0 + (y1 - y0) * t).toFixed(0) + ' L' + (lerp(a, b, tt) + RR(5, 55) * (1 + tt * 1.7)).toFixed(0) + ' ' + (y0 + (y1 - y0) * tt).toFixed(0), gr, RR(.7, 1.3).toFixed(1), 'opacity=".55"') } } for (var r = 0; r < 7; r++) { var t = Math.pow((r + 1) / 8, 1.6), y = y0 + (y1 - y0) * t; for (var c = 0; c < 9; c++) { ln += LN('M' + RR(0, 2000).toFixed(0) + ' ' + y.toFixed(0) + ' l' + RR(30, 70).toFixed(0) + ' 0', OAK, 1.1, 'opacity=".6"') } } G(o, 'data-angle="80" data-streak=".06"'); I(g, .6); I(ln, .85) }
+function lerp(a, b, t){ return a + (b - a) * t }
+/* fluted panel: light rolls across, bright crest then dark groove, fading away from the door */
+function fluted(x, y, w, h, base, archTop){ var r = w / 2, path = archTop ? 'M' + x + ' ' + (y + h) + ' V' + (y + r) + ' A' + r + ' ' + r + ' 0 0 1 ' + (x + w) + ' ' + (y + r) + ' V' + (y + h) + ' Z' : 'M' + x + ' ' + y + ' H' + (x + w) + ' V' + (y + h) + ' H' + x + ' Z'; var id = 'c' + (UID++); defs.push('<clipPath id="' + id + '"><path d="' + path + '"/></clipPath>'); G(P(path, base)); var gr = '', cr = ''; for (var i = 2; i < w; i += 10) { gr += RC(x + i, y, 4.6, h, '#6E4524', 'opacity="' + (.5 + .35 * i / w).toFixed(2) + '"'); cr += RC(x + i + 5.4, y, 2.2, h, '#FFF1D8', 'opacity="' + (.7 - .4 * i / w).toFixed(2) + '"') } W('<g clip-path="url(#' + id + ')">' + gr + '</g>', .75); H('<g clip-path="url(#' + id + ')">' + cr + '</g>'); I(LN(path, OAK, 1.9)) }
+/* a ranunculus: tissue petals cupped round a green heart, darkest in the middle */
+function ranunculus(x, y, r, c, dark, turn){ var g = '', w = '', hi = '', line = ''; turn = turn || 0; var sy = .82; for (var k = 0; k < 5; k++) { var rr = r * (1 - k * .17), n = 11 - k; for (var i = 0; i < n; i++) { var a = (i + k * .5) / n * 6.283 + turn, px = x + Math.cos(a) * rr * .62, py = y + Math.sin(a) * rr * .62 * sy, pw = rr * .56, ph = rr * .46, rot = (a * 57.3 + 90).toFixed(0); var tr = 'transform="rotate(' + rot + ' ' + px.toFixed(1) + ' ' + py.toFixed(1) + ')"'; g += '<ellipse cx="' + px.toFixed(1) + '" cy="' + py.toFixed(1) + '" rx="' + pw.toFixed(1) + '" ry="' + ph.toFixed(1) + '" fill="' + c + '" ' + tr + '/>'; w += '<ellipse cx="' + (x + Math.cos(a) * rr * .5).toFixed(1) + '" cy="' + (y + Math.sin(a) * rr * .5 * sy).toFixed(1) + '" rx="' + (pw * .5).toFixed(1) + '" ry="' + (ph * .42).toFixed(1) + '" fill="' + dark + '" ' + tr + ' opacity=".55"/>'; line += '<path d="M' + (x + Math.cos(a - .35) * rr * .94).toFixed(1) + ' ' + (y + Math.sin(a - .35) * rr * .94 * sy).toFixed(1) + ' Q' + (x + Math.cos(a) * rr * 1.06).toFixed(1) + ' ' + (y + Math.sin(a) * rr * 1.06 * sy).toFixed(1) + ' ' + (x + Math.cos(a + .35) * rr * .94).toFixed(1) + ' ' + (y + Math.sin(a + .35) * rr * .94 * sy).toFixed(1) + '" fill="none" stroke="' + dark + '" stroke-width="1" opacity=".75"/>'; if (i % 3 === k % 3) hi += '<path d="M' + (x + Math.cos(a - .25) * rr * .92).toFixed(1) + ' ' + (y + Math.sin(a - .25) * rr * .92 * sy).toFixed(1) + ' Q' + (x + Math.cos(a) * rr * 1.02).toFixed(1) + ' ' + (y + Math.sin(a) * rr * 1.02 * sy).toFixed(1) + ' ' + (x + Math.cos(a + .25) * rr * .92).toFixed(1) + ' ' + (y + Math.sin(a + .25) * rr * .92 * sy).toFixed(1) + '" fill="none" stroke="#FFF6EE" stroke-width="1.6"/>' } } return {g: g + '<circle cx="' + x + '" cy="' + y + '" r="' + (r * .15).toFixed(1) + '" fill="#8FA85A"/>', w: w, l: line, h: hi} }
+function bouquet(list, vx, vy){ var g = '', w = '', l = '', h = '', st = ''; list.forEach(function(f){ st += LN('M' + (vx + RR(-14, 14)).toFixed(0) + ' ' + vy + ' Q' + ((vx + f[0]) / 2 + RR(-16, 16)).toFixed(0) + ' ' + ((vy + f[1]) / 2).toFixed(0) + ' ' + f[0] + ' ' + f[1], '#5F8048', 3.2) }); G(st); list.forEach(function(f){ var r = ranunculus(f[0], f[1], f[2], f[3], f[4], RR(0, 6)); g = r.g; G(g, 'data-angle="30" data-streak=".05"'); W(r.w, .55); I(r.l, .8); H(r.h) }) }
+function leaf(x, y, len, ang, c, dark){ var t = 'transform="translate(' + x + ' ' + y + ') rotate(' + ang + ')"', wd = len * .26; G('<path ' + t + ' d="M0 0 C' + (len * .3) + ' ' + (-wd) + ' ' + (len * .75) + ' ' + (-wd * .9) + ' ' + len + ' 0 C' + (len * .72) + ' ' + wd + ' ' + (len * .28) + ' ' + wd + ' 0 0 Z" fill="' + c + '"/>', 'data-angle="40" data-streak=".05"'); W('<path ' + t + ' d="M0 0 C' + (len * .28) + ' ' + (wd * .9) + ' ' + (len * .72) + ' ' + wd + ' ' + len + ' 0 L0 0 Z" fill="' + dark + '" opacity=".7"/>', .5); I('<path ' + t + ' d="M0 0 H' + (len * .96) + '" stroke="' + dark + '" stroke-width="1.2" fill="none"/>', .8) }
+function sheers(x, y, w, h, n){ /* 6 broad folds, soft value shifts, thin enough for the bay to tint through */ var o = '', dark = '', hi = ''; var fw = w / n; for (var i = 0; i < n; i++) { var fx = x + i * fw + RR(-3, 3); o += P('M' + fx.toFixed(0) + ' ' + y + ' C' + (fx + RR(-6, 6)).toFixed(0) + ' ' + (y + h * .3).toFixed(0) + ' ' + (fx + RR(-8, 8)).toFixed(0) + ' ' + (y + h * .7).toFixed(0) + ' ' + (fx - i * .6 + RR(-6, 2)).toFixed(0) + ' ' + (y + h) + ' H' + (fx + fw + RR(0, 8)).toFixed(0) + ' C' + (fx + fw + RR(-6, 6)).toFixed(0) + ' ' + (y + h * .7).toFixed(0) + ' ' + (fx + fw + RR(-6, 6)).toFixed(0) + ' ' + (y + h * .3).toFixed(0) + ' ' + (fx + fw).toFixed(0) + ' ' + y + ' Z', '#FFFDF6', 'fill-opacity="' + RR(.66, .9).toFixed(2) + '"'); dark += LN('M' + (fx + fw * .72).toFixed(0) + ' ' + y + ' C' + (fx + fw * .66).toFixed(0) + ' ' + (y + h * .4).toFixed(0) + ' ' + (fx + fw * .8).toFixed(0) + ' ' + (y + h * .7).toFixed(0) + ' ' + (fx + fw * .74).toFixed(0) + ' ' + (y + h), '#8E9AAE', RR(5, 9).toFixed(1), 'opacity=".55"'); hi += LN('M' + (fx + fw * .28).toFixed(0) + ' ' + y + ' V' + (y + h), '#FFFFFF', RR(3, 6).toFixed(1), 'opacity=".9"') } G(o, 'data-angle="90" data-streak=".04"'); W(dark, .42); H(hi); I(LN('M' + x + ' ' + y + ' V' + (y + h) + ' M' + (x + w) + ' ' + y + ' V' + (y + h), GREY, 1.2), .6) }
+function books(x, base, n, cols, hmin, hmax){ var o = '', w = '', l = '', cx = x; for (var i = 0; i < n; i++) { var bw = RR(13, 28), h = RR(hmin, hmax), c = pick(cols); o += RC(cx.toFixed(1), (base - h).toFixed(1), bw.toFixed(1), h.toFixed(1), c); w += RC((cx + bw - 5).toFixed(1), (base - h).toFixed(1), 5, h.toFixed(1), '#2A1B12', 'opacity=".4"'); l += LN('M' + (cx + 3).toFixed(1) + ' ' + (base - h * .82).toFixed(1) + ' h' + (bw - 8).toFixed(1) + ' M' + (cx + 3).toFixed(1) + ' ' + (base - h * .76).toFixed(1) + ' h' + (bw - 8).toFixed(1) + ' M' + (cx + 4).toFixed(1) + ' ' + (base - h * .24).toFixed(1) + ' h' + (bw - 10).toFixed(1), '#FFF3D6', 1.3); cx += bw + .6 } G(o, 'data-angle="90" data-streak=".04"'); W(w, .5); H(l); return cx }
+function glassVase(x, base, w, h){ /* ribbed clear glass, water line, bent stems seen through it */ var path = 'M' + (x - w * .34) + ' ' + (base - h) + ' C' + (x - w * .58) + ' ' + (base - h * .62) + ' ' + (x - w * .56) + ' ' + (base - h * .2) + ' ' + (x - w * .38) + ' ' + base + ' H' + (x + w * .38) + ' C' + (x + w * .56) + ' ' + (base - h * .2) + ' ' + (x + w * .58) + ' ' + (base - h * .62) + ' ' + (x + w * .34) + ' ' + (base - h) + ' Z'; G(P(path, '#DCEBE2', 'fill-opacity=".62"')); W(P('M' + (x - w * .5) + ' ' + (base - h * .62) + ' C' + (x - w * .56) + ' ' + (base - h * .2) + ' ' + (x - w * .38) + ' ' + base + ' ' + (x - w * .38) + ' ' + base + ' H' + (x + w * .38) + ' C' + (x + w * .56) + ' ' + (base - h * .2) + ' ' + (x + w * .5) + ' ' + (base - h * .62) + ' ' + (x + w * .5) + ' ' + (base - h * .62) + ' Z', '#9CC4B8'), .42); var st = ''; for (var i = 0; i < 7; i++) st += LN('M' + (x + (i - 3) * 6) + ' ' + (base - h) + ' Q' + (x + (i - 3) * 10) + ' ' + (base - h * .5) + ' ' + (x + (i - 3) * 4) + ' ' + (base - 12), '#577A44', 2.2); I(st); var rib = ''; for (var i = -4; i <= 4; i++) rib += LN('M' + (x + i * w * .1) + ' ' + (base - h + 4) + ' C' + (x + i * w * .14) + ' ' + (base - h * .6) + ' ' + (x + i * w * .14) + ' ' + (base - h * .25) + ' ' + (x + i * w * .09) + ' ' + (base - 3), '#FFFFFF', 2.1, 'opacity=".85"'); H(rib); I(LN(path, '#6C8A7E', 1.3) + LN('M' + (x - w * .5) + ' ' + (base - h * .62) + ' Q' + x + ' ' + (base - h * .55) + ' ' + (x + w * .5) + ' ' + (base - h * .62), '#6C8A7E', 1)) }
+function frame(x, y, w, h, matt, inner){ S(RC(x + 8, y + 12, w, h, '#5A4034'), .55); G(RC(x, y, w, h, grad('#E8C783', '#B28A36', true))); W(RC(x + w - 7, y, 7, h, '#6B4A18') + RC(x, y + h - 7, w, 7, '#6B4A18'), .55); G(RC(x + 9, y + 9, w - 18, h - 18, matt), 'data-angle="0" data-streak=".012"'); I(P('M' + x + ' ' + y + ' h' + w + ' v' + h + ' h-' + w + ' Z M' + (x + 9) + ' ' + (y + 9) + ' h' + (w - 18) + ' v' + (h - 18) + ' h-' + (w - 18) + ' Z', 'none', 'stroke="' + GOLD + '" stroke-width="1.5"')); if (inner) inner() }
+
+function pendantS(){
+  /* the petal pendant: thin glass, brass stem, hung in front of the wardrobes */
+  var cx = 1280; G(LN('M' + cx + ' 0 C' + (cx - 6) + ' 34 ' + (cx + 8) + ' 60 ' + cx + ' 100', '#B98F3C', 5)); [[-120, 112, -26], [-54, 158, -10], [54, 160, 12], [122, 110, 28]].forEach(function(q){ var x = cx + q[0], y = q[1]; G(LN('M' + cx + ' 96 Q' + (cx + q[0] * .5) + ' ' + (y - 46) + ' ' + x + ' ' + (y - 22), '#B98F3C', 3.6)); var t = 'transform="rotate(' + q[2] + ' ' + x + ' ' + y + ')"'; G('<ellipse cx="' + x + '" cy="' + y + '" rx="58" ry="40" fill="#F9C6D8" fill-opacity=".9" ' + t + '/>', 'data-angle="20" data-streak=".03"'); W('<ellipse cx="' + x + '" cy="' + (y + 16) + '" rx="42" ry="17" fill="#E66A97" ' + t + '/>', .5); H('<ellipse cx="' + (x - 14) + '" cy="' + (y - 14) + '" rx="28" ry="9" fill="#FFFFFF" fill-opacity=".85" ' + t + '/>' + '<ellipse cx="' + x + '" cy="' + y + '" rx="56" ry="38" fill="none" stroke="#FFF" stroke-width="2.2" ' + t + '/>'); I('<ellipse cx="' + x + '" cy="' + y + '" rx="58" ry="40" fill="none" stroke="#B9496F" stroke-width="1.1" ' + t + '/>') });
+  F('<ellipse cx="' + cx + '" cy="190" rx="240" ry="150" fill="' + radial('#FFD9E6', .42) + '"/>');
+
+}
+
+/* ==================== her room ==================== */
+function studio(){
+  var H0 = 700, hole = 'M230 ' + H0 + ' V300 A125 125 0 0 1 480 300 V' + H0 + ' Z';
+  G('<path fill-rule="evenodd" d="M-10 -10 H2010 V716 H-10 Z ' + hole + '" fill="' + grad('#FBEDE3', '#F1D3C6', true) + '"/>', 'data-angle="6" data-streak=".022"');
+  /* one light: wall falls away from the door */
+  W('<path fill-rule="evenodd" d="M480 60 H2010 V716 H480 Z" fill="' + grad('#E9C4B4', '#C99486', false) + '" opacity=".55"/>', .38);
+  plaster(0, 60, 2000, 700, '#FFF6EC', '#D9A998', 400);
+  /* ceiling, a hidden warm cove, and a real crown */
+  G(RC(-10, -10, 2020, 62, '#FCF6EA'), 'data-angle="0" data-streak=".012"'); F(RC(-10, 40, 2020, 14, '#FFDE96', 'opacity=".95"')); W(RC(-10, 52, 2020, 26, '#FFCE6B', 'opacity=".55"'), .4);
+  G(RC(-10, 62, 2020, 34, grad('#E2C194', '#BC935E', true)), 'data-angle="0" data-streak=".06"'); var cr = ''; for (var i = 0; i < 140; i++) cr += RC(i * 15, 76, 7, 10, '#7A542C', 'opacity=".6"'); W(cr, .5); I(LN('M-10 62 H2010 M-10 72 H2010 M-10 96 H2010', OAK, 1.5));
+  W(RC(-10, 96, 2020, 46, '#8C4C42', 'opacity=".5"'), .3);
+  /* floor */
+  boards(716, 1018, 700, ['#E9CBA2', '#E2C094', '#EDD3AC', '#DDB98A', '#E6C69A'], '#9C7446');
+  G(RC(-10, 692, 2020, 26, '#FCF8EF'), 'data-angle="0" data-streak=".015"'); W(RC(-10, 712, 2020, 6, '#7D8BA0'), .5); I(LN('M-10 692 H2010 M-10 718 H2010', GREY, 1.3));
+
+  /* the arched French door: deep painted casing, inner reveal in shadow, bay beyond */
+  var casing = 'M196 716 V300 A159 159 0 0 1 514 300 V716 Z';
+  G('<path fill-rule="evenodd" d="' + casing + ' ' + hole + '" fill="#FEFBF3"/>', 'data-angle="90" data-streak=".016"');
+  W('<path fill-rule="evenodd" d="M214 716 V300 A141 141 0 0 1 496 300 V716 Z ' + hole + '" fill="#8FA1BA" opacity=".78"/>', .5);
+  I(LN(casing, GREY, 1.6) + LN(hole, '#59677C', 1.6));
+  S(P('M514 716 V340 C540 400 560 560 566 716 Z', '#7D6B66'), .46);
+  G(LN('M355 176 V' + H0, '#FEFBF3', 9) + LN('M230 300 H480', '#FEFBF3', 7) + LN('M230 440 H480', '#FEFBF3', 7) + LN('M230 580 H480', '#FEFBF3', 7) + LN('M292 176 V' + H0, '#FEFBF3', 5) + LN('M418 176 V' + H0, '#FEFBF3', 5));
+  I(LN('M350 176 V' + H0 + ' M360 176 V' + H0, GREY, .9));
+  /* brass handle */
+  G(RC(339, 470, 7, 44, '#C9A03C') + RC(365, 470, 7, 44, '#C9A03C')); I(LN('M339 470 h7 v44 h-7 Z M365 470 h7 v44 h-7 Z', GOLD, 1));
+  /* climbing bougainvillea on the right shoulder only, stems first */
+  var st = ''; [[470, 180, 530, 120, 560, 240], [486, 230, 548, 200, 560, 360], [440, 150, 500, 104, 560, 130]].forEach(function(q){ st += LN('M' + q[0] + ' ' + q[1] + ' Q' + q[2] + ' ' + q[3] + ' ' + q[4] + ' ' + q[5], '#6A5A33', 3) }); I(st);
+  for (var i = 0; i < 36; i++) { var a = RR(4.7, 6.1), rr = RR(120, 195), x = 355 + Math.cos(a) * rr + RR(0, 60), y = 300 + Math.sin(a) * rr; if (R() < .34) leaf(x.toFixed(0), y.toFixed(0), RR(16, 28).toFixed(0), RR(0, 360).toFixed(0), pick(['#6F8C52', '#5F8048']), '#3D5A2E') }
+  var bg = '', bw = ''; for (var i = 0; i < 70; i++) { var a = RR(4.7, 6.15), rr = RR(128, 188), x = 355 + Math.cos(a) * rr + RR(0, 60), y = 300 + Math.sin(a) * rr, r = RR(4, 8.5); bg += '<path d="M' + x.toFixed(1) + ' ' + (y - r).toFixed(1) + ' L' + (x + r).toFixed(1) + ' ' + y.toFixed(1) + ' L' + x.toFixed(1) + ' ' + (y + r).toFixed(1) + ' L' + (x - r).toFixed(1) + ' ' + y.toFixed(1) + ' Z" fill="' + pick(['#F72585', '#EC4E97', '#F472AE', '#D83A85']) + '"/>'; bw += '<circle cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="1.5" fill="#FFF6D8"/>' } G(bg, 'data-angle="50" data-streak=".05"'); H(bw);
+  /* floor-length sheers pooling, on a brass rod with rings */
+  G(LN('M130 146 H582', '#BE9534', 6) + '<circle cx="130" cy="146" r="8" fill="#C9A03C"/><circle cx="582" cy="146" r="8" fill="#C9A03C"/>'); I(LN('M130 143 H582', GOLD, 1));
+
+  /* her painting: loaded brushwork, pink and turquoise, a plant in the orange pot */
+  S(RC(600, 124, 310, 508, '#6B4E46'), .55);
+  var cv = {x: 586, y: 110, w: 300, h: 500};
+  G(RC(cv.x, cv.y, cv.w, cv.h, '#E97FB2'), 'data-angle="35" data-streak=".09"');
+  G('<path d="M' + cv.x + ' ' + cv.y + ' h300 v90 C820 230 720 190 586 250 Z" fill="#F4A8CC"/><path d="M736 420 C800 390 850 420 886 400 V610 H726 C716 540 748 480 736 420 Z" fill="#3FBDB2"/><path d="M586 470 C640 450 690 500 720 610 H586 Z" fill="#F7C4D9"/>', 'data-angle="60" data-streak=".1"');
+  var strokes = ''; for (var i = 0; i < 70; i++) { var x = RR(cv.x + 8, cv.x + cv.w - 60), y = RR(cv.y + 10, cv.y + cv.h - 16); strokes += LN('M' + x.toFixed(0) + ' ' + y.toFixed(0) + ' q' + RR(8, 30).toFixed(0) + ' ' + RR(-18, 18).toFixed(0) + ' ' + RR(20, 60).toFixed(0) + ' ' + RR(-14, 14).toFixed(0), pick(['#FFD400', '#FFF4FA', '#1FB5B0', '#F9B4CF', '#F72585', '#FF8A3D']), RR(3, 10).toFixed(1)) } G(strokes, 'data-angle="30" data-streak=".12"');
+  var pot = 'M690 478 H782 L770 580 H702 Z';
+  [[736, 480, 150, -118, '#4E8A4F'], [736, 480, 170, -96, '#7FB25E'], [736, 480, 160, -74, '#2F6E4A'], [736, 480, 130, -55, '#E8D44A'], [736, 480, 140, -140, '#3F8F6A'], [736, 480, 110, -160, '#C7D65A'], [736, 480, 120, -30, '#58A06A']].forEach(function(q){ leaf(q[0], q[1], q[2], q[3], q[4], '#1F4A33') });
+  var pet = ''; for (var i = 0; i < 16; i++) pet += LN('M' + RR(650, 830).toFixed(0) + ' ' + RR(320, 450).toFixed(0) + ' l' + RR(8, 22).toFixed(0) + ' ' + RR(-16, 4).toFixed(0), pick(['#FFF4FA', '#FFD400', '#F72585']), RR(2.5, 5).toFixed(1)); G(pet, 'data-angle="20" data-streak=".1"');
+  G(P(pot, '#EE7A2E'), 'data-angle="70" data-streak=".12"'); W(P('M748 478 H782 L770 580 H742 Z', '#A63E12'), .6); G(LN('M694 500 L778 500', '#FFB25A', 7) + LN('M700 540 L772 540', '#FFD38A', 5), 'data-angle="0" data-streak=".1"'); I(LN(pot, '#7B3A12', 1.5));
+  /* canvas edge */
+  W(RC(cv.x + cv.w - 7, cv.y, 7, cv.h, '#7A2A58'), .5); I(LN('M' + cv.x + ' ' + cv.y + ' h' + cv.w + ' v' + cv.h + ' h-' + cv.w + ' Z', '#7A2A58', 1.3));
+
+  /* the low white cabinet from her real room */
+  S(P('M540 716 H950 L990 736 H540 Z', '#5F5858'), .55);
+  G(RC(556, 610, 372, 106, grad('#FFFEF8', '#EDE7DA', false)), 'data-angle="0" data-streak=".012"'); G(RC(544, 594, 396, 18, '#FFFDF5'), 'data-angle="0" data-streak=".012"');
+  W(RC(556, 612, 372, 10, '#7E8CA2') + RC(912, 612, 16, 104, '#7E8CA2'), .5);
+  var cl = 'M544 594 H940 V612 H544 Z M556 612 V716 H928 V612 '; [556, 680, 804].forEach(function(x){ cl += 'M' + (x + 14) + ' 628 h96 v74 h-96 Z M' + (x + 22) + ' 636 h80 v58 h-80 Z ' }); I(LN(cl, GREY, 1.4));
+  G([636, 760, 884].map(function(x){ return '<circle cx="' + (x - 10) + '" cy="664" r="5" fill="#C9A03C"/>' }).join(''));
+  /* bottles, jars of brushes, paint tubes: each with a highlight and a shadow */
+  S(P('M570 594 H930 L944 588 H580 Z', '#6B6058'), .4);
+  function bottle(x, h, w, c, dk){ var b = 594, path = 'M' + (x - w / 2) + ' ' + b + ' V' + (b - h * .6) + ' C' + (x - w / 2) + ' ' + (b - h * .72) + ' ' + (x - w * .18) + ' ' + (b - h * .72) + ' ' + (x - w * .18) + ' ' + (b - h * .82) + ' V' + (b - h) + ' H' + (x + w * .18) + ' V' + (b - h * .82) + ' C' + (x + w * .18) + ' ' + (b - h * .72) + ' ' + (x + w / 2) + ' ' + (b - h * .72) + ' ' + (x + w / 2) + ' ' + (b - h * .6) + ' V' + b + ' Z'; G(P(path, c)); W(P('M' + (x + w * .08) + ' ' + b + ' V' + (b - h * .7) + ' L' + (x + w / 2) + ' ' + (b - h * .6) + ' V' + b + ' Z', dk), .55); H(LN('M' + (x - w * .28) + ' ' + (b - 10) + ' V' + (b - h * .56), '#FFFFFF', 3)); I(LN(path, dk, 1.2)) }
+  bottle(902, 104, 34, '#2F6E4A', '#143826'); bottle(860, 78, 28, '#C25B47', '#6B2517'); bottle(576, 66, 26, '#2E5DA8', '#142E5E');
+  [[628, 56, 52, '#FFE27A', '#A98413'], [692, 46, 50, '#BFD7EC', '#5E7D99']].forEach(function(j){ G(RC(j[0] - j[2] / 2, 594 - j[1], j[2], j[1], j[3])); W(RC(j[0] + 6, 594 - j[1], j[2] / 2 - 6, j[1], j[4]), .45); H(LN('M' + (j[0] - j[2] / 2 + 6) + ' ' + (594 - j[1] + 6) + ' v' + (j[1] - 14), '#FFF', 3)); I(LN('M' + (j[0] - j[2] / 2) + ' 594 v-' + j[1] + ' h' + j[2] + ' v' + j[1], j[4], 1.2)); var br = ''; for (var i = 0; i < 6; i++) { var tx = j[0] + (i - 2.5) * 10, ty = 594 - j[1] - RR(60, 96); br += LN('M' + (j[0] + (i - 2.5) * 4) + ' ' + (594 - j[1] + 8) + ' L' + tx + ' ' + ty.toFixed(0), '#8A5A32', 3.4); } G(br); var tips = ''; for (var i = 0; i < 6; i++) { var tx = j[0] + (i - 2.5) * 10; tips += LN('M' + tx + ' ' + (594 - j[1] - RR(60, 80)).toFixed(0) + ' l' + RR(-1, 1).toFixed(0) + ' -16', pick(['#F72585', '#FFD400', '#1FB5B0', '#FF8A3D']), 6) } G(tips) });
+  /* the gold A, standing on the cabinet */
+  var A = 'M738 594 L772 490 L802 490 L838 594 H806 L798 566 H776 L768 594 Z M782 546 H792 L787 522 Z'; S(P('M744 594 H846 L862 590 H760 Z', '#6B6058'), .5); G('<path fill-rule="evenodd" d="' + A + '" fill="' + grad('#F6DA8A', '#A87C22', false, '#E2B952') + '"/>', 'data-angle="60" data-streak=".05"'); H(LN('M778 498 L752 590', '#FFF6D2', 2.6)); I('<path fill-rule="evenodd" d="' + A + '" fill="none" stroke="' + GOLD + '" stroke-width="1.3"/>');
+
+  /* pink velvet slipper chair by the door, marble table, stacked glass lamp */
+  S(P('M240 800 H470 L520 812 H250 Z', '#5C4A42'), .55);
+  var back = 'M270 500 C262 470 300 452 356 452 C414 452 452 470 444 500 L430 640 H284 Z', seat = 'M256 636 C258 616 300 606 356 606 C414 606 456 616 458 636 C462 672 440 700 356 700 C276 700 252 672 256 636 Z';
+  G(P(back, '#EF9DB4'), 'data-angle="75" data-streak=".09"'); W(P('M380 454 C420 458 452 470 444 500 L430 640 H372 C392 560 396 500 380 454 Z', '#A7446A'), .6); var pile = ''; for (var i = 0; i < 40; i++) pile += LN('M' + RR(286, 372).toFixed(0) + ' ' + RR(474, 620).toFixed(0) + ' q' + RR(4, 14).toFixed(0) + ' ' + RR(-10, 10).toFixed(0) + ' ' + RR(6, 26).toFixed(0) + ' ' + RR(-16, 8).toFixed(0), '#FFE1EA', RR(1.4, 3.6).toFixed(1), 'opacity=".85"'); H(pile); I(LN(back, '#8E3A5B', 1.5));
+  G(P(seat, '#F2A6BC'), 'data-angle="10" data-streak=".09"'); W(P('M256 650 C262 684 300 700 356 700 C420 700 452 680 458 646 C440 668 390 676 350 676 C310 676 272 668 256 650 Z', '#A7446A'), .62); var ps = ''; for (var i = 0; i < 26; i++) ps += LN('M' + RR(280, 430).toFixed(0) + ' ' + RR(618, 650).toFixed(0) + ' q' + RR(6, 18).toFixed(0) + ' ' + RR(-5, 5).toFixed(0) + ' ' + RR(14, 34).toFixed(0) + ' ' + RR(-4, 4).toFixed(0), '#FFE9EF', RR(1.4, 3).toFixed(1)); H(ps); I(LN(seat, '#8E3A5B', 1.5));
+  G(LN('M286 690 L272 790', '#9A5E36', 11) + LN('M428 690 L444 790', '#7C4A28', 11)); H(LN('M283 700 L271 776', '#E7B98C', 2.4));
+  /* throw pillow, yellow */
+  G('<path d="M300 540 C330 520 392 522 416 544 C420 576 420 600 412 622 C380 632 330 632 302 620 C294 596 294 566 300 540 Z" fill="#FFD400"/>', 'data-angle="20" data-streak=".08"'); W('<path d="M380 526 C396 528 408 534 416 544 C420 576 420 600 412 622 C400 626 388 628 376 629 C392 590 392 556 380 526 Z" fill="#B58A00"/>', .5); I(LN('M300 540 C330 520 392 522 416 544 C420 576 420 600 412 622 C380 632 330 632 302 620 C294 596 294 566 300 540 Z', '#8B6A00', 1.2));
+
+  /* fluted arched wardrobes with the open lit niche */
+  S(RC(948, 110, 18, 606, '#5C4A42'), .4);
+  G(RC(960, 100, 640, 616, grad('#E7C795', '#CDA370', true)), 'data-angle="90" data-streak=".07"');
+  var grn = ''; for (var i = 0; i < 80; i++) grn += LN('M' + RR(960, 1600).toFixed(0) + ' ' + RR(100, 680).toFixed(0) + ' q' + RR(-4, 4).toFixed(0) + ' 30 ' + RR(-3, 3).toFixed(0) + ' ' + RR(40, 110).toFixed(0), '#8A5F36', RR(.8, 1.4).toFixed(1), 'opacity=".6"'); I(grn, .6);
+  fluted(986, 136, 176, 556, '#DFBA85', true); fluted(1398, 136, 176, 556, '#DFBA85', true);
+  G(RC(1140, 372, 13, 170, '#EFD9B4', 'rx="6"') + RC(1408, 372, 13, 170, '#EFD9B4', 'rx="6"')); I(LN('M1140 378 v158 M1153 378 v158 M1408 378 v158 M1421 378 v158', OAK, 1));
+  I(LN('M960 100 H1600 V716 H960 Z', OAK, 2));
+  var nx0 = 1188, nw = 184, nn = 'M' + nx0 + ' 692 V' + (136 + nw / 2) + ' A' + (nw / 2) + ' ' + (nw / 2) + ' 0 0 1 ' + (nx0 + nw) + ' ' + (136 + nw / 2) + ' V692 Z';
+  G(P(nn, grad('#8A5A30', '#B98A58', true)), 'data-angle="90" data-streak=".05"'); F(RC(nx0 + 8, 214, nw - 16, 12, '#FFE7A8', 'opacity=".9"')); W(P('M' + nx0 + ' 692 V228 A92 92 0 0 1 ' + (nx0 + 40) + ' 150 V692 Z', '#3F2513'), .45); I(LN(nn, OAK, 1.7));
+  [316, 416, 516, 616].forEach(function(y){ G(RC(nx0, y, nw, 11, '#EFD3A6'), 'data-angle="0" data-streak=".05"'); W(RC(nx0, y + 11, nw, 14, '#2A1608'), .5); I(LN('M' + nx0 + ' ' + y + ' h' + nw + ' M' + nx0 + ' ' + (y + 11) + ' h' + nw, OAK, 1)) });
+  G(RC(1234, 258, 90, 58, '#F7A9C4')); W(RC(1296, 258, 28, 58, '#A3456E'), .5); H(LN('M1236 276 h86', '#FFF3D6', 4)); I(LN('M1234 258 h90 v58 h-90 Z', '#A3456E', 1.2));
+  books(1200, 416, 8, ['#F72585', '#2E5DA8', '#FFD400', '#46C2B8', '#FFFBF0', '#E8742A'], 56, 86);
+  G(RC(1262, 462, 100, 54, '#46C2B8')); W(RC(1334, 462, 28, 54, '#176F68'), .5); H(LN('M1264 478 h96', '#FFF3D6', 4)); I(LN('M1262 462 h100 v54 h-100 Z', '#176F68', 1.2)); G(P('M1206 516 q-8 -34 10 -48 h16 q18 14 10 48 Z', '#FFD400')); H(LN('M1214 506 q-3 -20 4 -30', '#FFF', 2.5));
+  var bx = books(1200, 616, 5, ['#C25B47', '#FFFBF0', '#F9B4CF'], 60, 88); G(P('M1296 616 C1290 584 1302 562 1322 558 C1342 562 1350 584 1344 616 Z', '#EC4E97')); W(P('M1326 560 C1342 564 1350 584 1344 616 H1326 Z', '#951E5C'), .5); H(LN('M1306 606 q-4 -22 8 -36', '#FFD9E7', 2.6));
+  books(1198, 692, 9, ['#2E5DA8', '#F72585', '#FFE27A', '#2F6E4A', '#FFFBF0'], 42, 66);
+
+  /* marble console, organic gold mirror reflecting the door and the painting, glass lamp, red flowers */
+  var mx = 1650, my = 150, ms = 300, m = 'M' + (mx + ms * .08) + ' ' + (my + ms * .46) + ' C' + (mx + ms * .1) + ' ' + (my + ms * .1) + ' ' + (mx + ms * .42) + ' ' + (my - ms * .04) + ' ' + (mx + ms * .7) + ' ' + (my + ms * .06) + ' C' + (mx + ms * 1.02) + ' ' + (my + ms * .16) + ' ' + (mx + ms * 1.06) + ' ' + (my + ms * .58) + ' ' + (mx + ms * .9) + ' ' + (my + ms * .78) + ' C' + (mx + ms * .72) + ' ' + (my + ms * 1.04) + ' ' + (mx + ms * .24) + ' ' + (my + ms * 1.0) + ' ' + (mx + ms * .12) + ' ' + (my + ms * .76) + ' C' + (mx + ms * .04) + ' ' + (my + ms * .62) + ' ' + (mx + ms * .06) + ' ' + (my + ms * .54) + ' ' + (mx + ms * .08) + ' ' + (my + ms * .46) + ' Z';
+  var mc = 'c' + (UID++); defs.push('<clipPath id="' + mc + '"><path d="' + m + '"/></clipPath>'); S('<path d="' + m + '" fill="#5C4A42" transform="translate(12 14)"/>', .6);
+  G('<g clip-path="url(#' + mc + ')">' + RC(mx - 20, my - 20, ms + 60, ms + 60, grad('#FBEDE2', '#E8CDBF', false)) + RC(mx - 20, my + ms * .72, ms + 60, 140, '#DCBB8E') + '<path d="M' + (mx + 170) + ' ' + (my + 235) + ' V' + (my + 90) + ' A54 54 0 0 1 ' + (mx + 278) + ' ' + (my + 90) + ' V' + (my + 235) + ' Z" fill="#9CC7E2"/>' + RC(mx + 30, my + 40, 90, 170, '#E97FB2') + '</g>', 'data-angle="20" data-streak=".04"');
+  W('<g clip-path="url(#' + mc + ')"><path d="M' + (mx + 170) + ' ' + (my + 186) + ' H' + (mx + 280) + ' V' + (my + 235) + ' H' + (mx + 170) + ' Z" fill="#3F7FB0"/><path d="M' + (mx + 60) + ' ' + (my + 210) + ' H' + (mx + 120) + ' V' + (my + 130) + ' Z" fill="#3FBDB2"/></g>', .6);
+  H('<g clip-path="url(#' + mc + ')">' + LN('M' + (mx + 224) + ' ' + (my + 40) + ' V' + (my + 235) + ' M' + (mx + 170) + ' ' + (my + 130) + ' H' + (mx + 280), '#FFF', 4) + LN('M' + (mx + 30) + ' ' + (my + 280) + ' L' + (mx + 180) + ' ' + (my + 10), '#FFF', 16, 'opacity=".55"') + LN('M' + (mx + 74) + ' ' + (my + 300) + ' L' + (mx + 230) + ' ' + (my + 20), '#FFF', 7, 'opacity=".55"') + '</g>');
+  G(LN(m, grad('#F4D57E', '#8E6420', true, '#D9A93E'), 22), 'data-angle="30" data-streak=".08"'); var gl = ''; for (var i = 0; i < 30; i++) { var a = i / 30 * 6.283; gl += LN('M' + (mx + ms * .52 + Math.cos(a) * ms * .48).toFixed(0) + ' ' + (my + ms * .48 + Math.sin(a) * ms * .5).toFixed(0) + ' l' + RR(-6, 6).toFixed(0) + ' ' + RR(-6, 6).toFixed(0), '#FFF3C4', RR(2, 4).toFixed(1)) } H(gl); W(LN(m, '#6B4614', 7, 'transform="translate(5 6)"'), .45); I(LN(m, GOLD, 1.4));
+  /* console: pink marble slab, veined */
+  S(P('M1640 716 H1980 L2010 736 H1640 Z', '#5C4A42'), .55); fluted(1656, 566, 330, 150, '#E3BE8A', false);
+  G(P('M1628 536 H1998 L2008 566 H1618 Z', grad('#F7DEDD', '#EDC6C6', false)) + RC(1618, 566, 390, 16, '#E7B9B9'), 'data-angle="4" data-streak=".03"');
+  var vn = ''; for (var i = 0; i < 22; i++) { var x = RR(1630, 1970), y = RR(538, 580); vn += LN('M' + x.toFixed(0) + ' ' + y.toFixed(0) + ' q' + RR(14, 40).toFixed(0) + ' ' + RR(-6, 6).toFixed(0) + ' ' + RR(40, 90).toFixed(0) + ' ' + RR(-6, 8).toFixed(0), pick(['#B5676E', '#8F4A55', '#FFFFFF']), RR(.8, 1.9).toFixed(1), 'opacity=".85"') } I(vn, .85); I(LN('M1628 536 H1998 L2008 566 V582 H1618 V566 Z M1618 566 H2008', '#8F4A55', 1.3));
+  /* stacked coloured glass lamp, lit */
+  var lx = 1704; [[516, 27, 20, '#E8A23C', '#9A5C10'], [482, 25, 19, '#3FBDB2', '#176F68'], [448, 23, 18, '#8BCF7A', '#3F7F35'], [416, 21, 16, '#F472AE', '#A32B66']].forEach(function(b){ G('<ellipse cx="' + lx + '" cy="' + b[0] + '" rx="' + b[1] + '" ry="' + b[2] + '" fill="' + b[3] + '"/>'); W('<ellipse cx="' + (lx + 7) + '" cy="' + (b[0] + 6) + '" rx="' + (b[1] * .7) + '" ry="' + (b[2] * .66) + '" fill="' + b[4] + '"/>', .5); H('<ellipse cx="' + (lx - 9) + '" cy="' + (b[0] - 7) + '" rx="5" ry="8" fill="#FFF"/>'); I('<ellipse cx="' + lx + '" cy="' + b[0] + '" rx="' + b[1] + '" ry="' + b[2] + '" fill="none" stroke="' + b[4] + '" stroke-width="1.2"/>') });
+  var shade = 'M' + (lx - 50) + ' 398 L' + (lx - 30) + ' 306 H' + (lx + 30) + ' L' + (lx + 50) + ' 398 Z'; G(P(shade, grad('#FFF6D8', '#FFDE93', true)), 'data-angle="90" data-streak=".05"'); I(LN(shade, '#A98413', 1.3)); F('<ellipse cx="' + lx + '" cy="360" rx="230" ry="190" fill="' + radial('#FFE29A', .5) + '"/>');
+  /* books and a tray */
+  G(RC(1770, 524, 110, 12, '#C9A03C')); bottle0(1800, 524, 18, 30, '#F4D1DC', '#A06078'); bottle0(1838, 524, 16, 40, '#E8A23C', '#8A5414');
+  function bottle0(x, b, w, h, c, dk){ G(P('M' + (x - w / 2) + ' ' + b + ' V' + (b - h) + ' H' + (x + w / 2) + ' V' + b + ' Z', c)); H(LN('M' + (x - w / 4) + ' ' + (b - 4) + ' V' + (b - h + 4), '#FFF', 2)); I(LN('M' + (x - w / 2) + ' ' + b + ' V' + (b - h) + ' H' + (x + w / 2) + ' V' + b, dk, 1)) }
+  /* red ranunculus in a dark red glass vase */
+  var vs = 'M1906 536 C1878 510 1884 470 1902 452 H1956 C1974 470 1980 510 1952 536 Z';
+  bouquet([[1880, 396, 30, '#E0213F', '#7B0B22'], [1930, 372, 33, '#C2185B', '#6A0A36'], [1978, 402, 28, '#E0213F', '#7B0B22'], [1910, 428, 26, '#FF8A65', '#B23B1E'], [1958, 436, 24, '#F48FB1', '#A83467']], 1930, 456);
+  G(P(vs, grad('#E0505F', '#8A1228', false)), 'data-angle="90" data-streak=".05"'); H(LN('M1898 520 C1890 500 1894 476 1906 462', '#FFD0D6', 3.4)); I(LN(vs, '#5E0A1A', 1.3));
+
+  /* the fish rug: faded terracotta ground, a real border, one big curving school */
+  var RG = 'M300 758 H1660 L1900 992 H60 Z', rc = 'c' + (UID++); defs.push('<clipPath id="' + rc + '"><path d="' + RG + '"/></clipPath>');
+  S('<path d="' + RG + '" fill="#5C4A42" transform="translate(4 8)"/>', .5);
+  G(P(RG, grad('#F2C9A6', '#E8AE8C', true)), 'data-angle="0" data-streak=".12"');
+  var ab = ''; for (var i = 0; i < 12; i++) ab += RC(0, 760 + i * 20, 2000, RR(5, 14).toFixed(0), pick(['#C77F5E', '#F9DCC0', '#D79A7B']), 'opacity=".45"'); W('<g clip-path="url(#' + rc + ')">' + ab + '</g>', .4);
+  var bordIn = 'M340 776 H1620 L1812 974 H150 Z'; I(LN(RG, '#8E3A3A', 3) + LN(bordIn, '#8E3A3A', 2));
+  var bd = ''; for (var i = 0; i < 80; i++) { var x = 300 + i * 17, tt = R() * 0; bd += '<path d="M' + x + ' 760 l8 8 l-8 8 l-8 -8 Z" fill="' + (i % 2 ? '#2E7F8F' : '#C7476F') + '"/>' } for (var i = 0; i < 100; i++) { var x = 70 + i * 18.2; bd += '<path d="M' + x + ' 976 l9 8 l-9 8 l-9 -8 Z" fill="' + (i % 2 ? '#2E7F8F' : '#C7476F') + '"/>' } G('<g clip-path="url(#' + rc + ')">' + bd + '</g>', 'data-angle="0" data-streak=".1"');
+  function fish(x, y, l, c1, c2, c3, flip, rot){ var t = 'transform="translate(' + x + ' ' + y + ') scale(' + (flip ? -1 : 1) + ' .58) rotate(' + rot + ')"', body = 'M' + (-l * .5) + ' 0 C' + (-l * .2) + ' ' + (-l * .32) + ' ' + (l * .22) + ' ' + (-l * .26) + ' ' + (l * .42) + ' 0 C' + (l * .22) + ' ' + (l * .26) + ' ' + (-l * .2) + ' ' + (l * .32) + ' ' + (-l * .5) + ' 0 Z'; G('<path ' + t + ' d="' + body + '" fill="' + c1 + '"/><path ' + t + ' d="M' + (l * .38) + ' 0 L' + (l * .68) + ' ' + (-l * .24) + ' L' + (l * .58) + ' 0 L' + (l * .68) + ' ' + (l * .24) + ' Z" fill="' + c2 + '"/>', 'data-angle="0" data-streak=".1"'); var sc = ''; for (var i = 0; i < 7; i++) sc += '<path ' + t + ' d="M' + (-l * .24 + i * l * .09) + ' ' + (-l * .2) + ' q' + (l * .06) + ' ' + (l * .2) + ' 0 ' + (l * .4) + '" stroke="' + c3 + '" stroke-width="' + (l * .022).toFixed(1) + '" fill="none"/>'; G(sc, 'data-angle="0" data-streak=".1"'); H('<circle ' + t + ' cx="' + (-l * .33) + '" cy="' + (-l * .05) + '" r="' + (l * .04).toFixed(1) + '" fill="#FFF"/>'); I('<circle ' + t + ' cx="' + (-l * .33) + '" cy="' + (-l * .05) + '" r="' + (l * .018).toFixed(1) + '" fill="#2A1E18"/>', .9) }
+  var school = [[430, 870, 190, 0], [640, 816, 110, 1], [720, 918, 220, 2], [930, 840, 130, 3], [1020, 900, 160, 4], [1180, 812, 100, 5], [1290, 880, 210, 0], [1510, 816, 96, 2], [1590, 920, 170, 1], [540, 940, 110, 4], [860, 790, 76, 5], [1100, 950, 120, 3]], FC = [['#2E8FA8', '#7FD0C8', '#0F5766'], ['#F4664A', '#FFB199', '#A82A14'], ['#F4C22B', '#FFE27A', '#A87F00'], ['#6FAE5C', '#B4DB91', '#2E6A20'], ['#EC4E97', '#F9B4CF', '#94184F'], ['#2E5DA8', '#8FB6E2', '#132F63']];
+  school.forEach(function(f){ var c = FC[f[3]]; fish(f[0], f[1], f[2], c[0], c[1], c[2], f[3] % 2, Math.round(RR(-8, 8))) });
+  /* wear in the pile */
+  var wr = ''; for (var i = 0; i < 90; i++) wr += LN('M' + RR(200, 1760).toFixed(0) + ' ' + RR(790, 970).toFixed(0) + ' h' + RR(8, 34).toFixed(0), '#FFF2DE', RR(1, 2.6).toFixed(1), 'opacity=".8"'); H('<g clip-path="url(#' + rc + ')">' + wr + '</g>');
+  var fr = ''; for (var x = 64; x < 1896; x += 9) fr += LN('M' + x + ' 992 v' + RR(10, 15).toFixed(0), '#F7EBD4', 2.6); H(fr);
+
+  /* afternoon light through the door, thrown across the floor and rug */
+  F('<path d="M250 718 H470 L860 1008 H360 Z" fill="#FFF0BE" opacity=".3"/><path d="M355 718 L620 1008" stroke="#A98660" stroke-opacity=".3" stroke-width="10"/><path d="M300 790 L620 790 M340 870 L720 870" stroke="#A98660" stroke-opacity=".25" stroke-width="9"/>');
+
+  /* fiddle leaf in a woven basket, foreground of the wardrobes */
+  S('<ellipse cx="1000" cy="772" rx="84" ry="14" fill="#5C4A42"/>', .6);
+  G(LN('M1000 700 C994 620 1008 540 1002 420', '#5B3F24', 7)); for (var i = 0; i < 22; i++) leaf(1001, 700 - i * 13, RR(62, 96).toFixed(0), (i % 2 ? RR(-168, -122) : RR(-58, -12)).toFixed(0), pick(['#3E7A45', '#2F6A3C', '#4F8E52']), '#163F22');
+  G('<path d="M950 690 H1052 L1036 770 H966 Z" fill="' + grad('#E9CFA6', '#BF9662', false) + '"/>', 'data-angle="0" data-streak=".1"'); var wv = ''; for (var i = 0; i < 8; i++) wv += LN('M' + (952 + i * 2) + ' ' + (696 + i * 10) + ' H' + (1050 - i * 2), '#7E5A30', 1.8); for (var i = 0; i < 12; i++) wv += LN('M' + (958 + i * 8) + ' 690 l' + ((6 - i) * .7).toFixed(1) + ' 80', '#7E5A30', 1.1, 'opacity=".7"'); I(wv, .85); W(P('M1020 690 H1052 L1036 770 H1012 Z', '#5F3C18'), .45);
+}
+
+function pendantD(){
+  /* tiered wood pendant over the desk */
+  var cx = 1040; G(LN('M' + cx + ' 0 V60', '#6B4A2C', 4)); [[72, 104, 22], [100, 136, 26], [132, 170, 30]].forEach(function(q){ var pth = 'M' + (cx - q[1]) + ' ' + (q[0] + q[2]) + ' L' + (cx - q[1] + 8) + ' ' + q[0] + ' H' + (cx + q[1] - 8) + ' L' + (cx + q[1]) + ' ' + (q[0] + q[2]) + ' Z'; G(P(pth, grad('#EBC58D', '#A5743F', false, '#D9A86B')), 'data-angle="0" data-streak=".1"'); var gl = ''; for (var i = 0; i < 12; i++) gl += LN('M' + (cx - q[1] + RR(8, q[1] * 2 - 30)).toFixed(0) + ' ' + (q[0] + RR(4, q[2] - 4)).toFixed(0) + ' h' + RR(20, 70).toFixed(0), '#7A542C', 1, 'opacity=".7"'); I(gl, .7); I(LN(pth, OAK, 1.3)) }); F('<ellipse cx="' + cx + '" cy="250" rx="340" ry="170" fill="' + radial('#FFE9B4', .5) + '"/>');
+
+}
+
+/* ==================== her workspace ==================== */
+function desk(){
+  var hole = 'M226 716 V124 H512 V716 Z';
+  G('<path fill-rule="evenodd" d="M-10 -10 H2010 V716 H-10 Z ' + hole + '" fill="' + grad('#F3D3C2', '#E7B9A6', true) + '"/>', 'data-angle="6" data-streak=".022"');
+  W('<path d="M512 40 H2010 V716 H512 Z" fill="' + grad('#D59C86', '#AD6B58', false) + '" opacity=".5"/>', .34);
+  plaster(0, 60, 2000, 430, '#FFF0E6', '#C98B78', 300);
+  G(RC(-10, -10, 2020, 46, '#FBF3E6'), 'data-angle="0" data-streak=".012"'); G(RC(-10, 36, 2020, 20, '#F7DFCF'), 'data-angle="0" data-streak=".02"'); I(LN('M-10 36 H2010 M-10 44 H2010 M-10 56 H2010', ROSE, 1.3)); W(RC(-10, 56, 2020, 22, '#8C4C42'), .3);
+  /* wainscot: same paint, real shadow lines */
+  G('<path fill-rule="evenodd" d="M-10 430 H226 V716 H-10 Z M512 430 H2010 V716 H512 Z" fill="' + grad('#EBBFAC', '#DEA995', true) + '"/>', 'data-angle="90" data-streak=".03"');
+  G(RC(-10, 424, 236, 16, '#F5D3C2') + RC(512, 424, 1508, 16, '#F5D3C2'), 'data-angle="0" data-streak=".02"');
+  W(RC(-10, 440, 236, 7, '#7E3F31') + RC(512, 440, 1508, 7, '#7E3F31'), .5);
+  var ws = '', wa = ''; for (var x = 530; x < 1990; x += 196) { ws += 'M' + x + ' 470 h168 v216 h-168 Z M' + (x + 11) + ' 481 h146 v194 h-146 Z '; wa += RC(x + 1, 470, 166, 8, '#8A4A3A') + RC(x + 1, 470, 8, 216, '#8A4A3A') + RC(x + 160, 481, 6, 194, '#FFF0E4'); } W(wa, .42); I(LN(ws, ROSE, 1.3));
+  /* floor: pale honey boards to a vanishing point, sheen under the door */
+  boards(716, 1018, 460, ['#D9AE78', '#D1A46E', '#E0B884', '#CC9C66', '#D6AA72'], '#7E5730');
+  G(RC(-10, 698, 236, 20, '#F9E7D8') + RC(512, 698, 1508, 20, '#F9E7D8'), 'data-angle="0" data-streak=".015"'); I(LN('M-10 698 H226 M512 698 H2010 M-10 718 H2010', ROSE, 1.2));
+  F('<path d="M240 720 H500 L640 1008 H110 Z" fill="#FFF3CF" opacity=".34"/>');
+
+  /* the tall French door */
+  var cs = 'M198 716 V96 H540 V716 Z'; G('<path fill-rule="evenodd" d="' + cs + ' ' + hole + '" fill="#FEFBF3"/>', 'data-angle="90" data-streak=".016"'); W('<path fill-rule="evenodd" d="M214 716 V112 H524 V716 Z ' + hole + '" fill="#8FA1BA" opacity=".72"/>', .5); I(LN(cs, GREY, 1.5) + LN(hole, '#59677C', 1.5));
+  G(LN('M369 124 V716', '#FEFBF3', 10) + LN('M226 300 H512 M226 470 H512', '#FEFBF3', 7) + LN('M298 124 V716 M440 124 V716', '#FEFBF3', 5)); I(LN('M364 124 V716 M374 124 V716', GREY, .9));
+  /* pleated sheers on a brass rod with rings */
+  G(LN('M108 84 H632', '#BE9534', 6) + '<circle cx="108" cy="84" r="8" fill="#C9A03C"/><circle cx="632" cy="84" r="8" fill="#C9A03C"/>'); var rg = ''; for (var i = 0; i < 12; i++) rg += '<circle cx="' + (146 + i * 22 + (i > 5 ? 240 : 0)) + '" cy="90" r="5" fill="none" stroke="#9A7420" stroke-width="2"/>'; I(rg);
+
+  /* the tall leaning mirror, right behind the screen: the warm room reflected */
+  var m = 'M620 716 L596 104 H860 L838 716 Z', mc = 'c' + (UID++); defs.push('<clipPath id="' + mc + '"><path d="' + m + '"/></clipPath>');
+  S('<path d="' + m + '" fill="#4F3A30" transform="translate(16 8)"/>', .6);
+  G('<g clip-path="url(#' + mc + ')">' + RC(580, 90, 300, 640, grad('#F6D29A', '#E7A765', true)) + RC(580, 540, 300, 190, '#A87446') + '</g>', 'data-angle="90" data-streak=".05"');
+  W('<g clip-path="url(#' + mc + ')">' + RC(580, 100, 90, 620, '#C97B4A', 'opacity=".5"') + '<path d="M640 540 V430 q0 -44 44 -44 h34 q44 0 44 44 V540 Z" fill="#D88E7A"/>' + '</g>', .55);
+  F('<g clip-path="url(#' + mc + ')"><circle cx="760" cy="250" r="120" fill="' + radial('#FFF3C4', .95) + '"/></g>');
+  G('<g clip-path="url(#' + mc + ')"><circle cx="760" cy="250" r="34" fill="#FFF7D6"/>' + LN('M760 284 V540 M722 540 H798', '#5B3F24', 5) + RC(630, 190, 58, 80, '#BFD7EC', 'stroke="#FFF" stroke-width="5"') + '</g>');
+  H('<g clip-path="url(#' + mc + ')">' + LN('M604 200 L760 700', '#FFF', 22, 'opacity=".4"') + LN('M660 130 L810 690', '#FFF', 9, 'opacity=".4"') + '</g>');
+  G(LN(m, '#4A3324', 14), 'data-angle="90" data-streak=".1"'); H(LN('M596 110 L620 712', '#A98566', 2.4)); I(LN(m, UMB, 1.4));
+
+  /* gallery wall: painted art in deep mats */
+  frame(950, 100, 240, 300, '#FFF9EE', function(){ F('<image href="../../img/how-we-grow-wordmark.png" x="990" y="176" width="160" height="110" preserveAspectRatio="xMidYMid meet"/>') });
+  frame(1212, 100, 170, 210, '#FFF9EE', function(){ leafy(1297, 240) });
+  function leafy(x, y){ [[-120, 96, '#4E8A4F'], [-90, 110, '#2F6E4A'], [-60, 92, '#7FB25E'], [-150, 70, '#3F8F6A'], [-30, 66, '#58A06A']].forEach(function(q){ leaf(x, y, q[1], q[0], q[2], '#1F4A33') }); G(P('M' + (x - 26) + ' ' + y + ' H' + (x + 26) + ' L' + (x + 18) + ' ' + (y + 40) + ' H' + (x - 18) + ' Z', '#EE7A2E')); W(P('M' + x + ' ' + y + ' H' + (x + 26) + ' L' + (x + 18) + ' ' + (y + 40) + ' H' + x + ' Z', '#A63E12'), .5) }
+  frame(1212, 326, 170, 96, '#E97FB2', function(){ var g = ''; for (var i = 0; i < 16; i++) g += LN('M' + RR(1228, 1350).toFixed(0) + ' ' + RR(342, 406).toFixed(0) + ' q' + RR(6, 18).toFixed(0) + ' ' + RR(-10, 10).toFixed(0) + ' ' + RR(14, 34).toFixed(0) + ' ' + RR(-8, 8).toFixed(0), pick(['#FFD400', '#FFF', '#1FB5B0']), RR(3, 6).toFixed(1)); G(g, 'data-angle="30" data-streak=".1"') });
+  frame(1404, 150, 150, 186, '#FFF9EE', function(){ var cx = 1479, cy = 240, g = ''; for (var i = 0; i < 18; i++) { var a = i / 18 * 6.283; g += '<ellipse cx="' + (cx + Math.cos(a) * 34).toFixed(0) + '" cy="' + (cy + Math.sin(a) * 34).toFixed(0) + '" rx="17" ry="7" fill="#F4C22B" transform="rotate(' + (a * 57.3).toFixed(0) + ' ' + (cx + Math.cos(a) * 34).toFixed(0) + ' ' + (cy + Math.sin(a) * 34).toFixed(0) + ')"/>' } G(g, 'data-angle="40" data-streak=".08"'); G('<circle cx="' + cx + '" cy="' + cy + '" r="22" fill="#6B3F18"/>'); var dt = ''; for (var i = 0; i < 40; i++) dt += '<circle cx="' + (cx + RR(-16, 16)).toFixed(0) + '" cy="' + (cy + RR(-16, 16)).toFixed(0) + '" r="1.5" fill="#E9B44C"/>'; H(dt) });
+
+  /* built-in bookcase */
+  S(RC(1592, 90, 20, 626, '#4F3A30'), .4);
+  G(RC(1600, 80, 420, 636, grad('#E2BE8C', '#C69A66', true)), 'data-angle="90" data-streak=".07"'); [[120], [230], [340], [450], [560]].forEach(function(q){ G(RC(1622, q[0], 380, 100, '#8E6236'), 'data-angle="90" data-streak=".05"'); W(RC(1622, q[0], 380, 18, '#2A1608'), .55) });
+  [220, 330, 440, 550, 660].forEach(function(y, i){ G(RC(1622, y, 380, 10, '#EBCB9B'), 'data-angle="0" data-streak=".05"') });
+  [220, 330, 440, 550, 660].forEach(function(y, i){ var end = books(1630, y, 7 + (i % 3), ['#F72585', '#2E5DA8', '#FFD400', '#46C2B8', '#FFFBF0', '#E8742A', '#2F6E4A', '#F9B4CF'], 62, 92); });
+  G(P('M1860 330 C1852 296 1866 276 1884 272 C1902 276 1914 296 1906 330 Z', '#EC4E97')); G(RC(1842, 406, 110, 34, '#F7A9C4') + P('M1880 660 H1960 L1950 588 H1890 Z', '#D2704E'));
+  for (var i = 0; i < 9; i++) leaf(1920, 590, RR(30, 56).toFixed(0), RR(-170, -10).toFixed(0), pick(['#4F8E52', '#3E7A45']), '#163F22');
+  I(LN('M1600 80 H2020 M1600 80 V716 M1622 120 V660 H2020', OAK, 1.6));
+
+  /* vintage rug under the desk */
+  var RG = 'M40 900 H1960 L2010 1012 H-10 Z', rc = 'c' + (UID++); defs.push('<clipPath id="' + rc + '"><path d="' + RG + '"/></clipPath>'); S(RC(30, 892, 1940, 14, '#3E2A1E'), .45);
+  G(P(RG, '#B9625A'), 'data-angle="0" data-streak=".14"'); var pat = ''; for (var i = 0; i < 24; i++) { var x = 40 + i * 84; pat += '<path d="M' + x + ' 958 l34 -34 l34 34 l-34 34 Z" fill="' + pick(['#E8B48F', '#3F5F73', '#7E2F35']) + '"/><path d="M' + (x + 16) + ' 958 l18 -18 l18 18 l-18 18 Z" fill="' + pick(['#F3D7B8', '#B9625A']) + '"/>' } G('<g clip-path="url(#' + rc + ')">' + pat + RC(0, 900, 2020, 12, '#3F5F73') + RC(0, 916, 2020, 5, '#E8B48F') + '</g>', 'data-angle="0" data-streak=".12"');
+  var wr = ''; for (var i = 0; i < 120; i++) wr += LN('M' + RR(40, 1960).toFixed(0) + ' ' + RR(904, 1006).toFixed(0) + ' h' + RR(10, 40).toFixed(0), '#F9E6CF', RR(1, 2.4).toFixed(1), 'opacity=".75"'); H('<g clip-path="url(#' + rc + ')">' + wr + '</g>');
+
+  /* the oval desk: fluted pedestal, dark under the slab, thick pitted travertine */
+  fluted(742, 806, 520, 214, '#E1C9A9', false); S(RC(742, 806, 520, 40, '#2F1E12'), .75);
+  var top = 'M150 766 C150 744 240 734 380 734 H1620 C1760 734 1850 744 1850 766 C1850 792 1760 802 1620 802 H380 C240 802 150 792 150 766 Z', edge = 'M150 768 C150 802 240 826 380 826 H1620 C1760 826 1850 802 1850 768 V766 C1850 792 1760 802 1620 802 H380 C240 802 150 792 150 766 Z';
+  G(P(edge, '#CDB89C'), 'data-angle="0" data-streak=".09"'); W(P('M150 790 C200 816 280 826 380 826 H1620 C1720 826 1800 816 1850 790 C1800 810 1720 814 1620 814 H380 C280 814 200 810 150 790 Z', '#6B5236'), .5);
+  G(P(top, grad('#F4EAD9', '#E3D3BA', true)), 'data-angle="0" data-streak=".09"');
+  var tv = ''; for (var i = 0; i < 90; i++) { var x = RR(170, 1780), y = RR(738, 798); tv += LN('M' + x.toFixed(0) + ' ' + y.toFixed(0) + ' q' + RR(30, 80).toFixed(0) + ' ' + RR(-2, 2).toFixed(1) + ' ' + RR(60, 220).toFixed(0) + ' ' + RR(-2, 2).toFixed(1), pick(['#A98C68', '#C2A988', '#FFFAF0']), RR(.7, 1.8).toFixed(1), 'opacity=".85"') } for (var i = 0; i < 160; i++) { var x = RR(170, 1780), y = RR(738, 798); tv += '<ellipse cx="' + x.toFixed(0) + '" cy="' + y.toFixed(0) + '" rx="' + RR(1, 3.4).toFixed(1) + '" ry="' + RR(.6, 1.2).toFixed(1) + '" fill="#8C7354" opacity=".7"/>' } I(tv, .85); I(LN(top, '#7A6246', 1.4) + LN(edge, '#7A6246', 1.2));
+
+  /* on the desk, each with a contact shadow going right, away from the door */
+  function contact(x0, x1, y){ S(P('M' + x0 + ' ' + y + ' H' + x1 + ' L' + (x1 + 50) + ' ' + (y + 12) + ' H' + (x0 + 16) + ' Z', '#4F3A2A'), .62) }
+  contact(248, 400, 778); contact(632, 790, 772);
+  /* monitor with her slide, pulled in front of the mirror */
+  G(P('M640 772 H786 L776 760 H650 Z', '#DCDCE0') + P('M696 760 L688 700 H740 L732 760 Z', '#E8E8EC')); W(P('M716 760 L714 700 H740 L732 760 Z', '#7E7E88'), .45);
+  G(RC(530, 480, 368, 224, '#F4F4F6', 'rx="12"')); F('<rect x="540" y="490" width="348" height="196" fill="#111"/><image href="../../img/slides/s1.webp" x="540" y="490" width="348" height="196" preserveAspectRatio="xMidYMid slice"/>'); H(LN('M552 500 L640 680', '#FFF', 12, 'opacity=".12"')); I(P('M542 480 h344 a12 12 0 0 1 12 12 v200 a12 12 0 0 1 -12 12 h-344 a12 12 0 0 1 -12 -12 v-200 a12 12 0 0 1 12 -12 Z', 'none', 'stroke="#55555E" stroke-width="1.8"'));
+  G(P('M636 784 H800 L814 798 H624 Z', '#FBFBFD')); var ky = ''; for (var i = 0; i < 18; i++) ky += LN('M' + (640 + i * 9) + ' 788 v3 M' + (634 + i * 9.8) + ' 794 v2', '#9E9EA6', 1.6); I(ky); I(LN('M636 784 H800 L814 798 H624 Z', '#7A7A84', 1.1));
+  /* ranunculus, ribbed glass, in front of the door */
+  bouquet([[286, 566, 42, '#F4B2C4', '#B5476C'], [344, 516, 46, '#C2185B', '#6A0A36'], [412, 556, 42, '#FFF3E6', '#CFA98E'], [314, 622, 37, '#E85D75', '#94243A'], [386, 622, 40, '#F8A5C2', '#B5476C'], [250, 616, 30, '#FFF3E6', '#CFA98E'], [448, 610, 30, '#D81B60', '#7D0D3A'], [372, 470, 18, '#8FA85A', '#4F6A2E']], 345, 668);
+  for (var i = 0; i < 8; i++) leaf(262 + i * 26, 650 + (i % 2) * 8, RR(36, 52).toFixed(0), (-130 + i * 34).toFixed(0), '#6F8C52', '#3D5A2E');
+  glassVase(345, 778, 124, 126);
+  F('<ellipse cx="420" cy="786" rx="70" ry="9" fill="#E7F3EC" opacity=".55"/>');
+  /* candle */
+  contact(462, 524, 776); G(RC(470, 744, 50, 32, '#FFFBF0')); W(RC(504, 744, 16, 32, '#A7A08C'), .4); G(LN('M495 744 v-10', '#2A1E18', 2) + '<ellipse cx="495" cy="724" rx="6" ry="11" fill="#FFB84A"/>'); F('<circle cx="495" cy="726" r="46" fill="' + radial('#FFD27A', .85) + '"/>'); I(LN('M470 776 v-32 h50 v32', GREY, 1));
+  /* pink notebook and a pencil */
+  G(P('M880 780 H1022 L1052 800 H898 Z', '#F7A9C4'), 'data-angle="0" data-streak=".08"'); W(P('M1000 780 H1022 L1052 800 H1028 Z', '#A3456E'), .45); var dt = ''; for (var i = 0; i < 40; i++) dt += '<circle cx="' + RR(892, 1036).toFixed(0) + '" cy="' + RR(783, 798).toFixed(0) + '" r="1.1" fill="#FFF"/>'; H(dt); I(LN('M880 780 H1022 L1052 800 H898 Z', '#A3456E', 1.2));
+  G(LN('M1066 794 L1150 786', '#E8B018', 4.5) + LN('M1150 786 L1160 785', '#2A1E18', 3));
+  /* books with her name on the spine, and a mug */
+  contact(1064, 1240, 772); G(RC(1066, 742, 172, 30, '#F72585'), 'data-angle="0" data-streak=".06"'); W(RC(1066, 764, 172, 8, '#8E0F4E'), .5); F('<text x="1152" y="763" text-anchor="middle" font-family="Manrope" font-weight="800" font-size="13" letter-spacing="2" fill="#FFF8EE">HOW WE GROW</text>'); G(RC(1076, 716, 150, 26, '#E8742A'), 'data-angle="0" data-streak=".06"'); W(RC(1076, 734, 150, 8, '#8A3F0C'), .5); G(RC(1090, 696, 124, 20, '#FFD400'), 'data-angle="0" data-streak=".06"'); W(RC(1090, 710, 124, 6, '#9A7E00'), .5); I(LN('M1066 772 v-30 h172 v30 M1076 742 v-26 h150 v26 M1090 716 v-20 h124 v20', UMB, 1.1));
+  /* pleated lamp, lit */
+  contact(1290, 1400, 776); G('<ellipse cx="1340" cy="774" rx="44" ry="7" fill="#C9A03C"/>' + LN('M1340 770 V596', '#B98F3C', 6)); H(LN('M1338 766 V600', '#FFF0C0', 1.6));
+  var sh = 'M1240 600 L1340 500 L1440 600 Z'; G(P(sh, '#FFF6E0'), 'data-angle="90" data-streak=".02"'); var pl = ''; for (var i = 0; i < 26; i++) pl += LN('M1340 504 L' + (1244 + i * 7.6) + ' 600', '#C2AD7E', 1.3); I(pl, .8); I(LN(sh, '#A98413', 1.2)); F('<ellipse cx="1340" cy="630" rx="280" ry="190" fill="' + radial('#FFE9A8', .62) + '"/>');
+  /* oval table mirror */
+  contact(1490, 1580, 774); G(P('M1496 774 H1572 L1560 756 H1508 Z', '#CFC8BA') + LN('M1534 756 V722', '#9A9286', 5)); G('<ellipse cx="1534" cy="660" rx="50" ry="68" fill="#D9E6EE"/>'); W('<ellipse cx="1544" cy="680" rx="34" ry="44" fill="#E8B9A4"/>', .5); H(LN('M1508 702 L1548 616', '#FFF', 7, 'opacity=".8"')); G('<ellipse cx="1534" cy="660" rx="50" ry="68" fill="none" stroke="#B0A78F" stroke-width="10"/>'); I('<ellipse cx="1534" cy="660" rx="55" ry="73" fill="none" stroke="#6E6654" stroke-width="1.2"/>');
+  /* leather letter tray with envelopes: her newsletter */
+  contact(1610, 1740, 774); G(P('M1624 732 L1630 684 H1712 L1720 732 Z', '#FFF3E6') + P('M1642 732 L1648 696 H1732 L1738 732 Z', '#F7BBD0')); I(LN('M1648 696 L1690 720 L1732 696', '#A3456E', 1.2)); G(RC(1612, 730, 136, 44, '#A5683A'), 'data-angle="0" data-streak=".08"'); W(RC(1712, 730, 36, 44, '#4F2A12'), .5); H(LN('M1618 738 H1740', '#E7B98C', 2)); I(LN('M1612 774 v-44 h136 v44', UMB, 1.2));
+  /* rattan chair with a pink throw, at the right */
+  S('<ellipse cx="1660" cy="1000" rx="170" ry="14" fill="#2F1E12"/>', .55);
+  G(LN('M1560 1000 L1590 870', '#C99F55', 13) + LN('M1760 1000 L1730 870', '#A67F3E', 13)); G(RC(1566, 866, 190, 20, '#EBD3A9'), 'data-angle="0" data-streak=".08"'); G(RC(1590, 846 - 110, 142, 124, '#F0DDB9')); var ra = ''; for (var i = 0; i < 15; i++) ra += LN('M' + (1594 + i * 9.4) + ' 736 V860', '#A98450', 1.1); for (var i = 0; i < 14; i++) ra += LN('M1590 ' + (742 + i * 8.6) + ' H1732', '#A98450', 1.1); I(ra, .8); I(LN('M1590 736 h142 v124 h-142 Z M1566 866 h190 v20 h-190 Z', '#7A5A2C', 1.5));
+  G('<path d="M1620 762 C1680 730 1710 770 1716 880 L1730 960 H1630 C1612 900 1606 800 1620 762 Z" fill="#F7BBD0"/>', 'data-angle="75" data-streak=".1"'); W('<path d="M1690 750 C1708 780 1712 830 1716 880 L1730 960 H1692 C1700 880 1704 800 1690 750 Z" fill="#A3456E"/>', .5); var kn = ''; for (var i = 0; i < 44; i++) kn += LN('M' + RR(1628, 1712).toFixed(0) + ' ' + RR(770, 950).toFixed(0) + ' h' + RR(4, 12).toFixed(0), '#FFEFF4', 1.6); H(kn); var fg = ''; for (var i = 0; i < 12; i++) fg += LN('M' + (1634 + i * 8) + ' 958 v14', '#F7BBD0', 2.4); G(fg);
+}
+
+function build(name, draw){ layers = []; defs = []; draw(); var host = document.getElementById('host'), s = '<svg data-art="' + name + '" xmlns="http://www.w3.org/2000/svg" width="2000" height="1008" viewBox="0 0 2000 1008"><defs>' + defs.join('') + '</defs>'; layers.forEach(function(l){ s += '<g data-mat="' + l.mat + '" ' + l.opt + '>' + l.svg + '</g>' }); host.insertAdjacentHTML('beforeend', s + '</svg>'); return layers.length }
+window.LAYERS = [build('vstudio', studio), build('vdesk', desk),
+  build('vst-sl', function(){ sheers(160, 150, 106, 572, 5) }), build('vst-sr', function(){ sheers(444, 150, 106, 572, 5) }), build('vst-pend', pendantS),
+  build('vd-sl', function(){ sheers(138, 92, 118, 628, 6) }), build('vd-sr', function(){ sheers(486, 92, 112, 628, 6) }), build('vd-pend', pendantD)];
+document.fonts.ready.then(function(){ setTimeout(function(){ document.body.dataset.ready = '1' }, 900) });
+})();
+</script></body></html>
