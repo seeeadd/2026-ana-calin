@@ -3173,12 +3173,13 @@ html.bdg-js .bdg.in{animation:bdgIn .6s cubic-bezier(.2,1.5,.4,1) both}
      and it is off for reduced motion */
   if (!matchMedia('(prefers-reduced-motion: reduce)').matches) (function(){
     var sprites = [], KINDS = [['dendrite', 7], ['stellar', 11], ['dendrite', 31], ['dendrite', 5], ['stellar', 3], ['dendrite', 17], ['dendrite', 23]];
-    KINDS.forEach(function(k, i){ var im = new Image(); im.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="-60 -60 120 120" width="128" height="128"><defs><filter id="ds" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="0" stdDeviation="1.1" flood-color="#4F6F98" flood-opacity=".55"/><feDropShadow dx="0" dy="2" stdDeviation="2.2" flood-color="#5A78A0" flood-opacity=".28"/></filter></defs><g filter="url(#ds)">' + crystal(k[0], k[1], 's' + i).replace('stroke="#D3E2F2"', 'stroke="#9FBEE0"').replace('stroke="#C9DBEE"', 'stroke="#A9C6E6"') + '</g></svg>'); sprites.push(im) });
+    KINDS.forEach(function(k, i){ var im = new Image(); im.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="-60 -60 120 120" width="128" height="128"><defs><filter id="ds" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="0" stdDeviation="1.1" flood-color="#4F6F98" flood-opacity=".55"/><feDropShadow dx="0" dy="2" stdDeviation="2.2" flood-color="#5A78A0" flood-opacity=".28"/></filter></defs><g filter="url(#ds)">' + crystal(k[0], k[1], 's' + i).replace('stroke="#D3E2F2"', 'stroke="#9FBEE0"').replace('stroke="#C9DBEE"', 'stroke="#A9C6E6"') + '</g></svg>'); var sp = { im: im, c: null }; im.onload = function(){ /* rasterise once: an SVG with drop-shadow filters redrawn every frame cost ~60 ms a frame */ var c = document.createElement('canvas'), r = 2 * Math.min(2, devicePixelRatio || 1); c.width = c.height = 64 * r; c.getContext('2d').drawImage(im, 0, 0, c.width, c.height); sp.c = c }; sprites.push(sp) });
+    var speckC = (function(){ var c = document.createElement('canvas'), r = Math.min(2, devicePixelRatio || 1), n = 24 * r, g = c.getContext('2d'); c.width = c.height = n; g.scale(r, r); g.fillStyle = '#FFFFFF'; g.shadowColor = 'rgba(70,100,145,.6)'; g.shadowBlur = 3 * r; g.beginPath(); g.arc(12, 12, 5, 0, 6.283); g.fill(); return c })();
     function snowIn(sec){ if (!sec) return;
       if (getComputedStyle(sec).position === 'static') sec.style.position = 'relative';
       var cv = document.createElement('canvas'); cv.className = 'snow'; cv.setAttribute('aria-hidden', 'true'); sec.insertBefore(cv, sec.firstChild);
-      var ctx = cv.getContext('2d'), W = 0, H = 0, flakes = [], on = false, last = 0, T = Math.random() * 50;
-      function size(){ var dpr = Math.min(2, devicePixelRatio || 1); W = sec.clientWidth; H = sec.clientHeight; cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      var ctx = cv.getContext('2d'), dpr = 1, W = 0, H = 0, flakes = [], on = false, last = 0, T = Math.random() * 50;
+      function size(){ dpr = Math.min(2, devicePixelRatio || 1); W = sec.clientWidth; H = sec.clientHeight; cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
         var n = Math.round(Math.min(40, Math.max(12, W * H / 32000))); while (flakes.length < n) flakes.push(make(false)); flakes.length = n }
       function make(top){ var z = Math.pow(Math.random(), 1.2) * .75 + .25, speck = z < .4 && Math.random() < .5;
         return { x: Math.random() * W, y: top ? -30 - Math.random() * 60 : Math.random() * H, z: z, speck: speck, s: speck ? 3 + z * 4 : 16 + z * 26,
@@ -3192,8 +3193,9 @@ html.bdg-js .bdg.in{animation:bdgIn .6s cubic-bezier(.2,1.5,.4,1) both}
           if (f.x < -40) f.x += W + 80; else if (f.x > W + 40) f.x -= W + 80;
           var x = f.x + Math.sin(f.ph) * f.amp;
           ctx.globalAlpha = f.a * Math.min(1, (f.y + 40) / 120, (H + 40 - f.y) / 120);
-          if (f.speck) { ctx.fillStyle = '#FFFFFF'; ctx.shadowColor = 'rgba(70,100,145,.6)'; ctx.shadowBlur = 3; ctx.beginPath(); ctx.arc(x, f.y, f.s / 2, 0, 6.283); ctx.fill(); ctx.shadowBlur = 0 }
-          else { var im = sprites[f.k]; if (im.complete) { ctx.save(); ctx.translate(x, f.y); ctx.rotate(f.rot); ctx.drawImage(im, -f.s / 2, -f.s / 2, f.s, f.s); ctx.restore() } } }
+          if (f.speck) { var d = f.s * 2.4; ctx.drawImage(speckC, x - d / 2, f.y - d / 2, d, d) }
+          else { var sp = sprites[f.k]; if (sp.c) { var co = Math.cos(f.rot), si = Math.sin(f.rot); ctx.setTransform(co * dpr, si * dpr, -si * dpr, co * dpr, x * dpr, f.y * dpr); ctx.drawImage(sp.c, -f.s / 2, -f.s / 2, f.s, f.s) } } }
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
         ctx.globalAlpha = 1; requestAnimationFrame(tick) }
       function start(){ if (on) return; on = true; last = 0; requestAnimationFrame(tick) }
       size(); addEventListener('resize', size); if (window.ResizeObserver) new ResizeObserver(size).observe(sec);
