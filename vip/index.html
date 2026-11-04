@@ -1933,6 +1933,12 @@ body.is-closed .bdg-life{display:none}
 .bdg-life.b2{position:relative;right:auto;top:-6px;flex:none;width:98px;margin:-14px -8px -14px 4px;--r:8deg}
 @media (max-width:700px){.bdg-life.b2{width:84px;margin:-10px -4px -10px 2px}}
 
+/* Sean, Nov 4: "make it a whole lot bigger on page, i want video to look bigger, bigger column too" */
+@media (min-width:1101px){
+  .vh .wrap{max-width:1480px}
+  .vh-grid{grid-template-columns:minmax(0,1fr) 400px;gap:28px}
+  .vh-l .door{width:calc(100% + 30px);margin-left:-26px}
+}
 </style>
 </head>
 <body>
@@ -2598,7 +2604,7 @@ body.is-closed .bdg-life{display:none}
  var F=new Date(Date.UTC(2026,11,11,17,0)),FE=new Date(Date.UTC(2026,11,11,18,30)),wa=M[S.getMonth()]+' '+S.getDate()+' to '+(FE.getMonth()===S.getMonth()?'':M[FE.getMonth()]+' ')+FE.getDate();
  var dl=W[DL.getDay()]+', '+M[DL.getMonth()]+' '+DL.getDate(),dlt=t(DL)+' in '+place;
  var R=[['Tue, Dec 8, 11:59 pm New York',dl+', '+dlt],['Tue, Dec 8 at 11:59 pm New York',dl+' at '+dlt],['Tue, Dec 8 · 11:59 pm New York',dl+' · '+dlt],
-  ['Tuesday, Dec 8 at 11:59 pm New York',WF[DL.getDay()]+', '+M[DL.getMonth()]+' '+DL.getDate()+' at '+dlt],['See you Tue Dec 8.','See you '+W[S.getDay()]+' '+M[S.getMonth()]+' '+S.getDate()+'.'],['Dec 8 to 10',span],['Tue, Dec 8,',dl+','],['11:59 pm New York',dlt],
+  ['Tuesday, Dec 8 at 11:59 pm New York',WF[DL.getDay()]+', '+M[DL.getMonth()]+' '+DL.getDate()+' at '+dlt],['See you Tue Dec 8.','See you '+W[S.getDay()]+' '+M[S.getMonth()]+' '+S.getDate()+'.'],['Dec 8 to 10',span],['Tue, Dec 8,',dl+','],['see you Tuesday','see you '+WF[S.getDay()]],['11:59 pm New York',dlt],
   /* Friday's VIP call (12:00 pm New York, as the VIP confirmation page says) and the WhatsApp group, which runs from Day 1
      to the end of Friday's call */
   ['Friday, Dec 11',WF[F.getDay()]+', '+M[F.getMonth()]+' '+F.getDate()],['Fri, Dec 11 ·',W[F.getDay()]+', '+M[F.getMonth()]+' '+F.getDate()+' · '+t(F)+' in '+place+' ·'],
