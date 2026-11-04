@@ -1,10 +1,12 @@
 # Claude in this repo
 
-Before any work, read `playbook/README.md`, then `playbook/SOP.md` and the playbook files for the job (graphics,
-motion, video, brand). Read the newest lines of `playbook/feedback-log.md`: they are the freshest rules.
+Before any work, read Sean's playbook repo **seeeadd/afterharvest-design-playbook** (`README.md`, `SOP.md`, the files
+for the job, `clients/ana-calin.md`, the newest lines of `feedback-log.md`). If it isn't in this session, add it
+(add_repo) and clone it. `playbook/` here is Ana's local copy; the playbook repo wins where they differ.
 
 Before ending any turn where Sean corrected or approved something, update the playbook (SOP section D): add a line to
-`playbook/feedback-log.md`, promote repeated corrections into the rule files, and commit it with the work.
+`feedback-log.md` in the playbook repo (and `playbook/feedback-log.md` here), promote repeated corrections into the
+rule files, Ana-only facts into `clients/ana-calin.md`, and push both repos.
 
 Standing rules:
 - Work on `claude/quirky-franklin-etidvi`.
