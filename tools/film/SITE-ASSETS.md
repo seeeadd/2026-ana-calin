@@ -39,9 +39,41 @@ redraw a piece that already exists here.
 | Student results (real screenshots) | `img/wins/*.webp` | reviews; label them "from Ana's past challenge, results vary" |
 | Student faces | `img/av/*.webp` | form proof row |
 
-Built in code (record from the page):
-- `index.html`: the floating header with the countdown, the ticket-shaped form, the Google Calendar week and invite,
-  the video-call icon, the Day 1 to 3 cards with the visitor's own time, the signature animation.
+## The page itself: the form, the buttons, the header, the cards
+
+Not only the drawings: the real UI from the page goes in the video too (the form someone fills in, the button they
+press, the countdown, the Day cards), so the viewer sees exactly what they will use. Two ways to get each piece; pick
+per shot:
+
+1. **Screenshot or record it from the page (fastest, exact).** Serve the repo (`python3 -m http.server 8767`) or use
+   the live site, open it in Playwright at the video's size, scroll the piece into view and take
+   `element.screenshot()` at `deviceScaleFactor: 2` or `3`, or record the animation with `recordVideo` /
+   frame-by-frame screenshots. Set `timezoneId: 'America/New_York'` so it shows the emails' time. Before the shot you
+   can type into the form (`page.fill('#jFirst', 'Sarah')`) to show it being filled.
+2. **Bring the code into the film (sharpest, animatable).** Copy the piece's HTML and its CSS from `index.html` into
+   the film page, so it renders as real vector text and shapes at any size and can be animated shot by shot (the
+   cursor clicks the button, the seat ticket stamps, the countdown ticks).
+
+| piece | where (selector) |
+|---|---|
+| The form, ticket-shaped, with "Save your free seat" | `#hcard` (hero), `#rcard` (the one that follows on desktop); fields `#jFirst`, `#jEmail` |
+| The sign-up popup | `#modal` (open it by clicking any `.btn.open`) |
+| The "I'm in, Ana (it's free)" button with the sunflower | `.btn.open` (any; the Christmas hat version is on in December) |
+| Floating header: event line, date, countdown, button | `.fb` (appears after a little scroll) |
+| Phone bottom bar | `#mbar` (phone width) |
+| Headline and pill | `#h1`, `.hpill` |
+| Stats strip ($1.4M, about 80,000 readers, 0 sales calls) | `.tstrip` |
+| The video in her window | `#vsl` |
+| Day 1 to 3 rows, each with its date card | `#days .drow`, date card `.dwhen` |
+| Session times by city with pins | `.ftimes` |
+| Calendar invite over the First Class photo | `.claim` |
+| Prize: the draw tickets | `.tix` |
+| Free gift (calculator) | `#gift` |
+| Student results | `#reviews` |
+| Her signature, written in ink | `.sig-w` |
+| The final call to action | `#final` |
+
+Other pages, same two ways:
 - `confirmed/index.html` and `vip-confirmed/index.html`: the Gmail inbox (with the zoom-in), the WhatsApp chat, the
   calendar steps.
 - `vip/index.html`: the one-on-one WhatsApp chat, the VIP pieces.
