@@ -1952,6 +1952,12 @@ body.is-closed .bdg-life{display:none}
 .wv-ov .wv-pp{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:block;width:min(100vw,calc(100dvh * 9 / 16))}
 .wv-ov .wv-x{position:absolute;top:calc(12px + env(safe-area-inset-top));right:12px;width:44px;height:44px;border:0;border-radius:50%;background:#FFF8EE;display:grid;place-items:center;z-index:2;cursor:pointer}
 html.wv-lock{overflow:hidden}
+/* Sean, Nov 4: the spam note thinner, so it doesn't overpower the VIP offer and the video: one slim strip */
+@media (min-width:761px){
+  .vspam{max-width:860px;grid-template-columns:132px minmax(0,1fr);gap:16px;padding:6px 18px 6px 6px;margin-top:10px}
+  .vspam-t{font-size:13.5px;line-height:1.4;gap:9px}
+  .vspam-t .ib-i{width:19px;height:19px;font-size:11.5px}
+}
 </style>
 </head>
 <body>
