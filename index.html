@@ -2262,6 +2262,8 @@ footer{background-image:url(img/vip/paint/tx-grain.webp);background-size:256px}
 .fb-t b.fb-two .fb-me{display:block}
 .fb-t b.fb-two .nw{white-space:nowrap}
 .fb-t b.fb-two .fb-hl{background:linear-gradient(180deg,transparent 55%,rgba(255,212,0,.38) 55%,rgba(255,212,0,.38) 90%,transparent 90%)}
+.fb-t b.fb-two .fb-pin{display:inline-block;width:.78em;height:.78em;margin:0 .1em 0 .02em;vertical-align:-.04em;fill:var(--pink)}
+.fb-t b.fb-two .fb-pin circle{fill:#fff}
 .fb-t b.fb-two .fb-ny{display:block;margin-top:1px;font-size:.74em;font-weight:600;letter-spacing:0;color:var(--ink3)}
 .fb-t small.loc .fb-w2{display:none!important}
 .fb-t small.loc .fb-w{display:inline!important}
@@ -3630,7 +3632,7 @@ html.bdg-js .bdg.in{animation:bdgIn .6s cubic-bezier(.2,1.5,.4,1) both}
   var dates=start.toLocaleDateString('en-US',{month:'short',day:'numeric'})+' to '+end.getDate();
   b.classList.add('fb-two');
   b.innerHTML='<span class="fb-me"><span class="fb-hl"><span class="nw"></span> <span class="nw"></span></span></span><span class="fb-ny">Dec 8 to 10 · 12:00 pm New York</span>';
-  var n=b.querySelectorAll('.fb-me .nw');n[0].textContent=dates+' ·';n[1].textContent=t+' in '+place;
+  var n=b.querySelectorAll('.fb-me .nw');n[0].textContent=dates+' ·';n[1].textContent=t+' in ';n[1].insertAdjacentHTML('beforeend','<svg class="fb-pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s-7-7.1-7-12.2A7 7 0 0 1 19 9.8C19 14.9 12 22 12 22Z"/><circle cx="12" cy="9.6" r="2.6"/></svg>');n[1].appendChild(document.createTextNode(place));
  }catch(e){}})();
 </script>
 
