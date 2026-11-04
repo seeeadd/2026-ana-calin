@@ -2395,6 +2395,43 @@ html.bdg-js .bdg.in{animation:bdgIn .6s cubic-bezier(.2,1.5,.4,1) both}
 @media (max-width:860px){.rgrid2{max-width:620px;margin-left:auto;margin-right:auto}}
 .rgrid2.short .rq:nth-of-type(n+3){display:none}
 .rgrid2 .rg-more:not([hidden]){display:block;margin:4px auto 0;column-span:all}
+
+/* ---------- desktop and laptop hero (Sean, Nov 4): the same layout, video on the left, everything else on the right,
+   but tighter so the form is on the first screen of a laptop: the headline, the subheader, then straight to the form;
+   the longer paragraph and the highlighted line follow under the form ---------- */
+@media (min-width:1061px){
+  .v2h .hright{display:flex;flex-direction:column;align-items:stretch}
+  .v2h .hright .hpill{align-self:flex-start}
+  .v2h .hcopy{display:contents}
+  .v2h .hcopy .hlead{margin-top:14px}
+  .v2h .htk{order:5;margin-top:16px}
+  .v2h .hcopy .hsub2{order:6;margin-top:18px}
+  .v2h .hcopy .hsub2 + .hsub2{order:7;margin-top:10px}
+}
+/* shorter laptop screens (the common 1366 x 768, 1280 x 720 and 1440 x 900): the same, a little tighter again. The
+   pill is said in the floating bar right above it. */
+@media (min-width:1061px) and (max-height:930px){
+  .v2h .hright .hpill{display:none}
+  .v2h .hright h1,.v2h .hright h1.long{margin-top:4px}
+  .htk .tkt{padding-top:12px;padding-bottom:12px}
+  .htk .tk-head{padding-bottom:8px;margin-bottom:6px}
+  .htk .tk-h{font-size:31px}
+  .htk .tk-h .tk-and{font-size:19px;margin-top:3px}
+  .htk .tkt form .field input{height:48px}
+  .htk .tkt form .btn.big{height:54px}
+}
+@media (min-width:1061px) and (max-height:830px){
+  .v2h .hright h1,.v2h .hright h1.long{font-size:min(9.4cqi,56px)}
+  .v2h .hcopy .hlead{font-size:17px;margin-top:10px}
+}
+@media (min-width:1061px) and (max-height:760px){
+  .v2h .hright h1,.v2h .hright h1.long{font-size:min(8.8cqi,50px)}
+  .v2h .hcopy .hlead{font-size:16.5px;line-height:1.4}
+  .htk .tk-k{margin:0}
+  .htk .tk-h{font-size:29px}
+  .htk .tkt form .field{margin-bottom:6px}
+  .htk .tkt form .field input{height:46px}
+}
 </style>
 </head>
 <body>
