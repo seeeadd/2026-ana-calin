@@ -1,0 +1,95 @@
+# Feedback log: Sean's corrections and approvals → rules
+
+Format: `date · area · "his words (short)" → rule · where it lives`. Newest at the bottom. Add a line for every
+correction and every approval-with-reason (SOP section D). The full raw messages are in `tools/film/sean-messages.md`.
+
+## Oct 25 to 31 (offer pages, registration v2, confirmations)
+
+- 10-25 · colour · "make yellow more of the main color instead of pink" → yellow leads; pink is the accent · brand-ana
+- 10-25 · layout · "too much like Jay's ... make it unique to Ana" then "too bulky ... I like the compact vibe" → compact layouts, client-specific styling, keep what works · README rule 7
+- 10-25 · revisions · "I didn't tell you to revert it" → change only what was asked; keep the rest · SOP B
+- 10-25 · CTA · "better wording than Join Now ... a custom graphic on the left of the button, premiumly animated" → first-person CTAs with the brand icon that animates on hover · graphics §6
+- 10-25 · brand mark · "doesn't look like her flower" → trace brand marks from the real asset · graphics §3
+- 10-25 · buttons · "don't grey out any button" → never disabled-grey CTAs · graphics §6
+- 10-31 · photos · "looks meh, pose is meh, no concept behind it" → every image needs a concept · graphics §1
+- 10-31 · form · "make the form thinner and narrower ... it doesn't even have much stuff" → forms slim, minimal, labelled · graphics §6
+- 10-31 · hierarchy · "text placements are very wrong, no hierarchy" → one focal point per section, clear type scale · README rule 5
+- 10-31 · form · "add a label on form, not just placeholder" → visible labels always · graphics §6
+- 10-31 · form · "use a better shape, not a mere rectangle" → the ticket-shaped form · graphics §6
+- 10-31 · type · "use sans serif here" (sub under H1) → sans for reading · README rule 6
+- 10-31 · copy · "dont use em dashes" → no em dashes anywhere · README rule 6
+- 10-31 · realism · "make it look more like realistic Gmail ... zoom-in animation" → real apps copied exactly, themed · graphics §2
+- 10-31 · proof · "where's the 3,000+, 3,200, 2,400 ... show they're from the past challenge" → keep real results, label them honestly · brand-ana
+- 10-31 · form · "make Save your seat big and bold" (meant the H1) → ask/confirm which heading when ambiguous · SOP B1
+- 10-31 · graphics · "why are 1 and 3 so empty, where are the graphics" → every step card gets a real graphic · graphics §1
+- 10-31 · calculator · "a logo of it, not just how it looks" → product logos as marks · brand-ana
+- 10-31 · calculator · "make it feel more secret saucy" + "reveals itself the more they answer" → tease and lock, progressive reveal · motion §3
+- 10-31 · calculator · "does not even look like a calculator, too basic and generic" → real object fidelity · graphics §1
+- 10-31 · explanations · "still too technical, make it friendly for a woman in her 40s" → plain language for client-facing guides · SOP E
+
+## Nov 1 (calculator, VIP overhaul, motion study, the film)
+
+- 11-01 · UI · "friendly ... bigger text ... more division ... step-by-step ... it looks very boring ... add an actual goal in every part" → step-by-step, larger type, a goal per step · graphics §6
+- 11-01 · film · "not what I expected ... too much text ... more action, more visuals than papers ... real motion graphics" → films need action, not paper stills · video-editing §5
+- 11-01 · film · "the door does not look good, improve the animation of the door ... longer video ... no dates yet" → door animation quality; no dates in core video · video-editing §5
+- 11-01 · motion · "I don't want pops, pulses, and slides ... smooth ... premium, specific" → banned list · motion §1
+- 11-01 · method · "go through the Fladlien teardown ... use it as a foundation" → Fladlien rules for every visual · README, tools/paint/PLAN-registration.md
+- 11-01 · look · "it looks like a generic Claude design ... I want it to feel like Ana, like a human designer" → the anti-Claude test · graphics §1
+- 11-01 · study · "don't just review the texture, but the form: shapes, lines, creativity" → study references for form and idea, not only texture · tools/paint/STUDY.md
+- 11-01 · real vs metaphor · "you tell me which stuff has to be raw and which is good as metaphors" → decide and state per graphic · graphics §2
+- 11-01 · background · "still don't like how the background looks ... cheeky" → subtle code textures, one per section · graphics §3
+- 11-01 · placement · "too scattered ... too tight ... text doesn't fit ... animations generic ... plan an animation for it" → balance + motion planned with the graphic · motion §3
+- 11-01 · textures · "use the textures I gave as reference ... not too solid ... subtly" → mixed media as subtle accents · graphics §3
+- 11-01 · motion · "want real animation, not just stop motion" / "where are the real animations? just slides and flaps" → animation principles · motion §2
+- 11-01 · speed · "I want this chair to move faster, too much delay" → short stories, quick start · motion §4
+- 11-01 · realism · "make the WhatsApp more realistic ... Ana-themed" → exact app UI in brand · graphics §2
+- 11-01 · emphasis · "the stuff you put in bold is not really important ... bold the sentence ... not just highlight, bold too" → bold the key sentence plus highlight · README rule 6
+- 11-01 · APPROVAL · "the most perfect VIP page we have ever built" → the VIP page is the quality bar (vip/index.html, assets/vip-motion.js) · README
+- 11-01 · rebuild · "you honestly kind of ruined it ... bring back the charm" → never strip a page; add on top · README rule 7
+- 11-01 · slides · "use the presentation guideline ... custom-made graphics ... not repetitive ... graphics mean something" → per-slide specific graphics, varied layouts · graphics §1
+- 11-01 · speed · "are those literally all you've done after 20 minutes?" / "one should take 8 mins max" → fast iterations, visible progress · SOP E
+
+## Nov 2 (registration rounds, badges, Christmas)
+
+- 11-02 · door · "more 3D-looking, it looks flat ... faster and smoother ... more details on flowers and pots" → 3D opening objects, fast load motion, detail · graphics §3, motion §1
+- 11-02 · slides · "placements not balanced ... text too low ... graphic pushed to the side" → balance inside every frame · README rule 5
+- 11-02 · faces · "I want her face to show exactly, why is it cropped" → never crop faces · graphics §6
+- 11-02 · glitch · "the ticket shape glitches, disappears when I click" → fix root causes · README rule 8
+- 11-02 · raw · "look more like a raw screenshot ... it looks Claude-generated" → proof as raw screenshots · graphics §2
+- 11-02 · background · "not just colored shapes, think of a unique background for that specific section" → section-specific backgrounds · graphics §3
+- 11-02 · colour · "not a fan of this puke poop grey" → no muddy greys/browns · brand-ana
+- 11-02 · arrow · "looks like every other Claude annotation ever, make it cuter" → hand-drawn, characterful arrows · graphics §1
+- 11-02 · highlight · "make the highlight a bit subtler" → soft yellow highlight · README rule 6
+- 11-02 · form · "make it active and in demand ... like they're already in" → alive forms with real counts, low-key · graphics §6
+- 11-02 · ticker · "too bulky ... too distracting ... more unique" then "a bit too much tickers" → one compact ticker · graphics §6
+- 11-02 · numbers · "numbers clearer and sans serif" → sans for numbers · README rule 6
+- 11-02 · header · "don't remove the free 3-day workshop on the sticky header ... no depth, black-gray bill" → keep event info; header with depth · graphics §6
+- 11-02 · breathing room · "too much going on ... they won't be able to breathe" → space over density; don't remove copy, relayout · README rule 5
+- 11-02 · device · "this looks like a 2010 iPad ... I want the bar on top where the camera is" → modern thin-bezel devices · graphics §6
+- 11-02 · photos · "this still looks AI ... better makeup, hair, lighting, same pose" → Gemini prompts that keep the real photo · graphics §4
+- 11-02 · badges · "shouldn't some badges have words ... more traditional ... some red ... looks gemini pattern" → glossy traditional seals with exact words · graphics §5
+- 11-02 · badges · "I don't wanna add full refund" → never promise what isn't offered · graphics §5
+- 11-02 · fixes · "make sure your fixes are not a bunch of patches and actually fix the right code" → root-cause fixes · README rule 8
+- 11-02 · seasonal · "a little cute seasonal spice ... not over the top" + "I prefer using our graphic techniques" + "snow just the parts you put them in before" → painted seasonal set, limited snow · graphics §7
+
+## Nov 3 to 4 (Nov 3 copy, painting sticker, signature, header times, video)
+
+- 11-03 · buttons · "make sure to use the new christmas themed buttons" → check seasonal variants in screenshots · SOP B5
+- 11-03 · painting · "looks so different" / "add more effort on the curves, put line on top first" → trace line first, then fill · graphics §3
+- 11-03 · sticker · "an svg custom version, transparent background, like a sticker" → stickers: SVG, transparent, die-cut · graphics §3
+- 11-03 · sticker · "don't remove the curves and textures of the leaves" + "outline more raw hand cut" + "cut this big white area" → sticker rules · graphics §3
+- 11-03 · emphasis · "make 1:1 session stand out like rly stand out" → one hero label per section may be loud (pink tilted label) · graphics §6
+- 11-03 · spacing · "unbalanced and too scattered" / "too much awkward white space" → tighten and balance · README rule 5
+- 11-03 · table · "more textured and angled, not flat" → painted perspective surfaces · graphics §3
+- 11-03 · tickets · "make the tickets look better" → crafted print details · graphics §3
+- 11-03 · gradient · "too dark behind text" → never reduce text readability · README rule 5
+- 11-03 · badge placement · "beside the eyebrow and first two lines so people see what it is right away" → badges label what they sit next to · graphics §5
+- 11-03 · logo · "use her wordmark from the brand kit" → real brand assets over typed text · brand-ana
+- 11-03 · signature · "trace it and make a smooth signature animation" → "more realistic, balanced" → "you just added a line underneath" → real signature script (Meddon), readable, ink animation, fast · motion §3
+- 11-03 · look · "she's going bolder ... red lips ... not blue mommy colors" → bolder outfits in prompts · brand-ana
+- 11-03 · frame · "make this a picture frame in our graphic techniques, not a rectangle" → painted frames for photos · graphics §6
+- 11-03 · frame · "make sure this aint cut" (the shadow) → leave room inside the canvas for shadows · graphics §3
+- 11-03 · icon · FaceTime look-alike requested → declined; original green round icon with white camera · SOP E
+- 11-03 · header · "don't remove the free 3-day live event" + "highlight their own time" → event info stays; visitor's time highlighted · graphics §6
+- 11-04 · dates · "dates will be different for each [time zone]" → visitor's own date on forms always, in the header when it differs · graphics §6
+- 11-04 · machine · "make a playbook ... updatable ... the more I use it, the better it gets" → this playbook and the learning loop · SOP D

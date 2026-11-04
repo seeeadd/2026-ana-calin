@@ -23,8 +23,21 @@ art style. It replaces the still in the page's video slot (`index.html`, `#vsl`,
   Registration page** (section 3 below). Her recording may differ from it; the recording wins, the doc gives the
   beats and the editing notes.
 
-**Frame:** the video must not be 9:16. Sean prefers **4:3 (1440 x 1080)** over 16:9. The page's player is a
-landscape window, so 4:3 fits it well and gives room beside her.
+**Frame:** the video must not be 9:16. Sean prefers **4:3 (1440 x 1080)** over 16:9.
+**Catch:** the registration page's video window is **1.548:1** (measured: 676 x 437 at a 1440 px screen). A 4:3
+file would be cropped about 14% top and bottom. So ask Sean once:
+- (a) change the window to 4:3: the `.iph.win .scr` aspect-ratio in `index.html`, plus the painted window
+  overlay's offsets (`.wn-art`, `.wn-flo`);
+- (b) render at about 1.55:1 (1560 x 1008).
+
+Recommend (a) if he wants 4:3.
+
+**Before anything else in the new chat:**
+1. Read `playbook/` (`README`, `SOP`, `brand-ana`, `graphics`, `motion`, `video-editing`, `feedback-log`).
+2. Probe her video with `ffprobe`: length, fps, resolution, audio.
+3. Transcribe it if there's no script match (`whisper` if installed; otherwise use her burned-in subtitles plus the
+   script doc).
+4. Map her real sentences to the beats in the shot plan below.
 
 **Sean's ideas, all on the table** (he said "all of them, I don't know"):
 1. AI-generated background (Sean makes it in Gemini; Claude writes the prompt).
@@ -48,6 +61,43 @@ landscape window, so 4:3 fits it well and gives room beside her.
 
 Ask him before building, then make a 20 to 30 second test of the default shot plus one cut-away, show it, and
 only then do the full cut. He hates waiting: say how long each step takes and send drafts as they exist.
+
+---
+
+## 0b. Shot plan, beat by beat (a starting point; her real timing wins)
+
+**Shot types**
+- **A, talking:** Ana's portrait in the painted frame (`img/vip/paint/ana-frame.webp` style, or the painted Greek
+  window), on the right two-thirds. The left third holds the caption or a small graphic.
+- **B, cut-away:** a full-frame graphic, with Ana in a camera tile in the bottom-right corner (rounded, 4 px ink
+  border, "Ana" label, as `.camtile` in film.html).
+- **C, close:** only Ana, pushed in slowly; caption only.
+
+| # | her line (script) | shot | picture | motion / transition | caption |
+|---|---|---|---|---|---|
+| 1 | "best workshop yet ... completely free" | A | her room behind the frame: whitewash, the window to the sea (film.html scene 3 room), string lights | the shutters open onto her in the first 0.8 s (the page's door move, fast) | Build proof before you leave. |
+| 2 | "It's called The Exit Plan." | A | The Exit Plan wordmark lettered in on the left | ink draws the title as said | It's called The Exit Plan. Free, and live. |
+| 3 | the word "exit"; idea + spreadsheet; build proof first | B | a painted idea note and a spreadsheet tilt and wobble; a proof stamp (painted postmark) lands on a real sales notification | stamp: anticipation, press, settle | Proof first: something people will pay for. |
+| 4 | three live days, backward from income; audience or not | B | the sunflower runner jogs along three day tiles (Dec tiles without dates: "Day 1 / 2 / 3") | the runner is the wipe into the next beat | Three live days. Bring what you know. |
+| 5 | "I'm Ana Calin ... How We Grow" | A | How We Grow wordmark on the left | signature writes in (page pink) | I'm Ana Calin. I write How We Grow. |
+| 6 | $1.4M without sales calls; 16,907 buyers | B | two separate counters, real numbers, on painted paper tags; Ana's tile stays | each counts up as said (no bounce) | $1.4M, no sales calls / 16,907 buyers |
+| 7 | "first workshop sold two copies ... Very efficient." | C | her face, nothing else | slow push-in; hold on the dry line | My first workshop sold two copies. |
+| 8 | the usual order: idea, build, audience, find out | B | film.html's tower of blocks, labelled in her words, wobbling | the tower wobbles, then tips | The order most of us were taught. |
+| 9 | her order now: AI reads real questions first | B | real-looking comments and replies (film.html scene 5), grouped by the same question; a highlighter marks the repeats. No robots, no glow | the cards slide on arcs into groups | Now I start with what people keep asking for. |
+| 10 | past students: it still works; this starts earlier | A | small "Been to a workshop before?" note on the left | note settles | The Exit Plan starts earlier. |
+| 11 | Day 1, find a problem / first readers | B | the Day 1 teaser slides (`img/slides/day1a`, `day1b`) in the screen-share frame, method redacted | page-turn into the slide; a cursor and her ink ring the key box | Day 1 · Find the problem |
+| 12 | Day 2, put numbers on it | B | Day 2 slides (`day2a`, `day2b`); income, price and buyers fitting together | numbers slot into place on arcs | Day 2 · Put numbers on it |
+| 13 | Day 3, put it out there (the email) | B | Day 3 slides (`day3a`, `day3b`); an email being written in her voice | a pencil writes the subject line | Day 3 · Put it out there |
+| 14 | by the end: idea, numbers, email | A | three painted objects drop into an envelope on the left | envelope seals with her sunflower wax seal | One idea. The numbers. The email. |
+| 15 | the gift: the Exit Number calculator | B | the real calculator (`/exit-number/` screenshot) with its logo; a goal typed in, the buyers needed fill in | typing, then the result counts | Your gift: the Exit Number calculator |
+| 16 | "Put your name and email in the form ... see you live." | A | the sunflower runner runs to the edge of the frame and points off-screen toward the form beside the video | he hops, points, holds | Your seat is in the form. See you live. |
+
+**Notes**
+- Keep the order of her actual recording. If a line is missing, drop the row. Don't add claims she didn't say.
+- No dates anywhere (the date insert is recorded later).
+- Two shot types should alternate so it never feels static; never more than about 12 s of the same shot.
+- Optional, one place only: Sean's ideas of an AI background (shot A, row 1, behind the frame) and a blurred copy of
+  her video (a fallback for A).
 
 ---
 
@@ -345,3 +395,4 @@ outfits (her new photo: mauve satin wrap top). Not "blue mommy colours". Never c
 - Photos: `img/real/` (her Shorts stills and the new studio photo `ana-studio.webp`, see `SOURCE.txt`),
   `img/ana-cabin-3.webp` (First Class photo).
 - Everything Sean wrote in the old chat, in order: `tools/film/sean-messages.md`.
+- The playbook (rules for graphics, motion, video, and the learning loop): `playbook/`. Read it first; update `playbook/feedback-log.md` after every round of feedback in the new chat.

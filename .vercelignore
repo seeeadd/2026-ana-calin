@@ -2,3 +2,6 @@
 tools/film/
 # the paint studio: source drawings and scripts for the page illustrations
 tools/paint/
+# the playbook and Claude instructions (internal)
+playbook/
+CLAUDE.md
