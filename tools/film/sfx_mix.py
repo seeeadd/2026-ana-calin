@@ -79,7 +79,7 @@ print('sea rms dB coast/room:',round(20*np.log10(float(np.sqrt(np.mean(bed[t<T(5
 # music at the two ends, clearly above the sea: 15 s of the instrumental intro, then 12 s into the close.
 # The close plays the intro under her call to action and joins the same chords just before the hook (24.6 to 26.18, same bars as 15.0 to 16.6),
 # so "each day gets better" starts as she says "live" and no singing runs under her words.
-MUSIC_DB=-27.0; SONG=S['song']; g=10**(MUSIC_DB/20)/(float(np.sqrt(np.mean(SONG[int(2*SR):int(16*SR)]**2)))+1e-9)
+MUSIC_DB=-31.0; SONG=S['song']; g=10**(MUSIC_DB/20)/(float(np.sqrt(np.mean(SONG[int(2*SR):int(16*SR)]**2)))+1e-9)
 mus=np.zeros((N,2),np.float32)
 def place(at,a,b,fi,fo):
     x=SONG[int(a*SR):int(b*SR)].copy(); L=len(x); w=np.ones(L); i,o=int(fi*SR),int(fo*SR); w[:i]=np.linspace(0,1,i)**.5 if fi<.2 else np.sin(np.linspace(0,np.pi/2,i)); w[-o:]=np.cos(np.linspace(0,np.pi/2,o)); st=int(at*SR); e=min(st+L,N); mus[st:e]+=(x*w[:,None]*g)[:e-st]
@@ -90,7 +90,7 @@ place(HOOK,26.18,26.18+(N/SR-HOOK),XF,.55)
 # room for her words: the music gives up the band her consonants live in, and dips while she speaks
 Xm=np.fft.rfft(mus,axis=0); frq=np.fft.rfftfreq(N,1/SR); Xm*=np.interp(frq,[0,900,1500,5000,7500,24000],[1,1,.42,.42,.8,.8])[:,None]; mus=np.fft.irfft(Xm,N,axis=0).astype(np.float32)
 vm=v.mean(1); hp=int(.03*SR); env=np.sqrt(np.convolve(vm**2,np.ones(hp)/hp,'same')); act=(env>10**(-36/20)).astype(float)
-ka=int(.04*SR); kr=int(.28*SR); dk=np.convolve(act,np.ones(ka+kr)/(ka+kr),'same'); dk=np.clip(dk*1.6,0,1); mus*=(1-.42*dk)[:,None]
+ka=int(.04*SR); kr=int(.28*SR); dk=np.convolve(act,np.ones(ka+kr)/(ka+kr),'same'); dk=np.clip(dk*1.6,0,1); mus*=(1-.5*dk)[:,None]
 mix=v+fx+bed+mus; print('peak before limiter',round(float(np.abs(mix).max()),3),'clips',len(log))
 tmp=OUT+'.tmp.wav'; subprocess.run(['ffmpeg','-nostdin','-v','error','-y','-f','f32le','-ar',str(SR),'-ac','2','-i','-','-af','alimiter=limit=0.84:level=disabled:attack=3:release=60','-c:a','pcm_s16le',OUT],input=mix.astype(np.float32).tobytes())
 json.dump(log,open(os.path.expanduser('~/AnaVideo/work/sfx/cues.json'),'w'))
