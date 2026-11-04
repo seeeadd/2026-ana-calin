@@ -2470,6 +2470,15 @@ picture{display:contents}
 .ftz li.me{grid-column:1 / -1}
 .ftz li.me .hl{display:inline;padding:0 .2em;border-radius:3px;background:linear-gradient(180deg,transparent 52%,rgba(255,212,0,.45) 52%,rgba(255,212,0,.45) 90%,transparent 90%);color:var(--ink)}
 .ftz li.me .hl b{font-weight:800}
+.ftz li.me{font-size:19px}
+.ftz li.me svg{width:20px;height:20px}
+.ftz li.ft-also{grid-column:1 / -1;display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 0;font-size:14px;color:var(--ink3);white-space:normal;padding-left:25px}
+.ftz li.ft-also i{font-style:normal}
+.ftz li.ft-also .ft-k{font-weight:700;margin-right:6px}
+.ftz li.ft-also .ft-c{white-space:nowrap}
+.ftz li.ft-also .ft-c:not(:last-child):after{content:"·";margin:0 7px;color:var(--ink3)}
+.ftz:has(.ft-also){grid-template-columns:minmax(0,1fr)}
+@media (max-width:640px){.ftimes .ft-d .ft-ny{display:block;margin:2px 0 0}}
 </style>
 </head>
 <body>
@@ -3778,16 +3787,19 @@ picture{display:contents}
   var bb=document.createElement('b');bb.textContent=t;h.appendChild(bb);h.appendChild(document.createTextNode(' '+rest));li.appendChild(h);ul.insertBefore(li,ul.firstChild)};
  var known={'America/New_York':'New York','America/Los_Angeles':'Los Angeles','Europe/London':'London','Europe/Athens':'Greece'};
  var lis=[].slice.call(ul.children);
- /* Sean: once we know where they are, only their city (highlighted) and New York (the emails' time); all four stay for
-    anyone whose zone we can't read */
- var keepNY=function(){lis.forEach(function(li){if(!li.classList.contains('me')&&li.textContent.indexOf('New York')<0)li.remove()})};
+ /* once we know where they are, their city leads; all four stay as they are for anyone whose zone we can't read */
+ var keepNY=function(){ /* Sean: their city big and highlighted on top; the other cities kept, small, on one line underneath */
+  var rest=lis.filter(function(li){return !li.classList.contains('me')});rest.sort(function(a,b){return (b.textContent.indexOf('New York')>-1)-(a.textContent.indexOf('New York')>-1)});
+  var o=document.createElement('li');o.className='ft-also';var k=document.createElement('i');k.className='ft-k';k.textContent='Also:';o.appendChild(k);
+  rest.forEach(function(li,j){var b=li.querySelector('b'),c=document.createElement('i');c.className='ft-c';c.textContent=(b?b.textContent:'')+' '+li.textContent.replace(b?b.textContent:'','').replace(/if you.re in /,'').trim();o.appendChild(c);li.remove()});
+  if(rest.length)ul.appendChild(o)};
  if(known[tz]){lis.forEach(function(li){if(li.textContent.indexOf(known[tz])>-1)hi(li)});keepNY();return}
  var start=new Date(Date.UTC(2026,11,8,17,0)),end=new Date(Date.UTC(2026,11,10,17,0)),place=tz.split('/').pop().replace(/_/g,' ');
  var t=start.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'}).toLowerCase();
  var li=lis[0].cloneNode(true);li.innerHTML=lis[0].querySelector('svg').outerHTML+'<b></b>';li.querySelector('b').textContent=t;li.appendChild(document.createTextNode(' if you’re in '+place));hi(li);keepNY();
  if(start.getDate()!==8||start.getMonth()!==11){var W=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],M=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],b=ft.querySelector(':scope > b');
-  if(b){b.className='ft-d';b.innerHTML='<span class="nw"></span> <span class="nw"></span><span class="ft-ny">Tue Dec 8 to Thu Dec 10 New York</span>';var n=b.querySelectorAll('.nw');
-   n[0].textContent=W[start.getDay()]+' '+M[start.getMonth()]+' '+start.getDate()+' to';n[1].textContent=W[end.getDay()]+' '+M[end.getMonth()]+' '+end.getDate()}}
+  if(b){b.className='ft-d';b.innerHTML='<span class="nw"></span><span class="ft-ny">Tue Dec 8 to Thu Dec 10 New York</span>';
+   b.querySelector('.nw').textContent=W[start.getDay()]+' '+M[start.getMonth()]+' '+start.getDate()+' to '+W[end.getDay()]+' '+M[end.getMonth()]+' '+end.getDate()}}
 }catch(e){}})();</script>
 </body>
 </html>
