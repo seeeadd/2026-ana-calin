@@ -76,10 +76,10 @@ for k,(t0,st) in enumerate(CH[1:]): coast=np.where(t>=t0,st,coast)
 kn=int(.5*SR); coast=np.convolve(np.pad(coast,(kn,kn),mode='edge'),np.ones(kn)/kn,'same')[kn:kn+N]
 lv=np.full(N,10**(-47/20)); room=10**(-52/20); lv=lv*coast+room*(1-coast)
 quiet=(t>=T(77.3))&(t<T(83.9)); qs=np.convolve(np.pad(quiet.astype(float),(kn,kn),mode='edge'),np.ones(kn)/kn,'same')[kn:kn+N]; lv*=1-.45*qs
-under=((t<15.2)|(t>=180.3)).astype(float); un=np.convolve(np.pad(under,(kn*2,kn*2),mode='edge'),np.ones(kn*2)/(kn*2),'same')[kn*2:kn*2+N]; lv*=1-.6*un   # the sea steps back under the music
+under=((t<35.0)|(t>=180.3)).astype(float); un=np.convolve(np.pad(under,(kn*2,kn*2),mode='edge'),np.ones(kn*2)/(kn*2),'same')[kn*2:kn*2+N]; lv*=1-.6*un   # the sea steps back under the music
 bed=(A*coast[:,None]+AL*(1-coast)[:,None])*lv[:,None]
 print('sea rms dB coast/room:',round(20*np.log10(float(np.sqrt(np.mean(bed[t<T(50)]**2)))),1),round(20*np.log10(float(np.sqrt(np.mean(bed[(t>T(60))&(t<T(75)) ]**2)))),1))
-# music at the two ends, clearly above the sea: 15 s of the instrumental intro, then 12 s into the close.
+# music at the two ends, clearly above the sea: 35 s of the instrumental intro, then 12 s into the close.
 # The close plays the intro under her call to action and joins the same chords just before the hook (24.6 to 26.18, same bars as 15.0 to 16.6),
 # so "each day gets better" starts as she says "live" and no singing runs under her words.
 MUSIC_DB=-31.0; SONG=S['song']; g=10**(MUSIC_DB/20)/(float(np.sqrt(np.mean(SONG[int(2*SR):int(16*SR)]**2)))+1e-9)
@@ -87,13 +87,17 @@ mus=np.zeros((N,2),np.float32)
 def place(at,a,b,fi,fo):
     x=SONG[int(a*SR):int(b*SR)].copy(); L=len(x); w=np.ones(L); i,o=int(fi*SR),int(fo*SR); w[:i]=np.linspace(0,1,i)**.5 if fi<.2 else np.sin(np.linspace(0,np.pi/2,i)); w[-o:]=np.cos(np.linspace(0,np.pi/2,o)); st=int(at*SR); e=min(st+L,N); mus[st:e]+=(x*w[:,None]*g)[:e-st]
 HOOK=T(206.94); XF=.07
-place(0,.95,16.2,.7,2.6)
+# 35 s at the opening: the intro's repeating 9.62 s passage (6.24 to 15.86) loops cleanly, so no singing runs under her
+place(0,.95,15.86+XF,.7,XF); at=14.91
+for rep in range(2): place(at,6.24,15.86+XF,XF,XF); at+=9.62
+place(at,6.24,6.24+(35.0-at),XF,2.8)
 place(180.3,HOOK-180.3 and 16.6-(HOOK-180.3),16.6+XF,1.3,XF)
 place(HOOK,26.18,26.18+(N/SR-HOOK),XF,.55)
 # room for her words: the music gives up the band her consonants live in, and dips while she speaks
 Xm=np.fft.rfft(mus,axis=0); frq=np.fft.rfftfreq(N,1/SR); Xm*=np.interp(frq,[0,900,1500,5000,7500,24000],[1,1,.42,.42,.8,.8])[:,None]; mus=np.fft.irfft(Xm,N,axis=0).astype(np.float32)
 vm=v.mean(1); hp=int(.03*SR); env=np.sqrt(np.convolve(vm**2,np.ones(hp)/hp,'same')); act=(env>10**(-36/20)).astype(float)
 ka=int(.04*SR); kr=int(.28*SR); dk=np.convolve(act,np.ones(ka+kr)/(ka+kr),'same'); dk=np.clip(dk*1.6,0,1); mus*=(1-.5*dk)[:,None]
+up=np.interp(np.arange(N)/SR,[0,10,12.5,N/SR],[10**(3/20),10**(3/20),1,1]); mus*=up[:,None]   # a little more in the first 10 s
 mix=v+fx+bed+mus; print('peak before limiter',round(float(np.abs(mix).max()),3),'clips',len(log))
 tmp=OUT+'.tmp.wav'; subprocess.run(['ffmpeg','-nostdin','-v','error','-y','-f','f32le','-ar',str(SR),'-ac','2','-i','-','-af','alimiter=limit=0.84:level=disabled:attack=3:release=60','-c:a','pcm_s16le',OUT],input=mix.astype(np.float32).tobytes())
 json.dump(log,open(os.path.expanduser('~/AnaVideo/work/sfx/cues.json'),'w'))
