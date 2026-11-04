@@ -2092,6 +2092,9 @@ section > .tkb .flag span.t{font-weight:500}
 .tkt form .fmeta{position:relative;margin-top:12px;padding-top:11px;font-size:12px!important;font-weight:600;line-height:1.45;color:var(--ink3);text-align:center}
 .tkt form .fmeta:before{content:"";position:absolute;left:-6px;right:-6px;top:0;border-top:1.5px dashed rgba(26,20,18,.18)}
 .tkt form .fmeta .lt{font-weight:500}
+/* forms: the visitor's own start time on its own line, highlighted */
+.lt .lt-me{display:block;margin:6px auto 0;font-size:13.5px;font-weight:700;color:var(--ink2)}
+.lt .lt-me b{font-weight:800;color:var(--ink);padding:0 .25em;background:linear-gradient(180deg,transparent 50%,rgba(255,212,0,.55) 50%,rgba(255,212,0,.55) 92%,transparent 92%);-webkit-box-decoration-break:clone;box-decoration-break:clone}
 .tkt form .note{margin:3px auto 0!important;padding-left:0!important;font-size:11px!important;line-height:1.45;color:var(--ink3);opacity:.85;text-align:center;max-width:36em}
 .tkt form .note:before{display:none}
 @media (max-width:420px){.tkt form .fl-ticks{gap:4px 10px}.tkt form .fl-ticks li{font-size:12px}}
@@ -3236,7 +3239,11 @@ html.bdg-js .bdg.in{animation:bdgIn .6s cubic-bezier(.2,1.5,.4,1) both}
     var p = {}; parts.forEach(function(x){p[x.type]=x.value});
     if (p.weekday && p.hour && p.minute && p.dayPeriod) {
       var lt = p.weekday + ' ' + p.hour + ':' + p.minute + ' ' + p.dayPeriod.toLowerCase();
-      document.querySelectorAll('.lt').forEach(function(s){s.textContent = ' · that’s ' + lt + ' for you'});
+      var tzn = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+      if (tzn && tzn !== 'America/New_York' && tzn.indexOf('/') > 0) {
+        var pl = tzn.split('/').pop().replace(/_/g,' ');
+        document.querySelectorAll('.lt').forEach(function(s){s.textContent = '';var w=document.createElement('span');w.className='lt-me';w.innerHTML='For you: <b></b>';w.querySelector('b').textContent=lt+' in '+pl;s.appendChild(w)});
+      }
       document.querySelectorAll('.lt2').forEach(function(s){s.textContent = ' / ' + lt + ' your time'});
       var tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
       if (tz && tz !== 'America/New_York') document.querySelectorAll('.dlt').forEach(function(s){
