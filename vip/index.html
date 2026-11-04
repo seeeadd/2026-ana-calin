@@ -1940,6 +1940,18 @@ body.is-closed .bdg-life{display:none}
   .vh-l .door{width:calc(100% + 30px);margin-left:-26px}
 }
 .door-potr{position:absolute;inset:0;width:100%;height:auto;pointer-events:none;z-index:3}
+/* Ana's videos on Wistia (assets/wistia-vsl.js): a silent preview of the first seconds, a press starts her from the top with sound */
+.wv .wv-p{position:absolute;inset:0;display:block;width:100%;height:100%;z-index:1}
+.wv .wv-hit{position:absolute;inset:0;z-index:2;cursor:pointer}
+.wv .wv-hit[hidden]{display:none}
+.wv .vplay{z-index:3}
+.wv .scrub{display:none!important}
+.wv.playing .vplay{opacity:0!important;pointer-events:none}
+.wv-ov{position:fixed;inset:0;z-index:9999;background:#000;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .25s}
+.wv-ov.on{opacity:1;visibility:visible;pointer-events:auto}
+.wv-ov .wv-pp{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:block;width:min(100vw,calc(100dvh * 9 / 16))}
+.wv-ov .wv-x{position:absolute;top:calc(12px + env(safe-area-inset-top));right:12px;width:44px;height:44px;border:0;border-radius:50%;background:#FFF8EE;display:grid;place-items:center;z-index:2;cursor:pointer}
+html.wv-lock{overflow:hidden}
 </style>
 </head>
 <body>
@@ -2455,9 +2467,9 @@ body.is-closed .bdg-life{display:none}
   var CHECKOUT_URL = 'https://buy.stripe.com/28EcN57sQcyC54k6vBc7u0G';  // Stripe Payment Link, VIP access, $67 one-time. In Stripe, "After payment" redirects to https://exitplan.howwegrowtoday.com/vip-confirmed/
   var PROMO_CODE   = '';  // keep empty. ExitPlan99 and ExitPlan100 are test codes: type them on the Stripe checkout to test the payment (the link needs "Allow promotion codes" on).
   var CONFIRM_URL  = '../confirmed/';  // the registered confirmation page (after the decline). After paying, Stripe sends them to /vip-confirmed/ (the page knows their name from this browser)
-  var VSL_SRC      = '/assets/video/vip-desktop.mp4';  // Ana's VIP video, plays in the door.
-  var VSL_PREVIEW  = '/assets/video/vip-preview.mp4';  // the first seconds, silent, looping until they press play. About 1 MB.
-  var VSL_SRC_P    = '/assets/video/vip-phone.mp4';    // the same edit in portrait: on a phone it opens full screen.
+  var VSL_SRC      = '';  /* Ana's videos now play from Wistia (assets/wistia-vsl.js, set up below) */  // Ana's VIP video, plays in the door.
+  var VSL_PREVIEW  = '';  // the first seconds, silent, looping until they press play. About 1 MB.
+  var VSL_SRC_P    = '';    // the same edit in portrait: on a phone it opens full screen.
   var CLOSES       = Date.UTC(2026, 11, 9, 4, 59); // Tue Dec 8, 11:59 pm New York
   /* ---------------------------------- */
 
@@ -2620,5 +2632,8 @@ body.is-closed .bdg-life{display:none}
  var s4=document.querySelector('.stop.s4 .dt');if(s4){s4.querySelector('b').textContent=F.getDate();s4.querySelector('small').textContent=W[F.getDay()]}
  ['.stop.s1','.stop.s2','.stop.s3'].forEach(function(sel,i){var dt=document.querySelector(sel+' .dt');if(!dt)return;var d=new Date(S.getTime()+i*864e5);dt.querySelector('b').textContent=d.getDate();dt.querySelector('small').textContent=W[d.getDay()]});
 }catch(e){}})();</script>
+<script src="../assets/wistia-vsl.js?v=2"></script>
+<script>/* Sean, Nov 4: desktop 5j7jxvhlbz, phone t0jit9k8nm (Wistia) */
+(function(){var b=document.getElementById('vsl');if(!b||!window.WVSL)return;WVSL({box:b,scr:b.querySelector('.scr'),desktop:'5j7jxvhlbz',phone:'t0jit9k8nm',previewSec:8,onPhoneEnd:function(){document.getElementById('order').scrollIntoView({behavior:'smooth', block:'center'})}})})();</script>
 </body>
 </html>
