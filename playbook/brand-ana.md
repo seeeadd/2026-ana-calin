@@ -52,6 +52,12 @@
   - her toddler.
 - **Her look (Nov 3):** bolder than first assumed. Copper-red hair, red lips, feminine confident outfits (mauve satin
   wrap top). Not "blue mommy colours".
+- **Art style:**
+  - now: her own big paintings (loose pink and turquoise, a plant in an orange pot) and a simple flat sunflower
+    cartoon; warm, hand-made, a little naive;
+  - rating: real but thin, so it's elevated in the same direction: the painted look (graphics §3b), with watercolour,
+    gouache, pencil, more shadow, texture and detail ("a bit too simple, elevate it");
+  - made by Claude with the paint engine; Gemini only for her photos and sometimes badges.
 - **Voice:** first person, warm, plain, a little dry ("Very efficient."). No hype, no scolding, no pressure. No em
   dashes.
 

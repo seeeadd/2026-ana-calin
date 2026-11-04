@@ -70,7 +70,9 @@ Leave room for shadows inside the canvas so nothing gets cut at the edge.
 
 ## 4. What Sean uses Gemini for (and what he doesn't)
 
-- Claude does **not** use image generators or Canva for graphics. "You are the tool."
+- Claude never runs image generators or Canva itself. "You are the tool." Claude draws first.
+- For other clients whose art style Claude can't match, Sean may make art in Gemini from Claude's prompt (the
+  generic playbook, graphics §3). For Ana, Claude paints.
 - Sean runs Gemini himself for **photos of the client** (polish, outfit, location) and sometimes **badges or
   stickers**. Claude writes the prompts. A good prompt:
   - attaches the original real photo first;
