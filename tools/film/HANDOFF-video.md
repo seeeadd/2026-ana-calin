@@ -396,3 +396,10 @@ outfits (her new photo: mauve satin wrap top). Not "blue mommy colours". Never c
   `img/ana-cabin-3.webp` (First Class photo).
 - Everything Sean wrote in the old chat, in order: `tools/film/sean-messages.md`.
 - The playbook (rules for graphics, motion, video, and the learning loop): `playbook/`. Read it first; update `playbook/feedback-log.md` after every round of feedback in the new chat.
+
+## Publishing note (Nov 4)
+
+Main has one commit the work branch doesn't: "Publish: the video slot stays on the still until the final video files
+are added" (it sets `VSL_SRC` and `VSL_SRC_P` to empty, because `assets/video/*.mp4` aren't in Git). When the final
+videos are committed, merge `origin/main` into the work branch and set both back to the video paths before the next
+publish.
