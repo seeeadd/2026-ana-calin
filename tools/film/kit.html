@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Video kit</title>
+<!-- One engine, one config per video. kit.html?video=<id> (desktop 1560x1008), add &v=p for phone 1080x1920, &layer=<name> for one layer. See VIDEO-KIT.md. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@600;700;800&display=swap">
+<link rel="stylesheet" href="kit/engine.css">
+</head>
+<body>
+<div id="film">
+  <img id="sky" alt="">
+  <svg id="world"><defs><linearGradient id="skyFade" x1="0" y1="0" x2="0" y2="1"><stop offset=".8" stop-color="#FFF8EE" stop-opacity="0"/><stop offset="1" stop-color="#FFF8EE" stop-opacity=".9"/></linearGradient></defs><rect id="skyF" x="0" y="0" fill="url(#skyFade)"/></svg>
+  <svg id="gulls" class="sc" style="left:0;top:0;overflow:visible" fill="none" stroke="#3D332E" stroke-width="3.4" stroke-linecap="round"></svg>
+  <div id="far" class="sc"></div><div id="near" class="sc"></div><div id="sea" class="sc"></div><img id="boat" class="sc" src="paint/vboat.webp" alt=""><div id="g1" class="sc"></div><div id="g2" class="sc"></div>
+  <div id="paper"></div>
+  <div id="wash"></div>
+  <div id="rooms" style="position:absolute;inset:0;z-index:5;overflow:hidden"></div>
+  <img id="shL" src="../../img/vip/paint/shut-l.webp" alt="" style="position:absolute;z-index:8;left:0;top:0;transform-origin:0 50%;display:none"><img id="shR" src="../../img/vip/paint/shut-r.webp" alt="" style="position:absolute;z-index:8;left:0;top:0;transform-origin:100% 50%;display:none">
+  <svg id="wallsvg">
+    <defs>
+      <pattern id="stucco" patternUnits="userSpaceOnUse" width="600" height="1067"><image href="tex/stucco-white.webp" width="600" height="1067"/></pattern>
+      <linearGradient id="wallShade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8FA8C4" stop-opacity=".38"/><stop offset=".14" stop-color="#FFF8EE" stop-opacity=".5"/><stop offset="1" stop-color="#FFF4E2" stop-opacity=".62"/></linearGradient>
+      <linearGradient id="capG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F0B48C"/><stop offset="1" stop-color="#D98A60"/></linearGradient>
+    </defs>
+    <path id="wallF" fill="url(#stucco)"/><path id="wallS" fill="url(#wallShade)"/>
+    <path id="capF" fill="url(#capG)"/>
+    <g id="capT" stroke="#A85F3D" stroke-opacity=".55" stroke-width="2.5" fill="none"></g>
+    <path id="ink1" fill="none" stroke="#1A1412" stroke-width="3.6" stroke-linecap="round"/>
+    <path id="ink2" fill="none" stroke="#1A1412" stroke-width="2.6" stroke-linecap="round"/>
+  </svg>
+  <div id="pieces"></div>
+  <svg id="thread"><defs><mask id="am" maskUnits="userSpaceOnUse"><path id="amP" fill="none" stroke="#fff" stroke-width="210"/></mask></defs><image id="arw" mask="url(#am)"/><image id="arH" href="paint/vhead.webp"/></svg>
+  <div id="bud-wrap"></div>
+  <div id="vb"><img id="vid" alt="Ana"></div>
+  <img id="torn" src="paint/vtorn.webp" alt=""><img id="torn2" src="paint/vtorn.webp" alt="" style="position:absolute;z-index:7;width:90px;height:1120px;transform-origin:50% 50%;transform:rotate(-90deg)">
+  <div id="ana"><div class="fr"></div></div>
+  <svg id="cursor" width="60" height="72" viewBox="0 0 30 36" style="position:absolute;left:0;top:0;z-index:18;display:none"><path d="M3 2 L3 27 L9.6 21 L14 31 L18.4 29 L14 19.6 L23 19 Z" fill="#fff" stroke="#1A1412" stroke-width="2.4" stroke-linejoin="round"/></svg>
+  <div id="tap" style="position:absolute;left:0;top:0;z-index:18;width:96px;height:96px;margin:-48px 0 0 -48px;border-radius:50%;background:rgba(26,20,18,.28);border:4px solid rgba(255,255,255,.9);display:none"></div>
+  <div id="cap"><p id="capP"></p></div>
+  <div id="grain"></div>
+</div>
+<script>document.write('<script src="videos/'+(new URLSearchParams(location.search).get('video')||'registration')+'/config.js"><\/script>')</script>
+<script>window.VIDEO.data.forEach(function(s){document.write('<script src="'+s+'"><\/script>')})</script>
+<script src="kit/engine.js"></script>
+</body>
+</html>

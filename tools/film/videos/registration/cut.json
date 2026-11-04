@@ -1,0 +1,60 @@
+{
+ "recording": "~/Downloads/AfterHarvest Channel Video.MOV",
+ "end": 207.75,
+ "cuts": [
+  [
+   18.0,
+   19.4
+  ],
+  [
+   38.14,
+   38.9
+  ],
+  [
+   87.05,
+   90.85
+  ],
+  [
+   104.06,
+   105.74
+  ],
+  [
+   109.45,
+   112.1
+  ],
+  [
+   132.33,
+   132.59
+  ],
+  [
+   144.97,
+   145.17
+  ],
+  [
+   146.55,
+   146.79
+  ],
+  [
+   161.45,
+   161.77
+  ],
+  [
+   175.33,
+   175.53
+  ],
+  [
+   184.45,
+   184.67
+  ],
+  [
+   197.6,
+   202.88
+  ]
+ ],
+ "prompt": "The Exit Plan. Ana Calin. How We Grow. Exit Number calculator. $1.4 million. 16,907 buyers.",
+ "hears_as": [
+  "life",
+  "live"
+ ],
+ "transcript": "~/AnaVideo/work/transcript.json"
+}
