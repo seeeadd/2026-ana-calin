@@ -2423,7 +2423,7 @@ html.bdg-js .bdg.in{animation:bdgIn .6s cubic-bezier(.2,1.5,.4,1) both}
   <div class="fb-bar">
     <button class="fb-id open" type="button" aria-label="The Exit Plan, a free 3-day live event with Ana Calin, Dec 8 to 10, 12:00 pm New York: save my seat">
       <img class="fb-ic" src="img/fav/header-ana.png" alt="" width="44" height="44">
-      <span class="fb-t"><small>The Exit Plan<span class="fb-w"> · A free 3-day live event</span><span class="fb-w2"> with Ana Calin</span></small><b>Dec 8 to 10 · 12:00 pm New York</b></span>
+      <span class="fb-t"><small>The Exit Plan<span class="fb-w"> · A free 3-day live event</span><span class="fb-w2"> with Ana Calin</span></small><b>Dec 8 to 10 · <span class="fb-ny">12:00 pm</span> New York<span class="fb-yt" hidden></span></b></span>
     </button>
     <div class="fb-cd" aria-label="Time until Day 1"><span class="fb-cdk"><i></i>Starting soon</span><span class="cdu"><b data-cd="d">00</b><small>days</small></span><span class="cdu"><b data-cd="h">00</b><small>hrs</small></span><span class="cdu"><b data-cd="m">00</b><small>min</small></span><span class="cdu s"><b data-cd="s">00</b><small>sec</small></span></div>
     <button class="btn sm open" type="button"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">I’m in, Ana <small class="bq">(it’s free)</small></span><svg class="ar"><use href="#arr"/></svg></button>
@@ -3577,6 +3577,22 @@ html.bdg-js .bdg.in{animation:bdgIn .6s cubic-bezier(.2,1.5,.4,1) both}
  function fit(){w.classList.remove('off');w2.classList.remove('off');if(sm.scrollWidth>sm.clientWidth+1)w2.classList.add('off');if(sm.scrollWidth>sm.clientWidth+1)w.classList.add('off')}
  var t;function later(){clearTimeout(t);t=setTimeout(fit,60)}
  addEventListener('resize',later);if(window.ResizeObserver)new ResizeObserver(later).observe(sm.parentNode);
+ var fb=document.querySelector('.fb');if(fb)new MutationObserver(function(){setTimeout(fit,500)}).observe(fb,{attributes:true,attributeFilter:['class']});
+ if(document.fonts)document.fonts.ready.then(fit);fit()})();
+
+/* header date line: the New York time, plus the visitor's own time when it differs ("· 5:00 pm your time");
+   the day is added when their date isn't Dec 8; the phrase is dropped whole when the bar is too narrow */
+(function(){var yt=document.querySelector('.fb-yt');if(!yt)return;var b=yt.parentNode;
+ try{var start=new Date(Date.UTC(2026,11,8,17,0)),tz=Intl.DateTimeFormat().resolvedOptions().timeZone||'';
+  var ny=start.toLocaleString('en-US',{timeZone:'America/New_York',hour:'numeric',minute:'2-digit',day:'numeric'});
+  var me=start.toLocaleString('en-US',{hour:'numeric',minute:'2-digit',day:'numeric'});
+  if(tz&&tz!=='America/New_York'&&me!==ny){
+   var t=start.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'}).toLowerCase();
+   var d=start.getDate()!==8?' '+start.toLocaleDateString('en-US',{weekday:'short'}):'';
+   t=t.replace(':00','');yt.textContent=' · '+t+d+' your time';yt.hidden=false;var nyEl=b.querySelector('.fb-ny');if(nyEl)nyEl.textContent='12 pm'}
+ }catch(e){return}
+ var id=b.closest('.fb-id')||b.parentNode;function fit(){if(!yt.textContent)return;yt.hidden=false;if(b.scrollWidth>b.clientWidth+1||id.scrollWidth>id.clientWidth+1)yt.hidden=true}
+ var tm;addEventListener('resize',function(){clearTimeout(tm);tm=setTimeout(fit,60)});
  var fb=document.querySelector('.fb');if(fb)new MutationObserver(function(){setTimeout(fit,500)}).observe(fb,{attributes:true,attributeFilter:['class']});
  if(document.fonts)document.fonts.ready.then(fit);fit()})();
 </script>
