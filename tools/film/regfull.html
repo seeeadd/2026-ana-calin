@@ -35,6 +35,10 @@ html,body{overflow:hidden;background:#FFF8EE}
 .pc img{display:block;width:100%}
 .pc .big,.pc .lbl{filter:drop-shadow(0 0 5px rgba(255,248,238,.95))}
 .pc.under{z-index:6}
+.lvw{text-align:left}.phone .lvw{text-align:center}
+.lvpill{display:inline-flex;align-items:center;gap:.42em;padding:.2em .66em .2em .46em;border-radius:99em;background:#1A1412;color:#fff;font:800 1em/1.12 Manrope,sans-serif;letter-spacing:.14em}
+.lvd{position:relative;display:block;width:.46em;height:.46em}.lvd b{position:absolute;inset:0;border-radius:50%;background:#FF3B5C}.lvd i{position:absolute;inset:0;border-radius:50%;border:.06em solid #FF3B5C}
+.lvcal{display:inline-block;width:.86em;height:.86em;vertical-align:-.1em;margin-right:.2em;overflow:visible}
 .pc.top{z-index:15}
 /* the big serif line, with the page's highlight */
 .big{font-family:var(--serif);line-height:1.02;letter-spacing:-.012em;color:var(--ink);-webkit-text-stroke:.09em #FFF8EE;paint-order:stroke fill;filter:drop-shadow(0 4px 8px rgba(50,35,20,.28))}
@@ -155,6 +159,7 @@ mark{color:inherit;background:linear-gradient(transparent 52%,rgba(255,212,0,.62
   var lerp = function(a, b, p){ return a + (b - a) * p };
   /* seconds of her recording to seconds of the cut */
   function T(s){ var o = 0; for (var i = 0; i < EDL.length; i++) { var a = EDL[i][0], b = EDL[i][1]; if (s < a) return o; if (s <= b) return o + s - a; o += b - a } return o }
+  var HOLD = 1.6, DUR0 = window.DUR; window.DUR = DUR0 + HOLD; window.CAPS[window.CAPS.length - 1].t1 = window.DUR;
   var EDL = window.EDL;
 
   /* ---------- the shots: start (recording seconds), type, crop ---------- */
@@ -282,13 +287,13 @@ mark{color:inherit;background:linear-gradient(transparent 52%,rgba(255,212,0,.62
   var pots = POT.map(function(){ var m = document.createElement('img'); m.src = 'paint/vpot.webp'; m.alt = ''; m.style.cssText = 'position:absolute;left:0;top:0;z-index:9;width:' + PW + 'px'; $('bud-wrap').appendChild(m); return m });
   /* his path in recording seconds: he runs at every change of beat, and sits quietly on her chair through "only two people" */
   var RX = (PHONE
-    ? [[0, 130], [29.22, 130], [32.3, 960], [32.6, 960], [34.88, 100], [35.6, 130], [52.42, 130], [52.54, 195], [53.4, 540], [76.8, 540], [77.24, 194], [90.9, 194], [90.98, 335], [121.78, 335], [121.84, 130], [132.74, 130], [133.1, 540], [135.48, 540], [135.9, 130], [139.42, 130], [139.9, 540], [145.32, 540], [145.84, 950], [148.32, 950], [148.9, 130], [161.85, 130], [161.92, 335], [190.4, 335], [190.9, 905], [194.6, 905], [195.1, 335], [202.9, 335], [202.96, 130], [203.6, 985], [210, 985]]
+    ? [[0, 130], [29.22, 130], [32.3, 960], [32.6, 960], [34.88, 100], [35.6, 130], [52.42, 130], [52.54, 195], [53.4, 540], [76.8, 540], [77.24, 194], [90.9, 194], [90.98, 335], [121.78, 335], [121.84, 130], [132.74, 130], [133.1, 540], [135.48, 540], [135.9, 130], [139.42, 130], [139.9, 540], [145.32, 540], [145.84, 950], [148.32, 950], [148.9, 130], [161.85, 130], [161.92, 335], [190.4, 335], [190.9, 905], [194.6, 905], [195.1, 335], [202.9, 335], [202.96, 130], [203.6, 985], [205.76, 985], [206.3, 540], [210, 540]]
     : [[0, 320], [29.22, 320], [32.3, 1100], [32.6, 1100], [34.88, 96], [35.9, 320], [52.42, 320], [52.54, 155], [53.4, 440], [76.7, 440], [77.2, 157], [90.9, 157], [90.98, 275], [95.3, 275], [95.8, 1190], [102.9, 1190], [103.4, 275], [121.78, 275], [121.84, 320], [122.3, 200], [132.74, 200], [133.1, 560], [135.48, 560], [135.9, 320], [139.42, 320], [139.9, 1215], [145.32, 1215], [145.84, 940], [148.32, 940], [148.9, 320], [161.85, 320], [161.92, 275], [202.9, 275], [202.96, 300], [204.1, 1130], [205.76, 1130], [206.2, 560], [210, 560]]
   ).map(function(k){ return [T(k[0]), k[1]] });
   var DS = [];
   function rx(t){ for (var i = 0; i < RX.length - 1; i++) if (t <= RX[i + 1][0]) { var a0 = RX[i], b0 = RX[i + 1], d0 = b0[0] - a0[0]; return d0 <= 0 ? b0[1] : lerp(a0[1], b0[1], clamp((t - a0[0]) / d0, 0, 1)) } return RX[RX.length - 1][1] }
   /* jumps on the words that matter */
-  var HOPS = [[6.42, 58], [22.5, 58], [37.2, 66], [45.2, 30], [47.05, 30], [49.38, 50], [60.26, 58], [64.02, 44], [67.8, 60], [73.12, 60], [86.26, 40], [114.02, 66], [122.9, 40], [134.18, 50], [144.16, 56], [147.82, 50], [165.06, 36], [167.76, 36], [170.88, 36], [186.16, 62], [193.1, 40]].map(function(h){ return [T(h[0]), h[1]] });
+  var HOPS = [[6.42, 58], [22.5, 58], [37.2, 66], [45.2, 30], [47.05, 30], [49.38, 50], [60.26, 58], [64.02, 44], [67.8, 60], [73.12, 60], [86.26, 40], [114.02, 66], [122.9, 40], [134.18, 50], [144.16, 56], [147.82, 50], [165.06, 36], [167.76, 36], [170.88, 36], [186.16, 62], [193.1, 40], [206.94, 120]].map(function(h){ return [T(h[0]), h[1]] });
   var SIT0 = T(77.26), POINTS = [[T(92.3), T(94.3)], [T(163), T(165.2)], [T(186.3), T(188.3)]];
   var RS0 = T(32.6), RS1 = T(34.88), OPEN = T(4.2), OPEN2 = T(5.2);
   function runner(t){
@@ -304,10 +309,12 @@ mark{color:inherit;background:linear-gradient(transparent 52%,rgba(255,212,0,.62
     /* he points at Ana when she says who she is, shrugs at "find out", and points at the form */
     var pa = seg(t, T(53.94), T(54.2)) * (1 - seg(t, T(55.1), T(55.3))); if (pa > 0 && runs < .5) o.ar = lerp(14, PHONE ? 140 : 92, pa);
     if (t > T(102) && t < T(102.9) && runs < .5) { var q = Math.sin(seg(t, T(102), T(102.9)) * Math.PI); o.al = o.ar = lerp(14, 72, q) }
-    if (t >= T(204.05) && runs < .5) { o.ar = PHONE ? 172 : 92; o.al = 14; o.j += Math.sin(seg(t, T(204.05), T(204.4)) * Math.PI) * 26 }
+    if (t >= T(204.05) && t < T(205.76) && runs < .5) { o.ar = PHONE ? 172 : 92; o.al = 14; o.j += Math.sin(seg(t, T(204.05), T(204.4)) * Math.PI) * 26 }
     /* in her room he hops up onto the velvet chair and swings his legs; at the desk he points at her screen */
     var st = seg(t, SIT0, SIT0 + .42), en = seg(t, T(90.72), T(90.98)); if (st > 0) { var lift = (PHONE ? 112 : 142) * (1 - en); o.j = lift * io(st) + Math.sin(st * Math.PI) * 44 * (1 - st); o.la = 15; o.lp = t * 3.2; o.al = 28; o.ar = 28; o.r = Math.sin(t * .9) * 1.6; if (st >= 1 && en <= 0) { var hp = 0; HOPS.forEach(function(h){ var pj = seg(t, h[0] - .08, h[0] + .44); if (pj > 0 && pj < 1) hp = 1 }); if (hp) o.al = o.ar = 120 } }
     POINTS.forEach(function(k){ var q = seg(t, k[0], k[0] + .24) * (1 - seg(t, k[1] - .2, k[1])); if (q > 0 && runs < .5) o.ar = lerp(14, 92, q) });
+    /* the close: he keeps bouncing with both arms up until the end */
+    var cl0 = T(206.94) + .46; if (t > cl0) { var bn = Math.abs(Math.sin((t - cl0) * 4.6)); o.j += bn * 30; o.la = 16; o.lp = t * 9; o.al = o.ar = 150 + Math.sin(t * 9) * 16; o.r = Math.sin(t * 4.6) * 4 }
     BUDJ = o.j || 0; if (roomAt(t) !== 'coast') o.x += pan(t);
     pose(o);
     /* each pot's distance is how far the wall still has to slide until his leap */
@@ -336,14 +343,20 @@ mark{color:inherit;background:linear-gradient(transparent 52%,rgba(255,212,0,.62
   add('<div class="snap">' + img('tex/door-view.webp') + '</div>', 11.32, 15.16, [520, 214, 180], [800, 1190, 210], {cls: 'top', rot: 5, tilt: 3});
   add(cut('hand-pencil'), 48.76, 52.3, [400, 786, 300], [800, 1690, 300], {cls: 'top', rot: -4});
   add(cut('sunflower-news'), 56.84, 58.22, [300, 196, 250], [760, 1290, 260], {cls: 'top', rot: 4, tilt: 3});
-  add(cut('hand-magnifier'), 122.9, 127.9, [1010, 540, 280], [2200, 0, 10], {cls: 'top', rot: 4});
+  add(cut('hand-magnifier'), 122.9, 127.9, [1060, 560, 270], [2200, 0, 10], {cls: 'top', rot: 4});
   add(cut('hand-point'), 100.46, 102.92, [1000, 610, 150], [850, 1170, 150], {cls: 'top', rot: 6});
   add(cut('cinecam'), 150.26, 151.56, [440, 214, 230], [780, 1320, 250], {cls: 'top', rot: -4});
   add(cut('clip-gold'), 151.7, 157.4, [150, 66, 90], [70, 650, 100], {cls: 'top', rot: 6});
   add(cut('hand-pencil'), 151.9, 155.5, [860, 700, 420], [770, 1684, 330], {cls: 'top', rot: -4});
   add(cut('billboard'), 146.7, 148.32, [130, 190, 940], [40, 880, 1000], {cls: 'under shadowp', rot: 2});
   var lightsA = add(cut('lights-string'), 0, 8.7, [14, -8, 700], [0, -6, 1080], {cls: 'top', hold: 1}); lightsA.count = function(t){ lightsA.e.style.transform = 'rotate(' + (Math.sin(t * 1.6) * .7).toFixed(2) + 'deg)' };
-  var lightsB = add(cut('lights-string'), 205.76, 300, [14, -8, 700], [0, -6, 1080], {cls: 'top', hold: 1}); lightsB.count = function(t){ lightsB.e.style.transform = 'rotate(' + (Math.sin(t * 1.6) * .7).toFixed(2) + 'deg)' };
+  /* the close: a live event at a set time, so the badge is the page's own LIVE mark, beating, and hitting hard on her word */
+  var liveP = add('<div class="lvw"><div class="lvpill"><span class="lvd"><i></i><i></i><b></b></span>LIVE<span style="font-weight:700;letter-spacing:.02em;opacity:.86">on Zoom</span></div></div>', 205.76, 300, [62, 240, 0, 60], [40, 1112, 1000, 88], {cls: 'top', hold: 1}); liveP.t1 = window.DUR;
+  liveP.count = function(t){ var t0 = T(205.76), hit = T(206.94), pill = liveP.e.querySelector('.lvpill'), pr = seg(t, t0, t0 + .24), bt = ((t - t0) % .84) / .84, sc = (pr < 1 ? lerp(1.5, 1, pr * pr * pr) : 1) * (1 + .055 * Math.exp(-bt * 5)) * (1 + .24 * (t >= hit ? Math.exp(-(t - hit) * 7) : 0));
+    pill.style.opacity = (.25 + .75 * pr).toFixed(3); pill.style.transform = 'scale(' + sc.toFixed(3) + ')'; pill.style.boxShadow = '0 0 0 ' + (bt * 30).toFixed(1) + 'px rgba(255,59,92,' + (.46 * (1 - bt)).toFixed(3) + '),0 10px 22px rgba(30,20,10,.3)';
+    [].forEach.call(pill.querySelectorAll('.lvd i'), function(r, i){ var u = (((t - t0) / .84) + i * .5) % 1; r.style.transform = 'scale(' + (1 + u * 2.3).toFixed(3) + ')'; r.style.opacity = (1 - u).toFixed(3) }) };
+  var liveL = add('<div class="big"><svg class="lvcal" viewBox="0 0 24 24" fill="none" stroke="#1A1412" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4" width="19" height="17.5" rx="3" fill="#FFF8EE"/><path d="M2.5 9.5h19" /><path d="M2.5 7a3 3 0 0 1 3-3h13a3 3 0 0 1 3 3v2.5h-19z" fill="#F72585"/><path d="M8 2v4M16 2v4"/><path d="M8.2 15.2l2.6 2.6 5-5.2" stroke="#F72585" stroke-width="2.6"/></svg>Block the time ' + (PHONE ? '' : '<br>') + 'in <mark>your calendar.</mark></div>', 207.2, 300, [62, 392, 620, 68], [40, 1384, 1000, 76], {cls: 'top'}); liveL.t1 = window.DUR;
+  var lightsB = add(cut('lights-string'), 205.76, 300, [14, -8, 700], [0, -6, 1080], {cls: 'top', hold: 1}); lightsB.t1 = window.DUR; lightsB.count = function(t){ lightsB.e.style.transform = 'rotate(' + (Math.sin(t * 1.6) * .7).toFixed(2) + 'deg)' };
   add(cut('key-enter'), 204.6, 205.76, [1300, 610, 190], [2200, 0, 10], {cls: 'top', rot: 3});
   /* 1, 6, 35: the line, in the page's type */
   add('<div class="big"><span class="ln">Build proof</span><span class="ln"><i>before you leave.</i></span></div>', 0, 4.15, [62, 92, 620, 96], [0, 1752, 1080, 66], {cls: 'top', wipe: 1});
@@ -400,7 +413,8 @@ mark{color:inherit;background:linear-gradient(transparent 52%,rgba(255,212,0,.62
   /* 26 to 34: the map comes back further along each time, in her words */
   var DW = ['Find the problem', 'Put numbers on it', 'Put it out there'];
   map(DW, 121.84, 127.9, ['cur', '', ''], [62, 70, 1070, 28], [30, 590, 1020, 44]);
-  add(img(PC + 'art1win.png'), 122.9, 127.9, [240, 220, 740], [214, 1002, 826], {cls: 'top shadowp'});
+  /* her camera tile sits over the window's corner, framed on her whole face */
+  add('<div style="position:relative">' + img(PC + 'art1win.png') + '<div style="position:absolute;right:-2.2%;bottom:-5.5%;width:24%;aspect-ratio:1.3;overflow:hidden;border-radius:16px;background:#2A211D;border:5px solid #3FD06B;box-shadow:0 0 0 5px rgba(63,208,107,.35),0 10px 22px rgba(30,20,10,.3)"><img src="../../img/o/real/ana-studio.webp" alt="" style="width:100%;height:100%;object-fit:cover;object-position:50% 40%;border-radius:0;box-shadow:none"><span style="position:absolute;left:9px;bottom:8px;padding:3px 10px;border-radius:7px;background:rgba(26,20,18,.72);color:#fff;font:700 15px/1.4 Manrope,sans-serif">Ana</span></div></div>', 122.9, 127.9, [240, 220, 740], [214, 1002, 826], {cls: 'top shadowp'});
   add(img('../../img/slides/s1.webp'), 128.84, 132.74, [62, 214, 640], [220, 1340, 640], {cls: 'top shadowp', tilt: -.8, rot: -1.5});
   map(DW, 132.74, 135.48, ['done', 'cur', ''], [62, 110, 1070, 28], [30, 590, 1020, 44]);
   add('<div class="big" style="text-align:center"><mark>put the numbers on it.</mark></div>', 133.7, 135.48, [62, 330, 1060, 112], [40, 1000, 1000, 118], {cls: 'top'});
@@ -488,10 +502,11 @@ mark{color:inherit;background:linear-gradient(transparent 52%,rgba(255,212,0,.62
 
   /* ---------- captions: the whole thought is readable, each word inks in as she says it ---------- */
   var capP = $('capP'), cap = $('cap'), capCur = -1, CAPS = window.CAPS;
+  CAPS[CAPS.length - 1].w[CAPS[CAPS.length - 1].w.length - 1].h = 1;
   function captions(t, type){
     var k = -1; for (var i = 0; i < CAPS.length; i++) if (t >= CAPS[i].t0 - .001 && t < CAPS[i].t1 + .001) k = i;
     if (k < 0 || CAPS[k].hide) { capP.style.opacity = 0; capCur = -2; return }
-    if (k !== capCur) { capCur = k; capP.innerHTML = CAPS[k].w.map(function(w, i, A){ var nx = A[i + 1], cl = w.h ? (w.x === 'Cheap' ? 'pk' : 'h') : ''; return w.h && nx && nx.h ? '<span class="' + cl + '">' + w.x + ' </span>' : '<span class="' + cl + '">' + w.x + '</span> ' }).join('') }
+    if (k !== capCur) { capCur = k; capP.innerHTML = CAPS[k].w.map(function(w, i, A){ var nx = A[i + 1], cl = w.h ? (w.x === 'Cheap' || w.x === 'live.' ? 'pk' : 'h') : ''; return w.h && nx && nx.h ? '<span class="' + cl + '">' + w.x + ' </span>' : '<span class="' + cl + '">' + w.x + '</span> ' }).join('') }
     var c = CAPS[k], sp = capP.querySelectorAll('span'), P = type === 'C' ? L.cC : type === 'F' ? L.cF : L.cM;
     var titled = !PHONE && type !== 'C' && (t < T(4.15) || (t >= T(179.1) && t < T(183.18))); cap.style.left = P.x + 'px'; cap.style.top = (titled ? 316 : P.y) + 'px'; cap.style.width = P.w + 'px'; capP.style.fontSize = P.fs + 'px'; capP.style.textAlign = P.align;
     if (PHONE && type === 'C') { var chh = capP.offsetHeight; if (P.y + chh > L.H - 22) cap.style.top = (L.H - 22 - chh) + 'px' }
@@ -500,7 +515,7 @@ mark{color:inherit;background:linear-gradient(transparent 52%,rgba(255,212,0,.62
   }
 
   /* her frames: exact, one image per frame of the cut */
-  var vid = $('vid'), sky = $('sky'), lastF = -1, NF = Math.round(window.DUR * 30);
+  var vid = $('vid'), sky = $('sky'), lastF = -1, NF = Math.round(DUR0 * 30);
   function pad(n){ return ('0000' + n).slice(-5) }
   function frames(t, waits){
     var f = clamp(Math.floor(t * 30 + 1e-6), 0, NF - 1) + 1;
