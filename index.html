@@ -3062,7 +3062,7 @@ picture{display:contents}
     <div class="claim">
       <div class="pic" data-r>
         <i class="bd sun bk-rise" aria-hidden="true"><b class="r"></b><b class="d"></b></i>
-        <div class="fr"><img src="img/ana-cabin-3.webp?v=2" alt="Ana Calin in First Class" width="900" height="1117" loading="lazy"></div>
+        <div class="fr"><img src="img/real/ana-rec-sea.webp" alt="Ana Calin by the sea in Greece" width="640" height="800" loading="lazy"></div>
         <img class="mk" src="img/o/mark.webp" alt="" width="96" height="96" loading="lazy">
         <!-- the invite, as Google Calendar shows it, in her colours: a cursor answers "Yes" -->
         <div class="gi" aria-hidden="true"><div class="gi-in">
@@ -3144,9 +3144,12 @@ picture{display:contents}
   if (!on) return; document.documentElement.classList.add('xmas');
   var INK = '#1A1412', NS = 'http://www.w3.org/2000/svg';
   /* the sunflower on every button wears the hat */
-  document.querySelectorAll('.sf-b use').forEach(function(u){ if ((u.getAttribute('href') || '') === '#sf') u.setAttribute('href', '#sfx') });
+  /* Nov 4 (Ana: "looks very christmasy"; Sean: "less christmas stuff"): no Santa hats on the buttons or on Ana, no lights on
+     the form, snow only in the last section. Kept: the wreath over her window, the village lights, holly on the Day 1 date */
+  var LESS = true;
+  if (!LESS) document.querySelectorAll('.sf-b use').forEach(function(u){ if ((u.getAttribute('href') || '') === '#sf') u.setAttribute('href', '#sfx') });
   /* Ana in the bar, in a Santa hat */
-  var id = document.querySelector('.fb-id'); if (id) { var h = new Image(); h.className = 'fb-hat'; h.alt = ''; h.src = 'img/o/vip/paint/xmas-hat.webp'; id.appendChild(h) }
+  var id = !LESS && document.querySelector('.fb-id'); if (id) { var h = new Image(); h.className = 'fb-hat'; h.alt = ''; h.src = 'img/o/vip/paint/xmas-hat.webp'; id.appendChild(h) }
   /* fairy lights draped across the top of both seat tickets: a hand-drawn cord in four swags, a bulb on each swag */
   /* fairy lights on the frozen side ticket only: the cord is pinned to the ticket's top border with a small tack at each
      corner and between, and sags in three swags; each bulb hangs straight down from the cord. The ticket gets a little
@@ -3159,7 +3162,7 @@ picture{display:contents}
       bulbs += '<i style="left:' + ((sw + t) * 100 / n).toFixed(2) + '%;top:' + y.toFixed(1) + 'px;--c:' + cols[bi % 5] + ';--d:' + (bi * .37 % 2.4).toFixed(2) + 's"></i>' }
     w.innerHTML = '<svg viewBox="0 0 100 34" preserveAspectRatio="none"><path d="' + d + '" fill="none" stroke="' + INK + '" stroke-width="1.5" vector-effect="non-scaling-stroke" stroke-linecap="round"/></svg>' + bulbs + tacks;
     card.appendChild(w); card.classList.add('lit') }
-  var rc = document.getElementById('rcard'); if (rc) lights(rc);
+  var rc = !LESS && document.getElementById('rcard'); if (rc) lights(rc);
   /* the footer's village dressed for Christmas, drawn into the village itself so it lines up at every width: lights along
      each roofline, looping from roof to roof; the cypresses become little trees with a star; stars on the church crosses;
      a wreath on every other door */
@@ -3271,7 +3274,7 @@ picture{display:contents}
       size(); addEventListener('resize', size); if (window.ResizeObserver) new ResizeObserver(size).observe(sec);
       document.addEventListener('visibilitychange', function(){ if (!document.hidden && on) { last = 0; requestAnimationFrame(tick) } });
       if ('IntersectionObserver' in window) new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) start(); else on = false }) }).observe(sec); else start() }
-    snowIn(document.getElementById('hero')); snowIn(document.getElementById('final'));
+    if (!LESS) snowIn(document.getElementById('hero')); snowIn(document.getElementById('final'));
   })();
   /* holly on the Day 1 date */
   var t1 = document.querySelector('.final .tiles div'); if (t1) { var hl = new Image(); hl.className = 'holly'; hl.alt = ''; hl.src = 'img/o/vip/paint/xmas-holly.webp'; t1.appendChild(hl) }
