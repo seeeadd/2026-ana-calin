@@ -1073,6 +1073,11 @@ html.anim-on [data-r]:not(.in){opacity:0;transform:translateY(22px)}
 /* ================= Oct 31, third copy version: the new sections ================= */
 /* the form: the compact registration copy */
 .tk-k{margin:0 0 6px;font-weight:800;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--pink)}
+/* two-row eyebrow when the visitor's dates differ */
+.tk-k.tz2 .r1,.ey.tz2 .r1{display:block;font-size:1.18em;letter-spacing:.12em}
+.ey.tz2 .r1{color:var(--ink)}
+.tk-k.tz2 .r2,.ey.tz2 .r2{display:block;margin-top:4px;text-transform:uppercase;font-size:.92em;letter-spacing:.1em;color:var(--ink3)}
+.tk-k.tz2 .r2 b,.ey.tz2 .r2 b{color:var(--ink);font-weight:800;white-space:nowrap;padding:0 .2em;background:linear-gradient(180deg,transparent 45%,rgba(255,212,0,.6) 45%,rgba(255,212,0,.6) 92%,transparent 92%)}
 .tk-s{margin:5px 0 0;font-size:13.5px;line-height:1.4;color:var(--ink2)}
 .htk .tk-s{font-size:14.5px}
 .tkt form .fsub{display:none}
@@ -3642,6 +3647,17 @@ html.bdg-js .bdg.in{animation:bdgIn .6s cubic-bezier(.2,1.5,.4,1) both}
    var cur=segs.some(function(g){return e>g.s&&e<g.s+g.d});if(!cur)nib.setAttribute('opacity','0');
    if(e<end)requestAnimationFrame(frame(t0));else{nib.setAttribute('opacity','0');setTimeout(function(){svg.classList.remove('wet')},150)}}}
  var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){io.disconnect();setTimeout(function(){requestAnimationFrame(function(n){frame(n)(n)})},250)}})},{threshold:.6});io.observe(svg)})();
+</script>
+
+<script>
+/* form eyebrows: when the visitor's dates aren't Dec 8 to 10, two rows: "Free · 3 days live", then New York's dates and theirs, highlighted */
+(function(){try{
+ var a=new Date(Date.UTC(2026,11,8,17,0)),z=new Date(Date.UTC(2026,11,10,17,0));if(a.getDate()===8)return;
+ var mine=a.toLocaleDateString('en-US',{month:'short',day:'numeric'})+' to '+z.getDate();
+ function two(el,lead){el.classList.add('tz2');el.innerHTML='<span class="r1"></span><span class="r2">Dec 8 to 10 New York · <b></b></span>';el.querySelector('.r1').textContent=lead;el.querySelector('b').textContent=mine+' your time'}
+ document.querySelectorAll('.tk-k').forEach(function(el){two(el,'Free · 3 days live')});
+ document.querySelectorAll('.ey').forEach(function(ey){if(ey.querySelector('.ey-b'))two(ey,'FREE · 3 DAYS LIVE')});
+}catch(e){}})();
 </script>
 </body>
 </html>
