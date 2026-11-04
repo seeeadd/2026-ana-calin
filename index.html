@@ -2465,6 +2465,34 @@ picture{display:contents}
 .xl i{box-shadow:none;animation:xtwf 2.4s ease-in-out infinite;animation-delay:var(--d)}
 .xl i:after{content:"";position:absolute;inset:-1.4px;border-radius:inherit;box-shadow:0 0 8px 2px var(--c);animation:xtwg 2.4s ease-in-out infinite;animation-delay:var(--d);pointer-events:none}
 .hpill .hp-lz{font-weight:500;margin-left:-.3em}
+.ftimes .ft-d .ft-ny{display:inline;font-size:14px;font-weight:600;color:var(--ink3);margin-left:8px;white-space:nowrap}
+.ftimes .ft-d .nw{display:inline;white-space:nowrap}
+.ftz li.me{grid-column:1 / -1}
+.ftz li.me .hl{display:inline;padding:0 .2em;border-radius:3px;background:linear-gradient(180deg,transparent 52%,rgba(255,212,0,.45) 52%,rgba(255,212,0,.45) 90%,transparent 90%);color:var(--ink)}
+.ftz li.me .hl b{font-weight:800}
+.ftz li.me{font-size:19px}
+.ftz li.me svg{width:20px;height:20px}
+.ftz li.ft-also{grid-column:1 / -1;display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 0;font-size:14px;color:var(--ink3);white-space:normal;padding-left:25px}
+.ftz li.ft-also i{font-style:normal}
+.ftz li.ft-also .ft-k{font-weight:700;margin-right:6px}
+.ftz li.ft-also .ft-c{white-space:nowrap}
+.ftz li.ft-also .ft-c:not(:last-child):after{content:"·";margin:0 7px;color:var(--ink3)}
+.ftz:has(.ft-also){grid-template-columns:minmax(0,1fr)}
+@media (max-width:640px){.ftimes .ft-d .ft-ny{display:block;margin:2px 0 0}}
+.convos{margin:26px 0 4px;padding-left:40px}
+@media (max-width:640px){.convos{padding-left:0}}
+.convos .cv-k{display:block;font-size:13px;font-weight:700;letter-spacing:.02em;color:var(--ink3);margin-bottom:12px}
+.convos .cv-row{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.convos li{display:flex;flex-direction:column;align-items:flex-start;gap:8px;min-width:0}
+.convos img{width:56px;height:56px;border-radius:50%;object-fit:cover;border:2px solid #fff;box-shadow:0 0 0 1.5px var(--ink),0 8px 14px -10px rgba(70,45,25,.6)}
+.convos li span{display:flex;flex-direction:column;line-height:1.25}
+.convos li b{font-size:14px;font-weight:800;color:var(--ink)}
+.convos li small{font-size:12.5px;color:var(--ink3);margin-top:2px}
+@media (max-width:640px){.convos .cv-row{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 12px}.convos li{flex-direction:row;align-items:center}}
+.jill.mrn{margin-top:40px;margin-bottom:72px}
+.mrn-v{margin:0;transform:rotate(-1.2deg)}
+.mrn-v img{display:block;width:100%;height:auto;border-radius:16px;border:1.5px solid var(--ink);box-shadow:0 18px 30px -22px rgba(70,45,25,.6)}
+.mrn-v figcaption{margin-top:10px;font-size:13px;color:var(--ink3);text-align:center}
 </style>
 </head>
 <body>
@@ -2813,6 +2841,15 @@ picture{display:contents}
         <p class="hq"><mark class="sk">For this event, I’m asking a practical question: what would I do with everything I know now if I still had a job and nobody knew my name?</mark></p>
         <p>Some decisions I’d repeat. Some I’d make much earlier. AI has changed the order I’d follow, too.</p>
         <p>I’ll bring my own examples and explain the choices behind them, so you can see what might make sense for the business you want.</p>
+        <!-- live conversations on her Substack (Sean, Nov 4): real faces from her recordings, no links or play buttons so nothing pulls people off the page -->
+        <div class="convos"><span class="cv-k">I’ve recorded conversations on my Substack with</span>
+          <ul class="cv-row">
+            <li><img src="img/collab/justin.webp" alt="" width="160" height="160" loading="lazy"><span><b>Justin Welsh</b></span></li>
+            <li><img src="img/collab/kristina.webp" alt="" width="160" height="160" loading="lazy"><span><b>Kristina God</b></span></li>
+            <li><img src="img/collab/ciler.webp" alt="" width="160" height="160" loading="lazy"><span><b>Ciler</b><small>Newsletter Circle</small></span></li>
+            <li><img src="img/collab/mary.webp" alt="" width="160" height="160" loading="lazy"><span><b>Mary Bartnikowski</b><small>photographed the Dalai Lama</small></span></li>
+          </ul>
+        </div>
         <div class="cta2"><button class="btn open" type="button" data-cta="host"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">Show me your numbers, Ana <small class="bq">(free)</small></span><svg class="ar"><use href="#arr"/></svg></button><small>free · live on Zoom</small></div>
       </div>
       <div class="hst-pic" data-r>
@@ -2944,6 +2981,16 @@ picture{display:contents}
       <span class="rv-stars" aria-hidden="true"><img loading="lazy" style="--i:0;--r:-10deg;--z:0.92" src="img/o/vip/paint/star-a.webp" alt="" width="70" height="70"><img loading="lazy" style="--i:1;--r:6deg;--z:1.00" src="img/o/vip/paint/star-b.webp" alt="" width="70" height="70"><img loading="lazy" style="--i:2;--r:-3deg;--z:1.12" src="img/o/vip/paint/star-c.webp" alt="" width="70" height="70"><img loading="lazy" style="--i:3;--r:9deg;--z:1.00" src="img/o/vip/paint/star-a.webp" alt="" width="70" height="70"><img loading="lazy" style="--i:4;--r:-7deg;--z:0.90" src="img/o/vip/paint/star-b.webp" alt="" width="70" height="70"></span>
       <h2><span class="l">Here’s what students say</span> <span class="l"><em>about learning with me.</em></span></h2>
       <p class="hp">These are their words, from previous workshops and programs.</p>
+    </div>
+    <!-- featured student story: Marni Battista, in her own words, said live with Ana a week after the Money Map Bootcamp (Apr 25, 2025) -->
+    <div class="jill mrn" data-r>
+      <div class="jl-t">
+        <h3 class="jl-q">“I went from 25 people on the <span class="nn">wait list</span> to <mark class="sk">61 people on the <span class="nn">wait list.</span></mark> Pretty much in two days.”</h3>
+        <p class="jl-n"><b>Marni Battista</b> · coach for 16 years, Unscripted on Substack</p>
+        <p class="jl-s">After my bootcamp, she ran her offer through the template, and we worked on it together. A week later: “I already paid for my investment.”</p>
+        <p class="jl-d">From Marni’s experience in my bootcamp, said live with me. Individual results vary.</p>
+      </div>
+      <figure class="mrn-v"><img src="img/wins/marni-live.webp" alt="Ana and Marni Battista live on Substack" width="1100" height="619" loading="lazy"><figcaption>Live on Substack with Marni</figcaption></figure>
     </div>
     <h3 class="rv-h" data-r><span class="rv-ey"><span class="rv-mini" aria-hidden="true"><img loading="lazy" style="--i:0;--r:-8deg" src="img/o/vip/paint/star-a.webp" alt="" width="70" height="70"><img loading="lazy" style="--i:1;--r:5deg" src="img/o/vip/paint/star-b.webp" alt="" width="70" height="70"><img loading="lazy" style="--i:2;--r:-3deg" src="img/o/vip/paint/star-c.webp" alt="" width="70" height="70"><img loading="lazy" style="--i:3;--r:8deg" src="img/o/vip/paint/star-a.webp" alt="" width="70" height="70"><img loading="lazy" style="--i:4;--r:-5deg" src="img/o/vip/paint/star-b.webp" alt="" width="70" height="70"></span><span>From readers and students who’ve worked with me</span></span></h3>
     <div class="rgrid" data-r>
@@ -3763,5 +3810,29 @@ picture{display:contents}
    var c=w.querySelector('.dcal');if(c){c.querySelector('small').textContent=M[d.getMonth()].toUpperCase();c.querySelector('b').textContent=d.getDate()}}
   pill.innerHTML='';var me=document.createElement('span');me.className='dme';me.appendChild(document.createTextNode(t+' in '));me.insertAdjacentHTML('beforeend',PIN);me.appendChild(document.createTextNode(place));pill.appendChild(me);
   var n=document.createElement('span');n.className='dny';n.textContent=(moved?ny+' · ':'')+'12:00 pm New York';dtm.appendChild(n)})}catch(e){}})();</script>
+<script>/* "See you live" times: the visitor's own time and city lead, highlighted (Sean, Nov 4), the same way as the header and
+   the day cards. In one of the four listed cities their row is highlighted; anywhere else a row for their city is added
+   first and the date line shows their dates, New York's beside it */
+(function(){try{var ft=document.querySelector('.ftimes'),ul=ft&&ft.querySelector('.ftz');if(!ul)return;
+ var tz=Intl.DateTimeFormat().resolvedOptions().timeZone||'';if(!tz||tz.indexOf('/')<0)return;
+ var hi=function(li){var b=li.querySelector('b'),t=b?b.textContent:'',rest=li.textContent.replace(t,'').trim(),pin=li.querySelector('svg');
+  li.classList.add('me');li.innerHTML='';if(pin)li.appendChild(pin);var h=document.createElement('i');h.className='hl';h.style.fontStyle='normal';
+  var bb=document.createElement('b');bb.textContent=t;h.appendChild(bb);h.appendChild(document.createTextNode(' '+rest));li.appendChild(h);ul.insertBefore(li,ul.firstChild)};
+ var known={'America/New_York':'New York','America/Los_Angeles':'Los Angeles','Europe/London':'London','Europe/Athens':'Greece'};
+ var lis=[].slice.call(ul.children);
+ /* once we know where they are, their city leads; all four stay as they are for anyone whose zone we can't read */
+ var keepNY=function(){ /* Sean: their city big and highlighted on top; the other cities kept, small, on one line underneath */
+  var rest=lis.filter(function(li){return !li.classList.contains('me')});rest.sort(function(a,b){return (b.textContent.indexOf('New York')>-1)-(a.textContent.indexOf('New York')>-1)});
+  var o=document.createElement('li');o.className='ft-also';var k=document.createElement('i');k.className='ft-k';k.textContent='Also:';o.appendChild(k);
+  rest.forEach(function(li,j){var b=li.querySelector('b'),c=document.createElement('i');c.className='ft-c';c.textContent=(b?b.textContent:'')+' '+li.textContent.replace(b?b.textContent:'','').replace(/if you.re in /,'').trim();o.appendChild(c);li.remove()});
+  if(rest.length)ul.appendChild(o)};
+ if(known[tz]){lis.forEach(function(li){if(li.textContent.indexOf(known[tz])>-1)hi(li)});keepNY();return}
+ var start=new Date(Date.UTC(2026,11,8,17,0)),end=new Date(Date.UTC(2026,11,10,17,0)),place=tz.split('/').pop().replace(/_/g,' ');
+ var t=start.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'}).toLowerCase();
+ var li=lis[0].cloneNode(true);li.innerHTML=lis[0].querySelector('svg').outerHTML+'<b></b>';li.querySelector('b').textContent=t;li.appendChild(document.createTextNode(' if you’re in '+place));hi(li);keepNY();
+ if(start.getDate()!==8||start.getMonth()!==11){var W=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],M=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],b=ft.querySelector(':scope > b');
+  if(b){b.className='ft-d';b.innerHTML='<span class="nw"></span><span class="ft-ny">Tue Dec 8 to Thu Dec 10 New York</span>';
+   b.querySelector('.nw').textContent=W[start.getDay()]+' '+M[start.getMonth()]+' '+start.getDate()+' to '+W[end.getDay()]+' '+M[end.getMonth()]+' '+end.getDate()}}
+}catch(e){}})();</script>
 </body>
 </html>
