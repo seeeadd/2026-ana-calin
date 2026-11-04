@@ -3636,7 +3636,8 @@ picture{display:contents}
       var y = document.createElement('button'); y.type = 'button'; y.textContent = 'Yes, use that'; y.addEventListener('click', function(){ em.value = fix; emAsked = fix; em.parentNode.classList.remove('bad'); emSug.hidden = true; emErr.textContent = emErr0; em.focus() }); emSug.appendChild(y) }
   }
   em.addEventListener('input', function(){ emSug.hidden = true; emErr.textContent = emErr0 });
-  em.addEventListener('blur', function(){ if (!em.value.trim()) return; var c = EM(em.value); if (c.bad && c.bad !== 'format') emSay(c.bad, c.fix); else if (!c.bad && c.fix) { emAsked = c.v; emSay('maybe', c.fix) } });
+  em.addEventListener('blur', function(){ if (!em.value.trim()) return; var c = EM(em.value); if (c.bad && c.bad !== 'format') emSay(c.bad, c.fix); else if (!c.bad && c.fix) emSay('maybe', c.fix) }); /* the blur only shows the hint; a typo goes through only on a
+     second, separate press after the hint was seen (the same click that blurred the field used to submit it) */
   form.addEventListener('submit',function(e){
     e.preventDefault();
     var ok = true;
