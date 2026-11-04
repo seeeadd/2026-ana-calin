@@ -2257,6 +2257,12 @@ footer{background-image:url(img/vip/paint/tx-grain.webp);background-size:256px}
 .fb.min .fb-t small{white-space:nowrap}
 /* header with the visitor's own time: dates on the top line, both times below (a second line if needed) */
 .fb-t small .fb-dt2{display:none}
+/* header with the visitor's own time: theirs on top (bold, soft highlight), New York below (smaller, grey) */
+.fb-t b.fb-two{white-space:normal;line-height:1.2;overflow:visible}
+.fb-t b.fb-two .fb-me{display:block}
+.fb-t b.fb-two .nw{white-space:nowrap}
+.fb-t b.fb-two .fb-hl{background:linear-gradient(180deg,transparent 55%,rgba(255,212,0,.38) 55%,rgba(255,212,0,.38) 90%,transparent 90%)}
+.fb-t b.fb-two .fb-ny{display:block;margin-top:1px;font-size:.74em;font-weight:600;letter-spacing:0;color:var(--ink3)}
 .fb-t small.loc .fb-w2{display:none!important}
 .fb-t small.loc .fb-w{display:inline!important}
 .fb-t small.loc.nodt .fb-dt2{display:none}
@@ -3612,24 +3618,20 @@ html.bdg-js .bdg.in{animation:bdgIn .6s cubic-bezier(.2,1.5,.4,1) both}
  var fb=document.querySelector('.fb');if(fb)new MutationObserver(function(){setTimeout(fit,500)}).observe(fb,{attributes:true,attributeFilter:['class']});
  if(document.fonts)document.fonts.ready.then(fit);fit()})();
 
-/* header date line: New York always (it matches every email); when the visitor's clock is elsewhere, their time
-   and place sit beside it ("12:00 pm New York · 5:00 pm in London") and the dates move up to the top line.
-   The place is their device's time zone city. If it doesn't fit on one line, their time takes a line of its own. */
-(function(){var yt=document.querySelector('.fb-yt');if(!yt)return;var b=yt.parentNode,sm=b.parentNode.querySelector('small');
- try{var start=new Date(Date.UTC(2026,11,8,17,0)),tz=Intl.DateTimeFormat().resolvedOptions().timeZone||'';
+/* header date line: when the visitor's clock isn't New York's, THEIR dates, time and city lead (bold, softly highlighted)
+   and New York sits right under it, smaller and grey (it matches every email). New York visitors see the original line. */
+(function(){var yt=document.querySelector('.fb-yt');if(!yt)return;var b=yt.parentNode;
+ try{var start=new Date(Date.UTC(2026,11,8,17,0)),end=new Date(Date.UTC(2026,11,10,17,0)),tz=Intl.DateTimeFormat().resolvedOptions().timeZone||'';
   var ny=start.toLocaleString('en-US',{timeZone:'America/New_York',hour:'numeric',minute:'2-digit',day:'numeric'});
   var me=start.toLocaleString('en-US',{hour:'numeric',minute:'2-digit',day:'numeric'});
-  if(!tz||tz==='America/New_York'||me===ny||tz.indexOf('/')<0)return;var lab;
+  if(!tz||tz==='America/New_York'||me===ny||tz.indexOf('/')<0)return;
   var place=tz.split('/').pop().replace(/_/g,' ');
   var t=start.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'}).toLowerCase();
-  var d=start.getDate()!==8?' '+start.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'}):'';
-  lab=t+d+' in '+place;yt.textContent=' · '+lab;yt.hidden=false;sm.classList.add('loc');
-  if(d){var end=new Date(Date.UTC(2026,11,10,17,0)),dt=sm.querySelector('.fb-dt2');if(dt){dt.innerHTML=' · <span class="fb-hl2"></span>';dt.firstElementChild.textContent=start.toLocaleDateString('en-US',{month:'short',day:'numeric'})+' to '+end.getDate()+' in '+place}}
- }catch(e){return}
- var hl=document.createElement('span');hl.className='fb-hl';hl.textContent=lab;function fit(){sm.classList.remove('nodt');if(sm.scrollWidth>sm.clientWidth+1)sm.classList.add('nodt');b.classList.remove('fb-2l');yt.textContent=' · ';yt.appendChild(hl);if(b.scrollWidth>b.clientWidth+1){b.classList.add('fb-2l');yt.textContent='';yt.appendChild(hl)}}
- var tm;addEventListener('resize',function(){clearTimeout(tm);tm=setTimeout(fit,60)});
- var fb=document.querySelector('.fb');if(fb)new MutationObserver(function(){setTimeout(fit,500)}).observe(fb,{attributes:true,attributeFilter:['class']});
- if(document.fonts)document.fonts.ready.then(fit);fit()})();
+  var dates=start.toLocaleDateString('en-US',{month:'short',day:'numeric'})+' to '+end.getDate();
+  b.classList.add('fb-two');
+  b.innerHTML='<span class="fb-me"><span class="fb-hl"><span class="nw"></span> <span class="nw"></span></span></span><span class="fb-ny">Dec 8 to 10 · 12:00 pm New York</span>';
+  var n=b.querySelectorAll('.fb-me .nw');n[0].textContent=dates+' ·';n[1].textContent=t+' in '+place;
+ }catch(e){}})();
 </script>
 
 <script>
