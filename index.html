@@ -2244,12 +2244,16 @@ footer{background-image:url(img/vip/paint/tx-grain.webp);background-size:256px}
 .fb.min .fb-t small{white-space:nowrap}
 /* header with the visitor's own time: dates on the top line, both times below (a second line if needed) */
 .fb-t small .fb-dt2{display:none}
-.fb-t small.loc .fb-w,.fb-t small.loc .fb-w2{display:none!important}
+.fb-t small.loc .fb-w2{display:none!important}
+.fb-t small.loc .fb-w{display:inline!important}
+.fb-t small.loc.nodt .fb-dt2{display:none}
+.fb-t small.loc.nodt + b .fb-d{display:inline}
 .fb-t small.loc .fb-dt2{display:inline}
 .fb-t small.loc + b .fb-d{display:none}
 .fb-t b.fb-2l{white-space:normal;line-height:1.15;align-self:stretch;text-align:left}
 .fb-t small.loc{align-self:stretch;text-align:left}
-.fb-t b.fb-2l .fb-yt{display:block;font-weight:700;opacity:.85}
+.fb-t b.fb-2l .fb-yt{display:block;margin-top:2px}
+.fb-t .fb-hl{padding:0 .22em;border-radius:3px;background:linear-gradient(180deg,transparent 52%,rgba(255,212,0,.5) 52%,rgba(255,212,0,.5) 90%,transparent 90%);-webkit-box-decoration-break:clone;box-decoration-break:clone}
 
 .fb .fb-t small,.fb.min .fb-t small{text-transform:none;letter-spacing:0;font-weight:700;font-size:12.5px;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:clip}
 .fb.min .fb-t small{font-size:11.5px}
@@ -3602,7 +3606,7 @@ html.bdg-js .bdg.in{animation:bdgIn .6s cubic-bezier(.2,1.5,.4,1) both}
   var d=start.getDate()!==8?' '+start.toLocaleDateString('en-US',{weekday:'short'}):'';
   lab=t+d+' in '+place;yt.textContent=' · '+lab;yt.hidden=false;sm.classList.add('loc')
  }catch(e){return}
- function fit(){b.classList.remove('fb-2l');yt.textContent=' · '+lab;if(b.scrollWidth>b.clientWidth+1){b.classList.add('fb-2l');yt.textContent=lab}}
+ var hl=document.createElement('span');hl.className='fb-hl';hl.textContent=lab;function fit(){sm.classList.remove('nodt');if(sm.scrollWidth>sm.clientWidth+1)sm.classList.add('nodt');b.classList.remove('fb-2l');yt.textContent=' · ';yt.appendChild(hl);if(b.scrollWidth>b.clientWidth+1){b.classList.add('fb-2l');yt.textContent='';yt.appendChild(hl)}}
  var tm;addEventListener('resize',function(){clearTimeout(tm);tm=setTimeout(fit,60)});
  var fb=document.querySelector('.fb');if(fb)new MutationObserver(function(){setTimeout(fit,500)}).observe(fb,{attributes:true,attributeFilter:['class']});
  if(document.fonts)document.fonts.ready.then(fit);fit()})();
