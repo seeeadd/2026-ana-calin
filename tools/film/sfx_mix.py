@@ -90,7 +90,8 @@ HOOK=T(206.94); XF=.07
 # 35 s at the opening: the intro's repeating 9.62 s passage (6.24 to 15.86) loops cleanly, so no singing runs under her
 place(0,.95,15.86+XF,.7,XF); at=14.91
 for rep in range(2): place(at,6.24,15.86+XF,XF,XF); at+=9.62
-place(at,6.24,6.24+(35.0-at),XF,2.8)
+place(at,6.24,6.24+(35.1-at),XF,.1)
+fo0,fo1=int(32.2*SR),int(35.0*SR); mus[fo0:fo1]*=np.cos(np.linspace(0,np.pi/2,fo1-fo0))[:,None]; mus[fo1:int(36*SR)]=0
 place(180.3,HOOK-180.3 and 16.6-(HOOK-180.3),16.6+XF,1.3,XF)
 place(HOOK,26.18,26.18+(N/SR-HOOK),XF,.55)
 # room for her words: the music gives up the band her consonants live in, and dips while she speaks
