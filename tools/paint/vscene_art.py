@@ -124,9 +124,11 @@ while x < 2420:
     if R.random() < .55: rockink.append(f'<path d="{smooth(pts[:4])}"/>')
     x += w * R.uniform(.7, 1.3)
 far = smooth(ridge(FAR, 34, 6), f' L2420 {H} L-20 {H} Z'); near = smooth(ridge(NEAR, 30, 4), f' L1620 {H} L960 {H} Z')
-vland = f'''<svg data-art="vland" width="{W}" height="{H}" viewBox="0 0 {W} {H}">
+vfar = f'''<svg data-art="vfar" width="{W}" height="{H}" viewBox="0 0 {W} {H}">
   <g data-mat="wash" fill="#BCD2E8" data-density=".85" data-rim="2"><path d="{far}"/></g>
   <g data-mat="wash" fill="#94B4D4" data-density=".7" data-rim="2"><path d="{near}"/></g>
+</svg>'''
+vland = f'''<svg data-art="vnear" width="{W}" height="{H}" viewBox="0 0 {W} {H}">
   <g data-mat="gouache" data-angle="14" data-streak=".05">{gou_hills}</g>
   <g data-mat="wash" data-density=".42">{''.join(patches)}</g>
   <g data-mat="ink" stroke="#5F6F45" stroke-width=".8" fill="none" data-density=".55">{''.join(terr)}</g>
@@ -269,7 +271,24 @@ vtorn = f'''<svg data-art="vtorn" width="90" height="1008" viewBox="0 0 90 1008"
   <g data-mat="wash" fill="#E7DCC6" data-density=".5"><path d="{inner}"/></g>
 </svg>'''
 
-block = '<!-- VSCENE start: written by vscene_art.py -->\n' + '\n'.join([vland, vsea, vglint, va_d, va_p, vfree, vtag, vhead, venv, vnote, vtorn] + vdays) + '\n<!-- VSCENE end -->\n'
+# a small boat for the bay, and the pots he jumps over
+vboat = f'''<svg data-art="vboat" width="170" height="170" viewBox="0 0 170 170">
+  <g data-mat="shadow" fill="#2C5F92" data-density=".5"><path d="M30 146 Q86 158 146 144 Q88 170 30 146 Z"/></g>
+  <g data-mat="sheet" fill="#FFFBF0"><path d="M84 18 C112 50 128 84 134 112 L84 112 Z"/><path d="M78 34 C60 62 46 88 38 112 L78 112 Z"/></g>
+  <g data-mat="wash" fill="#F7C9DC" data-density=".65"><path d="M84 70 L124 112 L84 112 Z"/></g>
+  <g data-mat="gouache" data-angle="0"><path d="M22 118 L150 116 C144 136 128 146 112 146 L56 147 C40 146 28 136 22 118 Z" fill="#2E5DA8"/><path d="M22 118 L150 116 L148 124 L25 126 Z" fill="#FFFBF0"/></g>
+  <g data-mat="ink" stroke="{INK}" stroke-width="2.4" fill="none" stroke-linejoin="round"><path d="M81 10 L81 118"/><path d="M84 18 C112 50 128 84 134 112 L84 112"/><path d="M78 34 C60 62 46 88 38 112 L78 112"/><path d="M22 118 L150 116 C144 136 128 146 112 146 L56 147 C40 146 28 136 22 118 Z"/></g>
+</svg>'''
+vpot = f'''<svg data-art="vpot" width="150" height="190" viewBox="0 0 150 190">
+  <g data-mat="shadow" fill="#6A5A4E" data-density=".5"><ellipse cx="78" cy="182" rx="50" ry="6"/></g>
+  <g data-mat="gouache" data-angle="80" data-streak=".04"><path d="M72 104 C70 76 74 52 72 30" stroke="#5F8048" stroke-width="7" fill="none"/><path d="M72 66 C50 62 40 48 36 36 C56 34 70 48 72 66 Z M72 50 C90 44 102 30 106 18 C86 18 74 32 72 50 Z" fill="#6F8C52"/></g>
+  <g data-mat="gouache" data-angle="90" data-streak=".05"><circle cx="72" cy="24" r="17" fill="#FFD400"/><circle cx="72" cy="24" r="7" fill="#7A4A1E"/></g>
+  <g data-mat="gouache" data-angle="0" data-streak=".05"><path d="M36 112 L114 112 L104 180 L46 180 Z" fill="#D2704E"/><path d="M28 98 L122 98 L120 116 L30 116 Z" fill="#E08A62"/></g>
+  <g data-mat="wash" fill="#9E4434" data-density=".6"><path d="M92 116 L114 116 L104 180 L86 180 Z"/></g>
+  <g data-mat="ink" stroke="{INK}" stroke-width="2.4" fill="none" stroke-linejoin="round"><path d="M36 116 L46 180 L104 180 L114 116"/><path d="M28 98 L122 98 L120 116 L30 116 Z"/><circle cx="72" cy="24" r="17"/></g>
+</svg>'''
+
+block = '<!-- VSCENE start: written by vscene_art.py -->\n' + '\n'.join([vfar, vland, vboat, vpot, vsea, vglint, va_d, va_p, vfree, vtag, vhead, venv, vnote, vtorn] + vdays) + '\n<!-- VSCENE end -->\n'
 p = os.path.join(HERE, 'studio.html'); s = open(p).read()
 a = s.find('<!-- VSCENE start'); b = s.find('<!-- VSCENE end -->')
 if a >= 0: s = s[:a] + block + s[b + len('<!-- VSCENE end -->\n'):]
