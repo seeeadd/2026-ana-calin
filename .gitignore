@@ -3,3 +3,5 @@ __pycache__/
 # paint studio build output (tools/paint/render.js and paint.py regenerate these)
 tools/paint/layers/
 tools/paint/out/
+# page videos are added once, at publish; drafts stay out of Git
+assets/video/
