@@ -2521,6 +2521,7 @@ picture{display:contents}
 .wv-ov .wv-pp{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:block;width:min(100vw,calc(100dvh * 9 / 16))}
 .wv-ov .wv-x{position:absolute;top:calc(12px + env(safe-area-inset-top));right:12px;width:44px;height:44px;border:0;border-radius:50%;background:#FFF8EE;display:grid;place-items:center;z-index:2;cursor:pointer}
 html.wv-lock{overflow:hidden}
+.iwhen .iw-ny{font-weight:500;color:var(--ink3);font-size:.92em}
 </style>
 </head>
 <body>
@@ -3899,9 +3900,9 @@ html.wv-lock{overflow:hidden}
  /* the booking strip under the video */
  set(q('.book .d'),spanW);var bt=q('.book .t');if(bt)bt.innerHTML='<b class="me-t"></b> / 12:00 pm New York',bt.querySelector('.me-t').textContent=me;
  /* the line under Ana's button */
- var iw=q('.iwhen');if(iw)iw.innerHTML='<b class="me-t"></b><br>Free and live on Zoom',iw.querySelector('.me-t').textContent=span+' · '+me;
+ var iw=q('.iwhen');if(iw)iw.innerHTML='<b class="me-t"></b><br><span class="iw-ny">Dec 8 to 10 · 12:00 pm New York</span><br>Free and live on Zoom',iw.querySelector('.me-t').textContent=span+' · '+me;
  /* the closing ask */
- var ak=q('.askt b');if(ak)ak.textContent='The Exit Plan · '+span;var as=q('.askt span');if(as)as.textContent='Three live sessions · '+me+' · About 90 minutes each · Free on Zoom';
+ var ak=q('.askt b');if(ak)ak.textContent='The Exit Plan · '+span;var as=q('.askt span');if(as)as.textContent='Three live sessions · '+me+' ('+(moved?'Dec 8 to 10, ':'')+'12:00 pm New York) · About 90 minutes each · Free on Zoom';
  /* the calendar invite shows the invite as their own calendar would */
  var gi=q('.gi-t div');if(gi){var sm=gi.querySelectorAll('small');if(sm[0])sm[0].textContent=WF[S.getDay()]+', '+MF[S.getMonth()]+' '+S.getDate()+' · '+t(S).replace(/ (am|pm)$/,'')+' – '+t(E2).replace(' ','');if(sm[1])sm[1].textContent='Daily, until '+WF[E.getDay()]+', '+MF[E.getMonth()]+' '+E.getDate()}
  /* the phone bar and the header's short date */
