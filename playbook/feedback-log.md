@@ -93,3 +93,4 @@ correction and every approval-with-reason (SOP section D). The full raw messages
 - 11-03 · header · "don't remove the free 3-day live event" + "highlight their own time" → event info stays; visitor's time highlighted · graphics §6
 - 11-04 · dates · "dates will be different for each [time zone]" → visitor's own date on forms always, in the header when it differs · graphics §6
 - 11-04 · machine · "make a playbook ... updatable ... the more I use it, the better it gets" → this playbook and the learning loop · SOP D
+- 11-04 · line breaks · "fix spacing looks a bit bad" (the "For you" time wrapping as "Wed, Dec / 9 · 1:00 am") → keep phrases whole (nowrap chunks), a separator ends the line it's on and never starts one, balanced wrapping; check 320 px · graphics §6

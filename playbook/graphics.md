@@ -105,6 +105,8 @@ Leave room for shadows inside the canvas so nothing gets cut at the edge.
   - the visitor's own time and date highlighted, with a clock icon.
 - **Buttons:** first-person wording ("I'm in, Ana (it's free)"), a brand icon on the left that animates on hover
   (the sunflower; in December, with a Santa hat and candy cane). Never greyed out.
+- **Line breaks:** short labels (dates, times, names, prices) break only between whole phrases, never inside
+  "Wed, Dec 9" or "1:00 am"; a "·" ends a line, never starts one. Check 320 and 390 px.
 - **Tickers and live counts:** compact, low-key, real data only (they never show until there are 50 real
   registrants).
 - **Frames:**

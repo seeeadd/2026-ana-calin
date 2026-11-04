@@ -2095,6 +2095,8 @@ section > .tkb .flag span.t{font-weight:500}
 /* forms: the visitor's own start time on its own line, highlighted */
 .lt .lt-me{display:block;margin:6px auto 0;font-size:13.5px;font-weight:700;color:var(--ink2)}
 .lt .lt-me .lt-ic{display:inline-block;width:17px;height:17px;margin-right:6px;vertical-align:-3.5px}
+.lt .lt-me{line-height:1.5;text-wrap:balance}
+.lt .lt-me .nw{white-space:nowrap}
 .lt .lt-me b{font-weight:800;color:var(--ink);padding:0 .25em;background:linear-gradient(180deg,transparent 50%,rgba(255,212,0,.55) 50%,rgba(255,212,0,.55) 92%,transparent 92%);-webkit-box-decoration-break:clone;box-decoration-break:clone}
 .tkt form .note{margin:3px auto 0!important;padding-left:0!important;font-size:11px!important;line-height:1.45;color:var(--ink3);opacity:.85;text-align:center;max-width:36em}
 .tkt form .note:before{display:none}
@@ -3245,7 +3247,7 @@ html.bdg-js .bdg.in{animation:bdgIn .6s cubic-bezier(.2,1.5,.4,1) both}
       var tzn = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
       if (tzn && tzn !== 'America/New_York' && tzn.indexOf('/') > 0) {
         var pl = tzn.split('/').pop().replace(/_/g,' ');
-        document.querySelectorAll('.lt').forEach(function(s){s.textContent = '';var w=document.createElement('span');w.className='lt-me';w.innerHTML='<svg class="lt-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.5" fill="#FFD400" stroke="#1A1412" stroke-width="2"/><path d="M12 6.8V12l3.6 2.2" fill="none" stroke="#1A1412" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>For you: <b></b>';w.querySelector('b').textContent=ltd+' in '+pl;s.appendChild(w)});
+        document.querySelectorAll('.lt').forEach(function(s){s.textContent = '';var w=document.createElement('span');w.className='lt-me';w.innerHTML='<svg class="lt-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.5" fill="#FFD400" stroke="#1A1412" stroke-width="2"/><path d="M12 6.8V12l3.6 2.2" fill="none" stroke="#1A1412" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>For you: <b></b>';var bb=w.querySelector('b'),pp=ltd.split(' · ');[pp[0]+' ·',pp[1]+' in '+pl].forEach(function(x,i){if(i){bb.appendChild(document.createTextNode(' '))}var n=document.createElement('span');n.className='nw';n.textContent=x;bb.appendChild(n)});s.appendChild(w)});
       }
       document.querySelectorAll('.lt2').forEach(function(s){s.textContent = ' / ' + lt + ' your time'});
       var tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
