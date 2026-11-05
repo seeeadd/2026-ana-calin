@@ -1959,6 +1959,17 @@ html.wv-lock{overflow:hidden}
   .vspam-t .ib-i{width:19px;height:19px;font-size:11.5px}
 }
 .tot2 .tot-ny{font-size:.86em;color:var(--ink3);font-weight:500;white-space:nowrap}
+/* Sean, Nov 5: the visitor's city with a pin, emphasised, in the header date and the price box */
+.vpin{width:1.05em;height:1.05em;flex:none;fill:currentColor}
+.vpin circle{fill:#fff}
+.fb-dt{display:inline-flex;align-items:center;gap:6px}
+.fb-id .fb-dt span.fb-loc{display:inline-flex}
+@media (max-width:520px){.fb-id .fb-dt span.fb-loc{display:none}}
+.fb-loc{display:inline-flex;align-items:center;gap:2px;padding:2px 7px 2px 4px;margin:-2px -5px -2px 0;border-radius:99px;background:var(--pink);color:#fff}
+.tot2 .tot-dl{display:grid;gap:3px;line-height:1.25}
+.tot2 .tot-d{color:var(--ink);font-weight:700;font-size:1.08em;white-space:nowrap}
+.tot2 .tot-loc{display:inline-flex;align-items:center;gap:3px;justify-self:start;padding:3px 9px 3px 5px;border-radius:99px;background:#FFE3EE;color:#B0124F;font-weight:800;font-size:.95em;white-space:nowrap}
+.tot2 .tot-loc .vpin{color:var(--pink)}
 /* Sean, Nov 5: the order card stays beside the page like a checkout (desktop and laptop), the same way the registration
    page's form does; it appears once the hero's card scrolls away and stops before the letter and price at the bottom */
 .vrail{display:none}
@@ -1972,6 +1983,21 @@ html.wv-lock{overflow:hidden}
   .vrail .order .seal,.vrail .order .stamp,.vrail .order [class*="badge"],.vrail .bdg,.vrail .bb-pm,.vrail .rays{display:none}
   .vh .order .bdg-life{right:-4px}
   .vrail.short .order ul,.vrail.short .order ol{display:none}
+}
+/* with the order card on the right: the features' progress column gets its own lane on the left (none below 1440),
+   and each feature's picture rides beside its text instead of sitting in the middle of a tall column */
+@media (min-width:1280px) and (max-width:1439px){.rail-col{display:none!important}}
+@media (min-width:1440px){main > section.vi:not(.vb):not(.vh) .wrap{margin-left:calc(var(--edge) + 84px)}.vi .rail-col{left:var(--edge)}}
+@media (min-width:1280px){.vi .it .art{align-self:start;position:sticky;top:150px}}
+/* Sean, Nov 5 ("still a lot of space on the right"): two columns, the words on the left and the live VIP chat on the right,
+   riding beside them; the small painted laptop and phone step aside (the chat is the real thing) */
+@media (min-width:901px){
+  .it2{grid-template-rows:repeat(7,auto) 1fr;align-items:start;row-gap:0}
+  .it2 > .tx{display:contents}
+  .it2 > .tx > *{grid-column:1}
+  .it2 > .art{display:none}
+  .it2 > .tx > .wac{grid-column:2;grid-row:1 / span 8;align-self:start;justify-self:center;width:100%;max-width:420px;margin:6px 0 0}
+  .it2 > .tx > .wac + p{margin-top:16px}
 }
 </style>
 </head>
@@ -2658,6 +2684,16 @@ html.wv-lock{overflow:hidden}
  document.querySelectorAll('.gx-md > span').forEach(function(c,i){var d=new Date(S.getTime()+i*864e5),a=c.querySelector('small'),b=c.querySelector('b'),m=c.querySelector('i');if(a)a.textContent=W[d.getDay()].toUpperCase();if(b)b.textContent=d.getDate();if(m)m.textContent=MF[d.getMonth()]});
  var s4=document.querySelector('.stop.s4 .dt');if(s4){s4.querySelector('b').textContent=F.getDate();s4.querySelector('small').textContent=W[F.getDay()]}
  ['.stop.s1','.stop.s2','.stop.s3'].forEach(function(sel,i){var dt=document.querySelector(sel+' .dt');if(!dt)return;var d=new Date(S.getTime()+i*864e5);dt.querySelector('b').textContent=d.getDate();dt.querySelector('small').textContent=W[d.getDay()]});
+}catch(e){}})();</script>
+<script>/* Sean, Nov 5: their city, with a pin, beside the dates (header pill and the price box); New York stays small under it */
+(function(){try{var tz='';try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||''}catch(e){}
+ var ny=!tz||tz==='America/New_York'||tz.indexOf('/')<0,city=ny?'New York':tz.split('/').pop().replace(/_/g,' ');
+ var PIN='<svg class="vpin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s-7-7.1-7-12.2A7 7 0 0 1 19 9.8C19 14.9 12 22 12 22Z"/><circle cx="12" cy="9.6" r="2.6"/></svg>';
+ var esc=function(x){return x.replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
+ document.querySelectorAll('.fb-dt').forEach(function(p){if(!p.querySelector('.vpin'))p.insertAdjacentHTML('beforeend','<span class="fb-loc">'+PIN+esc(city)+'</span>')});
+ document.querySelectorAll('.tot2 > span:first-child').forEach(function(tb){var nw=tb.querySelectorAll('.nw');if(nw.length<2)return;
+  var d=nw[0].textContent.replace(/,\s*$/,''),tm=nw[1].textContent.replace(/\s+in\s+.*$/,'').replace(/\s*New York$/,''),nys=tb.querySelector('.tot-ny');
+  tb.className='tot-dl';tb.innerHTML='<span>On sale until</span><span class="tot-d">'+esc(d)+' · '+esc(tm)+'</span><span class="tot-loc">'+PIN+(ny?'New York time':'Your time in '+esc(city))+'</span>'+(nys?'<small class="tot-ny">'+esc(nys.textContent)+'</small>':'')});
 }catch(e){}})();</script>
 <script src="../assets/wistia-vsl.js?v=2"></script>
 <script>/* Sean, Nov 4: desktop 5j7jxvhlbz, phone t0jit9k8nm (Wistia) */
