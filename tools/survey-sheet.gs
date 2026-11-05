@@ -12,7 +12,7 @@
        SURVEY_SHEET_KEY = the same secret word as KEY
      Then redeploy (a changed variable only reaches the site on the next deployment).
 
-  The tabs "Registrants", "Survey", "Exit numbers", "Sales" and "Summary" make themselves on the first row.
+  The tabs "Registrants", "Survey", "Exit numbers", "Sales", "Exit Plan Waitlist" and "Summary" make themselves on the first row.
   If you change this script later: Deploy > Manage deployments > edit > Version: New version (the URL stays the same).
 */
 var KEY = 'change-me';
@@ -49,17 +49,67 @@ function doPost(e) {
     var b = JSON.parse((e && e.postData && e.postData.contents) || '{}');
     if (b.key !== KEY) return out({ ok: false, error: 'key' });
     var r = b.row || {}, t = TABS[r.kind];
+    if (r.kind === 'waitlist') return out(waitlist(r));   // one row per email, updated in place (see below)
     if (!t) return out({ ok: false, error: 'kind' });
     var sh = tab(t);
     var vals = [new Date(), r.page, r.first, r.email, r.ref, r.tz].concat(t.keys.map(function (k) { return r[k] == null ? '' : r[k] }));
     vals = vals.map(function (v) { return typeof v === 'string' && /^[=+\-@]/.test(v) ? "'" + v : v });
     sh.appendRow(vals);
+    if (r.kind === 'register') markRegistered(r.email);   // a waitlisted person who books a seat gets registered_at filled
     return out({ ok: true });
   } catch (err) {
     return out({ ok: false, error: String(err) });
   } finally {
     lock.releaseLock();
   }
+}
+
+// The early-invite waitlist (/waitlist/, api/ana-waitlist.js): ONE row per email. A second sign-up, or the optional
+// "which part would you most like help with" answer, updates that row and keeps the first waitlisted_at.
+// early_invite_sent_at is filled by the team when the early invitation goes out; registered_at fills itself when the same
+// email registers for the workshop (markRegistered, called from the Registrants rows).
+var WL = {
+  name: 'Exit Plan Waitlist',
+  head: ['first_name', 'email', 'waitlisted_at', 'source', 'priority', 'early_invite_sent_at', 'registered_at', 'time_zone', 'kit']
+};
+function wlSheet() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet(), sh = ss.getSheetByName(WL.name);
+  if (sh) return sh;
+  sh = ss.insertSheet(WL.name);
+  sh.getRange(1, 1, 1, WL.head.length).setValues([WL.head]).setFontWeight('bold').setBackground('#FFD400');
+  sh.setFrozenRows(1);
+  ['C:C', 'F:G'].forEach(function (a) { sh.getRange(a).setNumberFormat('yyyy-mm-dd hh:mm') });
+  sh.setColumnWidth(2, 240);
+  return sh;
+}
+function wlFind(sh, email) {
+  var n = sh.getLastRow();
+  if (n < 2) return 0;
+  var col = sh.getRange(2, 2, n - 1, 1).getValues();
+  for (var i = 0; i < col.length; i++) if (String(col[i][0]).toLowerCase() === email) return i + 2;
+  return 0;
+}
+function waitlist(r) {
+  var email = String(r.email || '').toLowerCase();
+  if (!email) return { ok: false, error: 'email' };
+  var safe = function (v) { return typeof v === 'string' && /^[=+\-@]/.test(v) ? "'" + v : v };
+  var sh = wlSheet(), row = wlFind(sh, email);
+  if (!row) {
+    sh.appendRow([safe(r.first || ''), email, new Date(), safe(r.source || ''), r.priority || '', '', '', r.tz || '', r.kit || '']);
+    return { ok: true, row: 'new' };
+  }
+  if (r.priority) sh.getRange(row, 5).setValue(r.priority);
+  if (r.first && !sh.getRange(row, 1).getValue()) sh.getRange(row, 1).setValue(safe(r.first));
+  if (r.source && !sh.getRange(row, 4).getValue()) sh.getRange(row, 4).setValue(safe(r.source));
+  if (r.kit) sh.getRange(row, 9).setValue(r.kit);
+  return { ok: true, row: 'updated' };
+}
+function markRegistered(email) {
+  email = String(email || '').toLowerCase();
+  var sh = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(WL.name);
+  if (!sh || !email) return;
+  var row = wlFind(sh, email);
+  if (row && !sh.getRange(row, 7).getValue()) sh.getRange(row, 7).setValue(new Date());
 }
 
 function doGet() { return out({ ok: true, sheet: 'The Exit Plan survey' }) }

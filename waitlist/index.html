@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Get your Exit Plan invitation one day early · Ana Calin</title>
+<meta name="theme-color" content="#FFF8EE">
+<!-- Ana Calin, the early-invite waitlist (/waitlist/). One screen: the registration page's headline, the promise, the form.
+     The sign-up posts to /api/ana-waitlist (Kit tag ep_waitlist + the "Exit Plan Waitlist" sheet tab). The optional
+     question on the thank-you view posts the answer to the same endpoint. Spec: Sean's one-pager, Nov 5. -->
+<link rel="icon" href="../img/fav/favicon.ico?v=dc986e96" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../img/fav/favicon-32.png?v=dc986e96">
+<link rel="icon" type="image/png" sizes="192x192" href="../img/fav/favicon-192.png?v=dc986e96">
+<link rel="apple-touch-icon" href="../img/fav/apple-touch-icon.png?v=dc986e96">
+<link rel="preload" as="font" type="font/woff2" href="../assets/fonts/g/manrope-normal-b222d8.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="../assets/fonts/g/instrument-serif-normal-c008db.woff2" crossorigin>
+<style>
+@font-face{font-family:'Instrument Serif';font-style:italic;font-weight:400;font-display:swap;src:url(../assets/fonts/g/instrument-serif-italic-26082c.woff2) format('woff2')}
+@font-face{font-family:'Instrument Serif';font-style:normal;font-weight:400;font-display:swap;src:url(../assets/fonts/g/instrument-serif-normal-c008db.woff2) format('woff2')}
+@font-face{font-family:'Manrope';font-style:normal;font-weight:400 800;font-display:swap;src:url(../assets/fonts/g/manrope-normal-b222d8.woff2) format('woff2')}
+:root{
+  --cream:#FFF8EE;--sand:#FFF1C9;--ink:#1A1412;--ink2:#3D332E;--ink3:#7A6A60;
+  --sun:#FFD400;--pink:#F72585;--pinkd:#D81B6E;--psoft:#FFB8D9;--ysoft:#FFF1B3;
+  --serif:'Instrument Serif',Georgia,serif;--sans:'Manrope',system-ui,-apple-system,sans-serif;
+  --ease:cubic-bezier(.2,.8,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;overflow-x:clip}
+body{min-height:100vh;background:var(--cream);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  background-image:radial-gradient(rgba(26,20,18,.07) 1px,transparent 1.4px);background-size:22px 22px}
+img,svg{display:block;max-width:100%}img{height:auto}
+button,input{font:inherit;color:inherit}
+h1,h2,h3{font-family:var(--serif);font-weight:400;letter-spacing:-.012em}
+em{font-style:italic;color:var(--pink)}
+.nw{white-space:nowrap}
+
+/* the slim header: Ana's face, the event, nothing to press */
+.hd{display:flex;justify-content:center;padding:14px 16px 0}
+.hd-in{display:flex;align-items:center;gap:12px;padding:8px 18px 8px 10px;border-radius:999px;background:rgba(255,255,255,.7);backdrop-filter:blur(14px) saturate(1.6);-webkit-backdrop-filter:blur(14px) saturate(1.6);
+  box-shadow:0 10px 24px -14px rgba(150,40,90,.35),inset 0 0 0 1px rgba(26,20,18,.08)}
+.hd img{width:40px;height:40px;border-radius:12px;object-fit:cover}
+.hd small{display:block;font-weight:800;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--pinkd);line-height:1.2}
+.hd b{display:block;font-weight:800;font-size:14.5px;line-height:1.25}
+
+.pg{width:min(1140px,100%);margin:0 auto;padding:44px 24px 72px;display:grid;grid-template-columns:minmax(0,1fr) 440px;gap:64px;align-items:start}
+.cp{max-width:640px}
+.ey{display:block;font-weight:800;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--pinkd)}
+h1{font-size:clamp(40px,5.2vw,68px);line-height:1.01;margin-top:16px;text-wrap:balance}
+h1 .hl{background:linear-gradient(transparent 14%,var(--sun) 14%,var(--sun) 94%,transparent 94%);padding:0 .08em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.cp p{font-size:19px;line-height:1.62;color:var(--ink2);margin-top:20px;max-width:34em}
+.cp p.lead{margin-top:24px;color:var(--ink)}
+mark.sk{color:var(--ink);font-weight:700;padding:0 2px;margin:0 -2px;-webkit-box-decoration-break:clone;box-decoration-break:clone;
+  background:linear-gradient(transparent 52%,rgba(255,212,0,.6) 52%,rgba(255,212,0,.6) 94%,transparent 94%) no-repeat 0 0/100% 100%}
+.by{display:flex;align-items:center;gap:14px;margin-top:30px}
+.by img{width:64px;height:64px;border-radius:50%;object-fit:cover;object-position:50% 20%;box-shadow:0 0 0 3px #fff,0 0 0 4.5px var(--ink)}
+.by b{display:block;font-size:16px;line-height:1.25}.by span{display:block;font-size:14px;color:var(--ink3);line-height:1.3}
+
+/* the card: a ticket with the invitation resting on it */
+.rail{position:sticky;top:28px;padding-top:70px}
+.card{position:relative;background:#FFFDF8;border:1.6px solid var(--ink);border-radius:22px;padding:26px 26px 22px;
+  box-shadow:0 30px 60px -30px rgba(70,45,25,.42),0 2px 6px rgba(70,45,25,.06)}
+.env{position:absolute;right:-18px;top:-74px;width:150px;transform:rotate(7deg);pointer-events:none;transition:transform .9s var(--ease),opacity .6s .3s}
+.env img{width:100%;filter:drop-shadow(0 10px 14px rgba(70,45,25,.28))}
+.env .pm{position:absolute;right:-6px;top:6px;width:96px;opacity:.85;transform:rotate(-8deg)}
+.tk-k{font-weight:800;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--pinkd);padding-right:112px}
+.card h2{font-size:clamp(34px,3.4vw,42px);line-height:1.03;margin-top:10px;text-wrap:balance}
+.promise{font-size:16.5px;line-height:1.55;color:var(--ink2);margin:12px 0 18px}
+.field{position:relative;margin-bottom:12px}
+.flbl{display:block;margin:0 0 5px 2px;font-weight:700;font-size:13px;line-height:1.2}
+.field input{width:100%;height:56px;border-radius:16px;border:1.5px solid #d9cab6;background:#fff;padding:0 20px;font-size:16.5px;font-weight:500;transition:border-color .18s,box-shadow .18s}
+.field input::placeholder{color:#9b8b80}
+.field input:hover{border-color:#bfae97}
+.field input:focus{outline:0;border-color:var(--ink);box-shadow:0 0 0 4px rgba(255,212,0,.6)}
+.err{display:none;margin:5px 0 0 2px;font-size:13px;font-weight:600;color:#c4105f}
+.field.bad input{border-color:#c4105f}.field.bad .err{display:block}
+.btn{position:relative;display:flex;align-items:center;justify-content:flex-start;gap:12px;width:100%;height:64px;margin-top:6px;padding:0 20px 0 9px;border-radius:999px;cursor:pointer;
+  background:var(--sun);color:var(--ink);font-weight:800;font-size:17.5px;line-height:1;border:2px solid var(--ink);box-shadow:0 5px 0 var(--ink);
+  transition:transform .2s var(--ease),box-shadow .2s,background .2s}
+.btn:hover{transform:translateY(-2px);background:#FFDD33;box-shadow:0 7px 0 var(--ink)}
+.btn:active{transform:translateY(3px);box-shadow:0 2px 0 var(--ink)}
+.btn[disabled]{opacity:.7;cursor:progress;transform:none}
+.btn .bt{flex:1;text-align:center;white-space:nowrap}
+.btn .ar{width:15px;height:15px;flex:none;transition:transform .25s var(--ease)}.btn:hover .ar{transform:translate(2px,-2px)}
+.sf-b{position:relative;flex:none;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:#fff;box-shadow:inset 0 0 0 1.6px var(--ink);transition:transform .5s var(--ease)}
+.sf-b svg{width:35px;height:35px;transition:transform .7s cubic-bezier(.3,1.6,.5,1)}
+.btn:hover .sf-b{transform:rotate(-10deg) scale(1.06)}.btn:hover .sf-b svg{transform:rotate(360deg) scale(1.12)}
+.btn:focus-visible,input:focus-visible,.pick:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.ticks{display:flex;justify-content:center;flex-wrap:wrap;gap:4px 14px;list-style:none;margin-top:16px;font-weight:700;font-size:13.5px;color:var(--ink2)}
+.ticks li{display:flex;align-items:center;gap:6px}
+.ticks li:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--pink)}
+.note{margin-top:12px;text-align:center;font-size:12.5px;line-height:1.5;color:var(--ink3)}
+.fail{display:none;margin-top:10px;text-align:center;font-size:13.5px;font-weight:600;color:#c4105f}
+
+/* after sign-up: the thank-you, with the one optional question */
+.thx{display:none}
+.card.done form{display:none}.card.done .thx{display:block}
+.card.done .promise,.card.done .tk-k,.card.done .hh{display:none}
+.thx h2{margin-top:0}
+.ok{width:46px;height:46px;border-radius:50%;background:var(--sun);display:grid;place-items:center;box-shadow:0 0 0 2px #fff,inset 0 0 0 1.6px var(--ink);margin-bottom:12px}
+.thx .sub{font-size:16.5px;line-height:1.55;color:var(--ink2);margin:12px 0 0}
+.thx .spam{margin-top:10px;font-size:14px;line-height:1.5;color:var(--ink3)}
+.q{margin-top:20px;padding-top:18px;border-top:1.5px dashed rgba(26,20,18,.22)}
+.q h3{font-family:var(--sans);font-weight:800;font-size:16px;letter-spacing:0;line-height:1.35}
+.picks{display:grid;gap:8px;margin-top:12px}
+.pick{display:flex;align-items:center;gap:12px;width:100%;text-align:left;padding:12px 16px;border-radius:16px;border:1.5px solid #d9cab6;background:#fff;cursor:pointer;font-weight:600;font-size:15px;line-height:1.35;
+  transition:border-color .18s,background .18s,transform .18s var(--ease)}
+.pick i{flex:none;width:18px;height:18px;border-radius:50%;border:1.8px solid var(--ink);background:#fff;transition:background .18s,box-shadow .18s}
+.pick:hover{border-color:var(--ink);transform:translateY(-1px)}
+.pick.on{border-color:var(--ink);background:var(--ysoft)}
+.pick.on i{background:var(--pink);box-shadow:inset 0 0 0 3px #fff}
+.picks.lock .pick{pointer-events:none}.picks.lock .pick:not(.on){opacity:.5}
+.qn{margin-top:10px;font-size:13px;color:var(--ink3);line-height:1.5}
+.qd{display:none;margin-top:12px;font-weight:700;font-size:15px}
+.q.sent .qd{display:block}.q.sent .qn{display:none}
+/* the invitation flies off when they are on the list: the one motion that answers the press */
+.card.done .env{transform:translate(40px,-34px) rotate(14deg);}
+
+@media (max-width:980px){
+  /* on a tablet or phone the form comes right after the opening lines, so it is on the first screens */
+  .pg{display:flex;flex-direction:column;gap:0;padding-top:30px}
+  .cp{display:contents}
+  .cp .ey{order:1}.cp h1{order:2}.cp .lead{order:3}
+  .rail{order:4;position:static;padding-top:84px;max-width:520px;width:100%;margin:0 auto}
+  .cp .rest{order:5}.cp .by{order:7}.cp .rest2{order:6}
+  .cp .rest{margin-top:34px}
+}
+@media (max-width:520px){
+  body{font-size:16px}
+  .pg{padding:22px 16px 56px}
+  .cp p{font-size:17.5px}
+  .card{padding:22px 18px 18px}
+  .env{width:118px;right:0;top:-60px}.env .pm{width:76px}
+  .tk-k{padding-right:92px}
+  .btn{font-size:16px;height:60px}.sf-b{width:40px;height:40px}.sf-b svg{width:32px;height:32px}
+  .hd b{font-size:13.5px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="sf" viewBox="-60 -60 120 120">
+      <path d="M16.8 58.3C14.6 58.0 13.0 57.5 11.0 56.2C8.3 54.5 6.1 52.1 4.3 48.7C3.2 46.7 2.9 45.9 2.3 43.8C1.5 41.2 1.2 40.7 0.4 40.7C-0.2 40.7 -0.5 41.0 -1.2 42.5C-3.0 46.4 -5.9 50.1 -8.8 52.5C-12.2 55.2 -15.7 56.7 -20.3 57.1C-22.8 57.3 -25.6 56.7 -27.4 55.4C-29.4 54.0 -31.7 50.8 -32.5 48.4C-33.4 45.9 -33.6 42.6 -33.1 39.6C-32.8 37.8 -32.8 37.3 -33.3 36.9C-33.6 36.6 -34.4 36.4 -34.9 36.5C-36.4 36.8 -39.3 36.8 -40.9 36.4C-43.5 35.7 -45.8 33.8 -47.1 31.1C-48.1 29.0 -48.4 27.8 -48.4 25.4C-48.4 22.4 -47.5 19.1 -45.9 16.8C-45.4 16.1 -45.3 15.8 -45.3 15.4C-45.2 14.2 -45.8 13.8 -48.4 12.8C-49.4 12.4 -50.9 11.6 -52.5 10.5C-53.4 9.9 -55.3 8.2 -55.9 7.3C-56.5 6.6 -57.3 4.9 -57.7 3.8C-58.1 2.7 -58.1 0.1 -57.7 -1.2C-56.6 -4.5 -55.1 -6.9 -52.7 -9.2C-51.3 -10.5 -50.9 -10.8 -49.2 -11.8C-47.7 -12.7 -47.1 -13.0 -45.2 -13.4C-43.1 -14.0 -42.7 -14.3 -42.7 -15.3C-42.7 -16.0 -42.8 -16.3 -43.6 -17.2C-44.2 -17.8 -45.4 -19.6 -46.1 -20.8C-46.6 -21.7 -47.8 -25.0 -48.0 -26.1C-48.3 -27.6 -48.3 -30.8 -48.0 -32.0C-47.0 -35.4 -44.8 -37.8 -41.5 -39.0C-37.2 -40.5 -33.9 -40.6 -29.1 -39.2C-26.9 -38.6 -26.4 -38.4 -25.4 -37.8C-24.2 -37.1 -23.5 -36.9 -22.9 -37.2C-22.2 -37.5 -22.0 -37.9 -21.9 -39.6C-21.8 -42.9 -20.9 -45.9 -19.5 -48.6C-17.5 -52.4 -14.5 -55.4 -10.9 -57.0C-8.5 -58.1 -8.0 -58.2 -5.6 -58.2C-2.9 -58.2 -2.5 -58.1 0.0 -56.9C4.0 -54.9 7.1 -51.4 9.2 -46.4C10.2 -43.9 10.4 -43.4 10.9 -40.7C11.3 -38.4 11.5 -37.8 12.1 -37.6C12.9 -37.3 13.4 -37.5 15.2 -39.1C17.2 -41.0 19.0 -42.1 22.1 -43.5C26.1 -45.3 31.7 -45.7 35.8 -44.5C37.0 -44.1 39.0 -43.0 40.0 -42.1C41.8 -40.5 43.4 -37.8 43.9 -35.2C44.1 -34.3 44.1 -30.9 43.9 -29.8C43.6 -27.9 42.3 -24.4 41.5 -23.0C39.8 -20.2 40.0 -19.5 43.1 -19.0C47.5 -18.3 51.7 -15.7 54.6 -12.0C56.0 -10.1 57.4 -7.6 57.8 -5.9C58.1 -4.6 58.2 -1.3 57.9 -0.2C57.4 1.5 56.0 3.8 54.4 5.3C53.5 6.2 51.3 7.7 50.2 8.3C49.6 8.6 46.2 9.8 45.0 10.2C43.8 10.5 43.4 10.7 43.1 11.0C42.6 11.6 42.9 12.1 44.5 13.6C47.0 15.9 49.1 19.4 49.8 22.2C50.1 23.4 50.1 26.7 49.8 27.8C48.8 31.4 45.1 35.1 41.3 36.2C38.9 36.9 35.8 37.1 33.3 36.7C31.6 36.4 31.1 36.4 30.7 36.9C30.2 37.4 30.2 37.8 30.6 39.5C30.8 40.9 30.9 41.3 30.9 43.2C30.9 46.6 30.5 48.3 29.0 51.2C27.1 55.1 24.5 57.5 21.5 58.1C20.6 58.3 18.0 58.4 16.8 58.3Z" fill="#FFD400"/><path d="M16.8 58.3C14.6 58.0 13.0 57.5 11.0 56.2C8.3 54.5 6.1 52.1 4.3 48.7C3.2 46.7 2.9 45.9 2.3 43.8C1.5 41.2 1.2 40.7 0.4 40.7C-0.2 40.7 -0.5 41.0 -1.2 42.5C-3.0 46.4 -5.9 50.1 -8.8 52.5C-12.2 55.2 -15.7 56.7 -20.3 57.1C-22.8 57.3 -25.6 56.7 -27.4 55.4C-29.4 54.0 -31.7 50.8 -32.5 48.4C-33.4 45.9 -33.6 42.6 -33.1 39.6C-32.8 37.8 -32.8 37.3 -33.3 36.9C-33.6 36.6 -34.4 36.4 -34.9 36.5C-36.4 36.8 -39.3 36.8 -40.9 36.4C-43.5 35.7 -45.8 33.8 -47.1 31.1C-48.1 29.0 -48.4 27.8 -48.4 25.4C-48.4 22.4 -47.5 19.1 -45.9 16.8C-45.4 16.1 -45.3 15.8 -45.3 15.4C-45.2 14.2 -45.8 13.8 -48.4 12.8C-49.4 12.4 -50.9 11.6 -52.5 10.5C-53.4 9.9 -55.3 8.2 -55.9 7.3C-56.5 6.6 -57.3 4.9 -57.7 3.8C-58.1 2.7 -58.1 0.1 -57.7 -1.2C-56.6 -4.5 -55.1 -6.9 -52.7 -9.2C-51.3 -10.5 -50.9 -10.8 -49.2 -11.8C-47.7 -12.7 -47.1 -13.0 -45.2 -13.4C-43.1 -14.0 -42.7 -14.3 -42.7 -15.3C-42.7 -16.0 -42.8 -16.3 -43.6 -17.2C-44.2 -17.8 -45.4 -19.6 -46.1 -20.8C-46.6 -21.7 -47.8 -25.0 -48.0 -26.1C-48.3 -27.6 -48.3 -30.8 -48.0 -32.0C-47.0 -35.4 -44.8 -37.8 -41.5 -39.0C-37.2 -40.5 -33.9 -40.6 -29.1 -39.2C-26.9 -38.6 -26.4 -38.4 -25.4 -37.8C-24.2 -37.1 -23.5 -36.9 -22.9 -37.2C-22.2 -37.5 -22.0 -37.9 -21.9 -39.6C-21.8 -42.9 -20.9 -45.9 -19.5 -48.6C-17.5 -52.4 -14.5 -55.4 -10.9 -57.0C-8.5 -58.1 -8.0 -58.2 -5.6 -58.2C-2.9 -58.2 -2.5 -58.1 0.0 -56.9C4.0 -54.9 7.1 -51.4 9.2 -46.4C10.2 -43.9 10.4 -43.4 10.9 -40.7C11.3 -38.4 11.5 -37.8 12.1 -37.6C12.9 -37.3 13.4 -37.5 15.2 -39.1C17.2 -41.0 19.0 -42.1 22.1 -43.5C26.1 -45.3 31.7 -45.7 35.8 -44.5C37.0 -44.1 39.0 -43.0 40.0 -42.1C41.8 -40.5 43.4 -37.8 43.9 -35.2C44.1 -34.3 44.1 -30.9 43.9 -29.8C43.6 -27.9 42.3 -24.4 41.5 -23.0C39.8 -20.2 40.0 -19.5 43.1 -19.0C47.5 -18.3 51.7 -15.7 54.6 -12.0C56.0 -10.1 57.4 -7.6 57.8 -5.9C58.1 -4.6 58.2 -1.3 57.9 -0.2C57.4 1.5 56.0 3.8 54.4 5.3C53.5 6.2 51.3 7.7 50.2 8.3C49.6 8.6 46.2 9.8 45.0 10.2C43.8 10.5 43.4 10.7 43.1 11.0C42.6 11.6 42.9 12.1 44.5 13.6C47.0 15.9 49.1 19.4 49.8 22.2C50.1 23.4 50.1 26.7 49.8 27.8C48.8 31.4 45.1 35.1 41.3 36.2C38.9 36.9 35.8 37.1 33.3 36.7C31.6 36.4 31.1 36.4 30.7 36.9C30.2 37.4 30.2 37.8 30.6 39.5C30.8 40.9 30.9 41.3 30.9 43.2C30.9 46.6 30.5 48.3 29.0 51.2C27.1 55.1 24.5 57.5 21.5 58.1C20.6 58.3 18.0 58.4 16.8 58.3ZM20.3 51.7C21.8 51.1 23.7 48.4 24.2 45.9C24.4 44.8 24.4 42.6 24.2 41.2C24.0 40.0 22.3 35.0 21.9 34.1C21.2 32.8 19.9 32.6 18.4 33.6C18.0 33.9 17.3 34.3 16.9 34.4C16.4 34.6 15.5 35.1 14.7 35.4C13.7 35.9 13.0 36.1 11.7 36.5C9.8 36.9 9.5 37.1 9.0 37.6C8.1 38.7 8.1 39.4 8.7 41.8C9.8 45.2 11.9 48.5 14.0 50.0C16.6 51.9 18.5 52.4 20.3 51.7ZM-19.3 50.5C-14.9 49.6 -11.7 47.3 -8.5 42.5C-6.8 40.0 -6.6 39.2 -7.0 38.2C-7.4 37.3 -7.9 37.0 -10.0 36.5C-12.7 35.8 -17.4 33.4 -19.8 31.6C-20.9 30.7 -21.8 30.6 -22.5 31.0C-23.3 31.5 -25.7 36.5 -26.4 38.8C-27.1 41.5 -26.9 45.1 -25.9 47.1C-24.3 50.3 -22.6 51.1 -19.3 50.5ZM4.8 35.7C5.5 35.6 6.5 35.4 7.0 35.2C12.7 33.8 12.0 34.0 16.3 31.9C17.6 31.3 19.6 30.1 21.2 28.8C22.6 27.7 25.7 24.6 26.5 23.4C26.8 23.1 27.2 22.5 27.4 22.2C27.7 21.9 28.1 21.3 28.3 20.8C28.6 20.4 29.0 19.8 29.2 19.4C29.7 18.7 30.0 18.1 30.4 17.1C30.5 16.6 30.9 15.8 31.2 15.2C32.4 12.5 33.3 6.8 33.0 2.9C32.7 -1.6 32.1 -4.7 31.1 -6.6C31.0 -6.9 30.7 -7.7 30.4 -8.3C30.0 -9.6 29.7 -10.2 29.2 -10.8C29.1 -11.1 28.7 -11.8 28.3 -12.4C27.9 -13.0 27.5 -13.8 27.3 -14.0C27.0 -14.3 26.5 -15.0 26.1 -15.5C24.2 -18.0 20.2 -21.5 17.6 -22.9C17.1 -23.2 16.4 -23.6 16.0 -23.8C15.2 -24.4 15.1 -24.5 12.5 -25.5C9.4 -26.7 8.4 -26.9 5.1 -27.4C0.3 -28.0 -7.4 -27.2 -10.2 -25.8C-10.6 -25.6 -11.5 -25.2 -12.3 -24.9C-14.9 -23.8 -18.5 -21.5 -20.5 -19.7C-20.9 -19.3 -21.5 -18.7 -21.8 -18.5C-22.5 -17.8 -24.2 -15.9 -24.5 -15.4C-24.7 -15.2 -25.2 -14.6 -25.6 -14.0C-26.1 -13.5 -26.7 -12.6 -27.0 -12.0C-27.3 -11.4 -27.8 -10.5 -28.0 -10.0C-28.3 -9.5 -28.7 -8.6 -29.0 -7.9C-29.2 -7.2 -29.6 -6.2 -29.8 -5.7C-31.6 -1.4 -31.7 8.3 -30.0 13.2C-28.9 16.2 -28.3 17.7 -27.6 18.8C-27.3 19.4 -26.8 20.2 -26.6 20.6C-25.5 22.6 -22.0 26.6 -19.8 28.3C-19.4 28.6 -18.8 29.1 -18.5 29.3C-18.2 29.5 -17.7 29.9 -17.3 30.1C-16.9 30.4 -16.1 30.8 -15.7 31.2C-15.2 31.5 -14.3 32.0 -13.8 32.2C-13.2 32.5 -12.2 32.9 -11.5 33.3C-10.6 33.7 -10.0 34.0 -8.7 34.3C-7.8 34.5 -6.7 34.9 -6.2 35.0C-3.3 35.9 1.1 36.1 4.8 35.7ZM-35.8 30.3C-34.5 30.1 -33.9 29.9 -32.0 29.1C-27.8 27.3 -26.8 26.6 -26.8 25.3C-26.8 24.7 -27.1 24.2 -27.9 23.0C-28.3 22.5 -28.8 21.8 -29.0 21.4C-29.2 21.0 -29.6 20.2 -30.0 19.7C-30.3 19.2 -30.7 18.4 -30.9 17.9C-31.1 17.4 -31.4 16.8 -31.5 16.6C-32.1 15.8 -33.2 15.2 -34.2 15.4C-34.7 15.5 -37.1 16.7 -37.8 17.2C-41.1 19.8 -42.8 25.0 -41.4 27.9C-40.3 30.1 -38.8 30.8 -35.8 30.3ZM38.8 30.2C41.8 29.4 43.8 26.9 43.4 24.6C43.3 23.6 42.4 21.7 41.7 20.6C40.6 19.0 36.7 15.7 35.6 15.5C34.3 15.2 33.4 16.1 32.5 18.4C32.2 19.0 31.8 19.8 31.5 20.2C31.3 20.7 30.8 21.4 30.5 21.9C30.2 22.4 29.7 23.3 29.3 23.8C27.9 25.5 27.6 26.7 28.3 27.6C28.9 28.4 32.6 30.0 34.5 30.3C35.5 30.5 38.1 30.4 38.8 30.2ZM-3.2 20.7C-6.0 20.5 -7.3 20.2 -9.5 19.0C-14.3 16.7 -17.9 12.0 -19.3 6.4C-20.4 1.9 -20.5 -3.5 -19.4 -5.1C-18.8 -6.0 -18.1 -6.2 -16.5 -5.5C-12.3 -3.8 -10.5 -3.3 -5.4 -2.5C-0.2 -1.6 5.5 -1.5 10.0 -2.2C12.3 -2.5 15.3 -3.1 16.8 -3.5C19.5 -4.2 20.1 -4.0 20.5 -2.1C20.6 -1.0 20.3 2.4 19.9 4.2C18.7 8.7 16.1 12.9 12.8 15.8C10.7 17.6 7.3 19.5 4.9 20.1C2.9 20.6 -0.8 20.9 -3.2 20.7ZM-35.5 8.4C-34.8 8.2 -34.3 7.8 -34.0 7.3C-33.8 6.9 -33.8 6.7 -33.7 4.2C-33.6 1.3 -33.2 -2.5 -32.7 -4.5C-32.3 -6.4 -32.5 -7.4 -33.5 -8.0C-34.0 -8.3 -34.0 -8.3 -36.0 -8.3C-39.1 -8.3 -42.6 -7.7 -44.8 -6.8C-48.3 -5.3 -51.5 -1.2 -51.3 1.4C-51.2 2.7 -50.4 3.9 -48.6 5.1C-46.6 6.6 -43.8 7.7 -41.1 8.2C-39.3 8.5 -36.3 8.6 -35.5 8.4ZM40.3 4.5C42.7 4.2 45.7 3.3 47.5 2.3C49.8 1.1 51.5 -0.9 51.6 -2.6C51.7 -4.7 49.4 -8.5 46.7 -10.4C46.0 -11.0 44.0 -12.0 42.9 -12.3C41.3 -12.9 38.3 -13.2 35.3 -13.1C31.8 -12.9 31.4 -12.1 33.1 -8.4C33.4 -7.7 33.8 -6.9 33.9 -6.5C34.2 -5.7 35.3 0.1 35.4 1.8C35.6 3.1 35.7 3.6 36.3 4.1C37.0 4.8 37.8 4.9 40.3 4.5ZM8.6 -7.9C6.4 -8.6 5.0 -10.8 5.5 -12.7C6.1 -15.0 8.5 -16.6 10.6 -16.0C13.1 -15.3 14.6 -12.7 13.6 -10.5C12.7 -8.6 10.3 -7.3 8.6 -7.9ZM-10.2 -9.4C-10.7 -9.5 -11.5 -9.9 -12.0 -10.4C-14.7 -12.8 -13.3 -17.1 -9.8 -17.7C-8.1 -18.0 -6.2 -16.9 -5.4 -15.3C-5.0 -14.5 -4.9 -12.8 -5.3 -11.9C-5.7 -11.2 -6.9 -10.0 -7.7 -9.6C-8.3 -9.3 -9.5 -9.2 -10.2 -9.4ZM-29.0 -14.4C-28.4 -14.7 -27.6 -15.4 -27.1 -16.1C-26.2 -17.6 -24.0 -19.8 -21.4 -22.1C-20.0 -23.3 -19.7 -23.8 -19.8 -24.5C-20.1 -26.3 -24.9 -30.6 -28.6 -32.3C-32.1 -34.0 -36.4 -34.3 -39.0 -33.2C-41.6 -32.1 -42.2 -29.5 -40.8 -25.5C-39.8 -22.6 -37.2 -19.3 -33.4 -16.3C-30.8 -14.2 -30.0 -13.8 -29.0 -14.4ZM29.0 -19.0C31.0 -19.9 34.6 -23.8 35.9 -26.3C36.4 -27.3 37.1 -29.7 37.3 -30.8C38.0 -34.6 36.3 -37.6 33.1 -38.4C31.6 -38.7 28.5 -38.5 26.8 -37.9C22.6 -36.5 19.4 -34.2 16.3 -30.2C15.1 -28.6 14.9 -27.9 15.6 -27.2C16.0 -26.8 17.9 -25.6 19.1 -25.0C19.5 -24.8 20.2 -24.4 20.6 -24.1C20.9 -23.8 21.5 -23.4 21.8 -23.2C22.5 -22.7 23.9 -21.5 25.3 -20.2C27.1 -18.6 27.7 -18.4 29.0 -19.0ZM-10.4 -28.2C-9.4 -28.6 -9.0 -28.7 -5.6 -29.3C-2.3 -30.0 -0.5 -30.1 2.3 -30.0C3.6 -30.0 4.1 -30.2 4.6 -31.0C5.1 -31.8 5.2 -32.2 5.0 -35.0C4.6 -39.8 4.1 -42.1 2.3 -45.5C0.9 -48.3 -1.9 -51.0 -4.1 -51.8C-7.5 -52.9 -12.6 -49.2 -14.5 -44.2C-16.3 -39.8 -15.0 -29.4 -12.5 -28.1C-11.9 -27.8 -11.5 -27.8 -10.4 -28.2Z" fill="#1A1412"/>
+    </symbol>
+<symbol id="sfx" viewBox="-60 -66 126 126" overflow="visible"><use href="#sf" x="-60" y="-60" width="120" height="120"/><g stroke-linecap="round" stroke-linejoin="round" fill="none">
+ <path d="M4 9 L30 31 C35 35 41 33 43 28 C45 23 42 18 37 18" stroke="#1A1412" stroke-width="10"/>
+ <path d="M4 9 L30 31 C35 35 41 33 43 28 C45 23 42 18 37 18" stroke="#FFFDF6" stroke-width="6.4"/>
+ <path d="M4 9 L30 31 C35 35 41 33 43 28 C45 23 42 18 37 18" stroke="#E0243A" stroke-width="6.4" stroke-dasharray="3.4 3.6" stroke-linecap="butt"/>
+ <path d="M8 13 L27 29" stroke="#fff" stroke-width="1.2" opacity=".55"/></g><g stroke="#1A1412" stroke-width="3.2" stroke-linejoin="round">
+ <path d="M-27 -31 C-24 -50 -6 -64 14 -63 C28 -62 40 -55 47 -45 C41 -47 33 -46 27 -42 C26 -38 26 -34 26 -30 Z" fill="#D7263D"/>
+ <path d="M-22 -50 C-14 -58 0 -61 12 -59" fill="none" stroke="#fff" stroke-width="2" opacity=".45"/>
+ <path d="M-33 -34 C-33 -40 -27 -42 -20 -40 C-12 -43 -4 -43 4 -41 C12 -43 21 -43 28 -40 C35 -41 38 -36 36 -31 C37 -25 31 -22 25 -24 C17 -21 8 -21 0 -23 C-8 -21 -16 -21 -23 -24 C-30 -22 -35 -27 -33 -34 Z" fill="#FFFDF6"/>
+ <circle cx="50" cy="-43" r="7.5" fill="#FFFDF6"/></g></symbol>
+<symbol id="arr" viewBox="0 0 16 16"><path d="M4.5 11.5 11.5 4.5M5.5 4.5h6v6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</defs></svg>
+
+<header class="hd"><div class="hd-in"><img src="../img/o/fav/header-ana.webp" alt="" width="40" height="40"><div><small>The Exit Plan</small><b>A free 3-day live workshop with Ana Calin</b></div></div></header>
+
+<main class="pg">
+  <section class="cp">
+    <span class="ey">The Exit Plan · A free 3-day live workshop with Ana Calin</span>
+    <h1>My Newsletter Business <span class="nw">Has Made <span class="hl">$1.4M</span>.</span> Here’s What I’d Do First If I Wanted to Leave My Job <em>in 2027</em>.</h1>
+    <p class="lead">I’m Ana Calin. I sell workshops and programs through my newsletter, How We Grow. If I were starting again around a job, there’s one part of that business I’d build first.</p>
+    <p class="rest">I’ll show you <mark class="sk">what I’d sell, where I’d look for my first customers,</mark> and what I’d want to know before giving an idea my evenings. AI has changed the order I’d do those things in. I’ll show you why, using my own business.</p>
+    <p class="rest2">You can come with the experience you already have. A newsletter, an audience and a finished idea can all come later.</p>
+    <div class="by"><img src="../img/o/real/ana-studio.webp" alt="" width="64" height="64"><div><b>Ana Calin</b><span>How We Grow</span></div></div>
+  </section>
+
+  <aside class="rail" aria-label="Join the early invite list">
+    <div class="card" id="card">
+      <div class="env" aria-hidden="true"><img src="../img/o/vip/paint/env.webp" alt="" width="150" height="129"><img class="pm" src="../img/vip/paint/postmark.webp" alt="" width="96" height="52"></div>
+      <p class="tk-k">Free · Early invite</p>
+      <h2 class="hh">Get your invitation <em>one day early.</em></h2>
+      <p class="promise">I’ll email you the link to book your free seat <mark class="sk">one day before registration opens to the public.</mark></p>
+      <form id="wl" novalidate>
+        <div class="field"><label class="flbl" for="wFirst">First name</label><input type="text" id="wFirst" name="first_name" placeholder="Your first name" autocomplete="given-name" required><span class="err">Add your first name</span></div>
+        <div class="field"><label class="flbl" for="wEmail">Email</label><input type="email" id="wEmail" name="email_address" placeholder="The email you actually check" autocomplete="email" inputmode="email" required><span class="err" id="wErr">Almost. Check that email once more.</span></div>
+        <input type="text" name="ep_check" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+        <button class="btn" type="submit" id="wGo"><span class="sf-b" aria-hidden="true"><svg><use href="#sf" id="wSf"/></svg></span><span class="bt">Send me my early invite, Ana</span><svg class="ar" aria-hidden="true"><use href="#arr"/></svg></button>
+        <p class="fail" id="wFail" role="alert">That didn’t go through. Please try once more.</p>
+        <ul class="ticks" aria-label="What you get"><li>Free</li><li>Live on Zoom</li><li>Three sessions</li></ul>
+        <p class="note">You’ll get emails from me about The Exit Plan. Unsubscribe anytime.</p>
+      </form>
+      <div class="thx" role="status" aria-live="polite">
+        <span class="ok"><svg width="26" height="26" viewBox="0 0 16 16" fill="none" stroke="#1A1412" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m3.5 8.5 3 3 6-7"/></svg></span>
+        <h2>You’re on the <em>list.</em></h2>
+        <p class="sub">I’ll email you one day before public registration opens. Use the link in that email to book your free seat.</p>
+        <p class="spam">If you don’t see my emails, check Spam or Promotions and tap “Not spam”.</p>
+        <div class="q" id="wQ">
+          <h3>While you’re here, which part would you most like help with?</h3>
+          <div class="picks" id="wPicks">
+            <button class="pick" type="button" data-v="audience"><i></i>Finding the first people who might buy from me.</button>
+            <button class="pick" type="button" data-v="what_to_sell"><i></i>Choosing what to sell from everything I know.</button>
+            <button class="pick" type="button" data-v="sales"><i></i>Figuring out why people show interest but don’t buy.</button>
+            <button class="pick" type="button" data-v="income_goal"><i></i>Working out whether this could earn enough to replace some of my income.</button>
+          </div>
+          <p class="qn">Optional. You’ll get your early invitation either way.</p>
+          <p class="qd">Thank you, that helps me. Talk soon.</p>
+        </div>
+      </div>
+    </div>
+  </aside>
+</main>
+
+<script>
+(function(){
+  /* the sunflower wears its Santa hat until Jan 1, as on every button of the other pages */
+  if (new Date() < new Date('2027-01-01T00:00:00')) document.getElementById('wSf').setAttribute('href', '#sfx');
+  var qs = new URLSearchParams(location.search), tz = ''; try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '' } catch (e) {}
+  var API = '/api/ana-waitlist', card = document.getElementById('card'), form = document.getElementById('wl'),
+      go = document.getElementById('wGo'), fail = document.getElementById('wFail'), email = '';
+  var meta = { ref: qs.get('ref') || '', utm_source: qs.get('utm_source') || '', utm_medium: qs.get('utm_medium') || '', utm_campaign: qs.get('utm_campaign') || '',
+               tz: tz, referrer: document.referrer || '' };
+  function post(o){ Object.keys(meta).forEach(function(k){ o[k] = meta[k] });
+    return fetch(API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(o) }).then(function(r){ return r.json().catch(function(){ return { ok: false } }).then(function(j){ j.status = r.status; return j }) }) }
+  function bad(el, on){ el.closest('.field').classList.toggle('bad', on) }
+  form.addEventListener('submit', function(e){
+    e.preventDefault(); fail.style.display = 'none';
+    var f = form.elements.first_name, m = form.elements.email_address, v = m.value.trim();
+    var okName = f.value.trim().length > 0, okMail = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+    bad(f, !okName); bad(m, !okMail); document.getElementById('wErr').textContent = 'Almost. Check that email once more.';
+    if (!okName || !okMail) { (okName ? m : f).focus(); return }
+    go.disabled = true; email = v;
+    post({ first_name: f.value.trim(), email_address: v, ep_check: form.elements.ep_check.value }).then(function(j){
+      if (j.ok) { card.classList.add('done'); try { card.scrollIntoView({ block: 'nearest', behavior: 'smooth' }) } catch (x) {} return }
+      go.disabled = false;
+      if (j.error === 'email' || j.error === 'email_domain') { bad(m, true); document.getElementById('wErr').textContent = 'That email doesn’t look right. Check it once more.'; m.focus() }
+      else fail.style.display = 'block';
+    }).catch(function(){ go.disabled = false; fail.style.display = 'block' });
+  });
+  [form.elements.first_name, form.elements.email_address].forEach(function(i){ i.addEventListener('input', function(){ bad(i, false) }) });
+  /* the optional question: one answer, kept on the same row and as a tag */
+  var picks = document.getElementById('wPicks'), q = document.getElementById('wQ');
+  picks.addEventListener('click', function(e){
+    var b = e.target.closest('.pick'); if (!b || picks.classList.contains('lock')) return;
+    b.classList.add('on'); picks.classList.add('lock'); q.classList.add('sent');
+    post({ email_address: email, priority: b.getAttribute('data-v') }).catch(function(){});
+  });
+})();
+</script>
+</body>
+</html>
