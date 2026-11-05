@@ -56,20 +56,20 @@ em{font-style:italic;color:var(--pink)}
 
 
 /* ---------- the page ---------- */
-.pg{position:relative;width:min(1340px,100%);margin:0 auto;padding:calc(var(--awn) + 20px) 32px calc(var(--bay) * .3);display:grid;grid-template-columns:minmax(0,1fr) 450px;gap:44px;align-items:center;min-height:100dvh}
+.pg{position:relative;width:min(1340px,100%);margin:0 auto;padding:calc(var(--awn) + 6px) 32px 14px;display:grid;grid-template-columns:minmax(0,1fr) 450px;gap:44px;align-items:center;min-height:100dvh}
 .cp{max-width:790px}
 /* the opening line is what Ana is saying in her window: a big message bubble beside it, its tail pointing back at her */
-.top{display:grid;grid-template-columns:clamp(190px,17vw,250px) minmax(0,1fr);gap:22px;align-items:center;margin:0 0 clamp(10px,2vh,20px)}
+.top{display:grid;grid-template-columns:clamp(190px,18vw,290px) minmax(0,1fr);gap:22px;align-items:center;margin:0 0 clamp(10px,2.2vh,24px)}
 .stage{position:relative;max-width:340px}
 .stage:before{content:"";position:absolute;inset:4% -8% 0 -6%;z-index:-1;border-radius:50%;background:radial-gradient(closest-side,rgba(255,212,0,.5),rgba(255,184,217,.26) 60%,transparent 76%)}
 .bub{position:relative;background:#fff;border:2px solid var(--ink);border-radius:24px 24px 24px 8px;padding:11px 22px 14px;box-shadow:0 5px 0 var(--ink);transform:rotate(-.8deg);transform-origin:0 50%}
 .bub:before{content:"";position:absolute;left:-11px;top:46%;width:18px;height:18px;background:#fff;border:2px solid var(--ink);border-width:0 0 2px 2px;border-radius:0 0 0 14px;transform:rotate(45deg)}
 .bub b{display:block;font-size:12px;font-weight:800;letter-spacing:.02em;color:var(--pinkd);margin-bottom:2px}
-.bub p{font-size:clamp(20px,min(2.3vw,3.9vh),33px);line-height:1.18;font-weight:800;letter-spacing:-.012em;color:var(--ink);text-wrap:pretty}
+.bub p{font-size:clamp(20px,min(2.4vw,4.2vh),38px);line-height:1.18;font-weight:800;letter-spacing:-.012em;color:var(--ink);text-wrap:pretty}
 mark.sk,mark.pk{background-color:transparent;color:var(--ink);font-weight:700;padding:0 2px;margin:0 -2px;-webkit-box-decoration-break:clone;box-decoration-break:clone;background-repeat:no-repeat;background-size:100% 100%}
 mark.sk{background-image:linear-gradient(transparent 52%,rgba(255,212,0,.72) 52%,rgba(255,212,0,.72) 94%,transparent 94%)}
 mark.pk{background-image:linear-gradient(transparent 52%,rgba(247,37,133,.3) 52%,rgba(247,37,133,.3) 94%,transparent 94%)}
-h1{font-size:clamp(32px,min(5vw,6.8vh),76px);line-height:1.04;text-wrap:balance;max-width:790px}
+h1{font-size:clamp(32px,min(5.2vw,7.6vh),86px);line-height:1.04;text-wrap:balance;max-width:790px}
 h1 .h1a{display:block;font-size:.46em;line-height:1.15;margin-bottom:.3em;letter-spacing:0}
 h1 .h1b{display:block}
 h1 .hl{background:linear-gradient(transparent 14%,var(--sun) 14%,var(--sun) 94%,transparent 94%) no-repeat 0 0/100% 100%;padding:0 .08em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
@@ -77,31 +77,28 @@ h1 .hl{background:linear-gradient(transparent 14%,var(--sun) 14%,var(--sun) 94%,
 /* no panel: a soft white glow behind and around the words, so they sit on the painting and still read */
 .more:before{content:"";position:absolute;z-index:-1;inset:-6px -22px -18px -22px;border-radius:40px;background:radial-gradient(closest-side,rgba(255,255,255,.92) 55%,rgba(255,255,255,.6) 80%,transparent);filter:blur(10px);pointer-events:none}
 .more .c{padding-right:22px}.more .c+.c{padding:0 0 0 22px;border-left:2px dashed rgba(26,20,18,.28)}
-.more p,.when .w-k,.when .w-ny,.when .w-meta{text-shadow:0 0 3px #fff,0 0 9px rgba(255,255,255,.95),0 0 18px rgba(255,255,255,.9)}
-.more p{font-size:clamp(13.5px,min(1.1vw,2vh),17px);line-height:1.55;color:var(--ink);text-wrap:pretty}
-.more .c p+p{margin-top:11px}
+.more p{text-shadow:0 0 3px #fff,0 0 9px rgba(255,255,255,.95),0 0 18px rgba(255,255,255,.9)}
+.more p{font-size:clamp(15px,min(1.3vw,2.6vh),21px);line-height:1.58;color:var(--ink);text-wrap:pretty}
+.more .c p+p{margin-top:13px}
 .more b{color:var(--ink)}
-/* the schedule: THEIR dates, time and city come first and big (pin chip, bold); New York is the quiet second line. Replaces "I'll email you the dates" */
-.when{position:relative;margin-top:12px;padding:12px 16px 13px;border-radius:16px;border:2px solid var(--ink);background:rgba(255,248,228,.9);box-shadow:0 4px 0 var(--ink)}
-.when .w-k{display:block;font-size:clamp(11.5px,.9vw,13px);font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--pinkd)}
-.when .w-main{display:flex;align-items:center;flex-wrap:wrap;gap:6px 12px;margin-top:6px;font-size:clamp(22px,min(2.3vw,4.2vh),34px);font-weight:800;line-height:1.1;color:var(--ink);letter-spacing:-.02em}
-.when .w-time{white-space:nowrap}
-.when .w-date{display:block;margin-top:4px;font-size:clamp(15.5px,min(1.3vw,2.4vh),20px);font-weight:800;line-height:1.25;color:var(--ink)}
-.when .w-ny{display:block;margin-top:5px;font-size:clamp(12.5px,.98vw,14.5px);color:var(--ink3);font-weight:600}
+/* under the form: when it happens, in the visitor's own place and time (their city pinned); New York is the quiet second line */
+.when{position:relative;margin-top:9px;padding:8px 12px;border-radius:14px;background:#FFF3C4;box-shadow:inset 0 0 0 1.5px rgba(26,20,18,.55);display:flex;flex-wrap:wrap;align-items:center;gap:4px 9px}
+.when .w-line{font-size:clamp(14px,1.1vw,16px);line-height:1.35;color:var(--ink2);font-weight:600}
+.when .w-line b{color:var(--ink);font-weight:800}
+.when .w-ny{flex:0 0 100%;font-size:12px;color:var(--ink3);font-weight:600;line-height:1.35}
 .when .w-ny[hidden]{display:none}
-.loc{display:inline-flex;align-items:center;gap:3px;padding:3px 12px 3px 6px;border-radius:999px;background:var(--pink);color:#fff;font-weight:800;font-size:.55em;letter-spacing:0;box-shadow:0 0 0 2px #fff,0 3px 0 rgba(26,20,18,.85)}
+.loc{display:inline-flex;align-items:center;gap:3px;padding:2px 10px 2px 5px;border-radius:999px;background:var(--pink);color:#fff;font-weight:800;font-size:13.5px;letter-spacing:0;box-shadow:0 0 0 2px #fff,0 2px 0 rgba(26,20,18,.85)}
 .loc .vpin{width:1.15em;height:1.15em;fill:#fff;flex:none}.loc .vpin circle{fill:var(--pink)}
-.when .w-meta{display:block;margin-top:6px;font-size:clamp(13px,1vw,15px);color:var(--ink2);font-weight:600}
 .pd{display:block;margin-top:2px;font-style:normal;font-size:10.5px;font-weight:700;letter-spacing:0;text-transform:none;color:var(--ink2)}
 
 /* the card: a ticket with the invitation resting on it */
 .rail{padding-top:48px}
-.card{position:relative;background:#FFFDF8;border:2px solid var(--ink);border-radius:24px;padding:20px 24px 14px;box-shadow:0 7px 0 var(--ink),0 28px 44px -22px rgba(70,45,25,.5)}
+.card{position:relative;background:#FFFDF8;border:2px solid var(--ink);border-radius:24px;padding:clamp(20px,2.8vh,30px) 26px clamp(14px,2vh,20px);box-shadow:0 7px 0 var(--ink),0 28px 44px -22px rgba(70,45,25,.5)}
 .env{position:absolute;right:-16px;top:-60px;width:136px;transform:rotate(7deg);pointer-events:none}
 .env img{width:100%;filter:drop-shadow(0 10px 14px rgba(70,45,25,.28))}
 .env .pm{position:absolute;right:-6px;top:6px;width:88px;opacity:.85;transform:rotate(-8deg)}
-.card h2{font-size:clamp(28px,min(2.9vw,5vh),44px);line-height:1.03;text-wrap:balance;padding-right:92px}
-.promise{font-size:clamp(13.5px,min(1.1vw,2vh),16px);line-height:1.5;color:var(--ink2);margin:10px 0 0;padding-bottom:12px;border-bottom:2px dashed rgba(26,20,18,.25);text-wrap:pretty}
+.card h2{font-size:clamp(28px,min(3vw,5.4vh),50px);line-height:1.03;text-wrap:balance;padding-right:92px}
+.promise{font-size:clamp(13.5px,min(1.15vw,2.2vh),18px);line-height:1.5;color:var(--ink2);margin:11px 0 0;padding-bottom:12px;border-bottom:2px dashed rgba(26,20,18,.25);text-wrap:pretty}
 .plan{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);margin:13px 0 12px}
 .plan li{position:relative;text-align:center;padding-top:28px;font-size:13px;font-weight:700;line-height:1.2;color:var(--ink)}
 .plan li small{display:block;font-size:9.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin-bottom:1px}
@@ -112,13 +109,13 @@ h1 .hl{background:linear-gradient(transparent 14%,var(--sun) 14%,var(--sun) 94%,
 .at1 .p3{opacity:.5}
 .field{position:relative;margin-bottom:10px}
 .flbl{display:block;margin:0 0 5px 2px;font-weight:700;font-size:13.5px;line-height:1.2}
-.field input{width:100%;height:clamp(44px,6.4vh,54px);border-radius:14px;border:1.5px solid #d9cab6;background:#fff;padding:0 16px;font-size:16px;font-weight:500;transition:border-color .18s,box-shadow .18s}
+.field input{width:100%;height:clamp(44px,6.8vh,60px);border-radius:14px;border:1.5px solid #d9cab6;background:#fff;padding:0 16px;font-size:16px;font-weight:500;transition:border-color .18s,box-shadow .18s}
 .field input::placeholder{color:#9b8b80}
 .field input:hover{border-color:#bfae97}
 .field input:focus{outline:0;border-color:var(--ink);box-shadow:0 0 0 4px rgba(255,212,0,.6)}
 .err{display:none;margin:4px 0 0 2px;font-size:12.5px;font-weight:600;color:#c4105f}
 .field.bad input{border-color:#c4105f}.field.bad .err{display:block}
-.btn{position:relative;display:flex;align-items:center;justify-content:flex-start;gap:10px;width:100%;height:clamp(50px,7.4vh,58px);margin-top:4px;padding:0 16px 0 7px;border-radius:999px;cursor:pointer;
+.btn{position:relative;display:flex;align-items:center;justify-content:flex-start;gap:10px;width:100%;height:clamp(50px,7.8vh,64px);margin-top:6px;padding:0 16px 0 7px;border-radius:999px;cursor:pointer;
   background:var(--sun);color:var(--ink);font-weight:800;font-size:16.5px;line-height:1;border:2px solid var(--ink);box-shadow:0 5px 0 var(--ink);transition:transform .2s var(--ease),box-shadow .2s,background .2s}
 .btn:hover{transform:translateY(-2px);background:#FFDD33;box-shadow:0 7px 0 var(--ink)}
 .btn:active{transform:translateY(3px);box-shadow:0 2px 0 var(--ink)}
@@ -136,7 +133,7 @@ h1 .hl{background:linear-gradient(transparent 14%,var(--sun) 14%,var(--sun) 94%,
 /* after sign-up: the card widens, the pitch steps away, her slides appear either side (design plain, words blurred) */
 .thx{display:none}
 .card.done form#wl{display:none}.card.done .thx{display:block}
-.card.done .promise,.card.done .hh,.card.done > .plan{display:none}
+.card.done .promise,.card.done .hh,.card.done > .plan,.card.done .when{display:none}
 .card.done{padding:16px 22px 18px}
 .thx h2{margin-top:0;padding-right:92px;font-size:clamp(30px,min(3vw,5.2vh),42px)}
 .thx .sub{font-size:15px;line-height:1.45;color:var(--ink2);margin:6px 0 0;text-wrap:balance}
@@ -247,18 +244,22 @@ h1 .hl{background:linear-gradient(transparent 14%,var(--sun) 14%,var(--sun) 94%,
 @keyframes spin{to{transform:rotate(360deg)}}
 
 @media (min-width:981px) and (max-height:820px){
-  /* laptop heights: everything keeps its size class but gives back air so the page still fits one screen */
-  :root{--awn:clamp(38px,5.6vh,50px)}
-  .pg{padding-top:calc(var(--awn) + 20px)}
-  .top{grid-template-columns:clamp(150px,15vw,200px) minmax(0,1fr);gap:16px;margin-bottom:8px}
-  .bub{padding:9px 18px 11px}.bub p{font-size:clamp(19px,min(2vw,3.4vh),26px)}
-  h1{font-size:clamp(30px,min(4.5vw,6.2vh),60px)}h1 .h1a{margin-bottom:.2em}
-  .when{padding:8px 14px;margin-top:8px}.when .w-loc{margin-top:4px}.when .w-meta{margin-top:3px}
-  .more{margin-top:10px;padding-top:9px}.more p{font-size:14px;line-height:1.5}.more .c p+p{margin-top:8px}
-  .pg{padding-top:calc(var(--awn) + 22px)}
-  .rail{padding-top:40px}
-  .card.done{padding:12px 20px 16px}
-  .thx h2{font-size:30px}.thx .sub{font-size:14px;margin-top:3px}
+  /* laptop heights: the page uses the whole height (awning to bay), sizes follow the screen's height */
+  :root{--awn:clamp(38px,5.4vh,48px)}
+  .pg{padding-top:calc(var(--awn) + 4px)}
+  .top{grid-template-columns:clamp(160px,16vw,215px) minmax(0,1fr);gap:16px;margin-bottom:clamp(6px,1.4vh,12px)}
+  .bub{padding:10px 20px 12px}.bub p{font-size:clamp(20px,min(2.1vw,4.1vh),30px)}
+  h1{font-size:clamp(32px,min(4.8vw,7.3vh),64px)}h1 .h1a{margin-bottom:.22em}
+  .more{margin-top:clamp(8px,1.8vh,16px);padding-top:clamp(8px,1.6vh,14px)}
+  .more p{font-size:clamp(14.5px,min(1.2vw,2.5vh),17.5px);line-height:1.55}.more .c p+p{margin-top:10px}
+  .rail{padding-top:42px}
+  .card{padding:clamp(14px,2.4vh,20px) 22px clamp(10px,1.6vh,14px)}.card h2{font-size:clamp(28px,min(2.7vw,5vh),38px);padding-right:88px}
+  .when{margin-top:8px;padding:7px 11px}.when .w-line{font-size:14px}.when .w-ny{font-size:12px}.loc{font-size:13px}
+  .promise{font-size:clamp(13.5px,1.05vw,15px);line-height:1.45;margin-top:9px;padding-bottom:9px}
+  .plan{margin:9px 0 8px}.plan li{padding-top:25px;font-size:12.5px}.plan li b{width:21px;height:21px;margin-left:-10px}
+  .field{margin-bottom:clamp(6px,1.2vh,10px)}.flbl{margin-bottom:4px;font-size:13px}.field input{height:clamp(40px,6.2vh,50px);font-size:15.5px}
+  .btn{height:clamp(46px,7vh,56px);margin-top:3px}.sf-b{width:36px;height:36px}.sf-b svg{width:29px;height:29px}
+  .note{margin-top:7px;font-size:11.5px}
   .gift{margin-top:28px;padding-top:42px}
   .gift .bow{width:100px;margin-left:-50px;top:-30px}
   .gin{padding:12px 18px 10px;gap:18px}
@@ -266,6 +267,7 @@ h1 .hl{background:linear-gradient(transparent 14%,var(--sun) 14%,var(--sun) 94%,
   .qf .flbl{font-size:15px}.qh{margin-bottom:5px}
   .qf textarea{min-height:64px}
   .chk{margin:6px 0 7px;font-size:13px}.qbtn{height:48px}.qn{margin-top:5px;font-size:12px}
+  .card.done{padding:12px 20px 16px}.thx h2{font-size:30px}.thx .sub{font-size:14px;margin-top:3px}
   .done .wall-k{display:none}
 }
 @media (max-width:980px){
@@ -273,12 +275,16 @@ h1 .hl{background:linear-gradient(transparent 14%,var(--sun) 14%,var(--sun) 94%,
   :root{--awn:34px}
   .pg{display:flex;flex-direction:column;gap:0;padding:calc(var(--awn) + 24px) 20px 34px;min-height:0}
   .cp,.top,.more{display:contents}
-  .cp .msg{order:0;margin-bottom:16px}
-  .cp h1{order:1;font-size:clamp(30px,8vw,52px)}
-  .rail{order:3;width:100%;max-width:480px;margin:0 auto;padding-top:64px}
-  .cp .more .c:nth-child(1){order:5}
-  .cp .stage{order:6;margin:24px auto 0;max-width:340px;width:100%}.cp .more .c:nth-child(2){order:7}
-  .more{display:contents}.more:before{display:none}.more .c,.more .c+.c{display:block;max-width:480px;width:100%;align-self:center;margin-top:18px;padding:16px 0 0;border:0;border-top:2px dashed rgba(26,20,18,.3)}
+  .cp .msg{order:0;margin:0 auto 16px;max-width:560px;width:100%}
+  .cp h1{order:1;font-size:clamp(30px,8vw,52px);max-width:560px;width:100%;margin:0 auto}
+  /* phone: the information comes first (her note, the headline, what it is, her face), the form comes last, so people read before they are asked */
+  .rail{order:5;width:100%;max-width:560px;margin:6px auto 0;padding-top:58px}
+  .cp .more .c:nth-child(1){order:2}
+  .cp .stage{order:3;margin:22px auto 0;max-width:300px;width:100%}
+  .bay{margin-top:18px}.cp .more .c:nth-child(2){order:4}
+  .more{display:contents}.more:before{display:none}.more .c,.more .c+.c{display:block;max-width:560px;width:100%;align-self:center;margin-top:20px;padding:0;border:0}
+  .cp .more .c:nth-child(1){margin-top:16px}
+  .more p{font-size:17px;line-height:1.6}.more .c p+p{margin-top:14px}
   .more p{font-size:15.5px}
   .bay{position:relative;height:110px;margin-top:6px;z-index:0}
   .wall,.wall-k{display:none!important}
@@ -291,7 +297,7 @@ h1 .hl{background:linear-gradient(transparent 14%,var(--sun) 14%,var(--sun) 94%,
   .cp .msg{margin-bottom:12px}
   .cp h1{font-size:clamp(28px,8.2vw,34px);line-height:1.03}
   .bub{padding:9px 14px 11px;border-radius:20px 20px 20px 7px}.bub p{font-size:19px;line-height:1.2}
-  .rail{padding-top:56px}
+  .rail{padding-top:46px}
   .card{padding:14px 15px 12px}
   .card > .plan{display:none}
   .promise{margin:6px 0 10px}
@@ -299,7 +305,7 @@ h1 .hl{background:linear-gradient(transparent 14%,var(--sun) 14%,var(--sun) 94%,
   .card h2{font-size:30px}.promise{font-size:14px;margin:8px 0 10px}
   .field input{height:48px}
   .btn{font-size:14.5px;height:56px;gap:8px;padding-right:12px}.btn .ar{width:13px;height:13px}
-  .more p{font-size:15px}
+  .more p{font-size:16.5px}
 }
 @media (max-width:380px){.btn{font-size:13px;gap:6px;padding-left:6px}.sf-b{width:34px;height:34px}.sf-b svg{width:27px;height:27px}}
 @media (max-width:340px){.btn .ar{display:none}.btn{font-size:12.5px}}
@@ -349,17 +355,10 @@ h1 .hl{background:linear-gradient(transparent 14%,var(--sun) 14%,var(--sun) 94%,
     <div class="more">
       <div class="c">
         <p class="lead">I’m Ana Calin. I sell workshops and programs through my newsletter, How We Grow. <b>My first workshop sold two copies.</b> If I had to start again around a full-time job, there’s one thing I’d want to find out before giving another idea my evenings.</p>
-        <p>If you’ve spent years getting good at something and still wonder, “Who would pay me for this?” <mark class="sk">come. That’s a good place to start.</mark></p>
       </div>
       <div class="c">
         <p>I’m hosting The Exit Plan, a free, three-day live workshop. <mark class="pk">I’ll show you what I’d sell first, where I’d look for customers if nobody knew my name, and why AI has changed the order I’d do things in.</mark></p>
-        <div class="when" id="when">
-          <span class="w-k">Three live sessions on Zoom</span>
-          <b class="w-main"><span class="loc"><svg class="vpin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s-7-7.1-7-12.2A7 7 0 0 1 19 9.8C19 14.9 12 22 12 22Z"/><circle cx="12" cy="9.6" r="2.6"/></svg><span id="wCity">New York</span></span><span class="w-time" id="wTime">12:00 PM</span></b>
-          <span class="w-date" id="wDate">Tue to Thu, December 8 to 10</span>
-          <span class="w-ny" id="wNy" hidden>New York time: Tue to Thu, December 8 to 10 · 12:00 PM</span>
-          <span class="w-meta">Free · About 90 minutes per session</span>
-        </div>
+        <p>If you’ve spent years getting good at something and still wonder, “Who would pay me for this?” <mark class="sk">come. That’s a good place to start.</mark></p>
       </div>
     </div>
   </section>
@@ -368,6 +367,11 @@ h1 .hl{background:linear-gradient(transparent 14%,var(--sun) 14%,var(--sun) 94%,
     <div class="card" id="card">
       <div class="env" aria-hidden="true"><img src="../img/o/vip/paint/env.webp" alt="" width="136" height="117"><img class="pm" src="../img/vip/paint/postmark.webp" alt="" width="88" height="48"></div>
       <h2 class="hh">Get your invitation <em>one day early.</em></h2>
+      <div class="when" id="when">
+        <span class="loc"><svg class="vpin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s-7-7.1-7-12.2A7 7 0 0 1 19 9.8C19 14.9 12 22 12 22Z"/><circle cx="12" cy="9.6" r="2.6"/></svg><span id="wCity">New York</span></span>
+        <span class="w-line">The workshop is <b id="wDate">Tue to Thu, December 8 to 10</b> at <b id="wTime">12:00 PM</b>, live.</span>
+        <span class="w-ny" id="wNy" hidden>New York time: Tue to Thu, December 8 to 10 · 12:00 PM</span>
+      </div>
       <p class="promise">Join the waitlist and I’ll email you the link to book your free seat <mark class="sk">one day before registration opens to the public.</mark> You’ll also get an early chance to send me a question for the live workshop.</p>
       <ol class="plan at1" aria-label="How the early invite works">
         <li class="p1"><b>1</b><span><small>Today</small>You join</span></li>
@@ -423,10 +427,14 @@ h1 .hl{background:linear-gradient(transparent 14%,var(--sun) 14%,var(--sun) 94%,
     /* set these when the dates are confirmed (an ISO time with its zone, e.g. '2026-12-07T17:00:00Z'): they appear under "Your link" and "Public opens", in the visitor's time */
     var EARLY_ACCESS = '', PUBLIC_OPENS = '';
     if (tz) [['p2', EARLY_ACCESS], ['p3', PUBLIC_OPENS]].forEach(function(x){ var t = x[1] && Date.parse(x[1]); var el = document.querySelector('.at1 .' + x[0] + ' span'); if (t && el) el.insertAdjacentHTML('beforeend', '<em class="pd">' + fmt(t, { weekday: 'short', month: 'short', day: 'numeric' }) + ' · ' + fmt(t, { hour: 'numeric', minute: '2-digit' }) + '</em>') });
-    if (!tz || tz === 'America/New_York' || tz.indexOf('/') < 0) return;
+    if (!tz || tz === 'America/New_York') return;
     var S = Date.UTC(2026, 11, 8, 17, 0), E = Date.UTC(2026, 11, 10, 17, 0);
     var sw = fmt(S, { weekday: 'short' }), ew = fmt(E, { weekday: 'short' }), sm = fmt(S, { month: 'long' }), em = fmt(E, { month: 'long' }), sd = fmt(S, { day: 'numeric' }), ed = fmt(E, { day: 'numeric' });
-    document.getElementById('wCity').textContent = tz.split('/').pop().replace(/_/g, ' ');
+    /* the city is read from the visitor's own device setting (its time zone name); a few old zone names are shown by their current city name */
+    var CITY = { Calcutta: 'Kolkata', Saigon: 'Ho Chi Minh City', Katmandu: 'Kathmandu', Rangoon: 'Yangon', Kiev: 'Kyiv', Ujung_Pandang: 'Makassar', Godthab: 'Nuuk', Sao_Paulo: 'São Paulo', Asuncion: 'Asunción', Bogota: 'Bogotá', Reykjavik: 'Reykjavík' };
+    var raw = tz.split('/').pop(), city = CITY[raw] || raw.replace(/_/g, ' ');
+    if (/^(Etc|UTC|GMT)/.test(tz) || /^(UTC|GMT|UCT|Zulu)$/i.test(raw)) city = 'UTC';
+    document.getElementById('wCity').textContent = city;
     document.getElementById('wDate').textContent = sw + ' to ' + ew + ', ' + sm + ' ' + sd + ' to ' + (em === sm ? '' : em + ' ') + ed;
     document.getElementById('wTime').textContent = fmt(S, { hour: 'numeric', minute: '2-digit' });
     document.getElementById('wNy').hidden = false;
