@@ -9,5 +9,4 @@ ana-studio: replaced Nov 3 with Ana's new photo (Sean): copper hair, red lips, m
 ana-rec-sea: a still at 0:26 from her registration video recording (Nov 4, phone cut, assets/video/ana-exit-plan-phone.mp4), by the sea; replaces the AI First Class photo on the registration page at Ana's request
 ana-cabin-less-orange: AI-generated image supplied by Sean on Nov 4 ("iPhone 17 Candid Photo (2)"), colour-corrected to reduce orange; Sean confirmed the use as approved. Not a photograph of a real flight.
 ana-cabin-real: Ana in the First Class cabin, the photo Sean sent on Nov 4 (replaces ana-cabin-less-orange in the See you live section)
-- img/real/ana-optin-smile.webp: the 191s frame of ana_opt_in_video_desktop.mp4 (Sean, Nov 5), the closing smile, Ana's panel only (x 606-1200), used in the waitlist window; Sean expands it in Gemini
-- img/real/ana-optin-speaking.webp + assets/video/waitlist-ana.mp4: 164.4 to 169.8s of the same video, Ana speaking, her panel only, 560x362, silent loop in the waitlist window
+- img/real/ana-optin-gemini.webp: Sean's Gemini-extended still of Ana (from the 189s frame of ana_opt_in_video_desktop.mp4), Nov 5, used in the waitlist window with a 'Watch soon' badge until the video is ready

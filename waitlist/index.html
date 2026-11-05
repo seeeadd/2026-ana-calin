@@ -36,50 +36,50 @@ em{font-style:italic;color:var(--pink)}
 .nw{white-space:nowrap}
 
 /* the slim header: Ana's face, the event, nothing to press */
-.hd{display:flex;justify-content:center;padding:14px 16px 0}
-.hd-in{display:flex;align-items:center;gap:12px;padding:8px 18px 8px 10px;border-radius:999px;background:rgba(255,255,255,.7);backdrop-filter:blur(14px) saturate(1.6);-webkit-backdrop-filter:blur(14px) saturate(1.6);
+.hd{display:flex;justify-content:center;padding:8px 16px 0}
+.hd-in{display:flex;align-items:center;gap:10px;padding:5px 16px 5px 7px;border-radius:999px;background:rgba(255,255,255,.7);backdrop-filter:blur(14px) saturate(1.6);-webkit-backdrop-filter:blur(14px) saturate(1.6);
   box-shadow:0 10px 24px -14px rgba(150,40,90,.35),inset 0 0 0 1px rgba(26,20,18,.08)}
-.hd img{width:40px;height:40px;border-radius:12px;object-fit:cover}
+.hd img{width:34px;height:34px;border-radius:10px;object-fit:cover}
 .hd small{display:block;font-weight:800;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--pinkd);line-height:1.2}
-.hd b{display:block;font-weight:800;font-size:14.5px;line-height:1.25}
+.hd b{display:block;font-weight:800;font-size:14px;line-height:1.2}
 
-.pg{width:min(1240px,100%);margin:0 auto;padding:4px 24px 18px;display:grid;grid-template-columns:minmax(0,1fr) 420px;gap:48px;align-items:center;min-height:calc(100dvh - 70px)}
-.cp{max-width:700px}
-h1{font-size:clamp(34px,min(5.4vw,7.6vh),74px);line-height:1.02;margin-top:0;text-wrap:balance;max-width:700px}
+.pg{width:min(1320px,100%);margin:0 auto;padding:0 28px 8px;display:grid;grid-template-columns:minmax(0,1fr) 440px;gap:36px;align-items:center;min-height:calc(100dvh - 52px)}
+.cp{max-width:780px}
+h1{font-size:clamp(34px,min(5.6vw,8.4vh),84px);line-height:1.02;margin-top:0;text-wrap:balance;max-width:780px}
 /* the proof is the smaller line, the plan is the big one (Fladlien: the most important words are the biggest) */
 h1 .h1a{display:block;font-size:.5em;line-height:1.15;margin-bottom:.34em;letter-spacing:0}
 h1 .h1b{display:block}
 h1 .hl{background:linear-gradient(transparent 14%,var(--sun) 14%,var(--sun) 94%,transparent 94%) no-repeat 0 0/100% 100%;padding:0 .08em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
-.cp p{font-size:16.5px;line-height:1.55;color:var(--ink2);margin-top:0}
+.cp p{font-size:clamp(16px,min(1.3vw,2.2vh),19px);line-height:1.55;color:var(--ink2);margin-top:0}
 .cp p.lead{color:var(--ink)}
 /* the opening line is what Ana is saying in her window: a big message bubble beside it, its tail pointing back at her */
-.top{display:grid;grid-template-columns:250px minmax(0,1fr);gap:26px;align-items:center;margin:0 0 30px}
+.top{display:grid;grid-template-columns:270px minmax(0,1fr);gap:20px;align-items:center;margin:0 0 14px}
 .msg{margin:0}
-.bub{position:relative;background:#fff;border:2px solid var(--ink);border-radius:26px 26px 26px 8px;padding:14px 24px 17px;box-shadow:0 6px 0 var(--ink);transform:rotate(-.8deg);transform-origin:0 50%}
+.bub{position:relative;background:#fff;border:2px solid var(--ink);border-radius:26px 26px 26px 8px;padding:12px 22px 15px;box-shadow:0 5px 0 var(--ink);transform:rotate(-.8deg);transform-origin:0 50%}
 .bub:before{content:"";position:absolute;left:-11px;top:46%;width:18px;height:18px;background:#fff;border:2px solid var(--ink);border-width:0 0 2px 2px;border-radius:0 0 0 14px;transform:rotate(45deg)}
 .bub b{display:block;font-size:12.5px;font-weight:800;letter-spacing:.02em;color:var(--pinkd);margin-bottom:2px}
-.cp .bub p{font-size:clamp(21px,min(2.1vw,3.3vh),30px);line-height:1.2;font-weight:700;letter-spacing:-.01em;color:var(--ink);max-width:none;text-wrap:pretty}
+.cp .bub p{font-size:clamp(21px,min(2.3vw,3.6vh),34px);line-height:1.2;font-weight:700;letter-spacing:-.01em;color:var(--ink);max-width:none;text-wrap:pretty}
 .bub mark.sk{padding:0 3px}
 @media (prefers-reduced-motion:no-preference){.bub{animation:msgpop .6s .05s cubic-bezier(.3,1.5,.5,1) both}}
 @keyframes msgpop{0%{opacity:0;transform:translateY(14px) scale(.92) rotate(-.8deg)}100%{opacity:1;transform:rotate(-.8deg)}}
 .cp{max-width:700px}
-.more{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:18px}
-.more p{text-wrap:pretty}
+.more{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:12px}
+.more p{text-wrap:balance}
 mark.sk{color:var(--ink);font-weight:700;padding:0 2px;margin:0 -2px;-webkit-box-decoration-break:clone;box-decoration-break:clone;
   background:linear-gradient(transparent 52%,rgba(255,212,0,.6) 52%,rgba(255,212,0,.6) 94%,transparent 94%) no-repeat 0 0/100% 100%}
 
 /* the card: a ticket with the invitation resting on it */
-.rail{padding-top:54px}
-.card{position:relative;background:#FFFDF8;border:1.6px solid var(--ink);border-radius:22px;padding:22px 24px 16px;
+.rail{padding-top:50px}
+.card{position:relative;background:#FFFDF8;border:1.6px solid var(--ink);border-radius:22px;padding:18px 22px 12px;
   box-shadow:0 30px 60px -30px rgba(70,45,25,.42),0 2px 6px rgba(70,45,25,.06)}
 .env{position:absolute;right:-18px;top:-66px;width:150px;transform:rotate(7deg);pointer-events:none;transition:transform .9s var(--ease),opacity .6s .3s}
 .env img{width:100%;filter:drop-shadow(0 10px 14px rgba(70,45,25,.28))}
 .env .pm{position:absolute;right:-6px;top:6px;width:96px;opacity:.85;transform:rotate(-8deg)}
-.card h2{font-size:clamp(28px,min(2.9vw,4.7vh),40px);line-height:1.03;margin-top:0;padding-right:96px;text-wrap:balance}
+.card h2{font-size:clamp(28px,min(3vw,5vh),44px);line-height:1.03;margin-top:0;padding-right:96px;text-wrap:balance}
 .promise{font-size:15.5px;line-height:1.5;color:var(--ink2);margin:8px 0 12px}
-.field{position:relative;margin-bottom:10px}
+.field{position:relative;margin-bottom:8px}
 .flbl{display:block;margin:0 0 5px 2px;font-weight:700;font-size:13px;line-height:1.2}
-.field input{width:100%;height:50px;border-radius:16px;border:1.5px solid #d9cab6;background:#fff;padding:0 20px;font-size:16.5px;font-weight:500;transition:border-color .18s,box-shadow .18s}
+.field input{width:100%;height:52px;border-radius:16px;border:1.5px solid #d9cab6;background:#fff;padding:0 20px;font-size:16.5px;font-weight:500;transition:border-color .18s,box-shadow .18s}
 .field input::placeholder{color:#9b8b80}
 .field input:hover{border-color:#bfae97}
 .field input:focus{outline:0;border-color:var(--ink);box-shadow:0 0 0 4px rgba(255,212,0,.6)}
@@ -98,11 +98,11 @@ mark.sk{color:var(--ink);font-weight:700;padding:0 2px;margin:0 -2px;-webkit-box
 .sf-b svg{width:32px;height:32px;transition:transform .7s cubic-bezier(.3,1.6,.5,1)}
 .btn:hover .sf-b{transform:rotate(-10deg) scale(1.06)}.btn:hover .sf-b svg{transform:rotate(360deg) scale(1.12)}
 .btn:focus-visible,input:focus-visible,.pick:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
-.ticks{display:flex;justify-content:center;flex-wrap:wrap;gap:4px 14px;list-style:none;margin-top:12px;font-weight:700;font-size:13px;color:var(--ink2)}
+.ticks{display:flex;justify-content:center;flex-wrap:wrap;gap:4px 14px;list-style:none;margin-top:10px;font-weight:700;font-size:13px;color:var(--ink2)}
 .ticks li{display:flex;align-items:center;gap:6px}
 .ticks li:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--pink)}
-.note{margin-top:8px;text-align:center;font-size:12.5px;line-height:1.5;color:var(--ink3)}
-.plan{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);margin:0 0 10px}
+.note{margin-top:6px;text-align:center;font-size:12.5px;line-height:1.5;color:var(--ink3)}
+.plan{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);margin:0 0 12px}
 .plan li{position:relative;text-align:center;padding-top:32px;font-size:13px;font-weight:700;line-height:1.25;color:var(--ink)}
 .plan li small{display:block;font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin-bottom:1px}
 .plan li:not(:first-child):before{content:"";position:absolute;top:12px;left:-50%;width:100%;height:2px;background:repeating-linear-gradient(90deg,rgba(26,20,18,.35) 0 5px,transparent 5px 9px)}
@@ -195,9 +195,8 @@ mark.sk{color:var(--ink);font-weight:700;padding:0 2px;margin:0 -2px;-webkit-box
 .iph.win{position:relative;margin:12% 9% 13% 9%}
 .iph.win .bz{position:relative;perspective:1700px}
 .iph.win .scr{position:relative;overflow:hidden}
-.iph.win .scr img,.iph.win .scr video{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover}
+.iph.win .scr img{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;object-position:50% 38%}
 .soon{position:absolute;z-index:2;left:8px;top:8px;display:inline-flex;align-items:center;gap:6px;padding:5px 11px 5px 9px;border-radius:999px;background:var(--pink);color:#fff;font-weight:800;font-size:11.5px;letter-spacing:.02em;box-shadow:0 0 0 2px #fff,0 4px 10px -3px rgba(150,40,90,.5)}
-.iph.win .scr video{opacity:0;transition:opacity .5s}.iph.win .scr video.on{opacity:1}
 .stage{position:relative;margin:0;max-width:340px}
 .stage:before{content:"";position:absolute;inset:4% -6% 2% -6%;z-index:-1;border-radius:50%;background:radial-gradient(closest-side,rgba(255,212,0,.35),rgba(255,184,217,.22) 58%,transparent 74%)}
 /* a wall of her real slides (Fladlien: the slide inside the slide, tease it, lock the how). Sean: too blurred on the first screen, so it only
@@ -287,7 +286,7 @@ body:before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
     <div class="stage" aria-hidden="true">
       <div class="iph win">
         <div class="bz">
-          <div class="scr"><img src="../img/real/ana-optin-speaking.webp" alt="" width="460" height="297" loading="eager"><span class="soon" aria-hidden="true"><svg viewBox="0 0 12 12" width="10" height="10"><path d="M3 1.6v8.8c0 .5.5.8.9.5l6.6-4.4c.4-.3.4-.8 0-1L3.9 1.1C3.5.8 3 1.1 3 1.6z" fill="currentColor"/></svg>Watch soon</span><video id="wv" muted loop playsinline autoplay preload="auto" poster="../img/real/ana-optin-speaking.webp" src="../assets/video/waitlist-ana.mp4"></video></div>
+          <div class="scr"><img src="../img/real/ana-optin-gemini.webp" alt="" width="1000" height="747" loading="eager"><span class="soon" aria-hidden="true"><svg viewBox="0 0 12 12" width="10" height="10"><path d="M3 1.6v8.8c0 .5.5.8.9.5l6.6-4.4c.4-.3.4-.8 0-1L3.9 1.1C3.5.8 3 1.1 3 1.6z" fill="currentColor"/></svg>Watch soon</span></div>
           <picture><source type="image/avif" srcset="../img/o/vip/paint/winh.avif"><img class="wn-art" src="../img/vip/paint/winh.webp" alt="" width="856" height="548"></picture>
           <picture><source type="image/avif" srcset="../img/o/vip/paint/winh-flora.avif"><img class="wn-flo" src="../img/vip/paint/winh-flora.webp" alt="" width="856" height="548"></picture>
           <picture><source type="image/avif" srcset="../img/o/vip/paint/winh-flora.avif"><img class="wn-flo wn-pot" src="../img/vip/paint/winh-flora.webp" alt="" width="856" height="548"></picture>
@@ -354,10 +353,6 @@ body:before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
   /* the sunflower wears its Santa hat until Jan 1, as on every button of the other pages */
   if (new Date() < new Date('2027-01-01T00:00:00')) document.getElementById('wSf').setAttribute('href', '#sfx');
   var qs = new URLSearchParams(location.search), tz = ''; try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '' } catch (e) {}
-  /* Ana speaking in the window: a silent six-second loop from her opt-in video (still shown when motion is reduced or the video cannot play) */
-  var wv = document.getElementById('wv');
-  if (wv) { if (matchMedia('(prefers-reduced-motion: reduce)').matches) { wv.removeAttribute('autoplay'); wv.remove() }
-    else { var go2 = function(){ wv.classList.add('on') }; wv.addEventListener('playing', go2); var pr = wv.play(); if (pr && pr.catch) pr.catch(function(){ wv.remove() }) } }
   var API = '/api/ana-waitlist', card = document.getElementById('card'), form = document.getElementById('wl'),
       go = document.getElementById('wGo'), fail = document.getElementById('wFail'), email = '';
   var meta = { ref: qs.get('ref') || '', utm_source: qs.get('utm_source') || '', utm_medium: qs.get('utm_medium') || '', utm_campaign: qs.get('utm_campaign') || '',
