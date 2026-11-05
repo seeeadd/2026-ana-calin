@@ -44,13 +44,27 @@ em{font-style:italic;color:var(--pink)}
 .hd b{display:block;font-weight:800;font-size:14.5px;line-height:1.25}
 
 .pg{width:min(1240px,100%);margin:0 auto;padding:4px 24px 18px;display:grid;grid-template-columns:minmax(0,1fr) 420px;gap:48px;align-items:center;min-height:calc(100dvh - 70px)}
-.cp{max-width:640px}
-h1{font-size:clamp(34px,min(4.3vw,6.5vh),62px);line-height:1.02;margin-top:0;text-wrap:balance}
+.cp{max-width:700px}
+h1{font-size:clamp(34px,min(5.4vw,7.6vh),74px);line-height:1.02;margin-top:0;text-wrap:balance;max-width:700px}
+/* the proof is the smaller line, the plan is the big one (Fladlien: the most important words are the biggest) */
+h1 .h1a{display:block;font-size:.5em;line-height:1.15;margin-bottom:.34em;letter-spacing:0}
+h1 .h1b{display:block}
 h1 .hl{background:linear-gradient(transparent 14%,var(--sun) 14%,var(--sun) 94%,transparent 94%) no-repeat 0 0/100% 100%;padding:0 .08em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
-.cp p{font-size:17.5px;line-height:1.55;color:var(--ink2);margin-top:0}
+.cp p{font-size:16.5px;line-height:1.55;color:var(--ink2);margin-top:0}
 .cp p.lead{color:var(--ink)}
-.row{display:grid;grid-template-columns:320px minmax(0,1fr);gap:30px;align-items:center;margin-top:26px}
-.more p+p{margin-top:14px}
+/* the opening line is what Ana is saying in her window: a big message bubble beside it, its tail pointing back at her */
+.top{display:grid;grid-template-columns:250px minmax(0,1fr);gap:26px;align-items:center;margin:0 0 30px}
+.msg{margin:0}
+.bub{position:relative;background:#fff;border:2px solid var(--ink);border-radius:26px 26px 26px 8px;padding:14px 24px 17px;box-shadow:0 6px 0 var(--ink);transform:rotate(-.8deg);transform-origin:0 50%}
+.bub:before{content:"";position:absolute;left:-11px;top:46%;width:18px;height:18px;background:#fff;border:2px solid var(--ink);border-width:0 0 2px 2px;border-radius:0 0 0 14px;transform:rotate(45deg)}
+.bub b{display:block;font-size:12.5px;font-weight:800;letter-spacing:.02em;color:var(--pinkd);margin-bottom:2px}
+.cp .bub p{font-size:clamp(21px,min(2.1vw,3.3vh),30px);line-height:1.2;font-weight:700;letter-spacing:-.01em;color:var(--ink);max-width:none;text-wrap:pretty}
+.bub mark.sk{padding:0 3px}
+@media (prefers-reduced-motion:no-preference){.bub{animation:msgpop .6s .05s cubic-bezier(.3,1.5,.5,1) both}}
+@keyframes msgpop{0%{opacity:0;transform:translateY(14px) scale(.92) rotate(-.8deg)}100%{opacity:1;transform:rotate(-.8deg)}}
+.cp{max-width:700px}
+.more{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:18px}
+.more p{text-wrap:pretty}
 mark.sk{color:var(--ink);font-weight:700;padding:0 2px;margin:0 -2px;-webkit-box-decoration-break:clone;box-decoration-break:clone;
   background:linear-gradient(transparent 52%,rgba(255,212,0,.6) 52%,rgba(255,212,0,.6) 94%,transparent 94%) no-repeat 0 0/100% 100%}
 
@@ -182,6 +196,7 @@ mark.sk{color:var(--ink);font-weight:700;padding:0 2px;margin:0 -2px;-webkit-box
 .iph.win .bz{position:relative;perspective:1700px}
 .iph.win .scr{position:relative;overflow:hidden}
 .iph.win .scr img,.iph.win .scr video{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover}
+.soon{position:absolute;z-index:2;left:8px;top:8px;display:inline-flex;align-items:center;gap:6px;padding:5px 11px 5px 9px;border-radius:999px;background:var(--pink);color:#fff;font-weight:800;font-size:11.5px;letter-spacing:.02em;box-shadow:0 0 0 2px #fff,0 4px 10px -3px rgba(150,40,90,.5)}
 .iph.win .scr video{opacity:0;transition:opacity .5s}.iph.win .scr video.on{opacity:1}
 .stage{position:relative;margin:0;max-width:340px}
 .stage:before{content:"";position:absolute;inset:4% -6% 2% -6%;z-index:-1;border-radius:50%;background:radial-gradient(closest-side,rgba(255,212,0,.35),rgba(255,184,217,.22) 58%,transparent 74%)}
@@ -214,7 +229,8 @@ body:before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
   /* tablet and phone: the headline, the opening lines and the form fill the first screen; the window and the rest sit under it */
   .pg{display:flex;flex-direction:column;gap:0;padding:14px 20px 40px;min-height:0}
   .cp{display:contents}
-  .row,.more{display:contents}
+  .top,.more{display:contents}
+  .cp .msg{order:0;margin-bottom:16px}
   .cp h1{order:1;font-size:clamp(30px,8vw,52px)}.cp .lead{order:2;margin-top:12px}
   .rail{order:3;width:100%;max-width:480px;margin:0 auto;padding-top:64px}
   .cp .stage{order:4;margin:26px auto 0;max-width:360px;width:100%}.cp .rest{order:5;margin-top:18px;max-width:480px;align-self:center}
@@ -226,6 +242,9 @@ body:before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
   .hd{padding-top:10px}.hd small{display:none}.hd-in{padding:6px 14px 6px 8px}.hd img{width:32px;height:32px;border-radius:10px}.hd b{font-size:13px}
   .pg{padding:10px 16px 36px}
   .cp h1{font-size:clamp(28px,8.2vw,34px);line-height:1.03}
+  .bub{padding:10px 14px 12px 58px;border-radius:20px 20px 20px 7px}.bub b{font-size:11.5px}.cp .bub p{font-size:19px;line-height:1.2}
+  /* phones: the form comes straight after the headline so the button is on the first screen; the opening paragraph follows it */
+  .cp .lead{order:5;margin:24px auto 0;max-width:480px}.cp .stage{order:6}.cp .rest{order:7}
   .cp p{font-size:16px}.cp p.lead{line-height:1.45;margin-top:10px}
   .rail{padding-top:58px}
   .card{padding:18px 16px 14px}
@@ -264,12 +283,11 @@ body:before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
 <main class="pg">
   <i class="rays" aria-hidden="true"></i>
   <section class="cp">
-    <h1>My Newsletter Business <span class="nw">Has Made <span class="hl">$1.4M</span>.</span> Here’s What I’d Do First If I Wanted to Leave My Job <em>in 2027</em>.</h1>
-    <div class="row">
+    <div class="top">
     <div class="stage" aria-hidden="true">
       <div class="iph win">
         <div class="bz">
-          <div class="scr"><img src="../img/real/ana-optin-speaking.webp" alt="" width="460" height="297" loading="eager"><video id="wv" muted loop playsinline autoplay preload="auto" poster="../img/real/ana-optin-speaking.webp" src="../assets/video/waitlist-ana.mp4"></video></div>
+          <div class="scr"><img src="../img/real/ana-optin-speaking.webp" alt="" width="460" height="297" loading="eager"><span class="soon" aria-hidden="true"><svg viewBox="0 0 12 12" width="10" height="10"><path d="M3 1.6v8.8c0 .5.5.8.9.5l6.6-4.4c.4-.3.4-.8 0-1L3.9 1.1C3.5.8 3 1.1 3 1.6z" fill="currentColor"/></svg>Watch soon</span><video id="wv" muted loop playsinline autoplay preload="auto" poster="../img/real/ana-optin-speaking.webp" src="../assets/video/waitlist-ana.mp4"></video></div>
           <picture><source type="image/avif" srcset="../img/o/vip/paint/winh.avif"><img class="wn-art" src="../img/vip/paint/winh.webp" alt="" width="856" height="548"></picture>
           <picture><source type="image/avif" srcset="../img/o/vip/paint/winh-flora.avif"><img class="wn-flo" src="../img/vip/paint/winh-flora.webp" alt="" width="856" height="548"></picture>
           <picture><source type="image/avif" srcset="../img/o/vip/paint/winh-flora.avif"><img class="wn-flo wn-pot" src="../img/vip/paint/winh-flora.webp" alt="" width="856" height="548"></picture>
@@ -278,10 +296,12 @@ body:before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
         </div>
       </div>
     </div>
+    <div class="msg"><div class="bub"><b>Ana Calin</b><p>I’m doing something bigger than my usual workshops, and <mark class="sk">it’s completely free.</mark></p></div></div>
+    </div>
+    <h1><span class="h1a">My Newsletter Business Has Already Made <span class="hl">$1.4M</span>.</span> <span class="h1b">Here’s What I’d Do First If I Wanted to Leave My Job <em>in 2027</em>.</span></h1>
     <div class="more">
     <p class="lead">It’s called The Exit Plan. For three days, live on Zoom, I’ll take you inside my newsletter business and show you which parts I’d use if I had to start again.</p>
     <p class="rest">You’ll see <mark class="sk">what I’d sell first, where I’d look for my first customers,</mark> and what I’d want to know before giving up my evenings to build it.</p>
-    </div>
     </div>
   </section>
 
