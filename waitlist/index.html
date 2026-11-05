@@ -54,15 +54,9 @@ em{font-style:italic;color:var(--pink)}
 @media (prefers-reduced-motion:no-preference){.bay img{animation:drift 38s ease-in-out infinite alternate}}
 @keyframes drift{from{transform:translateX(-2.4%)}to{transform:translateX(2.4%)}}
 
-/* the sign hanging under the awning: Ana's face and what this is */
-.hd{position:fixed;z-index:7;left:0;right:0;top:calc(var(--awn) - 12px);display:flex;justify-content:center;pointer-events:none}
-.hd-in{display:flex;align-items:center;gap:9px;padding:4px 16px 4px 5px;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1.6px var(--ink),0 4px 0 var(--ink)}
-.hd img{width:30px;height:30px;border-radius:9px;object-fit:cover}
-.hd small{display:block;font-weight:800;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--pinkd);line-height:1.15}
-.hd b{display:block;font-weight:800;font-size:13px;line-height:1.15}
 
 /* ---------- the page ---------- */
-.pg{position:relative;width:min(1340px,100%);margin:0 auto;padding:calc(var(--awn) + 30px) 32px calc(var(--bay) * .3);display:grid;grid-template-columns:minmax(0,1fr) 450px;gap:44px;align-items:center;min-height:100dvh}
+.pg{position:relative;width:min(1340px,100%);margin:0 auto;padding:calc(var(--awn) + 20px) 32px calc(var(--bay) * .3);display:grid;grid-template-columns:minmax(0,1fr) 450px;gap:44px;align-items:center;min-height:100dvh}
 .cp{max-width:790px}
 /* the opening line is what Ana is saying in her window: a big message bubble beside it, its tail pointing back at her */
 .top{display:grid;grid-template-columns:clamp(190px,17vw,250px) minmax(0,1fr);gap:22px;align-items:center;margin:0 0 clamp(10px,2vh,20px)}
@@ -83,19 +77,21 @@ h1 .hl{background:linear-gradient(transparent 14%,var(--sun) 14%,var(--sun) 94%,
 /* no panel: a soft white glow behind and around the words, so they sit on the painting and still read */
 .more:before{content:"";position:absolute;z-index:-1;inset:-6px -22px -18px -22px;border-radius:40px;background:radial-gradient(closest-side,rgba(255,255,255,.92) 55%,rgba(255,255,255,.6) 80%,transparent);filter:blur(10px);pointer-events:none}
 .more .c{padding-right:22px}.more .c+.c{padding:0 0 0 22px;border-left:2px dashed rgba(26,20,18,.28)}
-.more p{text-shadow:0 0 3px #fff,0 0 9px rgba(255,255,255,.95),0 0 18px rgba(255,255,255,.9)}
+.more p,.when .w-k,.when .w-ny,.when .w-meta{text-shadow:0 0 3px #fff,0 0 9px rgba(255,255,255,.95),0 0 18px rgba(255,255,255,.9)}
 .more p{font-size:clamp(13.5px,min(1.1vw,2vh),17px);line-height:1.55;color:var(--ink);text-wrap:pretty}
 .more .c p+p{margin-top:11px}
 .more b{color:var(--ink)}
-/* the schedule: what to attend, in New York time (fixed, bold, as in the emails), then the visitor's own time with their city pinned */
-.when{position:relative;margin-top:clamp(10px,1.8vh,18px);padding:11px 16px;border-radius:16px;border:2px solid var(--ink);background:rgba(255,248,228,.92);box-shadow:0 4px 0 var(--ink);max-width:790px}
-.when .w-ny{display:block;font-size:clamp(15.5px,min(1.35vw,2.5vh),20px);font-weight:800;line-height:1.25;color:var(--ink)}
-.when .w-loc{display:flex;align-items:center;flex-wrap:wrap;gap:6px 10px;margin-top:6px}
-.when .w-loc[hidden]{display:none}
-.loc{display:inline-flex;align-items:center;gap:3px;padding:3px 11px 3px 5px;border-radius:999px;background:var(--pink);color:#fff;font-weight:800;font-size:clamp(14px,1.15vw,16px);box-shadow:0 0 0 2px #fff,0 3px 0 rgba(26,20,18,.85)}
+/* the schedule: THEIR dates, time and city come first and big (pin chip, bold); New York is the quiet second line. Replaces "I'll email you the dates" */
+.when{position:relative;margin-top:12px;padding:12px 16px 13px;border-radius:16px;border:2px solid var(--ink);background:rgba(255,248,228,.9);box-shadow:0 4px 0 var(--ink)}
+.when .w-k{display:block;font-size:clamp(11.5px,.9vw,13px);font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--pinkd)}
+.when .w-main{display:flex;align-items:center;flex-wrap:wrap;gap:6px 12px;margin-top:6px;font-size:clamp(22px,min(2.3vw,4.2vh),34px);font-weight:800;line-height:1.1;color:var(--ink);letter-spacing:-.02em}
+.when .w-time{white-space:nowrap}
+.when .w-date{display:block;margin-top:4px;font-size:clamp(15.5px,min(1.3vw,2.4vh),20px);font-weight:800;line-height:1.25;color:var(--ink)}
+.when .w-ny{display:block;margin-top:5px;font-size:clamp(12.5px,.98vw,14.5px);color:var(--ink3);font-weight:600}
+.when .w-ny[hidden]{display:none}
+.loc{display:inline-flex;align-items:center;gap:3px;padding:3px 12px 3px 6px;border-radius:999px;background:var(--pink);color:#fff;font-weight:800;font-size:.55em;letter-spacing:0;box-shadow:0 0 0 2px #fff,0 3px 0 rgba(26,20,18,.85)}
 .loc .vpin{width:1.15em;height:1.15em;fill:#fff;flex:none}.loc .vpin circle{fill:var(--pink)}
-.when .w-lt{font-size:clamp(14px,1.15vw,16px);color:var(--ink2)}.when .w-lt b{color:var(--ink);font-weight:800}
-.when .w-meta{display:block;margin-top:6px;font-size:clamp(13px,1.02vw,15px);color:var(--ink3);font-weight:600}
+.when .w-meta{display:block;margin-top:6px;font-size:clamp(13px,1vw,15px);color:var(--ink2);font-weight:600}
 .pd{display:block;margin-top:2px;font-style:normal;font-size:10.5px;font-weight:700;letter-spacing:0;text-transform:none;color:var(--ink2)}
 
 /* the card: a ticket with the invitation resting on it */
@@ -239,7 +235,6 @@ h1 .hl{background:linear-gradient(transparent 14%,var(--sun) 14%,var(--sun) 94%,
 /* the one orchestrated moment: the awning drops, the shutters open, the marker sweeps $1.4M, the invitation drops onto the card */
 @media (prefers-reduced-motion:no-preference){
   .awn{animation:awn .7s cubic-bezier(.3,1.3,.5,1) both}
-  .hd-in{animation:rise .5s .35s var(--ease) both}
   .bub{animation:msgpop .6s .15s cubic-bezier(.3,1.5,.5,1) both}
   h1 .hl{background-size:0% 100%;animation:sweep .9s .9s cubic-bezier(.22,.8,.24,1) forwards}
   .env{animation:envdrop 1s 1.1s cubic-bezier(.3,1.4,.5,1) both}
@@ -281,7 +276,6 @@ h1 .hl{background:linear-gradient(transparent 14%,var(--sun) 14%,var(--sun) 94%,
   .cp .msg{order:0;margin-bottom:16px}
   .cp h1{order:1;font-size:clamp(30px,8vw,52px)}
   .rail{order:3;width:100%;max-width:480px;margin:0 auto;padding-top:64px}
-  .cp .when{order:2;margin:14px auto 0;max-width:480px;width:100%}
   .cp .more .c:nth-child(1){order:5}
   .cp .stage{order:6;margin:24px auto 0;max-width:340px;width:100%}.cp .more .c:nth-child(2){order:7}
   .more{display:contents}.more:before{display:none}.more .c,.more .c+.c{display:block;max-width:480px;width:100%;align-self:center;margin-top:18px;padding:16px 0 0;border:0;border-top:2px dashed rgba(26,20,18,.3)}
@@ -293,7 +287,6 @@ h1 .hl{background:linear-gradient(transparent 14%,var(--sun) 14%,var(--sun) 94%,
 @media (max-width:520px){
   body{font-size:15.5px}
   :root{--awn:30px}
-  .hd{top:calc(var(--awn) - 10px)}.hd small{display:none}.hd-in{padding:3px 12px 3px 4px}.hd img{width:26px;height:26px;border-radius:8px}.hd b{font-size:12px}
   .pg{padding:calc(var(--awn) + 34px) 14px 28px}
   .cp .msg{margin-bottom:12px}
   .cp h1{font-size:clamp(28px,8.2vw,34px);line-height:1.03}
@@ -334,7 +327,6 @@ h1 .hl{background:linear-gradient(transparent 14%,var(--sun) 14%,var(--sun) 94%,
 <div class="awn" aria-hidden="true"></div>
 <div class="wall" aria-hidden="true"><img src="../img/slides/s1.webp" alt="" width="1280" height="720"><img src="../img/slides/s4.webp" alt="" width="1280" height="720"><img src="../img/slides/s6.webp" alt="" width="1280" height="720"><img src="../img/slides/s2.webp" alt="" width="1280" height="720"><img src="../img/slides/s3.webp" alt="" width="1280" height="720"><img src="../img/slides/s5.webp" alt="" width="1280" height="720"></div>
 <p class="wall-k" aria-hidden="true">From my slides for the three days</p>
-<header class="hd"><div class="hd-in"><img src="../img/o/fav/header-ana.webp" alt="" width="30" height="30"><div><small>The Exit Plan</small><b>A free 3-day live workshop with Ana Calin</b></div></div></header>
 
 <main class="pg">
   <section class="cp">
@@ -354,18 +346,20 @@ h1 .hl{background:linear-gradient(transparent 14%,var(--sun) 14%,var(--sun) 94%,
       <div class="msg"><div class="bub"><b>Ana Calin</b><p>I’m doing something bigger than my usual workshops, and <mark class="sk">it’s completely free.</mark></p></div></div>
     </div>
     <h1><span class="h1a">My Newsletter Business Has Already Made <span class="hl">$1.4M</span>.</span> <span class="h1b">Here’s What I’d Do First If I Wanted to Leave My Job <em>in 2027</em>.</span></h1>
-    <div class="when" id="when">
-      <b class="w-ny">Tue to Thu, December 8 to 10 · 12:00 PM New York time</b>
-      <span class="w-loc" id="wLoc" hidden><span class="loc"><svg class="vpin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s-7-7.1-7-12.2A7 7 0 0 1 19 9.8C19 14.9 12 22 12 22Z"/><circle cx="12" cy="9.6" r="2.6"/></svg><span id="wCity"></span></span><span class="w-lt">Your local time: <b id="wLocT"></b></span></span>
-      <span class="w-meta">Free · Live on Zoom · About 90 minutes per session</span>
-    </div>
     <div class="more">
       <div class="c">
         <p class="lead">I’m Ana Calin. I sell workshops and programs through my newsletter, How We Grow. <b>My first workshop sold two copies.</b> If I had to start again around a full-time job, there’s one thing I’d want to find out before giving another idea my evenings.</p>
+        <p>If you’ve spent years getting good at something and still wonder, “Who would pay me for this?” <mark class="sk">come. That’s a good place to start.</mark></p>
       </div>
       <div class="c">
         <p>I’m hosting The Exit Plan, a free, three-day live workshop. <mark class="pk">I’ll show you what I’d sell first, where I’d look for customers if nobody knew my name, and why AI has changed the order I’d do things in.</mark></p>
-        <p>If you’ve spent years getting good at something and still wonder, “Who would pay me for this?” <mark class="sk">come. That’s a good place to start.</mark></p>
+        <div class="when" id="when">
+          <span class="w-k">Three live sessions on Zoom</span>
+          <b class="w-main"><span class="loc"><svg class="vpin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s-7-7.1-7-12.2A7 7 0 0 1 19 9.8C19 14.9 12 22 12 22Z"/><circle cx="12" cy="9.6" r="2.6"/></svg><span id="wCity">New York</span></span><span class="w-time" id="wTime">12:00 PM</span></b>
+          <span class="w-date" id="wDate">Tue to Thu, December 8 to 10</span>
+          <span class="w-ny" id="wNy" hidden>New York time: Tue to Thu, December 8 to 10 · 12:00 PM</span>
+          <span class="w-meta">Free · About 90 minutes per session</span>
+        </div>
       </div>
     </div>
   </section>
@@ -432,10 +426,10 @@ h1 .hl{background:linear-gradient(transparent 14%,var(--sun) 14%,var(--sun) 94%,
     if (!tz || tz === 'America/New_York' || tz.indexOf('/') < 0) return;
     var S = Date.UTC(2026, 11, 8, 17, 0), E = Date.UTC(2026, 11, 10, 17, 0);
     var sw = fmt(S, { weekday: 'short' }), ew = fmt(E, { weekday: 'short' }), sm = fmt(S, { month: 'long' }), em = fmt(E, { month: 'long' }), sd = fmt(S, { day: 'numeric' }), ed = fmt(E, { day: 'numeric' });
-    var when = sw + ' to ' + ew + ', ' + sm + ' ' + sd + ' to ' + (em === sm ? '' : em + ' ') + ed + ' · ' + fmt(S, { hour: 'numeric', minute: '2-digit' });
     document.getElementById('wCity').textContent = tz.split('/').pop().replace(/_/g, ' ');
-    document.getElementById('wLocT').textContent = when;
-    document.getElementById('wLoc').hidden = false;
+    document.getElementById('wDate').textContent = sw + ' to ' + ew + ', ' + sm + ' ' + sd + ' to ' + (em === sm ? '' : em + ' ') + ed;
+    document.getElementById('wTime').textContent = fmt(S, { hour: 'numeric', minute: '2-digit' });
+    document.getElementById('wNy').hidden = false;
   })();
   var qs = new URLSearchParams(location.search), tz = ''; try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '' } catch (e) {}
   var API = '/api/ana-waitlist', card = document.getElementById('card'), form = document.getElementById('wl'),
