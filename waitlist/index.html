@@ -7,7 +7,7 @@
 <title>Get your Exit Plan invitation one day early · Ana Calin</title>
 <meta name="theme-color" content="#FFE98A">
 <!-- Ana Calin, the early-invite waitlist (/waitlist/). One screen, no scroll on a laptop: Ana's note as a message bubble, the registration page's
-     headline, her copy, the form. The background is the painted bay from her opt-in video (a looping strip under a pink awning).
+     headline, her copy, the form. The background is the painted bay (Sean\u2019s illustration), soft, under a pink awning.
      The sign-up posts to /api/ana-waitlist (Kit tag ep_waitlist + the "Exit Plan Waitlist" sheet tab); the optional question on the
      thank-you view posts the same way. Copy: Sean, Nov 5. -->
 <link rel="icon" href="../img/fav/favicon.ico?v=dc986e96" sizes="any">
@@ -16,18 +16,18 @@
 <link rel="apple-touch-icon" href="../img/fav/apple-touch-icon.png?v=dc986e96">
 <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/g/manrope-normal-b222d8.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/g/instrument-serif-normal-c008db.woff2" crossorigin>
-<link rel="preload" as="image" href="../img/real/waitlist-bay.webp">
+<link rel="preload" as="image" href="../img/real/waitlist-bay-art.webp">
 <style>
 @font-face{font-family:'Instrument Serif';font-style:italic;font-weight:400;font-display:swap;src:url(../assets/fonts/g/instrument-serif-italic-26082c.woff2) format('woff2')}
 @font-face{font-family:'Instrument Serif';font-style:normal;font-weight:400;font-display:swap;src:url(../assets/fonts/g/instrument-serif-normal-c008db.woff2) format('woff2')}
 @font-face{font-family:'Manrope';font-style:normal;font-weight:400 800;font-display:swap;src:url(../assets/fonts/g/manrope-normal-b222d8.woff2) format('woff2')}
 :root{
-  --cream:#FFF8EE;--ink:#1A1412;--ink2:#3D332E;--ink3:#6F6058;
+  --cream:#FFF8EE;--ink:#1A1412;--ink2:#3D332E;--ink3:#5E5048;
   --sun:#FFD400;--pink:#F72585;--pinkd:#D81B6E;--ysoft:#FFF1B3;
   --serif:'Instrument Serif',Georgia,serif;--sans:'Manrope',system-ui,-apple-system,sans-serif;
   --ease:cubic-bezier(.2,.8,.2,1);
   --awn:clamp(40px,6.4vh,62px);          /* the awning */
-  --bay:clamp(84px,15vh,176px);          /* the painted bay along the bottom */
+  --bay:clamp(100px,19vh,210px);         /* the painted bay along the bottom, kept soft so the words stay readable */
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%;overflow-x:clip}
@@ -49,9 +49,10 @@ em{font-style:italic;color:var(--pink)}
 .sky .sunball{position:absolute;right:5vw;top:calc(var(--awn) + 3vh);width:15vh;height:15vh;border-radius:50%;background:radial-gradient(circle at 38% 36%,#FFF4B0,#FFD400 66%,#F7B500);box-shadow:0 0 0 1.5vh rgba(255,212,0,.28),0 0 0 3.4vh rgba(255,212,0,.14)}
 .awn{position:fixed;left:0;right:0;top:0;height:var(--awn);z-index:6;pointer-events:none;
   background:url(../img/vip/paint/dk-awning.webp) 0 0/100% 100% no-repeat;filter:drop-shadow(0 6px 8px rgba(120,60,30,.18))}
-.bay{position:fixed;left:0;right:0;bottom:0;height:var(--bay);z-index:-1;pointer-events:none;overflow:hidden;
-  -webkit-mask:linear-gradient(180deg,transparent 0,#000 30%);mask:linear-gradient(180deg,transparent 0,#000 30%)}
-.bay video,.bay img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 94%}
+.bay{position:fixed;left:0;right:0;bottom:0;height:var(--bay);z-index:-1;pointer-events:none;overflow:hidden}
+.bay img{max-width:none;position:absolute;left:-6%;bottom:0;width:112%;height:100%;object-fit:cover;object-position:50% 22%;opacity:.36;filter:saturate(.9)}
+@media (prefers-reduced-motion:no-preference){.bay img{animation:drift 38s ease-in-out infinite alternate}}
+@keyframes drift{from{transform:translateX(-2.4%)}to{transform:translateX(2.4%)}}
 
 /* the sign hanging under the awning: Ana's face and what this is */
 .hd{position:fixed;z-index:7;left:0;right:0;top:calc(var(--awn) - 12px);display:flex;justify-content:center;pointer-events:none}
@@ -61,10 +62,10 @@ em{font-style:italic;color:var(--pink)}
 .hd b{display:block;font-weight:800;font-size:13px;line-height:1.15}
 
 /* ---------- the page ---------- */
-.pg{position:relative;width:min(1320px,100%);margin:0 auto;padding:calc(var(--awn) + 28px) 28px calc(var(--bay) * .45);display:grid;grid-template-columns:minmax(0,1fr) 430px;gap:34px;align-items:center;min-height:100dvh}
+.pg{position:relative;width:min(1340px,100%);margin:0 auto;padding:calc(var(--awn) + 30px) 32px calc(var(--bay) * .3);display:grid;grid-template-columns:minmax(0,1fr) 450px;gap:44px;align-items:center;min-height:100dvh}
 .cp{max-width:790px}
 /* the opening line is what Ana is saying in her window: a big message bubble beside it, its tail pointing back at her */
-.top{display:grid;grid-template-columns:clamp(190px,17vw,250px) minmax(0,1fr);gap:18px;align-items:center;margin:0 0 clamp(6px,1.3vh,14px)}
+.top{display:grid;grid-template-columns:clamp(190px,17vw,250px) minmax(0,1fr);gap:22px;align-items:center;margin:0 0 clamp(10px,2vh,20px)}
 .stage{position:relative;max-width:340px}
 .stage:before{content:"";position:absolute;inset:4% -8% 0 -6%;z-index:-1;border-radius:50%;background:radial-gradient(closest-side,rgba(255,212,0,.5),rgba(255,184,217,.26) 60%,transparent 76%)}
 .bub{position:relative;background:#fff;border:2px solid var(--ink);border-radius:24px 24px 24px 8px;padding:11px 22px 14px;box-shadow:0 5px 0 var(--ink);transform:rotate(-.8deg);transform-origin:0 50%}
@@ -74,36 +75,40 @@ em{font-style:italic;color:var(--pink)}
 mark.sk,mark.pk{background-color:transparent;color:var(--ink);font-weight:700;padding:0 2px;margin:0 -2px;-webkit-box-decoration-break:clone;box-decoration-break:clone;background-repeat:no-repeat;background-size:100% 100%}
 mark.sk{background-image:linear-gradient(transparent 52%,rgba(255,212,0,.72) 52%,rgba(255,212,0,.72) 94%,transparent 94%)}
 mark.pk{background-image:linear-gradient(transparent 52%,rgba(247,37,133,.3) 52%,rgba(247,37,133,.3) 94%,transparent 94%)}
-h1{font-size:clamp(32px,min(5.1vw,7.4vh),78px);line-height:1.02;text-wrap:balance;max-width:790px}
+h1{font-size:clamp(32px,min(5vw,7.2vh),76px);line-height:1.04;text-wrap:balance;max-width:790px}
 h1 .h1a{display:block;font-size:.46em;line-height:1.15;margin-bottom:.3em;letter-spacing:0}
 h1 .h1b{display:block}
 h1 .hl{background:linear-gradient(transparent 14%,var(--sun) 14%,var(--sun) 94%,transparent 94%) no-repeat 0 0/100% 100%;padding:0 .08em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
-.more{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:clamp(8px,1.6vh,16px)}
-.more p{font-size:clamp(12.5px,min(.98vw,1.82vh),16px);line-height:1.5;color:var(--ink2);text-wrap:pretty}
-.more .c p+p{margin-top:7px}
+.more{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:clamp(12px,2.2vh,22px);padding:clamp(12px,2vh,18px) 0 0;border-top:2px dashed rgba(26,20,18,.3)}
+/* no panel: a soft white glow behind and around the words, so they sit on the painting and still read */
+.more:before{content:"";position:absolute;z-index:-1;inset:-6px -22px -18px -22px;border-radius:40px;background:radial-gradient(closest-side,rgba(255,255,255,.92) 55%,rgba(255,255,255,.6) 80%,transparent);filter:blur(10px);pointer-events:none}
+.more .c{padding-right:22px}.more .c+.c{padding:0 0 0 22px;border-left:2px dashed rgba(26,20,18,.28)}
+.more p,.when b,.when span{text-shadow:0 0 3px #fff,0 0 9px rgba(255,255,255,.95),0 0 18px rgba(255,255,255,.9)}
+.more p{font-size:clamp(13.5px,min(1.1vw,2vh),17px);line-height:1.55;color:var(--ink);text-wrap:pretty}
+.more .c p+p{margin-top:11px}
 .more b{color:var(--ink)}
-.when{padding:7px 11px;border-radius:12px;border:1.8px dashed rgba(26,20,18,.5);background:rgba(255,255,255,.7)}
+.when{padding:9px 13px;border-radius:12px;border:1.8px dashed rgba(26,20,18,.5);background:rgba(255,248,228,.75)}
 .when b{display:block;font-weight:800}.when span{display:block;color:var(--ink3);margin-top:1px}
 
 /* the card: a ticket with the invitation resting on it */
 .rail{padding-top:48px}
-.card{position:relative;background:#FFFDF8;border:2px solid var(--ink);border-radius:24px;padding:16px 20px 11px;box-shadow:0 7px 0 var(--ink),0 28px 44px -22px rgba(70,45,25,.5)}
+.card{position:relative;background:#FFFDF8;border:2px solid var(--ink);border-radius:24px;padding:20px 24px 14px;box-shadow:0 7px 0 var(--ink),0 28px 44px -22px rgba(70,45,25,.5)}
 .env{position:absolute;right:-16px;top:-60px;width:136px;transform:rotate(7deg);pointer-events:none}
 .env img{width:100%;filter:drop-shadow(0 10px 14px rgba(70,45,25,.28))}
 .env .pm{position:absolute;right:-6px;top:6px;width:88px;opacity:.85;transform:rotate(-8deg)}
-.card h2{font-size:clamp(27px,min(2.8vw,4.9vh),42px);line-height:1.03;text-wrap:balance;padding-right:92px}
-.promise{font-size:clamp(12.5px,min(1vw,1.85vh),15px);line-height:1.45;color:var(--ink2);margin:7px 0 9px;text-wrap:pretty}
-.plan{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);margin:0 0 9px}
-.plan li{position:relative;text-align:center;padding-top:27px;font-size:12px;font-weight:700;line-height:1.2;color:var(--ink)}
+.card h2{font-size:clamp(28px,min(2.9vw,5vh),44px);line-height:1.03;text-wrap:balance;padding-right:92px}
+.promise{font-size:clamp(13.5px,min(1.1vw,2vh),16px);line-height:1.5;color:var(--ink2);margin:10px 0 0;padding-bottom:12px;border-bottom:2px dashed rgba(26,20,18,.25);text-wrap:pretty}
+.plan{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);margin:13px 0 12px}
+.plan li{position:relative;text-align:center;padding-top:28px;font-size:13px;font-weight:700;line-height:1.2;color:var(--ink)}
 .plan li small{display:block;font-size:9.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin-bottom:1px}
 .plan li:not(:first-child):before{content:"";position:absolute;top:10px;left:-50%;width:100%;height:2px;background:repeating-linear-gradient(90deg,rgba(26,20,18,.35) 0 5px,transparent 5px 9px)}
 .plan li b{position:absolute;z-index:1;top:0;left:50%;margin-left:-11px;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:#fff;box-shadow:inset 0 0 0 1.6px var(--ink);font-size:11.5px;font-weight:800}
 .at1 .p1 b{background:var(--pink);color:#fff;transform:scale(1.12)}
 .at1 .p2 span,.at1 .p2 small{color:var(--pinkd)}
 .at1 .p3{opacity:.5}
-.field{position:relative;margin-bottom:7px}
-.flbl{display:block;margin:0 0 4px 2px;font-weight:700;font-size:12.5px;line-height:1.2}
-.field input{width:100%;height:clamp(42px,6.1vh,52px);border-radius:14px;border:1.5px solid #d9cab6;background:#fff;padding:0 16px;font-size:16px;font-weight:500;transition:border-color .18s,box-shadow .18s}
+.field{position:relative;margin-bottom:10px}
+.flbl{display:block;margin:0 0 5px 2px;font-weight:700;font-size:13.5px;line-height:1.2}
+.field input{width:100%;height:clamp(44px,6.4vh,54px);border-radius:14px;border:1.5px solid #d9cab6;background:#fff;padding:0 16px;font-size:16px;font-weight:500;transition:border-color .18s,box-shadow .18s}
 .field input::placeholder{color:#9b8b80}
 .field input:hover{border-color:#bfae97}
 .field input:focus{outline:0;border-color:var(--ink);box-shadow:0 0 0 4px rgba(255,212,0,.6)}
@@ -121,33 +126,41 @@ h1 .hl{background:linear-gradient(transparent 14%,var(--sun) 14%,var(--sun) 94%,
 .sf-b svg{width:31px;height:31px;transition:transform .7s cubic-bezier(.3,1.6,.5,1)}
 .btn:hover .sf-b{transform:rotate(-10deg) scale(1.06)}.btn:hover .sf-b svg{transform:rotate(360deg) scale(1.12)}
 .btn:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
-.note{margin-top:7px;text-align:center;font-size:11.5px;line-height:1.4;color:var(--ink3)}
+.note{margin-top:10px;text-align:center;font-size:12.5px;line-height:1.4;color:var(--ink3)}
 .fail{display:none;margin-top:8px;text-align:center;font-size:13px;font-weight:600;color:#c4105f}
 
 /* after sign-up: the card widens, the pitch steps away, her slides appear either side (design plain, words blurred) */
 .thx{display:none}
 .card.done form#wl{display:none}.card.done .thx{display:block}
 .card.done .promise,.card.done .hh,.card.done > .plan{display:none}
-.thx h2{margin-top:0;padding-right:92px}
-.thx .sub{font-size:15px;line-height:1.5;color:var(--ink2);margin:7px 0 0;text-wrap:balance}
-.q{margin-top:12px;padding-top:12px;border-top:1.8px dashed rgba(26,20,18,.3);display:grid;grid-template-columns:1fr 1.15fr;gap:18px;align-items:start}
-.q h3{font-family:var(--sans);font-weight:800;font-size:15px;letter-spacing:0;line-height:1.3}
-.qa p{font-size:13px;line-height:1.45;color:var(--ink2);margin-top:6px}
-.qh{display:block;font-size:12px;color:var(--ink3);margin:0 0 5px 2px}
-.qf .flbl{font-size:13.5px;line-height:1.25}
-.qf textarea{width:100%;min-height:78px;border-radius:14px;border:1.5px solid #d9cab6;background:#fff;padding:9px 13px;font-size:15px;line-height:1.4;resize:vertical;transition:border-color .18s,box-shadow .18s}
-.qf textarea:hover{border-color:#bfae97}.qf textarea:focus{outline:0;border-color:var(--ink);box-shadow:0 0 0 4px rgba(255,212,0,.6)}
-.chk{display:flex;align-items:flex-start;gap:9px;margin:8px 0 10px;font-size:13px;font-weight:600;line-height:1.35;cursor:pointer}
+.card.done{padding:16px 22px 18px}
+.thx h2{margin-top:0;padding-right:92px;font-size:clamp(30px,min(3vw,5.2vh),42px)}
+.thx .sub{font-size:15px;line-height:1.45;color:var(--ink2);margin:6px 0 0;text-wrap:balance}
+/* the question is a gift: a yellow box with a pink ribbon and a gingham bow, a tag from Ana, and a cream letter inside to write on */
+.gift{position:relative;margin-top:34px;padding:46px 12px 12px;border:2px solid var(--ink);border-radius:22px;background:linear-gradient(180deg,#FFE766,#FFD400);box-shadow:0 8px 0 var(--ink),0 26px 40px -22px rgba(120,80,0,.6)}
+.gift .lid{position:absolute;left:-2px;right:-2px;top:20px;height:20px;background:var(--pink) repeating-linear-gradient(90deg,rgba(255,255,255,.2) 0 9px,transparent 9px 18px);border-block:2px solid var(--ink)}
+.gift .bow{position:absolute;left:50%;top:-34px;width:116px;margin-left:-58px;transform:rotate(-3deg);filter:drop-shadow(0 6px 6px rgba(80,50,0,.3));pointer-events:none}
+.gtag{position:absolute;right:-14px;top:-40px;width:112px;transform:rotate(9deg);pointer-events:none;filter:drop-shadow(0 6px 6px rgba(80,50,0,.25))}
+.gtag img{width:100%}.gtag b{position:absolute;left:20%;right:4%;top:20%;text-align:center;font-family:var(--serif);font-style:italic;font-weight:400;font-size:16px;line-height:1.05;color:var(--ink)}
+.gin{display:grid;grid-template-columns:.9fr 1.1fr;gap:22px;align-items:start;padding:16px 20px 12px;border:2px solid var(--ink);border-radius:15px;background:#FFFDF6 url(../img/vip/paint/paper.webp) center/260px;box-shadow:inset 0 0 0 5px rgba(255,255,255,.55)}
+.gin h3{font-family:var(--serif);font-weight:400;font-size:clamp(25px,min(2.3vw,4vh),35px);line-height:1.06;letter-spacing:-.012em}
+.qa p{font-size:14px;line-height:1.48;color:var(--ink);margin-top:8px}
+.qf .flbl{font-size:clamp(15px,1.3vw,17.5px);line-height:1.25;margin:0}
+.qh{display:block;font-size:13px;color:var(--ink3);margin:2px 0 7px 2px}
+.qf textarea{display:block;width:100%;min-height:clamp(84px,13vh,140px);border-radius:12px;border:2px solid var(--ink);background:#fff repeating-linear-gradient(180deg,transparent 0 27px,rgba(247,37,133,.18) 27px 28px);padding:8px 14px;font-size:17px;line-height:28px;resize:vertical;transition:box-shadow .18s}
+.qf textarea:hover{box-shadow:0 0 0 3px rgba(255,212,0,.6)}.qf textarea:focus{outline:0;box-shadow:0 0 0 5px rgba(255,212,0,.85)}
+.chk{display:flex;align-items:flex-start;gap:9px;margin:8px 0 9px;font-size:13.5px;font-weight:600;line-height:1.35;cursor:pointer}
 .chk input{position:absolute;opacity:0;width:1px;height:1px}
-.chk i{flex:none;width:20px;height:20px;border-radius:6px;border:1.8px solid var(--ink);background:#fff;transition:background .15s}
+.chk i{flex:none;width:21px;height:21px;border-radius:6px;border:1.8px solid var(--ink);background:#fff;transition:background .15s}
 .chk input:checked + i{background:var(--pink);box-shadow:inset 0 0 0 3px #fff}
 .chk input:focus-visible + i{outline:3px solid var(--ink);outline-offset:2px}
-.qbtn{height:46px;padding:0 18px;font-size:15px;justify-content:center;margin-top:0}
-.qn{margin-top:8px;font-size:12px;color:var(--ink3);line-height:1.4}
-.qd{display:none;grid-column:1/-1;padding:14px 16px;border-radius:14px;background:var(--ysoft);font-weight:600;font-size:15px}
-.q.sent .qa,.q.sent .qf{display:none}.q.sent .qd{display:block}
+.qbtn{height:54px;font-size:16.5px;margin-top:0}
+.qn{margin-top:8px;font-size:12.5px;color:var(--ink3);line-height:1.4}
+.qd{display:none;grid-column:1/-1;padding:18px 8px;font-family:var(--serif);font-size:clamp(26px,3vw,36px);line-height:1.1}
+.qd b{font-style:italic;color:var(--pink);font-weight:400}
+.gift.sent .qa,.gift.sent .qf{display:none}.gift.sent .qd{display:block}
 .done .cp{display:none}
-.done .pg{grid-template-columns:minmax(0,690px);justify-content:center}
+.done .pg{grid-template-columns:minmax(0,800px);justify-content:center}
 .done .rail{width:100%}
 .done .card{animation:rise .5s var(--ease)}
 @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
@@ -157,7 +170,7 @@ h1 .hl{background:linear-gradient(transparent 14%,var(--sun) 14%,var(--sun) 94%,
 .wall img:nth-child(4){grid-area:1/3;transform:rotate(2.4deg)}.wall img:nth-child(5){grid-area:2/3;transform:rotate(-1.8deg)}.wall img:nth-child(6){grid-area:3/3;transform:rotate(1.4deg)}
 .wall-k{display:none;position:fixed;z-index:2;left:0;right:0;width:max-content;margin:0 auto;bottom:calc(var(--bay) * .3);padding:6px 14px;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1.6px var(--ink),0 3px 0 var(--ink);font-weight:800;font-size:12.5px}
 @media (min-width:1180px) and (min-height:600px){
-  .done .wall{display:grid;grid-template-columns:1fr minmax(650px,690px) 1fr;grid-template-rows:repeat(3,auto);align-content:center;gap:14px 0;padding:calc(var(--awn) + 10px) 0 calc(var(--bay) * .8)}
+  .done .wall{display:grid;grid-template-columns:1fr minmax(760px,800px) 1fr;grid-template-rows:repeat(3,auto);align-content:center;gap:14px 0;padding:calc(var(--awn) + 10px) 0 calc(var(--bay) * .8)}
   .done .wall img{animation:rise .6s var(--ease) both}
   .done .wall img:nth-child(2),.done .wall img:nth-child(5){animation-delay:.12s}.done .wall img:nth-child(3),.done .wall img:nth-child(6){animation-delay:.24s}
   .done .wall-k{display:block;animation:rise .6s .4s var(--ease) both}
@@ -230,6 +243,20 @@ h1 .hl{background:linear-gradient(transparent 14%,var(--sun) 14%,var(--sun) 94%,
 @keyframes msgpop{0%{opacity:0;transform:translateY(14px) scale(.92) rotate(-.8deg)}100%{opacity:1;transform:rotate(-.8deg)}}
 @keyframes spin{to{transform:rotate(360deg)}}
 
+@media (min-width:981px) and (max-height:820px){
+  .pg{padding-top:calc(var(--awn) + 22px)}
+  .rail{padding-top:40px}
+  .card.done{padding:12px 20px 16px}
+  .thx h2{font-size:30px}.thx .sub{font-size:14px;margin-top:3px}
+  .gift{margin-top:28px;padding-top:42px}
+  .gift .bow{width:100px;margin-left:-50px;top:-30px}
+  .gin{padding:12px 18px 10px;gap:18px}
+  .gin h3{font-size:25px}.qa p{font-size:13.5px;margin-top:6px}
+  .qf .flbl{font-size:15px}.qh{margin-bottom:5px}
+  .qf textarea{min-height:64px}
+  .chk{margin:6px 0 7px;font-size:13px}.qbtn{height:48px}.qn{margin-top:5px;font-size:12px}
+  .done .wall-k{display:none}
+}
 @media (max-width:980px){
   /* tablet and phone: the page scrolls; the bay becomes the floor under everything */
   :root{--awn:34px}
@@ -240,11 +267,11 @@ h1 .hl{background:linear-gradient(transparent 14%,var(--sun) 14%,var(--sun) 94%,
   .rail{order:3;width:100%;max-width:480px;margin:0 auto;padding-top:64px}
   .cp .more .c:nth-child(1){order:5}
   .cp .stage{order:6;margin:24px auto 0;max-width:340px;width:100%}.cp .more .c:nth-child(2){order:7}
-  .more .c{display:block;max-width:480px;width:100%;align-self:center;margin-top:16px}
+  .more{display:contents}.more:before{display:none}.more .c,.more .c+.c{display:block;max-width:480px;width:100%;align-self:center;margin-top:18px;padding:16px 0 0;border:0;border-top:2px dashed rgba(26,20,18,.3)}
   .more p{font-size:15.5px}
-  .bay{position:relative;height:96px;margin-top:6px;z-index:0}
+  .bay{position:relative;height:110px;margin-top:6px;z-index:0}
   .wall,.wall-k{display:none!important}
-  .done .pg{display:flex}.done .q{grid-template-columns:1fr}
+  .done .pg{display:flex}.gin{grid-template-columns:1fr}.gtag{width:92px;right:-6px;top:-26px}.gtag b{font-size:13px}
 }
 @media (max-width:520px){
   body{font-size:15.5px}
@@ -343,35 +370,37 @@ h1 .hl{background:linear-gradient(transparent 14%,var(--sun) 14%,var(--sun) 94%,
       <div class="thx" role="status" aria-live="polite">
         <h2>You’re on the <em>waitlist.</em></h2>
         <p class="sub">Watch for an email from me with your early booking link. When it arrives, follow the link to reserve your free seat.</p>
-        <div class="q" id="wQ">
-          <div class="qa">
-            <h3>Got something you’d like me to look at during the workshop?</h3>
-            <p>Maybe you have two ideas and can’t decide which one deserves your evenings. Maybe people keep coming to you for help with something you’ve always done for free.</p>
-            <p>Tell me what you’re weighing up. I’ll choose a few examples to work through live, so you can hear what I’d look at and why.</p>
+        <div class="gift q" id="wQ">
+          <i class="lid" aria-hidden="true"></i>
+          <img class="bow" src="../img/real/gift-bow.webp" alt="" width="190" height="115" aria-hidden="true">
+          <span class="gtag" aria-hidden="true"><img src="../img/vip/paint/gift-tag.webp" alt="" width="480" height="340"><b>A gift<br>from Ana</b></span>
+          <div class="gin">
+            <div class="qa">
+              <h3>Got something you’d like me to look at during the workshop?</h3>
+              <p>Maybe you have two ideas and can’t decide which one deserves your evenings. Maybe people keep coming to you for help with something you’ve always done for free.</p>
+              <p>Tell me what you’re weighing up. I’ll choose a few examples to work through live, so you can hear what I’d look at and why.</p>
+            </div>
+            <form class="qf" id="wq" novalidate>
+              <label class="flbl" for="wBq">What’s one business decision you’d like my take on?</label>
+              <span class="qh">A sentence or two is plenty.</span>
+              <textarea id="wBq" name="business_question" rows="5" maxlength="1000"></textarea>
+              <label class="chk"><input type="checkbox" id="wOk" name="permission_to_discuss_live"><i></i><span>Ana can discuss my example during the workshop.</span></label>
+              <button class="btn qbtn" type="submit" id="wQgo"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">Send Ana my question</span><svg class="ar" aria-hidden="true"><use href="#arr"/></svg></button>
+              <p class="qn">Optional. You’ll get your early invitation either way.</p>
+            </form>
+            <p class="qd">Got it. Thanks for telling me what you’re working on. <b>Ana</b></p>
           </div>
-          <form class="qf" id="wq" novalidate>
-            <label class="flbl" for="wBq">What’s one business decision you’d like my take on?</label>
-            <span class="qh">A sentence or two is plenty.</span>
-            <textarea id="wBq" name="business_question" rows="3" maxlength="1000"></textarea>
-            <label class="chk"><input type="checkbox" id="wOk" name="permission_to_discuss_live"><i></i><span>Ana can discuss my example during the workshop.</span></label>
-            <button class="btn qbtn" type="submit" id="wQgo"><span class="bt">Send Ana my question</span><svg class="ar" aria-hidden="true"><use href="#arr"/></svg></button>
-            <p class="qn">Optional. You’ll get your early invitation either way.</p>
-          </form>
-          <p class="qd">Got it. Thanks for telling me what you’re working on. <b>Ana</b></p>
         </div>
       </div>
     </div>
   </aside>
 </main>
-<div class="bay" aria-hidden="true"><img src="../img/real/waitlist-bay.webp" alt="" width="1200" height="240"><video id="bayv" muted loop playsinline autoplay preload="auto" src="../assets/video/waitlist-bay.mp4" poster="../img/real/waitlist-bay.webp"></video></div>
+<div class="bay" aria-hidden="true"><img src="../img/real/waitlist-bay-art.webp" alt="" width="2000" height="547"></div>
 
 <script>
 (function(){
   /* the sunflower wears its Santa hat until Jan 1, as on every button of the other pages */
   if (new Date() < new Date('2027-01-01T00:00:00')) document.getElementById('wSf').setAttribute('href', '#sfx');
-  /* the bay loops; with reduced motion, or if the video cannot play, the still stays */
-  var bv = document.getElementById('bayv');
-  if (bv) { if (matchMedia('(prefers-reduced-motion: reduce)').matches) { bv.remove() } else { var pr = bv.play(); if (pr && pr.catch) pr.catch(function(){ bv.remove() }) } }
   var qs = new URLSearchParams(location.search), tz = ''; try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '' } catch (e) {}
   var API = '/api/ana-waitlist', card = document.getElementById('card'), form = document.getElementById('wl'),
       go = document.getElementById('wGo'), fail = document.getElementById('wFail'), email = '';

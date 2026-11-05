@@ -10,4 +10,5 @@ ana-rec-sea: a still at 0:26 from her registration video recording (Nov 4, phone
 ana-cabin-less-orange: AI-generated image supplied by Sean on Nov 4 ("iPhone 17 Candid Photo (2)"), colour-corrected to reduce orange; Sean confirmed the use as approved. Not a photograph of a real flight.
 ana-cabin-real: Ana in the First Class cabin, the photo Sean sent on Nov 4 (replaces ana-cabin-less-orange in the See you live section)
 - img/real/ana-optin-gemini.webp: Sean's Gemini-extended still of Ana (from the 189s frame of ana_opt_in_video_desktop.mp4), Nov 5, used in the waitlist window with a 'Watch soon' badge until the video is ready
-- assets/video/waitlist-bay.mp4 + img/real/waitlist-bay.webp: the painted bay animation (boat, sunflower walking) from ana_opt_in_video_desktop.mp4 at 122.6 to 124.8s, strip y 375-615 of the 1200x776 frame, no UI in it; the waitlist page's background (Sean, Nov 5)
+- img/real/waitlist-bay-art.webp: the bay illustration Sean sent (Nov 5, transparent sky), the waitlist page background at half opacity
+- img/real/gift-bow.webp: the gingham bow cut from tools/film/cut/bow-gingham.png, the waitlist question gift
