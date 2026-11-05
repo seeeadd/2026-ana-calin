@@ -36,14 +36,14 @@ em{font-style:italic;color:var(--pink)}
 .nw{white-space:nowrap}
 
 /* the slim header: Ana's face, the event, nothing to press */
-.hd{display:flex;justify-content:center;padding:8px 16px 0}
+.hd{display:flex;justify-content:center;padding:6px 16px 0}
 .hd-in{display:flex;align-items:center;gap:10px;padding:5px 16px 5px 7px;border-radius:999px;background:rgba(255,255,255,.7);backdrop-filter:blur(14px) saturate(1.6);-webkit-backdrop-filter:blur(14px) saturate(1.6);
   box-shadow:0 10px 24px -14px rgba(150,40,90,.35),inset 0 0 0 1px rgba(26,20,18,.08)}
 .hd img{width:34px;height:34px;border-radius:10px;object-fit:cover}
 .hd small{display:block;font-weight:800;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--pinkd);line-height:1.2}
 .hd b{display:block;font-weight:800;font-size:14px;line-height:1.2}
 
-.pg{width:min(1320px,100%);margin:0 auto;padding:0 28px 8px;display:grid;grid-template-columns:minmax(0,1fr) 440px;gap:36px;align-items:center;min-height:calc(100dvh - 52px)}
+.pg{width:min(1320px,100%);margin:0 auto;padding:0 28px 0;display:grid;grid-template-columns:minmax(0,1fr) 440px;gap:36px;align-items:center;min-height:calc(100dvh - 56px)}
 .cp{max-width:780px}
 h1{font-size:clamp(34px,min(5.6vw,8.4vh),84px);line-height:1.02;margin-top:0;text-wrap:balance;max-width:780px}
 /* the proof is the smaller line, the plan is the big one (Fladlien: the most important words are the biggest) */
@@ -63,20 +63,22 @@ h1 .hl{background:linear-gradient(transparent 14%,var(--sun) 14%,var(--sun) 94%,
 @media (prefers-reduced-motion:no-preference){.bub{animation:msgpop .6s .05s cubic-bezier(.3,1.5,.5,1) both}}
 @keyframes msgpop{0%{opacity:0;transform:translateY(14px) scale(.92) rotate(-.8deg)}100%{opacity:1;transform:rotate(-.8deg)}}
 .cp{max-width:700px}
-.more{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:12px}
-.more p{text-wrap:balance}
+.more{display:grid;grid-template-columns:1.25fr 1fr;gap:26px;margin-top:12px}
+.more p{text-wrap:pretty}
+mark.pk{color:var(--ink);font-weight:700;padding:0 2px;margin:0 -2px;-webkit-box-decoration-break:clone;box-decoration-break:clone;
+  background:linear-gradient(transparent 52%,rgba(247,37,133,.3) 52%,rgba(247,37,133,.3) 94%,transparent 94%) no-repeat 0 0/100% 100%}
 mark.sk{color:var(--ink);font-weight:700;padding:0 2px;margin:0 -2px;-webkit-box-decoration-break:clone;box-decoration-break:clone;
   background:linear-gradient(transparent 52%,rgba(255,212,0,.6) 52%,rgba(255,212,0,.6) 94%,transparent 94%) no-repeat 0 0/100% 100%}
 
 /* the card: a ticket with the invitation resting on it */
-.rail{padding-top:50px}
+.rail{padding-top:46px}
 .card{position:relative;background:#FFFDF8;border:1.6px solid var(--ink);border-radius:22px;padding:18px 22px 12px;
   box-shadow:0 30px 60px -30px rgba(70,45,25,.42),0 2px 6px rgba(70,45,25,.06)}
 .env{position:absolute;right:-18px;top:-66px;width:150px;transform:rotate(7deg);pointer-events:none;transition:transform .9s var(--ease),opacity .6s .3s}
 .env img{width:100%;filter:drop-shadow(0 10px 14px rgba(70,45,25,.28))}
 .env .pm{position:absolute;right:-6px;top:6px;width:96px;opacity:.85;transform:rotate(-8deg)}
 .card h2{font-size:clamp(28px,min(3vw,5vh),44px);line-height:1.03;margin-top:0;padding-right:96px;text-wrap:balance}
-.promise{font-size:15.5px;line-height:1.5;color:var(--ink2);margin:8px 0 12px}
+.promise{font-size:15.5px;line-height:1.5;color:var(--ink2);margin:8px 0 10px;text-wrap:balance}
 .field{position:relative;margin-bottom:8px}
 .flbl{display:block;margin:0 0 5px 2px;font-weight:700;font-size:13px;line-height:1.2}
 .field input{width:100%;height:52px;border-radius:16px;border:1.5px solid #d9cab6;background:#fff;padding:0 20px;font-size:16.5px;font-weight:500;transition:border-color .18s,box-shadow .18s}
@@ -131,7 +133,7 @@ mark.sk{color:var(--ink);font-weight:700;padding:0 2px;margin:0 -2px;-webkit-box
 .card.done form{display:none}.card.done .thx{display:block}
 .card.done .promise,.card.done .hh{display:none}
 .thx h2{margin-top:0}
-.thx .sub{font-size:15.5px;line-height:1.5;color:var(--ink2);margin:10px 0 0}
+.thx .sub{font-size:15.5px;line-height:1.5;color:var(--ink2);margin:8px 0 0;text-wrap:balance}
 .thx .spam{margin-top:8px;font-size:13.5px;line-height:1.5;color:var(--ink3)}
 .q{margin-top:14px;padding-top:14px;border-top:1.5px dashed rgba(26,20,18,.22)}
 .q h3{font-family:var(--sans);font-weight:800;font-size:15px;letter-spacing:0;line-height:1.35}
@@ -199,15 +201,20 @@ mark.sk{color:var(--ink);font-weight:700;padding:0 2px;margin:0 -2px;-webkit-box
 .soon{position:absolute;z-index:2;left:8px;top:8px;display:inline-flex;align-items:center;gap:6px;padding:5px 11px 5px 9px;border-radius:999px;background:var(--pink);color:#fff;font-weight:800;font-size:11.5px;letter-spacing:.02em;box-shadow:0 0 0 2px #fff,0 4px 10px -3px rgba(150,40,90,.5)}
 .stage{position:relative;margin:0;max-width:340px}
 .stage:before{content:"";position:absolute;inset:4% -6% 2% -6%;z-index:-1;border-radius:50%;background:radial-gradient(closest-side,rgba(255,212,0,.35),rgba(255,184,217,.22) 58%,transparent 74%)}
-/* a wall of her real slides (Fladlien: the slide inside the slide, tease it, lock the how). Sean: too blurred on the first screen, so it only
-   appears after sign-up, behind the thank-you, with a label saying what it is */
-.wall{position:fixed;z-index:-3;left:50%;top:50%;width:min(1500px,128vw);display:grid;grid-template-columns:repeat(3,1fr);gap:22px;transform:translate(-50%,-50%) rotate(-6deg);
-  filter:blur(6px) saturate(1.1);opacity:0;pointer-events:none;transition:opacity .8s,filter .8s;
-  -webkit-mask:radial-gradient(ellipse 70% 62% at 50% 50%,#000 30%,transparent 100%);mask:radial-gradient(ellipse 70% 62% at 50% 50%,#000 30%,transparent 100%)}
-.wall img{width:100%;height:auto;border-radius:14px;box-shadow:0 20px 40px -20px rgba(70,45,25,.4)}
-.wall-k{display:none;position:fixed;z-index:2;left:0;right:0;width:max-content;margin:0 auto;bottom:26px;padding:7px 16px;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1.5px var(--ink);font-weight:800;font-size:13px}
-.done .wall{opacity:.6;filter:blur(3px) saturate(1.1);transition-delay:.15s}
-.done .wall-k{display:block;animation:rise .6s .3s var(--ease) both}
+/* her real slides, sharp, either side of the thank-you (Fladlien: show the real thing, a slide inside the slide). Left and right read Day 1, 2, 3
+   top to bottom; they only appear after sign-up, on screens wide and tall enough to hold them */
+.wall{display:none;position:fixed;inset:0;z-index:-1;pointer-events:none}
+.wall img{width:min(250px,17vw);height:auto;justify-self:center;align-self:center;border-radius:12px;box-shadow:0 18px 34px -16px rgba(70,45,25,.5),0 0 0 1px rgba(26,20,18,.08);filter:blur(2.4px) saturate(1.08)}
+.wall img:nth-child(1){grid-area:1/1;transform:rotate(-2.5deg)}.wall img:nth-child(2){grid-area:2/1;transform:rotate(1.8deg)}.wall img:nth-child(3){grid-area:3/1;transform:rotate(-1.5deg)}
+.wall img:nth-child(4){grid-area:1/3;transform:rotate(2.4deg)}.wall img:nth-child(5){grid-area:2/3;transform:rotate(-1.8deg)}.wall img:nth-child(6){grid-area:3/3;transform:rotate(1.4deg)}
+.wall-k{display:none;position:fixed;z-index:2;left:0;right:0;width:max-content;margin:0 auto;bottom:12px;padding:6px 14px;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1.5px var(--ink);font-weight:800;font-size:12.5px}
+@media (min-width:1180px) and (min-height:600px){
+  .done .wall{display:grid;grid-template-columns:1fr minmax(560px,600px) 1fr;grid-template-rows:repeat(3,auto);align-content:center;gap:16px 0;padding:56px 0 40px}
+  .done .wall img{animation:rise .6s var(--ease) both}
+  .done .wall img:nth-child(2),.done .wall img:nth-child(5){animation-delay:.12s}.done .wall img:nth-child(3),.done .wall img:nth-child(6){animation-delay:.24s}
+  .done .wall-k{display:block;animation:rise .6s .4s var(--ease) both}
+  .done .rays{display:none}
+}
 /* the page itself: soft light rays behind the card, her sunflower watermark, a little more warmth than flat cream */
 body{background-color:#FFF6E6}
 body:before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
@@ -275,7 +282,7 @@ body:before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
 <symbol id="arr" viewBox="0 0 16 16"><path d="M4.5 11.5 11.5 4.5M5.5 4.5h6v6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
 </defs></svg>
 
-<div class="wall" aria-hidden="true"><img src="../img/slides/s1.webp" alt="" width="1280" height="720"><img src="../img/slides/s2.webp" alt="" width="1280" height="720"><img src="../img/slides/s3.webp" alt="" width="1280" height="720"><img src="../img/slides/s4.webp" alt="" width="1280" height="720"><img src="../img/slides/s5.webp" alt="" width="1280" height="720"><img src="../img/slides/s6.webp" alt="" width="1280" height="720"></div>
+<div class="wall" aria-hidden="true"><img src="../img/slides/s1.webp" alt="" width="1280" height="720"><img src="../img/slides/s4.webp" alt="" width="1280" height="720"><img src="../img/slides/s6.webp" alt="" width="1280" height="720"><img src="../img/slides/s2.webp" alt="" width="1280" height="720"><img src="../img/slides/s3.webp" alt="" width="1280" height="720"><img src="../img/slides/s5.webp" alt="" width="1280" height="720"></div>
 <p class="wall-k" aria-hidden="true">From my slides for the three days</p>
 <header class="hd"><div class="hd-in"><img src="../img/o/fav/header-ana.webp" alt="" width="40" height="40"><div><small>The Exit Plan</small><b>A free 3-day live workshop with Ana Calin</b></div></div></header>
 
@@ -299,7 +306,7 @@ body:before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
     </div>
     <h1><span class="h1a">My Newsletter Business Has Already Made <span class="hl">$1.4M</span>.</span> <span class="h1b">Here’s What I’d Do First If I Wanted to Leave My Job <em>in 2027</em>.</span></h1>
     <div class="more">
-    <p class="lead">It’s called The Exit Plan. For three days, live on Zoom, I’ll take you inside my newsletter business and show you which parts I’d use if I had to start again.</p>
+    <p class="lead">It’s called The Exit Plan. For three days, live on Zoom, <mark class="pk">I’ll take you inside my newsletter business and show you which parts I’d use if I had to start again.</mark></p>
     <p class="rest">You’ll see <mark class="sk">what I’d sell first, where I’d look for my first customers,</mark> and what I’d want to know before giving up my evenings to build it.</p>
     </div>
   </section>
