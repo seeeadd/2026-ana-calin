@@ -181,9 +181,19 @@ mark.sk{color:var(--ink);font-weight:700;padding:0 2px;margin:0 -2px;-webkit-box
 .iph.win{position:relative;margin:12% 9% 13% 9%}
 .iph.win .bz{position:relative;perspective:1700px}
 .iph.win .scr{position:relative;overflow:hidden}
-.iph.win .scr img{display:block;width:100%;height:100%;object-fit:cover}
+.iph.win .scr img,.iph.win .scr video{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover}
+.iph.win .scr video{opacity:0;transition:opacity .5s}.iph.win .scr video.on{opacity:1}
 .stage{position:relative;margin:0;max-width:340px}
 .stage:before{content:"";position:absolute;inset:4% -6% 2% -6%;z-index:-1;border-radius:50%;background:radial-gradient(closest-side,rgba(255,212,0,.35),rgba(255,184,217,.22) 58%,transparent 74%)}
+/* a wall of her real slides (Fladlien: the slide inside the slide, tease it, lock the how). Sean: too blurred on the first screen, so it only
+   appears after sign-up, behind the thank-you, with a label saying what it is */
+.wall{position:fixed;z-index:-3;left:50%;top:50%;width:min(1500px,128vw);display:grid;grid-template-columns:repeat(3,1fr);gap:22px;transform:translate(-50%,-50%) rotate(-6deg);
+  filter:blur(6px) saturate(1.1);opacity:0;pointer-events:none;transition:opacity .8s,filter .8s;
+  -webkit-mask:radial-gradient(ellipse 70% 62% at 50% 50%,#000 30%,transparent 100%);mask:radial-gradient(ellipse 70% 62% at 50% 50%,#000 30%,transparent 100%)}
+.wall img{width:100%;height:auto;border-radius:14px;box-shadow:0 20px 40px -20px rgba(70,45,25,.4)}
+.wall-k{display:none;position:fixed;z-index:2;left:0;right:0;width:max-content;margin:0 auto;bottom:26px;padding:7px 16px;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1.5px var(--ink);font-weight:800;font-size:13px}
+.done .wall{opacity:.6;filter:blur(3px) saturate(1.1);transition-delay:.15s}
+.done .wall-k{display:block;animation:rise .6s .3s var(--ease) both}
 /* the page itself: soft light rays behind the card, her sunflower watermark, a little more warmth than flat cream */
 body{background-color:#FFF6E6}
 body:before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
@@ -245,6 +255,8 @@ body:before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
 <symbol id="arr" viewBox="0 0 16 16"><path d="M4.5 11.5 11.5 4.5M5.5 4.5h6v6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
 </defs></svg>
 
+<div class="wall" aria-hidden="true"><img src="../img/slides/s1.webp" alt="" width="1280" height="720"><img src="../img/slides/s2.webp" alt="" width="1280" height="720"><img src="../img/slides/s3.webp" alt="" width="1280" height="720"><img src="../img/slides/s4.webp" alt="" width="1280" height="720"><img src="../img/slides/s5.webp" alt="" width="1280" height="720"><img src="../img/slides/s6.webp" alt="" width="1280" height="720"></div>
+<p class="wall-k" aria-hidden="true">From my slides for the three days</p>
 <header class="hd"><div class="hd-in"><img src="../img/o/fav/header-ana.webp" alt="" width="40" height="40"><div><small>The Exit Plan</small><b>A free 3-day live workshop with Ana Calin</b></div></div></header>
 
 <main class="pg">
@@ -256,7 +268,7 @@ body:before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
     <div class="stage" aria-hidden="true">
       <div class="iph win">
         <div class="bz">
-          <div class="scr"><img src="../img/vsl.webp" alt="" width="1164" height="718" loading="eager"></div>
+          <div class="scr"><img src="../img/real/ana-optin-speaking.webp" alt="" width="460" height="297" loading="eager"><video id="wv" muted loop playsinline autoplay preload="auto" poster="../img/real/ana-optin-speaking.webp" src="../assets/video/waitlist-ana.mp4"></video></div>
           <picture><source type="image/avif" srcset="../img/o/vip/paint/winh.avif"><img class="wn-art" src="../img/vip/paint/winh.webp" alt="" width="856" height="548"></picture>
           <picture><source type="image/avif" srcset="../img/o/vip/paint/winh-flora.avif"><img class="wn-flo" src="../img/vip/paint/winh-flora.webp" alt="" width="856" height="548"></picture>
           <picture><source type="image/avif" srcset="../img/o/vip/paint/winh-flora.avif"><img class="wn-flo wn-pot" src="../img/vip/paint/winh-flora.webp" alt="" width="856" height="548"></picture>
@@ -321,6 +333,10 @@ body:before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
   /* the sunflower wears its Santa hat until Jan 1, as on every button of the other pages */
   if (new Date() < new Date('2027-01-01T00:00:00')) document.getElementById('wSf').setAttribute('href', '#sfx');
   var qs = new URLSearchParams(location.search), tz = ''; try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '' } catch (e) {}
+  /* Ana speaking in the window: a silent six-second loop from her opt-in video (still shown when motion is reduced or the video cannot play) */
+  var wv = document.getElementById('wv');
+  if (wv) { if (matchMedia('(prefers-reduced-motion: reduce)').matches) { wv.removeAttribute('autoplay'); wv.remove() }
+    else { var go2 = function(){ wv.classList.add('on') }; wv.addEventListener('playing', go2); var pr = wv.play(); if (pr && pr.catch) pr.catch(function(){ wv.remove() }) } }
   var API = '/api/ana-waitlist', card = document.getElementById('card'), form = document.getElementById('wl'),
       go = document.getElementById('wGo'), fail = document.getElementById('wFail'), email = '';
   var meta = { ref: qs.get('ref') || '', utm_source: qs.get('utm_source') || '', utm_medium: qs.get('utm_medium') || '', utm_campaign: qs.get('utm_campaign') || '',
