@@ -3,9 +3,9 @@
 //  1. the sign-up (first_name + email_address): the person goes into Ana's Kit with the tag ep_waitlist (never onto the
 //     registration form, so they do not get the "You're in." confirmation email early), and into the "Exit Plan Waitlist"
 //     tab of Ana's Google Sheet, one row per email.
-//  2. the optional question on the thank-you view (email_address + priority): the answer is kept on the SAME sheet row and
-//     as one more Kit tag (ep_wl_audience, ep_wl_what_to_sell, ep_wl_sales, ep_wl_income_goal), so the early-invite email
-//     can open with a line for each answer.
+//  2. the optional question on the thank-you view (email_address + business_question + permission_to_discuss_live): the
+//     answer is kept on the SAME sheet row, in the Kit custom field "Exit Plan: waitlist question", and as tags
+//     (ep_wl_question, and ep_wl_discuss_ok when she may discuss it live), so Ana can pick examples for the workshop.
 // Needs KIT_API_KEY (already set for the registration page). Optional: KIT_WAITLIST_FORM_ID, a Kit form to add them to as
 // well (use it if Ana wants Kit's own confirmation or a visual automation to run on sign-up). The sheet needs
 // SURVEY_SHEET_URL and SURVEY_SHEET_KEY, as for the registration page. Without Kit the page answers 503 and nothing is stored.
@@ -13,8 +13,8 @@ var dns = require('dns').promises;
 var ORIGINS = /^https:\/\/(2026-ana-calin[a-z0-9-]*\.vercel\.app|exitplan\.howwegrowtoday\.com)$/;
 var THROWAWAY = /^(mailinator\.com|guerrillamail\.(com|net)|sharklasers\.com|10minutemail\.(com|net)|temp-?mail\.(com|org|net|dev)|yopmail\.(com|fr)|trashmail\.com|getnada\.com|maildrop\.cc|throwawaymail\.com|fakeinbox\.com|dispostable\.com|example\.(com|org|net)|test\.com|domain\.com)$/;
 var TAG = 'ep_waitlist';
-var PRIORITY = { audience: 1, what_to_sell: 1, sales: 1, income_goal: 1 };
-var cache = { tags: {} };   // tag ids, kept while the function stays warm
+var FIELD = 'Exit Plan: waitlist question';
+var cache = { tags: {}, field: null };   // tag ids, kept while the function stays warm
 
 // Can this email's domain receive mail? Same check as the registration page: only a clear "this domain does not exist" says no.
 async function canReceive(domain) {
@@ -46,12 +46,13 @@ module.exports = async function handler(req, res) {
   if (b.ep_check) return res.status(200).json({ ok: true }); // the hidden honeypot field: only bots fill it
   var email = String(b.email_address || '').trim().toLowerCase();
   var name = String(b.first_name || '').trim().slice(0, 60);
-  var priority = String(b.priority || '');
+  var question = String(b.business_question == null ? '' : b.business_question).replace(/[\r\n\t]+/g, ' ').trim().slice(0, 1000);
+  var permission = b.permission_to_discuss_live === true || b.permission_to_discuss_live === 'yes';
+  var isAnswer = b.business_question != null;
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email) || email.length > 254) return res.status(400).json({ ok: false, error: 'email' });
-  if (priority && !PRIORITY[priority]) return res.status(400).json({ ok: false, error: 'priority' });
   var domain = email.slice(email.lastIndexOf('@') + 1);
   if (THROWAWAY.test(domain)) return res.status(400).json({ ok: false, error: 'email_domain' });
-  if (!priority && !(await canReceive(domain))) return res.status(400).json({ ok: false, error: 'email_domain' });
+  if (!isAnswer && !(await canReceive(domain))) return res.status(400).json({ ok: false, error: 'email_domain' });
 
   var kit = function (method, path, body) {
     return fetch('https://api.kit.com/v4' + path, {
@@ -82,14 +83,30 @@ module.exports = async function handler(req, res) {
   var source = ref || String(b.utm_campaign || b.utm_source || '').slice(0, 120) || host(String(b.referrer || req.headers.referer || ''));
   var sheet = function (kitResult) {
     return toSheet({ kind: 'waitlist', first: name, email: email, source: source, tz: String(b.tz || '').slice(0, 60),
-      priority: priority, kit: kitResult });
+      business_question: question, permission: isAnswer ? (permission ? 'yes' : 'no') : '', kit: kitResult });
   };
 
   try {
-    if (priority) {
-      // the optional question after sign-up: the answer goes on the same row and becomes a tag
-      var ok = await tag('ep_wl_' + priority);
-      await sheet(ok ? 'ok' : 'tag_failed');
+    if (isAnswer) {
+      // the optional question after sign-up: the answer goes on the same row, into a Kit field, and becomes a tag
+      if (!question) return res.status(400).json({ ok: false, error: 'question' });
+      var ok = true;
+      try {
+        var found = await kit('GET', '/subscribers?status=all&email_address=' + encodeURIComponent(email));
+        var sub = found.ok && (await found.json()).subscribers;
+        sub = sub && sub[0];
+        if (sub) {
+          if (!cache.field) {
+            var lf = await kit('GET', '/custom_fields?per_page=1000'), lj = lf.ok ? await lf.json() : {};
+            (lj.custom_fields || []).forEach(function (f) { if (f.label === FIELD) cache.field = f.key });
+            if (!cache.field) { var cf = await kit('POST', '/custom_fields', { label: FIELD }); if (cf.ok) cache.field = (await cf.json()).custom_field.key }
+          }
+          if (cache.field) { var f = {}; f[cache.field] = question.slice(0, 500); await kit('PUT', '/subscribers/' + sub.id, { email_address: sub.email_address, fields: f }) }
+        }
+      } catch (e) { ok = false }
+      ok = (await tag('ep_wl_question')) && ok;
+      if (permission) ok = (await tag('ep_wl_discuss_ok')) && ok;
+      await sheet(ok ? 'ok' : 'kit_partial');
       return res.status(200).json({ ok: true });
     }
     var s = await kit('POST', '/subscribers', { email_address: email, first_name: name || null, state: 'active' });

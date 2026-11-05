@@ -65,12 +65,12 @@ function doPost(e) {
 }
 
 // The early-invite waitlist (/waitlist/, api/ana-waitlist.js): ONE row per email. A second sign-up, or the optional
-// "which part would you most like help with" answer, updates that row and keeps the first waitlisted_at.
+// business question (with the permission to discuss it live), updates that row and keeps the first waitlisted_at.
 // early_invite_sent_at is filled by the team when the early invitation goes out; registered_at fills itself when the same
 // email registers for the workshop (markRegistered, called from the Registrants rows).
 var WL = {
   name: 'Exit Plan Waitlist',
-  head: ['first_name', 'email', 'waitlisted_at', 'source', 'priority', 'early_invite_sent_at', 'registered_at', 'time_zone', 'kit']
+  head: ['first_name', 'email', 'waitlisted_at', 'source', 'business_question', 'permission_to_discuss_live', 'early_invite_sent_at', 'registered_at', 'time_zone', 'kit']
 };
 function wlSheet() {
   var ss = SpreadsheetApp.getActiveSpreadsheet(), sh = ss.getSheetByName(WL.name);
@@ -78,8 +78,8 @@ function wlSheet() {
   sh = ss.insertSheet(WL.name);
   sh.getRange(1, 1, 1, WL.head.length).setValues([WL.head]).setFontWeight('bold').setBackground('#FFD400');
   sh.setFrozenRows(1);
-  ['C:C', 'F:G'].forEach(function (a) { sh.getRange(a).setNumberFormat('yyyy-mm-dd hh:mm') });
-  sh.setColumnWidth(2, 240);
+  ['C:C', 'G:H'].forEach(function (a) { sh.getRange(a).setNumberFormat('yyyy-mm-dd hh:mm') });
+  sh.setColumnWidth(2, 240); sh.setColumnWidth(5, 420);
   return sh;
 }
 function wlFind(sh, email) {
@@ -95,13 +95,13 @@ function waitlist(r) {
   var safe = function (v) { return typeof v === 'string' && /^[=+\-@]/.test(v) ? "'" + v : v };
   var sh = wlSheet(), row = wlFind(sh, email);
   if (!row) {
-    sh.appendRow([safe(r.first || ''), email, new Date(), safe(r.source || ''), r.priority || '', '', '', r.tz || '', r.kit || '']);
+    sh.appendRow([safe(r.first || ''), email, new Date(), safe(r.source || ''), safe(r.business_question || ''), r.permission || '', '', '', r.tz || '', r.kit || '']);
     return { ok: true, row: 'new' };
   }
-  if (r.priority) sh.getRange(row, 5).setValue(r.priority);
+  if (r.business_question) { sh.getRange(row, 5).setValue(safe(r.business_question)); sh.getRange(row, 6).setValue(r.permission || 'no') }
   if (r.first && !sh.getRange(row, 1).getValue()) sh.getRange(row, 1).setValue(safe(r.first));
   if (r.source && !sh.getRange(row, 4).getValue()) sh.getRange(row, 4).setValue(safe(r.source));
-  if (r.kit) sh.getRange(row, 9).setValue(r.kit);
+  if (r.kit) sh.getRange(row, 10).setValue(r.kit);
   return { ok: true, row: 'updated' };
 }
 function markRegistered(email) {
@@ -109,7 +109,7 @@ function markRegistered(email) {
   var sh = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(WL.name);
   if (!sh || !email) return;
   var row = wlFind(sh, email);
-  if (row && !sh.getRange(row, 7).getValue()) sh.getRange(row, 7).setValue(new Date());
+  if (row && !sh.getRange(row, 8).getValue()) sh.getRange(row, 8).setValue(new Date());
 }
 
 function doGet() { return out({ ok: true, sheet: 'The Exit Plan survey' }) }

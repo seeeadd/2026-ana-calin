@@ -3915,5 +3915,10 @@ html.wv-lock{overflow:hidden}
 <script src="assets/wistia-vsl.js?v=2"></script>
 <script>/* Sean, Nov 4: desktop 995puecipz, phone z5mv5t5sf5 (Wistia) */
 (function(){var b=document.getElementById('vsl');if(!b||!window.WVSL)return;WVSL({box:b,scr:b.querySelector('.scr'),desktop:'995puecipz',phone:'z5mv5t5sf5',previewSec:8,onPhoneEnd:function(){document.getElementById('hcard').scrollIntoView({behavior:'smooth', block:'center'})}})})();</script>
+<script>/* ep-prefill: the early-invite email links here with ?first_name=...&email=..., so booking takes one confirmation (nothing is submitted for them) */
+(function(){try{var q=new URLSearchParams(location.search),n=q.get('first_name')||q.get('fname'),e=q.get('email');
+ function fill(){var f=document.getElementById('jFirst'),m=document.getElementById('jEmail');
+  if(f&&n&&!f.value)f.value=n.slice(0,60);if(m&&e&&!m.value&&/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e))m.value=e.slice(0,254)}
+ if(n||e){fill();document.addEventListener('DOMContentLoaded',fill);addEventListener('load',fill)}}catch(x){}})();</script>
 </body>
 </html>
