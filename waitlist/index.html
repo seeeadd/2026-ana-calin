@@ -55,14 +55,14 @@ mark.sk{color:var(--ink);font-weight:700;padding:0 2px;margin:0 -2px;-webkit-box
   background:linear-gradient(transparent 52%,rgba(255,212,0,.6) 52%,rgba(255,212,0,.6) 94%,transparent 94%) no-repeat 0 0/100% 100%}
 
 /* the card: a ticket with the invitation resting on it */
-.rail{padding-top:60px}
+.rail{padding-top:54px}
 .card{position:relative;background:#FFFDF8;border:1.6px solid var(--ink);border-radius:22px;padding:22px 24px 16px;
   box-shadow:0 30px 60px -30px rgba(70,45,25,.42),0 2px 6px rgba(70,45,25,.06)}
 .env{position:absolute;right:-18px;top:-66px;width:150px;transform:rotate(7deg);pointer-events:none;transition:transform .9s var(--ease),opacity .6s .3s}
 .env img{width:100%;filter:drop-shadow(0 10px 14px rgba(70,45,25,.28))}
 .env .pm{position:absolute;right:-6px;top:6px;width:96px;opacity:.85;transform:rotate(-8deg)}
-.card h2{font-size:clamp(30px,min(2.9vw,5.2vh),40px);line-height:1.03;margin-top:0;padding-right:96px;text-wrap:balance}
-.promise{font-size:15.5px;line-height:1.5;color:var(--ink2);margin:10px 0 14px}
+.card h2{font-size:clamp(28px,min(2.9vw,4.7vh),40px);line-height:1.03;margin-top:0;padding-right:96px;text-wrap:balance}
+.promise{font-size:15.5px;line-height:1.5;color:var(--ink2);margin:8px 0 12px}
 .field{position:relative;margin-bottom:10px}
 .flbl{display:block;margin:0 0 5px 2px;font-weight:700;font-size:13px;line-height:1.2}
 .field input{width:100%;height:50px;border-radius:16px;border:1.5px solid #d9cab6;background:#fff;padding:0 20px;font-size:16.5px;font-weight:500;transition:border-color .18s,box-shadow .18s}
@@ -71,13 +71,14 @@ mark.sk{color:var(--ink);font-weight:700;padding:0 2px;margin:0 -2px;-webkit-box
 .field input:focus{outline:0;border-color:var(--ink);box-shadow:0 0 0 4px rgba(255,212,0,.6)}
 .err{display:none;margin:5px 0 0 2px;font-size:13px;font-weight:600;color:#c4105f}
 .field.bad input{border-color:#c4105f}.field.bad .err{display:block}
-.btn{position:relative;display:flex;align-items:center;justify-content:flex-start;gap:12px;width:100%;height:58px;margin-top:4px;padding:0 20px 0 8px;border-radius:999px;cursor:pointer;
-  background:var(--sun);color:var(--ink);font-weight:800;font-size:17.5px;line-height:1;border:2px solid var(--ink);box-shadow:0 5px 0 var(--ink);
+.btn{position:relative;display:flex;align-items:center;justify-content:flex-start;gap:10px;width:100%;height:58px;margin-top:4px;padding:0 16px 0 8px;border-radius:999px;cursor:pointer;
+  background:var(--sun);color:var(--ink);font-weight:800;font-size:16.5px;line-height:1;border:2px solid var(--ink);box-shadow:0 5px 0 var(--ink);
   transition:transform .2s var(--ease),box-shadow .2s,background .2s}
 .btn:hover{transform:translateY(-2px);background:#FFDD33;box-shadow:0 7px 0 var(--ink)}
 .btn:active{transform:translateY(3px);box-shadow:0 2px 0 var(--ink)}
 .btn[disabled]{opacity:.7;cursor:progress;transform:none}
 .btn .bt{flex:1;text-align:center;white-space:nowrap}
+.bq{font-weight:600;font-size:.8em;opacity:.85}
 .btn .ar{width:15px;height:15px;flex:none;transition:transform .25s var(--ease)}.btn:hover .ar{transform:translate(2px,-2px)}
 .sf-b{position:relative;flex:none;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:#fff;box-shadow:inset 0 0 0 1.6px var(--ink);transition:transform .5s var(--ease)}
 .sf-b svg{width:32px;height:32px;transition:transform .7s cubic-bezier(.3,1.6,.5,1)}
@@ -87,14 +88,35 @@ mark.sk{color:var(--ink);font-weight:700;padding:0 2px;margin:0 -2px;-webkit-box
 .ticks li{display:flex;align-items:center;gap:6px}
 .ticks li:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--pink)}
 .note{margin-top:8px;text-align:center;font-size:12.5px;line-height:1.5;color:var(--ink3)}
+.plan{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);margin:0 0 10px}
+.plan li{position:relative;text-align:center;padding-top:32px;font-size:13px;font-weight:700;line-height:1.25;color:var(--ink)}
+.plan li small{display:block;font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin-bottom:1px}
+.plan li:not(:first-child):before{content:"";position:absolute;top:12px;left:-50%;width:100%;height:2px;background:repeating-linear-gradient(90deg,rgba(26,20,18,.35) 0 5px,transparent 5px 9px)}
+.plan li b{position:absolute;z-index:1;top:0;left:50%;margin-left:-13px;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:#fff;box-shadow:inset 0 0 0 1.6px var(--ink);font-size:12.5px;font-weight:800;transition:transform .4s var(--ease),background .3s}
+/* you are here: before the form step 1 is lit and the early link (the promise) is marked; after it, step 1 is ticked and small, step 2 is now, step 3 is next (Fladlien: the mechanism with progress) */
+.at1 .p1 b{background:var(--pink);color:#fff;box-shadow:inset 0 0 0 1.6px var(--ink);transform:scale(1.15)}
+.at1 .p2 span,.at1 .p2 small{color:var(--pinkd)}
+.at1 .p3,.at2 .p3{opacity:.5}
+.at2{margin-top:12px}
+.at2 .p1 b{background:var(--ink);color:#fff;font-size:0}
+.at2 .p1 b:after{content:"";width:5px;height:10px;border:solid #fff;border-width:0 2.2px 2.2px 0;transform:rotate(45deg) translate(-1px,-1px)}
+.at2 .p1{opacity:.7}
+.at2 .p2 b{background:var(--pink);color:#fff;transform:scale(1.15)}
 .fail{display:none;margin-top:10px;text-align:center;font-size:13.5px;font-weight:600;color:#c4105f}
 
 /* after sign-up: the thank-you, with the one optional question */
 .thx{display:none}
+.card.done > .plan{display:none}
+.done .cp{display:none}
+.done .pg{grid-template-columns:minmax(0,560px);justify-content:center}
+.done .rail{width:100%}
+.done .picks{grid-template-columns:1fr 1fr}
+.done .pick{align-items:flex-start;padding:10px 12px}.done .pick i{margin-top:2px}
+.done .card{animation:rise .5s var(--ease)}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 .card.done form{display:none}.card.done .thx{display:block}
 .card.done .promise,.card.done .hh{display:none}
 .thx h2{margin-top:0}
-.ok{width:40px;height:40px;border-radius:50%;background:var(--sun);display:grid;place-items:center;box-shadow:0 0 0 2px #fff,inset 0 0 0 1.6px var(--ink);margin-bottom:8px}
 .thx .sub{font-size:15.5px;line-height:1.5;color:var(--ink2);margin:10px 0 0}
 .thx .spam{margin-top:8px;font-size:13.5px;line-height:1.5;color:var(--ink3)}
 .q{margin-top:14px;padding-top:14px;border-top:1.5px dashed rgba(26,20,18,.22)}
@@ -227,7 +249,6 @@ body:before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
 
 <main class="pg">
   <i class="rays" aria-hidden="true"></i>
-  <svg class="wm" aria-hidden="true"><use href="#sf"/></svg>
   <section class="cp">
     <h1>My Newsletter Business <span class="nw">Has Made <span class="hl">$1.4M</span>.</span> Here’s What I’d Do First If I Wanted to Leave My Job <em>in 2027</em>.</h1>
     <p class="lead">I’m Ana Calin. I sell workshops and programs through my newsletter, How We Grow. If I were starting again around a job, there’s one part of that business I’d build first.</p>
@@ -256,18 +277,27 @@ body:before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
       <div class="env" aria-hidden="true"><img src="../img/o/vip/paint/env.webp" alt="" width="150" height="129"><img class="pm" src="../img/vip/paint/postmark.webp" alt="" width="96" height="52"></div>
       <h2 class="hh">Get your invitation <em>one day early.</em></h2>
       <p class="promise">I’ll email you the link to book your free seat <mark class="sk">one day before registration opens to the public.</mark></p>
+      <ol class="plan at1" aria-label="How the early invite works">
+        <li class="p1"><b>1</b><span><small>Today</small>You join</span></li>
+        <li class="p2"><b>2</b><span><small>A day early</small>Your link</span></li>
+        <li class="p3"><b>3</b><span><small>Then</small>Public opens</span></li>
+      </ol>
       <form id="wl" novalidate>
         <div class="field"><label class="flbl" for="wFirst">First name</label><input type="text" id="wFirst" name="first_name" placeholder="Your first name" autocomplete="given-name" required><span class="err">Add your first name</span></div>
         <div class="field"><label class="flbl" for="wEmail">Email</label><input type="email" id="wEmail" name="email_address" placeholder="The email you actually check" autocomplete="email" inputmode="email" required><span class="err" id="wErr">Almost. Check that email once more.</span></div>
         <input type="text" name="ep_check" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-        <button class="btn" type="submit" id="wGo"><span class="sf-b" aria-hidden="true"><svg><use href="#sf" id="wSf"/></svg></span><span class="bt">Send me my early invite, Ana</span><svg class="ar" aria-hidden="true"><use href="#arr"/></svg></button>
+        <button class="btn" type="submit" id="wGo"><span class="sf-b" aria-hidden="true"><svg><use href="#sf" id="wSf"/></svg></span><span class="bt">Send me my early invite, Ana <small class="bq">(free)</small></span><svg class="ar" aria-hidden="true"><use href="#arr"/></svg></button>
         <p class="fail" id="wFail" role="alert">That didn’t go through. Please try once more.</p>
         <ul class="ticks" aria-label="What you get"><li>Free</li><li>Live on Zoom</li><li>Three sessions</li></ul>
         <p class="note">You’ll get emails from me about The Exit Plan. Unsubscribe anytime.</p>
       </form>
       <div class="thx" role="status" aria-live="polite">
-        <span class="ok"><svg width="26" height="26" viewBox="0 0 16 16" fill="none" stroke="#1A1412" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m3.5 8.5 3 3 6-7"/></svg></span>
         <h2>You’re on the <em>list.</em></h2>
+        <ol class="plan at2" aria-label="How the early invite works">
+        <li class="p1"><b>1</b><span><small>Today</small>You join</span></li>
+        <li class="p2"><b>2</b><span><small>A day early</small>Your link</span></li>
+        <li class="p3"><b>3</b><span><small>Then</small>Public opens</span></li>
+      </ol>
         <p class="sub">I’ll email you one day before public registration opens. Use the link in that email to book your free seat.</p>
         <p class="spam">If you don’t see my emails, check Spam or Promotions and tap “Not spam”.</p>
         <div class="q" id="wQ">
@@ -306,7 +336,7 @@ body:before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
     if (!okName || !okMail) { (okName ? m : f).focus(); return }
     go.disabled = true; email = v;
     post({ first_name: f.value.trim(), email_address: v, ep_check: form.elements.ep_check.value }).then(function(j){
-      if (j.ok) { card.classList.add('done'); try { card.scrollIntoView({ block: 'nearest', behavior: 'smooth' }) } catch (x) {} return }
+      if (j.ok) { card.classList.add('done'); document.body.classList.add('done'); try { card.scrollIntoView({ block: 'nearest', behavior: 'smooth' }) } catch (x) {} return }
       go.disabled = false;
       if (j.error === 'email' || j.error === 'email_domain') { bad(m, true); document.getElementById('wErr').textContent = 'That email doesn’t look right. Check it once more.'; m.focus() }
       else fail.style.display = 'block';
