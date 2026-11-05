@@ -141,3 +141,12 @@ function summary(ss) {
     sh.setColumnWidth(col, 260);
   });
 }
+
+// Run these once from the editor (Run > testRegister / testWaitlist) to check the sheet is wired. Delete the test rows after.
+function testRegister() {
+  var sh = tab(TABS.register);
+  sh.appendRow([new Date(), 'test', 'TEST from Apps Script, delete me']);
+}
+function testWaitlist() {
+  Logger.log(JSON.stringify(waitlist({ first: 'TEST', email: 'test-delete-me@example.com', source: 'apps script', business_question: 'TEST question, delete me', permission: 'yes', tz: 'Asia/Manila', kit: 'test' })));
+}

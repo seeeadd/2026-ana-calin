@@ -75,20 +75,28 @@ em{font-style:italic;color:var(--pink)}
 mark.sk,mark.pk{background-color:transparent;color:var(--ink);font-weight:700;padding:0 2px;margin:0 -2px;-webkit-box-decoration-break:clone;box-decoration-break:clone;background-repeat:no-repeat;background-size:100% 100%}
 mark.sk{background-image:linear-gradient(transparent 52%,rgba(255,212,0,.72) 52%,rgba(255,212,0,.72) 94%,transparent 94%)}
 mark.pk{background-image:linear-gradient(transparent 52%,rgba(247,37,133,.3) 52%,rgba(247,37,133,.3) 94%,transparent 94%)}
-h1{font-size:clamp(32px,min(5vw,7.2vh),76px);line-height:1.04;text-wrap:balance;max-width:790px}
+h1{font-size:clamp(32px,min(5vw,6.8vh),76px);line-height:1.04;text-wrap:balance;max-width:790px}
 h1 .h1a{display:block;font-size:.46em;line-height:1.15;margin-bottom:.3em;letter-spacing:0}
 h1 .h1b{display:block}
 h1 .hl{background:linear-gradient(transparent 14%,var(--sun) 14%,var(--sun) 94%,transparent 94%) no-repeat 0 0/100% 100%;padding:0 .08em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
-.more{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:clamp(12px,2.2vh,22px);padding:clamp(12px,2vh,18px) 0 0;border-top:2px dashed rgba(26,20,18,.3)}
+.more{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:clamp(10px,1.9vh,20px);padding:clamp(10px,1.7vh,16px) 0 0;border-top:2px dashed rgba(26,20,18,.3)}
 /* no panel: a soft white glow behind and around the words, so they sit on the painting and still read */
 .more:before{content:"";position:absolute;z-index:-1;inset:-6px -22px -18px -22px;border-radius:40px;background:radial-gradient(closest-side,rgba(255,255,255,.92) 55%,rgba(255,255,255,.6) 80%,transparent);filter:blur(10px);pointer-events:none}
 .more .c{padding-right:22px}.more .c+.c{padding:0 0 0 22px;border-left:2px dashed rgba(26,20,18,.28)}
-.more p,.when b,.when span{text-shadow:0 0 3px #fff,0 0 9px rgba(255,255,255,.95),0 0 18px rgba(255,255,255,.9)}
+.more p{text-shadow:0 0 3px #fff,0 0 9px rgba(255,255,255,.95),0 0 18px rgba(255,255,255,.9)}
 .more p{font-size:clamp(13.5px,min(1.1vw,2vh),17px);line-height:1.55;color:var(--ink);text-wrap:pretty}
 .more .c p+p{margin-top:11px}
 .more b{color:var(--ink)}
-.when{padding:9px 13px;border-radius:12px;border:1.8px dashed rgba(26,20,18,.5);background:rgba(255,248,228,.75)}
-.when b{display:block;font-weight:800}.when span{display:block;color:var(--ink3);margin-top:1px}
+/* the schedule: what to attend, in New York time (fixed, bold, as in the emails), then the visitor's own time with their city pinned */
+.when{position:relative;margin-top:clamp(10px,1.8vh,18px);padding:11px 16px;border-radius:16px;border:2px solid var(--ink);background:rgba(255,248,228,.92);box-shadow:0 4px 0 var(--ink);max-width:790px}
+.when .w-ny{display:block;font-size:clamp(15.5px,min(1.35vw,2.5vh),20px);font-weight:800;line-height:1.25;color:var(--ink)}
+.when .w-loc{display:flex;align-items:center;flex-wrap:wrap;gap:6px 10px;margin-top:6px}
+.when .w-loc[hidden]{display:none}
+.loc{display:inline-flex;align-items:center;gap:3px;padding:3px 11px 3px 5px;border-radius:999px;background:var(--pink);color:#fff;font-weight:800;font-size:clamp(14px,1.15vw,16px);box-shadow:0 0 0 2px #fff,0 3px 0 rgba(26,20,18,.85)}
+.loc .vpin{width:1.15em;height:1.15em;fill:#fff;flex:none}.loc .vpin circle{fill:var(--pink)}
+.when .w-lt{font-size:clamp(14px,1.15vw,16px);color:var(--ink2)}.when .w-lt b{color:var(--ink);font-weight:800}
+.when .w-meta{display:block;margin-top:6px;font-size:clamp(13px,1.02vw,15px);color:var(--ink3);font-weight:600}
+.pd{display:block;margin-top:2px;font-style:normal;font-size:10.5px;font-weight:700;letter-spacing:0;text-transform:none;color:var(--ink2)}
 
 /* the card: a ticket with the invitation resting on it */
 .rail{padding-top:48px}
@@ -143,8 +151,8 @@ h1 .hl{background:linear-gradient(transparent 14%,var(--sun) 14%,var(--sun) 94%,
 .gtag{position:absolute;right:-14px;top:-40px;width:112px;transform:rotate(9deg);pointer-events:none;filter:drop-shadow(0 6px 6px rgba(80,50,0,.25))}
 .gtag img{width:100%}.gtag b{position:absolute;left:20%;right:4%;top:20%;text-align:center;font-family:var(--serif);font-style:italic;font-weight:400;font-size:16px;line-height:1.05;color:var(--ink)}
 .gin{display:grid;grid-template-columns:.9fr 1.1fr;gap:22px;align-items:start;padding:16px 20px 12px;border:2px solid var(--ink);border-radius:15px;background:#FFFDF6 url(../img/vip/paint/paper.webp) center/260px;box-shadow:inset 0 0 0 5px rgba(255,255,255,.55)}
-.gin h3{font-family:var(--serif);font-weight:400;font-size:clamp(25px,min(2.3vw,4vh),35px);line-height:1.06;letter-spacing:-.012em}
-.qa p{font-size:14px;line-height:1.48;color:var(--ink);margin-top:8px}
+.gin h3{font-family:var(--serif);font-weight:400;font-size:clamp(25px,min(2.3vw,4vh),35px);line-height:1.1;letter-spacing:-.012em;margin-bottom:2px}
+.qa p{font-size:15.5px;line-height:1.62;color:var(--ink);margin-top:12px}
 .qf .flbl{font-size:clamp(15px,1.3vw,17.5px);line-height:1.25;margin:0}
 .qh{display:block;font-size:13px;color:var(--ink3);margin:2px 0 7px 2px}
 .qf textarea{display:block;width:100%;min-height:clamp(84px,13vh,140px);border-radius:12px;border:2px solid var(--ink);background:#fff repeating-linear-gradient(180deg,transparent 0 27px,rgba(247,37,133,.18) 27px 28px);padding:8px 14px;font-size:17px;line-height:28px;resize:vertical;transition:box-shadow .18s}
@@ -244,6 +252,14 @@ h1 .hl{background:linear-gradient(transparent 14%,var(--sun) 14%,var(--sun) 94%,
 @keyframes spin{to{transform:rotate(360deg)}}
 
 @media (min-width:981px) and (max-height:820px){
+  /* laptop heights: everything keeps its size class but gives back air so the page still fits one screen */
+  :root{--awn:clamp(38px,5.6vh,50px)}
+  .pg{padding-top:calc(var(--awn) + 20px)}
+  .top{grid-template-columns:clamp(150px,15vw,200px) minmax(0,1fr);gap:16px;margin-bottom:8px}
+  .bub{padding:9px 18px 11px}.bub p{font-size:clamp(19px,min(2vw,3.4vh),26px)}
+  h1{font-size:clamp(30px,min(4.5vw,6.2vh),60px)}h1 .h1a{margin-bottom:.2em}
+  .when{padding:8px 14px;margin-top:8px}.when .w-loc{margin-top:4px}.when .w-meta{margin-top:3px}
+  .more{margin-top:10px;padding-top:9px}.more p{font-size:14px;line-height:1.5}.more .c p+p{margin-top:8px}
   .pg{padding-top:calc(var(--awn) + 22px)}
   .rail{padding-top:40px}
   .card.done{padding:12px 20px 16px}
@@ -251,7 +267,7 @@ h1 .hl{background:linear-gradient(transparent 14%,var(--sun) 14%,var(--sun) 94%,
   .gift{margin-top:28px;padding-top:42px}
   .gift .bow{width:100px;margin-left:-50px;top:-30px}
   .gin{padding:12px 18px 10px;gap:18px}
-  .gin h3{font-size:25px}.qa p{font-size:13.5px;margin-top:6px}
+  .gin h3{font-size:25px}.qa p{font-size:14.5px;line-height:1.55;margin-top:10px}
   .qf .flbl{font-size:15px}.qh{margin-bottom:5px}
   .qf textarea{min-height:64px}
   .chk{margin:6px 0 7px;font-size:13px}.qbtn{height:48px}.qn{margin-top:5px;font-size:12px}
@@ -265,6 +281,7 @@ h1 .hl{background:linear-gradient(transparent 14%,var(--sun) 14%,var(--sun) 94%,
   .cp .msg{order:0;margin-bottom:16px}
   .cp h1{order:1;font-size:clamp(30px,8vw,52px)}
   .rail{order:3;width:100%;max-width:480px;margin:0 auto;padding-top:64px}
+  .cp .when{order:2;margin:14px auto 0;max-width:480px;width:100%}
   .cp .more .c:nth-child(1){order:5}
   .cp .stage{order:6;margin:24px auto 0;max-width:340px;width:100%}.cp .more .c:nth-child(2){order:7}
   .more{display:contents}.more:before{display:none}.more .c,.more .c+.c{display:block;max-width:480px;width:100%;align-self:center;margin-top:18px;padding:16px 0 0;border:0;border-top:2px dashed rgba(26,20,18,.3)}
@@ -337,14 +354,18 @@ h1 .hl{background:linear-gradient(transparent 14%,var(--sun) 14%,var(--sun) 94%,
       <div class="msg"><div class="bub"><b>Ana Calin</b><p>I’m doing something bigger than my usual workshops, and <mark class="sk">it’s completely free.</mark></p></div></div>
     </div>
     <h1><span class="h1a">My Newsletter Business Has Already Made <span class="hl">$1.4M</span>.</span> <span class="h1b">Here’s What I’d Do First If I Wanted to Leave My Job <em>in 2027</em>.</span></h1>
+    <div class="when" id="when">
+      <b class="w-ny">Tue to Thu, December 8 to 10 · 12:00 PM New York time</b>
+      <span class="w-loc" id="wLoc" hidden><span class="loc"><svg class="vpin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s-7-7.1-7-12.2A7 7 0 0 1 19 9.8C19 14.9 12 22 12 22Z"/><circle cx="12" cy="9.6" r="2.6"/></svg><span id="wCity"></span></span><span class="w-lt">Your local time: <b id="wLocT"></b></span></span>
+      <span class="w-meta">Free · Live on Zoom · About 90 minutes per session</span>
+    </div>
     <div class="more">
       <div class="c">
         <p class="lead">I’m Ana Calin. I sell workshops and programs through my newsletter, How We Grow. <b>My first workshop sold two copies.</b> If I had to start again around a full-time job, there’s one thing I’d want to find out before giving another idea my evenings.</p>
-        <p>If you’ve spent years getting good at something and still wonder, “Who would pay me for this?” <mark class="sk">come. That’s a good place to start.</mark></p>
       </div>
       <div class="c">
         <p>I’m hosting The Exit Plan, a free, three-day live workshop. <mark class="pk">I’ll show you what I’d sell first, where I’d look for customers if nobody knew my name, and why AI has changed the order I’d do things in.</mark></p>
-        <p class="when"><b>Three live sessions on Zoom · About 90 minutes each</b><span>I’ll email you the dates as soon as they’re set.</span></p>
+        <p>If you’ve spent years getting good at something and still wonder, “Who would pay me for this?” <mark class="sk">come. That’s a good place to start.</mark></p>
       </div>
     </div>
   </section>
@@ -401,6 +422,21 @@ h1 .hl{background:linear-gradient(transparent 14%,var(--sun) 14%,var(--sun) 94%,
 (function(){
   /* the sunflower wears its Santa hat until Jan 1, as on every button of the other pages */
   if (new Date() < new Date('2027-01-01T00:00:00')) document.getElementById('wSf').setAttribute('href', '#sfx');
+  /* the schedule in the visitor's own place: dates and time in their zone (so a session after midnight shows its real local date), their city pinned.
+     New York visitors see only the fixed line. Event start: Tue Dec 8, 12:00 PM New York = 17:00 UTC; the third session is Thu Dec 10. */
+  (function(){ var tz = ''; try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '' } catch (e) {}
+    function fmt(ms, o){ return new Intl.DateTimeFormat('en-US', Object.assign({ timeZone: tz || 'UTC' }, o)).format(ms).replace(/[\u202f\u00a0]/g, ' ') }
+    /* set these when the dates are confirmed (an ISO time with its zone, e.g. '2026-12-07T17:00:00Z'): they appear under "Your link" and "Public opens", in the visitor's time */
+    var EARLY_ACCESS = '', PUBLIC_OPENS = '';
+    if (tz) [['p2', EARLY_ACCESS], ['p3', PUBLIC_OPENS]].forEach(function(x){ var t = x[1] && Date.parse(x[1]); var el = document.querySelector('.at1 .' + x[0] + ' span'); if (t && el) el.insertAdjacentHTML('beforeend', '<em class="pd">' + fmt(t, { weekday: 'short', month: 'short', day: 'numeric' }) + ' · ' + fmt(t, { hour: 'numeric', minute: '2-digit' }) + '</em>') });
+    if (!tz || tz === 'America/New_York' || tz.indexOf('/') < 0) return;
+    var S = Date.UTC(2026, 11, 8, 17, 0), E = Date.UTC(2026, 11, 10, 17, 0);
+    var sw = fmt(S, { weekday: 'short' }), ew = fmt(E, { weekday: 'short' }), sm = fmt(S, { month: 'long' }), em = fmt(E, { month: 'long' }), sd = fmt(S, { day: 'numeric' }), ed = fmt(E, { day: 'numeric' });
+    var when = sw + ' to ' + ew + ', ' + sm + ' ' + sd + ' to ' + (em === sm ? '' : em + ' ') + ed + ' · ' + fmt(S, { hour: 'numeric', minute: '2-digit' });
+    document.getElementById('wCity').textContent = tz.split('/').pop().replace(/_/g, ' ');
+    document.getElementById('wLocT').textContent = when;
+    document.getElementById('wLoc').hidden = false;
+  })();
   var qs = new URLSearchParams(location.search), tz = ''; try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '' } catch (e) {}
   var API = '/api/ana-waitlist', card = document.getElementById('card'), form = document.getElementById('wl'),
       go = document.getElementById('wGo'), fail = document.getElementById('wFail'), email = '';
