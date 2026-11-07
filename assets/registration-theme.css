@@ -506,17 +506,18 @@ footer { background-color:var(--sun); background-image:url('../img/vip/paint/tx-
 
 /* The font's own i-dot is the live light; no separate signal or extra gap. */
 .live-i { display:inline-block; position:relative; }
-.live-i:after {
+.live-i:before,.live-i:after {
   content:''; position:absolute; pointer-events:none;
   left:.2105em; top:calc(50% - .3175em); width:.2em; height:.2em;
-  border:1.5px solid #df3939; border-radius:50%;
+  border-radius:50%; box-shadow:inset 0 0 0 .65px #df3939;
   transform:translate(-50%,-50%);
-  animation:live-i-ring 2.8s ease-out infinite;
+  animation:live-i-ring 3s ease-out infinite;
 }
+.live-i:before { animation-delay:-1.5s; }
 @keyframes live-i-ring {
-  0%,15% { transform:translate(-50%,-50%) scale(.85); opacity:0; }
-  30% { opacity:.85; }
-  85%,100% { transform:translate(-50%,-50%) scale(1.65); opacity:0; }
+  0% { transform:translate(-50%,-50%) scale(.8); opacity:.7; }
+  75% { opacity:.25; }
+  100% { transform:translate(-50%,-50%) scale(1.85); opacity:0; }
 }
 .live-i-light {
   position:absolute; inset:0; pointer-events:none;
@@ -527,4 +528,4 @@ footer { background-color:var(--sun); background-image:url('../img/vip/paint/tx-
   0%,100% { color:var(--sun); text-shadow:0 0 .025em #ffd400,0 0 .055em rgba(255,192,0,.25); }
   45% { color:#fff1a0; text-shadow:0 0 .045em #ffd400,0 0 .105em rgba(255,192,0,.8); }
 }
-@media (prefers-reduced-motion:reduce) { .live-i-light { animation:none; } .live-i:after { animation:none; opacity:.7; } }
+@media (prefers-reduced-motion:reduce) { .live-i-light { animation:none; } .live-i:before,.live-i:after { animation:none; opacity:.5; } .live-i:before { transform:translate(-50%,-50%) scale(1.45); } }

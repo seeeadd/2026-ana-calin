@@ -193,3 +193,5 @@ correction and every approval-with-reason (SOP section D). The full raw messages
 - 2026-11-08 · Testimonial responsive bug · The mobile review-collapse state persisted at desktop width, hiding five cards while the layout reserved three columns. Listen for breakpoint changes, restrict hiding to mobile CSS, and retain the visitor’s expanded choice. Verify mobile-to-desktop and desktop-to-mobile resizing.
 
 - 2026-11-08 · Live i-dot · Add a red expanding outline pulse centered on the original italic i-dot. Preserve the yellow dot, lettering and spacing; use font-relative positioning and a static outline for reduced motion.
+
+- 2026-11-08 · Live indicator refinement · Sean: “thinner and not just one dot” → two staggered, fine red outline ripples around the existing yellow i-dot; halve the ring stroke and keep the layout unchanged.
