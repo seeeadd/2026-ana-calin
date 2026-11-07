@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 900" fill="none">
+  <!-- Loose sunrays and paper streamers frame the draw without sitting behind copy. -->
+  <g stroke="#f5c400" stroke-width="3" stroke-linecap="round" opacity=".34">
+    <path d="M1010 325 947 175M1071 309 1080 118M1134 326 1232 155M1183 372 1358 271M1204 430 1380 420M1181 492 1368 563M1133 533 1244 715M1073 548 1089 799M1008 526 926 713M960 475 808 571M958 377 820 281"/>
+  </g>
+  <g stroke="#f72585" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" opacity=".38">
+    <path d="M1271 73c-33 15-4 37 18 18s39 5 21 33M1339 727c-37-16-49 17-18 29s8 44-17 39"/>
+    <path d="M1180 804l5 15 16 5-16 5-5 16-5-16-16-5 16-5ZM1370 177l3 10 11 3-11 4-3 10-4-10-10-4 10-3Z"/>
+  </g>
+  <g fill="#ffd400" opacity=".7"><path d="M1217 55l12 5-3 7-12-6ZM1352 648l11-7 4 7-11 6Z"/><circle cx="1319" cy="170" r="5"/><circle cx="929" cy="823" r="4"/></g>
+  <g fill="#f72585" opacity=".3"><circle cx="1202" cy="114" r="4"/><circle cx="1361" cy="524" r="3"/><circle cx="1240" cy="833" r="3"/></g>
+</svg>

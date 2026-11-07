@@ -30,7 +30,7 @@
 ## Brand
 
 - **Colours:**
-  - sunflower `#FFD400` primary, Greek shutter blue `#286B9F` secondary (Nov 7: slightly richer than the earlier `#365F8A`), warm ink `#1A1412`;
+  - sunflower `#FFD400` primary, Greek shutter blue `#1B63A9` secondary (Nov 7: deeper and more saturated than the earlier grey blue), warm ink `#1A1412`;
   - original pink `#F72585` is a third accent, less prevalent than blue; a restrained blush section is welcome. The sticky header stays translucent glass with a warm cream tint, not solid cream or pink. Yellow remains dominant;
   - greys `#3D332E` and `#7A6A60`;
   - cream paper `#FFF8EE`;
@@ -106,3 +106,5 @@ Registration uses `assets/registration-vsl.js`: Wistia 995puecipz on desktop and
 - Closing “live” is sunflower yellow with a fine warm-ink edge for legibility; keep the original Instrument Serif italic and subtle signal. Each live-review question has its own small coded person graphic on the left, with clean phrase breaks.
 
 - Nov 7 palette refinement: header text and status light are pink while the header remains neutral translucent glass. The Day 1–3 progress navigation and 1:1 prize label are pink; FAQ uses blue and yellow; the following closing-ask panel is blush pink. The work-choice section is warm beige. On desktop the live-review questions share a full-width three-column row beneath the intro and painted scene; mobile stacks each graphic beside its question.
+
+- Nov 7 colour correction: pink should read as clear saturated pink, not burgundy/red-pink. Use #DF098A for small pink text and #F72585 for graphic accents. Conversation panel has a pink wash; FAQ uses yellow and warm ink, no blue. Closing section combines pink and blue with pink calendar-invite details; keep yellow live lettering and footer grain. Give the prize a quiet celebratory sunray/streamer background.
