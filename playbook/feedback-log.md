@@ -183,3 +183,5 @@ correction and every approval-with-reason (SOP section D). The full raw messages
 - 2026-11-07 · Link preview · Sean: “really be a representation of the page” → replace the outdated newsletter share image with The Exit Plan, the current job-exit message, Ana on a live-call laptop, cream paper, sunflower yellow and pink accents. Use a new image URL and explicit preview dimensions.
 
 - 2026-11-07 · Preview correction · Sean: “use code so it really looks connected with the page” → build link artwork in HTML/CSS using the existing Instrument Serif/Manrope fonts, painted laptop, grain, calendar tiles and unaltered Ana photo. Generated mockup rejected and not published.
+
+- 2026-11-07 · Preview scale · Sean: “more concise and bigger”, “cartoon Anna”, “actual sun with a Santa hat”, and “December bigger” → remove secondary copy, center the headline, enlarge Ana/date, reuse the favicon and original seasonal CTA symbol, and bring the window flower planter into the video composition. Keep everything within the 1200×630 crop.

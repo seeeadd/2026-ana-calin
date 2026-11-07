@@ -124,3 +124,5 @@ Registration uses `assets/registration-vsl.js`: Wistia 995puecipz on desktop and
 - Link previews should reflect the current registration page, including its event promise, live workshop format, real Ana imagery and cream/yellow/pink palette. Use versioned image filenames when publishing changes so crawlers can refresh the asset.
 
 - 2026-11-07 · Preview correction · Sean: “use code so it really looks connected with the page” → build link artwork in HTML/CSS using the existing Instrument Serif/Manrope fonts, painted laptop, grain, calendar tiles and unaltered Ana photo. Generated mockup rejected and not published.
+
+- Share preview thumbnails: concise, large type and a close view of Ana; balanced centered composition. Main brand mark is the cartoon Ana favicon. CTA uses the existing Christmas sunflower symbol. December must be prominent; reuse original window flowers rather than unrelated decoration.
