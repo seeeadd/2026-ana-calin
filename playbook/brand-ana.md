@@ -31,7 +31,7 @@
 
 - **Colours:**
   - sunflower `#FFD400` primary, Greek shutter blue `#365F8A` secondary, warm ink `#1A1412`;
-  - original pink `#F72585` is a third accent, less prevalent than blue; a pink sticky header and a restrained blush section are welcome. Yellow remains dominant;
+  - original pink `#F72585` is a third accent, less prevalent than blue; a restrained blush section is welcome. The sticky header stays translucent glass with a warm cream tint, not solid cream or pink. Yellow remains dominant;
   - greys `#3D332E` and `#7A6A60`;
   - cream paper `#FFF8EE`;
   - tints: blue `#BFD7EC` / `#9DBEDD`, pink `#FFC6DE`, yellow `#FFE27A`.
@@ -102,3 +102,5 @@ Registration uses `assets/registration-vsl.js`: Wistia 995puecipz on desktop and
 - Subtle backgrounds in selected sections, with plain sections between them.
 - Glass sound control with animated speaker waves; a drawn yellow CTA perimeter with a warm glow and fine texture; a gentle broadcast pulse on the closing word “live,” alongside the upcoming dates.
 - Replay illustrations when visitors return; Day slide previews loop while visible. Respect reduced motion.
+
+- Closing “live” is sunflower yellow with a fine warm-ink edge for legibility; keep the original Instrument Serif italic and subtle signal. Each live-review question has its own small coded person graphic on the left, with clean phrase breaks.

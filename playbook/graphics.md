@@ -171,6 +171,6 @@ Learned on Ana's registration video, Nov 4. All of them were corrections.
 - The mascot stays on screen throughout with a job, never hidden behind a piece or missing, and never covers a piece.
 - The opening and the closing are showpieces.
 
-## Ana page illustration, Nov 7
+## Ana question graphics, Nov 7
 
-The live-review question vignette uses one generic painted attendee, not a likeness or testimonial. Asset: `img/vip/paint/asking-attendee.webp`, optimized from a transparent image generated with the built-in image tool. Prompt: “One thoughtful adult with chestnut hair, waist-up facing left, palm raised as if asking a question, cream notebook, sunflower-yellow sweater and tiny Greek-blue details; handmade gouache, watercolor and coloured pencil on warm paper, natural proportions, full head and hands, rough cutout hem, transparent background, no text or speech bubbles.” Keep it small beside the questions; the existing laptop review scene stays dominant.
+Sean clarified that the question illustrations must be coded graphics, one to the left of each question. Use three native SVG person vignettes: two ideas, a conversation and a clock. Files: `img/question-ideas.svg`, `img/question-advice.svg`, `img/question-time.svg`. Keep them small, use the page’s yellow/blue/cream pigments with light grain, and align each with its own text. Each question has two deliberate phrase lines that can wrap naturally on narrow phones. This replaces the earlier single generated attendee on the right; that older asset is no longer used on the page.
