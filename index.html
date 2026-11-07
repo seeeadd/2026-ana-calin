@@ -2420,7 +2420,8 @@ html.bdg-js .bdg.in{animation:bdgIn .6s cubic-bezier(.2,1.5,.4,1) both}
 .rgrid2 .rq blockquote{font-size:19px;line-height:1.32}
 .rgrid2 .rq blockquote:before{font-size:52px;height:24px}
 @media (max-width:860px){.rgrid2{max-width:620px;margin-left:auto;margin-right:auto}}
-.rgrid2.short .rq:nth-of-type(n+3){display:none}
+@media (max-width:700px){.rgrid2.short .rq:nth-of-type(n+3){display:none}}
+@media (min-width:701px){.rgrid2 .rg-more{display:none!important}}
 .rgrid2 .rg-more:not([hidden]){display:block;margin:4px auto 0;column-span:all}
 
 /* ---------- desktop and laptop hero (Sean, Nov 4): the same layout, video on the left, everything else on the right,
@@ -3050,7 +3051,7 @@ html.wv-lock{overflow:hidden}
       <figure class="rq sm"><blockquote>One thing I notice and admire about you Ana, is you are an action taker. You don't sit around for months trying to decide on what to offer, or what colour to make your background. You ask the question, do what you need to get clear, and then act on it.</blockquote><figcaption><img src="img/o/av/stacie.webp" alt="" width="80" height="80" loading="lazy"><span><b>Stacie Whitney</b><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span></span></figcaption></figure>
       <figure class="rq sm"><blockquote>Thank you so much Ana for the support, guidance, and tools!</blockquote><figcaption><img src="img/o/av/alyssa.webp" alt="" width="80" height="80" loading="lazy"><span><b>Alyssa Zander</b><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span></span></figcaption></figure>
       <button class="aw-more rg-more" type="button" hidden>show all reviews</button>
-      <script>(function(){var w=document.currentScript.parentNode,b=w.querySelector(".rg-more");if(matchMedia("(max-width:700px)").matches){w.classList.add("short");b.hidden=false;b.addEventListener("click",function(){w.classList.remove("short");b.hidden=true})}})();</script>
+      <script>(function(){var w=document.currentScript.parentNode,b=w.querySelector(".rg-more"),mq=matchMedia("(max-width:700px)"),expanded=false;function sync(){var short=mq.matches&&!expanded;w.classList.toggle("short",short);b.hidden=!short;b.setAttribute("aria-expanded",String(!short))}b.addEventListener("click",function(){expanded=true;sync()});if(mq.addEventListener)mq.addEventListener("change",sync);else mq.addListener(sync);sync()})();</script>
     </div>
     <!-- the wins: real posts and messages from Ana's students and readers (tools/wins.py) -->
     <div class="aw" data-wins>
