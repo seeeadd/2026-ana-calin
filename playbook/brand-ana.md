@@ -30,7 +30,7 @@
 ## Brand
 
 - **Colours:**
-  - sunflower `#FFD400` primary, Greek shutter blue `#365F8A` secondary, warm ink `#1A1412`;
+  - sunflower `#FFD400` primary, Greek shutter blue `#286B9F` secondary (Nov 7: slightly richer than the earlier `#365F8A`), warm ink `#1A1412`;
   - original pink `#F72585` is a third accent, less prevalent than blue; a restrained blush section is welcome. The sticky header stays translucent glass with a warm cream tint, not solid cream or pink. Yellow remains dominant;
   - greys `#3D332E` and `#7A6A60`;
   - cream paper `#FFF8EE`;
@@ -51,7 +51,7 @@
   - coffee, letters and envelopes;
   - her own big paintings (pink, turquoise, a plant in an orange pot);
   - her toddler.
-- **Her look (Nov 7):** warm, confident and handmade, with a quieter page. Ana explicitly found the earlier pink-heavy page too girly and crowded. Use yellow, cream and Greek shutter blue; keep pink as a small tertiary accent.
+- **Her look (Nov 7):** warm, confident and handmade, with a quieter page. Ana explicitly found the earlier pink-heavy page too girly and crowded. Use yellow, cream and Greek shutter blue, with selected pink accents and blush grounds. Pink remains less prevalent than yellow and blue overall.
 - **Art style:**
   - now: her own big paintings (loose pink and turquoise, a plant in an orange pot) and a simple flat sunflower
     cartoon; warm, hand-made, a little naive;
@@ -104,3 +104,5 @@ Registration uses `assets/registration-vsl.js`: Wistia 995puecipz on desktop and
 - Replay illustrations when visitors return; Day slide previews loop while visible. Respect reduced motion.
 
 - Closing “live” is sunflower yellow with a fine warm-ink edge for legibility; keep the original Instrument Serif italic and subtle signal. Each live-review question has its own small coded person graphic on the left, with clean phrase breaks.
+
+- Nov 7 palette refinement: header text and status light are pink while the header remains neutral translucent glass. The Day 1–3 progress navigation and 1:1 prize label are pink; FAQ uses blue and yellow; the following closing-ask panel is blush pink. The work-choice section is warm beige. On desktop the live-review questions share a full-width three-column row beneath the intro and painted scene; mobile stacks each graphic beside its question.
