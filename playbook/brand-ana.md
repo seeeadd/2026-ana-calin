@@ -120,3 +120,7 @@ Registration uses `assets/registration-vsl.js`: Wistia 995puecipz on desktop and
 - Registration releases: assets are served with immutable caching. After any registration-theme.css change, update its index.html query version to the stylesheet’s SHA-256 prefix so existing visitors receive the new styles.
 
 - Closing live indicator belongs on the original italic i-dot, not a separate circle; keep natural spacing after “you” and respect reduced motion.
+
+- Link previews should reflect the current registration page, including its event promise, live workshop format, real Ana imagery and cream/yellow/pink palette. Use versioned image filenames when publishing changes so crawlers can refresh the asset.
+
+- 2026-11-07 · Preview correction · Sean: “use code so it really looks connected with the page” → build link artwork in HTML/CSS using the existing Instrument Serif/Manrope fonts, painted laptop, grain, calendar tiles and unaltered Ana photo. Generated mockup rejected and not published.
