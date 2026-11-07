@@ -169,3 +169,9 @@ correction and every approval-with-reason (SOP section D). The full raw messages
 - 2026-11-07 · Ana palette follow-up · Sean: “pink pink not red pink”, “all yellow? no blue?”, “a bit more saturated and a bit deeper” → brighter pink text/calendar details, pink conversation gradient, yellow FAQ, pink-blue closing wash and deeper Greek blue. Add coded sunrays, paper streamers and sparse confetti around the giveaway art, clear of its copy. · registration-theme.css, giveaway-celebration.svg; brand notes updated
 
 - 2026-11-07 · Ana background placement · Sean: “section bg”, “remove the bg beside the phone”, “yellow entirely ... gradient animated” → clear giveaway card over a full-section pink/gold sunburst, animated pink conversation gradient with pink emphasis, yellow-only animated closing wash and pink pin. Light-yellow hero event label, pink year and form lead-in. · index.html and registration-theme.css; brand notes updated
+
+- 2026-11-07 · Conversation gradient · Sean: “matured yellow + Ana’s yellow” and “animation ... more interesting” → cream-gold paper with overlapping sunflower and soft light layers moving on different curved cycles; pink heading retained. Transform-only animation with reduced-motion fallback. · registration-theme.css; brand notes updated
+
+- 2026-11-07 · Background intensity · Sean: “dont make these super yellow ... white beige yellow” (FAQ and closing) → warm-white/beige grounds with faint yellow shading; preserve bright action accents. · registration-theme.css; brand notes updated
+
+- 2026-11-07 · Heading accents and giveaway · Sean rejected the sunburst section background; use warm paper and faint ticket outlines behind the whole giveaway, with a plain inner card. “about learning with me” is pink; work-choice headings use readable muted gold. · registration-theme.css, raffle-paper.svg; brand notes updated

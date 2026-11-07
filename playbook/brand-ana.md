@@ -110,3 +110,9 @@ Registration uses `assets/registration-vsl.js`: Wistia 995puecipz on desktop and
 - Nov 7 colour correction: pink should read as clear saturated pink, not burgundy/red-pink. Use #DF098A for small pink text and #F72585 for graphic accents. Conversation panel has a pink wash; FAQ uses yellow and warm ink, no blue. Closing section combines pink and blue with pink calendar-invite details; keep yellow live lettering and footer grain. Give the prize a quiet celebratory sunray/streamer background.
 
 - Nov 7 correction: conversation gradient moves gently and its italic heading is pink. Giveaway decoration belongs behind the entire section, never beside the phone inside the card. Closing section now uses only animated yellow shades with a pink location pin, replacing the pink-blue wash. Hero event label has a light-yellow highlight, “in 2027” is pink, and form lead-in is pink. Respect reduced motion.
+
+- Nov 7 conversation panel: replace pink ground with mature cream-gold plus original #FFD400. Keep pink heading emphasis. Use two independent, softly drifting light layers with paper grain; move the background, never the guest photos or text.
+
+- Nov 7 background balance: FAQ and final section use warm white/beige with a faint yellow tint, never broad saturated-yellow fields. Keep original sunflower on buttons, live lettering, calendar accent and footer.
+
+- Nov 7 final refinements: testimonial heading emphasis is pink; work-choice eyebrow and italic heading use readable muted gold #89680F. Giveaway background is warm linen paper with faint raffle-ticket outlines; the radial sunburst is removed.
