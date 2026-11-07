@@ -177,3 +177,5 @@ correction and every approval-with-reason (SOP section D). The full raw messages
 - 2026-11-07 · Heading accents and giveaway · Sean rejected the sunburst section background; use warm paper and faint ticket outlines behind the whole giveaway, with a plain inner card. “about learning with me” is pink; work-choice headings use readable muted gold. · registration-theme.css, raffle-paper.svg; brand notes updated
 
 - 2026-11-07 · Release verification · Vercel deployment succeeded but the browser retained the previous CSS because the query version was unchanged under immutable caching. Version the registration stylesheet with its content hash on every CSS release. · index.html; promoted to brand-ana.md
+
+- 2026-11-07 · Live lettering · Sean: “make the light the dot on the letter I instead” → remove the separate circle and its padding; pulse only the original italic i-dot, with a reduced-motion fallback.

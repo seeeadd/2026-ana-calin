@@ -231,11 +231,6 @@ section > .tkb, .ltoast, .tkt .just:not([hidden]), .fl-live { display: none !imp
 /* Keep the original serif baseline; the signal is a small annotation outside the line. */
 .final .live-heading { line-height:1.08; padding-top:8px; }
 .final .live-word { display:inline; position:relative; color:var(--blue); padding:0; margin:0; background:none; }
-.live-signal { position:absolute; right:-.19em; top:.13em; width:.14em; height:.14em; display:grid; place-items:center; }
-.live-signal i { display:block; width:.065em; height:.065em; border-radius:50%; background:var(--blue); }
-.live-signal:before,.live-signal:after { content:""; position:absolute; inset:0; border:1px solid var(--blue); border-radius:50%; animation:live-signal 3s ease-out infinite; }
-.live-signal:after { animation-delay:1.5s; }
-@keyframes live-signal { 0% {transform:scale(.5);opacity:.55} 85%,100% {transform:scale(1.5);opacity:0} }
 .final .live-context { margin:14px 0 25px; max-width:none; color:var(--blue); font:600 15px/1.5 var(--sans); text-wrap:balance; }
 
 /* A visible stroke draws the actual rounded perimeter, then quietly clears. */
@@ -273,8 +268,7 @@ section > .tkb, .ltoast, .tkt .just:not([hidden]), .fl-live { display: none !imp
   .vsl-loading small { font-size:10px; }
 }
 @media (prefers-reduced-motion:reduce) {
-  .vsl-loader,.sound-wave,#vsl .sound-bars i,.live-signal:before,.live-signal:after,.btn:after,.btn.shine:after,.fb .btn:after { animation:none; }
-  .live-signal:before { opacity:.3; }.live-signal:after { display:none; }
+  .vsl-loader,.sound-wave,#vsl .sound-bars i,.btn:after,.btn.shine:after,.fb .btn:after { animation:none; }
 }
 
 /* Warm white and pale honey, with texture visible in selected places only. */
@@ -335,8 +329,7 @@ footer { background-color:var(--sun); background-image:url('../img/vip/paint/tx-
  .claim .pic .bk-rise .r {animation:none;}
 }
 .btn { position:relative; isolation:isolate; }
-.final .live-word { padding-left:.2em; }
-.final .live-signal { left:0; right:auto; top:.4em; }
+.final .live-word { padding-left:0; }
 
 .recap.ask { background:#fcf6eb; background-image:none; border:1px solid #eadfce; }
 
@@ -430,8 +423,6 @@ footer { background-color:var(--sun); background-image:url('../img/vip/paint/tx-
 
 /* Sunflower lettering, edged in warm ink so it holds on cream paper. */
 .final .live-word { color:var(--sun); -webkit-text-stroke:.65px #71550a; paint-order:stroke fill; text-shadow:1px 1.5px 0 #71550a,0 4px 10px rgba(255,212,0,.2); }
-.final .live-signal i { background:var(--sun); border:1px solid #9c760e; }
-.final .live-signal:before,.final .live-signal:after { border-color:#c49713; }
 @media(max-width:380px) {
  .bring-questions .bring-qs li { grid-template-columns:44px minmax(0,1fr); gap:10px; font-size:14px; }
  .question-graphic { width:44px; height:58px; }
@@ -508,3 +499,16 @@ footer { background-color:var(--sun); background-image:url('../img/vip/paint/tx-
 
 .revs h2 em { color:var(--pink-ink); }
 .where .eyebrow,.where h2 em { color:#89680f; }
+
+/* The font's own i-dot is the live light; no separate signal or extra gap. */
+.live-i { display:inline-block; position:relative; }
+.live-i-light {
+  position:absolute; inset:0; pointer-events:none;
+  clip-path:inset(-.08em -.12em 68% -.12em);
+  animation:live-i-glow 2.8s ease-in-out infinite;
+}
+@keyframes live-i-glow {
+  0%,100% { color:var(--sun); text-shadow:0 0 .025em #ffd400,0 0 .055em rgba(255,192,0,.25); }
+  45% { color:#fff1a0; text-shadow:0 0 .045em #ffd400,0 0 .105em rgba(255,192,0,.8); }
+}
+@media (prefers-reduced-motion:reduce) { .live-i-light { animation:none; } }

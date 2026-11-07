@@ -118,3 +118,5 @@ Registration uses `assets/registration-vsl.js`: Wistia 995puecipz on desktop and
 - Nov 7 final refinements: testimonial heading emphasis is pink; work-choice eyebrow and italic heading use readable muted gold #89680F. Giveaway background is warm linen paper with faint raffle-ticket outlines; the radial sunburst is removed.
 
 - Registration releases: assets are served with immutable caching. After any registration-theme.css change, update its index.html query version to the stylesheet’s SHA-256 prefix so existing visitors receive the new styles.
+
+- Closing live indicator belongs on the original italic i-dot, not a separate circle; keep natural spacing after “you” and respect reduced motion.
