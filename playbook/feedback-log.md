@@ -187,3 +187,5 @@ correction and every approval-with-reason (SOP section D). The full raw messages
 - 2026-11-07 · Preview scale · Sean: “more concise and bigger”, “cartoon Anna”, “actual sun with a Santa hat”, and “December bigger” → remove secondary copy, center the headline, enlarge Ana/date, reuse the favicon and original seasonal CTA symbol, and bring the window flower planter into the video composition. Keep everything within the 1200×630 crop.
 
 - 2026-11-08 · Conversation background · Sean: “egg white but with a yellow something ... animated moving around” → egg-white panel and neutral cards, with two small soft yellow light pools drifting along the perimeter. No broad yellow wash. Keep the pink italic heading.
+
+- 2026-11-08 · Live-review spacing · Sean: “a bit too much white space here” → tighten the desktop heading/illustration pair, reduce the scene footprint and row gap, and bring the closing question line closer. Keep all three illustrated questions evenly spread across the full section.
