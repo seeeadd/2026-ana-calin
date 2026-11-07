@@ -1,0 +1,30 @@
+/* The original calculator, in warm ivory, pale honey and Greek shutter blue. */
+:root { --cream:#fffcf7; --sand:#f8f3e9; --sun:#f3d579; --ysoft:#fbefd4; --pink:#365f8a; --psoft:#e8eef4; --pk2:#cbdbe7; --pk3:#eef3f7; --line:rgba(54,75,91,.16); }
+body {background:#fffcf7;}
+.xmain .bgf {display:none;}
+.xhead .cxlogo {width:108px;height:108px;}
+.cxlogo-calc {animation:none!important;}
+.xpanel,.xc,.xplan,.xgate,.xpick,.xst,.xtile,.xans,.xtodo {border:1px solid #dcdcd3; box-shadow:none; border-radius:14px;}
+.xgate {box-shadow:0 16px 50px -30px rgba(40,65,87,.3);}
+.xgate-pad {background:#f8e7b6;border:1px solid #ddca9b;box-shadow:none;}
+.xopt,.xin,.xsel,.xctxed {border-radius:9px;border-color:#d7d8cf;}
+.xopt {background:#fffdf9;}
+.xopt:has(input:checked) {background:#fbf0d7;border-color:#c5a765;box-shadow:none;}
+.xc.on {transform:none;border-color:#b59b62;box-shadow:0 0 0 2px rgba(219,191,128,.2);background:#fffdf8;}
+.xc-tag {border-radius:5px;letter-spacing:.03em;}
+.xc-go button,.btn:not(.ghost) {background:#365f8a;color:#fff;box-shadow:none;border-radius:10px;}
+.xc-go button:hover,.btn:not(.ghost):hover {background:#294d73;transform:none;}
+.xc.on .xc-go button {background:#f3d579;color:#25394b;}
+.xplan {background:#fffdfa;padding:32px;}
+.xtile {background:#fff;}
+.xtile.t-sales {--tone:#f8e8bb;background:#f9edce;}
+.xtile.t-money {--tone:#fbf1db;background:#fbf5e8;}
+.xtile.t-time {--tone:#e8eef4;background:#edf2f6;}
+.xtile.t-people {--tone:#f3f1ea;background:#f5f4ef;}
+.xst.money {--tone:#f2ddb1;}.xst.time {--tone:#d4e2ed;}.xst.people {--tone:#e4e8e9;}.xst.real {--tone:#ece3d7;}
+.xst>summary {background:color-mix(in srgb,var(--tone) 35%,#fff);}
+.xst-n {border:1px solid #c9c9bd;box-shadow:none;border-radius:12px;font-size:28px;width:48px;height:48px;background:rgba(255,255,255,.75);}
+.xst-s {border:1px solid #dbddd7;font-weight:600;}
+.xplan .eyebrow,.xhead h1 em,.xsteps-h em {color:#365f8a;}
+.xsave {background:rgba(255,252,247,.95);}
+@media(max-width:640px){.xplan{padding:24px 18px}.xst{box-shadow:none;border-radius:14px}.xst-n{width:36px;height:36px;font-size:23px}}
