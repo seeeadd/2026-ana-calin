@@ -170,3 +170,7 @@ Learned on Ana's registration video, Nov 4. All of them were corrections.
 - Backgrounds keep moving. Every location has its own motion, and the character interacts with its objects.
 - The mascot stays on screen throughout with a job, never hidden behind a piece or missing, and never covers a piece.
 - The opening and the closing are showpieces.
+
+## Ana page illustration, Nov 7
+
+The live-review question vignette uses one generic painted attendee, not a likeness or testimonial. Asset: `img/vip/paint/asking-attendee.webp`, optimized from a transparent image generated with the built-in image tool. Prompt: “One thoughtful adult with chestnut hair, waist-up facing left, palm raised as if asking a question, cream notebook, sunflower-yellow sweater and tiny Greek-blue details; handmade gouache, watercolor and coloured pencil on warm paper, natural proportions, full head and hands, rough cutout hem, transparent background, no text or speech bubbles.” Keep it small beside the questions; the existing laptop review scene stays dominant.

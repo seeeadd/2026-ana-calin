@@ -2,13 +2,13 @@
    pink only in small signatures and the existing painted illustrations. */
 :root {
   --cream: #fffcf7;
-  --sun: #f3d579;
-  --ysoft: #fbefd4;
+  --sun: #FFD400;
+  --ysoft: #FFF1B3;
   --sand: #fcf8f1;
   --blue: #365f8a;
   --blue-soft: #e9f0f6;
   --accent: var(--blue);
-  --pink: #d45d87;
+  --pink: #F72585;
   --psoft: #f8e9ed;
   --line: rgba(26, 20, 18, .13);
   --sh: 0 12px 30px -22px rgba(40, 47, 55, .3);
@@ -39,7 +39,7 @@
   color: var(--ink);
   box-shadow: 0 5px 0 rgba(149, 115, 0, .15);
 }
-.btn:hover { background: #f8df96; }
+.btn:hover { background: #ffdf38; }
 .btn:has(.sf-b) { padding-left: 12px; }
 .btn .sf-b { background: transparent; box-shadow: none; }
 .vplay { background: var(--blue); box-shadow: 0 6px 20px -10px #243f5c; }
@@ -283,11 +283,11 @@ section > .tkb, .ltoast, .tkt .just:not([hidden]), .fl-live { display: none !imp
 .gift .gcard { background:radial-gradient(ellipse at 8% 68%,rgba(240,210,155,.24),transparent 65%),#fffaf3 !important; border:1px solid #e9dfd0; }
 .convos { border-color:#e4dccf; background:linear-gradient(125deg,#fffdfa,#faf5ed); }
 .final { background-color:#fffcf7; background-image:radial-gradient(ellipse at 22% 68%,rgba(242,208,144,.2),transparent 60%) !important; }
-footer { background-color:#f7ead1; }
+footer { background-color:var(--sun); background-image:url('../img/vip/paint/tx-grain.webp') !important; background-size:256px; }
 .claim .pic .bk-rise { opacity:.55; width:138%; --ray:rgba(212,166,73,.16); --c1:#fff8e9; --c2:#f6e4bd; --c3:#f1dba7; }
 .claim .pic .bk-rise .r { display:block !important; animation:bdTurn 160s linear infinite; }
 .claim .pic .bk-rise .d { opacity:.65; }
-.claim .pic .fr { box-shadow:8px 8px 0 #f1dba7; }
+.claim .pic .fr { box-shadow:8px 8px 0 var(--sun); }
 .dcal,.dtext .out,.dm,.drow .out { background-color:#fffaf1; }
 
 /* Original typography, with the actual italic face preloaded in the head. */
@@ -313,10 +313,10 @@ footer { background-color:#f7ead1; }
  backdrop-filter:blur(18px) saturate(1.35); -webkit-backdrop-filter:blur(18px) saturate(1.35);
  box-shadow:inset 0 2px 1px rgba(255,255,255,.6),inset 1px 0 1px rgba(255,255,255,.32),inset 0 -2px 2px rgba(14,39,62,.25),0 10px 28px rgba(12,33,50,.3),0 0 0 4px rgba(255,255,255,.07); }
 #vsl .vplay small { font-size:11px; margin-top:5px; }
-#vsl .sound-symbol { width:46px; height:46px; color:#f8df98; background:rgba(255,246,218,.11); border-radius:13px; }
+#vsl .sound-symbol { width:46px; height:46px; color:#FFD400; background:rgba(255,246,218,.11); border-radius:13px; }
 #vsl .sound-symbol svg { width:37px; height:37px; }
-#vsl .sound-bars i { background:#f8df98; }
-.cta-outline rect { stroke:#365f8a; }
+#vsl .sound-bars i { background:#FFD400; }
+.cta-outline rect { stroke:#fff4a6; filter:drop-shadow(0 0 2px #ffbf00) drop-shadow(0 0 5px rgba(255,194,0,.8)); }
 .gpaint .gp-logo { width:21%; filter:drop-shadow(0 4px 6px rgba(35,56,72,.13)); }
 @media(max-width:640px) {
  #vsl .vplay { font-size:18px; min-height:64px; padding:10px 15px 10px 10px; gap:9px; border-radius:17px; max-width:90%; }
@@ -337,3 +337,69 @@ footer { background-color:#f7ead1; }
 .final .live-signal { left:0; right:auto; top:.4em; }
 
 .recap.ask { background:#fcf6eb; background-image:none; border:1px solid #eadfce; }
+
+/* Bright sunflower accents against the quieter paper grounds. */
+.btn,.btn:hover { background-image:url('../img/vip/paint/tx-grain.webp'),linear-gradient(120deg,#ffe13c,#ffd400 55%,#ffd91f); background-size:180px,auto; box-shadow:inset 0 1px 0 #fff0a3,0 4px 0 rgba(207,161,0,.24),0 7px 18px -12px rgba(255,193,0,.8); overflow:visible; }
+.btn .cta-outline { z-index:1; }
+.btn .cta-outline rect { stroke-width:2.4; }
+.convos .cv-ph { margin-bottom:11px; }
+.cv-caption { width:100%; }
+.cv-caption.cv-with-avatar { display:flex; align-items:flex-start; justify-content:center; gap:7px; }
+.cv-avatar { width:34px; height:34px; flex:none; border-radius:50%; object-fit:cover; border:2px solid #fff; box-shadow:0 0 0 1px rgba(54,95,138,.18); }
+.cv-copy { min-width:0; }
+.cv-with-avatar .cv-copy { text-align:left; }
+.convos .cv-copy b { display:block; margin:0; padding:0; line-height:1.2; }
+.convos .cv-copy small { display:block; margin:3px 0 0; padding:0; line-height:1.35; }
+.bring-questions { display:grid; grid-template-columns:minmax(0,1fr) 128px; gap:8px; align-items:center; margin-top:24px; }
+.bring-questions .bring-qs { margin:0!important; gap:15px; }
+.bring-questions .bring-qs li { font-size:17px; font-weight:600; line-height:1.4; padding:0 0 12px; border-bottom:1px solid #e8dece; }
+.bring-questions .bring-qs li:last-child { border-bottom:0; padding-bottom:0; }
+.bring-person { width:128px; height:auto; filter:drop-shadow(0 4px 3px rgba(68,48,27,.06)); }
+
+/* Little paper calendars with sunflower binding; the date nodes stay dynamic. */
+.dcal { display:block; position:relative; overflow:visible; width:66px; border:1px solid #b9afa0; border-radius:7px 8px 9px 6px; background:#fffdf7; box-shadow:0 3px 0 #f2eadb,0 4px 0 #c5bcae,0 7px 10px -7px rgba(66,50,25,.3); transform:rotate(-2deg); }
+.dcal:before,.dcal:after { content:''; position:absolute; z-index:2; top:-5px; width:4px; height:11px; border-radius:4px; background:var(--blue); box-shadow:inset 1px 0 rgba(255,255,255,.55); }
+.dcal:before { left:15px; }.dcal:after { right:15px; }
+.dcal small { color:var(--ink); background:var(--sun) url('../img/vip/paint/tx-grain.webp') center/160px; border-radius:6px 7px 0 0; padding:11px 0 6px; font-size:10px; letter-spacing:.16em; border-bottom:1px solid rgba(139,106,0,.2); }
+.dcal b { color:var(--blue); font-size:37px; padding:6px 0 8px; background:url('../img/vip/paint/tx-grain.webp') center/200px; }
+.drow:nth-child(2) .dcal { transform:rotate(1.5deg); }
+.dwhen { gap:18px; margin-bottom:15px; align-items:center; }
+.dtx { gap:7px; }
+.dbadge { background:var(--sun) url('../img/vip/paint/tx-grain.webp') center/180px; color:var(--ink); border:1px solid rgba(153,117,0,.22); }
+.final .tiles div { background-image:url('../img/vip/paint/tx-grain.webp'); background-size:180px; border-radius:12px 14px 11px 13px; box-shadow:0 3px 0 #e8dfce; }
+@media(max-width:640px) {
+ .cv-caption.cv-with-avatar { gap:5px; }
+ .cv-avatar { width:25px; height:25px; border-width:1px; }
+ .convos .cv-with-avatar .cv-copy b { font-size:11.5px; }
+ .convos .cv-copy small { margin-top:3px; }
+ .bring-questions { grid-template-columns:minmax(0,1fr) 100px; gap:6px; }
+ .bring-person { width:100px; }
+ .bring-questions .bring-qs li { font-size:15px; line-height:1.4; }
+ .dcal { width:52px; }
+ .dcal small { font-size:8px; padding:9px 0 5px; }
+ .dcal b { font-size:31px; padding:5px 0 7px; }
+ .dcal:before { left:11px; }.dcal:after { right:11px; }
+ .dwhen { gap:12px; }
+ .dwhen .dtx>b { font-size:19px; }
+ .dwhen .dtm { font-size:12px; }
+ .dwhen .dtm .pill { padding:3px 6px; }
+}
+@media(max-width:380px) {
+ .dwhen { display:grid; grid-template-columns:52px minmax(0,1fr); gap:10px 12px; }
+ .dwhen .dcal { grid-column:1; grid-row:1; }
+ .dwhen .dtx { display:contents; }
+ .dwhen .dtx>b { grid-column:2; grid-row:1; }
+ .dwhen .dtm { grid-column:1/-1; grid-row:2; }
+ .dwhen .dny { white-space:normal; line-height:1.4; }
+}
+
+/* Pink returns as a third accent; sunflower still carries every main action. */
+.fb-bar { background:#ffe1ec url('../img/vip/paint/tx-grain.webp') center/250px; border-color:rgba(247,37,133,.24); box-shadow:0 8px 22px -16px rgba(128,38,79,.35); }
+.fb-t .fb-top { color:#943154; }
+.where { --sand:#eef4f8; background-color:var(--sand); background-image:radial-gradient(ellipse at 50% 95%,rgba(177,204,224,.22),transparent 68%) !important; }
+.convos { background:linear-gradient(125deg,#fffdf8,#edf3f8); border-color:#d6e0e8; }
+.prize { --sand:#fff0f5; background-color:var(--sand); background-image:linear-gradient(rgba(255,240,245,.75),rgba(255,240,245,.75)),url('../img/vip/paint/tx-linen.webp') !important; background-size:auto,400px; }
+.prize .stay { background:#fffafd; border:1px solid #efd9e2; }
+.bring-that { color:#b52666; }
+.bring-that:after { content:''; display:block; margin-top:5px; width:70px; height:3px; background:var(--pink); border-radius:80% 30% 60% 20%; opacity:.45; transform:rotate(-1deg); }
+.convos .cv-avatar { box-shadow:0 0 0 1px rgba(247,37,133,.35); }

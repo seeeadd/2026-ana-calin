@@ -31,11 +31,11 @@
 
 - **Colours:**
   - sunflower `#FFD400` primary, Greek shutter blue `#365F8A` secondary, warm ink `#1A1412`;
-  - small tertiary pink details `#D45D87`; the older hot-pink-led direction is superseded by Ana’s Nov 7 feedback;
+  - original pink `#F72585` is a third accent, less prevalent than blue; a pink sticky header and a restrained blush section are welcome. Yellow remains dominant;
   - greys `#3D332E` and `#7A6A60`;
   - cream paper `#FFF8EE`;
   - tints: blue `#BFD7EC` / `#9DBEDD`, pink `#FFC6DE`, yellow `#FFE27A`.
-  - Use yellow and white as the base with colour in shapes; never whole yellow backgrounds or muddy greys.
+  - Keep original bright #FFD400 on CTA buttons, footer, calculator and accents. The footer retains its original grain. Use quieter cream section grounds with selected light blue/blush areas; never dull the accent yellow to achieve a quieter background.
 - **Type:**
   - Instrument Serif for headlines and pulled lines;
   - Manrope for everything read, numbers and small labels;
@@ -98,7 +98,7 @@ Registration uses `assets/registration-vsl.js`: Wistia 995puecipz on desktop and
 
 ## Motion and density (Nov 7 follow-up)
 
-- Compact conversation cards inside one softly tinted panel; Justin’s profile portrait sits visibly over the upper part of the call photo.
+- Compact conversation cards inside one softly tinted panel; Justin’s profile portrait sits beside his caption, outside the call photo; never cover either face. Names and descriptions stay tightly grouped.
 - Subtle backgrounds in selected sections, with plain sections between them.
-- Glass sound control with animated speaker waves; slow CTA edge light; a gentle broadcast pulse on the closing word “live,” alongside the upcoming dates.
+- Glass sound control with animated speaker waves; a drawn yellow CTA perimeter with a warm glow and fine texture; a gentle broadcast pulse on the closing word “live,” alongside the upcoming dates.
 - Replay illustrations when visitors return; Day slide previews loop while visible. Respect reduced motion.

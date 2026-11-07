@@ -1,5 +1,5 @@
-/* The original calculator, in warm ivory, pale honey and Greek shutter blue. */
-:root { --cream:#fffcf7; --sand:#f8f3e9; --sun:#f3d579; --ysoft:#fbefd4; --pink:#365f8a; --psoft:#e8eef4; --pk2:#cbdbe7; --pk3:#eef3f7; --line:rgba(54,75,91,.16); }
+/* The original calculator, in warm ivory, sunflower yellow and Greek shutter blue. */
+:root { --cream:#fffcf7; --sand:#f8f3e9; --sun:#FFD400; --ysoft:#FFF1B3; --pink:#365f8a; --psoft:#e8eef4; --pk2:#cbdbe7; --pk3:#eef3f7; --line:rgba(54,75,91,.16); }
 body {background:#fffcf7;}
 .xmain .bgf {display:none;}
 .xhead .cxlogo {width:108px;height:108px;}
@@ -10,11 +10,11 @@ body {background:#fffcf7;}
 .xopt,.xin,.xsel,.xctxed {border-radius:9px;border-color:#d7d8cf;}
 .xopt {background:#fffdf9;}
 .xopt:has(input:checked) {background:#fbf0d7;border-color:#c5a765;box-shadow:none;}
-.xc.on {transform:none;border-color:#b59b62;box-shadow:0 0 0 2px rgba(219,191,128,.2);background:#fffdf8;}
+.xc.on {transform:none;border-color:#dbb300;box-shadow:0 0 0 2px rgba(255,212,0,.2);background:#fffbed;}
 .xc-tag {border-radius:5px;letter-spacing:.03em;}
-.xc-go button,.btn:not(.ghost) {background:#365f8a;color:#fff;box-shadow:none;border-radius:10px;}
-.xc-go button:hover,.btn:not(.ghost):hover {background:#294d73;transform:none;}
-.xc.on .xc-go button {background:#f3d579;color:#25394b;}
+.xc-go button,.btn:not(.ghost) {background:#FFD400;color:#1A1412;box-shadow:none;border-radius:10px;}
+.xc-go button:hover,.btn:not(.ghost):hover {background:#ffe13c;transform:none;}
+.xc.on .xc-go button {background:#ffdf38;color:#1A1412;}
 .xplan {background:#fffdfa;padding:32px;}
 .xtile {background:#fff;}
 .xtile.t-sales {--tone:#f8e8bb;background:#f9edce;}
@@ -28,3 +28,7 @@ body {background:#fffcf7;}
 .xplan .eyebrow,.xhead h1 em,.xsteps-h em {color:#365f8a;}
 .xsave {background:rgba(255,252,247,.95);}
 @media(max-width:640px){.xplan{padding:24px 18px}.xst{box-shadow:none;border-radius:14px}.xst-n{width:36px;height:36px;font-size:23px}}
+
+.xc-go button,.btn:not(.ghost) {background-image:url(../img/vip/paint/tx-grain.webp);background-size:200px;border:1px solid rgba(168,128,0,.18);}
+.xc.on .xc-go button {background-color:#FFD400;box-shadow:inset 0 0 0 1px rgba(158,119,0,.2);}
+.xst.money {--tone:#FFD400;}.xtile.t-sales {--tone:#FFD400;background:#fff1a8;}

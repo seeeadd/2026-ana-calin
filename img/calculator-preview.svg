@@ -18,9 +18,9 @@
 <text x="40" y="449" font-size="64" style="fill:#243848" class="serif" font-weight="400">60</text>
 <text x="40" y="479" font-size="17" style="fill:#243848" class="" font-weight="600">purchases per month</text>
 <text x="40" y="508" font-size="16" style="fill:#65717b" class="" font-weight="400">$3,000 in sales before costs</text>
-<rect x="40" y="538" width="293" height="43" rx="8" fill="#365f8a" stroke="none"/>
-<text x="62" y="565" font-size="15" style="fill:#fff" class="" font-weight="600">See my plan at $50</text>
-<rect x="374" y="274" width="333" height="327" rx="12" fill="#fffdfa" stroke="#b9a373"/>
+<rect x="40" y="538" width="293" height="43" rx="8" fill="#FFD400" stroke="none"/>
+<text x="62" y="565" font-size="15" style="fill:#243848" class="" font-weight="600">See my plan at $50</text>
+<rect x="374" y="274" width="333" height="327" rx="12" fill="#fffdfa" stroke="#dbb300"/>
 <text x="394" y="307" font-size="13" style="fill:#65717b" class="" font-weight="400">Example</text>
 <rect x="394" y="324" width="293" height="52" rx="12" fill="#fffcf7" stroke="#dddcd5"/>
 <text x="406" y="361" font-size="32" style="fill:#243848" class="serif" font-weight="400">$ 150</text>
@@ -28,7 +28,7 @@
 <text x="394" y="449" font-size="64" style="fill:#243848" class="serif" font-weight="400">20</text>
 <text x="394" y="479" font-size="17" style="fill:#243848" class="" font-weight="600">purchases per month</text>
 <text x="394" y="508" font-size="16" style="fill:#65717b" class="" font-weight="400">$3,000 in sales before costs</text>
-<rect x="394" y="538" width="293" height="43" rx="8" fill="#f3d579" stroke="none"/>
+<rect x="394" y="538" width="293" height="43" rx="8" fill="#FFD400" stroke="none"/>
 <text x="416" y="565" font-size="15" style="fill:#243848" class="" font-weight="600">Showing this plan below</text>
 <rect x="728" y="274" width="333" height="327" rx="12" fill="#fff" stroke="#dddcd5"/>
 <text x="748" y="307" font-size="13" style="fill:#65717b" class="" font-weight="400">Example</text>
@@ -38,15 +38,15 @@
 <text x="748" y="449" font-size="64" style="fill:#243848" class="serif" font-weight="400">6</text>
 <text x="748" y="479" font-size="17" style="fill:#243848" class="" font-weight="600">purchases per month</text>
 <text x="748" y="508" font-size="16" style="fill:#65717b" class="" font-weight="400">$3,000 in sales before costs</text>
-<rect x="748" y="538" width="293" height="43" rx="8" fill="#365f8a" stroke="none"/>
-<text x="770" y="565" font-size="15" style="fill:#fff" class="" font-weight="600">See my plan at $500</text>
+<rect x="748" y="538" width="293" height="43" rx="8" fill="#FFD400" stroke="none"/>
+<text x="770" y="565" font-size="15" style="fill:#243848" class="" font-weight="600">See my plan at $500</text>
 <text x="20" y="638" font-size="16" style="fill:#65717b" class="" font-weight="400">Example prices. The number of purchases changes with the price.</text>
 <text x="20" y="666" font-size="16" style="fill:#65717b" class="" font-weight="400">We do not know how many people would buy at these prices yet.</text>
 <rect x="20" y="708" width="1041" height="536" rx="12" fill="#fffdfa" stroke="#dddcd5"/>
 <text x="44" y="751" font-size="13" style="fill:#365f8a" class="" font-weight="700">YOUR PLAN AT $150</text>
 <text x="44" y="808" font-size="42" style="fill:#243848" class="serif" font-weight="400">At $150, you’d need 20 purchases a month.</text>
 <text x="44" y="848" font-size="17" style="fill:#243848" class="" font-weight="400">That’s 20 people buying your $150 offer each month, which brings in $3,000.</text>
-<rect x="44" y="879" width="233" height="178" rx="12" fill="#f9edce" stroke="#dddcd5"/>
+<rect x="44" y="879" width="233" height="178" rx="12" fill="#fff1a8" stroke="#dddcd5"/>
 <text x="62" y="915" font-size="17" style="fill:#243848" class="" font-weight="600">Sales needed</text>
 <text x="62" y="975" font-size="48" style="fill:#243848" class="serif" font-weight="400">20</text>
 <text x="62" y="1003" font-size="14" style="fill:#65717b" class="" font-weight="400">purchases a month at $150</text>
