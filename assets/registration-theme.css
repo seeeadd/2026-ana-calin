@@ -393,26 +393,30 @@ footer { background-color:var(--sun); background-image:url('../img/vip/paint/tx-
 .fb-bar { background:linear-gradient(120deg,rgba(255,253,247,.76),rgba(255,250,240,.55)); border:1px solid rgba(255,255,255,.86); backdrop-filter:blur(22px) saturate(1.3); -webkit-backdrop-filter:blur(22px) saturate(1.3); box-shadow:inset 0 1px 1px rgba(255,255,255,.9),inset 0 -1px 1px rgba(112,98,70,.12),0 8px 24px -14px rgba(43,53,58,.28),0 0 0 1px rgba(91,81,59,.1); }
 .fb-t .fb-top { color:var(--pink-ink); }
 .where { --sand:#f5eee3; background-color:var(--sand); background-image:linear-gradient(rgba(245,238,227,.82),rgba(245,238,227,.82)),url('../img/vip/paint/tx-linen.webp') !important; background-size:auto,400px; }
-/* Warm paper and sunflower light move in overlapping arcs, beneath the content. */
-.convos { position:relative; isolation:isolate; overflow:hidden; background:#f5e9ce; background-image:url('../img/vip/paint/tx-grain.webp'); background-size:240px; animation:none; border-color:#e8d39c; }
-.convos:before,.convos:after { content:''; position:absolute; pointer-events:none; z-index:-1; }
-.convos:before { inset:-35%; background:radial-gradient(ellipse at 26% 36%,#FFD400 0%,rgba(255,212,0,.82) 14%,transparent 48%),radial-gradient(ellipse at 75% 65%,#f2d58b 0%,rgba(242,213,139,.6) 30%,transparent 62%); filter:blur(18px); animation:sunflower-wash 17s ease-in-out infinite; }
-.convos:after { inset:-35%; background:radial-gradient(ellipse at 64% 24%,rgba(255,252,239,.95) 0%,rgba(255,249,224,.65) 20%,transparent 51%),linear-gradient(120deg,transparent 37%,rgba(255,253,240,.3) 46%,transparent 57%); animation:paper-light 23s ease-in-out infinite; }
-@keyframes sunflower-wash {
- 0%,100% { transform:translate3d(-5%,-3%,0) rotate(-7deg) scale(1.02); }
- 35% { transform:translate3d(8%,4%,0) rotate(8deg) scale(1.12); }
- 70% { transform:translate3d(-2%,9%,0) rotate(-2deg) scale(1.07); }
+/* Egg-white paper with small pools of yellow light drifting along the edges. */
+.convos { position:relative; isolation:isolate; overflow:hidden; background:#fffdf6; animation:none; border-color:#e9e0ce; }
+.convos:before,.convos:after { content:''; position:absolute; pointer-events:none; z-index:-1; border-radius:50%; filter:blur(16px); }
+.convos:before { width:clamp(160px,29%,360px); aspect-ratio:1; left:-13%; top:-100px; background:radial-gradient(circle,rgba(255,212,0,.48),rgba(255,220,74,.21) 40%,transparent 70%); animation:conversation-light-a 22s ease-in-out infinite; }
+.convos:after { width:clamp(150px,25%,310px); aspect-ratio:1; right:-10%; bottom:-100px; background:radial-gradient(circle,rgba(255,212,0,.38),rgba(255,220,74,.16) 42%,transparent 70%); animation:conversation-light-b 29s ease-in-out infinite; }
+@media(max-width:640px) {
+ .convos:before { left:-55px; top:-65px; }
+ .convos:after { right:-45px; bottom:-65px; }
 }
-@keyframes paper-light {
- 0%,100% { transform:translate3d(6%,3%,0) rotate(5deg); opacity:.85; }
- 42% { transform:translate3d(-8%,-6%,0) rotate(-9deg); opacity:.65; }
- 76% { transform:translate3d(2%,7%,0) rotate(3deg); opacity:.95; }
+@keyframes conversation-light-a {
+ 0%,100% { transform:translate3d(0,0,0); }
+ 35% { transform:translate3d(100%,9%,0); }
+ 70% { transform:translate3d(38%,48%,0); }
+}
+@keyframes conversation-light-b {
+ 0%,100% { transform:translate3d(0,0,0); }
+ 40% { transform:translate3d(-75%,-20%,0); }
+ 75% { transform:translate3d(-20%,-85%,0); }
 }
 @media(prefers-reduced-motion:reduce) {
  .convos:before,.convos:after { animation:none; }
 }
 .convos .cv-k em { color:var(--pink-ink); }
-.convos .cv-row > li { border-color:#e8d8b3; }
+.convos .cv-row > li { border-color:#e9e2d6; background:rgba(255,255,255,.92); }
 /* The celebration belongs to the whole section; the inner card stays clear. */
 .prize { --sand:#f8f1e4; background-color:var(--sand); background-image:url('../img/raffle-paper.svg'),linear-gradient(135deg,rgba(249,243,229,.88),rgba(255,248,232,.88)),url('../img/vip/paint/tx-linen.webp')!important; background-size:720px 520px,auto,400px; }
 .prize .stay { background:#fffafd; border:1px solid #edc9d9; box-shadow:0 18px 48px -34px rgba(122,53,80,.32); }
