@@ -28,7 +28,10 @@
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/g/manrope-normal-b222d8.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/g/instrument-serif-normal-c008db.woff2" crossorigin>
 <style>@font-face {font-family:'Instrument Serif';font-style:italic;font-weight:400;font-display:swap;src:url(assets/fonts/g/instrument-serif-italic-26082c.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}@font-face {font-family:'Instrument Serif';font-style:normal;font-weight:400;font-display:swap;src:url(assets/fonts/g/instrument-serif-normal-c008db.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}@font-face {font-family:'Manrope';font-style:normal;font-weight:400 800;font-display:swap;src:url(assets/fonts/g/manrope-normal-b222d8.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}@font-face {font-family:'Nothing You Could Do';font-style:normal;font-weight:400;font-display:swap;src:url(assets/fonts/g/nothing-you-could-do-normal-ee8741.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}@font-face {font-family:'Roboto';font-style:normal;font-weight:400 500;font-stretch:100%;font-display:swap;src:url(assets/fonts/g/roboto-normal-b7627e.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}</style>
-<link rel="preload" as="image" href="img/vsl.webp">
+<link rel="preconnect" href="https://fast.wistia.com" crossorigin>
+<link rel="preconnect" href="https://embed-ssl.wistia.com" crossorigin>
+<script src="https://fast.wistia.com/player.js" async></script>
+<script src="https://fast.wistia.com/embed/995puecipz.js" type="module" async></script>
 <style>
 :root{
   --cream:#FFF8EE;--sand:#FFF1C9;--kraft:#E8DBC5;--ink:#1A1412;--ink2:#3D332E;--ink3:#7A6A60;
@@ -2523,7 +2526,7 @@ picture{display:contents}
 html.wv-lock{overflow:hidden}
 .iwhen .iw-ny{font-weight:500;color:var(--ink3);font-size:.92em}
 </style>
-<link rel="stylesheet" href="assets/registration-theme.css?v=20261107">
+<link rel="stylesheet" href="assets/registration-theme.css?v=20261107b">
 </head>
 <body>
 
@@ -2608,15 +2611,15 @@ html.wv-lock{overflow:hidden}
         </div>
       </div>
 
-      <!-- the VSL: set VSL_SRC in the script when Ana's video is ready. Click to play; this still is the cover. -->
+      <!-- Load the welcome video immediately, with a quiet loading state until its first frame. -->
       <div class="iph win" id="vsl">
         <span class="sb" style="left:18%;width:9%"></span><span class="sb" style="left:30%;width:5%"></span><span class="sb" style="left:37%;width:5%"></span><span class="sb b" style="left:60%;width:14%"></span>
         <div class="bz">
           <div class="scr">
             <span class="isl"></span>
-            <img src="img/vsl.webp" alt="Ana Calin talking to camera" width="1164" height="718" fetchpriority="high">
+            <div class="vsl-loading" role="status" aria-live="polite"><span class="vsl-loader" aria-hidden="true"></span><b>Ana’s video is loading…</b><small>Just a moment.</small></div>
             <video playsinline preload="none"></video>
-            <button class="vplay" type="button" aria-label="Play Ana's welcome video"><i><svg width="20" height="20" viewBox="0 0 26 26" aria-hidden="true"><path d="M8.6 5.6v14.8c0 .9 1 1.4 1.7 1l11.6-7.4c.7-.4.7-1.4 0-1.9L10.3 4.6c-.7-.5-1.7 0-1.7 1z" fill="#365F8A"/></svg></i>tap for sound</button>
+            <button class="vplay" type="button" aria-label="Play Ana’s welcome video from the beginning with sound"><span class="sound-symbol" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none"><path d="M7 16h6l8-7v22l-8-7H7z" fill="currentColor"/><path class="sound-wave wave-one" d="M26 14a10 10 0 0 1 0 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path class="sound-wave wave-two" d="M31 9a17 17 0 0 1 0 22" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg></span><span>Tap for sound<small>Watch from the beginning</small></span><span class="sound-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span></button>
             <div class="scrub" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 26 26"><path d="M8.6 5.6v14.8c0 .9 1 1.4 1.7 1l11.6-7.4c.7-.4.7-1.4 0-1.9L10.3 4.6c-.7-.5-1.7 0-1.7 1z" fill="#fff"/></svg><span class="cur">0:00</span><span class="ln"><i></i></span><span class="rem">-2:34</span><svg width="18" height="18" viewBox="0 0 16 16"><path d="M2.5 6h2.6L8.6 3v10L5.1 10H2.5z" fill="#fff"/><path d="M11 6l3.5 4M14.5 6 11 10" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/></svg></div>
           </div>
           <!-- her window in Greece: the wall and frame, the flower box, and two blue shutters that swing open on load -->
@@ -2896,6 +2899,7 @@ html.wv-lock{overflow:hidden}
     <!-- people Ana has sat down with (Sean, Nov 4): real frames from their conversations, shown as prints like her photo
          above, names in sans; not clickable, so nothing pulls people off the page -->
     <div class="convos" data-r>
+      <span class="cv-eyebrow">Good company. Real conversations.</span>
       <h3 class="cv-k">People I’ve sat down with, <em>and <span class="nn">learned from.</span></em></h3>
       <ul class="cv-row">
         <li><figure class="cv-ph"><img src="img/collab/live-justin.webp" alt="Ana in conversation with Justin Welsh" width="600" height="400" loading="lazy"><img class="cv-pfp" src="img/collab/pfp-justin.webp" alt="" width="200" height="200" loading="lazy"></figure><b><svg class="cv-ic" aria-hidden="true"><use href="#vcall"/></svg>Justin Welsh</b><small class="cv-1l"><span class="nn">built a $15M</span> <span class="nn">solo business</span></small></li>
@@ -3153,7 +3157,8 @@ html.wv-lock{overflow:hidden}
         <div class="tiles" aria-label="Tuesday to Thursday, December 8 to 10">
           <div><b>8</b><small>Tue</small></div><div><b>9</b><small>Wed</small></div><div><b>10</b><small>Thu</small></div>
         </div>
-        <h2>See you <em class="nw">live.</em></h2>
+        <h2>See you <em class="nw live-word"><span class="live-signal" aria-hidden="true"><i></i></span>live.</em></h2>
+        <p class="live-context">Three live sessions with Ana. Join us at the times below.</p>
         <p class="line">Bring the idea you keep coming back to, or come with your experience and no idea what to do with it yet.</p>
         <p class="line"><b>You don’t need to figure that out before joining.</b> That’s part of what we’ll work on.</p>
         <div class="ftimes"><b>Tue Dec 8 to Thu Dec 10</b><ul class="ftz"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s-7-7.1-7-12.2A7 7 0 0 1 19 9.8C19 14.9 12 22 12 22Z"/><circle cx="12" cy="9.6" r="2.6"/></svg><b>12:00 pm</b> if you’re in New York</li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s-7-7.1-7-12.2A7 7 0 0 1 19 9.8C19 14.9 12 22 12 22Z"/><circle cx="12" cy="9.6" r="2.6"/></svg><b>9:00 am</b> if you’re in Los Angeles</li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s-7-7.1-7-12.2A7 7 0 0 1 19 9.8C19 14.9 12 22 12 22Z"/><circle cx="12" cy="9.6" r="2.6"/></svg><b>5:00 pm</b> if you’re in London</li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s-7-7.1-7-12.2A7 7 0 0 1 19 9.8C19 14.9 12 22 12 22Z"/><circle cx="12" cy="9.6" r="2.6"/></svg><b>7:00 pm</b> if you’re in Greece</li></ul></div>
@@ -3777,7 +3782,7 @@ html.wv-lock{overflow:hidden}
 </script>
 <script src="assets/vendor/gsap.min.js"></script>
 <script src="assets/vendor/ScrollTrigger.min.js"></script>
-<script src="assets/reg-motion.js?v=27"></script>
+<script src="assets/reg-motion.js?v=28"></script>
 <script>/* badges stamp in once, when they come into view */
 (function(){ var b = document.querySelectorAll('.bdg'); if (!b.length || !('IntersectionObserver' in window)) return; document.documentElement.classList.add('bdg-js');
   var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target) } }) }, { threshold: .45 });
@@ -3906,7 +3911,7 @@ html.wv-lock{overflow:hidden}
  document.querySelectorAll('h2,h3,p,b,span').forEach(function(el){if(el.children.length===0&&/See you Tuesday, Dec 8\./.test(el.textContent))el.textContent=el.textContent.replace('See you Tuesday, Dec 8.','See you '+WF[S.getDay()]+', '+M[S.getMonth()]+' '+S.getDate()+'.')});
  var bs=q('.fb-id');if(bs)bs.setAttribute('aria-label','The Exit Plan, a free 3-day live event with Ana Calin, '+span+', '+me+': save my seat');
 }catch(e){}})();</script>
-<script src="assets/wistia-vsl.js?v=2"></script>
+<script src="assets/registration-vsl.js?v=20261107b"></script>
 <script>/* Sean, Nov 4: desktop 995puecipz, phone z5mv5t5sf5 (Wistia) */
 (function(){var b=document.getElementById('vsl');if(!b||!window.WVSL)return;WVSL({box:b,scr:b.querySelector('.scr'),desktop:'995puecipz',phone:'z5mv5t5sf5',previewSec:8,onPhoneEnd:function(){document.getElementById('hcard').scrollIntoView({behavior:'smooth', block:'center'})}})})();</script>
 <script>/* ep-prefill: the early-invite email links here with ?first_name=...&email=..., so booking takes one confirmation (nothing is submitted for them) */

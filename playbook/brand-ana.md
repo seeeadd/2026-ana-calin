@@ -94,5 +94,11 @@
 | `/program/` | The Exit Lab |
 | `/exit-number/` | calculator |
 
-The video slots are the `VSL_SRC` variables in the registration and VIP page scripts. They're empty (a still with a
-play button).
+Registration uses `assets/registration-vsl.js`: Wistia 995puecipz on desktop and z5mv5t5sf5 in the phone overlay. Start loading immediately; use a quiet loading state until the first frame, never the old yellow portrait. The registration script is separate from VIP’s `assets/wistia-vsl.js`.
+
+## Motion and density (Nov 7 follow-up)
+
+- Compact conversation cards inside one softly tinted panel; Justin’s profile portrait sits visibly over the upper part of the call photo.
+- Subtle backgrounds in selected sections, with plain sections between them.
+- Glass sound control with animated speaker waves; slow CTA edge light; a gentle broadcast pulse on the closing word “live,” alongside the upcoming dates.
+- Replay illustrations when visitors return; Day slide previews loop while visible. Respect reduced motion.

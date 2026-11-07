@@ -45,7 +45,11 @@
 
   function when(el, tl, start) {
     if (!el) return; tl.pause();
-    ScrollTrigger.create({ trigger: el, start: start || 'top 65%', once: true, onEnter: function () { tl.play() } });
+    var started = false;
+    function enter() { if (started) tl.restart(); else { started = true; tl.play() } }
+    ScrollTrigger.create({ trigger: el, start: start || 'top 65%', end: 'bottom top',
+      onEnter: enter, onEnterBack: enter,
+      onLeave: function () { tl.pause() }, onLeaveBack: function () { tl.pause() } });
   }
   function draw(path, dur, pen, ease) {
     var L = path.getTotalLength(), o = { t: 0 };
@@ -168,15 +172,16 @@
        Each window holds two slides. The first plays when the window is in view while her camera lights up; then the
        deck pushes to the second slide and the fanned card behind becomes the one she just showed. */
     function playSlide(ifr) { var n = 0, iv = setInterval(function () { var w; try { w = ifr.contentWindow } catch (e) {}
-      if (w && w.DECK && w.document.documentElement.dataset.ready === '1') { clearInterval(iv); w.DECK.play() } else if (++n > 80) clearInterval(iv) }, 120) }
+      if (w && w.DECK && w.document.documentElement.dataset.ready === '1') { clearInterval(iv); w.DECK.reset(); w.DECK.play() } else if (++n > 80) clearInterval(iv) }, 120) }
     [['#art1', 8.6, 7.8], ['#art2', 6.9, 7.2], ['#art3', 7.3, 7.8]].forEach(function (d) {
       var art = $(d[0]); if (!art) return;
       var fa = $('.dk-f.a', art), fb = $('.dk-f.b', art), cam = $('.lv-cam', art), back = $('.lv-back', art); if (!fa || !fb) return;
       var prev = fa.dataset.src.replace('deck/', 'img/slides/').replace('.html', '.webp');
       gsap.set(fb, { x: 0, xPercent: 102 });
       ScrollTrigger.create({ trigger: art, start: 'top bottom+=700', once: true, onEnter: function () { fa.src = fa.dataset.src; fb.src = fb.dataset.src } });
-      var tl = gsap.timeline({ delay: .5 });
-      tl.add(function () { playSlide(fa); cam.classList.add('talk') }, 0)
+      var tl = gsap.timeline({ delay: .5, repeat: -1, repeatDelay: 3.5 });
+      tl.set(fa, { xPercent: 0 }, 0).set(fb, { xPercent: 102 }, 0)
+        .add(function () { playSlide(fa); cam.classList.add('talk') }, .01)
         .to(fa, { xPercent: -102, duration: .85, ease: 'power3.inOut' }, d[1])
         .to(fb, { xPercent: 0, duration: .85, ease: 'power3.inOut' }, d[1])
         .add(function () { playSlide(fb) }, d[1] + .55)
@@ -236,7 +241,7 @@
         .add(draw(tk, .35, pen, 'power2.in'), 7.35)
         .add(pen.go(380, -60, .8, 30, -60), 7.8)
         .from($('.rv-q', rv), { y: 24, scale: .9, opacity: 0, duration: .5, ease: 'back.out(1.8)' }, 3.2)
-        .add(function () { gsap.to($('.rv-st i', rv), { scale: 1.6, duration: .5, yoyo: true, repeat: -1, ease: 'sine.inOut' }) }, 3.8);
+        .fromTo($('.rv-st i', rv), { scale: 1 }, { scale: 1.6, duration: .5, yoyo: true, repeat: -1, ease: 'sine.inOut' }, 3.8);
       tv.timeScale(1.9); /* Sean: faster (about 4.5 s instead of 8.6) */
       when(rv, tv);
     }
