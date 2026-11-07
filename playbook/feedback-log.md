@@ -195,3 +195,5 @@ correction and every approval-with-reason (SOP section D). The full raw messages
 - 2026-11-08 · Live i-dot · Add a red expanding outline pulse centered on the original italic i-dot. Preserve the yellow dot, lettering and spacing; use font-relative positioning and a static outline for reduced motion.
 
 - 2026-11-08 · Live indicator refinement · Sean: “thinner and not just one dot” → two staggered, fine red outline ripples around the existing yellow i-dot; halve the ring stroke and keep the layout unchanged.
+
+- 2026-11-08 · Form decoration · Sean: “remove lights from form” → remove the form’s seasonal hanging-light markup, animation and reserved top padding. Preserve the footer village lights and existing form controls.

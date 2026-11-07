@@ -2365,20 +2365,11 @@ html.bdg-js .bdg.in{animation:bdgIn .6s cubic-bezier(.2,1.5,.4,1) both}
 @media (max-width:900px){.gift .gt-bdg{right:2px;top:-14px;width:86px}.gift .gtx .eyebrow{display:block;padding-right:100px}}
 @media (max-width:980px){.stay .tix .bdg-give{left:0;top:-14%}}
 /* ---------- Christmas (Sean, Nov 2): a little seasonal spice, only while html.xmas is on (the Christmas script turns it
-   on until New Year): the sunflower in a Santa hat with a candy cane, a Santa hat on Ana in the bar, fairy lights on the
-   seat tickets, holly on the Day 1 date. Hand-drawn in her ink and colours, nothing else changes ---------- */
+   on until New Year): the sunflower in a Santa hat with a candy cane, a Santa hat on Ana in the bar, holly on the Day 1 date. Hand-drawn in her ink and colours, nothing else changes ---------- */
 .fb-id{position:relative}
 /* the hat sits on her head: brim on the hairline, centred over the face in the icon (44px, 40px in the slim bar) */
 .fb-hat{position:absolute;left:5px;top:calc(50% - 29px);width:40px;height:auto;pointer-events:none;transform:rotate(-9deg);transform-origin:45% 95%;transition:all .45s var(--ease);z-index:2}
 .fb.min .fb-hat{left:4px;top:calc(50% - 26px);width:36px}
-.xl{position:absolute;left:18px;right:18px;top:-1px;height:34px;pointer-events:none;z-index:2}
-.xl b{position:absolute;top:-2px;width:7px;height:7px;margin-left:-3.5px;border-radius:50%;background:#D7263D;border:1.4px solid var(--ink);z-index:1}
-#rcard.lit{padding-top:34px}
-.xl svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
-.xl i{position:absolute;width:8px;height:12px;margin:2px 0 0 -4px;border-radius:45% 45% 50% 50%/40% 40% 60% 60%;background:var(--c);border:1.4px solid var(--ink);box-shadow:0 0 7px 1px var(--c)}
-.xl i:before{content:"";position:absolute;left:1px;right:1px;top:-4px;height:4px;border-radius:2px 2px 0 0;background:#7A6A60;border:1.2px solid var(--ink);border-bottom:0}
-@media (prefers-reduced-motion:no-preference){.xl i{animation:xtw 2.4s ease-in-out infinite;animation-delay:var(--d)}}
-@keyframes xtw{0%,100%{box-shadow:0 0 8px 2px var(--c);filter:none}50%{box-shadow:0 0 0 0 transparent;filter:saturate(.55) brightness(.9)}}
 .final .tiles div:first-child{position:relative}
 .holly{position:absolute;right:-18px;top:-20px;width:52px;height:auto;transform:rotate(14deg);pointer-events:none}
 /* more small Christmas bits: a wreath on the wall above the video window, the footer's village dressed, and light
@@ -2475,10 +2466,6 @@ picture{display:contents}
 @keyframes ringp{0%{transform:scale(1);opacity:1}70%,100%{transform:scale(var(--rs,1.667));opacity:0}}
 .vplay i{isolation:isolate}
 .vplay i:before{z-index:-1;background:rgba(255,255,255,.7);animation:ringp 2.4s ease-out infinite}
-@keyframes xtwf{0%,100%{filter:none}50%{filter:saturate(.55) brightness(.9)}}
-@keyframes xtwg{0%,100%{opacity:1}50%{opacity:0}}
-.xl i{box-shadow:none;animation:xtwf 2.4s ease-in-out infinite;animation-delay:var(--d)}
-.xl i:after{content:"";position:absolute;inset:-1.4px;border-radius:inherit;box-shadow:0 0 8px 2px var(--c);animation:xtwg 2.4s ease-in-out infinite;animation-delay:var(--d);pointer-events:none}
 .hpill .hp-lz{font-weight:500;margin-left:-.3em}
 .ftimes .ft-d .ft-ny{display:inline;font-size:14px;font-weight:600;color:var(--ink3);margin-left:8px;white-space:nowrap}
 .ftimes .ft-d .nw{display:inline;white-space:nowrap}
@@ -3237,26 +3224,12 @@ html.wv-lock{overflow:hidden}
   var INK = '#1A1412', NS = 'http://www.w3.org/2000/svg';
   /* the sunflower on every button wears the hat */
   /* Nov 4 (Ana: "looks very christmasy"; Sean: "less christmas stuff"): no Santa hat on Ana, snow only in the last section. Kept:
-     the hat on the buttons' sunflower, the lights on the form, the wreath, the village lights, holly on the Day 1 date */
+     the hat on the buttons' sunflower, the wreath, the village lights, holly on the Day 1 date */
   var LESS = true;
   /* Sean, Nov 4: the sunflower keeps its Santa hat on the buttons */
   document.querySelectorAll('.sf-b use').forEach(function(u){ if ((u.getAttribute('href') || '') === '#sf') u.setAttribute('href', '#sfx') });
   /* Ana in the bar, in a Santa hat */
   var id = !LESS && document.querySelector('.fb-id'); if (id) { var h = new Image(); h.className = 'fb-hat'; h.alt = ''; h.src = 'img/o/vip/paint/xmas-hat.webp'; id.appendChild(h) }
-  /* fairy lights draped across the top of both seat tickets: a hand-drawn cord in four swags, a bulb on each swag */
-  /* fairy lights on the frozen side ticket only: the cord is pinned to the ticket's top border with a small tack at each
-     corner and between, and sags in three swags; each bulb hangs straight down from the cord. The ticket gets a little
-     more room at the top (html.xmas #rcard) so the bulbs never cover the faces */
-  function lights(card){ var w = document.createElement('span'); w.className = 'xl'; w.setAttribute('aria-hidden', 'true');
-    var n = 3, sag = 15, cols = ['#365F8A', '#FFD400', '#3C6FB0', '#E0243A', '#3BAA6B'], d = 'M0 2', bulbs = '', tacks = '';
-    for (var k = 0; k < n; k++) { var x0 = k * 100 / n, x1 = (k + 1) * 100 / n; d += ' Q' + ((x0 + x1) / 2).toFixed(2) + ' ' + (2 + 2 * sag) + ' ' + x1.toFixed(2) + ' 2' }
-    for (var k2 = 0; k2 <= n; k2++) tacks += '<b style="left:' + (k2 * 100 / n).toFixed(2) + '%"></b>';
-    for (var bi = 0; bi < n * 3; bi++) { var sw = Math.floor(bi / 3), t = [.25, .5, .75][bi % 3], y = 2 + 2 * t * (1 - t) * 2 * sag;
-      bulbs += '<i style="left:' + ((sw + t) * 100 / n).toFixed(2) + '%;top:' + y.toFixed(1) + 'px;--c:' + cols[bi % 5] + ';--d:' + (bi * .37 % 2.4).toFixed(2) + 's"></i>' }
-    w.innerHTML = '<svg viewBox="0 0 100 34" preserveAspectRatio="none"><path d="' + d + '" fill="none" stroke="' + INK + '" stroke-width="1.5" vector-effect="non-scaling-stroke" stroke-linecap="round"/></svg>' + bulbs + tacks;
-    card.appendChild(w); card.classList.add('lit') }
-  /* Sean, Nov 4: the fairy lights stay on the frozen form */
-  var rc = document.getElementById('rcard'); if (rc) lights(rc);
   /* the footer's village dressed for Christmas, drawn into the village itself so it lines up at every width: lights along
      each roofline, looping from roof to roof; the cypresses become little trees with a star; stars on the church crosses;
      a wreath on every other door */
