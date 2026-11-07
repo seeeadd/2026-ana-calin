@@ -175,3 +175,5 @@ correction and every approval-with-reason (SOP section D). The full raw messages
 - 2026-11-07 · Background intensity · Sean: “dont make these super yellow ... white beige yellow” (FAQ and closing) → warm-white/beige grounds with faint yellow shading; preserve bright action accents. · registration-theme.css; brand notes updated
 
 - 2026-11-07 · Heading accents and giveaway · Sean rejected the sunburst section background; use warm paper and faint ticket outlines behind the whole giveaway, with a plain inner card. “about learning with me” is pink; work-choice headings use readable muted gold. · registration-theme.css, raffle-paper.svg; brand notes updated
+
+- 2026-11-07 · Release verification · Vercel deployment succeeded but the browser retained the previous CSS because the query version was unchanged under immutable caching. Version the registration stylesheet with its content hash on every CSS release. · index.html; promoted to brand-ana.md

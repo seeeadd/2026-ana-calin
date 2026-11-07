@@ -116,3 +116,5 @@ Registration uses `assets/registration-vsl.js`: Wistia 995puecipz on desktop and
 - Nov 7 background balance: FAQ and final section use warm white/beige with a faint yellow tint, never broad saturated-yellow fields. Keep original sunflower on buttons, live lettering, calendar accent and footer.
 
 - Nov 7 final refinements: testimonial heading emphasis is pink; work-choice eyebrow and italic heading use readable muted gold #89680F. Giveaway background is warm linen paper with faint raffle-ticket outlines; the radial sunburst is removed.
+
+- Registration releases: assets are served with immutable caching. After any registration-theme.css change, update its index.html query version to the stylesheet’s SHA-256 prefix so existing visitors receive the new styles.
