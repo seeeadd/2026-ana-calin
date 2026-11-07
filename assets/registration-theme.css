@@ -1,0 +1,171 @@
+/* Ana's November 7 direction: sun yellow first, Greek shutter blue second,
+   pink only in small signatures and the existing painted illustrations. */
+:root {
+  --cream: #fffaf2;
+  --sand: #fff5d5;
+  --blue: #365f8a;
+  --blue-soft: #e9f0f6;
+  --accent: var(--blue);
+  --pink: #d45d87;
+  --psoft: #f8e9ed;
+  --line: rgba(26, 20, 18, .13);
+  --sh: 0 12px 30px -22px rgba(40, 47, 55, .3);
+}
+
+/* Quiet grounds let the existing painted scenes carry the personality. */
+.hero, .days, .where, .host, .bring, .gift, .fit, .revs, .prize,
+.qa, .sum, .final, footer { background-image: none !important; }
+.hero, .days, .host, .bring, .revs, .qa, .final { background-color: var(--cream); }
+.sand { --sand: #fff5d5; }
+.sand:before { display: none; }
+.hero { padding-top: 42px; padding-bottom: 112px; }
+.intro.who, .days, .host, .revs, .qa { padding-top: 136px; padding-bottom: 128px; }
+.where, .fit, .prize, .sum, .final { padding-top: 112px; padding-bottom: 112px; }
+.hero .bgflower, .bd .r, .bd .d:after, .bk-arc, .bk-marks, .hst-pic .bk-sf,
+.hst-paint, .snow { display: none !important; }
+.bd { opacity: .3; }
+.gift .gcard { background: #fff3ce !important; padding: 54px; box-shadow: none; }
+.gift .gmore, .bringg.two .bring-more { padding-top: 32px; }
+.gift .gcols, .bringg.two .bring-cols { column-gap: 64px; }
+.gift .gcols p, .bring-tx p { line-height: 1.75; text-align: left !important; }
+.gift .gt-bdg { width: 98px; right: -8px; }
+.gift .gtx .eyebrow { padding-right: 100px; }
+
+/* A clear yellow action, blue type, a restrained shadow. */
+.btn, .btn:hover {
+  background: var(--sun);
+  color: var(--ink);
+  box-shadow: 0 5px 0 rgba(149, 115, 0, .15);
+}
+.btn:hover { background: #ffe052; }
+.btn:has(.sf-b) { padding-left: 12px; }
+.btn .sf-b { background: transparent; box-shadow: none; }
+.vplay { background: var(--blue); box-shadow: 0 6px 20px -10px #243f5c; }
+.vplay i:after { border-left-color: var(--blue); }
+.fb-bar { background: #fffaf5; border: 1px solid var(--line); box-shadow: 0 8px 22px -16px #263e57; }
+.fb-t small, .fb-t .fb-top, .fb-cdk i { color: var(--blue); }
+.fb-cdk i, .fb-cdk i:after { background: var(--blue); animation: none; }
+.fb-cdk i:after, .hpill .dot:after { display: none; }
+.hpill { background: transparent; border: 0; padding-left: 0; }
+.hpill .dot { background: var(--blue); }
+.tstrip { border-color: var(--line); box-shadow: none; }
+
+/* Keep the form, remove the competing ticker and floating notification. */
+section > .tkb, .ltoast, .tkt .just:not([hidden]), .fl-live { display: none !important; }
+.tkt { border: 1px solid rgba(54,95,138,.25) !important; border-top: 4px solid var(--sun) !important;
+  border-radius: 20px; background: #fffdf8 !important; box-shadow: 0 14px 32px -24px rgba(54,95,138,.4) !important; }
+.tkt:before { display: none; }
+.htk .tkt { padding: 24px; }
+.htk .tk-head { padding-bottom: 16px; margin-bottom: 14px; }
+.htk .tk-h { white-space: normal; }
+.tkt form .field { margin-bottom: 12px; }
+.tkt form .field input { height: 52px; border-color: #d6d4c9; border-radius: 10px; }
+.tkt form .fl-seat { display: none; }
+.tkt form .field input, .field input.hint { animation: none; }
+.tk-head { border-bottom: 1px solid var(--line); }
+.tk-h .tk-and { color: var(--ink2); }
+.book { border-color: var(--line); box-shadow: none; padding: 22px; margin-top: 36px; }
+.hcopy .hlead { line-height: 1.55; }
+.hcopy .hsub2 { line-height: 1.7; }
+.hn-g { gap: 20px; }
+.cnotes p { border-color: var(--line); background: transparent; }
+
+/* The content stays; more space and fewer stacked frames make it easier to read. */
+.drow { padding-bottom: 128px; }
+.dtext li { line-height: 1.65; margin-bottom: 18px; }
+.dtext .body { line-height: 1.75; }
+.dtext .out { margin-top: 26px; padding-top: 22px; }
+.dcal { box-shadow: none; border-color: rgba(54,95,138,.35); }
+.dcal small, .dbadge { background: var(--blue); }
+.dbadge { box-shadow: none; }
+.dm { margin-top: 40px; margin-bottom: 54px; }
+.hostg { gap: 80px; }
+.hst-tx p { line-height: 1.75; }
+.hst-pic figure, .ipic figure { box-shadow: 6px 6px 0 var(--sun); border-color: rgba(54,95,138,.3); }
+.chip.sit { border-color: var(--line); box-shadow: none; padding: 18px 18px 26px; }
+.chip.sit[aria-pressed=true] { border-color: var(--blue); box-shadow: 0 0 0 2px var(--blue); }
+.rq, .rgrid2 .rq { border: 1px solid var(--line); box-shadow: none; padding: 28px; }
+.rgrid2 { column-gap: 28px; margin-top: 40px; }
+.rgrid2 .rq { margin-bottom: 28px; }
+.rq:nth-child(2) { background: #fff5d5; }
+.rq:nth-child(2) .stars svg { fill: var(--sun); }
+.rgrid2 .rq blockquote { line-height: 1.5; }
+.rv-h { margin-top: 38px; }
+.trr { box-shadow: none; border-color: var(--line); }
+.hwg-cap svg.sig .ink path { fill: var(--pink); stroke: var(--pink); }
+.who .sig, .host .sig { color: var(--pink); }
+
+/* Five real conversations, with consistent images and no scrapbook clutter. */
+.convos { margin-top: 100px; padding-top: 48px; border-top: 1px solid var(--line); }
+.convos .cv-k { margin-bottom: 36px; }
+.convos .cv-row { grid-template-columns: repeat(5,minmax(0,1fr)); gap: 32px 24px; }
+.convos .cv-ph, .convos li:nth-child(n) .cv-ph {
+  padding: 0; border: 0; box-shadow: none; transform: none; border-radius: 8px;
+  overflow: hidden; background: var(--blue-soft); margin-bottom: 18px;
+}
+.convos .cv-ph:before, .convos .cv-pfp, .convos .cv-ic { display: none; }
+.convos .cv-ph img { aspect-ratio: 3/2; width: 100%; object-fit: cover; }
+.convos .cv-split { display: grid; grid-template-columns: 1fr 1fr; aspect-ratio: 3/2; }
+.convos .cv-split span { position: relative; overflow: hidden; }
+.convos .cv-split img { position: absolute; width: 100%; height: 200%; max-width: none; aspect-ratio: auto; object-fit: cover; }
+.convos .cv-split span:first-child img { top: 0; }
+.convos .cv-split span:last-child img { bottom: 0; }
+.convos li b { font-size: 15px; line-height: 1.35; white-space: normal; }
+.convos li small { font-size: 13px; line-height: 1.5; margin-top: 6px; }
+.press-mentions { margin-top: 56px; padding-top: 30px; border-top: 1px solid var(--line);
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 22px 44px; }
+.press-mentions p { margin: 0; font-size: 11px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--ink3); }
+.press-mentions ul { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; align-items: baseline; gap: 28px 44px; }
+.press-mentions li { font-family: Georgia,serif; font-size: 23px; font-weight: 700; color: var(--ink2); }
+.press-mentions li:first-child { font-size: 30px; letter-spacing: -.04em; }
+
+/* Ana's supplied photo, framed without a tablet UI. Keep her entire face visible. */
+.claim .pic .fr { padding: 0; border: 0; border-radius: 18px; background: transparent;
+  box-shadow: 10px 10px 0 #ffe27a; transform: rotate(-1deg); }
+.claim .pic .fr:before, .claim .pic .fr:after { display: none; }
+.claim .pic .fr img { width: 100%; aspect-ratio: 4/5; object-fit: cover; object-position: 50% 78%;
+  border: 0; border-radius: 18px; background: var(--blue-soft); }
+.final .tiles div { border: 1px solid var(--line); box-shadow: none; }
+
+@media (min-width:1061px) {
+  .v2h { column-gap: 56px; }
+  .v2h .hright h1.h1x { line-height: 1.04; }
+  .v2h .htk { margin-top: 28px; }
+}
+@media (max-width:1060px) {
+  .intro.who, .days, .host, .revs, .qa, .where, .fit, .prize, .sum, .final { padding-top: 88px; padding-bottom: 88px; }
+  .hero { padding-top: 26px; padding-bottom: 80px; }
+  .hostg { gap: 48px; }
+  .convos .cv-row { grid-template-columns: repeat(3,minmax(0,1fr)); }
+  .gift .gcard { padding: 36px; }
+  .drow { padding-bottom: 92px; }
+}
+@media (max-width:640px) {
+  .hero { padding-top: 20px; padding-bottom: 64px; }
+  .intro.who, .days, .host, .revs, .qa, .where, .fit, .prize, .sum, .final { padding-top: 72px; padding-bottom: 72px; }
+  .wrap, .hwrap { padding-left: 22px; padding-right: 22px; }
+  .v2h .hright h1.h1x { font-size: clamp(38px, 11.6vw, 56px); line-height: 1.06; }
+  .h1x .h1b { text-wrap: balance; }
+  .h1x .h1b em { white-space: nowrap; }
+  .v2h .hright h1 .l, .h1x .h1b .m { display: inline; white-space: normal; }
+  .hpill { white-space: normal; flex-wrap: wrap; gap: 5px 8px; font-size: 10px; }
+  .htk .tkt { padding: 20px 18px; }
+  .htk .tk-h { font-size: 30px; }
+  .htk .tkt form .btn.big { font-size: 16px; }
+  .btn { max-width: 100%; white-space: normal; height: auto; min-height: 56px; padding-top: 12px; padding-bottom: 12px; }
+  .btn .bt { white-space: normal; line-height: 1.3; }
+  .btn.sm { min-height: 44px; padding-top: 8px; padding-bottom: 8px; }
+  .convos { margin-top: 64px; padding-top: 36px; }
+  .convos .cv-row { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 30px 18px; padding: 0; }
+  .convos li b { font-size: 14px; }
+  .convos li small { font-size: 12px; }
+  .press-mentions { margin-top: 40px; gap: 20px; }
+  .press-mentions p { flex-basis: 100%; text-align: center; }
+  .press-mentions ul { gap: 18px 24px; }
+  .press-mentions li { font-size: 18px; }
+  .press-mentions li:first-child { font-size: 24px; }
+  .gift .gcard { padding: 30px 22px; }
+  .gift .gt-bdg { width: 76px; }
+  .gift .gtx .eyebrow { padding-right: 80px; }
+  .rgrid2 .rq { padding: 24px; }
+}

@@ -30,7 +30,8 @@
 ## Brand
 
 - **Colours:**
-  - sunflower `#FFD400`, hot pink `#F72585`, warm ink `#1A1412`;
+  - sunflower `#FFD400` primary, Greek shutter blue `#365F8A` secondary, warm ink `#1A1412`;
+  - small tertiary pink details `#D45D87`; the older hot-pink-led direction is superseded by Ana’s Nov 7 feedback;
   - greys `#3D332E` and `#7A6A60`;
   - cream paper `#FFF8EE`;
   - tints: blue `#BFD7EC` / `#9DBEDD`, pink `#FFC6DE`, yellow `#FFE27A`.
@@ -50,8 +51,7 @@
   - coffee, letters and envelopes;
   - her own big paintings (pink, turquoise, a plant in an orange pot);
   - her toddler.
-- **Her look (Nov 3):** bolder than first assumed. Copper-red hair, red lips, feminine confident outfits (mauve satin
-  wrap top). Not "blue mommy colours".
+- **Her look (Nov 7):** warm, confident and handmade, with a quieter page. Ana explicitly found the earlier pink-heavy page too girly and crowded. Use yellow, cream and Greek shutter blue; keep pink as a small tertiary accent.
 - **Art style:**
   - now: her own big paintings (loose pink and turquoise, a plant in an orange pot) and a simple flat sunflower
     cartoon; warm, hand-made, a little naive;
@@ -66,7 +66,7 @@
 - **Photos:**
   - `img/real/ana-studio.webp` (newest, painting wall);
   - `img/real/ana-real-*` and `ana-live-*` (her Shorts stills);
-  - `img/ana-cabin-3.webp` (First Class);
+  - `img/real/ana-sunshine.webp` (Ana’s supplied Nov 7 closing photo; replaces the plane picture on registration);
   - `img/ana-hat.webp`.
 - **Originals:**
   - YouTube Short 6AV65yCJNzU (painting wall);
