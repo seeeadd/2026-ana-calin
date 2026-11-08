@@ -199,3 +199,5 @@ correction and every approval-with-reason (SOP section D). The full raw messages
 - 2026-11-08 · Form decoration · Sean: “remove lights from form” → remove the form’s seasonal hanging-light markup, animation and reserved top padding. Preserve the footer village lights and existing form controls.
 
 - 2026-11-08 · Work-choice section · Sean: “simplify this section” → three clean text-led choice cards on the existing warm beige ground. Remove the large scene illustrations, overlapping backplates, winding paths and sun behind the CTA. Keep the original choices, selection field and responsive CTA behavior.
+
+- 2026-11-08 · Simplification correction · Sean: “dont remove the graphics” → retain all three original painted work-choice scenes and their detail overlays. Simplify framing, spacing and connecting decoration instead. Keep the restored artwork compact, with mobile thumbnails beside the copy.

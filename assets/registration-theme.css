@@ -530,7 +530,7 @@ footer { background-color:var(--sun); background-image:url('../img/vip/paint/tx-
 }
 @media (prefers-reduced-motion:reduce) { .live-i-light { animation:none; } .live-i:before,.live-i:after { animation:none; opacity:.5; } .live-i:before { transform:translate(-50%,-50%) scale(1.45); } }
 
-/* Work choices: one calm row, without layered scenes or decorative paths. */
+/* Work choices: keep the painted illustrations in a calmer, compact row. */
 .where { padding-block:80px; }
 .where h2 em { display:block; }
 .where .sit3 { gap:16px; margin-top:28px; }
@@ -551,4 +551,18 @@ footer { background-color:var(--sun); background-image:url('../img/vip/paint/tx-
  .where .chip.sit b { font-size:28px; }
  .where .sit-ck { top:24px; }
  .where .sitgo { margin-top:24px!important; }
+}
+
+/* Preserve the original artwork; keep selection controls beside the titles. */
+.where .chip.sit { display:grid; grid-template-columns:minmax(0,1fr) 24px; grid-template-rows:auto auto 1fr; column-gap:10px; row-gap:12px; padding:16px 16px 22px; }
+.where .sit-art { grid-column:1/-1; grid-row:1; width:100%; margin:0 0 4px; border-radius:10px; }
+.where .chip.sit b { grid-column:1; grid-row:2; padding:0 0 0 4px; font-size:28px; }
+.where .sit-ck { grid-column:2; grid-row:2; position:static; align-self:center; }
+.where .chip.sit .sit-s { grid-column:1/-1; grid-row:3; padding:0 4px; }
+@media(max-width:700px) {
+ .where .chip.sit { grid-template-columns:100px minmax(0,1fr) 22px; grid-template-rows:auto 1fr; gap:8px 12px; padding:16px; }
+ .where .sit-art { grid-column:1; grid-row:1/3; align-self:center; margin:0; }
+ .where .chip.sit b { grid-column:2; grid-row:1; padding:0; font-size:25px; }
+ .where .sit-ck { grid-column:3; grid-row:1; width:22px; height:22px; }
+ .where .chip.sit .sit-s { grid-column:2/-1; grid-row:2; padding:0; font-size:14px; line-height:1.5; }
 }
