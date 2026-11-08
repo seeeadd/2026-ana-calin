@@ -197,3 +197,5 @@ correction and every approval-with-reason (SOP section D). The full raw messages
 - 2026-11-08 · Live indicator refinement · Sean: “thinner and not just one dot” → two staggered, fine red outline ripples around the existing yellow i-dot; halve the ring stroke and keep the layout unchanged.
 
 - 2026-11-08 · Form decoration · Sean: “remove lights from form” → remove the form’s seasonal hanging-light markup, animation and reserved top padding. Preserve the footer village lights and existing form controls.
+
+- 2026-11-08 · Work-choice section · Sean: “simplify this section” → three clean text-led choice cards on the existing warm beige ground. Remove the large scene illustrations, overlapping backplates, winding paths and sun behind the CTA. Keep the original choices, selection field and responsive CTA behavior.

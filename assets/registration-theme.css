@@ -529,3 +529,26 @@ footer { background-color:var(--sun); background-image:url('../img/vip/paint/tx-
   45% { color:#fff1a0; text-shadow:0 0 .045em #ffd400,0 0 .105em rgba(255,192,0,.8); }
 }
 @media (prefers-reduced-motion:reduce) { .live-i-light { animation:none; } .live-i:before,.live-i:after { animation:none; opacity:.5; } .live-i:before { transform:translate(-50%,-50%) scale(1.45); } }
+
+/* Work choices: one calm row, without layered scenes or decorative paths. */
+.where { padding-block:80px; }
+.where h2 em { display:block; }
+.where .sit3 { gap:16px; margin-top:28px; }
+.where .chip.sit { gap:12px; padding:26px 24px; border:1px solid #ddd3c1; border-radius:16px; background:#fffdf8; box-shadow:none; transform:none; transition:border-color .2s,background .2s; }
+.where .chip.sit:after { display:none; }
+.where .chip.sit b { padding:0 32px 0 0; font-size:30px; line-height:1.15; }
+.where .chip.sit .sit-s { padding:0; font-size:15px; line-height:1.6; }
+.where .sit-ck { top:28px; right:22px; width:24px; height:24px; border:1px solid #c7bca8; background:transparent; }
+.where .chip.sit:hover { border-color:#b59a59; transform:none; box-shadow:none; }
+.where .chip.sit[aria-pressed=true] { background:#fff5cb; border-color:#aa8524; box-shadow:0 0 0 1px #aa8524; transform:none; }
+.where .chip.sit[aria-pressed=true] .sit-ck { background:var(--sun); border-color:#aa8524; transform:none; }
+.where .chip.sit:focus-visible { outline:2px solid var(--ink); outline-offset:4px; }
+.where .sitgo { padding-top:0!important; margin-top:28px!important; }
+@media(max-width:700px) {
+ .where { padding-block:60px; }
+ .where .sit3 { grid-template-columns:1fr; gap:12px; margin-top:24px; }
+ .where .chip.sit { padding:22px; gap:8px; }
+ .where .chip.sit b { font-size:28px; }
+ .where .sit-ck { top:24px; }
+ .where .sitgo { margin-top:24px!important; }
+}
