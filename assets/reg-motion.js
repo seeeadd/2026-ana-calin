@@ -201,6 +201,7 @@
       $$('.trr', tg).forEach(function (c, i) {
         var n = $('.trr-n', c), txt = n.textContent, v = parseInt(txt.replace(/\D/g, ''), 10), plus = /\+$/.test(txt.trim());
         var bills = $$('.trr-cash i', c), per = v / Math.max(1, bills.length), at = .25 + i * .35, step = Math.min(.06, 1.7 / bills.length);
+        if (!bills.length) return;   /* results that aren't dollar amounts (Suzanne's 3 paid, Jenna's price) keep their text */
         n.textContent = '$0';
         bills.forEach(function (b, k) {   /* each note is flicked down onto the pile, and the amount moves on by $100 */
           tr.fromTo(b, { y: -16, x: 6, rotation: -24, scale: 1.25, opacity: 0 }, { y: 0, x: 0, rotation: (((k * 37) % 9) - 4) * .7, scale: 1, opacity: 1, duration: .28, ease: 'back.out(2)', immediateRender: true }, at + k * step)

@@ -2531,6 +2531,48 @@ html.wv-lock{overflow:hidden}
   #vsl.wv-port .bz{perspective:none}
   #vsl.wv-port .bz:after,#vsl.wv-port .bz:before{display:none!important}
 }
+
+/* ---------- Sean's new registration copy (Nov 9): the new pieces ---------- */
+.hnote .hn-tz{margin-top:12px;padding-top:10px;border-top:1px dashed rgba(26,20,18,.16);font-size:13.5px;line-height:1.45;color:var(--ink3)}
+.itx .iquote{margin:4px 0 18px;font-family:var(--serif);font-style:italic;font-size:clamp(28px,2.6vw,36px);line-height:1.1;color:var(--ink)}
+.days .head .dlede+.dlede{margin-top:10px}
+.days .dnote{margin:14px auto 0;max-width:600px;font-size:14.5px;font-weight:700;color:var(--ink3)}
+.jill-more .trr-shot{display:block;width:100%;height:auto;border-radius:10px;border:1px solid rgba(26,20,18,.1)}
+.jill-more .trr-t{font-size:clamp(38px,3.6vw,52px)}
+.where .sit-goal{max-width:640px;margin:26px auto 0;text-align:center;font-size:18px;line-height:1.55;color:var(--ink2);text-wrap:balance}
+.where .sit-goal b{color:var(--ink)}
+.recap .ask-tz{margin:10px auto 0;font-size:13.5px;color:var(--ink3);text-align:center}
+/* optional preparation: Ana's Offer Flow */
+.oflow{padding:10px 0 90px;overflow-x:clip}
+.ofcard{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:48px;align-items:center;background:#fff;border:1.5px solid var(--ink);border-radius:28px;padding:44px 48px;box-shadow:10px 11px 0 #FFD400,0 22px 40px -28px rgba(70,45,25,.45)}
+.oftx h2{margin:10px 0 18px}
+.oftx h2 .l{display:block}
+.oftx p{font-size:17.5px;line-height:1.6;color:var(--ink2);margin:0 0 12px}
+.oftx p b{color:var(--ink)}
+.oftx .ofnote{font-size:14.5px;font-weight:700;color:var(--ink3);margin-top:16px}
+.oftx .cta2{margin-top:22px}
+.ofart{position:relative}
+.of-app{background:#FFFDF8;border:1.5px solid var(--ink);border-radius:18px;padding:16px 16px 18px;box-shadow:0 26px 40px -26px rgba(70,45,25,.55);transform:rotate(1.2deg)}
+.of-bar{display:flex;align-items:center;gap:6px;padding-bottom:12px;border-bottom:1px solid rgba(26,20,18,.1)}
+.of-bar i{width:10px;height:10px;border-radius:50%;background:#E8DBC5}.of-bar i:first-child{background:#F4A6A0}.of-bar i:nth-child(2){background:#FFD400}
+.of-bar b{margin-left:8px;font-size:14px;font-weight:800}
+.of-ask{margin:14px 0;padding:12px 14px;border-radius:12px;background:#FFF3C9;border:1px solid rgba(26,20,18,.12)}
+.of-ask small{display:block;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3);margin-bottom:4px}
+.of-ask span{font-size:15.5px;line-height:1.45;color:var(--ink)}
+.of-cur{display:inline-block;width:2px;height:1.05em;margin-left:2px;vertical-align:-2px;background:var(--ink);animation:ofBlink 1s steps(1) infinite}
+@keyframes ofBlink{50%{opacity:0}}
+.of-k{font-size:12.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);margin:6px 2px 8px}
+.of-list{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.of-list li{display:grid;grid-template-columns:28px 1fr 54px;align-items:center;gap:10px;padding:10px 12px;border-radius:12px;background:#fff;border:1px solid rgba(26,20,18,.12)}
+.of-list b{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;background:#1A1412;color:#FFD400;font-size:13px}
+.of-list span{display:grid;gap:5px}.of-list span i{display:block;height:8px;border-radius:4px;background:#E8DBC5;filter:blur(1.5px)}.of-list span i.s{width:60%;background:#F1E8D8}
+.of-list em{font-style:normal;font-weight:800;font-size:15px;color:var(--ink);text-align:right;filter:blur(2.5px)}
+.of-list em:after{content:"000"}
+.of-lock{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:14px;font-size:14px;font-weight:800}
+.of-lock svg{width:16px;height:16px}
+.of-day{position:absolute;right:-14px;top:-18px;transform:rotate(6deg);background:#FFD400;border:1.5px solid var(--ink);border-radius:999px;padding:8px 14px;font-weight:800;font-size:14px;box-shadow:0 3px 0 var(--ink)}
+@media (max-width:900px){.ofcard{grid-template-columns:1fr;padding:30px 22px;gap:30px}.of-day{right:-4px}}
+@media (max-width:400px){.ofcard{padding:26px 16px}.of-list li{grid-template-columns:26px 1fr 44px;padding:9px 10px}}
 </style>
 <link rel="stylesheet" href="assets/registration-theme.css?v=d3970c488bea">
 </head>
@@ -2611,7 +2653,7 @@ html.wv-lock{overflow:hidden}
       <div class="tstrip">
         <div class="award"><img src="img/o/mark.webp" alt="" width="46" height="46"><span><small>HOW WE GROW</small><b>with Ana Calin</b></span></div>
         <div class="stats">
-          <div class="stat"><b>$1.4M</b><small>from the newsletter</small></div><i></i>
+          <div class="stat"><b>$1.4M</b><small>from the newsletter business</small></div><i></i>
           <div class="stat"><b>About 80,000</b><small>readers</small></div><i></i>
           <div class="stat"><b>0</b><small>sales calls</small></div>
         </div>
@@ -2650,20 +2692,24 @@ html.wv-lock{overflow:hidden}
       <div class="hnote">
         <p class="hn-a">You don’t need a newsletter, an audience or an idea ready.</p>
         <div class="hn-g">
-          <p><b>Already self-employed?</b> Your goal might be to earn without taking on another client. Bring that goal.</p>
+          <p><b>Already self-employed?</b> Bring the income goal that would let you turn down a client.</p>
           <p><b>Been to one of my workshops before?</b> I’ll show you which parts of my business I’d build first today, what I’d move earlier, and why.</p>
         </div>
+        <p class="hn-tz">Your local date and time may be different. This page shows the schedule in your time zone.</p>
       </div>
 
     </div>
 
     <div class="hright">
       <span class="hpill"><span class="dot"></span><span class="hp-name">The Exit Plan</span> <i>·</i> Free 3-day event <span class="hp-lz">live on Zoom</span></span>
-      <h1 id="h1" class="long h1x"><span class="h1a">My Newsletter Business <span class="nb">Has Made <span class="hl">$1.4M</span>.</span></span> <span class="h1b"><span class="l">Here’s What <span class="m">I’d Do First</span></span> <span class="l">If I Wanted <span class="m">to Leave</span></span> <span class="l">My Job <em>in 2027</em>.</span></span></h1>
+      <h1 id="h1" class="long h1x"><span class="h1a">My Newsletter Business <span class="nb">Has Made <span class="hl">$1.4M</span>.</span></span> <span class="h1b"><span class="l">Here’s How I’d <span class="m">Build One</span></span> <span class="l">to <span class="m">Replace My Salary</span></span> <span class="l"><em>in 2027</em>.</span></span></h1>
       <div class="hcopy">
-        <p class="hlead">I’ll show you what I’d sell first, why someone would pay for it when advice is everywhere, and where I’d find my first customers.</p>
-        <p class="hsub2">Join me for <b><span class="nn">three (3)</span> free, live sessions</b> to see what AI has changed about the order I’d follow, and work out where you could begin with the experience you already have.</p>
-        <p class="hsub2"><mark class="sk">You can start alongside the work that pays your bills.</mark></p>
+        <p class="hlead">You’ve spent years getting good at something. I’ll show you how I’d use that experience to <b>find readers, choose what to sell, and start building income of your own.</b></p>
+        <p class="hsub2">I’m Ana Calin. I <b>started with 12 subscribers</b> and built my business selling workshops and programs through my newsletter.</p>
+        <p class="hsub2">For <b><span class="nn">three (3)</span> free live sessions</b>, I’ll show you the business behind those numbers: where I’d find my first readers, what I’d sell them, and the step I’d move earlier now that AI has changed the work.</p>
+        <p class="hsub2">We’ll work on <b>your version: a first product, a starting price, and the sales your income goal would require.</b></p>
+        <p class="hsub2">Bring your experience. We’ll work out where it fits.</p>
+        <p class="hsub2"><mark class="sk">You can start while your current work still pays the bills.</mark></p>
       </div>
       <div class="htk">
         <div class="tkshell">
@@ -2674,7 +2720,7 @@ html.wv-lock{overflow:hidden}
         </div>
         <div class="tk-body">
           <p class="tk-k">Free · 3 days live · Dec 8 to 10</p>
-          <h3 class="tk-h">Save your free seat<span class="tk-and">Join me for all <span class="nn">3 days</span> <span class="nn">(for free)</span>.</span></h3>
+          <h3 class="tk-h">Save your free seat<span class="tk-and">Let’s work on the business you could build from what you know.</span></h3>
           <div class="rslot" id="hslot"></div>
         </div>
       </div>
@@ -2697,7 +2743,7 @@ html.wv-lock{overflow:hidden}
         </div>
         <div class="tk-body">
           <p class="tk-k">Free · 3 days live · Dec 8 to 10</p>
-          <h3 class="tk-h">Save your free seat<span class="tk-and">Join me for all <span class="nn">3 days</span> <span class="nn">(for free)</span>.</span></h3>
+          <h3 class="tk-h">Save your free seat<span class="tk-and">Let’s work on the business you could build from what you know.</span></h3>
           <div class="rslot" id="rslot"></div>
         </div>
       </div>
@@ -2715,12 +2761,12 @@ html.wv-lock{overflow:hidden}
       </div>
       <div class="itx" data-r>
         <p class="ilead">You can be very good at your job and still wonder <b>what anyone would buy from you directly.</b></p>
-        <p>At work, people rely on your judgement. Friends ask for your help. Then you think about charging for something of your own, and suddenly you’re back at, “Who would pay me for this?”</p>
-        <p>Imagine having <b>a customer you found yourself.</b> Then another. Enough experience to start understanding what sells, what it takes to deliver, and whether you want more of it.</p>
-        <p>That would give you something real to build your next decision around.</p>
-        <p>Maybe you want to leave your job in 2027. Maybe you want to replace a difficult client or stop depending on one source of income.</p>
-        <p class="ibold"><mark class="sk">I want you to start finding out what your experience could earn while your current work still pays the bills.</mark></p>
-        <p>I’ll bring examples from my business, including the things that earned very little, and show you what I’d take from them if I were starting today.</p>
+        <p>At work, people rely on your judgement. Friends ask for your help. Then you think about charging for something of your own, and suddenly you’re back at:</p>
+        <p class="iquote">“Who would pay me for this?”</p>
+        <p>My newsletter business grew around answering that question. <b>The writing brings people in. Workshops and programs give them a way to pay me for help.</b></p>
+        <p>I’ll show you how those pieces work together and how I’d start with the experience you already have.</p>
+        <p>Maybe you want to leave your job in 2027. Maybe you want to replace a difficult client. Maybe another source of income would already give you room to breathe.</p>
+        <p class="ibold"><mark class="sk">You can start building it while your current work still pays the bills.</mark></p>
         <div class="igo"><button class="btn open" type="button"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">I want my exit plan, free</span><svg class="ar"><use href="#arr"/></svg></button><span class="iwhen">Dec 8 to 10 · 12:00 pm New York<br>Free and live on Zoom</span></div>
       </div>
     </div>
@@ -2731,8 +2777,10 @@ html.wv-lock{overflow:hidden}
 <section class="days" id="days">
   <div class="wrap">
     <div class="head" data-r>
-      <h2><span class="l">Here’s what we’ll work</span> <span class="l"><em>through together.</em></span></h2>
-      <p class="dlede">I’ll show you where I’d begin, <mark class="sk">the decisions I’d make before building more,</mark> and what taking this further could look like.</p>
+      <h2><span class="l">Your readers. Your first product.</span> <span class="l"><em>The business they could become.</em></span></h2>
+      <p class="dlede">I’ll bring the system behind my newsletter business, my own examples, and the decisions I’d make if I were starting again.</p>
+      <p class="dlede">You’ll work on <b>who to reach, what to sell first, and the numbers behind your income goal.</b> Then we’ll look at what comes after the first sale.</p>
+      <p class="dnote">All dates below follow New York time. Each session starts at 12:00 pm.</p>
     </div>
     <div class="swall" aria-hidden="true"><span class="sw-k">From my slides for the three days</span><div class="sw-g"><img src="img/o/slides/s1.webp" alt="" width="1280" height="720" loading="lazy"><img src="img/slides/s2.webp" alt="" width="1280" height="720" loading="lazy"><img src="img/o/slides/s3.webp" alt="" width="1280" height="720" loading="lazy"><img src="img/slides/s4.webp" alt="" width="1280" height="720" loading="lazy"><img src="img/o/slides/s5.webp" alt="" width="1280" height="720" loading="lazy"><img src="img/slides/s6.webp" alt="" width="1280" height="720" loading="lazy"></div></div>
 
@@ -2746,17 +2794,17 @@ html.wv-lock{overflow:hidden}
         <div class="dbadge"><small>DAY</small><b>1</b></div>
         <div class="dtext">
           <div class="dwhen"><span class="dcal" aria-hidden="true"><small>DEC</small><b>8</b></span><span class="dtx"><b>Tuesday, Dec 8</b><span class="dtm"><span class="pill">12:00 pm New York</span></span></span></div>
-          <h3>Find the <span class="dh">people your business could serve</span>.</h3>
-          <p class="body lede"><b>Where I’d find my first audience if nobody knew my name.</b></p>
-          <p class="body">Before spending months creating content, I’d want a good answer to one question: <mark class="sk">why would the right people come to me?</mark></p>
-          <p class="body">We’ll look at your experience and work out where that answer could be.</p>
+          <h3>Find your <span class="dh">first readers</span> and give them <span class="dh">a reason to choose you</span>.</h3>
+          <p class="body lede"><b>My newsletter started with 12 subscribers. If I were starting again, I’d be very particular about who I wanted the next 12 to be.</b></p>
+          <p class="body">I wouldn’t want to spend months writing before finding out <mark class="sk">whether I was reaching the right people.</mark></p>
+          <p class="body">I’ll show you where I’d begin:</p>
           <ul>
-            <li><svg aria-hidden="true"><use href="#li"/></svg><span><b>The topic inside your topic.</b> What I’d look for within a broad subject like health, teaching or marketing to give someone a specific reason to follow you.</span></li>
-            <li><svg aria-hidden="true"><use href="#li"/></svg><span><b>Where I’d look for my first readers or followers.</b> How I’d choose where to show up when I couldn’t afford to spend my day on five platforms.</span></li>
-            <li><svg aria-hidden="true"><use href="#li"/></svg><span><b>The responses I’d pay attention to before choosing a business direction.</b> What I’d want to understand beyond whether people liked what I wrote.</span></li>
+            <li><svg aria-hidden="true"><use href="#li"/></svg><span><b>The topic inside your topic.</b> The specific reason someone would choose you when plenty of people already write about your subject.</span></li>
+            <li><svg aria-hidden="true"><use href="#li"/></svg><span><b>Where I’d look for my first readers.</b> How I’d choose where to show up when I couldn’t spend my day on five platforms.</span></li>
+            <li><svg aria-hidden="true"><use href="#li"/></svg><span><b>The responses that would make me keep going.</b> What I’d pay attention to beyond likes before choosing a business direction.</span></li>
           </ul>
-          <p class="out"><span>You’ll leave knowing</span>whom you want to reach, what you want to be known for, and where to start finding those people.</p>
-          <p class="next">Then comes the question that makes Day 2 matter: <b>what could you sell that makes this worth building?</b></p>
+          <p class="out"><span>You’ll leave knowing</span>who you want to reach, what you want to be known for, and where to start finding those people.</p>
+          <p class="next">Then we get to Day 2: <b>what could you sell that makes this worth building?</b></p>
           <div class="cta2"><button class="btn open" type="button" data-cta="day1"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">Show me where to start <small class="bq">(it’s free)</small></span><svg class="ar"><use href="#arr"/></svg></button><small>free · live on Zoom</small></div>
         </div>
         <div class="art lv" id="art1" aria-hidden="true"><div class="stage">
@@ -2775,20 +2823,18 @@ html.wv-lock{overflow:hidden}
         <div class="dbadge"><small>DAY</small><b>2</b></div>
         <div class="dtext">
           <div class="dwhen"><span class="dcal" aria-hidden="true"><small>DEC</small><b>9</b></span><span class="dtx"><b>Wednesday, Dec 9</b><span class="dtm"><span class="pill">12:00 pm New York</span></span></span></div>
-          <h3>Find the <span class="dh">part of what you know</span> that <span class="dh">could become your business</span>.</h3>
-          <p class="body lede"><b>What I’d sell first, and what I’d need to know before giving it my evenings.</b></p>
-          <p class="body">You might have several ideas. You might think your experience is too ordinary to charge for. Or you might already have an offer that people like but rarely buy.</p>
-          <p class="body">This is where we put the potential customer, the money and the work involved together.</p>
-          <p class="body"><mark class="sk">I’ll show you the part of my business I’d start with today,</mark> and how I’d decide whether that direction made sense for you.</p>
+          <h3>Choose a <span class="dh">product worth building</span> a business around.</h3>
+          <p class="body lede"><b>You’re choosing what you’ll spend your time building, what customers will pay you for, and the work you’ll have to deliver.</b></p>
+          <p class="body"><mark class="sk">I’ll show you the part of my business I’d start with today</mark> and how I’d decide whether that direction made sense for you.</p>
+          <p class="body">You’ll see:</p>
           <ul>
-            <li><svg aria-hidden="true"><use href="#li"/></svg><span><b>What someone has a reason to buy when AI can give them information for free.</b> The distinction I’d make before deciding what the customer actually gets.</span></li>
-            <li><svg aria-hidden="true"><use href="#li"/></svg><span><b>How I’d choose which idea gets my time first.</b> What I’d examine when several ideas sound promising, but I can only pursue one.</span></li>
-            <li><svg aria-hidden="true"><use href="#li"/></svg><span><b>What I’d want to know before trusting “people seem interested.”</b> The questions I’d need answered before spending weeks building something.</span></li>
-            <li><svg aria-hidden="true"><use href="#li"/></svg><span><b>What the price means for the business you’ll have to run.</b> How I’d look at customer numbers and delivery together before deciding an idea could support my income goal.</span></li>
-            <li><svg aria-hidden="true"><use href="#li"/></svg><span><b>The step I’d move earlier now that AI has changed the work.</b> Why I’d change the order, and what I’d hold off on until I knew more.</span></li>
+            <li><svg aria-hidden="true"><use href="#li"/></svg><span><b>What people still buy when AI gives information away.</b> The distinction I’d make before choosing what a customer should pay me for.</span></li>
+            <li><svg aria-hidden="true"><use href="#li"/></svg><span><b>The check before you commit your time.</b> What I’d need to know before trusting compliments, interest or my own enthusiasm.</span></li>
+            <li><svg aria-hidden="true"><use href="#li"/></svg><span><b>What your price commits you to.</b> The customer numbers and delivery behind the income you want.</span></li>
+            <li><svg aria-hidden="true"><use href="#li"/></svg><span><b>The step I’d move earlier today.</b> What AI has changed about the order, and what I’d still hold off on.</span></li>
           </ul>
-          <p class="out"><span>You’ll leave with</span>a direction for what to sell, the result someone would buy it for, and a starting price. You’ll see how the money and delivery could work, and what you still need to find out from potential customers.</p>
-          <p class="next">If you’ve worked on an offer with me before, bring it. We’ll look at whether it fits the business you want now.</p>
+          <p class="out"><span>You’ll leave with</span>a first product direction, the result someone would buy it for, a starting price, and what still needs checking with potential customers.</p>
+          <p class="next"><b>Already worked on an offer with me?</b> Bring it. We’ll check whether it fits the business you want now.</p>
           <div class="cta2"><button class="btn open" type="button" data-cta="day2"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">Help me choose what to sell <small class="bq">(it’s free)</small></span><svg class="ar"><use href="#arr"/></svg></button><small>free · live on Zoom</small></div>
         </div>
         <div class="art lv" id="art2" aria-hidden="true"><div class="stage">
@@ -2806,16 +2852,18 @@ html.wv-lock{overflow:hidden}
         <div class="dbadge"><small>DAY</small><b>3</b></div>
         <div class="dtext">
           <div class="dwhen"><span class="dcal" aria-hidden="true"><small>DEC</small><b>10</b></span><span class="dtx"><b>Thursday, Dec 10</b><span class="dtm"><span class="pill">12:00 pm New York</span></span></span></div>
-          <h3>See the <span class="dh">path</span> from your first customers to a business of your own.</h3>
-          <p class="body lede"><b>What would have to happen for this to become income you could start making plans around?</b></p>
-          <p class="body">A customer is a beginning. You want to see what comes after: <mark class="sk">something you can keep selling, customers you know how to reach, and work you can fit into your life.</mark></p>
-          <p class="body">On our final day, I’ll lay out the path we can take from the idea you’ve worked on to building that business.</p>
+          <h3>From your <span class="dh">first sale</span> to <span class="dh">steady income</span>.</h3>
+          <p class="body lede"><b>What would it take for this business to replace your salary?</b></p>
+          <p class="body">A first customer would tell you something important: someone is willing to pay you.</p>
+          <p class="body">I’ll show you what comes after that: <mark class="sk">where the next customers could come from, what you can keep selling,</mark> and how the work fits into the life you’re trying to build.</p>
+          <p class="body">You’ll see:</p>
           <ul>
-            <li><svg aria-hidden="true"><use href="#li"/></svg><span><b>See what you’d be working towards beyond the first sale.</b> How the pieces come together around a business you’d want to keep running.</span></li>
-            <li><svg aria-hidden="true"><use href="#li"/></svg><span><b>Put your income goal beside the business it would require.</b> Consider what earning more could mean for your customers, your time and the way you deliver.</span></li>
-            <li><svg aria-hidden="true"><use href="#li"/></svg><span><b>See the next step available to you.</b> What it involves and whether it fits the direction you want to take in 2027.</span></li>
+            <li><svg aria-hidden="true"><use href="#li"/></svg><span><b>How the pieces fit together beyond the first sale.</b> Reaching readers, selling your products and delivering the work.</span></li>
+            <li><svg aria-hidden="true"><use href="#li"/></svg><span><b>What growing the income asks of you.</b> The decisions ahead as your customer numbers and responsibilities increase.</span></li>
+            <li><svg aria-hidden="true"><use href="#li"/></svg><span><b>The next step available to you.</b> What it involves and whether it fits the business you want to build in 2027.</span></li>
           </ul>
-          <p class="out"><span>Come with</span>the business you’re starting to picture. See what taking it further would involve.</p>
+          <p class="body">Bring your notes from the first two days. You’ll have your own starting point to compare with the path ahead.</p>
+          <p class="out"><span>Come to see</span>the route from your starting point to a business you could keep growing.</p>
           <div class="cta2"><button class="btn open" type="button" data-cta="day3"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">Show me the path <small class="bq">(it’s free)</small></span><svg class="ar"><use href="#arr"/></svg></button><small>free · live on Zoom</small></div>
         </div>
         <div class="art lv" id="art3" aria-hidden="true"><div class="stage">
@@ -2830,7 +2878,7 @@ html.wv-lock{overflow:hidden}
     </div>
 
     <div class="after" data-r>
-      <p><span class="l">Come to all <span class="nn">three (3)</span>.</span> <span class="l">Give yourself time to work through the decisions and see how they fit your situation.</span></p>
+      <p><span class="l">Come to all <span class="nn">three (3)</span>.</span> <span class="l">Each day builds on the one before.</span></p>
       <button class="btn open" type="button"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">I’m in for all three <small class="bq">(free)</small></span><svg class="ar"><use href="#arr"/></svg></button>
     </div>
 
@@ -2846,9 +2894,9 @@ html.wv-lock{overflow:hidden}
     </div>
     <!-- two more results from the same past challenge, kept beside Jill's -->
     <div class="jill-more" data-r>
-      <figure class="trr"><b class="trr-n">$3,200</b><span class="trr-f">from 547 subscribers</span><span class="trr-cash" data-bills="32" aria-hidden="true"></span><div class="trq"><p>First launch ever. Three emails, launched the same week.</p></div><figcaption>A student in my past challenge</figcaption></figure>
-      <figure class="trr"><b class="trr-n">$2,400</b><span class="trr-f">from 198 subscribers</span><span class="trr-cash" data-bills="24" aria-hidden="true"></span><div class="trq"><p>She almost didn’t start because she thought 198 subscribers wasn’t enough. It was.</p></div><figcaption>A student in my past challenge</figcaption></figure>
-      <p class="jm-n">Individual experiences from my past challenge. Results vary.</p>
+      <figure class="trr trr-w"><b class="trr-n">3</b><span class="trr-f">paid subscribers in her first week</span><img class="trr-shot" src="img/wins/suzanne.webp" alt="Suzanne: #62 Rising, 16 subscribers and 3 paid in a week" width="900" height="388" loading="lazy"><figcaption>Suzanne Harrison</figcaption></figure>
+      <figure class="trr trr-w"><b class="trr-n trr-t">Raised her price</b><span class="trr-f">and updated her paid subscription</span><img class="trr-shot" src="img/wins/jenna.webp" alt="Jenna: increased the price, updated paid subscription" width="900" height="378" loading="lazy"><figcaption>Jenna Garagiola</figcaption></figure>
+      <p class="jm-n">Individual experiences from my previous teaching and programs. Results vary.</p>
     </div>
   </div>
 </section>
@@ -2860,9 +2908,10 @@ html.wv-lock{overflow:hidden}
     <div class="head" data-r><span class="eyebrow">Where are you right now?</span><h2>What would you like <em>to change about work?</em></h2></div>
     <div class="sit3" role="group" aria-label="What would you like to change about work?" data-r>
       <button class="chip sit" type="button" data-v="job" aria-pressed="false"><span class="sit-art pt"><picture><source type="image/avif" srcset="img/o/vip/paint/sit-job.avif"><img src="img/vip/paint/sit-job.webp" alt="" width="440" height="300" loading="lazy"></picture><span class="so so-job"><em>after six:</em><i></i><i></i></span></span><span class="sit-ck" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m5 10.5 3.4 3.4L15 6.8"/></svg></span><b>I have a job.</b><span class="sit-s">I want <strong>leaving to become a choice I can afford.</strong></span></button>
-      <button class="chip sit" type="button" data-v="self" aria-pressed="false"><span class="sit-art pt"><picture><source type="image/avif" srcset="img/o/vip/paint/sit-self.avif"><img src="img/vip/paint/sit-self.webp" alt="" width="440" height="300" loading="lazy"></picture><span class="so so-self"><svg viewBox="0 0 24 24"><use href="#sf"/></svg></span></span><span class="sit-ck" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m5 10.5 3.4 3.4L15 6.8"/></svg></span><b>I work for myself.</b><span class="sit-s">I want <strong>more income</strong> without filling every available hour with client work.</span></button>
-      <button class="chip sit" type="button" data-v="both" aria-pressed="false"><span class="sit-art pt"><picture><source type="image/avif" srcset="img/o/vip/paint/sit-both.avif"><img src="img/vip/paint/sit-both.webp" alt="" width="440" height="300" loading="lazy"></picture><span class="so so-both"><svg viewBox="0 0 24 24"><use href="#sf"/></svg></span></span><span class="sit-ck" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m5 10.5 3.4 3.4L15 6.8"/></svg></span><b>A bit of both.</b><span class="sit-s">I want to <strong>choose one business direction</strong> instead of squeezing more work around everything else.</span></button>
+      <button class="chip sit" type="button" data-v="self" aria-pressed="false"><span class="sit-art pt"><picture><source type="image/avif" srcset="img/o/vip/paint/sit-self.avif"><img src="img/vip/paint/sit-self.webp" alt="" width="440" height="300" loading="lazy"></picture><span class="so so-self"><svg viewBox="0 0 24 24"><use href="#sf"/></svg></span></span><span class="sit-ck" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m5 10.5 3.4 3.4L15 6.8"/></svg></span><b>I work for myself.</b><span class="sit-s">I want <strong>more income without more client hours.</strong></span></button>
+      <button class="chip sit" type="button" data-v="both" aria-pressed="false"><span class="sit-art pt"><picture><source type="image/avif" srcset="img/o/vip/paint/sit-both.avif"><img src="img/vip/paint/sit-both.webp" alt="" width="440" height="300" loading="lazy"></picture><span class="so so-both"><svg viewBox="0 0 24 24"><use href="#sf"/></svg></span></span><span class="sit-ck" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m5 10.5 3.4 3.4L15 6.8"/></svg></span><b>A bit of both.</b><span class="sit-s">I want <strong>one business direction</strong> instead of five side ideas.</span></button>
     </div>
+    <p class="sit-goal" data-r><b>Bring that goal.</b> We’ll use it when we look at what your business would need to earn and what it would take to run it.</p>
     <div class="sitgo" data-r><button class="btn open" type="button" data-sitgo><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">I want the plan</span><svg class="ar"><use href="#arr"/></svg></button><small>free · live on Zoom</small></div>
   </div>
 </section>
@@ -2872,14 +2921,15 @@ html.wv-lock{overflow:hidden}
   <div class="wrap">
     <div class="hostg">
       <div class="hst-tx" data-r>
-        <h2><span class="l">I’m Ana.</span> <span class="l"><em>My first workshop sold <span class="nn">two (2)</span> copies.</em></span></h2>
-        <p class="big">I’d built what I wanted to teach instead of what my readers kept asking me for.</p>
+        <h2><span class="l">I’m Ana.</span> <span class="l"><em>I started with 12 subscribers.</em></span></h2>
+        <p class="big">In under <span class="nn">two (2)</span> years, my newsletter business made <b>$1.4M</b>. I built it while raising a newborn, as an expat in a new country.</p>
+        <p>It didn’t begin with a successful launch.</p>
+        <p><b>My first workshop sold <span class="nn">two (2)</span> copies.</b> I’d built what I wanted to teach instead of what my readers kept asking me for.</p>
         <p class="hpl">A whole stadium, and I forgot to sell tickets. Or hot dogs.</p>
-        <p>Today, about <b>80,000 people</b> read my newsletter, How We Grow. The business has made <b>$1.4M</b> selling workshops and programs, and <b>I’ve never taken a sales call.</b></p>
-        <p>I run it from a village in Greece, on about <span class="nn">two (2)</span> hours of work a day. It took work to get here.</p>
-        <p class="hq"><mark class="sk">For this event, I’m asking a practical question: what would I do with everything I know now if I still had a job and nobody knew my name?</mark></p>
-        <p>Some decisions I’d repeat. Some I’d make much earlier. AI has changed the order I’d follow, too.</p>
-        <p>I’ll bring my own examples and explain the choices behind them, so you can see what might make sense for the business you want.</p>
+        <p>Today, about <b>80,000 people</b> read How We Grow. I run the business from a village in Greece on about <span class="nn">two (2)</span> hours a day, and <b>I’ve never taken a sales call.</b></p>
+        <p class="hq"><mark class="sk">For this event, I’m opening up the business behind those numbers.</mark></p>
+        <p>I’ll show you what I’d repeat, what I’d change, and where I’d begin if I still had a job and nobody knew my name.</p>
+        <p>You’ll see the decisions behind the results, including the things that earned very little.</p>
         <div class="cta2"><button class="btn open" type="button" data-cta="host"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">Show me your numbers, Ana <small class="bq">(free)</small></span><svg class="ar"><use href="#arr"/></svg></button><small>free · live on Zoom</small></div>
       </div>
       <div class="hst-pic" data-r>
@@ -2891,9 +2941,9 @@ html.wv-lock{overflow:hidden}
         <div class="hrc gads" aria-hidden="true">
           <div class="ga-top"><span class="ga-ttl">Overview</span><span class="ga-rng">All time<svg viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></span></div>
           <div class="ga-cards">
-            <div class="ga-c c-b"><small>First sales<svg viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></small><b class="hrc-2">2</b></div>
-            <div class="ga-c c-r"><small>Readers<svg viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></small><b data-to="80" data-suf="K">80K</b></div>
-            <div class="ga-c c-y"><small>Revenue<svg viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></small><b data-to="1.4" data-pre="$" data-suf="M" data-dec="1">$1.4M</b></div>
+            <div class="ga-c c-b"><small>First workshop sales<svg viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></small><b class="hrc-2">2</b></div>
+            <div class="ga-c c-r"><small>Readers today<svg viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></small><b data-to="80" data-suf="K">80K</b></div>
+            <div class="ga-c c-y"><small>Business revenue<svg viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></small><b data-to="1.4" data-pre="$" data-suf="M" data-dec="1">$1.4M</b></div>
             <div class="ga-c c-g"><small>Sales calls<svg viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></small><b>0</b></div>
           </div>
           <div class="ga-chw"><span class="ga-ax l"><i>80K</i><i>40K</i><i>0</i></span>
@@ -2959,7 +3009,7 @@ html.wv-lock{overflow:hidden}
       </div>
       <div class="bring-tx bring-more">
         <div class="bring-cols">
-        <p>During the teaching sessions, you’ll have time to work on your own direction. <mark class="sk">I’ll review selected attendees’ work on screen</mark> and explain what I’d keep, what I’d question, and what I’d change.</p>
+        <p>During the teaching sessions, you’ll have time to work on your own direction. <mark class="sk">I’ll put selected attendees’ work on screen</mark> and explain what I’d keep, what I’d question, and what I’d change.</p>
         <p>Even when it’s someone else’s work, you’ll see how I make the decision.</p>
         <p class="bring-b">Come with the part you haven’t figured out. You don’t need to tidy it up for me first.</p>
         </div>
@@ -2984,20 +3034,50 @@ html.wv-lock{overflow:hidden}
       </div>
       <div class="gtx">
         <img class="bdg bdg-gift gt-bdg" src="img/o/badges/free-gift.webp" alt="Free gift" width="604" height="640" loading="lazy">
-        <span class="eyebrow">Your gift: the exit number</span>
-        <h2><span class="l">How many sales would you need</span> <span class="l"><em>to reach your monthly income goal?</em></span></h2>
-        <p>Perhaps you want to replace one client. Cover your bills. Eventually, match your salary.</p>
-        <p><mark class="sk">After you register, answer <span class="nn">seven (7)</span> quick questions to get your exit-number calculator.</mark></p>
+        <span class="eyebrow">Your gift: the Exit Number</span>
+        <h2><span class="l">How many sales would it take</span> <span class="l"><em>to reach your monthly income goal?</em></span></h2>
+        <p>Replace one client. Cover your bills. Eventually, match your salary.</p>
+        <p><mark class="sk">After you register, answer <span class="nn">seven (7)</span> quick questions to get your Exit Number Calculator.</mark></p>
       </div>
       <div class="gmore">
         <div class="gcols">
-        <p>Put in your income goal, try different prices, and see <b>how many purchases each would require.</b> You can compare that with earning the same amount through paid newsletter subscriptions, too.</p>
-        <p><b>Bring those numbers to Day 2.</b> As we look at what you could sell, you’ll have your own target in front of you.</p>
+        <p>Put in your goal, try different prices, and see <b>how many sales each one needs.</b> Compare that with earning the same amount through paid newsletter subscriptions.</p>
+        <p><b>Bring your number to Day 2.</b> You’ll have your own target in front of you while we work out what to sell.</p>
         <p>Would you want to find that many customers? Could you deliver what they’re buying alongside your current work?</p>
-        <p>Come back and adjust the numbers as your idea develops. That’s what it’s there for.</p>
+        <p>Come back and adjust the numbers as your idea develops. That’s what the calculator is there for.</p>
         <p class="gnote">Planning estimates based on the figures you enter.</p>
         </div>
-        <div class="cta2"><button class="btn open" type="button" data-cta="gift"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">Save my seat and get my number</span><svg class="ar"><use href="#arr"/></svg></button><small>your exit number comes after you register</small></div>
+        <div class="cta2"><button class="btn open" type="button" data-cta="gift"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">Save my seat and get my number</span><svg class="ar"><use href="#arr"/></svg></button><small>your calculator opens after you register</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8b. optional preparation: Ana's Offer Flow (Sean's copy, Nov 9). The tool opens after registration; the mock-up shows
+     its shape only (four suggestions, prices blurred), never invented products or prices -->
+<section class="oflow" id="offer-flow">
+  <div class="wrap">
+    <div class="ofcard" data-r>
+      <div class="oftx">
+        <span class="eyebrow">Optional preparation: Ana’s Offer Flow</span>
+        <h2><span class="l">No idea what to sell yet?</span> <span class="l"><em>Bring a starting point to Day 2.</em></span></h2>
+        <p>I built <b>a free AI tool</b> around the system we’ll use in this event.</p>
+        <p><mark class="sk">Tell Ana’s Offer Flow what you know. It gives you four product suggestions with starting prices.</mark></p>
+        <p>You don’t have to build all four. <b>Bring the suggestions.</b></p>
+        <p>On Day 2, we’ll work on which one deserves your time first, what someone would buy it for, and what needs checking before you build it.</p>
+        <p>Then you can put a price into your Exit Number Calculator and see the sales your goal would require.</p>
+        <p class="ofnote">This is optional preparation. You can still come if you haven’t used it.</p>
+        <div class="cta2"><button class="btn open" type="button" data-cta="offerflow"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">Save my seat and get the tools</span><svg class="ar"><use href="#arr"/></svg></button><small>free · access after registration</small></div>
+      </div>
+      <div class="ofart" aria-hidden="true">
+        <div class="of-app">
+          <div class="of-bar"><i></i><i></i><i></i><b>Ana’s Offer Flow</b></div>
+          <div class="of-ask"><small>What do you know?</small><span>I coach mothers going back to work after a career break<i class="of-cur"></i></span></div>
+          <div class="of-k">4 product suggestions</div>
+          <ol class="of-list"><li><b>1</b><span><i></i><i class="s"></i></span><em>$</em></li><li><b>2</b><span><i></i><i class="s"></i></span><em>$</em></li><li><b>3</b><span><i></i><i class="s"></i></span><em>$</em></li><li><b>4</b><span><i></i><i class="s"></i></span><em>$</em></li></ol>
+          <div class="of-lock"><svg viewBox="0 0 20 20"><rect x="4" y="9" width="12" height="9" rx="2" fill="#1A1412"/><path d="M7 9V6.5a3 3 0 0 1 6 0V9" fill="none" stroke="#1A1412" stroke-width="2"/></svg>Opens after you register</div>
+        </div>
+        <span class="of-day">Bring to Day 2</span>
       </div>
     </div>
   </div>
@@ -3012,11 +3092,11 @@ html.wv-lock{overflow:hidden}
       <p class="tip">Tap the ones that sound like you.</p>
     </div>
     <ul data-r class="nb">
-      <li><button type="button" aria-pressed="false"><span class="tk"><svg viewBox="0 0 20 20"><path d="m5 10.5 3.4 3.4L15 6.8"/></svg></span><span class="pain">“I know my subject. I don’t know what anyone would buy from me.”</span><span class="fix"><span><b>Day 2</b> is where we look at what someone could pay you to help them do.</span></span></button></li>
-      <li><button type="button" aria-pressed="false"><span class="tk"><svg viewBox="0 0 20 20"><path d="m5 10.5 3.4 3.4L15 6.8"/></svg></span><span class="pain">“I haven’t published anything yet.”</span><span class="fix"><span>You can start with your experience. <b>Day 1</b> covers whom you could reach and where I’d begin finding them.</span></span></button></li>
-      <li><button type="button" aria-pressed="false"><span class="tk"><svg viewBox="0 0 20 20"><path d="m5 10.5 3.4 3.4L15 6.8"/></svg></span><span class="pain">“People say my writing is useful. It earns very little.”</span><span class="fix"><span>We’ll look beyond what they enjoy reading to <b>what they could have a reason to buy.</b></span></span></button></li>
-      <li><button type="button" aria-pressed="false"><span class="tk"><svg viewBox="0 0 20 20"><path d="m5 10.5 3.4 3.4L15 6.8"/></svg></span><span class="pain">“I have several ideas and keep switching between them.”</span><span class="fix"><span>Bring them. I’ll show you <b>what I’d examine before choosing which one gets my time.</b></span></span></button></li>
-      <li><button type="button" aria-pressed="false"><span class="tk"><svg viewBox="0 0 20 20"><path d="m5 10.5 3.4 3.4L15 6.8"/></svg></span><span class="pain">“I’ve already worked on an offer with Ana.”</span><span class="fix"><span>Bring that too. We’ll look at how it fits the business you want now, with <b>the changes I’d make if I were starting today.</b></span></span></button></li>
+      <li><button type="button" aria-pressed="false"><span class="tk"><svg viewBox="0 0 20 20"><path d="m5 10.5 3.4 3.4L15 6.8"/></svg></span><span class="pain">“I know my subject. I don’t know what anyone would buy from me.”</span><span class="fix"><span><b>Day 2</b> is where we work out what someone could pay you to help them do.</span></span></button></li>
+      <li><button type="button" aria-pressed="false"><span class="tk"><svg viewBox="0 0 20 20"><path d="m5 10.5 3.4 3.4L15 6.8"/></svg></span><span class="pain">“I haven’t published anything yet.”</span><span class="fix"><span>Start with your experience. <b>Day 1</b> covers who you could reach and where to find them.</span></span></button></li>
+      <li><button type="button" aria-pressed="false"><span class="tk"><svg viewBox="0 0 20 20"><path d="m5 10.5 3.4 3.4L15 6.8"/></svg></span><span class="pain">“People say my writing is useful. It earns very little.”</span><span class="fix"><span>We’ll look at <b>what gives those people a reason to become customers.</b></span></span></button></li>
+      <li><button type="button" aria-pressed="false"><span class="tk"><svg viewBox="0 0 20 20"><path d="m5 10.5 3.4 3.4L15 6.8"/></svg></span><span class="pain">“I have several ideas and keep switching between them.”</span><span class="fix"><span>Bring them. I’ll show you <b>how I’d choose which one gets my time.</b></span></span></button></li>
+      <li><button type="button" aria-pressed="false"><span class="tk"><svg viewBox="0 0 20 20"><path d="m5 10.5 3.4 3.4L15 6.8"/></svg></span><span class="pain">“I’ve already worked on an offer with Ana.”</span><span class="fix"><span>Bring that too. We’ll check how it fits the business you want now, <b>using the order I’d follow today.</b></span></span></button></li>
     </ul>
     <!-- shows after the first tap -->
     <div class="fitgo" id="fitgo" hidden><button class="btn open" type="button"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">That’s me. I’m in.</span><svg class="ar"><use href="#arr"/></svg></button><small>Free · 3 days live</small></div>
@@ -3039,10 +3119,10 @@ html.wv-lock{overflow:hidden}
       <figure class="rq"><blockquote>I finally see the possibility of monetizing here!</blockquote><figcaption><img src="img/o/av/adora.webp" alt="" width="80" height="80" loading="lazy"><span><b>Adora Lee</b><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span></span></figcaption></figure>
     </div>
     <div class="rgrid2" data-r>
-      <figure class="rq sm"><blockquote>I love the way you get straight to the point about growth and how to communicate value to your audience so they WANT to pay you. It is a priority of mine to grow my audience and get paid for my offers &amp; I'm really confident that your roadmap will help me achieve that.</blockquote><figcaption><img src="img/o/av/shahidah.webp" alt="" width="80" height="80" loading="lazy"><span><b>Shahidah Al-Amin</b><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span></span></figcaption></figure>
+      <figure class="rq sm"><blockquote>I love the way you get straight to the point about growth and how to communicate value to your audience so they WANT to pay you…</blockquote><figcaption><img src="img/o/av/shahidah.webp" alt="" width="80" height="80" loading="lazy"><span><b>Shahidah Al-Amin</b><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span></span></figcaption></figure>
       <figure class="rq sm"><blockquote>Thank you so much, this was so worth my time and money</blockquote><figcaption><img src="img/o/av/hilde.webp" alt="" width="80" height="80" loading="lazy"><span><b>Hilde Palladino</b><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span></span></figcaption></figure>
       <figure class="rq sm"><blockquote>Ana provides clear advice and actionable steps on how to grow your Substack.</blockquote><figcaption><img src="img/o/av/michael.webp" alt="" width="80" height="80" loading="lazy"><span><b>Michael Wallace</b><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span></span></figcaption></figure>
-      <figure class="rq sm"><blockquote>I support your work because you are wicked smart and share such valuable information for someone getting started on this platform. I have a full grown 20+ year business and have been on SM for years but want to write better content for my audience and you are helping me do just that. I am so grateful to have found you!</blockquote><figcaption><img src="img/o/av/annemarie.webp" alt="" width="80" height="80" loading="lazy"><span><b>Anne-Marie Duchene</b><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span></span></figcaption></figure>
+      <figure class="rq sm"><blockquote>…I have a full grown 20+ year business and have been on SM for years but want to write better content for my audience and you are helping me do just that…</blockquote><figcaption><img src="img/o/av/annemarie.webp" alt="" width="80" height="80" loading="lazy"><span><b>Anne-Marie Duchene</b><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span></span></figcaption></figure>
       <figure class="rq sm"><blockquote>Everything was fabulous but I was particularly thrilled about the content strategy and how that was all interrelated with the paywall strategy, plus the promotional calendars, etc. I have to go back and review all of it. Thank you.</blockquote><figcaption><img src="img/o/av/sue.webp" alt="" width="80" height="80" loading="lazy"><span><b>Sue Bolton</b><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span></span></figcaption></figure>
       <figure class="rq sm"><blockquote>One thing I notice and admire about you Ana, is you are an action taker. You don't sit around for months trying to decide on what to offer, or what colour to make your background. You ask the question, do what you need to get clear, and then act on it.</blockquote><figcaption><img src="img/o/av/stacie.webp" alt="" width="80" height="80" loading="lazy"><span><b>Stacie Whitney</b><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span></span></figcaption></figure>
       <figure class="rq sm"><blockquote>Thank you so much Ana for the support, guidance, and tools!</blockquote><figcaption><img src="img/o/av/alyssa.webp" alt="" width="80" height="80" loading="lazy"><span><b>Alyssa Zander</b><span class="stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.7L10 14.8l-5.1 2.7 1-5.7-4.1-4 5.7-.8Z"/></svg></span></span></figcaption></figure>
@@ -3065,8 +3145,8 @@ html.wv-lock{overflow:hidden}
     <button class="aw-more" type="button" hidden>show all 9 wins</button>
     <script>(function(){var w=document.currentScript.parentNode,b=w.querySelector(".aw-more");if(matchMedia("(max-width:700px)").matches){w.classList.add("short");b.hidden=false;b.addEventListener("click",function(){w.classList.remove("short");b.hidden=true})}})();</script>
     </div>
-    <p class="wall-src">Individual experiences from my earlier teaching and challenge. Results vary.</p>
-    <div class="cta2 c"><button class="btn open" type="button" data-cta="reviews"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">I want to see the work <small class="bq">(it’s free)</small></span><svg class="ar"><use href="#arr"/></svg></button><small>free · live on Zoom</small></div>
+    <p class="wall-src">Individual experiences from my previous teaching and programs. Results vary.</p>
+    <div class="cta2 c"><button class="btn open" type="button" data-cta="reviews"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">I’m in, Ana <small class="bq">(it’s free)</small></span><svg class="ar"><use href="#arr"/></svg></button><small>free · live on Zoom</small></div>
   </div>
 </section>
 
@@ -3077,10 +3157,10 @@ html.wv-lock{overflow:hidden}
       <div>
         <h2>Five (5) people will win <strong class="pz-b">a <span class="pz-hl">1:1 session</span> with me.</strong></h2>
         <p class="lead">Bring the idea you’re considering, the decision you’re stuck on, or the question you’d like more time to discuss.</p>
-        <p>We’ll have a private session to work through it together.</p>
+        <p>We’ll work through it together in a private session.</p>
         <p>I’ll draw five names at random from <b>the people still attending live at the end of Day 3.</b></p>
-        <small><b>Free to enter.</b> Stay until the end to be included in the draw.</small>
-        <div class="cta2"><button class="btn open" type="button" data-cta="prize"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">Save my seat for the draw <small class="bq">(free)</small></span><svg class="ar"><use href="#arr"/></svg></button><small>free · live on Zoom</small></div>
+        <small><b>Free to enter.</b> Stay until the end to be included.</small>
+        <div class="cta2"><button class="btn open" type="button" data-cta="prize"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">Save my free seat</span><svg class="ar"><use href="#arr"/></svg></button><small>free · live on Zoom</small></div>
       </div>
       <!-- five seats: five 1:1 tickets fanning out -->
       <div class="tix" aria-hidden="true">
@@ -3108,15 +3188,16 @@ html.wv-lock{overflow:hidden}
     <div class="faqs">
       <div class="fhead" data-r><h2>A few things <em>you might be wondering.</em></h2></div>
       <div data-r>
-        <details class="faq" open><summary>Is it really free?<i aria-hidden="true"></i></summary><p class="a">Yes. <b>All <span class="nn">three (3)</span> live sessions are free, and you never have to buy anything.</b></p><p class="a">After you register, there’s an optional VIP upgrade for lifetime access to the recordings and extra support. During the event, I’ll also explain how you can continue working with me.</p></details>
-        <details class="faq"><summary>Do I need an audience or something ready to sell?<i aria-hidden="true"></i></summary><p class="a"><b>No.</b> Come with your experience and the subjects you know about.</p><p class="a">Day 1 includes where I’d start finding an audience. Day 2 helps you think through what you could sell. If you already have something in progress, bring it.</p></details>
-        <details class="faq"><summary>Is this only about newsletters or Substack?<i aria-hidden="true"></i></summary><p class="a"><b>No.</b> I sell workshops and programs through my newsletter, so that’s the business I’ll use to show you my examples.</p><p class="a">We’ll work on whom you could help, what they could buy, and how you could reach them. <b>You don’t need to use Substack.</b></p></details>
-        <details class="faq"><summary>What will I have by the end?<i aria-hidden="true"></i></summary><p class="a">During the teaching sessions, you’ll work on <b>whom you want to reach, what you could sell, the result someone would buy it for, and a starting price.</b></p><p class="a">You’ll also understand what you still need to find out from potential customers. On Day 3, you’ll see what taking the next steps with me could involve.</p></details>
-        <details class="faq"><summary>I’ve attended one of your workshops before. Should I come again?<i aria-hidden="true"></i></summary><p class="a">If you’re still working out how your idea becomes a business, <b>bring what you’ve already done.</b></p><p class="a">I’ll show you which parts of my business I’d start with today, what I’d move earlier, and what AI has changed about the order. You can use your previous work as the starting point.</p></details>
-        <details class="faq"><summary>How much time do I need?<i aria-hidden="true"></i></summary><p class="a">Each live session is <b>about 90 minutes.</b> During the teaching sessions, you’ll have time to work on your ideas.</p><p class="a">I’ll also send short preparation tasks before the event, about 15 minutes each. Do what you can; you can still attend if you haven’t completed them.</p></details>
-        <details class="faq"><summary>What if my subject has nothing to do with business?<i aria-hidden="true"></i></summary><p class="a">That’s fine. Your experience might help someone learn a skill, solve a practical problem or deal with something difficult.</p><p class="a">We’ll look at who could value that help and what they might pay for. <b>You don’t have to teach people how to make money.</b></p></details>
-        <details class="faq"><summary>Will you review my idea personally?<i aria-hidden="true"></i></summary><p class="a">I’ll review selected attendees’ work during the live teaching sessions. I won’t be able to review everyone’s.</p><p class="a">You’ll hear the questions I ask and the reasons behind my suggestions, so <b>you can apply that thinking to your own work.</b></p></details>
-        <details class="faq"><summary>Will I be able to leave my job in 2027?<i aria-hidden="true"></i></summary><p class="a">I want you to have customers and income you can rely on before making that decision.</p><p class="a">These sessions help you choose a direction and understand what building it would involve. The income you earn and the time it takes will depend on your business and circumstances. I can’t promise a leaving date.</p></details>
+        <details class="faq" open><summary>Is it really free?<i aria-hidden="true"></i></summary><p class="a">Yes. <b>All <span class="nn">three (3)</span> live sessions are free, and you never have to buy anything.</b></p><p class="a">After you register, there’s an optional VIP upgrade for lifetime access to the recordings and extra support. During the event, I’ll also explain how you can keep working with me.</p></details>
+        <details class="faq"><summary>Do I need a newsletter, an audience or something ready to sell?<i aria-hidden="true"></i></summary><p class="a"><b>No.</b> Bring your experience and whatever ideas you have.</p><p class="a">Day 1 covers who you could reach and where to find your first readers. Day 2 is where we work on what to sell first.</p></details>
+        <details class="faq"><summary>Is this only for people on Substack?<i aria-hidden="true"></i></summary><p class="a"><b>No.</b> I use Substack, so you’ll see examples from my business there.</p><p class="a">The model is a business built around a newsletter, with workshops and programs that readers can buy. <b>You can use another platform with an email list.</b></p></details>
+        <details class="faq"><summary>What will I have by the end?<i aria-hidden="true"></i></summary><p class="a">You’ll have worked on <b>who you want to reach, what to sell first, the result someone would buy it for, and a starting price.</b></p><p class="a">You’ll also see how your income goal relates to customer numbers and delivery, what still needs checking, and what comes after the first sale.</p></details>
+        <details class="faq"><summary>I’ve attended one of your workshops before. Should I come again?<i aria-hidden="true"></i></summary><p class="a">If you’re still working out how your idea becomes a business, <b>bring what you’ve already done.</b></p><p class="a">We’ll check how it fits the business you want now. I’ll also show you what AI has changed about the order I’d follow today.</p></details>
+        <details class="faq"><summary>How much time do I need?<i aria-hidden="true"></i></summary><p class="a"><b><span class="nn">Three (3)</span> live sessions of about 90 minutes each.</b> You’ll do some of the work during the teaching sessions.</p><p class="a">The Exit Number Calculator and optional Offer Flow preparation will give you material to bring to Day 2.</p></details>
+        <details class="faq"><summary>Will recordings be available?<i aria-hidden="true"></i></summary><p class="a">The optional VIP upgrade includes <b>lifetime access to the recordings</b>, so you can revisit the sessions while you put the work into practice.</p><p class="a">You’ll see the VIP details after registering.</p></details>
+        <details class="faq"><summary>What if my subject has nothing to do with business?<i aria-hidden="true"></i></summary><p class="a"><b>You don’t need to teach business.</b> Your experience might be in health, education, marketing, creative work or another subject entirely.</p><p class="a">We’ll look at who needs your help and what they have a reason to pay you to help them do.</p></details>
+        <details class="faq"><summary>Will you review my idea personally?<i aria-hidden="true"></i></summary><p class="a">I’ll review selected attendees’ work live. I can’t promise to get to everyone.</p><p class="a">Bring your questions anyway. <b>Seeing how I work through someone else’s idea can help you make decisions about yours.</b></p></details>
+        <details class="faq"><summary>Will I be able to leave my job in 2027?<i aria-hidden="true"></i></summary><p class="a">I want you to have customers and income you can rely on before making that decision.</p><p class="a">These sessions will help you work out <b>what you could sell, who you’d sell it to, and what your income goal would require.</b> Earning that income takes further work, and I can’t promise a leaving date.</p><p class="a">You may decide to build something alongside your job. You may want to replace one client. That’s a useful outcome too.</p></details>
         <div class="cta2"><button class="btn open" type="button" data-cta="faq"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">Questions answered. I’m in <small class="bq">(free)</small></span><svg class="ar"><use href="#arr"/></svg></button><small>free · live on Zoom</small></div>
       </div>
     </div>
@@ -3130,11 +3211,13 @@ html.wv-lock{overflow:hidden}
       <svg class="fl" style="left:-70px;top:-60px;width:230px;height:230px" aria-hidden="true"><use href="#sfo"/></svg>
       <svg class="fl" style="right:-80px;bottom:-90px;width:260px;height:260px" aria-hidden="true"><use href="#sfo"/></svg>
       <h2><span class="l">What could you build</span> <span class="l"><em>alongside the work you do now?</em></span></h2>
-      <p class="ask-big">I’ll show you what I’d take from my <b>$1.4M newsletter business</b> if I were starting again: what I’d sell first, where I’d look for customers, and what AI has changed about the order.</p>
-      <p>Bring your experience. We’ll look at how you could use it to start building income of your own.</p>
-      <p class="ask-b"><mark class="sk">You can work towards having a choice about your job before you’re ready to leave it.</mark></p>
-      <div class="recap3" aria-hidden="true"><figure><img src="img/o/slides/s1.webp" alt="" loading="lazy"><figcaption>Day 1 · your people</figcaption></figure><figure><img src="img/slides/s4.webp" alt="" loading="lazy"><figcaption>Day 2 · what to sell</figcaption></figure><figure><img src="img/slides/s6.webp" alt="" loading="lazy"><figcaption>Day 3 · the path</figcaption></figure></div>
-      <div class="askt"><b>The Exit Plan · Dec 8 to 10</b><span>Three live sessions · About 90 minutes each · Free on Zoom</span></div>
+      <p class="ask-big">I started with 12 subscribers. My newsletter business has since made <b>$1.4M</b> selling workshops and programs.</p>
+      <p>For <b><span class="nn">three (3)</span> free live sessions</b>, I’ll show you the business behind those numbers and the order I’d follow if I were starting again today.</p>
+      <p>Bring your experience. We’ll work on who you’ll reach, what you’ll sell first, and how the numbers fit the income you want.</p>
+      <p class="ask-b"><mark class="sk">You can start building another source of income while your current work still pays the bills.</mark></p>
+      <div class="recap3" aria-hidden="true"><figure><img src="img/o/slides/s1.webp" alt="" loading="lazy"><figcaption>Day 1 · your first readers</figcaption></figure><figure><img src="img/slides/s4.webp" alt="" loading="lazy"><figcaption>Day 2 · what to sell first</figcaption></figure><figure><img src="img/slides/s6.webp" alt="" loading="lazy"><figcaption>Day 3 · from your first sale to steady income</figcaption></figure></div>
+      <div class="askt"><b>The Exit Plan · Dec 8 to 10</b><span>12:00 pm New York · About 90 minutes each day · Free on Zoom</span></div>
+      <p class="ask-tz">Your local date and time may be different. Check the local schedule shown on this page.</p>
       <div class="go"><button class="btn open" type="button"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">Yes, I’m coming, free</span><svg class="ar"><use href="#arr"/></svg></button></div>
     </div>
   </div>
@@ -3185,7 +3268,7 @@ html.wv-lock{overflow:hidden}
       <div class="brand"><img src="img/o/mark.webp" alt="" width="50" height="50" loading="lazy">how we grow</div>
       <div class="links"><span>@ANACALIN</span><a href="https://substack.com/privacy" rel="noopener">privacy</a></div>
     </div>
-    <p class="src">$1.4M and reader count: my own figures, published on howwegrowtoday.com.</p>
+    <p class="src">$1.4M and reader count: Ana’s own published figures. Student examples describe individual experiences; results vary.</p>
   </div>
 </footer>
 
@@ -3205,15 +3288,15 @@ html.wv-lock{overflow:hidden}
     <form id="join" novalidate>
       <span class="ey"><span class="ey-a">FREE · 3 DAYS LIVE ·</span> <span class="ey-b">DEC 8 TO 10</span></span>
       <h3 id="dlg-h">Save your <em>free seat.</em></h3>
-      <p class="fsub">Join me for all <span class="nn">3 days</span> <span class="nn">(for free)</span>.</p>
+      <p class="fsub">Let’s work on the business you could build from what you know.</p>
       <p class="fl-live" aria-live="polite"><i class="g"></i><span><b data-feed="n">800+</b> <span data-feed="l">wins from my past students</span></span><span class="fl-just" hidden><span class="fl-sep">·</span><span class="fl-jt"></span></span></p>
       <p class="fl-seat" aria-hidden="true"><svg viewBox="0 0 40 20"><path d="M4 2h32a2 2 0 0 1 2 2v3.5a2.5 2.5 0 0 0 0 5V16a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-3.5a2.5 2.5 0 0 0 0-5V4a2 2 0 0 1 2-2Z" fill="#FFD400" stroke="#1A1412" stroke-width="1.6"/><path d="M12 3v14" stroke="#1A1412" stroke-width="1.2" stroke-dasharray="2 2"/></svg><span>Seat reserved for</span><b class="fl-who">you</b></p>
       <div class="field"><label class="flbl" for="jFirst">First name</label><input type="text" id="jFirst" name="first_name" placeholder="Your first name" autocomplete="given-name" required><span class="err">add your first name</span></div>
       <div class="field"><label class="flbl" for="jEmail">Email</label><input type="email" id="jEmail" name="email_address" placeholder="The email you actually check" autocomplete="email" inputmode="email" required><span class="err">Almost. Check that email once more.</span></div>
       <input type="text" name="ep_check" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
       <button class="btn big send" type="submit"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">I’m in, Ana <small class="bq">(it’s free)</small></span><svg class="ar"><use href="#arr"/></svg></button>
-      <ul class="fl-ticks" aria-label="What you get"><li>Free</li><li>3 days live with me</li><li>Come as you are</li></ul>
-      <p class="fmeta">12:00 pm New York · About 90 minutes a session<span class="lt"></span></p>
+      <ul class="fl-ticks" aria-label="What you get"><li>Free</li><li>3 live sessions with me</li><li>Come as you are</li></ul>
+      <p class="fmeta">12:00 pm New York · About 90 minutes per session<span class="lt"></span></p>
       <p class="note">You’ll get emails from me, including event details and reminders. Unsubscribe anytime.</p>
       <div class="bye"><img src="img/ana-sea.webp" alt="" width="52" height="52" loading="lazy"><p>See you there,<b>Ana</b></p></div>
     </form>
@@ -3768,7 +3851,7 @@ html.wv-lock{overflow:hidden}
 </script>
 <script>
 (function(){
-  var SITGO = {job: 'I want out by 2027!', self: 'I want to get paid for what I know', both: 'I want the plan'};
+  var SITGO = {job: 'I want the choice to leave', self: 'I want to get paid for what I know', both: 'I want the plan'};
   function sitgo(){ var on = document.querySelector('.chip.sit[aria-pressed="true"]'); document.querySelectorAll('[data-sitgo] .bt').forEach(function(s){ s.textContent = on ? SITGO[on.getAttribute('data-v')] : 'I want the plan' }) }
   document.querySelectorAll('.chip.sit').forEach(function(c){ c.addEventListener('click', function(){ setTimeout(sitgo, 0) }) });
   var fg = document.getElementById('fitgo');
@@ -3777,7 +3860,7 @@ html.wv-lock{overflow:hidden}
 </script>
 <script src="assets/vendor/gsap.min.js"></script>
 <script src="assets/vendor/ScrollTrigger.min.js"></script>
-<script src="assets/reg-motion.js?v=28"></script>
+<script src="assets/reg-motion.js?v=29"></script>
 <script>/* badges stamp in once, when they come into view */
 (function(){ var b = document.querySelectorAll('.bdg'); if (!b.length || !('IntersectionObserver' in window)) return; document.documentElement.classList.add('bdg-js');
   var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target) } }) }, { threshold: .45 });
@@ -3844,6 +3927,7 @@ html.wv-lock{overflow:hidden}
 (function(){try{var tz=Intl.DateTimeFormat().resolvedOptions().timeZone||'';if(!tz||tz==='America/New_York'||tz.indexOf('/')<0)return;
  var place=tz.split('/').pop().replace(/_/g,' '),W=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],M=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
  var PIN='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s-7-7.1-7-12.2A7 7 0 0 1 19 9.8C19 14.9 12 22 12 22Z"/><circle cx="12" cy="9.6" r="2.6"/></svg>';
+ document.querySelectorAll('.dnote').forEach(function(n){n.hidden=true});
  document.querySelectorAll('.dwhen').forEach(function(w,i){var d=new Date(Date.UTC(2026,11,8+i,17,0)),ny=['Tue','Wed','Thu'][i]+', Dec '+(8+i);
   var t=d.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'}).toLowerCase();if(t==='12:00 pm'&&d.getDate()===8+i)return;
   var moved=d.getDate()!==8+i||d.getMonth()!==11,pill=w.querySelector('.dtm .pill'),dtm=w.querySelector('.dtm');if(!pill)return;
@@ -3896,7 +3980,7 @@ html.wv-lock{overflow:hidden}
  /* the line under Ana's button */
  var iw=q('.iwhen');if(iw)iw.innerHTML='<b class="me-t"></b><br><span class="iw-ny">Dec 8 to 10 · 12:00 pm New York</span><br>Free and live on Zoom',iw.querySelector('.me-t').textContent=span+' · '+me;
  /* the closing ask */
- var ak=q('.askt b');if(ak)ak.textContent='The Exit Plan · '+span;var as=q('.askt span');if(as)as.textContent='Three live sessions · '+me+' ('+(moved?'Dec 8 to 10, ':'')+'12:00 pm New York) · About 90 minutes each · Free on Zoom';
+ var ak=q('.askt b');if(ak)ak.textContent='The Exit Plan · '+span;var as=q('.askt span');if(as)as.textContent=me+' ('+(moved?'Dec 8 to 10, ':'')+'12:00 pm New York) · About 90 minutes each day · Free on Zoom';
  /* the calendar invite shows the invite as their own calendar would */
  var gi=q('.gi-t div');if(gi){var sm=gi.querySelectorAll('small');if(sm[0])sm[0].textContent=WF[S.getDay()]+', '+MF[S.getMonth()]+' '+S.getDate()+' · '+t(S).replace(/ (am|pm)$/,'')+' – '+t(E2).replace(' ','');if(sm[1])sm[1].textContent='Daily, until '+WF[E.getDay()]+', '+MF[E.getMonth()]+' '+E.getDate()}
  /* the phone bar and the header's short date */
