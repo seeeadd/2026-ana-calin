@@ -1,5 +1,5 @@
 /*
-  Ana Calin, The Exit Plan: sign-ups, the survey answers, exit numbers and sales, into one Google Sheet.
+  Ana Calin, The Exit Plan: sign-ups, the survey answers, exit numbers, VIP review submissions and sales, into one Google Sheet.
 
   Set up once (about 5 minutes):
   1. Make a new Google Sheet, for example "The Exit Plan · survey".
@@ -128,6 +128,7 @@ function tab(t) {
   sh.getRange(1, 1, 1, t.head.length).setValues([t.head]).setFontWeight('bold').setBackground('#FFD400');
   sh.setFrozenRows(1);
   sh.getRange('A:A').setNumberFormat('yyyy-mm-dd hh:mm');
+  if (t.name === 'VIP review') { sh.setColumnWidth(7, 480); sh.getRange('G:G').setWrap(true) }
   if (t.name === 'Survey') summary(ss);
   return sh;
 }
@@ -147,11 +148,15 @@ function summary(ss) {
   });
 }
 
-// Run these once from the editor (Run > testRegister / testWaitlist) to check the sheet is wired. Delete the test rows after.
+// Run these once from the editor (Run > testRegister / testWaitlist / testReview) to check the sheet is wired. Delete the test rows after.
 function testRegister() {
   var sh = tab(TABS.register);
   sh.appendRow([new Date(), 'test', 'TEST from Apps Script, delete me']);
 }
 function testWaitlist() {
   Logger.log(JSON.stringify(waitlist({ first: 'TEST', email: 'test-delete-me@example.com', source: 'apps script', business_question: 'TEST question, delete me', permission: 'yes', tz: 'Asia/Manila', kit: 'test' })));
+}
+function testReview() {
+  var sh = tab(TABS.review);
+  sh.appendRow([new Date(), 'test', 'TEST from Apps Script, delete me', '', '', '', 'TEST submission, delete me', '', 'no']);
 }
