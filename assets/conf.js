@@ -296,6 +296,7 @@
       if (!hit.length) return;
       if (!play || reduce || !wall.offsetWidth || !wall.animate) { hit.forEach(function(b){ b.classList.add('gone') }); return }
       var box = wall.getBoundingClientRect(), pad = wall.querySelector('.cxtb-pad'), ball = wall.querySelector('.cxtb-ball');
+      if (!pad || !ball || !ball.animate) { hit.forEach(function(b){ b.classList.add('gone') }); return }  /* a missing piece never blocks the questions */
       var start = {x: box.width / 2 - 5, y: box.height - 26}, pts = [start], step = 110;
       hit.forEach(function(b){ var r = b.getBoundingClientRect(); pts.push({x: r.left - box.left + r.width / 2 - 5, y: r.top - box.top + r.height / 2 - 5}) });
       pts.push(start);
@@ -311,7 +312,7 @@
       lockEl.querySelectorAll('[data-pow]').forEach(function(e){ e.textContent = n });
       lockEl.querySelectorAll('.cxl-seg i').forEach(function(e, k){ e.classList.toggle('on', k < n); e.classList.toggle('new', lastPow > -1 && k === n - 1 && n > lastPow) });
       for (var k = 0; k <= QS.length; k++) lockEl.classList.toggle('p' + k, k === n);
-      wallShow(n, lastPow > -1 && n > lastPow);
+      try { wallShow(n, lastPow > -1 && n > lastPow) } catch (e) { if (window.console) console.warn('brick wall', e) }
       lockEl.classList.toggle('open', !!sv.done);
       var cxtEl = document.getElementById('cxt'); if (cxtEl) cxtEl.classList.toggle('open', !!sv.done);
       document.querySelectorAll('.cxlogo').forEach(function(l){ l.classList.toggle('open', !!sv.done) });

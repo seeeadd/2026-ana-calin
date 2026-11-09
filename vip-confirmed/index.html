@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap">
 <link rel="stylesheet" href="../assets/conf.css">
 <link rel="stylesheet" href="../assets/confx.css">
-<link rel="stylesheet" href="../assets/conf-vip.css?v=7f06a05f0c67">
+<link rel="stylesheet" href="../assets/conf-vip.css?v=bd1ec9eb29ce">
 </head>
 <body class="vipc">
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -287,7 +287,7 @@
           <span class="cxt-lock"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2.5" fill="currentColor"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg><em class="l">Unlocks at 7 of 7</em><em class="u">Unlocked</em></span>
           <div class="ipad"><div class="ipad-scr"><img src="../img/conf/calc-ipad.webp" alt="" width="1400" height="931" loading="lazy">
             <!-- a brick wall over the screen: each answer knocks some out (conf.js), all gone at 7 of 7 -->
-            <div class="cxtb" id="cxtb"><div class="cxtb-w"></div><div class="cxtb-floor"><span class="cxtb-pad"></span></div>
+            <div class="cxtb" id="cxtb"><div class="cxtb-w"></div><div class="cxtb-floor"><span class="cxtb-pad"></span></div><span class="cxtb-ball"></span>
           </div></div>
         </div>
         <p class="cxt-cap">Not on my website. It opens only here, for the people in these three days.</p>
@@ -564,7 +564,7 @@
  /* the city, with a pin, in the top bar */
  var tm=document.querySelector('.fb-dt');if(tm)tm.insertAdjacentHTML('beforeend','<span class="fb-loc">'+'<svg class="vpin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s-7-7.1-7-12.2A7 7 0 0 1 19 9.8C19 14.9 12 22 12 22Z"/><circle cx="12" cy="9.6" r="2.6"/></svg>'+city.replace(/[<>&]/g,'')+'</span>');
 }catch(e){}})();</script>
-<script src="../assets/conf.js?v=2"></script>
+<script src="../assets/conf.js?v=3"></script>
 <script>/* Sean, Nov 9: everything that sends them to the questions lights the questions up, so step 4 can't be missed;
    the header link turns into "open my calculator" once the 7 are in (conf.js opens the calculator) */
 (function(){var sv=document.getElementById('survey');if(!sv)return;

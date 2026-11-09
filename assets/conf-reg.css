@@ -467,3 +467,6 @@ body.regc .calwhy p.cw-l{margin:0;font-weight:700;color:var(--ink)}
 
 /* the old text shade from conf.css is not for the video (Sean, Nov 9) */
 body.regc .cxv .scr:after{display:none}
+
+/* survey options: no hover lift (it made the option jump away from the pointer at its edge) */
+body.regc .svx-o:hover,body.regc .cxs-g .svx-o:hover{transform:none}
