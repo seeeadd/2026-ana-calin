@@ -287,3 +287,9 @@ The playbook files hold these as rules; this is the full list in one place.
 - Put an AI-generated image of Ana on the page after Sean said "Ana approved". She later objected, and the main chat
   replaced it. Don't put AI images of a client on a page without the client's own yes, and never disguise them as real
   photos.
+
+## 10. Nov 9 VIP round and the confirmation video (short handover)
+
+- **VIP final (Nov 9, approved "absolutely love it"):** `~/AnaVideo/out/kit/vip-final-{desktop,phone}-1.2x-web.mp4` (14/15 MB, 1:23). Sean uploads to Wistia; another chat puts it on the page. Changes: one piece per beat, titles in her serif with a soft cream glow on one band, clean cuts (`cuts`), no swing (`still`), one crop, no punch-ins, captions centred on her, shutters on a top layer (`doorTop`). Rules in the playbook `video-editing.md`.
+- **Confirmation video (next):** raw `~/Downloads/v24044gl0000dbk6gr7og65pqaldhimg.MP4` (720x1280, 76 s, outdoors, sky behind, no burned captions). Sean sends the script and new audio (Ana's version has piano on it; work with what's there for now).
+- **Sean's brief:** same style; a new view of the bay: POV from the mountain, Greek village houses all around, the bay far away; and a calmer bedroom ("last time it was too loud"). Ideas first, then 2 make-and-judge cycles, stills before any render. Keep tokens low.
