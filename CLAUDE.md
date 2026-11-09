@@ -1,5 +1,7 @@
 # Claude in this repo
 
+**Fresh chat about Ana's videos? Read `playbook/HANDOFF-video-chat.md` first** (the Nov 4 to Nov 9 video chat: the registration and VIP videos, the video kit, every video preference, hosting, open items; Sean's messages are in `playbook/transcripts/`).
+
 **Fresh chat? Read `playbook/HANDOFF-main-chat.md` first** (full context of the Oct 25 to Nov 8 main chat: pages, repos, rules, Sean's preferences, the waitlist, open items; the evidence is `playbook/transcripts/`).
 
 Before any work, read Sean's playbook repo **seeeadd/afterharvest-design-playbook** (`README.md`, `SOP.md`, the files

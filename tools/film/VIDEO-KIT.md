@@ -1,5 +1,7 @@
 # Video kit
 
+> Fresh chat? Read `playbook/HANDOFF-video-chat.md` first: what was made, every preference Sean gave, where files are, open items. The rules are in the playbook repo's `video-editing.md` and `graphics.md` sections 8 and 9.
+
 One engine, one small config per video. Every video is `kit.html?video=<id>`. Start each new video in a fresh session with this page and nothing else.
 
 ## A new video

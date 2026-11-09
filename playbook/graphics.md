@@ -1,3 +1,6 @@
+> Generic rules for every client. Client specifics (colours, fonts, world, assets) live in `clients/<client>.md`;
+> examples below come from Ana Calin's pages, where these rules were learned.
+
 # Graphics: how they look and how they're made
 
 Source: Sean's corrections Oct 25 to Nov 4, 2026, his 20 reference images (studied in `tools/paint/STUDY.md`), and
@@ -34,7 +37,26 @@ content).
 **But never copy a trademark closely.** App icons and logos of real brands get an original stand-in that reads the
 same: a green circle with a white camera for a video call, not FaceTime's rounded square.
 
-## 3. The painted look (Ana's; adapt the pigments for other clients)
+## 3. Each client's own art style (decide this before drawing anything)
+
+Every client gets their own look. Ana's painted watercolour is one style, not the house style.
+
+1. **Read the brand as it is now.** Collect their site, socials, slides, logo and any illustrations. Write down
+   their line, materials, colours, shapes and mood in `clients/<client>.md` under "Art style".
+2. **Rate it.**
+   - **Strong and established:** match it exactly. Our pieces should look like they came from their designer.
+   - **Weak, thin or not yet set:** keep what is already theirs (colours, marks, the feel) and take it one step
+     further: more depth, texture and detail in the same direction ("elevate it, don't replace it"). The client
+     must still recognise it as theirs.
+3. **Pick how it's made, per piece, and say which:**
+   - **Claude draws it** (the paint engine, SVG, code textures) when the style is within reach: hand-made marks,
+     flat or painted illustration, collage, print craft.
+   - **Sean makes it in Gemini, from Claude's prompt,** when Claude can't hit the style well enough (for example
+     a 3D render look, a photographic collage, a very specific illustrator's hand). Claude writes the prompt with
+     their real reference images attached first, then cleans, cuts out and places the result on the page.
+4. **Show one test piece first** before making a set. Once Sean approves it, the rest follow that piece.
+
+## 3b. The painted look (Ana's style; the method carries, the pigments and world change per client)
 
 - **Hand-made marks:** ink lines that wobble, vary in weight, overshoot corners and break.
 - **Materials you can tell apart:**
@@ -71,14 +93,19 @@ Leave room for shadows inside the canvas so nothing gets cut at the edge.
 ## 4. What Sean uses Gemini for (and what he doesn't)
 
 - Claude never runs image generators or Canva itself. "You are the tool." Claude draws first.
-- For other clients whose art style Claude can't match, Sean may make art in Gemini from Claude's prompt (the
-  generic playbook, graphics §3). For Ana, Claude paints.
+- Sean runs Gemini for:
+  - **photos of the client** (polish, outfit, location);
+  - **badges or stickers** sometimes;
+  - **art in a client's own style** when Claude can't match it (section 3). Claude writes the prompt and
+    finishes the piece.
 - Sean runs Gemini himself for **photos of the client** (polish, outfit, location) and sometimes **badges or
   stickers**. Claude writes the prompts. A good prompt:
   - attaches the original real photo first;
   - lists exactly what to keep (face, pose, hands, room);
   - lists what to improve;
-  - adds an "avoid" list and follow-up fixes.
+  - adds an "avoid" list and follow-up fixes;
+  - for art: attaches 2 to 4 of the client's own pieces as the style reference, names the line, materials and
+    colours to copy, and says "same style, not a new one".
 - Never change the client's face; it must not look AI.
 - When a Gemini photo looks AI, ask for the unedited original (for Ana, her YouTube Short stills, see the
   brand file).
@@ -170,7 +197,3 @@ Learned on Ana's registration video, Nov 4. All of them were corrections.
 - Backgrounds keep moving. Every location has its own motion, and the character interacts with its objects.
 - The mascot stays on screen throughout with a job, never hidden behind a piece or missing, and never covers a piece.
 - The opening and the closing are showpieces.
-
-## Ana question graphics, Nov 7
-
-Sean clarified that the question illustrations must be coded graphics, one to the left of each question. Use three native SVG person vignettes: two ideas, a conversation and a clock. Files: `img/question-ideas.svg`, `img/question-advice.svg`, `img/question-time.svg`. Keep them small, use the page’s yellow/blue/cream pigments with light grain, and align each with its own text. Each question has two deliberate phrase lines that can wrap naturally on narrow phones. This replaces the earlier single generated attendee on the right; that older asset is no longer used on the page.
