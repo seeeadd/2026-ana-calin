@@ -9,7 +9,7 @@ window.VIDEO = {
   hold: 1.6,
   layout: {
     d: {W: 1792, zV: 8, bud: 186, RL: [-190, 0], M: [923, 0, 869, 1008], FA: [947, -21, 1], FB: [1382, 30, .47],
-      cM: {x: 62, y: 64, w: 820, fs: 58, align: 'left'}, cF: {x: 62, y: 64, w: 850, fs: 60, align: 'left'}, cC: {x: 62, y: 846, w: 1668, fs: 62, align: 'left'}, cW: {x: 396, y: 820, w: 1000, fs: 64, align: 'center'}},
+      cM: {x: 960, y: 816, w: 800, fs: 58, align: 'center'}, cF: {x: 990, y: 836, w: 760, fs: 58, align: 'center'}, cC: {x: 160, y: 846, w: 1472, fs: 62, align: 'center'}, cW: {x: 396, y: 820, w: 1000, fs: 64, align: 'center'}},
     p: {zV: 8, bud: 190, capT: 1744, capB: 1780, wallM: 1744, hor: 1620, skyH: 1640, RL: [-160, 982], M: [0, 0, 1080, 1920], shM: 1690,
       cM: {x: 40, y: 1392, w: 1000, fs: 70, align: 'center'}, cF: {x: 50, y: 1226, w: 980, fs: 70, align: 'center'}, cC: {x: 50, y: 1484, w: 980, fs: 60, align: 'center'}}
   },
