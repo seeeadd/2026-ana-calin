@@ -11,7 +11,8 @@
 var ORIGINS = /^https:\/\/(2026-ana-calin[a-z0-9-]*\.vercel\.app|exitplan\.howwegrowtoday\.com)$/;
 var KEYS = {
   survey: ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7'],
-  exit: ['goal_month', 'price', 'buyers_month', 'buyers_year', 'sub_price', 'subs_needed', 'free_needed']
+  exit: ['goal_month', 'price', 'buyers_month', 'buyers_year', 'sub_price', 'subs_needed', 'free_needed'],
+  review: ['work', 'link', 'show']   // the VIP confirmation's "What would you like me to look at?" form: the Sheet only
 };
 
 var KIT = 'https://api.kit.com/v4';
@@ -35,7 +36,7 @@ function note(a, page) {
 
 async function toKit(kind, email, a, page) {
   var k = process.env.KIT_API_KEY;
-  if (!k || !email) return 'skipped';
+  if (!k || !email || !FIELDS[kind]) return 'skipped';
   async function call(method, path, body) {
     var r = await fetch(KIT + path, {
       method: method,
@@ -97,7 +98,7 @@ module.exports = async function handler(req, res) {
     ref: cell(b.ref, 80),
     tz: cell(b.tz, 60)
   };
-  KEYS[kind].forEach(function (k) { row[k] = cell(a[k], 300) });
+  KEYS[kind].forEach(function (k) { row[k] = cell(a[k], kind === 'review' && k === 'work' ? 2000 : 300) });
 
   var plain = {};   // the answers as they are, for Kit (the Sheet gets the formula-safe cells above)
   KEYS[kind].forEach(function (k) { if (a[k] != null) plain[k] = String(a[k]).replace(/[\r\n\t]+/g, ' ').trim().slice(0, 300) });

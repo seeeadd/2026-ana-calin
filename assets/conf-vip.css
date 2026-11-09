@@ -654,3 +654,41 @@ body.vipc .svx-other label small { font-weight: 600; color: var(--ink2); font-si
 body.vipc .svx-ot { width: 100%; min-height: 54px; padding: 12px 14px; font: 500 18px/1.3 var(--sans); color: var(--ink); background: #FFFDF6; border: 1.6px solid rgba(26, 20, 18, .3); border-radius: 12px; }
 body.vipc .svx-ot:focus { outline: 3px solid #FFD400; outline-offset: 1px; border-color: var(--ink); }
 body.vipc .svx-other .svx-act { margin-top: 12px; }
+
+/* Sean's new copy (Nov 10): the new pieces */
+body.vipc .cx .cx-lead2{margin-top:8px;font-weight:700}
+body.vipc .cx-step .wa-ny{font-size:16px}
+body.vipc .cx-how2{margin:6px 0 14px;padding:14px 16px;border-radius:14px;background:#FFF1F4;border:1.5px solid rgba(224,36,58,.35);font-size:16px;line-height:1.5;color:var(--ink)}
+body.vipc .cx-how2 .h{margin:0 0 6px}body.vipc .cx-how2 .h b{color:#C21832;text-transform:uppercase;letter-spacing:.06em}
+body.vipc .cx-how2 ul{margin:0 0 8px;padding-left:20px}body.vipc .cx-how2 li{margin:3px 0}
+body.vipc .cx-how2 p{margin:0}body.vipc .cx-how2 .in{display:inline-block;padding:0 8px;border-radius:6px;background:#FFD400}
+body.vipc .cal2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:4px 0 12px}
+body.vipc .cal2 p{margin:0;padding:12px 14px;border-radius:14px;background:#fff;border:1.5px solid rgba(26,20,18,.14);display:grid;gap:2px}
+body.vipc .cal2 p.v{background:#EAF2FB;border-color:rgba(31,105,176,.35)}
+body.vipc .cal2 span{font-weight:800;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3)}
+body.vipc .cal2 p.v span{color:#1F69B0}
+body.vipc .cal2 b{font-size:17px;color:var(--ink)}body.vipc .cal2 small{font-size:14.5px;color:var(--ink2)}
+body.vipc .cxs .cxs-sm{font-size:14.5px;font-weight:700;opacity:.85}
+body.vipc .ey-vcr .vcr .crown{width:1.3em;top:-.95em;left:-.1em}
+body.vipc .get p.sm,body.vipc .get .ny{font-size:15px}
+body.vipc .qf .ln.sm{font-size:15px;color:var(--ink3)}
+body.vipc .qf .em.em-show{display:block}
+body.vipc .qf-skip{font-size:14.5px;font-weight:700;color:var(--ink2);margin:4px 0 10px}
+body.vipc .qf-err{margin:8px 0 0;padding:10px 14px;border-radius:12px;background:#FFF1F4;border:1.5px solid rgba(224,36,58,.35);color:#9b1430;font-weight:700;font-size:15px}
+body.vipc .acts.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;max-width:1040px;margin:0 auto}
+body.vipc .acts.two .act.wide{grid-column:1 / -1}
+body.vipc .act-of .sm{font-weight:700;color:var(--ink3);font-size:15px}
+body.vipc .ofmini{position:relative;margin:6px auto 4px;max-width:330px;background:#fff;border:1px solid rgba(26,20,18,.18);border-radius:12px;overflow:hidden;box-shadow:0 18px 30px -18px rgba(20,40,80,.4)}
+body.vipc .ofm-bar{display:flex;align-items:center;gap:5px;padding:8px 10px;background:linear-gradient(#F7F3EC,#EFE9DF);border-bottom:1px solid rgba(26,20,18,.1)}
+body.vipc .ofm-bar i{width:8px;height:8px;border-radius:50%;background:#FF5F57}body.vipc .ofm-bar i:nth-child(2){background:#FEBC2E}body.vipc .ofm-bar i:nth-child(3){background:#28C840}
+body.vipc .ofm-bar b{flex:1;text-align:center;font-size:12px;color:#5A4E46;margin-right:24px}
+body.vipc .ofm-q{display:block;margin:12px 12px 8px;padding:8px 10px;border:1px solid rgba(26,20,18,.15);border-radius:8px;font-family:var(--serif);font-size:17px;color:var(--ink)}
+body.vipc .ofm-g{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;padding:0 12px 12px}
+body.vipc .ofm-g img{width:100%;height:64px;object-fit:cover;object-position:50% 6%;border:1px solid rgba(26,20,18,.12);border-radius:8px;background:#FFF6D6}
+body.vipc .garden .after-k{max-width:720px;margin:26px auto 0;text-align:center;font-size:17px;line-height:1.55;color:var(--ink2)}
+body.vipc .garden .after-k b{color:var(--ink)}
+body.vipc .show .sel-ex{max-width:680px;margin:26px auto 0;text-align:center;font-size:17px;line-height:1.55;color:var(--ink2)}
+@media (max-width:860px){body.vipc .acts.two{grid-template-columns:1fr}body.vipc .cal2{grid-template-columns:1fr}}
+body.vipc .cal2{grid-template-columns:1fr;max-width:420px}
+body.vipc .cal2 p{grid-template-columns:auto 1fr;column-gap:12px}
+body.vipc .cal2 span{grid-column:1 / -1}

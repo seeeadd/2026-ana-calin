@@ -205,6 +205,18 @@
       if (!f.reportValidity()) return;
       var b = f.querySelector('button[type=submit]'); b.disabled = true;
       function done(){ box.classList.add('done'); track('question_' + box.getAttribute('data-form').toLowerCase()) }
+      /* the VIP review form: to the Google Sheet (tab "VIP review") through the survey API; on failure their words stay and they can retry */
+      if (box.getAttribute('data-sheet')) {
+        var err = box.querySelector('.qf-err'); if (err) err.hidden = true;
+        var work = (f.querySelector('[name=work]') || {}).value || '', tz = '';
+        try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '' } catch (x) {}
+        var fail = function(){ b.disabled = false; if (err) err.hidden = false };
+        fetch(C.SURVEY_API || '/api/ana-survey/', {method:'POST', headers:{'Content-Type':'application/json'},
+          body: JSON.stringify({kind: box.getAttribute('data-sheet'), page: isVip ? 'vip' : 'reg', first: first, email: em.value, ref: ref, tz: tz,
+            answers: {work: work, link: (f.querySelector('[name=link]') || {}).value || '', show: /skip\s*me/i.test(work) ? 'no (skip me)' : 'yes'}})})
+          .then(function(r){ return r.ok ? r.json() : null }).then(function(j){ if (j && j.ok) done(); else fail() }, fail);
+        return;
+      }
       if (!id) { done(); return }
       fetch('https://app.kit.com/forms/' + id + '/subscriptions', {method:'POST', body:new URLSearchParams(new FormData(f)), headers:{'Accept':'application/json'}}).then(done, done);
     });

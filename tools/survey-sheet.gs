@@ -12,7 +12,7 @@
        SURVEY_SHEET_KEY = the same secret word as KEY
      Then redeploy (a changed variable only reaches the site on the next deployment).
 
-  The tabs "Registrants", "Survey", "Exit numbers", "Sales", "Exit Plan Waitlist" and "Summary" make themselves on the first row.
+  The tabs "Registrants", "Survey", "Exit numbers", "VIP review", "Sales", "Exit Plan Waitlist" and "Summary" make themselves on the first row.
   If you change this script later: Deploy > Manage deployments > edit > Version: New version (the URL stays the same).
 */
 var KEY = 'change-me';
@@ -34,6 +34,11 @@ var TABS = {
     name: 'Registrants',
     head: ['Time', 'Page', 'First name', 'Email', 'Ref (partner)', 'Time zone', 'Where they are now', 'Signed up before', 'Source', 'Medium', 'Campaign', 'Headline version', 'Kit'],
     keys: ['situation', 'again', 'utm_source', 'utm_medium', 'utm_campaign', 'sticky_variant', 'kit']
+  },
+  review: {  // from the VIP confirmation's "What would you like me to look at?" form (api/ana-survey.js, kind "review")
+    name: 'VIP review',
+    head: ['Time', 'Page', 'First name', 'Email they bought with', 'Ref', 'Time zone', 'What they are working on and want help deciding', 'Link', 'OK to show on screen'],
+    keys: ['work', 'link', 'show']
   },
   sale: {  // from api/stripe-webhook.js, one row per payment
     name: 'Sales',
