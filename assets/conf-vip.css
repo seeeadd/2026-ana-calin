@@ -692,3 +692,7 @@ body.vipc .show .sel-ex{max-width:680px;margin:26px auto 0;text-align:center;fon
 body.vipc .cal2{grid-template-columns:1fr;max-width:420px}
 body.vipc .cal2 p{grid-template-columns:auto 1fr;column-gap:12px}
 body.vipc .cal2 span{grid-column:1 / -1}
+/* the hero text fills the hero (Sean, Nov 10: "really tight... they could have more width") */
+body.vipc .cx .cx-lead{max-width:900px;font-size:21px;line-height:1.55;text-wrap:balance}
+body.vipc .cx .cx-lead2{max-width:900px;margin-top:14px}
+@media (max-width:640px){body.vipc .cx .cx-lead{font-size:17.5px}}

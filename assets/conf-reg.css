@@ -629,3 +629,7 @@ body.regc .cx-step .wa-get li{padding:7px 13px;border:1.5px solid #25D366;max-wi
 body.regc .cx-step .wa-get li:before{position:static;width:auto;height:auto;margin:0;background:none;box-shadow:none;border:0;content:"✓"}
 body.regc .show .sel-ex{max-width:680px;margin:26px auto 0;text-align:center;font-size:17px;line-height:1.55;color:var(--ink2)}
 body.regc .vx-hd{margin-bottom:64px}
+/* the hero text fills the hero (Sean, Nov 10: "really tight... they could have more width") */
+body.regc .cx .cx-lead{max-width:900px;font-size:21px;line-height:1.55;text-wrap:balance}
+body.regc .cx .cx-lead2{max-width:900px;margin-top:14px}
+@media (max-width:640px){body.regc .cx .cx-lead{font-size:17.5px}}
