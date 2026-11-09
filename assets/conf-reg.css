@@ -586,3 +586,11 @@ body.regc .vx-dl svg { display: inline-block; vertical-align: -5px; margin-right
 @media (max-width: 860px) { body.regc .vx-crown { left: -14px; top: -52px; width: 112px; } body.regc .vx-vip .vx-lbl { padding-left: 46px; } }
 @media (max-width: 860px) { body.regc .vx-cols { grid-template-columns: minmax(0, 1fr); } body.regc .vx-c { min-width: 0; } }
 @media (max-width: 400px) { body.regc .vxs { padding: 34px 14px 26px; } }
+
+/* "Something else": a box for their own words (Sean, Nov 9) */
+body.regc .svx-other { margin-top: 16px; padding: 16px; border-radius: 16px; background: #fff; border: 2px solid var(--ink); box-shadow: 4px 5px 0 #FFD400; }
+body.regc .svx-other label { display: block; font-weight: 800; font-size: 17px; color: var(--ink); margin-bottom: 8px; }
+body.regc .svx-other label small { font-weight: 600; color: var(--ink2); font-size: 14.5px; }
+body.regc .svx-ot { width: 100%; min-height: 54px; padding: 12px 14px; font: 500 18px/1.3 var(--sans); color: var(--ink); background: #FFFDF6; border: 1.6px solid rgba(26, 20, 18, .3); border-radius: 12px; }
+body.regc .svx-ot:focus { outline: 3px solid #FFD400; outline-offset: 1px; border-color: var(--ink); }
+body.regc .svx-other .svx-act { margin-top: 12px; }

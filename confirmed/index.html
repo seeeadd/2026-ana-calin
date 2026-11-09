@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap">
 <link rel="stylesheet" href="../assets/conf.css">
 <link rel="stylesheet" href="../assets/confx.css">
-<link rel="stylesheet" href="../assets/conf-reg.css?v=44a264b5f38c">
+<link rel="stylesheet" href="../assets/conf-reg.css?v=c273500b8dcd">
 </head>
 <body class="regc">
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -485,7 +485,7 @@
     CHANNEL_URL:  'https://exitplan.howwegrowtoday.com/whatsapp/',            // step 1: the free WhatsApp group (or channel) link. The big green buttons and the date bar use it.
                                  // Voice-note reminders, short videos, the Zoom link each day, polls. Runs to Mon Dec 21.
                                  // Fallback: a WhatsApp Community announcement group. VIPs don't join this, they get the VIP group.
-    SURVEY_API:   '/api/ana-survey', // step 3: the 7 quick questions post here; the answers land in the Google Sheet (tools/survey-sheet.gs)
+    SURVEY_API:   '/api/ana-survey/', // step 3: the 7 quick questions post here; the answers land in the Google Sheet (tools/survey-sheet.gs)
     EXIT_URL:     '../exit-number/', // the exit number calculator the last question opens
     CLOSES:       Date.UTC(2026, 11, 9, 4, 59)  // VIP closes Tue Dec 8, 11:59 pm New York (?now=2026-12-09T05:00:00Z tests it)
   };
@@ -523,7 +523,7 @@
  /* the city, with a pin, in the top bar */
  var tm=document.querySelector('.fb-dt');if(tm)tm.insertAdjacentHTML('beforeend','<span class="fb-loc">'+'<svg class="vpin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s-7-7.1-7-12.2A7 7 0 0 1 19 9.8C19 14.9 12 22 12 22Z"/><circle cx="12" cy="9.6" r="2.6"/></svg>'+city.replace(/[<>&]/g,'')+'</span>');
 }catch(e){}})();</script>
-<script src="../assets/conf.js?v=3"></script>
+<script src="../assets/conf.js?v=5"></script>
 <script>/* Sean, Nov 9: everything that sends them to the questions lights the questions up, so step 4 can't be missed;
    the header link turns into "open my calculator" once the 7 are in (conf.js opens the calculator) */
 (function(){var sv=document.getElementById('survey');if(!sv)return;

@@ -227,7 +227,7 @@
   } catch (e) {}
   var QS = [
     {id:'q1', q:'Can you be there live, 12:00 to 1:30 pm New York, Tue Dec 8 to Thu Dec 10?', note: localTime,
-     o:['Yes, all three days', 'Some of it, around work', 'Probably not']},
+     o:['Yes, all three days', 'Some of it, around work', 'Probably not', 'Something else']},
     {id:'q2', q:'How many subscribers do you have right now?', note:'No newsletter? Pick “None yet.” Every answer here is a normal place to start.',
      o:['None yet', 'Under 100', '100 to 1,000', '1,000 to 10,000', 'More than 10,000']},
     {id:'q3', q:'Have you bought something from me before?', note:'Pick all that fit.', multi:true, only:2,
@@ -235,13 +235,15 @@
     {id:'q4', q:'What’s your work right now?',
      o:['A job, and I want a way out', 'A job I like, plus something of my own on the side', 'I work for myself: coaching, consulting, freelancing or my own thing', 'Between jobs, or retired', 'Something else']},
     {id:'q5', q:'Which one sounds most like you?', note:'Pick the loudest.',
-     o:['“It feels wrong to charge for something that comes easy to me.”', '“I wouldn’t know what to sell.”', '“I need more subscribers first.”', '“Asking for money feels pushy.”', '“I don’t have the time.”', '“This works for other people, not for people like me.”']},
+     o:['“It feels wrong to charge for something that comes easy to me.”', '“I wouldn’t know what to sell.”', '“I need more subscribers first.”', '“Asking for money feels pushy.”', '“I don’t have the time.”', '“This works for other people, not for people like me.”', 'Something else']},
     {id:'q6', q:'What do people come to you for help with?', note:'Pick the closest.',
      o:['Work and career', 'Writing and creativity', 'Health, food or fitness', 'Money and business', 'Family, home and relationships', 'Something else']},
     {id:'q7', q:'By Dec 10, these three days were worth it if I...',
-     o:['know what I’d sell', 'have a price I can say without wincing', 'have my first ask written', 'actually send it to someone', 'all of the above, obviously']}
+     o:['know what I’d sell', 'have a price I can say without wincing', 'have my first ask written', 'actually send it to someone', 'all of the above, obviously', 'Something else']}
   ];
-  var SV_KEY = 'ana_survey2', sv = {a:{}, i:1, done:false};
+  var SV_KEY = 'ana_survey2', sv = {a:{}, t:{}, i:1, done:false};
+  /* "Something else" opens a box for their own words (Sean, Nov 9: "so we don't miss out on that"); they go to the Sheet as "Something else: ..." */
+  var OTHER = 'Something else';
   /* the answers belong to the person who registered: another email on this browser starts a fresh, locked survey.
      ?reset=survey clears them (for testing). */
   if (qs.get('reset') === 'survey') { try { localStorage.removeItem(SV_KEY) } catch (e) {} }
@@ -251,19 +253,22 @@
     if (sv0 && sv0.a && (!svOwner || (sv0.email || '').toLowerCase() === svOwner)) sv = sv0;
   } catch (e) {}
   sv.email = svOwner || sv.email || '';
+  if (!sv.t) sv.t = {};
   if (!sv.done && st.survey) { st.survey = false; try { localStorage.setItem(ST_KEY, JSON.stringify(st)) } catch (e) {} renderReady() }
   function saveSv(){ try { localStorage.setItem(SV_KEY, JSON.stringify(sv)) } catch (e) {} }
   function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c] }) }
   function answers(){
     var a = {};
-    QS.forEach(function(s){ var v = sv.a[s.id]; if (v != null) a[s.id] = [].concat(v).map(function(k){ return s.o[k] }).join(' | ') });
+    QS.forEach(function(s){ var v = sv.a[s.id]; if (v != null) a[s.id] = [].concat(v).map(function(k){
+      var t = s.o[k] === OTHER && sv.t && sv.t[s.id] ? String(sv.t[s.id]).trim() : '';
+      return t ? OTHER + ': ' + t : s.o[k] }).join(' | ') });
     return a;
   }
   function sendSurvey(){
     track('survey_done');
     var tz = ''; try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '' } catch (e) {}
     try {
-      return fetch(C.SURVEY_API || '/api/ana-survey', {method:'POST', headers:{'Content-Type':'application/json'}, keepalive:true,
+      return fetch(C.SURVEY_API || '/api/ana-survey/', {method:'POST', headers:{'Content-Type':'application/json'}, keepalive:true,
         body: JSON.stringify({kind:'survey', page:isVip ? 'vip' : 'reg', first:first, email:email, ref:ref, tz:tz, answers:answers()})}).catch(function(){});
     } catch (e) {}
   }
@@ -275,7 +280,7 @@
   }
   var root = document.getElementById('svx');
   if (root) {
-    var LETTERS = 'ABCDEF', dir = 'r';
+    var LETTERS = 'ABCDEFG', dir = 'r';
     /* the locked calculator beside the questions: one segment per answered question, open at 7 of 7 */
     var lockEl = document.getElementById('cxl'), lastPow = -1;
     /* the brick wall: 42 bricks in 7 scattered sets, one set per answered question */
@@ -336,7 +341,8 @@
           + '<h3 id="svx-q" tabindex="-1">' + esc(s.q) + '</h3>' + (s.note ? '<p class="svx-note">' + esc(s.note) + '</p>' : '')
           + '<div class="svx-opts' + (s.multi ? ' multi' : '') + '" role="' + (s.multi ? 'group' : 'radiogroup') + '" aria-labelledby="svx-q">'
           + s.o.map(function(o, k){ var on = sel.indexOf(k) > -1; return '<button type="button" class="svx-o' + (on ? ' on' : '') + '" role="' + (s.multi ? 'checkbox' : 'radio') + '" aria-checked="' + on + '" data-k="' + k + '"><span class="k" aria-hidden="true">' + (s.multi ? '<svg viewBox="0 0 16 16"><use href="#ck"/></svg>' : LETTERS[k]) + '</span><span class="t">' + esc(o) + '</span></button>' }).join('')
-          + '</div>' + (s.multi ? '<div class="svx-act"><button type="button" class="btn svx-next"' + (sel.length ? '' : ' disabled') + '>next<svg aria-hidden="true"><use href="#arr"/></svg></button></div>' : '');
+          + '</div>' + (s.multi ? '<div class="svx-act"><button type="button" class="btn svx-next"' + (sel.length ? '' : ' disabled') + '>next<svg aria-hidden="true"><use href="#arr"/></svg></button></div>' : '')
+          + (!s.multi && s.o[sel[0]] === OTHER ? otherBox(s) : '');
       }
       root.innerHTML = h;
       power();
@@ -346,6 +352,11 @@
         var hq = root.querySelector('#svx-q'); if (hq) try { hq.focus({preventScroll:true}) } catch (e) { hq.focus() }
         var r = root.getBoundingClientRect(); if (r.top < 70) root.scrollIntoView({block:'start', behavior: reduce ? 'auto' : 'smooth'});
       }
+    };
+    var otherBox = function(s){
+      return '<div class="svx-other"><label for="svx-ot">Tell me in a few words <small>(optional)</small></label>'
+        + '<input id="svx-ot" class="svx-ot" type="text" maxlength="200" autocomplete="off" placeholder="Type it here" value="' + esc(sv.t[s.id] || '') + '">'
+        + '<div class="svx-act"><button type="button" class="btn svx-next">next<svg aria-hidden="true"><use href="#arr"/></svg></button></div></div>';
     };
     var go = function(i){ dir = i >= sv.i ? 'r' : 'l'; sv.i = i; saveSv(); render(true) };
     var finish = function(){
@@ -370,6 +381,7 @@
           sv.a[s.id] = k; saveSv(); power();
           root.querySelectorAll('.svx-o').forEach(function(x){ x.classList.toggle('on', x === o); x.setAttribute('aria-checked', x === o) });
           var bar = root.querySelector('.svx-bar i'); if (bar) bar.style.width = (sv.i / QS.length * 100) + '%';
+          if (s.o[k] === OTHER) { render(false); var ot = root.querySelector('.svx-ot'); if (ot) try { ot.focus({preventScroll:true}) } catch (er) { ot.focus() } return }
           setTimeout(function(){ if (sv.i < QS.length) go(sv.i + 1); else finish() }, reduce ? 0 : 220);
         }
         return;
@@ -379,8 +391,13 @@
       if (e.target.closest('.svx-redo')) { go(1); return }
       var tr = e.target.closest('[data-track]'); if (tr) track(tr.getAttribute('data-track'));
     });
+    root.addEventListener('input', function(e){
+      if (!e.target.classList.contains('svx-ot') || sv.i > QS.length) return;
+      sv.t[QS[sv.i - 1].id] = e.target.value.slice(0, 200); sv.changed = sv.done; saveSv();
+    });
     /* A to F picks an answer, Enter moves on from the multi-pick question */
     root.addEventListener('keydown', function(e){
+      if (e.target.classList && e.target.classList.contains('svx-ot')) { if (e.key === 'Enter') { e.preventDefault(); if (sv.i < QS.length) go(sv.i + 1); else finish() } return }
       if (sv.i > QS.length || e.metaKey || e.ctrlKey || e.altKey) return;
       var k = LETTERS.indexOf(String(e.key).toUpperCase());
       if (k > -1 && k < QS[sv.i - 1].o.length) { var b = root.querySelector('.svx-o[data-k="' + k + '"]'); if (b) { e.preventDefault(); b.click() } }

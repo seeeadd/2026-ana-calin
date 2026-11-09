@@ -646,3 +646,11 @@ body.vipc .vcr .crown { top: -.4em; left: .04em; }
 /* the crown on "You’re VIP." in the hero too (Sean, Nov 9) */
 body.vipc .vcr-h .crown { top: -.36em; left: .02em; width: .8em; }
 body.vipc .vcr-h { margin-right: -.07em; }
+
+/* "Something else": a box for their own words (Sean, Nov 9) */
+body.vipc .svx-other { margin-top: 16px; padding: 16px; border-radius: 16px; background: #fff; border: 2px solid var(--ink); box-shadow: 4px 5px 0 #FFD400; }
+body.vipc .svx-other label { display: block; font-weight: 800; font-size: 17px; color: var(--ink); margin-bottom: 8px; }
+body.vipc .svx-other label small { font-weight: 600; color: var(--ink2); font-size: 14.5px; }
+body.vipc .svx-ot { width: 100%; min-height: 54px; padding: 12px 14px; font: 500 18px/1.3 var(--sans); color: var(--ink); background: #FFFDF6; border: 1.6px solid rgba(26, 20, 18, .3); border-radius: 12px; }
+body.vipc .svx-ot:focus { outline: 3px solid #FFD400; outline-offset: 1px; border-color: var(--ink); }
+body.vipc .svx-other .svx-act { margin-top: 12px; }
