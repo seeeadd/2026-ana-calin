@@ -736,3 +736,12 @@ body.vipc .ofc-pr{font:800 11px/1 var(--sans);color:var(--ink)}body.vipc .ofc-pr
 body.vipc .stay .big em{display:block}
 body.vipc .stay .big,body.vipc .stay .sm{text-wrap:balance}
 body.vipc .stay .sm b{white-space:nowrap}
+/* local session dates: New York small under them */
+body.vipc .nyl{display:block;font-style:normal;font-size:13px;font-weight:600;color:var(--ink3);margin-top:3px}
+body.vipc .cal2 p.v .nyl{color:#5A7FA8}
+body.vipc .cal2 p{display:block}
+body.vipc .cal2 p span{display:block;margin-bottom:4px}
+body.vipc .cal2 p b{display:block}
+body.vipc .cal2 p small{display:block;margin-top:2px;font-size:15px;color:var(--ink2)}
+body.vipc .lpin{display:inline-block;width:.95em;height:.95em;margin:0 4px -.12em 0;fill:#F72585;stroke:none}
+body.vipc .lpin circle{fill:#fff}

@@ -679,3 +679,14 @@ body.regc .iph.win .wn-sh.r { --sm: url("../img/vip/paint/shut-r-y.webp"); }
 body.regc .iph.win .wn-sh:before { background: repeating-linear-gradient(180deg, #E0A80E 0 6px, #F2BC18 6px 7px), #E0A80E; }
 body.regc .iph.win .wn-sh.l:after { background: linear-gradient(90deg, rgba(120, 80, 10, .45), rgba(120, 80, 10, .06)); }
 body.regc .iph.win .wn-sh.r:after { background: linear-gradient(270deg, rgba(120, 80, 10, .42), rgba(120, 80, 10, .05)); }
+/* local session dates: New York small under them */
+body.regc .nyl{display:block;font-style:normal;font-size:13px;font-weight:600;color:var(--ink3);margin-top:3px}
+body.regc .cal2 p.v .nyl{color:#5A7FA8}
+/* the session date card, the same as the VIP confirmation's (Sean, Nov 10) */
+body.regc .cal2{display:grid;grid-template-columns:1fr;max-width:420px;gap:10px;margin:4px 0 12px}
+body.regc .cal2 p{display:block;margin:0;padding:12px 14px;border-radius:14px;background:#fff;border:1.5px solid rgba(26,20,18,.14)}
+body.regc .cal2 p span{display:block;margin-bottom:4px;font-weight:800;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3)}
+body.regc .cal2 p b{display:block;font-size:17px;color:var(--ink)}
+body.regc .cal2 p small{display:block;margin-top:2px;font-size:15px;color:var(--ink2)}
+body.regc .lpin{display:inline-block;width:.95em;height:.95em;margin:0 4px -.12em 0;fill:#F72585;stroke:none}
+body.regc .lpin circle{fill:#fff}

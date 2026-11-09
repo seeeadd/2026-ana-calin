@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap">
 <link rel="stylesheet" href="../assets/conf.css">
 <link rel="stylesheet" href="../assets/confx.css">
-<link rel="stylesheet" href="../assets/conf-reg.css?v=995fbd6a38bc">
+<link rel="stylesheet" href="../assets/conf-reg.css?v=a01ce5dbed0b">
 </head>
 <body class="regc">
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -190,7 +190,7 @@
         <span class="n">3</span><span class="dn"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ck"/></svg>done</span>
         <span class="cx-imp">Most important</span>
         <h3>Put all three sessions in your calendar.</h3>
-        <p class="cal-ny" data-ny><b>December 8, 9 and 10 · 12:00 to 1:30 pm New York</b></p>
+        <div class="cal2" data-ny><p><span>The Exit Plan</span><b>December 8, 9 and 10</b><small>12:00 to 1:30 pm New York</small></p></div>
         <p>Your calendar will show the sessions in your own time zone. Your local date may be different from the New York date used in my emails.</p>
         <p><b>Save the time now, while it’s in front of you.</b></p>
         <div class="calwhy">
@@ -553,5 +553,20 @@
 <script src="../assets/wistia-vsl.js?v=4"></script>
 <script>/* Sean, Nov 9: the confirmation video (desktop 7fe006bo2z, phone vy4l2af396), the same on both confirmation pages */
 (function(){var b=document.getElementById('vsl');if(!b||!window.WVSL)return;WVSL({box:b,scr:b.querySelector('.scr'),desktop:'7fe006bo2z',phone:'vy4l2af396',previewSec:8,onPhoneEnd:function(){var t=document.getElementById('steps');if(t)t.scrollIntoView({behavior:'smooth'})}})})();</script>
+<script>/* the session dates in the visitor's own time, New York small underneath (Sean, Nov 10: "why not make this custom to their time") */
+(function(){try{var tz=Intl.DateTimeFormat().resolvedOptions().timeZone||'';if(!tz||tz==='America/New_York'||tz.indexOf('/')<0)return;
+ var city=tz.split('/').pop().replace(/_/g,' '),MF=['January','February','March','April','May','June','July','August','September','October','November','December'],WF=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+ var t=function(d){return d.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'}).toLowerCase().replace(':00','')};
+ var day=function(i){return new Date(Date.UTC(2026,11,8+i,17,0))},end=function(i){return new Date(Date.UTC(2026,11,8+i,18,30))};
+ var range=function(i){var a=day(i),b=end(i),s=t(a),e=t(b);if(s.slice(-2)===e.slice(-2))s=s.slice(0,-3);return s+' to '+e+' in '+city};
+ var three=function(){var a=day(0),c=day(2);return MF[a.getMonth()]+' '+a.getDate()+', '+day(1).getDate()+' and '+c.getDate()};
+ var fri=function(){var f=day(3);return WF[f.getDay()]+', '+MF[f.getMonth()]+' '+f.getDate()};
+ var PIN='<svg class=\'lpin\' viewBox=\'0 0 24 24\' aria-hidden=\'true\'><path d=\'M12 22s-7-7.1-7-12.2A7 7 0 0 1 19 9.8C19 14.9 12 22 12 22Z\'/><circle cx=\'12\' cy=\'9.6\' r=\'2.6\'/></svg>';var put=function(el,big,small,ny){el.innerHTML='';var b=document.createElement('b');b.textContent=big;el.appendChild(b);if(!small)b.insertAdjacentHTML('afterbegin',PIN);if(small){var s=document.createElement('small');s.textContent=small;s.insertAdjacentHTML('afterbegin',PIN);el.appendChild(s)}var n=document.createElement('em');n.className='nyl';n.textContent=ny;el.appendChild(n)};
+ document.querySelectorAll('.cal2 > p').forEach(function(p,i){var k=p.querySelector('span');var lab=k?k.outerHTML:'';var vip=p.classList.contains('v');
+  put(p,vip?fri():three(),range(vip?3:0),vip?'Friday, December 11 · 12:00 to 1:30 pm New York':'December 8, 9 and 10 · 12:00 to 1:30 pm New York');if(lab)p.insertAdjacentHTML('afterbegin',lab)});
+ var cn=document.querySelector('.cal-ny');if(cn)put(cn,three()+' · '+range(0),'','December 8, 9 and 10 · 12:00 to 1:30 pm New York');
+ var vq=document.querySelector('p.ny[data-ny]');if(vq)put(vq,fri()+' · '+range(3),'','Friday, December 11 · 12:00 to 1:30 pm New York');
+ var wa=document.querySelector('.wa-ny');if(wa){var a=day(0),f=new Date(Date.UTC(2026,11,11,18,30));put(wa,'Private access runs '+MF[a.getMonth()]+' '+a.getDate()+' to '+f.getDate()+' where you are.','','December 8 to 11, New York dates')}
+}catch(e){}})();</script>
 </body>
 </html>
