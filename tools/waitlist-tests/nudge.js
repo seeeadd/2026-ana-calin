@@ -1,0 +1,11 @@
+const {chromium}=require('playwright');const S=process.argv[2];(async()=>{const b=await chromium.launch();
+const c=await b.newContext({viewport:{width:1440,height:900},timezoneId:'Asia/Manila',locale:'en-US'});const p=await c.newPage();
+const st=()=>p.evaluate(()=>({first:document.getElementById('wFirst').closest('.field').classList.contains('nudge'),email:document.getElementById('wEmail').closest('.field').classList.contains('nudge')}));
+await p.goto('http://localhost:8767/waitlist/');await p.waitForTimeout(500);console.log('0.5s',JSON.stringify(await st()));
+await p.waitForTimeout(1500);console.log('2s  ',JSON.stringify(await st()));await p.waitForTimeout(400);await p.screenshot({path:S+'/nudge-first.png',clip:{x:900,y:380,width:470,height:400}});
+await p.fill('#wFirst','Sa');await p.waitForTimeout(1100);console.log('typed name, still focused',JSON.stringify(await st()));
+await p.click('#wEmail');await p.waitForTimeout(200);console.log('email focused',JSON.stringify(await st()));
+await p.fill('#wFirst','Sarah');await p.evaluate(()=>document.activeElement.blur());await p.waitForTimeout(900);console.log('name done, nothing focused',JSON.stringify(await st()));await p.waitForTimeout(400);await p.screenshot({path:S+'/nudge-email.png',clip:{x:900,y:380,width:470,height:400}});
+await p.fill('#wEmail','s@gmail.com');await p.waitForTimeout(300);console.log('email filled',JSON.stringify(await st()));
+const c2=await b.newContext({viewport:{width:390,height:844},isMobile:true,reducedMotion:'reduce'});const q=await c2.newPage();await q.goto('http://localhost:8767/waitlist/');await q.waitForTimeout(1800);console.log('reduced motion first',await q.evaluate(()=>document.getElementById('wFirst').closest('.field').classList.contains('nudge')),await q.evaluate(()=>getComputedStyle(document.getElementById('wFirst')).animationName));
+await b.close()})();

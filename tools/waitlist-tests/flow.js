@@ -1,0 +1,12 @@
+const {chromium}=require('playwright');const S=process.argv[2];(async()=>{const b=await chromium.launch();
+const c=await b.newContext({viewport:{width:1440,height:900}});const p=await c.newPage();
+await p.route('**/api/ana-waitlist',r=>{console.log('POST',r.request().postData().slice(0,230));r.fulfill({status:200,contentType:'application/json',body:'{"ok":true}'})});
+await p.goto('http://localhost:8767/waitlist/');await p.waitForTimeout(1500);
+await p.fill('#wFirst','Sarah');await p.fill('#wEmail','sarah@gmail.com');await p.click('#wGo');await p.waitForTimeout(900);
+console.log('checkbox default checked =',await p.isChecked('#wOk'));
+await p.click('#wQgo');await p.waitForTimeout(200);console.log('empty question blocked, still form:',await p.isVisible('#wq'));
+await p.fill('#wBq','Two ideas and I cannot pick which deserves my evenings.');await p.check('#wOk');await p.click('#wQgo');await p.waitForTimeout(600);
+console.log('sent message visible:',await p.isVisible('.qd'));await p.screenshot({path:S+'/flow-sent.png'});
+const p2=await c.newPage();await p2.goto('http://localhost:8767/index.html?first_name=Sarah&email=sarah@gmail.com');await p2.waitForTimeout(2500);
+console.log('prefill',await p2.evaluate(()=>[document.getElementById('jFirst').value,document.getElementById('jEmail').value]));
+await b.close()})();

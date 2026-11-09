@@ -1,5 +1,7 @@
 # Claude in this repo
 
+**Fresh chat? Read `playbook/HANDOFF-main-chat.md` first** (full context of the Oct 25 to Nov 8 main chat: pages, repos, rules, Sean's preferences, the waitlist, open items; the evidence is `playbook/transcripts/`).
+
 Before any work, read Sean's playbook repo **seeeadd/afterharvest-design-playbook** (`README.md`, `SOP.md`, the files
 for the job, `clients/ana-calin.md`, the newest lines of `feedback-log.md`). If it isn't in this session, add it
 (add_repo) and clone it. `playbook/` here is Ana's local copy; the playbook repo wins where they differ.
