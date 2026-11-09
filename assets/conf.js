@@ -57,7 +57,7 @@
   /* one Google link for every day: a repeating event (daily, 3 times, or 4 with the VIP Q&A on Fri Dec 11),
      in their own calendar so their usual reminders fire. The notes hold each day, with its own lines and links. */
   var vipCal = C.PAGE === 'vip', days = ['20261208', '20261209', '20261210'].concat(vipCal ? ['20261211'] : []);
-  var notes = 'Every day at 12:00 pm New York (7:00 pm Greece), live on Zoom. Your Zoom link is in your email from Ana.\n';
+  var notes = 'Every day at 12:00 pm New York, live on Zoom (your calendar shows it in your own time). Your Zoom link is in your email from Ana.\n';
   days.forEach(function(d, i){
     var lab = ['DAY 1 · Tue Dec 8', 'DAY 2 · Wed Dec 9', 'DAY 3 · Thu Dec 10', 'VIP Q&A · Fri Dec 11'][i];
     notes += '\n' + lab + '\n' + EV[d][1] + '\n';
@@ -219,8 +219,10 @@
     var tz2 = Intl.DateTimeFormat().resolvedOptions().timeZone;
     if (tz2 && tz2 !== 'America/New_York') {
       var q = {};
-      new Intl.DateTimeFormat('en-US', {hour:'numeric', minute:'2-digit', hour12:true}).formatToParts(new Date(Date.UTC(2026,11,8,17,0))).forEach(function(x){ q[x.type] = x.value });
-      if (q.hour && q.dayPeriod) localTime = 'That’s ' + q.hour + ':' + q.minute + ' ' + q.dayPeriod.toLowerCase() + ' where you are.';
+      /* Sean, Nov 9: their own day, time and city (Day 1 can fall on another day for them) */
+      new Intl.DateTimeFormat('en-US', {weekday:'short', month:'short', day:'numeric', hour:'numeric', minute:'2-digit', hour12:true}).formatToParts(new Date(Date.UTC(2026,11,8,17,0))).forEach(function(x){ q[x.type] = x.value });
+      var city2 = tz2.indexOf('/') > -1 ? tz2.split('/').pop().replace(/_/g, ' ') : '';
+      if (q.hour && q.dayPeriod) localTime = 'That’s ' + q.weekday + ' ' + q.month + ' ' + q.day + ', ' + q.hour + ':' + q.minute + ' ' + q.dayPeriod.toLowerCase() + (city2 ? ' in ' + city2 : ' where you are') + ' for Day 1.';
     }
   } catch (e) {}
   var QS = [

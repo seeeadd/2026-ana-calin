@@ -16,6 +16,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap">
 <link rel="stylesheet" href="../assets/conf.css">
 <link rel="stylesheet" href="../assets/confx.css">
+<link rel="stylesheet" href="../assets/conf-vip.css?v=d266470fa290">
 </head>
 <body class="vipc">
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -29,24 +30,28 @@
 <symbol id="ck" viewBox="0 0 16 16"><path d="m3.5 8.5 3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
 </defs></svg>
 
-<!-- the bar on top, as in the reference: they must not leave before steps 1 to 3 -->
-<div class="xbar" role="note">Don’t close or refresh this page!</div>
-
-<!-- component 1: the sticky date bar -->
-<header class="db">
-  <div class="db-bar">
-    <span class="db-live"><i></i>LIVE</span>
-    <span class="db-days"><span class="dp">Tue Dec 8</span><span class="dp">Wed Dec 9</span><span class="dp">Thu Dec 10</span><span class="dp v">Fri Dec 11 · VIP Q&amp;A</span></span>
-    <span class="db-tm">12:00 pm New York</span>
-    <span class="db-ph">Dec 8 to 11 · 12 pm NY</span>
-    <!-- WhatsApp stays here: the Zoom links and reminders live there -->
-    <a class="btn bwa" href="#" data-link="VIP_GROUP_URL" target="_blank" rel="noopener" data-step="wa" data-track="action_whatsapp"><svg class="wa" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.5-.3Z"/></svg><span class="j1">join WhatsApp</span><span class="j2">open WhatsApp</span></a>
-
+<!-- the sticky header: the VIP page's floating card (Sean, Nov 9). They must not leave before steps 1 to 3 -->
+<header class="fb">
+ <div class="fb-card">
+  <p class="keep" role="note"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 4.6v4.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="8" cy="11.2" r="1.05" fill="currentColor"/></svg><span>Don’t close or refresh this page!</span></p>
+  <div class="fb-bar">
+    <div class="fb-id"><img src="../img/fav/vip-favicon-192.png?v=2d69442a" alt="" width="44" height="44"><span class="fb-tx"><small>VIP · free 3-day live workshop</small><b><span class="fb-tt">The Exit Plan</span><em class="fb-dt">Dec 8 to 11 · 12 pm NY</em></b></span></div>
+    <div class="steps" aria-label="Step 3 of 3">
+      <span class="st done"><i><svg width="12" height="12" style="color:#fff"><use href="#ck"/></svg></i><span class="t">Seat saved</span></span>
+      <span class="ln on"></span>
+      <span class="st done"><i><svg width="12" height="12" style="color:#fff"><use href="#ck"/></svg></i><span class="t">VIP</span></span>
+      <span class="ln on"></span>
+      <span class="st now"><i>3</i><span class="t">Get ready</span></span>
+    </div>
+    <div class="fb-r"><span class="fb-n">STEP 3 OF 3</span><a class="fbc" href="#" data-link="VIP_GROUP_URL" target="_blank" rel="noopener" data-step="wa" data-track="action_whatsapp"><span class="sf-b"><svg class="wa" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.5-.3Z"/></svg></span><span class="bt">join WhatsApp</span></a></div>
   </div>
+ </div>
 </header>
 
 <!-- 1. the top, in order of importance: the progress, the headline, the picture, then 1 WhatsApp and 2 the calendar -->
 <section class="cx" id="top">
+  <i class="sea" aria-hidden="true"></i>
+  <img class="cx-lights" src="../img/conf/lights.webp" alt="" width="1100" height="180" aria-hidden="true">
   <svg class="bgf a" aria-hidden="true"><use href="#sfo"/></svg>
   <svg class="bgf b" aria-hidden="true"><use href="#sfo"/></svg>
   <div class="wrap">
@@ -58,6 +63,7 @@
     <div class="cxa" aria-hidden="true">
       <svg class="cxa-fl a"><use href="#sfo"/></svg><svg class="cxa-fl b"><use href="#sfo"/></svg>
       <div class="cxa-tk">
+        <img class="cxa-bow" src="../img/conf/bow.webp" alt="" width="420" height="254"><svg class="crown" viewBox="0 0 44 32" aria-hidden="true"><path d="M5 26 L3.5 9 L13.5 17 L22 4 L30.5 17 L40.5 9 L39 26 Z" fill="#FFD400" stroke="#1A1412" stroke-width="2.2" stroke-linejoin="round"/><path d="M5 26 H39" stroke="#1A1412" stroke-width="2.2"/><path d="M6.5 22 H37.5" stroke="#E0A800" stroke-width="2" opacity=".7"/><circle cx="3.5" cy="9" r="2.6" fill="#FFD400" stroke="#1A1412" stroke-width="1.8"/><circle cx="22" cy="4" r="2.8" fill="#FFD400" stroke="#1A1412" stroke-width="1.8"/><circle cx="40.5" cy="9" r="2.6" fill="#FFD400" stroke="#1A1412" stroke-width="1.8"/><circle cx="22" cy="19.5" r="2.4" fill="#F72585"/></svg>
         <div class="t1"><svg><use href="#sf"/></svg><span>The Exit Plan<small>VIP · all access</small></span><em>VIP</em></div>
         <div class="t2"><small>Seat holder</small><b data-name>Your seat</b></div>
         <div class="t3"><span><small>Day 1</small><b>Tue Dec 8</b></span><span><small>Time</small><b>12:00 pm NY</b></span><span><small>Where</small><b>Zoom</b></span></div>
@@ -76,6 +82,12 @@
       <div class="cxa-num"><small>Your exit number</small><b>?</b><em>powered by 7 quick questions</em><span class="bdg">4</span></div>
       <div class="cxa-tx"><b>Don’t close this page</b><em>your seat is saved, your reminders aren’t set yet</em></div>
     </div>
+  </div>
+</section>
+
+<!-- 1b. the three steps, one row each, in order (Sean, Nov 9: rows read as a checklist) -->
+<section class="cxr" id="steps">
+  <div class="wrap">
     <p class="cx-now"><b>Do this now</b> If you only have a minute, do the first one.</p>
     <div class="cx-steps">
       <div class="cx-step imp" data-card="wa">
@@ -178,7 +190,7 @@
       <div class="cx-step" id="actcal" data-card="cal">
         <span class="n">3</span><span class="dn"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ck"/></svg>done</span>
         <h3>Add all four days to your calendar.</h3>
-        <p>Tue Dec 8 to Thu Dec 10 at 12:00 pm New York<span class="lt"></span>, and your VIP Q&amp;A on Fri Dec 11. Treat them like meetings you can’t move.</p>
+        <p>Tue Dec 8 to Thu Dec 10 at 12:00 pm New York, and your VIP Q&amp;A on Fri Dec 11. Treat them like meetings you can’t move.</p>
         <div class="kx kx-vip" aria-hidden="true">
           <div class="kx-tb"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span class="kx-today">Today</span><svg viewBox="0 0 24 24"><path d="m15 5-7 7 7 7"/></svg><svg viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></svg><b>December 2026</b><span class="kx-me">T</span></div>
           <div class="kx-days"><span class="kx-tz">GMT-05</span><span><small>MON</small><b>7</b></span><span><small>TUE</small><b>8</b></span><span><small>WED</small><b>9</b></span><span><small>THU</small><b>10</b></span><span><small>FRI</small><b>11</b></span></div>
@@ -273,26 +285,10 @@
              the tag turns to "Unlocked" once the 7 questions are done (conf.js) -->
         <div class="cxt" id="cxt" aria-hidden="true">
           <span class="cxt-lock"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2.5" fill="currentColor"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg><em class="l">Unlocks at 7 of 7</em><em class="u">Unlocked</em></span>
-          <div class="calc">
-            <div class="calc-tape"><small>TIME CHECK, A MONTH</small><p class="tp-n"><b data-t="hneed" class="rd">28</b> hrs</p><p>needed, of <span data-t="hfree">22</span> free</p><span class="cxt-stamp">Eyes only</span></div>
-            <div class="calc-body">
-              <div class="calc-top"><span class="calc-brand"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#sf"/></svg>how we grow</span><span class="calc-solar"><i></i><i></i><i></i><i></i></span></div>
-              <div class="calc-lcd">
-                <div class="calc-ind"><span class="lab">Your exit number</span><span class="calc-lk">LOCK</span></div>
-                <div class="calc-row"><span class="calc-ghost">8888</span><b class="calc-big" data-t="buyers">27</b></div>
-                <div class="calc-unit">purchases a month at <span data-t="price2">$149</span></div>
-              </div>
-              <div class="calc-fn">
-                <span class="k f"><small>Goal / mo</small><b>$<span data-t="goal">4,000</span></b></span>
-                <span class="k f"><small>Price</small><b>$<span data-t="price">149</span></b></span>
-                <span class="k f"><small>Hours / wk</small><b><span data-t="hw">5</span></b></span>
-              </div>
-              <div class="calc-pad"><span class="k">7</span><span class="k">8</span><span class="k">9</span><span class="k op">÷</span><span class="k">4</span><span class="k">5</span><span class="k">6</span><span class="k op">×</span><span class="k">1</span><span class="k">2</span><span class="k">3</span><span class="k op">−</span><span class="k">0</span><span class="k">.</span><span class="k eq"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#sf"/></svg></span><span class="k op">+</span></div>
-              <div class="calc-model">EXIT NUMBER <b>EN-7</b></div>
-              <!-- a brick wall over the calculator: each answer knocks some out (conf.js), all gone at 7 of 7 -->
-              <div class="cxtb" id="cxtb"><div class="cxtb-w"></div><div class="cxtb-floor"><span class="cxtb-pad"></span></div><span class="cxtb-ball"></span></div>
-            </div>
-          </div>
+          <div class="ipad"><div class="ipad-scr"><img src="../img/conf/calc-ipad.webp" alt="" width="1400" height="931" loading="lazy">
+            <!-- a brick wall over the screen: each answer knocks some out (conf.js), all gone at 7 of 7 -->
+            <div class="cxtb" id="cxtb"><div class="cxtb-w"></div><div class="cxtb-floor"><span class="cxtb-pad"></span></div>
+          </div></div>
         </div>
         <p class="cxt-cap">Not on my website. It opens only here, for the people in these three days.</p>
         <a class="btn cxl-go" href="../exit-number/" data-track="exit_open">open my calculator<svg aria-hidden="true"><use href="#arr"/></svg></a>
@@ -317,7 +313,7 @@
     <div class="gets four">
       <div class="get" data-r>
         <span class="unl">YOURS</span>
-        <div class="art wag" aria-hidden="true"><div class="chat sm"><div class="hd"><span class="wai"><svg class="wa" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.5-.3Z"/></svg></span><span>VIP group<small>Ana and the VIPs</small></span></div><div class="b"><small>Ana</small><span class="vn"><i><svg viewBox="0 0 26 26"><path d="M8.6 5.6v14.8c0 .9 1 1.4 1.7 1l11.6-7.4c.7-.4.7-1.4 0-1.9L10.3 4.6c-.7-.5-1.7 0-1.7 1z" fill="#fff"/></svg></i><span class="wv"><b style="height:6px"></b><b style="height:10px"></b><b style="height:16px"></b><b style="height:9px"></b><b style="height:13px"></b><b style="height:18px"></b><b style="height:8px"></b><b style="height:12px"></b><b style="height:15px"></b><b style="height:7px"></b><b style="height:11px"></b><b style="height:17px"></b><b style="height:9px"></b><b style="height:6px"></b><b style="height:12px"></b><b style="height:14px"></b><b style="height:8px"></b><b style="height:10px"></b></span><em>0:42</em></span></div></div></div>
+        <div class="art am am-wa" aria-hidden="true"><div class="dev ph"><img src="../img/vip/paint/phone.webp" alt="" width="520" height="1000" loading="lazy"><div class="scrn2"><img src="../img/vip/raw/vipgroup.webp" alt="" width="600" height="1301" loading="lazy"></div></div></div>
         <!-- [Fri Dec 11 or Mon Dec 21: Ana's last day in the chat, to confirm] -->
         <span class="chip"><i></i>Join now</span>
         <span class="k">01 · Open chat</span>
@@ -327,7 +323,7 @@
       </div>
       <div class="get" data-r>
         <span class="unl">YOURS</span>
-        <div class="art" aria-hidden="true"><div class="mbk"><span>Offer Clarity Sprint</span></div></div>
+        <div class="art am am-spr" aria-hidden="true"><img src="../img/vip/raw/sprint-mockup.webp" alt="" width="1376" height="768" loading="lazy"></div>
         <span class="chip"><i></i>Yours now</span>
         <span class="k">02 · Bonus</span>
         <h3>The Offer Clarity Sprint.</h3>
@@ -337,7 +333,7 @@
       </div>
       <div class="get" data-r>
         <span class="unl">YOURS</span>
-        <div class="art" aria-hidden="true"><div class="mc"><div class="t"><i></i>FRI DEC 11<em>LIVE</em></div><div class="g"><img src="../img/ana-hat.webp" alt=""><div><span class="h"></span><span></span><span style="width:70%"></span></div></div></div></div>
+        <div class="art am am-qa" aria-hidden="true"><div class="dev lap"><img src="../img/vip/paint/laptop.webp" alt="" width="1200" height="840" loading="lazy"><div class="scrn2"><img src="../img/vip/raw/review.webp" alt="" width="1500" height="974" loading="lazy"></div></div></div>
         <!-- [Q&A time to confirm: 12:00 pm New York for now, the same as the three days] -->
         <span class="chip"><i></i>Fri Dec 11 · 12:00 pm New York</span>
         <span class="k">03 · Live</span>
@@ -348,7 +344,7 @@
       </div>
       <div class="get" data-r>
         <span class="unl">YOURS</span>
-        <div class="art" aria-hidden="true"><div class="mpl"><div class="s"><i></i></div><div class="r"><span></span><span></span><span></span></div></div></div>
+        <div class="art am am-rec" aria-hidden="true"><div class="dev lap"><img src="../img/vip/paint/laptop.webp" alt="" width="1200" height="840" loading="lazy"><div class="scrn2"><img src="../img/slides/day2a.webp" alt="" width="1280" height="720" loading="lazy"><span class="am-rbar"><i></i>DAY 2 · RECORDING<em>saved</em></span></div></div><img class="am-badge" src="../img/badges/lifetime.webp" alt="" width="640" height="602" loading="lazy"></div>
         <span class="chip"><i></i>Dec 8, 9, 10</span>
         <span class="k">04 · To keep</span>
         <h3>All three sessions, to keep.</h3>
@@ -362,7 +358,7 @@
             <span class="chip"><i></i>Tue Dec 8 to Thu Dec 10</span>
             <span class="k">05 · Live</span>
             <h3>Your seat for all three live days.</h3>
-            <p>12:00 pm New York, every day. Already on your calendar once you've done step 2 below.</p>
+            <p>12:00 pm New York, every day. Already on your calendar once you've done step 3 above.</p>
           </div>
         </div>
       </div>
@@ -375,6 +371,7 @@
 <section>
   <div class="wrap">
     <div class="qf" data-form="KIT_VIP_FORM" data-r>
+      <img class="qf-art" src="../img/vip/paint/mini-rev.webp" alt="" width="320" height="400" loading="lazy" aria-hidden="true">
       <h3>Your ready check: <em>what should I look at on Friday?</em></h3>
       <p class="ln">I'll go through these before Friday, Dec 11, so we spend the time on yours.</p>
       <p class="ln">I may show yours on screen on Friday, first name only. Write "skip me" if you'd rather not.</p>
@@ -401,7 +398,7 @@
         <span class="n">5</span><span class="dn"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ck"/></svg>done</span>
         <h3>Print your Head start page.</h3>
         <p>One page. It has the by-hand version of your exit number and a few starting points for Day 1. Fill it in before Tue Dec 8. Each day's page opens with a word I say live.</p>
-        <div class="vis"><div class="sheetp"><img src="../assets/sheet-preview.webp" alt="The Head start page: one page to fill in before Day 1" width="620" height="510" loading="lazy"></div></div>
+        <div class="vis"><div class="sheetp"><img class="tape" src="../img/conf/tape.webp" alt="" width="360" height="131" aria-hidden="true"><img src="../assets/sheet-preview.webp" alt="The Head start page: one page to fill in before Day 1" width="620" height="510" loading="lazy"></div></div>
         <div class="go"><a class="btn" href="../assets/sheet.pdf" download="Ana Calin - Head start page.pdf" data-step="sheet" data-track="action_sheet">download the Head start page (PDF)<svg aria-hidden="true"><use href="#arr"/></svg></a></div>
       </div>
       <div class="act wide" data-card="hi" data-r>
@@ -469,21 +466,21 @@
       <div class="srow" data-r>
         <div class="sdate"><small>TODAY</small><b class="sf"><svg aria-hidden="true"><use href="#sf"/></svg></b></div>
         <div class="scard">
-          <div class="sart"><svg viewBox="0 0 180 130" aria-hidden="true"><rect x="40" y="10" width="78" height="112" rx="4" fill="#fff" stroke="#1A1412" stroke-width="3"/><circle cx="106" cy="68" r="4" fill="#1A1412"/><path d="M79 30 62 52M79 30l17 22" stroke="#1A1412" stroke-width="2.5" stroke-linecap="round"/><rect x="52" y="50" width="56" height="40" rx="5" fill="#FFD400" stroke="#1A1412" stroke-width="3" transform="rotate(-6 80 70)"/><text x="80" y="66" text-anchor="middle" font-family="Manrope,sans-serif" font-weight="800" font-size="8.5" fill="#1A1412" transform="rotate(-6 80 70)">DO NOT</text><text x="80" y="77" text-anchor="middle" font-family="Manrope,sans-serif" font-weight="800" font-size="8.5" fill="#1A1412" transform="rotate(-6 80 70)">KNOCK</text><text x="80" y="86" text-anchor="middle" font-family="Manrope,sans-serif" font-weight="700" font-size="6.5" fill="#F72585" transform="rotate(-6 80 70)">12 TO 1:30</text><circle cx="146" cy="38" r="22" fill="#fff" stroke="#1A1412" stroke-width="3"/><path d="M146 24v14l9 6" stroke="#F72585" stroke-width="3" stroke-linecap="round" fill="none"/></svg></div>
-          <div><h3>Block <em>the time.</em></h3><p>Tell whoever you live with: 12:00 to 1:30 pm New York, Tue Dec 8 to Thu Dec 10 (7:00 to 8:30 pm in Greece). Phone on silent. Treat it like a flight you can't move.</p></div>
+          <div class="sart pz pz-time" aria-hidden="true"><img class="pz-clock" src="../img/conf/clock-sun.webp" alt="" width="490" height="277" loading="lazy"></div>
+          <div><h3>Block <em>the time.</em></h3><p>Tell whoever you live with: 12:00 to 1:30 pm New York, Tue Dec 8 to Thu Dec 10. Phone on silent. Treat it like a flight you can't move.</p></div>
         </div>
       </div>
       <div class="srow" data-r>
-        <div class="sdate"><small>MON · DEC</small><b>7</b></div>
+        <div class="sdate" data-day="p"><small>MON · DEC</small><b>7</b></div>
         <div class="scard">
-          <div class="sart"><svg viewBox="0 0 180 130" aria-hidden="true"><rect x="44" y="16" width="84" height="84" rx="4" fill="#FFD400" stroke="#1A1412" stroke-width="3" transform="rotate(-5 86 58)"/><path d="M60 40h48M60 52h40M60 64h44" stroke="#1A1412" stroke-width="2.5" stroke-linecap="round" opacity=".35" transform="rotate(-5 86 58)"/><text x="100" y="94" font-family="Instrument Serif,serif" font-style="italic" font-size="44" fill="#F72585">?</text><path d="M128 112 158 66l8 5-30 46-11 4Z" fill="#fff" stroke="#1A1412" stroke-width="3" stroke-linejoin="round"/><path d="m154 72 8 5" stroke="#1A1412" stroke-width="3"/></svg></div>
+          <div class="sart pz pz-q" aria-hidden="true"><img class="pz-note" src="../img/vip/paint/note-y.webp" alt="" width="260" height="252" loading="lazy"><svg class="pz-qm" viewBox="0 0 40 60"><path d="M10 18c0-9 7-14 14-13 8 1 12 8 9 15-3 6-11 8-12 16v5" fill="none" stroke="#1b63a9" stroke-width="4.2" stroke-linecap="round"/><circle cx="21" cy="52" r="3.2" fill="#1b63a9"/></svg><img class="pz-pencil" src="../img/vip/paint/pencil.webp" alt="" width="640" height="120" loading="lazy"></div>
           <div><h3>Pick <em>your one question.</em></h3><p>Write down one thing you want answered by Thu Dec 10, and bring it on Tuesday. You listen differently when you're waiting for your answer.</p></div>
         </div>
       </div>
       <div class="srow" data-r>
-        <div class="sdate"><small>TUE · DEC</small><b>8</b></div>
+        <div class="sdate" data-day="0"><small>TUE · DEC</small><b>8</b></div>
         <div class="scard">
-          <div class="sart"><svg viewBox="0 0 180 130" aria-hidden="true"><rect x="30" y="22" width="120" height="78" rx="7" fill="#1A1412"/><rect x="38" y="30" width="104" height="62" rx="3" fill="#FFF8EE"/><rect x="44" y="36" width="44" height="24" rx="3" fill="#F72585"/><circle cx="66" cy="45" r="5" fill="#FFD400" stroke="#1A1412" stroke-width="1.5"/><rect x="92" y="36" width="44" height="24" rx="3" fill="#EADFCF"/><rect x="44" y="64" width="44" height="22" rx="3" fill="#EADFCF"/><rect x="92" y="64" width="44" height="22" rx="3" fill="#EADFCF"/><path d="M18 100h144l-8 10H26Z" fill="#fff" stroke="#1A1412" stroke-width="3" stroke-linejoin="round"/><rect x="128" y="6" width="44" height="22" rx="11" fill="#FFD400" stroke="#1A1412" stroke-width="2.5"/><text x="150" y="21" text-anchor="middle" font-family="Manrope,sans-serif" font-weight="800" font-size="10" fill="#1A1412">11:55</text></svg></div>
+          <div class="sart pz pz-cup" aria-hidden="true"><svg class="pz-steam" viewBox="0 0 60 70"><path d="M18 64c-8-10 8-16 0-28s6-16 2-30" /><path d="M32 64c-8-10 8-16 0-28s6-16 2-30" /><path d="M46 64c-8-10 8-16 0-28s6-16 2-30" /></svg><img class="pz-coffee" src="../img/vip/paint/coffee.webp" alt="" width="400" height="400" loading="lazy"></div>
           <div><h3>Come in early. <em>Stay till the end.</em></h3><p>Bring a laptop, a pen and your Head start page, and close the door. Join a few minutes before 12:00 pm New York. At the end of Day 3, I draw five people for a <b class="oo">1:1</b> with me, from those still there live.</p></div>
         </div>
       </div>
@@ -497,6 +494,7 @@
   <div class="wrap">
     <div class="g" data-r>
       <div class="tix" aria-hidden="true">
+        <img class="tix-seal" src="../img/badges/giveaway.webp" alt="" width="640" height="614" loading="lazy">
         <div class="tk"><span class="l"><svg><use href="#sf"/></svg></span><span class="r"><small>1:1 WITH ANA</small><b>$3,000</b><em>Thu Dec 10</em></span></div>
         <div class="tk"><span class="l"><svg><use href="#sf"/></svg></span><span class="r"><small>1:1 WITH ANA</small><b>$3,000</b><em>Thu Dec 10</em></span></div>
         <div class="tk"><span class="l"><svg><use href="#sf"/></svg></span><span class="r"><small>1:1 WITH ANA</small><b>$3,000</b><em>Thu Dec 10</em></span></div>
@@ -536,6 +534,39 @@
     EXIT_URL:     '../exit-number/' // the exit number calculator the last question opens
   };
 </script>
-<script src="../assets/conf.js"></script>
+<script>/* Sean, Nov 9: every date and time follows the visitor (their own day, time and city), the way the VIP page does;
+   New York's time is said beside theirs. New York and unreadable zones see the page as written. Runs before conf.js */
+(function(){try{var tz=Intl.DateTimeFormat().resolvedOptions().timeZone||'';if(!tz||tz==='America/New_York'||tz.indexOf('/')<0)return;
+ var city=tz.split('/').pop().replace(/_/g,' '),M=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+  W=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],WF=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+ var D=[new Date(Date.UTC(2026,11,8,17,0)),new Date(Date.UTC(2026,11,9,17,0)),new Date(Date.UTC(2026,11,10,17,0)),new Date(Date.UTC(2026,11,11,17,0))],
+  END=new Date(Date.UTC(2026,11,8,18,30));
+ var t=function(d){return d.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'}).toLowerCase()};
+ var wmd=function(d){return W[d.getDay()]+' '+M[d.getMonth()]+' '+d.getDate()},md=function(d){return M[d.getMonth()]+' '+d.getDate()};
+ var t1=t(D[0]),t2=t(END),sameP=t1.slice(-2)===t2.slice(-2),range=(sameP?t1.slice(0,-3):t1)+' to '+t2;
+ var R=[
+  ['12:00 to 1:30 pm New York',range+' in '+city+' (12:00 to 1:30 pm New York)'],
+  ['12:00 pm New York',t1+' in '+city+' (12:00 pm New York)'],['12:00 pm NY',t1],['12 pm NY',t1.replace(':00','')],
+  ['Tue Dec 8 to Thu Dec 10',wmd(D[0])+' to '+wmd(D[2])],['Tue Dec 8 to Fri Dec 11',wmd(D[0])+' to '+wmd(D[3])],
+  ['Tue, Dec 8',W[D[0].getDay()]+', '+md(D[0])],['Fri, Dec 11',W[D[3].getDay()]+', '+md(D[3])],
+  ['Tue Dec 8',wmd(D[0])],['Wed Dec 9',wmd(D[1])],['Thu Dec 10',wmd(D[2])],['Fri Dec 11',wmd(D[3])],
+  ['TUE DEC 8',wmd(D[0]).toUpperCase()],['WED DEC 9',wmd(D[1]).toUpperCase()],['THU DEC 10',wmd(D[2]).toUpperCase()],['FRI DEC 11',wmd(D[3]).toUpperCase()],
+  ['Dec 8 to 11',md(D[0])+' to '+(D[3].getMonth()===D[0].getMonth()?D[3].getDate():md(D[3]))],
+  ['Dec 8, 9, 10',md(D[0])+', '+D[1].getDate()+', '+D[2].getDate()],['Dec 8',md(D[0])],['Dec 11',md(D[3])],
+  ['Tuesday, Dec 8',WF[D[0].getDay()]+', '+md(D[0])],['Friday, Dec 11',WF[D[3].getDay()]+', '+md(D[3])],['on Tuesday','on '+WF[D[0].getDay()]],['Tuesday',WF[D[0].getDay()]],['now and Friday','now and '+WF[D[3].getDay()]],['on Friday','on '+WF[D[3].getDay()]],['Friday',WF[D[3].getDay()]]];
+ var w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{acceptNode:function(n){return n.parentNode.closest('script,style,svg')?2:1}}),n,list=[];
+ while(n=w.nextNode())list.push(n);
+ list.forEach(function(n){var v=n.nodeValue,o=v,out='',i=0;
+  /* one pass, longest match first, so a replaced piece is never replaced again */
+  while(i<v.length){var hit=null;for(var k=0;k<R.length;k++){if(v.substr(i,R[k][0].length)===R[k][0]){hit=R[k];break}}
+   if(hit){out+=hit[1];i+=hit[0].length}else{out+=v[i];i++}}
+  if(out!==o)n.nodeValue=out});
+ /* number tiles and calendar icons */
+ document.querySelectorAll('.tiles .dt').forEach(function(e,i){var d=D[i];if(!d)return;var b=e.querySelector('b'),s=e.querySelector('small');if(b)b.textContent=d.getDate();if(s)s.textContent=W[d.getDay()]});
+ document.querySelectorAll('[data-day]').forEach(function(e){var a=e.getAttribute('data-day'),d=a==='p'?new Date(D[0].getTime()-864e5):D[+a];if(!d)return;var b=e.querySelector('b'),s=e.querySelector('small');if(b)b.textContent=d.getDate();if(s)s.textContent=(W[d.getDay()]+' · '+M[d.getMonth()]).toUpperCase()});
+ /* the city, with a pin, in the top bar */
+ var tm=document.querySelector('.fb-dt');if(tm)tm.insertAdjacentHTML('beforeend','<span class="fb-loc">'+'<svg class="vpin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s-7-7.1-7-12.2A7 7 0 0 1 19 9.8C19 14.9 12 22 12 22Z"/><circle cx="12" cy="9.6" r="2.6"/></svg>'+city.replace(/[<>&]/g,'')+'</span>');
+}catch(e){}})();</script>
+<script src="../assets/conf.js?v=2"></script>
 </body>
 </html>
