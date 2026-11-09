@@ -326,3 +326,8 @@ body.vipc .mq { background-color: #1b63a9; background-image: url("../img/vip/sea
 body.vipc .gm li.v .lab { background-color: #1b63a9; background-image: url("../img/vip/sea/waves-b.webp"), url("../img/vip/sea/streaks.webp"), linear-gradient(176deg, #1f69b0, #134a7d); background-size: 560px 377px, 600px 300px, auto; }
 body.vipc .tix .tk .l { background-image: url("../img/vip/sea/waves-b.webp"), linear-gradient(176deg, #1f69b0, #134a7d); background-size: 300px 202px, auto; }
 body.vipc footer { background-image: linear-gradient(rgba(232, 242, 249, .55), rgba(232, 242, 249, .55)), url("../img/vip/paint/tx-grain.webp"), url("../img/vip/sea/streaks.webp"); background-size: auto, 256px, 900px 450px; background-blend-mode: normal, normal, soft-light; }
+
+/* ---------- phones: nothing pokes past the edge (the seal, and a date chip made long by the visitor's own time) ---------- */
+body.vipc .get .chip { height: auto; min-height: 30px; max-width: 100%; padding-top: 6px; padding-bottom: 6px; line-height: 1.3; white-space: normal; }
+@media (max-width: 760px) { body.vipc .tix-seal { right: -4px; top: -46px; width: 92px; } }
+@media (max-width: 400px) { body.vipc .tix-seal { right: 14px; width: 80px; } }
