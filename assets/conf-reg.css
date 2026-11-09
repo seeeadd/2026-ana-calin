@@ -456,3 +456,14 @@ body.regc .cxs .cxl-lbl, body.regc .cxs .cxl-lbl b { color: var(--ink); }
 @media (max-width: 1280px) { body.regc .fb-id small { display: none; } body.regc .fb-id b { margin-top: 0; } }
 body.regc .fb-id img { max-width: none; flex: none; }
 @media (max-width: 1500px) { body.regc .st.done .t { display: none; } body.regc .st.done { padding: 6px; } }
+
+/* calendar step: the honest reason (Sean, Nov 9) */
+body.regc .calwhy{position:relative;margin:4px 0 22px;padding:16px 18px 14px 20px;background:#fff;border:2px solid var(--ink);border-left:7px solid var(--red);border-radius:14px;box-shadow:4px 5px 0 rgba(26,20,18,.12);transform:rotate(-.6deg);max-width:440px}
+body.regc .calwhy .cw-h{display:block;font-family:var(--serif);font-weight:600;font-size:21px;line-height:1.22;color:var(--ink);margin-bottom:8px}
+body.regc .calwhy mark{background:linear-gradient(transparent 55%,#FFD400 55%,#FFD400 92%,transparent 92%);color:inherit;padding:0 2px}
+body.regc .calwhy p{font-size:15px;line-height:1.5;margin:0 0 6px;color:var(--ink2)}
+body.regc .calwhy p.cw-l{margin:0;font-weight:700;color:var(--ink)}
+@media (max-width:640px){body.regc .calwhy{transform:none;margin:2px 0 18px}body.regc .calwhy .cw-h{font-size:19px}}
+
+/* the old text shade from conf.css is not for the video (Sean, Nov 9) */
+body.regc .cxv .scr:after{display:none}
