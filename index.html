@@ -2542,37 +2542,91 @@ html.wv-lock{overflow:hidden}
 .where .sit-goal{max-width:640px;margin:26px auto 0;text-align:center;font-size:18px;line-height:1.55;color:var(--ink2);text-wrap:balance}
 .where .sit-goal b{color:var(--ink)}
 .recap .ask-tz{margin:10px auto 0;font-size:13.5px;color:var(--ink3);text-align:center}
-/* optional preparation: Ana's Offer Flow */
+/* the hero copy grouped (Sean, Nov 9: "balanced", "a lot of text") */
+.hcopy .hshow{margin-top:12px;padding:12px 16px 12px;border-left:3px solid #FFD400;background:rgba(255,255,255,.55);border-radius:0 12px 12px 0}
+.hcopy .hshow .hsub2{margin-top:0}
+.hcopy .hlist{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:4px}
+.hcopy .hlist li{display:flex;gap:10px;align-items:flex-start;font-size:min(3.4cqi,17.5px);line-height:1.45;color:var(--ink)}
+.hcopy .hlist svg{flex:none;width:20px;height:17px;margin-top:3px}
+.hcopy .hend{margin-top:14px}
+@media (max-width:900px){.hero .hcopy .hlist li{font-size:clamp(16px,4.1vw,17.5px)}}
+/* optional preparation: Ana's Offer Flow (Sean, Nov 9: "make it its own thing, don't reuse anything") */
 .oflow{padding:10px 0 90px;overflow-x:clip}
-.ofcard{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:48px;align-items:center;background:#fff;border:1.5px solid var(--ink);border-radius:28px;padding:44px 48px;box-shadow:10px 11px 0 #FFD400,0 22px 40px -28px rgba(70,45,25,.45)}
+.ofcard{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:center;background:#fff;border:1.5px solid var(--ink);border-radius:28px;padding:48px 52px;box-shadow:10px 11px 0 #FFD400,0 22px 40px -28px rgba(70,45,25,.45)}
 .oftx h2{margin:10px 0 18px}
 .oftx h2 .l{display:block}
-.oftx p{font-size:17.5px;line-height:1.6;color:var(--ink2);margin:0 0 12px}
+.oftx p{font-size:17.5px;line-height:1.6;color:var(--ink2);margin:0 0 12px;text-wrap:pretty}
 .oftx p b{color:var(--ink)}
 .oftx .ofnote{font-size:14.5px;font-weight:700;color:var(--ink3);margin-top:16px}
 .oftx .cta2{margin-top:22px}
-.ofart{position:relative}
-.of-app{background:#FFFDF8;border:1.5px solid var(--ink);border-radius:18px;padding:16px 16px 18px;box-shadow:0 26px 40px -26px rgba(70,45,25,.55);transform:rotate(1.2deg)}
-.of-bar{display:flex;align-items:center;gap:6px;padding-bottom:12px;border-bottom:1px solid rgba(26,20,18,.1)}
-.of-bar i{width:10px;height:10px;border-radius:50%;background:#E8DBC5}.of-bar i:first-child{background:#F4A6A0}.of-bar i:nth-child(2){background:#FFD400}
-.of-bar b{margin-left:8px;font-size:14px;font-weight:800}
-.of-ask{margin:14px 0;padding:12px 14px;border-radius:12px;background:#FFF3C9;border:1px solid rgba(26,20,18,.12)}
-.of-ask small{display:block;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3);margin-bottom:4px}
-.of-ask span{font-size:15.5px;line-height:1.45;color:var(--ink)}
-.of-cur{display:inline-block;width:2px;height:1.05em;margin-left:2px;vertical-align:-2px;background:var(--ink);animation:ofBlink 1s steps(1) infinite}
-@keyframes ofBlink{50%{opacity:0}}
-.of-k{font-size:12.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);margin:6px 2px 8px}
-.of-list{list-style:none;margin:0;padding:0;display:grid;gap:8px}
-.of-list li{display:grid;grid-template-columns:28px 1fr 54px;align-items:center;gap:10px;padding:10px 12px;border-radius:12px;background:#fff;border:1px solid rgba(26,20,18,.12)}
-.of-list b{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;background:#1A1412;color:#FFD400;font-size:13px}
-.of-list span{display:grid;gap:5px}.of-list span i{display:block;height:8px;border-radius:4px;background:#E8DBC5;filter:blur(1.5px)}.of-list span i.s{width:60%;background:#F1E8D8}
-.of-list em{font-style:normal;font-weight:800;font-size:15px;color:var(--ink);text-align:right;filter:blur(2.5px)}
-.of-list em:after{content:"000"}
-.of-lock{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:14px;font-size:14px;font-weight:800}
-.of-lock svg{width:16px;height:16px}
-.of-day{position:absolute;right:-14px;top:-18px;transform:rotate(6deg);background:#FFD400;border:1.5px solid var(--ink);border-radius:999px;padding:8px 14px;font-weight:800;font-size:14px;box-shadow:0 3px 0 var(--ink)}
-@media (max-width:900px){.ofcard{grid-template-columns:1fr;padding:30px 22px;gap:30px}.of-day{right:-4px}}
-@media (max-width:400px){.ofcard{padding:26px 16px}.of-list li{grid-template-columns:26px 1fr 44px;padding:9px 10px}}
+.ofart{position:relative;padding:14px 0 10px}
+.ofu{position:relative;container-type:inline-size;width:100%;max-width:480px;margin:0 auto}
+.ofu img{display:block;width:100%;height:auto}
+.ofu-win{position:relative;z-index:1;background:#FFFBF1;border:2px solid #1A1412;border-radius:22px;overflow:hidden;box-shadow:9px 10px 0 #1A1412,0 34px 50px -30px rgba(70,45,25,.55);transform:rotate(-1deg)}
+.ofu-top{display:flex;align-items:center;justify-content:space-between;gap:2cqi;padding:3cqi 3.6cqi;background:#FFD400;border-bottom:2px solid #1A1412}
+.ofu-brand{display:flex;flex-direction:column;line-height:1}
+.ofu-brand b{font:400 5.2cqi/1 var(--serif);color:#1A1412;letter-spacing:-.01em;white-space:nowrap}
+.ofu-brand small{font:800 2.1cqi/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:#1A1412;opacity:.7;margin-top:.9cqi}
+.ofu-steps{display:flex;align-items:center;gap:1.2cqi;font:800 2.3cqi/1 var(--sans);color:#1A1412;white-space:nowrap}
+.ofu-steps>span:not(.ofu-ar){display:inline-flex;align-items:center;gap:.9cqi;background:#FFFBF1;border:1.5px solid #1A1412;border-radius:999px;padding:1cqi 1.8cqi 1cqi 1cqi}
+.ofu-steps i{width:3.4cqi;height:3.4cqi;border-radius:50%;display:grid;place-items:center;background:#1A1412;color:#FFD400;font-style:normal;font-size:2cqi}
+.ofu-ar{width:2.6cqi;height:2px;background:#1A1412;position:relative}.ofu-ar:after{content:"";position:absolute;right:-1px;top:-3px;border:4px solid transparent;border-left:5px solid #1A1412;border-right:0}
+.ofu-body{padding:3.6cqi 3.6cqi 3.2cqi;background:radial-gradient(circle at 1px 1px,rgba(26,20,18,.06) 1px,transparent 1.6px) 0 0/14px 14px,#FFFBF1}
+.ofu-ask{position:relative;background:#fff;border:1.5px solid #1A1412;border-radius:16px;padding:2.6cqi 3.2cqi 3cqi;box-shadow:3px 4px 0 rgba(26,20,18,.12);margin-right:16cqi}
+.ofu-ask small{display:block;font:800 2.2cqi/1.2 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:#C2185B;margin-bottom:1cqi}
+.ofu-ask p{margin:0;font:600 3.5cqi/1.38 var(--sans);color:#1A1412}
+.ofx-cur{display:inline-block;width:2px;height:1.05em;margin-left:2px;vertical-align:-2px;background:#1A1412;animation:ofxBlink 1s steps(1) infinite}
+@keyframes ofxBlink{50%{opacity:0}}
+.ofu-h{display:flex;align-items:baseline;gap:1.6cqi;margin:4cqi 0 2.2cqi}
+.ofu-h em{font:italic 400 4.6cqi/1 var(--serif);color:#1A1412}
+.ofu-h span{font:700 2.4cqi/1 var(--sans);color:#7A6A60}
+.ofu-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2.4cqi}
+.ofu-card{position:relative;display:flex;align-items:flex-end;gap:1.6cqi;min-height:20cqi;padding:2cqi 2.4cqi 2.4cqi 1.6cqi;background:#fff;border:1.5px solid #1A1412;border-radius:14px;overflow:visible}
+.ofu-c1{background:#FFF6D6}.ofu-c2{background:#FFEAF2}.ofu-c3{background:#E8F0F9}.ofu-c4{background:#F3F7EC}
+.ofu-fl{flex:none;width:9.5cqi;height:19cqi;overflow:hidden;margin-top:-6cqi;transform-origin:50% 100%}
+.ofu-ct{display:grid;gap:1.2cqi;flex:1;min-width:0}
+.ofu-ct em{font:italic 400 3.8cqi/1 var(--serif);color:#1A1412}
+.ofu-ln{display:grid;gap:.9cqi}.ofu-ln i{display:block;height:1.4cqi;border-radius:3px;background:rgba(26,20,18,.2);filter:blur(1.1px)}.ofu-ln i+i{width:62%}
+.ofu-tag{position:relative;justify-self:start;display:inline-flex;align-items:center;gap:.2cqi;padding:.9cqi 1.8cqi .9cqi 3cqi;font:800 2.8cqi/1 var(--sans);color:#1A1412;background:#E8D7BC;border:1.2px solid #1A1412;clip-path:polygon(1.8cqi 0,100% 0,100% 100%,1.8cqi 100%,0 50%);border-radius:0 6px 6px 0}
+.ofu-tag i{position:absolute;left:1.5cqi;top:50%;width:1cqi;height:1cqi;margin-top:-.5cqi;border-radius:50%;background:#fff;border:1px solid #1A1412}
+.ofu-tag b{filter:blur(2.3px)}
+.ofu-pick{position:absolute;right:-1.6cqi;top:-2.6cqi;display:inline-flex;align-items:center;gap:.8cqi;padding:1cqi 1.8cqi 1cqi 1.2cqi;background:#2E9E57;color:#fff;border:1.5px solid #1A1412;border-radius:999px;font:800 2.2cqi/1 var(--sans);white-space:nowrap;transform:rotate(4deg)}
+.ofu-pick svg{width:2.6cqi;height:2.6cqi;fill:none;stroke:#fff;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.ofu-foot{display:flex;align-items:center;justify-content:space-between;gap:2cqi;margin-top:3.4cqi;padding-top:3cqi;border-top:1.5px dashed rgba(26,20,18,.22)}
+.ofu-save{display:inline-flex;align-items:center;padding:1.8cqi 3.2cqi;background:#FFD400;border:1.5px solid #1A1412;border-radius:999px;box-shadow:0 3px 0 #1A1412;font:800 2.8cqi/1 var(--sans);color:#1A1412;white-space:nowrap}
+.ofu-lock{display:inline-flex;align-items:center;gap:1cqi;font:800 2.5cqi/1 var(--sans);color:#7A6A60;white-space:nowrap}
+.ofu-lock svg{width:2.8cqi;height:2.8cqi;fill:none;stroke:#7A6A60;stroke-width:2}.ofu-lock svg rect{fill:#7A6A60}
+.ofu-can{position:absolute;z-index:2;right:-1cqi;top:13.5cqi;width:21cqi;transform:rotate(-24deg) scaleX(-1);transform-origin:60% 70%;pointer-events:none}
+.ofu-water{position:absolute;z-index:2;right:17.5cqi;top:23.5cqi;width:5cqi;height:6cqi;pointer-events:none}
+.ofu-water i{position:absolute;top:0;width:1.5cqi;height:2.4cqi;border-radius:50%/60% 60% 40% 40%;background:#7FB2E5;opacity:0}
+.ofu-water i:nth-child(1){left:0}.ofu-water i:nth-child(2){left:35%}.ofu-water i:nth-child(3){left:70%}.ofu-water i:nth-child(4){left:20%}
+/* the run, once it scrolls in: their words type while the can pours, then the four ideas grow, idea 1 is picked */
+@media (prefers-reduced-motion:no-preference){
+  html.anim-on .ofcard.in .ofx-type{display:inline;background:linear-gradient(90deg,#1A1412 50%,transparent 50%) 100% 0/200% 100% no-repeat;-webkit-background-clip:text;background-clip:text;color:transparent;animation:ofxType 1.6s steps(28) .5s both}
+  @keyframes ofxType{to{background-position:0 0}}
+  html.anim-on .ofcard.in .ofu-can{animation:ofuTip .8s cubic-bezier(.3,1.4,.5,1) .2s both}
+  @keyframes ofuTip{from{transform:rotate(-2deg) scaleX(-1)}to{transform:rotate(-24deg) scaleX(-1)}}
+  html.anim-on .ofcard.in .ofu-water i{animation:ofuDrop 1s ease-in 3}
+  html.anim-on .ofcard.in .ofu-water i:nth-child(1){animation-delay:.8s}html.anim-on .ofcard.in .ofu-water i:nth-child(2){animation-delay:1s}html.anim-on .ofcard.in .ofu-water i:nth-child(3){animation-delay:1.2s}html.anim-on .ofcard.in .ofu-water i:nth-child(4){animation-delay:1.4s}
+  @keyframes ofuDrop{0%{opacity:0;transform:translateY(0)}20%,80%{opacity:1}100%{opacity:0;transform:translateY(7cqi)}}
+  html.anim-on .ofcard.in .ofu-card{animation:ofuPop .5s cubic-bezier(.2,1.5,.4,1) both}
+  html.anim-on .ofcard.in .ofu-c1{animation-delay:2.3s}html.anim-on .ofcard.in .ofu-c2{animation-delay:2.45s}html.anim-on .ofcard.in .ofu-c3{animation-delay:2.6s}html.anim-on .ofcard.in .ofu-c4{animation-delay:2.75s}
+  @keyframes ofuPop{from{opacity:0;transform:translateY(10px) scale(.94)}to{opacity:1;transform:none}}
+  html.anim-on .ofcard.in .ofu-fl{animation:ofuGrow .9s cubic-bezier(.3,1.3,.5,1) both}
+  html.anim-on .ofcard.in .ofu-c1 .ofu-fl{animation-delay:2.6s}html.anim-on .ofcard.in .ofu-c2 .ofu-fl{animation-delay:2.75s}html.anim-on .ofcard.in .ofu-c3 .ofu-fl{animation-delay:2.9s}html.anim-on .ofcard.in .ofu-c4 .ofu-fl{animation-delay:3.05s}
+  @keyframes ofuGrow{from{transform:scaleY(0)}to{transform:none}}
+  html.anim-on .ofcard.in .ofu-pick{animation:ofuPick .5s cubic-bezier(.2,1.6,.4,1) 3.8s both}
+  @keyframes ofuPick{from{opacity:0;transform:rotate(-10deg) scale(.5)}to{opacity:1;transform:rotate(4deg)}}
+  html.anim-on .ofcard.in .ofu-save{animation:ofuSave 2.4s ease-in-out 4.4s infinite}
+  @keyframes ofuSave{0%,100%{box-shadow:0 3px 0 #1A1412}50%{box-shadow:0 3px 0 #1A1412,0 0 0 6px rgba(255,212,0,.35)}}
+}
+@media (max-width:900px){.ofcard{grid-template-columns:1fr;padding:32px 22px;gap:34px}.ofart{padding:20px 4px 44px}}
+@media (max-width:400px){.ofcard{padding:26px 16px}}
+/* round 2 fit: the Offer Flow text column wider and its heading on two lines; the headline keeps its three lines on phones */
+@media (min-width:901px){.ofcard{grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr)}}
+.oftx h2{font-size:clamp(34px,3.15vw,46px);line-height:1.04}
+@media (min-width:901px){.oftx h2 .l:first-child{white-space:nowrap}}
+@media (max-width:640px){.v2h .hright h1.h1x{font-size:min(11.6vw,56px)}.h1x .h1b .l{display:block;white-space:nowrap}}
 </style>
 <link rel="stylesheet" href="assets/registration-theme.css?v=d3970c488bea">
 </head>
@@ -2702,14 +2756,18 @@ html.wv-lock{overflow:hidden}
 
     <div class="hright">
       <span class="hpill"><span class="dot"></span><span class="hp-name">The Exit Plan</span> <i>·</i> Free 3-day event <span class="hp-lz">live on Zoom</span></span>
-      <h1 id="h1" class="long h1x"><span class="h1a">My Newsletter Business <span class="nb">Has Made <span class="hl">$1.4M</span>.</span></span> <span class="h1b"><span class="l">Here’s How I’d <span class="m">Build One</span></span> <span class="l">to <span class="m">Replace My Salary</span></span> <span class="l"><em>in 2027</em>.</span></span></h1>
+      <h1 id="h1" class="long h1x"><span class="h1a">My Newsletter Business <span class="nb">Has Made <span class="hl">$1.4M</span>.</span></span> <span class="h1b"><span class="l">Here’s How I’d Build</span> <span class="l">One to Replace</span> <span class="l">My Salary <em>in 2027</em>.</span></span></h1>
       <div class="hcopy">
         <p class="hlead">You’ve spent years getting good at something. I’ll show you how I’d use that experience to <b>find readers, choose what to sell, and start building income of your own.</b></p>
-        <p class="hsub2">I’m Ana Calin. I <b>started with 12 subscribers</b> and built my business selling workshops and programs through my newsletter.</p>
-        <p class="hsub2">For <b><span class="nn">three (3)</span> free live sessions</b>, I’ll show you the business behind those numbers: where I’d find my first readers, what I’d sell them, and the step I’d move earlier now that AI has changed the work.</p>
-        <p class="hsub2">We’ll work on <b>your version: a first product, a starting price, and the sales your income goal would require.</b></p>
-        <p class="hsub2">Bring your experience. We’ll work out where it fits.</p>
-        <p class="hsub2"><mark class="sk">You can start while your current work still pays the bills.</mark></p>
+        <div class="hshow">
+          <p class="hsub2">For <b><span class="nn">three (3)</span> free live sessions</b>, I’ll show you the business behind those numbers:</p>
+          <ul class="hlist">
+            <li><svg aria-hidden="true"><use href="#li"/></svg><span>where I’d find my first readers,</span></li>
+            <li><svg aria-hidden="true"><use href="#li"/></svg><span>what I’d sell them,</span></li>
+            <li><svg aria-hidden="true"><use href="#li"/></svg><span>and the step I’d move earlier now that AI has changed the work.</span></li>
+          </ul>
+        </div>
+        <p class="hsub2 hend">Bring your experience. We’ll work out where it fits. <mark class="sk">You can start while your current work still pays the bills.</mark></p>
       </div>
       <div class="htk">
         <div class="tkshell">
@@ -2763,6 +2821,7 @@ html.wv-lock{overflow:hidden}
         <p class="ilead">You can be very good at your job and still wonder <b>what anyone would buy from you directly.</b></p>
         <p>At work, people rely on your judgement. Friends ask for your help. Then you think about charging for something of your own, and suddenly you’re back at:</p>
         <p class="iquote">“Who would pay me for this?”</p>
+        <p>I’m Ana Calin. I <b>started with 12 subscribers</b> and built my business selling workshops and programs through my newsletter.</p>
         <p>My newsletter business grew around answering that question. <b>The writing brings people in. Workshops and programs give them a way to pay me for help.</b></p>
         <p>I’ll show you how those pieces work together and how I’d start with the experience you already have.</p>
         <p>Maybe you want to leave your job in 2027. Maybe you want to replace a difficult client. Maybe another source of income would already give you room to breathe.</p>
@@ -2894,9 +2953,9 @@ html.wv-lock{overflow:hidden}
     </div>
     <!-- two more results from the same past challenge, kept beside Jill's -->
     <div class="jill-more" data-r>
-      <figure class="trr trr-w"><b class="trr-n">3</b><span class="trr-f">paid subscribers in her first week</span><img class="trr-shot" src="img/wins/suzanne.webp" alt="Suzanne: #62 Rising, 16 subscribers and 3 paid in a week" width="900" height="388" loading="lazy"><figcaption>Suzanne Harrison</figcaption></figure>
-      <figure class="trr trr-w"><b class="trr-n trr-t">Raised her price</b><span class="trr-f">and updated her paid subscription</span><img class="trr-shot" src="img/wins/jenna.webp" alt="Jenna: increased the price, updated paid subscription" width="900" height="378" loading="lazy"><figcaption>Jenna Garagiola</figcaption></figure>
-      <p class="jm-n">Individual experiences from my previous teaching and programs. Results vary.</p>
+      <figure class="trr"><b class="trr-n">$3,200</b><span class="trr-f">from 547 subscribers</span><span class="trr-cash" data-bills="32" aria-hidden="true"></span><div class="trq"><p>First launch ever. Three emails, launched the same week.</p></div><figcaption>A student in my past challenge</figcaption></figure>
+      <figure class="trr"><b class="trr-n">$2,400</b><span class="trr-f">from 198 subscribers</span><span class="trr-cash" data-bills="24" aria-hidden="true"></span><div class="trq"><p>She almost didn’t start because she thought 198 subscribers wasn’t enough. It was.</p></div><figcaption>A student in my past challenge</figcaption></figure>
+      <p class="jm-n">Individual experiences from my past challenge. Results vary.</p>
     </div>
   </div>
 </section>
@@ -2959,7 +3018,7 @@ html.wv-lock{overflow:hidden}
       <ul class="cv-row">
         <li><figure class="cv-ph"><img src="img/collab/live-justin.webp" alt="Ana in conversation with Justin Welsh" width="600" height="400" loading="lazy"></figure><div class="cv-caption cv-with-avatar"><img class="cv-avatar" src="img/collab/pfp-justin.webp" alt="" width="200" height="200" loading="lazy"><div class="cv-copy"><b><svg class="cv-ic" aria-hidden="true"><use href="#vcall"/></svg>Justin Welsh</b><small class="cv-1l"><span class="nn">built a $15M</span> <span class="nn">solo business</span></small></div></div></li>
 
-        <li><figure class="cv-ph cv-split" aria-label="Ana in conversation with Hamish McKenzie"><span><img src="img/collab/live-hamish.webp" alt="Ana Calin" width="750" height="1320" loading="lazy"></span><span><img src="img/collab/live-hamish.webp" alt="Hamish McKenzie" width="750" height="1320" loading="lazy"></span></figure><div class="cv-caption"><div class="cv-copy"><b>Hamish McKenzie</b><small>Substack co-founder</small></div></div></li>        <li><figure class="cv-ph"><img src="img/collab/live-michael.webp" alt="Ana in conversation with Michael Simmons" width="600" height="400" loading="lazy"></figure><div class="cv-caption"><div class="cv-copy"><b><svg class="cv-ic" aria-hidden="true"><use href="#vcall"/></svg>Michael Simmons</b><small>published in TIME, Forbes and HBR</small></div></div></li>
+        <li><figure class="cv-ph cv-split" aria-label="Ana in conversation with Hamish McKenzie"><span><img src="img/collab/live-hamish.webp" alt="Ana Calin" width="750" height="1320" loading="lazy"></span><span><img src="img/collab/live-hamish.webp" alt="Hamish McKenzie" width="750" height="1320" loading="lazy"></span></figure><div class="cv-caption cv-with-avatar"><svg class="cv-avatar cv-ss" viewBox="0 0 34 34" role="img" aria-label="Substack"><circle cx="17" cy="17" r="17" fill="#FF6719"/><path d="M10.5 10h13v2.1h-13zM10.5 13.6h13v2.1h-13zM10.5 17.2h13v7.6l-6.5-3.7-6.5 3.7z" fill="#fff"/></svg><div class="cv-copy"><b>Hamish McKenzie</b><small>Substack co-founder</small></div></div></li>        <li><figure class="cv-ph"><img src="img/collab/live-michael.webp" alt="Ana in conversation with Michael Simmons" width="600" height="400" loading="lazy"></figure><div class="cv-caption"><div class="cv-copy"><b><svg class="cv-ic" aria-hidden="true"><use href="#vcall"/></svg>Michael Simmons</b><small>published in TIME, Forbes and HBR</small></div></div></li>
         <li><figure class="cv-ph"><img src="img/collab/live-ciler.webp" alt="Ana in conversation with Ciler" width="600" height="400" loading="lazy"></figure><div class="cv-caption"><div class="cv-copy"><b><svg class="cv-ic" aria-hidden="true"><use href="#vcall"/></svg>Ciler Demiralp</b><small>analyzed <span class="nn">75,000</span> Substack newsletters</small></div></div></li>
               <li><figure class="cv-ph"><img src="img/collab/live-liam.webp" alt="Ana Calin in conversation with Liam Austin" width="1516" height="1024" loading="lazy"></figure><div class="cv-caption"><div class="cv-copy"><b>Liam Austin</b><small>Substack Success Summit</small></div></div></li>
 </ul>
@@ -3070,14 +3129,20 @@ html.wv-lock{overflow:hidden}
         <div class="cta2"><button class="btn open" type="button" data-cta="offerflow"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">Save my seat and get the tools</span><svg class="ar"><use href="#arr"/></svg></button><small>free · access after registration</small></div>
       </div>
       <div class="ofart" aria-hidden="true">
-        <div class="of-app">
-          <div class="of-bar"><i></i><i></i><i></i><b>Ana’s Offer Flow</b></div>
-          <div class="of-ask"><small>What do you know?</small><span>I coach mothers going back to work after a career break<i class="of-cur"></i></span></div>
-          <div class="of-k">4 product suggestions</div>
-          <ol class="of-list"><li><b>1</b><span><i></i><i class="s"></i></span><em>$</em></li><li><b>2</b><span><i></i><i class="s"></i></span><em>$</em></li><li><b>3</b><span><i></i><i class="s"></i></span><em>$</em></li><li><b>4</b><span><i></i><i class="s"></i></span><em>$</em></li></ol>
-          <div class="of-lock"><svg viewBox="0 0 20 20"><rect x="4" y="9" width="12" height="9" rx="2" fill="#1A1412"/><path d="M7 9V6.5a3 3 0 0 1 6 0V9" fill="none" stroke="#1A1412" stroke-width="2"/></svg>Opens after you register</div>
+        <div class="ofu">
+          <div class="ofu-win">
+            <div class="ofu-top"><span class="ofu-brand"><b>Ana’s Offer Flow</b><small>free AI tool</small></span>
+              <span class="ofu-steps"><span class="on"><i>1</i>What you know</span><span class="ofu-ar"></span><span class="on2"><i>2</i>Your four ideas</span></span></div>
+            <div class="ofu-body">
+              <div class="ofu-ask"><small>What do you know?</small><p><span class="ofx-type">I coach mothers going back to work after a career break.</span><i class="ofx-cur"></i></p></div>
+              <div class="ofu-h"><em>Your four product ideas</em><span>with starting prices</span></div>
+              <div class="ofu-grid"><div class="ofu-card ofu-c1"><span class="ofu-fl"><img src="img/vip/paint/of-fl1.webp" alt="" width="260" height="620" loading="lazy"></span><span class="ofu-ct"><em>Idea 1</em><span class="ofu-ln"><i></i><i></i></span><span class="ofu-tag"><i></i>$<b>000</b></span></span><span class="ofu-pick"><svg viewBox="0 0 16 16"><path d="M3.5 8.4 6.6 11.4 12.6 4.8"/></svg>Bring to Day 2</span></div><div class="ofu-card ofu-c2"><span class="ofu-fl"><img src="img/vip/paint/of-fl2.webp" alt="" width="260" height="620" loading="lazy"></span><span class="ofu-ct"><em>Idea 2</em><span class="ofu-ln"><i></i><i></i></span><span class="ofu-tag"><i></i>$<b>000</b></span></span></div><div class="ofu-card ofu-c3"><span class="ofu-fl"><img src="img/vip/paint/of-fl3.webp" alt="" width="260" height="620" loading="lazy"></span><span class="ofu-ct"><em>Idea 3</em><span class="ofu-ln"><i></i><i></i></span><span class="ofu-tag"><i></i>$<b>000</b></span></span></div><div class="ofu-card ofu-c4"><span class="ofu-fl"><img src="img/vip/paint/of-fl4.webp" alt="" width="260" height="620" loading="lazy"></span><span class="ofu-ct"><em>Idea 4</em><span class="ofu-ln"><i></i><i></i></span><span class="ofu-tag"><i></i>$<b>000</b></span></span></div></div>
+              <div class="ofu-foot"><span class="ofu-save">Save my ideas for Day 2</span><span class="ofu-lock"><svg viewBox="0 0 20 20"><rect x="4" y="9" width="12" height="9" rx="2"/><path d="M7 9V6.5a3 3 0 0 1 6 0V9"/></svg>Opens after you register</span></div>
+            </div>
+          </div>
+          <div class="ofu-can"><img src="img/vip/paint/of-can.webp" alt="" width="520" height="380" loading="lazy"></div>
+          <span class="ofu-water"><i></i><i></i><i></i><i></i></span>
         </div>
-        <span class="of-day">Bring to Day 2</span>
       </div>
     </div>
   </div>
