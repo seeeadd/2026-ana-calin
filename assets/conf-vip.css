@@ -583,3 +583,66 @@ body.vipc .cxv .scr:after{display:none}
 
 /* survey options: no hover lift (it made the option jump away from the pointer at its edge) */
 body.vipc .svx-o:hover,body.vipc .cxs-g .svx-o:hover{transform:none}
+
+/* ---------- bigger text everywhere (Sean, Nov 9: "too small in general"; her people are 30 to 50) ---------- */
+body.vipc { font-size: 18px; }
+body.vipc .cx-lead { font-size: 19.5px; line-height: 1.55; }
+body.vipc .cx-step p { font-size: 17.5px; line-height: 1.55; }
+body.vipc .cx-mail, body.vipc .cx-how, body.vipc .cx-ics { font-size: 15.5px; }
+body.vipc .cx-req { font-size: 15px; }
+body.vipc .keep { font-size: 14px; }
+body.vipc .shead .sub, body.vipc .show .sub { font-size: 19px; line-height: 1.55; }
+body.vipc .get p, body.vipc .inb p { font-size: 17px; line-height: 1.55; }
+body.vipc .get .gl { font-size: 15.5px; }
+body.vipc .gm p { font-size: 16px; }
+body.vipc .act p { font-size: 17.5px; }
+body.vipc .qa p { font-size: 17.5px; }
+body.vipc .stay p.sm { font-size: 16px; }
+body.vipc .vip2 p, body.vipc .vip2-line { font-size: 18px; }
+body.vipc .mo-tx p { font-size: 18.5px; }
+body.vipc .mo-tx p.mo-sm { font-size: 16px; }
+body.vipc .cxs-ht p { font-size: 17.5px; }
+body.vipc .cx-now { font-size: 18px; }
+body.vipc .svx-note { font-size: 16.5px; }
+body.vipc .cxs-g .svx-o { font-size: 18.5px; }
+body.vipc .svx-end p { font-size: 18px; }
+body.vipc .cxt-cap { font-size: 15.5px; }
+body.vipc .cxl-hd { font-size: 16px; }
+body.vipc .calwhy .cw-h { font-size: 23px; }
+body.vipc .calwhy p { font-size: 16.5px; }
+body.vipc footer .links, body.vipc footer .help { font-size: 15.5px; }
+@media (max-width: 640px) {
+  body.vipc { font-size: 17px; }
+  body.vipc .cx-lead { font-size: 18px; }
+  body.vipc .cx-step p { font-size: 16.5px; }
+  body.vipc .shead .sub, body.vipc .show .sub { font-size: 17.5px; }
+  body.vipc .get p, body.vipc .inb p, body.vipc .act p, body.vipc .qa p { font-size: 16.5px; }
+  body.vipc .cxs-g .svx-o { font-size: 17px; }
+  body.vipc .mo-tx p, body.vipc .vip2 p, body.vipc .vip2-line { font-size: 17px; }
+  body.vipc .calwhy .cw-h { font-size: 20px; }
+}
+
+/* the crown on "Your VIP": bigger, sitting on the word, with room above (Sean: "where's the crown?") */
+body.vipc .sand .shead .eyebrow { margin-bottom: 30px; }
+body.vipc .vcr .crown { left: .02em; top: -.62em; width: .92em; transform: rotate(-14deg); filter: drop-shadow(0 4px 4px rgba(60, 35, 15, .3)); }
+@media (prefers-reduced-motion: no-preference) {
+  body.vipc .vcr .crown { animation: vcrTip2 4s ease-in-out infinite; transform-origin: 50% 100%; }
+  @keyframes vcrTip2 { 0%, 80%, 100% { transform: rotate(-14deg); } 86% { transform: rotate(-24deg) translateY(-4px); } 92% { transform: rotate(-10deg); } }
+}
+
+/* the footer: the real sea, like the top of the page, with foam along its edge (Sean: "it made it too light") */
+body.vipc footer { background: url("../img/vip/sea/streaks.webp") 0 0 / 900px 450px, linear-gradient(176deg, #2370b6 0%, #1b5f9f 45%, #134a7d 100%); background-blend-mode: soft-light, normal; color: #fff; padding-top: 64px; }
+body.vipc footer:before { opacity: .85; }
+body.vipc footer:after { opacity: .75; mix-blend-mode: screen; }
+body.vipc footer .ft-foam { position: absolute; left: 0; right: 0; top: -1px; height: 34px; z-index: 1; pointer-events: none; color: var(--bg, #f7f2ea); }
+body.vipc footer .ft-foam svg { display: block; width: calc(100% + 240px); height: 100%; }
+@media (prefers-reduced-motion: no-preference) { body.vipc footer .ft-foam svg { animation: ftFoam 9s ease-in-out infinite alternate; } @keyframes ftFoam { to { transform: translateX(-240px); } } }
+body.vipc footer, body.vipc footer .brand, body.vipc footer .links a, body.vipc footer .help, body.vipc footer .help a, body.vipc footer a { color: #fff; }
+body.vipc footer .help { color: rgba(255, 255, 255, .85); }
+body.vipc footer { background: linear-gradient(176deg, #2370b6 0%, #1b5f9f 45%, #134a7d 100%); }
+body.vipc footer .ft-foam svg { max-width: none; }
+body.vipc .sand .shead h2 { margin-top: 30px; }
+body.vipc .vcr .crown { top: -.4em; left: .04em; }
+/* the crown on "You’re VIP." in the hero too (Sean, Nov 9) */
+body.vipc .vcr-h .crown { top: -.36em; left: .02em; width: .8em; }
+body.vipc .vcr-h { margin-right: -.07em; }
