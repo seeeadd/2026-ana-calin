@@ -45,7 +45,8 @@ window.VIDEO = {
     add(img(PC + 'spam-000.webp'), 12.9, 16.2, [62, 250, 700], [140, 200, 800], TOP).seq = function(t){ var n = clamp(Math.round((t - T(13.0)) / (T(15.7) - T(13.0)) * 195), 0, 195); return PC + 'spam-' + ('00' + n).slice(-3) + '.webp' };
     /* 4. the bedroom: all three sessions in the calendar */
     TT(['All <i>three</i> sessions'], 16.8, 22.2, [62, 56, 1280, 104], [20, 210, 545, 92]);
-    add(img(PC + 'cal-btn.png'), 17.2, 22.2, [520, 420, 560], [140, 760, 800], TOP);
+    /* Sean's own Google Calendar event, set to New York time, his name blurred; the cursor clicks Save on "calendar" */
+    add(img(PC + 'gcal-000.webp'), 17.0, 22.2, [230, 150, 820], [60, 560, 960], TOP).seq = function(t){ return PC + 'gcal-' + ('00' + clamp(Math.round((t - T(17.5)) * 30), 0, 59)).slice(-3) + '.webp' };
     /* 5. the 7 quick questions: the page's own question card (question 2; question 1 prints the dates) */
     TT(['<i>7</i> quick questions'], 22.6, 30.2, [62, 56, 1280, 104], [20, 210, 545, 92]);
     add(img(PC + 'survey.png'), 23.3, 30.2, [110, 190, 640], [110, 560, 860], TOP);
