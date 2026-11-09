@@ -353,10 +353,12 @@
         var r = root.getBoundingClientRect(); if (r.top < 70) root.scrollIntoView({block:'start', behavior: reduce ? 'auto' : 'smooth'});
       }
     };
+    /* "Something else" waits for their words: no "optional" (Sean, Nov 9); a mis-tap can still pick another answer */
+    var otherOk = function(s){ return String(sv.t[s.id] || '').trim().length > 1 };
     var otherBox = function(s){
-      return '<div class="svx-other"><label for="svx-ot">Tell me in a few words <small>(optional)</small></label>'
+      return '<div class="svx-other"><label for="svx-ot">Tell me in a few words</label>'
         + '<input id="svx-ot" class="svx-ot" type="text" maxlength="200" autocomplete="off" placeholder="Type it here" value="' + esc(sv.t[s.id] || '') + '">'
-        + '<div class="svx-act"><button type="button" class="btn svx-next">next<svg aria-hidden="true"><use href="#arr"/></svg></button></div></div>';
+        + '<div class="svx-act"><button type="button" class="btn svx-next"' + (otherOk(s) ? '' : ' disabled') + '>next<svg aria-hidden="true"><use href="#arr"/></svg></button></div></div>';
     };
     var go = function(i){ dir = i >= sv.i ? 'r' : 'l'; sv.i = i; saveSv(); render(true) };
     var finish = function(){
@@ -393,11 +395,12 @@
     });
     root.addEventListener('input', function(e){
       if (!e.target.classList.contains('svx-ot') || sv.i > QS.length) return;
-      sv.t[QS[sv.i - 1].id] = e.target.value.slice(0, 200); sv.changed = sv.done; saveSv();
+      var s0 = QS[sv.i - 1]; sv.t[s0.id] = e.target.value.slice(0, 200); sv.changed = sv.done; saveSv();
+      var nb = root.querySelector('.svx-other .svx-next'); if (nb) nb.disabled = !otherOk(s0);
     });
     /* A to F picks an answer, Enter moves on from the multi-pick question */
     root.addEventListener('keydown', function(e){
-      if (e.target.classList && e.target.classList.contains('svx-ot')) { if (e.key === 'Enter') { e.preventDefault(); if (sv.i < QS.length) go(sv.i + 1); else finish() } return }
+      if (e.target.classList && e.target.classList.contains('svx-ot')) { if (e.key === 'Enter') { e.preventDefault(); if (!otherOk(QS[sv.i - 1])) return; if (sv.i < QS.length) go(sv.i + 1); else finish() } return }
       if (sv.i > QS.length || e.metaKey || e.ctrlKey || e.altKey) return;
       var k = LETTERS.indexOf(String(e.key).toUpperCase());
       if (k > -1 && k < QS[sv.i - 1].o.length) { var b = root.querySelector('.svx-o[data-k="' + k + '"]'); if (b) { e.preventDefault(); b.click() } }
