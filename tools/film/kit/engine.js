@@ -41,6 +41,7 @@
   function mix(t){
     var k = shotAt(t), s = S[k], nx = S[k + 1], m = isM(s[1]) ? 1 : 0, c = s[1] === 'C' ? 1 : 0, w = s[1] === 'W' ? 1 : 0;
     var pv = S[k - 1];
+    if (CFG.cuts) return {m: m, c: c, w: w, k: k, type: s[1]};   /* cuts: a layout change is a clean cut, not a resize */
     if (pv && pv[1] !== s[1] && t < s.t + .3) { var p = io(seg(t, s.t - .15, s.t + .3)); m = lerp(isM(pv[1]) ? 1 : 0, m, p); c = lerp(pv[1] === 'C' ? 1 : 0, c, p); w = lerp(pv[1] === 'W' ? 1 : 0, w, p) }
     else if (nx && nx[1] !== s[1] && t > nx.t - .15) { var q = io(seg(t, nx.t - .15, nx.t + .3)); m = lerp(m, isM(nx[1]) ? 1 : 0, q); c = lerp(c, nx[1] === 'C' ? 1 : 0, q); w = lerp(w, nx[1] === 'W' ? 1 : 0, q) }
     return {m: m, c: c, w: w, k: k, type: s[1]};
@@ -256,7 +257,7 @@
   function ana(t){
     var mx = mix(t), m = mx.m, c = mx.c, s = S[mx.k], nxt = S[mx.k + 1], dur = (nxt ? nxt.t : window.DUR) - s.t, sh = clamp((t - s.t) / dur, 0, 1);
     var f = [lerp(L.FA[0], L.FB[0], c), lerp(L.FA[1], L.FB[1], c), lerp(L.FA[2], L.FB[2], c)];
-    var since = t - s.t, sw = since > 0 && since < 2.2 && !isM(s[1]) ? Math.sin(since * 7) * 1.3 * Math.exp(-since * 2.6) : 0, off = m * (L.H + 260), hx = L.box[0] / 2;
+    var since = t - s.t, sw = !CFG.still && since > 0 && since < 2.2 && !isM(s[1]) ? Math.sin(since * 7) * 1.3 * Math.exp(-since * 2.6) : 0, off = m * (L.H + 260), hx = L.box[0] / 2;
     a.style.visibility = m >= .999 ? 'hidden' : 'visible'; a.style.transformOrigin = hx + 'px 0';
     a.style.transform = 'translate(' + (f[0] + hx * f[2] - hx).toFixed(2) + 'px,' + (f[1] - off).toFixed(2) + 'px) rotate(' + sw.toFixed(3) + 'deg) scale(' + f[2].toFixed(4) + ')';
     var R0 = [f[0] + L.ins[0] * f[2], f[1] + L.ins[1] * f[2], L.ins[2] * f[2], L.ins[3] * f[2]], Vr = R0.map(function(v, i){ return lerp(v, L.M[i], m) }); if (mx.w > 0) { var WR = PHONE ? L.M : [(L.W - 1000) / 2, 0, 1000, L.H]; Vr = Vr.map(function(v, i){ return lerp(v, WR[i], mx.w) }) }
