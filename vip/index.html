@@ -1999,6 +1999,28 @@ html.wv-lock{overflow:hidden}
   .it2 > .tx > .wac{grid-column:2;grid-row:1 / span 8;align-self:start;justify-self:center;width:100%;max-width:420px;margin:6px 0 0}
   .it2 > .tx > .wac + p{margin-top:16px}
 }
+
+/* Sean's new VIP copy (Nov 10): the new pieces, laid out to read in a skim */
+.vh .hsub+.hsub{margin-top:8px}
+.vh .hsub b{color:var(--ink)}
+.vh .hsub-k{margin-top:12px;font-size:18.5px;color:var(--ink)}
+.vh .hsub-sm{margin:12px auto 0;text-align:center;font-size:14.5px;font-weight:700;color:var(--ink3)}
+.it .meta-tz{margin:-10px 0 16px;font-size:13.5px;color:var(--ink3)}
+.it .bring2{font-family:var(--serif);font-style:italic;font-size:24px;line-height:1.2;color:var(--ink);margin:6px 0 10px}
+.it .qs{display:grid;gap:6px;margin:4px 0 14px;padding-left:14px;border-left:3px solid #FFD400}
+.it .qs i{font-family:var(--serif);font-size:20px;line-height:1.3;color:var(--ink)}
+.it .rough{margin-top:14px;font-weight:700;color:var(--ink)}
+.it .note-of{margin-top:14px;padding:12px 16px;border-radius:12px;background:#FFF6D6;border:1.5px dashed rgba(26,20,18,.25);font-size:15.5px;line-height:1.5}
+.vf .fs-p{margin-top:10px;font-size:17px;line-height:1.55;color:var(--ink2)}
+.cmp td .t{display:inline-block;font-weight:800;font-size:13.5px;line-height:1.2;color:var(--ink3);text-align:center}
+.cmp td .t.tv{color:var(--ink)}
+.cmp-note b{color:var(--ink)}
+@media (max-width:640px){.vh .hsub-k{font-size:16.5px}.it .qs i{font-size:18px}.cmp td .t{font-size:12px}}
+.vh .hsub b,.vh .hsub-k{color:#fff}
+.vh .hsub-sm{color:rgba(255,255,255,.82)}
+.vw .stop p{font-size:16.5px;line-height:1.35}
+.vw .stop .lb{line-height:1.45}
+.it .meta.meta-l{text-transform:none;letter-spacing:.02em;font-size:14px;line-height:1.5}
 </style>
 <link rel="stylesheet" href="../assets/vip-theme.css?v=0ae7a79bc6bf">
 </head>
@@ -2033,7 +2055,7 @@ html.wv-lock{overflow:hidden}
 </defs></svg>
 <header class="fb">
  <div class="fb-card">
-  <p class="keep" role="note"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 4.6v4.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="8" cy="11.2" r="1.05" fill="currentColor"/></svg><span>Don’t close this page.</span> <span>Your registration isn’t finished yet.</span></p>
+  <p class="keep" role="note"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 4.6v4.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="8" cy="11.2" r="1.05" fill="currentColor"/></svg><span>Your free seat is saved.</span> <span>Choose VIP or continue to your join details.</span></p>
   <div class="fb-bar">
     <div class="fb-id"><img src="../img/fav/vip-favicon-192.png?v=2d69442a" alt="" width="44" height="44"><span class="fb-tx"><small><span class="l">Free 3-day live workshop</span><span class="s">Free live workshop</span></small><b><span class="fb-tt">The Exit Plan</span><em class="fb-dt">Dec 8 to 10</em></b></span></div>
     <div class="steps" aria-label="Step 2 of 3">
@@ -2043,7 +2065,7 @@ html.wv-lock{overflow:hidden}
       <span class="ln"></span>
       <span class="st"><i>3</i><span class="t">Join details</span></span>
     </div>
-    <div class="fb-r"><span class="fb-n">STEP 2 OF 3</span><button class="fbc add" type="button" data-cta="header"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">Add VIP <em>$67</em></span></button></div>
+    <div class="fb-r"><span class="fb-n">STEP 2 OF 3</span><button class="fbc add" type="button" data-cta="header"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">Add VIP · <em>$67</em></span></button></div>
   </div>
  </div>
 </header>
@@ -2144,8 +2166,11 @@ html.wv-lock{overflow:hidden}
     <a class="go-vip" href="#vsl" aria-label="Go to the VIP offer"><svg viewBox="0 0 120 92" aria-hidden="true"><g fill="none" stroke="#EC3486" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" filter="url(#pencil)"><path class="gv-l" d="M28 6 C14 30 30 52 60 50 C86 48 92 30 76 24 C60 18 50 44 60 84"/><path class="gv-h" d="M47 72 L60 86 L72 71"/></g></svg></a>
 
     <!-- headline A/B: ?h=A or ?h=B previews one -->
-    <h1 id="h1">Keep the workshop for life, <em>and work through the hard parts with me.</em></h1>
-    <p class="hsub">You’ve saved your free seat. <mark class="sk">For $67, add lifetime workshop recordings, a live VIP Q&amp;A and group review, private WhatsApp access to me during the workshop, and my Offer Clarity Sprint course.</mark></p>
+    <h1 id="h1">Keep the workshop for life. <em>Get my help applying it to your business.</em></h1>
+    <p class="hsub">You’re coming to see how I built my newsletter business and what I’d do from your starting point.</p>
+        <p class="hsub">VIP gives you <b>the recordings to keep</b> and <b>somewhere to bring the questions</b> that come up when you work on your own version.</p>
+        <p class="hsub hsub-k"><mark class="sk">For $67, you get lifetime workshop recordings, a live VIP Q&amp;A and group review, private WhatsApp access to me during the workshop, and my Offer Clarity Sprint course.</mark></p>
+        <p class="hsub-sm">One payment. Your free workshop seat is already saved.</p>
 
     <div class="vh-grid">
       <div class="vh-l">
@@ -2162,17 +2187,17 @@ html.wv-lock{overflow:hidden}
           <img class="door-closed" src="../img/vip/paint/door-closed.webp?v=4" alt="" width="1032" height="620" aria-hidden="true">
           <img class="door-potr" src="../img/vip/paint/door-potr.webp?v=2" alt="" width="1032" height="620" aria-hidden="true">
         </div>
-        <p class="under"><b>A minute with me before you decide.</b> Here’s what VIP adds to your free seat.</p>
+        <p class="under"><b>Here’s what VIP adds,</b> and when you’ll use it.</p>
 
         <!-- what VIP adds, three lines, each with its picture -->
         <div class="hiw" data-r>
-          <h2 class="hiw-h">Use what you learn to work toward your first sales</h2>
+          <h2 class="hiw-h">Keep the teaching. <em>Get help with your next decision.</em></h2>
           <ol class="hiw3">
-            <li><img class="stp" src="../img/vip/paint/mini-rec.webp" alt="" width="160" height="200" loading="lazy"><p><b>Keep the teaching beside you.</b> Rewatch every workshop session whenever you need it, with lifetime access to the recordings.</p></li>
-            <li><img class="stp" src="../img/vip/paint/mini-wa.webp" alt="" width="160" height="200" loading="lazy"><p><b>Ask me while you’re working on it.</b> Bring your questions to the private VIP WhatsApp group during the workshop.</p></li>
-            <li><img class="stp" src="../img/vip/paint/mini-rev.webp" alt="" width="160" height="200" loading="lazy"><p><b>See what I’d change before someone buys.</b> I’ll review selected offers, prices and sales emails live in a dedicated 90-minute VIP Q&amp;A and review.</p></li>
+            <li><img class="stp" src="../img/vip/paint/mini-rec.webp" alt="" width="160" height="200" loading="lazy"><p><b>Go back to the part you need.</b> Keep every workshop recording for life. Revisit the explanation when you’re choosing your topic, working out what to sell or thinking through your price.</p></li>
+            <li><img class="stp" src="../img/vip/paint/mini-wa.webp" alt="" width="160" height="200" loading="lazy"><p><b>Ask about your own situation.</b> Bring questions to the private VIP WhatsApp group during the workshop.</p></li>
+            <li><img class="stp" src="../img/vip/paint/mini-rev.webp" alt="" width="160" height="200" loading="lazy"><p><b>Watch me work through real business decisions.</b> In the 90-minute VIP Q&amp;A, I’ll review selected submissions and explain what I’d keep, what I’d change and why.</p></li>
           </ol>
-          <p class="hiw-lh"><img class="stp" src="../img/vip/paint/mini-spr.webp" alt="" width="160" height="200" loading="lazy"><span>You also keep my Offer Clarity Sprint course. Use the part you need now, and come back to it when you’re working on your next idea.</span></p>
+          <p class="hiw-lh"><img class="stp" src="../img/vip/paint/mini-spr.webp" alt="" width="160" height="200" loading="lazy"><span>You also keep my <b>Offer Clarity Sprint course.</b> Use the lesson you need now and return to it when your next idea comes along.</span></p>
         </div>
       </div>
 
@@ -2182,15 +2207,15 @@ html.wv-lock{overflow:hidden}
         <div class="oh"><p class="ok">VIP · one payment</p><span class="op">$67</span></div>
         <h2>Make me <em>a <span class="vipc"><svg class="crown" viewBox="0 0 44 32" aria-hidden="true"><path d="M5 26 L3.5 9 L13.5 17 L22 4 L30.5 17 L40.5 9 L39 26 Z" fill="#FFD400" stroke="#1A1412" stroke-width="2.2" stroke-linejoin="round"/><path d="M5 26 H39" stroke="#1A1412" stroke-width="2.2"/><path d="M6.5 22 H37.5" stroke="#E0A800" stroke-width="2" opacity=".7"/><circle cx="3.5" cy="9" r="2.6" fill="#FFD400" stroke="#1A1412" stroke-width="1.8"/><circle cx="22" cy="4" r="2.8" fill="#FFD400" stroke="#1A1412" stroke-width="1.8"/><circle cx="40.5" cy="9" r="2.6" fill="#FFD400" stroke="#1A1412" stroke-width="1.8"/><circle cx="22" cy="19.5" r="2.4" fill="#F72585"/></svg>VIP</span>.</em></h2>
         <ul class="stack">
-          <li><img class="stp" src="../img/vip/paint/mini-rec.webp" alt="" width="160" height="200" loading="lazy"><span><b>Lifetime recordings,</b> all three workshop sessions</span></li>
-          <li><img class="stp" src="../img/vip/paint/mini-rev.webp" alt="" width="160" height="200" loading="lazy"><span><b>Live VIP Q&amp;A and review</b> with me, 90 minutes, plus the recording</span></li>
-          <li><img class="stp" src="../img/vip/paint/mini-wa.webp" alt="" width="160" height="200" loading="lazy"><span><b>Private WhatsApp access</b> to me, Dec 8 to 11</span></li>
-          <li><img class="stp" src="../img/vip/paint/mini-spr.webp" alt="" width="160" height="200" loading="lazy"><span><b>The Offer Clarity Sprint</b> course, yours to keep</span></li>
+          <li><img class="stp" src="../img/vip/paint/mini-rec.webp" alt="" width="160" height="200" loading="lazy"><span><b>Lifetime access</b> to all three workshop recordings</span></li>
+          <li><img class="stp" src="../img/vip/paint/mini-rev.webp" alt="" width="160" height="200" loading="lazy"><span><b>A 90-minute VIP Q&amp;A and group review,</b> plus its recording</span></li>
+          <li><img class="stp" src="../img/vip/paint/mini-wa.webp" alt="" width="160" height="200" loading="lazy"><span><b>Private WhatsApp access</b> during the workshop</span></li>
+          <li><img class="stp" src="../img/vip/paint/mini-spr.webp" alt="" width="160" height="200" loading="lazy"><span><b>My Offer Clarity Sprint course,</b> yours to keep</span></li>
         </ul>
         <div class="tot2"><span>On sale until <span class="nw">Wed, Dec 9,</span><br><span class="nw">1:30 pm New York</span></span><span>Total today <b>$67.00</b></span></div>
         <p class="closed">VIP is closed. <em>See you live.</em></p>
-        <button class="btn add" type="button" id="addBtn" data-cta="hero"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">I want VIP, Ana ($67)</span><svg class="ar"><use href="#arr"/></svg></button>
-        <p class="meta2"><span>Live review covers selected submissions.</span><span><svg width="13" height="15" viewBox="0 0 13 15" fill="none" stroke="#7A6A60" stroke-width="1.7"><rect x="1.5" y="6.5" width="10" height="7" rx="2"/><path d="M3.8 6.5V4.6a2.7 2.7 0 0 1 5.4 0v1.9"/></svg>Secure checkout with Stripe. All sales are final.</span></p>
+        <button class="btn add" type="button" id="addBtn" data-cta="hero"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">I want VIP, Ana ($67)!</span><svg class="ar"><use href="#arr"/></svg></button>
+        <p class="meta2"><span>The live review covers selected submissions. A personal review is not guaranteed.</span><span><svg width="13" height="15" viewBox="0 0 13 15" fill="none" stroke="#7A6A60" stroke-width="1.7"><rect x="1.5" y="6.5" width="10" height="7" rx="2"/><path d="M3.8 6.5V4.6a2.7 2.7 0 0 1 5.4 0v1.9"/></svg>Secure checkout with Stripe. All sales are final.</span></p>
         <p class="dl"><button class="decline" type="button">Coming to see what it’s like? Keep your free seat. Either way, see you Tuesday →</button></p>
       </aside>
     </div>
@@ -2206,18 +2231,19 @@ html.wv-lock{overflow:hidden}
       <table>
         <thead><tr><th scope="col"><span class="sr">What you get</span></th><th class="c" scope="col">free seat</th><th class="c v" scope="col">VIP ($67)</th></tr></thead>
         <tbody>
-          <tr style="--i:0"><td>All three sessions, live <small>Dec 8 to 10</small></td><td class="c"><span class="y" aria-label="yes">✓</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
-          <tr style="--i:1"><td>The Day 3 prize draw <small>live attendees</small></td><td class="c"><span class="y" aria-label="yes">✓</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
-          <tr style="--i:2"><td>Live exercises to prepare what you’ll sell</td><td class="c"><span class="y" aria-label="yes">✓</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
-          <tr style="--i:3"><td>Reminders on WhatsApp <small>voice notes, short videos</small></td><td class="c"><span class="y" aria-label="yes">✓</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
-          <tr class="add2" style="--i:4"><td><img class="stp" src="../img/vip/paint/mini-rev.webp" alt="" width="160" height="200" loading="lazy">VIP Q&amp;A and group review with me <small>Your questions, selected submissions · 90 minutes · Dec 11</small></td><td class="c"><span class="n">no</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
-          <tr class="add2" style="--i:5"><td><img class="stp" src="../img/vip/paint/mini-wa.webp" alt="" width="160" height="200" loading="lazy">Private WhatsApp group with me <small>Dec 8 to 11</small></td><td class="c"><span class="n">no</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
-          <tr class="add2" style="--i:6"><td><img class="stp" src="../img/vip/paint/mini-spr.webp" alt="" width="160" height="200" loading="lazy">The Offer Clarity Sprint</td><td class="c"><span class="n">no</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
-          <tr class="add2" style="--i:7"><td><img class="stp" src="../img/vip/paint/mini-rec.webp" alt="" width="160" height="200" loading="lazy">Lifetime workshop recordings <small>Plus the recording of the VIP review</small></td><td class="c"><span class="n">no</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
-        </tbody>
+          <tr style="--i:0"><td>All three live workshop sessions <small>Dec 8 to 10</small></td><td class="c"><span class="y" aria-label="yes">✓</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
+        <tr style="--i:1"><td>Exit Number Calculator and Ana’s Offer Flow</td><td class="c"><span class="y" aria-label="yes">✓</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
+        <tr style="--i:2"><td>Workshop reminders on WhatsApp</td><td class="c"><span class="y" aria-label="yes">✓</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
+        <tr style="--i:3"><td>Day 3 prize draw for live attendees</td><td class="c"><span class="y" aria-label="yes">✓</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
+        <tr class="add2" style="--i:4"><td><img class="stp" src="../img/vip/paint/mini-rec.webp" alt="" width="160" height="200" loading="lazy">Workshop recordings</td><td class="c"><span class="t">48-hour access</span></td><td class="c v"><span class="t tv">Lifetime access</span></td></tr>
+        <tr class="add2" style="--i:5"><td><img class="stp" src="../img/vip/paint/mini-wa.webp" alt="" width="160" height="200" loading="lazy">Private WhatsApp group with Ana <small>Dec 8 to 11</small></td><td class="c"><span class="n">no</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
+        <tr class="add2" style="--i:6"><td><img class="stp" src="../img/vip/paint/mini-rev.webp" alt="" width="160" height="200" loading="lazy">VIP Q&amp;A and selected-work review <small>90 minutes · Dec 11</small></td><td class="c"><span class="n">no</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
+        <tr class="add2" style="--i:7"><td><img data-dup="1" class="stp" src="../img/vip/paint/mini-rec.webp" alt="" width="160" height="200" loading="lazy">VIP review recording</td><td class="c"><span class="n">no</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
+        <tr class="add2" style="--i:8"><td><img class="stp" src="../img/vip/paint/mini-spr.webp" alt="" width="160" height="200" loading="lazy">Offer Clarity Sprint course</td><td class="c"><span class="n">no</span></td><td class="c v"><span class="y" aria-label="yes">✓</span></td></tr>
+      </tbody>
       </table>
-      <div class="cx"><button class="btn add cxb" type="button" data-cta="table"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">Give me the VIP column ($67)</span><svg class="ar"><use href="#arr"/></svg></button><p class="closed">VIP is closed. <em>See you live.</em></p><small>One payment of $67, added to your free seat.</small><button class="decline cxn" type="button">No thanks, the free seat is enough for me</button></div>
-      <p class="cmp-note">Free or VIP, join my WhatsApp community on the next page for workshop reminders. You’ll also find the next steps for getting your exit number there.</p>
+      <div class="cx"><button class="btn add cxb" type="button" data-cta="table"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">Give me the VIP column ($67)!</span><svg class="ar"><use href="#arr"/></svg></button><p class="closed">VIP is closed. <em>See you live.</em></p><small>One payment of $67, added to your free seat.</small><button class="decline cxn" type="button">No thanks, the free seat is enough for me</button></div>
+      <p class="cmp-note">Free or VIP, <b>your next page has the WhatsApp link and your preparation tools.</b></p>
     </div>
   </div>
 </section>
@@ -2226,18 +2252,18 @@ html.wv-lock{overflow:hidden}
 <section class="vw">
   <div class="wrap">
     <div class="vw-hd" data-r>
-      <div><span class="eyebrow">Your week, Dec 8 to 11</span><h2>Work toward the sale <em>that makes this feel possible.</em></h2></div>
-      <p>When someone pays for your help, you have something real to build on. The workshop helps you work toward that. <mark class="sk">VIP gives you the lessons to revisit and access to me while you put them to use.</mark></p>
+      <div><span class="eyebrow">Your week, Dec 8 to 11</span><h2>Here’s what you’ll <em>be working on.</em></h2></div>
+      <p>First, we’ll look at the business behind my newsletter: finding readers, choosing what to sell and building toward income you can keep growing. <mark class="sk">With VIP, you can revisit the teaching and bring me the questions that come up along the way.</mark></p>
     </div>
 
     <div class="trk" aria-label="Your week"><div class="sun" aria-hidden="true"><i class="rays"></i><i class="disc"></i></div><i class="road" aria-hidden="true"><b></b></i>
       <div class="lane free">
         <span class="lane-k" aria-hidden="true">Free, for everyone</span>
-        <div class="stop s1"><div class="wk wkb"><img src="../img/vip/paint/wk1-base.webp" alt="" width="240" height="190" loading="lazy"><svg class="wko" viewBox="0 0 240 190" aria-hidden="true"><g transform="rotate(-4 110 96)"><ellipse class="mv-c1" cx="106" cy="90" rx="50" ry="15" fill="none" stroke="#EC3486" stroke-width="2.6" filter="url(#pencil)"/></g></svg></div><div class="dt"><b>8</b><small>Tue</small></div><span class="lb">Day 1</span><p>Find what you could sell and who could buy.</p></div>
-        <div class="stop s2"><div class="wk wkb"><img src="../img/vip/paint/wk2-base.webp" alt="" width="240" height="190" loading="lazy"><svg class="wko" viewBox="0 0 240 190" aria-hidden="true"><image class="mv-tag" href="../img/vip/paint/wk2-tag.webp" width="240" height="190"/></svg></div><div class="dt"><b>9</b><small>Wed</small></div><span class="lb">Day 2</span><p>Give people a reason to pay your price.</p></div>
-        <div class="stop s3"><div class="wk wkb"><img src="../img/vip/paint/wk3.webp" alt="" width="240" height="190" loading="lazy"><svg class="wko" viewBox="0 0 240 190" aria-hidden="true"><g class="mv-sheet"><rect x="92" y="-6" width="60" height="78" fill="#FFFDF8" stroke="#3A2A22" stroke-width="1" filter="url(#wob)"/><path d="M100 14 h40 M100 26 h34 M100 38 h40 M100 50 h26" stroke="#9A8A7E" stroke-width="1.2" fill="none"/></g><g class="mv-seal"><circle cx="118" cy="112" r="7" fill="#C2185B"/><circle cx="118" cy="112" r="3" fill="#F5C518"/></g></svg></div><div class="dt"><b>10</b><small>Thu</small></div><span class="lb">Day 3</span><p>Get ready to invite people to buy.</p><span class="bring"><i class="env" aria-hidden="true"></i>Bring your work to the VIP review.</span></div>
-        <div class="stop s4 vip"><div class="wk wkb"><img src="../img/vip/paint/wk4-base.webp" alt="" width="240" height="190" loading="lazy"><svg class="wko" viewBox="0 0 240 190" aria-hidden="true"><g transform="rotate(-3 120 90)" fill="none" stroke="#C93A30" stroke-width="2.4" stroke-linecap="round" filter="url(#pencil)"><path class="mv-r1" d="M66 50 C100 47 140 51 168 48"/><path class="mv-r2" d="M70 88 c10 8 18 8 28 0"/><path class="mv-r3" d="M172 66 l8 -6"/><path class="mv-r4" d="M170 72 l12 -2"/></g></svg></div><div class="dt"><span class="tg">VIP</span><b>11</b><small>Fri</small></div><span class="lb">VIP Q&amp;A and live review</span><p>See what I’d improve in selected submissions.</p></div>
-        <div class="stop s5 next"><div class="wk wkb"><img class="mv-box" src="../img/vip/paint/wk5-base.webp" alt="" width="240" height="190" loading="lazy"><svg class="wko" viewBox="0 0 240 190" aria-hidden="true"><defs><clipPath id="slotclip"><rect x="-60" y="-200" width="360" height="285"/></clipPath></defs><g clip-path="url(#slotclip)"><image class="mv-env" href="../img/vip/paint/wk5-env.webp" x="80" y="40" width="80" height="60"/></g><image class="mv-l1" href="../img/vip/paint/wk5-letter.webp" x="90" y="66" width="60" height="44"/><image class="mv-l2" href="../img/vip/paint/wk5-letter.webp" x="90" y="66" width="60" height="44"/></svg></div><span class="lb">Keep going</span><p>Put it in front of potential buyers and learn from the response.</p></div>
+        <div class="stop s1"><div class="wk wkb"><img src="../img/vip/paint/wk1-base.webp" alt="" width="240" height="190" loading="lazy"><svg class="wko" viewBox="0 0 240 190" aria-hidden="true"><g transform="rotate(-4 110 96)"><ellipse class="mv-c1" cx="106" cy="90" rx="50" ry="15" fill="none" stroke="#EC3486" stroke-width="2.6" filter="url(#pencil)"/></g></svg></div><div class="dt"><b>8</b><small>Tue</small></div><span class="lb">Day 1 · Your first readers</span><p>Who you want to reach, why they would choose you and where I’d begin finding them.</p></div>
+        <div class="stop s2"><div class="wk wkb"><img src="../img/vip/paint/wk2-base.webp" alt="" width="240" height="190" loading="lazy"><svg class="wko" viewBox="0 0 240 190" aria-hidden="true"><image class="mv-tag" href="../img/vip/paint/wk2-tag.webp" width="240" height="190"/></svg></div><div class="dt"><b>9</b><small>Wed</small></div><span class="lb">Day 2 · What to sell first</span><p>A product worth building around, the result someone would buy it for and a starting price that makes sense for the work involved.</p></div>
+        <div class="stop s3"><div class="wk wkb"><img src="../img/vip/paint/wk3.webp" alt="" width="240" height="190" loading="lazy"><svg class="wko" viewBox="0 0 240 190" aria-hidden="true"><g class="mv-sheet"><rect x="92" y="-6" width="60" height="78" fill="#FFFDF8" stroke="#3A2A22" stroke-width="1" filter="url(#wob)"/><path d="M100 14 h40 M100 26 h34 M100 38 h40 M100 50 h26" stroke="#9A8A7E" stroke-width="1.2" fill="none"/></g><g class="mv-seal"><circle cx="118" cy="112" r="7" fill="#C2185B"/><circle cx="118" cy="112" r="3" fill="#F5C518"/></g></svg></div><div class="dt"><b>10</b><small>Thu</small></div><span class="lb">Day 3 · From your first sale to steady income</span><p>What comes after the first customer, how the pieces fit together and what your income goal would require.</p></div>
+        <div class="stop s4 vip"><div class="wk wkb"><img src="../img/vip/paint/wk4-base.webp" alt="" width="240" height="190" loading="lazy"><svg class="wko" viewBox="0 0 240 190" aria-hidden="true"><g transform="rotate(-3 120 90)" fill="none" stroke="#C93A30" stroke-width="2.4" stroke-linecap="round" filter="url(#pencil)"><path class="mv-r1" d="M66 50 C100 47 140 51 168 48"/><path class="mv-r2" d="M70 88 c10 8 18 8 28 0"/><path class="mv-r3" d="M172 66 l8 -6"/><path class="mv-r4" d="M170 72 l12 -2"/></g></svg></div><div class="dt"><span class="tg">VIP</span><b>11</b><small>Fri</small></div><span class="lb">VIP · Bring your work to the review</span><p>Bring your product idea, price, sales message or the decision you’re stuck on. I’ll work through selected submissions and explain the changes.</p></div>
+        <div class="stop s5 next"><div class="wk wkb"><img class="mv-box" src="../img/vip/paint/wk5-base.webp" alt="" width="240" height="190" loading="lazy"><svg class="wko" viewBox="0 0 240 190" aria-hidden="true"><defs><clipPath id="slotclip"><rect x="-60" y="-200" width="360" height="285"/></clipPath></defs><g clip-path="url(#slotclip)"><image class="mv-env" href="../img/vip/paint/wk5-env.webp" x="80" y="40" width="80" height="60"/></g><image class="mv-l1" href="../img/vip/paint/wk5-letter.webp" x="90" y="66" width="60" height="44"/><image class="mv-l2" href="../img/vip/paint/wk5-letter.webp" x="90" y="66" width="60" height="44"/></svg></div><span class="lb">Afterward</span><p>Use what you’ve learned with potential customers. Keep the recordings beside you as you work.</p></div>
         <i class="fly" aria-hidden="true"><b></b><span></span><span></span></i>
       </div>
     </div>
@@ -2282,17 +2308,22 @@ html.wv-lock{overflow:hidden}
       <div class="tx">
         <span class="num">01</span>
         <span class="live-tag"><i></i>Live VIP Q&amp;A</span>
-        <h3>Let’s look at it <em>the way a buyer would.</em></h3>
-        <p class="meta"><b>Fri, Dec 11</b> · 90 minutes · VIPs only</p>
-        <p>You know your subject. A potential buyer still needs to understand why it matters to them, why it’s worth the price, and what they’re actually buying. I’ll work through selected offers, prices and sales emails on screen, <mark class="sk">showing you what I’d keep, what I’d change and why.</mark> Bring your questions too: <mark class="sk">ask them in the chat and I’ll answer as many as I can, live.</mark></p>
+        <h3>Let’s look at your business <em>the way a buyer would.</em></h3>
+        <p class="meta meta-l">Fri, Dec 11 · 12:00 pm New York · 90 minutes</p>
+          <p class="meta-tz">Your local date and time may be different. Check the local schedule shown on this page.</p>
+        <p>You might know what you want to sell and still wonder <b>whether the right person would pay for it.</b></p>
+          <p>You might have a price in mind without knowing <b>whether the work behind it makes sense.</b></p>
+          <p class="bring2">Bring those questions.</p>
+          <p>I’ll work through selected product ideas, prices and sales messages on screen. <mark class="sk">You’ll see what I’d keep, what I’d change and the reason behind each decision.</mark></p>
         <span class="lab">What to bring</span>
         <ol class="how">
-          <li><span><b>What you want to sell,</b> even if it still needs work.</span></li>
-          <li><span><b>The price you’re considering,</b> and what makes you hesitate.</span></li>
-          <li><span><b>Your sales email,</b> or the question you keep coming back to.</span></li>
+          <li><span><b>What you’re considering selling</b> and who it would help</span></li>
+          <li><span><b>Your starting price</b> and what the customer would receive</span></li>
+          <li><span><b>A sales message,</b> if you have one, or the decision you want help thinking through</span></li>
         </ol>
-        <p class="soft">I’ll cover as many submissions as fit into 90 minutes; a personal review isn’t guaranteed. You can submit ahead if you can’t attend, and everyone gets the recording.</p>
-        <div class="cx"><button class="btn add cxb" type="button" data-cta="qa"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">Bring my offer to Friday’s Q&amp;A ($67)</span><svg class="ar"><use href="#arr"/></svg></button><p class="closed">VIP is closed. <em>See you live.</em></p><small>One payment of $67, added to your free seat.</small><button class="decline cxn" type="button">No thanks, I’ll work on my offer on my own</button></div>
+        <p class="rough">Rough work is welcome. You do not need to arrive with everything finished.</p>
+          <p class="soft">I’ll cover as many submissions and questions as fit into 90 minutes. Individual reviews are not guaranteed. You can submit ahead if you cannot attend, and every VIP gets the recording.</p>
+        <div class="cx"><button class="btn add cxb" type="button" data-cta="qa"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">I want to join your live review ($67)!</span><svg class="ar"><use href="#arr"/></svg></button><p class="closed">VIP is closed. <em>See you live.</em></p><small>One payment of $67, added to your free seat.</small><button class="decline cxn" type="button">No thanks, I’ll work on my offer on my own</button></div>
       </div>
     </article>
 
@@ -2306,15 +2337,17 @@ html.wv-lock{overflow:hidden}
           <g class="mv-strip"><path class="mv-strip-s" d="M0 0 H132 V16 H0 Z" fill="#FFE68A" stroke="#2E2420" stroke-width="1"/><path class="mv-strip-l" d="M8 8 q4 -3 8 0 t8 0 t8 0 t8 0 t8 0 t8 0 t8 0 t8 0 t8 0 t8 0 t8 0 t8 0 t8 0 t8 0 t8 0" fill="none" stroke="#3D332E" stroke-width="1.1"/></g>
           <g class="mv-voice"><rect x="440" y="288" width="96" height="24" rx="10" fill="#FFFFFF" stroke="#2E2420" stroke-width=".8"/><circle cx="455" cy="300" r="8" fill="#EC3486"/><path d="M452 296 v8 l6 -4 Z" fill="#fff"/><text x="532" y="309" text-anchor="end" font-family="Manrope,sans-serif" font-size="6.5" font-weight="700" fill="#7A6A60">Ana</text><rect class="mv-bar" x="478" y="295" width="2.6" height="10" rx="1.3" fill="#7A6A60"/><rect class="mv-bar" x="483" y="295" width="2.6" height="10" rx="1.3" fill="#7A6A60"/><rect class="mv-bar" x="488" y="295" width="2.6" height="10" rx="1.3" fill="#7A6A60"/><rect class="mv-bar" x="493" y="295" width="2.6" height="10" rx="1.3" fill="#7A6A60"/><rect class="mv-bar" x="498" y="295" width="2.6" height="10" rx="1.3" fill="#7A6A60"/><rect class="mv-bar" x="503" y="295" width="2.6" height="10" rx="1.3" fill="#7A6A60"/><rect class="mv-bar" x="508" y="295" width="2.6" height="10" rx="1.3" fill="#7A6A60"/><rect class="mv-bar" x="513" y="295" width="2.6" height="10" rx="1.3" fill="#7A6A60"/><rect class="mv-bar" x="518" y="295" width="2.6" height="10" rx="1.3" fill="#7A6A60"/><rect class="mv-bar" x="523" y="295" width="2.6" height="10" rx="1.3" fill="#7A6A60"/></g>
           <g class="mv-clock" data-i="0"><circle cx="64" cy="402" r="38" fill="#FFFDF8" stroke="#2E2420" stroke-width="1.3" filter="url(#wob)"/><circle class="mv-wedge" cx="64" cy="402" r="18" fill="none" stroke="#F25A9C" stroke-width="36" transform="rotate(-90 64 402)" opacity=".85"/><g stroke="#2E2420" stroke-linecap="round"><line x1="64" y1="402" x2="78" y2="402" stroke-width="2.4"/><line class="mv-hand" x1="64" y1="402" x2="64" y2="372" stroke-width="1.8"/></g><circle cx="64" cy="402" r="2.6" fill="#2E2420"/><text x="64" y="462" text-anchor="middle" font-family="Nothing You Could Do,cursive" font-size="15" fill="#3D332E">Day 1</text></g><g class="mv-clock" data-i="1"><circle cx="166" cy="402" r="38" fill="#FFFDF8" stroke="#2E2420" stroke-width="1.3" filter="url(#wob)"/><circle class="mv-wedge" cx="166" cy="402" r="18" fill="none" stroke="#F25A9C" stroke-width="36" transform="rotate(-90 166 402)" opacity=".85"/><g stroke="#2E2420" stroke-linecap="round"><line x1="166" y1="402" x2="180" y2="402" stroke-width="2.4"/><line class="mv-hand" x1="166" y1="402" x2="166" y2="372" stroke-width="1.8"/></g><circle cx="166" cy="402" r="2.6" fill="#2E2420"/><text x="166" y="462" text-anchor="middle" font-family="Nothing You Could Do,cursive" font-size="15" fill="#3D332E">Day 2</text></g><g class="mv-clock" data-i="2"><circle cx="268" cy="402" r="38" fill="#FFFDF8" stroke="#2E2420" stroke-width="1.3" filter="url(#wob)"/><circle class="mv-wedge" cx="268" cy="402" r="18" fill="none" stroke="#F25A9C" stroke-width="36" transform="rotate(-90 268 402)" opacity=".85"/><g stroke="#2E2420" stroke-linecap="round"><line x1="268" y1="402" x2="282" y2="402" stroke-width="2.4"/><line class="mv-hand" x1="268" y1="402" x2="268" y2="372" stroke-width="1.8"/></g><circle cx="268" cy="402" r="2.6" fill="#2E2420"/><text x="268" y="462" text-anchor="middle" font-family="Nothing You Could Do,cursive" font-size="15" fill="#3D332E">Day 3</text></g>
-          <g class="mv-sunwrap"><defs><clipPath id="horizon"><rect x="320" y="330" width="130" height="102"/></clipPath></defs><g clip-path="url(#horizon)"><g class="mv-sun" transform="translate(385 432)"><circle r="20" fill="#F5C518" stroke="#2E2420" stroke-width="1.2"/><g class="mv-rays" stroke="#2E2420" stroke-width="1.6" stroke-linecap="round"><line x1="0" y1="-25" x2="0" y2="-33" transform="rotate(0)"/><line x1="0" y1="-25" x2="0" y2="-33" transform="rotate(45)"/><line x1="0" y1="-25" x2="0" y2="-33" transform="rotate(90)"/><line x1="0" y1="-25" x2="0" y2="-33" transform="rotate(135)"/><line x1="0" y1="-25" x2="0" y2="-33" transform="rotate(180)"/><line x1="0" y1="-25" x2="0" y2="-33" transform="rotate(225)"/><line x1="0" y1="-25" x2="0" y2="-33" transform="rotate(270)"/><line x1="0" y1="-25" x2="0" y2="-33" transform="rotate(315)"/></g></g></g><path d="M330 432 H442" stroke="#2E2420" stroke-width="1.3" filter="url(#wob)"/><text x="386" y="462" text-anchor="middle" font-family="Nothing You Could Do,cursive" font-size="15" fill="#3D332E">one morning</text></g>
+          <g class="mv-sunwrap"><defs><clipPath id="horizon"><rect x="320" y="330" width="130" height="102"/></clipPath></defs><g clip-path="url(#horizon)"><g class="mv-sun" transform="translate(385 432)"><circle r="20" fill="#F5C518" stroke="#2E2420" stroke-width="1.2"/><g class="mv-rays" stroke="#2E2420" stroke-width="1.6" stroke-linecap="round"><line x1="0" y1="-25" x2="0" y2="-33" transform="rotate(0)"/><line x1="0" y1="-25" x2="0" y2="-33" transform="rotate(45)"/><line x1="0" y1="-25" x2="0" y2="-33" transform="rotate(90)"/><line x1="0" y1="-25" x2="0" y2="-33" transform="rotate(135)"/><line x1="0" y1="-25" x2="0" y2="-33" transform="rotate(180)"/><line x1="0" y1="-25" x2="0" y2="-33" transform="rotate(225)"/><line x1="0" y1="-25" x2="0" y2="-33" transform="rotate(270)"/><line x1="0" y1="-25" x2="0" y2="-33" transform="rotate(315)"/></g></g></g><path d="M330 432 H442" stroke="#2E2420" stroke-width="1.3" filter="url(#wob)"/><text x="386" y="462" text-anchor="middle" font-family="Nothing You Could Do,cursive" font-size="15" fill="#3D332E">one more slot</text></g>
         </svg>
       </div>
       <div class="tx">
         <span class="num">02</span>
         <span class="live-tag k-tag k-wa"><svg class="k-ic" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3.2A12.8 12.8 0 0 0 5.1 22.7L3.4 28.6l6.1-1.6A12.8 12.8 0 1 0 16 3.2z" fill="#25D366"/><path d="M16 5.6a10.4 10.4 0 0 0-8.9 15.8l.3.4-1 3.6 3.7-1 .4.2A10.4 10.4 0 1 0 16 5.6z" fill="none" stroke="#fff" stroke-width="1.6"/><path d="M12.2 10.1c-.3-.6-.6-.6-.9-.6h-.8c-.3 0-.7.1-1 .5-.4.4-1.4 1.3-1.4 3.2s1.4 3.7 1.6 4c.2.3 2.7 4.3 6.7 5.8 3.3 1.3 4 1 4.7.9.7-.1 2.3-.9 2.6-1.8.3-.9.3-1.7.2-1.8-.1-.2-.3-.3-.7-.5l-2.4-1.2c-.3-.1-.6-.2-.8.2-.2.4-.9 1.2-1.1 1.4-.2.2-.4.3-.8.1-.4-.2-1.6-.6-3-1.9-1.1-1-1.9-2.2-2.1-2.6-.2-.4 0-.6.2-.8l.6-.7c.2-.2.3-.4.4-.6.1-.3.1-.5 0-.7l-1.1-2.7z" fill="#fff"/></svg>Private WhatsApp access</span>
-        <h3>Ask me while the question <em>is in front of you.</em></h3>
-        <p class="meta"><b>Dec 8 to Dec 11</b> · Ana in the chat</p>
-        <p>Sometimes the lesson makes perfect sense. Then you open your own document and think, “Yes, but what about mine?” <mark class="sk">Put that question in our private VIP WhatsApp group,</mark> along with the bit you’re working on.</p>
+        <h3>Ask me when you get to <em>“What about my business?”</em></h3>
+        <p class="meta" data-ny><b>Private access: December 8 to 11</b> · New York dates</p>
+        <p>A lesson can make perfect sense. Then you sit down with your own idea.</p>
+          <p class="qs"><i>Would this work for my topic?</i> <i>Which of these ideas would you start with?</i> <i>Have I made this too much work to deliver?</i></p>
+          <p><mark class="sk">Put your question in the private VIP WhatsApp group,</mark> along with the part you’re working on.</p>
         <div class="wac" aria-hidden="true">
           <div class="wac-sb"><b>12:31</b><span class="sb-r"><svg viewBox="0 0 18 12"><path d="M1 11h2V8H1zM5 11h2V6H5zM9 11h2V4H9zM13 11h2V1h-2z" fill="currentColor"/></svg><svg viewBox="0 0 16 12"><path d="M8 11 1 4a10 10 0 0 1 14 0z" fill="currentColor"/></svg><svg viewBox="0 0 10 14"><rect x="1" y="2" width="8" height="11" rx="1.2" fill="currentColor"/><rect x="3.5" y=".5" width="3" height="2" fill="currentColor"/></svg></span></div>
           <div class="wac-hd"><svg class="wac-bk" viewBox="0 0 24 24"><path d="M20 12H5m6-7-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><img class="wac-av" src="../img/vip/raw/vip-avatar.webp" alt=""><span class="wac-nm"><b>VIP · how we grow</b><small><span class="s0">Ana, Claire, Mei, Rosa, You</span><span class="s1">Ana is typing…</span></small></span><svg class="wac-i" viewBox="0 0 24 24"><path d="M3 7h12v10H3zM15 10.5l6-3.5v10l-6-3.5z" fill="currentColor"/></svg><svg class="wac-i" viewBox="0 0 24 24"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z" fill="currentColor"/></svg><svg class="wac-i wac-mn" viewBox="0 0 24 24"><circle cx="12" cy="5" r="2" fill="currentColor"/><circle cx="12" cy="12" r="2" fill="currentColor"/><circle cx="12" cy="19" r="2" fill="currentColor"/></svg></div>
@@ -2329,8 +2362,8 @@ html.wv-lock{overflow:hidden}
           </div>
           <div class="wac-ft"><span class="wac-in"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="9" cy="10" r="1.2" fill="currentColor"/><circle cx="15" cy="10" r="1.2" fill="currentColor"/><path d="M8 14a4.5 4.5 0 0 0 8 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span class="wac-ph">Type a message</span><svg viewBox="0 0 24 24"><path d="M16.5 6.5 8 15a2 2 0 0 0 3 3l9-9a4 4 0 0 0-6-6l-9 9a6 6 0 0 0 8.5 8.5l7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><svg viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3v11H4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span><span class="wac-mic"><svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3" fill="currentColor"/><path d="M6 11a6 6 0 0 0 12 0M12 17v4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span></div>
         </div>
-        <p><mark class="sk">I’ll be there for 30 minutes after each workshop session, plus one morning slot.</mark> The free community has your reminders. This separate group is where we talk about the work.</p>
-        <div class="cx"><button class="btn add cxb" type="button" data-cta="chat"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">Let me ask you in the VIP chat ($67)</span><svg class="ar"><use href="#arr"/></svg></button><p class="closed">VIP is closed. <em>See you live.</em></p><small>One payment of $67, added to your free seat.</small><button class="decline cxn" type="button">No thanks, I’ll keep my questions for the live sessions</button></div>
+        <p><mark class="sk">I’ll be there for 30 minutes after each workshop session, plus one additional chat slot.</mark> The free community carries workshop reminders. The private VIP group is where you can ask me about your work.</p>
+        <div class="cx"><button class="btn add cxb" type="button" data-cta="chat"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">Let me ask you in the VIP chat ($67)!</span><svg class="ar"><use href="#arr"/></svg></button><p class="closed">VIP is closed. <em>See you live.</em></p><small>One payment of $67, added to your free seat.</small><button class="decline cxn" type="button">No thanks, I’ll keep my questions for the live sessions</button></div>
       </div>
     </article>
 
@@ -2343,17 +2376,19 @@ html.wv-lock{overflow:hidden}
       </div>
       <div class="tx">
         <span class="num">03</span>
-        <h3>The Offer <em>Clarity Sprint.</em></h3>
+        <h3>Keep my Offer Clarity Sprint <em>for the decisions you want to revisit.</em></h3>
         <p class="meta"><b>Bonus</b> · yours to keep</p>
-        <p>You might have six ideas and no idea which to choose. Or you know what you want to sell, but explaining why someone should buy it takes half a page. My Offer Clarity Sprint course <mark class="sk">helps you work through choosing an offer, checking demand, making its value clear and deciding on a price.</mark></p>
+        <p>Choosing a product brings up several questions: what people would pay for, how to explain its value and what to charge.</p>
+          <p><mark class="sk">The Sprint gives you lessons you can work through at your own pace.</mark></p>
         <span class="lab">When to use it</span>
         <ol class="how">
-          <li><span><b>During the workshop,</b> use the lesson you need.</span></li>
-          <li><span><b>Before the review,</b> work through the part you’re stuck on.</span></li>
-          <li><span><b>When you have another idea,</b> the course is still yours.</span></li>
+          <li><span><b>Use the part you need</b> during the workshop.</span></li>
+          <li><span><b>Come back</b> before the VIP review.</span></li>
+          <li><span><b>Keep it</b> for your next idea.</span></li>
         </ol>
-        <p class="soft">You don’t have to finish another course before the workshop. Already own the Sprint? Bring the work you’ve started.</p>
-        <div class="cx"><button class="btn add cxb" type="button" data-cta="sprint"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">Get the Sprint with VIP ($67)</span><svg class="ar"><use href="#arr"/></svg></button><p class="closed">VIP is closed. <em>See you live.</em></p><small>One payment of $67, added to your free seat.</small><button class="decline cxn" type="button">No thanks, I’ll skip the course</button></div>
+        <p class="soft">You do not have to finish the course before we meet. Already own the Sprint? Bring the work you’ve started. VIP still includes the recordings, private WhatsApp group and live review.</p>
+          <p class="note-of"><b>Ana’s Offer Flow is a separate tool included with the free workshop. The Offer Clarity Sprint is the course included with VIP.</b></p>
+        <div class="cx"><button class="btn add cxb" type="button" data-cta="sprint"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">Get the Sprint with VIP ($67)!</span><svg class="ar"><use href="#arr"/></svg></button><p class="closed">VIP is closed. <em>See you live.</em></p><small>One payment of $67, added to your free seat.</small><button class="decline cxn" type="button">No thanks, I’ll skip the course</button></div>
       </div>
     </article>
 
@@ -2369,17 +2404,19 @@ html.wv-lock{overflow:hidden}
       <div class="tx">
         <span class="num">04</span>
         <span class="live-tag k-tag">Lifetime access</span>
-        <h3>The workshop is yours <em>to keep for life.</em></h3>
+        <h3>Keep the workshop <em>for the moment you need that explanation again.</em></h3>
         <p class="meta"><b>Lifetime access</b> · all three sessions in full</p>
         <p class="exp"><span class="exp-ic" aria-hidden="true"><i></i></span><span class="exp-k">Your recordings · access expires:</span> <span class="exp-v"><em>never</em><svg viewBox="0 0 100 16" aria-hidden="true" preserveAspectRatio="none"><path d="M3 9 C24 4 52 13 97 6" fill="none" stroke="#EC3486" stroke-width="2.4" stroke-linecap="round"/></svg></span></p>
-        <p>A meeting runs late. You miss a session. Or you only realise which question you should have asked when you try it yourself. <mark class="sk">With VIP, you can come back to every workshop recording whenever you need it.</mark> Pause it beside your own work and take the time to use it.</p>
+        <p>A meeting runs late. You miss part of a session. Or a question only occurs to you when you try the work yourself.</p>
+          <p><mark class="sk">With VIP, you can return to all three workshop recordings whenever you need them.</mark></p>
         <span class="lab">When you'll want them</span>
         <ol class="how">
-          <li><span><b>If you miss a session,</b> catch up in your own time.</span></li>
-          <li><span><b>When you put it into practice,</b> revisit the explanation you need.</span></li>
-          <li><span><b>After the VIP review,</b> keep its recording too.</span></li>
+          <li><span><b>Pause</b> beside your own notes.</span></li>
+          <li><span><b>Revisit</b> the part about finding readers.</span></li>
+          <li><span><b>Go back</b> to the product and pricing decisions when you have more information from potential customers.</span></li>
         </ol>
-        <div class="cx"><button class="btn add cxb" type="button" data-cta="recordings"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">Keep the workshop for life ($67)</span><svg class="ar"><use href="#arr"/></svg></button><p class="closed">VIP is closed. <em>See you live.</em></p><small>One payment of $67, added to your free seat.</small><button class="decline cxn" type="button">No thanks, I’ll catch it live</button></div>
+        <p class="soft">You keep the VIP review recording too.</p>
+        <div class="cx"><button class="btn add cxb" type="button" data-cta="recordings"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">Keep the workshop for life ($67)!</span><svg class="ar"><use href="#arr"/></svg></button><p class="closed">VIP is closed. <em>See you live.</em></p><small>One payment of $67, added to your free seat.</small><button class="decline cxn" type="button">No thanks, I’ll catch it live</button></div>
       </div>
     </article>
   </div>
@@ -2391,29 +2428,25 @@ html.wv-lock{overflow:hidden}
 <section class="vf">
   <div class="wrap">
     <aside class="pq" data-r><p>“That first customer matters. It gives you something to learn from, improve and sell again.”</p><span class="pq-by">Ana Calin</span></aside>
-    <div class="vf-hd" data-r><span class="eyebrow">Honest fit check</span><h2>Would you like me <em>a little closer while you do this?</em></h2></div>
+    <div class="vf-hd" data-r><span class="eyebrow">Honest fit check</span><h2>Would you use the recordings <em>and extra help?</em></h2></div>
     <div class="fitg" data-r>
       <div class="fitc yes">
         <div class="seat two" aria-hidden="true"><img src="../img/vip/paint/vip-table.webp" alt="" width="600" height="330" loading="lazy"><img class="you" src="../img/vip/paint/vip-chair.webp" alt="" width="600" height="330" loading="lazy"></div>
-        <h3>Get VIP <em>if</em></h3>
+        <h3>VIP makes sense <em>if</em></h3>
         <ul>
-          <li><i><svg width="11" height="11"><use href="#ck"/></svg></i><span>You want to keep the lessons and use them around your job, clients or family.</span></li>
-          <li><i><svg width="11" height="11"><use href="#ck"/></svg></i><span>You want somewhere to bring questions about your own idea, price or sales email.</span></li>
+          <li><i><svg width="11" height="11"><use href="#ck"/></svg></i><span>You want to revisit the teaching around your job, clients or family.</span></li>
+          <li><i><svg width="11" height="11"><use href="#ck"/></svg></i><span>You want somewhere to ask questions about your own business.</span></li>
           <li><i><svg width="11" height="11"><use href="#ck"/></svg></i><span>You’d find it useful to watch me review real work and explain the changes.</span></li>
         </ul>
       </div>
       <div class="fitc no">
         <div class="seat" aria-hidden="true"><img src="../img/vip/paint/chairs-row.webp" alt="" width="600" height="330" loading="lazy"></div>
-        <h3>Keep the free seat <em>if</em></h3>
-        <ul>
-          <li><i><svg width="11" height="11"><use href="#ck"/></svg></i><span>You’re happy to take part in the live workshop without the extra support.</span></li>
-          <li><i><svg width="11" height="11"><use href="#ck"/></svg></i><span>You don’t want lifetime access to the recordings.</span></li>
-          <li><i><svg width="11" height="11"><use href="#ck"/></svg></i><span>You’d prefer to work through your questions independently.</span></li>
-        </ul>
+        <h3>Your free seat <em>still includes the full live workshop.</em></h3>
+          <p class="fs-p">You can attend all three sessions, use the preparation tools and take part without buying VIP.</p>
       </div>
     </div>
-    <p class="after" data-r><mark class="sk">You don’t need an idea or subscribers ready today.</mark> Start with the workshop and bring the questions that come up.</p>
-    <div class="cx"><button class="btn add cxb" type="button" data-cta="fit"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">Yes, pull my chair closer ($67)</span><svg class="ar"><use href="#arr"/></svg></button><p class="closed">VIP is closed. <em>See you live.</em></p><small>One payment of $67, added to your free seat.</small><button class="decline cxn" type="button">No thanks, the free seat suits me</button></div>
+    <p class="after" data-r><mark class="sk">You don’t need an audience or a finished product today.</mark> Bring the questions that come up as we work.</p>
+    <div class="cx"><button class="btn add cxb" type="button" data-cta="fit"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">I want the recordings and your help ($67)!</span><svg class="ar"><use href="#arr"/></svg></button><p class="closed">VIP is closed. <em>See you live.</em></p><small>One payment of $67, added to your free seat.</small><button class="decline cxn" type="button">No thanks, the free seat suits me</button></div>
   </div>
 </section>
 
@@ -2427,9 +2460,11 @@ html.wv-lock{overflow:hidden}
       <div class="letter">
         <img class="pm" src="../img/vip/paint/postmark.webp" alt="" width="220" height="120" loading="lazy">
         <div class="from"><span class="ov"><img class="ph" src="../img/real/ana-real-a.webp" alt="" loading="lazy"></span><span>A note from Ana</span></div>
-        <p>I want you to find out whether people will pay for what you know, while you still have the income you rely on.</p>
-        <p>That first customer matters. It gives you something to learn from, improve and sell again. Getting there can bring up questions you can’t answer by staring at your own draft.</p>
-        <p><mark class="sk">That’s what VIP is for. Keep the lessons, ask me about the work as you do it, and see the changes I’d make in the live review.</mark> I’d like you to use what we do together.</p>
+        <p>I want you to see how this could work with what you already know and the time you actually have.</p>
+          <p>During the workshop, I’ll show you the business behind my numbers. When you start working on your version, you’ll have questions about your readers, your product and what to do next.</p>
+          <p><b>That’s where I want VIP to be useful.</b></p>
+          <p><mark class="sk">Keep the teaching. Ask about the part you’re working on. Watch me explain the changes I’d make to selected submissions.</mark></p>
+          <p>You can keep earning from your current work while you put this into practice.</p>
         <div class="sig">Ana</div>
       </div>
       </div>
@@ -2438,14 +2473,14 @@ html.wv-lock{overflow:hidden}
         <div class="bb-h"><span class="lbl">VIP</span><div class="price">$67</div><img class="bdg bdg-life b2" src="../img/badges/lifetime.webp" alt="Lifetime access to the recordings" width="640" height="602" loading="lazy"></div>
         <p class="when">Get the full VIP package for one payment of $67.</p>
         <ul class="stack">
-          <li><img class="stp" src="../img/vip/paint/mini-rec.webp" alt="" width="160" height="200" loading="lazy"><span><b>Lifetime recordings,</b> all three workshop sessions</span></li>
-          <li><img class="stp" src="../img/vip/paint/mini-rev.webp" alt="" width="160" height="200" loading="lazy"><span><b>Live VIP Q&amp;A and review</b> with me, 90 minutes, plus the recording</span></li>
-          <li><img class="stp" src="../img/vip/paint/mini-wa.webp" alt="" width="160" height="200" loading="lazy"><span><b>Private WhatsApp access</b> to me, Dec 8 to 11</span></li>
-          <li><img class="stp" src="../img/vip/paint/mini-spr.webp" alt="" width="160" height="200" loading="lazy"><span><b>The Offer Clarity Sprint</b> course, yours to keep</span></li>
+          <li><img class="stp" src="../img/vip/paint/mini-rec.webp" alt="" width="160" height="200" loading="lazy"><span><b>Lifetime access</b> to all three workshop recordings</span></li>
+          <li><img class="stp" src="../img/vip/paint/mini-rev.webp" alt="" width="160" height="200" loading="lazy"><span><b>A 90-minute VIP Q&amp;A and group review,</b> plus its recording</span></li>
+          <li><img class="stp" src="../img/vip/paint/mini-wa.webp" alt="" width="160" height="200" loading="lazy"><span><b>Private WhatsApp access</b> during the workshop</span></li>
+          <li><img class="stp" src="../img/vip/paint/mini-spr.webp" alt="" width="160" height="200" loading="lazy"><span><b>My Offer Clarity Sprint course,</b> yours to keep</span></li>
         </ul>
         <p class="aside">Lifetime access to the workshop recordings. Support while you put the teaching to use.</p>
         <p class="closed">VIP is closed. <em>See you live.</em></p>
-        <div class="cta"><button class="btn add" type="button" data-cta="buybox"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">I want VIP, Ana ($67)</span><svg class="ar"><use href="#arr"/></svg></button></div>
+        <div class="cta"><button class="btn add" type="button" data-cta="buybox"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">I want VIP, Ana ($67)!</span><svg class="ar"><use href="#arr"/></svg></button></div>
         <p class="meta2"><span><svg width="13" height="15" viewBox="0 0 13 15" fill="none" stroke="#7A6A60" stroke-width="1.7"><rect x="1.5" y="6.5" width="10" height="7" rx="2"/><path d="M3.8 6.5V4.6a2.7 2.7 0 0 1 5.4 0v1.9"/></svg>Secure checkout with Stripe. All sales are final.</span><span>On sale until Wed, Dec 9 at 1:30 pm New York.</span></p>
         <p class="dl"><button class="decline" type="button">Coming to see what it’s like? Keep your free seat. Either way, see you Tuesday →</button></p>
       </div>
@@ -2455,13 +2490,14 @@ html.wv-lock{overflow:hidden}
       <h2 data-r>Questions</h2>
       <div data-r>
         <details class="faq" open><summary>Do I need VIP to come live?<i aria-hidden="true"></i></summary><p class="a">No. Your free seat includes the full three-day live workshop. VIP adds lifetime recordings, the VIP Q&amp;A and group review, the private WhatsApp group and the Offer Clarity Sprint course.</p></details>
-        <details class="faq"><summary>Will you review everyone’s work?<i aria-hidden="true"></i></summary><p class="a">I’ll review selected submissions during the 90-minute group session and explain the changes as I make them. Everyone can watch and use those lessons in their own work, but an individual review isn’t guaranteed.</p></details>
-        <details class="faq"><summary>What if I’m just starting?<i aria-hidden="true"></i></summary><p class="a">You don’t need an audience or a finished offer to join. Day 1 includes finding your first readers and what you could sell. VIP gives you extra support while you put the teaching into practice.</p></details>
+        <details class="faq"><summary>Will you review my work?<i aria-hidden="true"></i></summary><p class="a">You can submit work for consideration. I’ll review selected submissions during the 90-minute group session and explain the changes. <b>A personal review is not guaranteed.</b></p></details>
+        <details class="faq"><summary>What if I’m just starting?<i aria-hidden="true"></i></summary><p class="a"><b>You don’t need a newsletter, an audience or a finished product.</b> Day 1 covers finding your first readers. Day 2 moves into choosing what to sell. VIP gives you recordings to revisit and extra opportunities to ask questions as you work.</p></details>
         <details class="faq"><summary>Do I keep the recordings?<i aria-hidden="true"></i></summary><p class="a">Yes. VIP includes lifetime access to all three workshop recordings, plus the recording of the VIP review. The Offer Clarity Sprint course is yours to keep too.</p></details>
         <details class="faq"><summary>I already own the Sprint. Is VIP still useful?<i aria-hidden="true"></i></summary><p class="a">If you want the recordings, private WhatsApp access and live group review, yes. Bring the work you’ve already started. The package is $67, paid once.</p></details>
-        <details class="faq"><summary>When is the Friday VIP Q&amp;A?<i aria-hidden="true"></i></summary><p class="a">Friday, Dec 11, for 90 minutes. The time and the link come by email with your join details.</p></details>
+        <details class="faq"><summary>When is the VIP Q&amp;A?<i aria-hidden="true"></i></summary><p class="a" data-ny><b>Friday, December 11, from 12:00 to 1:30 pm New York.</b> Your local date may be December 12. Use the local schedule on this page or add the session to your calendar.</p></details>
         <details class="faq"><summary>What happens in the VIP WhatsApp group?<i aria-hidden="true"></i></summary><p class="a">It's an open chat for VIPs only. I'm in there Dec 8 to 11: for 30 minutes after each session, and one morning slot.</p></details>
-        <details class="faq"><summary>What if I can't make it on Friday?<i aria-hidden="true"></i></summary><p class="a">Send your work ahead for consideration and watch the recording afterward. I’ll review as many submissions as fit into 90 minutes, so a personal review isn’t guaranteed.</p></details>
+        <details class="faq"><summary>What if I cannot attend the VIP session?<i aria-hidden="true"></i></summary><p class="a">Submit your work ahead for consideration and watch the recording afterward. <b>Every VIP receives the recording,</b> whether or not their submission is selected.</p></details>
+        <details class="faq"><summary>Is Ana’s Offer Flow included in VIP?<i aria-hidden="true"></i></summary><p class="a">Yes. It is also available to everyone registered for the free workshop. <b>VIP additionally includes the Offer Clarity Sprint course, lifetime recordings, private WhatsApp access and the live VIP review.</b></p></details>
         <details class="faq"><summary>Can I get a refund?<i aria-hidden="true"></i></summary><p class="a">No. All sales are final. Please check what’s included and the group-review format before you buy.</p></details>
         <div class="cx"><button class="btn add cxb" type="button" data-cta="faq"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">Questions answered. Add VIP ($67)</span><svg class="ar"><use href="#arr"/></svg></button><p class="closed">VIP is closed. <em>See you live.</em></p><small>One payment of $67, added to your free seat.</small><button class="decline cxn" type="button">No thanks, keep my free seat</button></div>
       </div>
@@ -2566,7 +2602,6 @@ html.wv-lock{overflow:hidden}
     if (v !== 'A' && v !== 'B') { v = Math.random() < .5 ? 'A' : 'B'; document.cookie = 'ana_vip_h=' + v + '; max-age=' + 60*60*24*90 + '; path=/; SameSite=Lax' }
   }
   if (v === 'B') {
-    document.getElementById('h1').innerHTML = 'Get my help putting this to work, <em>and keep every lesson for life.</em>';
   }
   document.documentElement.setAttribute('data-vip-headline', v);
 
@@ -2695,16 +2730,17 @@ html.wv-lock{overflow:hidden}
  var NYD=DL.getDate()!==9?'Wed, Dec 9, 1:30 pm New York':'1:30 pm New York',NYF=F.getDate()!==11?'Fri, Dec 11 · 12:00 pm New York':'12:00 pm New York',
   NOTE={'\u0001':' ('+NYD+')','\u0002':' ('+NYF+')'},dln=dlt+'\u0001';
  var R=[['Wed, Dec 9, 1:30 pm New York',dl+', '+dln],['Wed, Dec 9 at 1:30 pm New York',dl+' at '+dln],['Wed, Dec 9 · 1:30 pm New York',dl+' · '+dln],
-  ['Wednesday, Dec 9 at 1:30 pm New York',WF[DL.getDay()]+', '+M[DL.getMonth()]+' '+DL.getDate()+' at '+dln],['See you Tue Dec 8.','See you '+W[S.getDay()]+' '+M[S.getMonth()]+' '+S.getDate()+'.'],['Dec 8 to 10',span],['Wed, Dec 9,',dl+','],['see you Tuesday','see you '+WF[S.getDay()]],['1:30 pm New York',dlt],
+  ['Wednesday, Dec 9 at 1:30 pm New York',WF[DL.getDay()]+', '+M[DL.getMonth()]+' '+DL.getDate()+' at '+dln],['See you Tue Dec 8.','See you '+W[S.getDay()]+' '+M[S.getMonth()]+' '+S.getDate()+'.'],['Dec 8 to 10',span],['Wed, Dec 9,',dl+','],['see you Tuesday','see you '+WF[S.getDay()]],
   /* Friday's VIP call (12:00 pm New York, as the VIP confirmation page says) and the WhatsApp group, which runs from Day 1
      to the end of Friday's call */
-  ['Friday, Dec 11',WF[F.getDay()]+', '+M[F.getMonth()]+' '+F.getDate()],['Fri, Dec 11 ·',W[F.getDay()]+', '+M[F.getMonth()]+' '+F.getDate()+' · '+t(F)+' in '+place+'\u0002 ·'],
+  ['Fri, Dec 11 · 12:00 pm New York',W[F.getDay()]+', '+M[F.getMonth()]+' '+F.getDate()+' · '+t(F)+' in '+place+'\u0002'],['Friday, Dec 11',WF[F.getDay()]+', '+M[F.getMonth()]+' '+F.getDate()],['Fri, Dec 11 ·',W[F.getDay()]+', '+M[F.getMonth()]+' '+F.getDate()+' · '+t(F)+' in '+place+'\u0002 ·'],
   ['Fri, Dec 11',W[F.getDay()]+', '+M[F.getMonth()]+' '+F.getDate()],['Fri Dec 11',W[F.getDay()]+' '+M[F.getMonth()]+' '+F.getDate()],
   ['Dec 8 to Dec 11',M[S.getMonth()]+' '+S.getDate()+' to '+M[FE.getMonth()]+' '+FE.getDate()],['Dec 8 to 11',wa],
   ['Friday’s call',WF[F.getDay()]+'’s call'],["Friday's call",WF[F.getDay()]+"'s call"],['Dec 11',M[F.getMonth()]+' '+F.getDate()],['Friday',WF[F.getDay()]]];
- var w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT),n,list=[];while(n=w.nextNode())list.push(n);
+ var w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT),n,list=[];while(n=w.nextNode())if(!(n.parentElement&&n.parentElement.closest('[data-ny]')))list.push(n);
  list.forEach(function(n){var v=n.nodeValue,o=v;R.forEach(function(r){if(v.indexOf(r[0])>-1)v=v.split(r[0]).join(r[1])});v=v.replace(/[\u0001\u0002]/g,function(k){return NOTE[k]});if(v!==o)n.nodeValue=v});
  /* the price box: their deadline on two lines, New York's small under it */
+ var nw2=document.querySelectorAll('.tot2 .nw')[1];if(nw2)nw2.textContent=dlt;
  var tb=document.querySelector('.tot2 > span');if(tb&&tb.querySelector('.nw')){var sm=document.createElement('small');sm.className='tot-ny';sm.textContent=NYD.replace(', 1:30',' · 1:30');tb.appendChild(document.createElement('br'));tb.appendChild(sm)}
  /* day chips in the gmail demo and the free days in "Your week" */
  document.querySelectorAll('.gx-md > span').forEach(function(c,i){var d=new Date(S.getTime()+i*864e5),a=c.querySelector('small'),b=c.querySelector('b'),m=c.querySelector('i');if(a)a.textContent=W[d.getDay()].toUpperCase();if(b)b.textContent=d.getDate();if(m)m.textContent=MF[d.getMonth()]});
