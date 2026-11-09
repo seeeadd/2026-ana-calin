@@ -6,7 +6,7 @@ video,tag=sys.argv[1:3]; times=[float(x) for x in sys.argv[3].split(',')]; OUT=o
 async def run(p,shape,w,h,q):
     b=await p.chromium.launch(); pg=await b.new_page(viewport={'width':w,'height':h}); errs=[]; pg.on('pageerror',lambda e:errs.append(str(e)))
     pg.on('requestfailed',lambda r:errs.append('FAIL '+r.url) if 'fonts.g' not in r.url else None)
-    await pg.goto(f'http://localhost:8768/tools/film/kit.html?video={video}{q}',wait_until='load'); await pg.wait_for_selector('body[data-ready]',timeout=90000,state='attached'); fs=[]
+    await pg.goto(f'http://127.0.0.1:8768/tools/film/kit.html?video={video}{q}',wait_until='load'); await pg.wait_for_selector('body[data-ready]',timeout=90000,state='attached'); fs=[]
     for s in times:
         t=await pg.evaluate('(s)=>window.__T(s)',s); await pg.evaluate('(t)=>window.render(t)',t); f=OUT+f'{tag}-{shape}-{s:07.2f}.jpg'; await pg.screenshot(path=f,type='jpeg',quality=82); fs.append(f)
     print(shape,errs[:6] or 'no errors'); await b.close(); return fs

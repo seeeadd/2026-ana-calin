@@ -9,7 +9,7 @@ const { chromium } = require('playwright');
 const { spawn, spawnSync } = require('child_process');
 const fs = require('fs'), path = require('path'), crypto = require('crypto'), os = require('os');
 
-const FILM = path.resolve(__dirname, '..'), ROOT = path.resolve(FILM, '../..'), PORT = +(process.env.PORT || 8768), BASE = `http://localhost:${PORT}/tools/film/`;
+const FILM = path.resolve(__dirname, '..'), ROOT = path.resolve(FILM, '../..'), PORT = +(process.env.PORT || 8768), BASE = `http://127.0.0.1:${PORT}/tools/film/`;
 const HOME = os.homedir(), CACHE = process.env.KIT_CACHE || `${HOME}/AnaVideo/work/kit-cache`, MAXCHUNK = 4; // seconds: longer shots split, so a note stays small
 const SHAPES = { d: { w: 1560, h: 1008, q: '', label: 'desktop' }, p: { w: 1080, h: 1920, q: '&v=p', label: 'phone' } };
 if (require.main === module && process.argv[2]) { const m = /desktopW:\s*(\d+)/.exec(fs.readFileSync(`${FILM}/videos/${process.argv[2]}/config.js`, 'utf8')); if (m) SHAPES.d.w = +m[1]; } // a page whose window isn't 1560 wide

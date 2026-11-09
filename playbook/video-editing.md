@@ -81,6 +81,8 @@ after every video round.
 - No dates baked into the core video.
 - No generic AI visuals ("AI changed the order" shows her real material, not a glowing brain).
 
+- **Page pieces are cut-outs of the live page, never rectangular crops.** Shoot the element with Playwright on a transparent background (omitBackground; hide the rest of the page with visibility so the element keeps its real shadow and rounded corners; a 30 to 40px margin). Where the page animates (a demo, a gif), freeze it frame by frame (Web Animations currentTime) and play it with `it.seq`, never a still. Show the real tool (the questions, the calculator itself), not its locked teaser or progress bar. Check every frame for dates. (2026-11-09)
+
 ## 6. Opening, closing, transitions
 
 - **The opening is the showpiece:** energetic, fun, creative, the background always moving, the character in action,

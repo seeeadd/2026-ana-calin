@@ -29,7 +29,7 @@ window.VIDEO = {
   },
   arrow: null,
   pieces: function(k){
-    var add = k.add, img = k.img, strike = k.strike, T = k.T, seg = k.seg, PHONE = k.PHONE, PC = k.PC;
+    var add = k.add, img = k.img, strike = k.strike, T = k.T, seg = k.seg, PHONE = k.PHONE, PC = k.PC, clamp = k.clamp;
     /* section titles: her page headline style (serif, key words pink italic) on a soft cream glow, one top band per shape */
     var GLOW = '<div style="position:absolute;left:-7%;right:-7%;top:-26%;bottom:-26%;border-radius:50%;background:radial-gradient(closest-side,rgba(255,248,238,.9),rgba(255,248,238,.72) 52%,rgba(255,248,238,0));filter:blur(5px)"></div>';
     function TT(lines, s0, s1, d, p){ return add('<div style="position:relative">' + GLOW + '<div class="big" style="position:relative;text-align:center;line-height:.98">' + lines.map(function(l){ return '<span class="ln">' + l + '</span>' }).join('') + '</div></div>', s0, s1, d, p, {cls: 'top'}) }
@@ -41,21 +41,22 @@ window.VIDEO = {
     TT(['Join my <i>WhatsApp</i>'], 2.3, 6.3, [62, 56, 1280, 104], [20, 210, 545, 92]);
     add(img(PC + 'wa-btn.png'), 2.6, 6.3, [330, 360, 760], [80, 760, 920], TOP);
     /* 3. a quiet stretch (the email, notifications), then the page's own spam view: take me out of spam */
-    add(img(PC + 'mail-nodate.png'), 11.6, 15.9, [62, 300, 760], [140, 200, 800], {cls: 'top', rot: -1});
+    /* the page's own spam demo, played: open, Report not spam, In your inbox (196 frames, dates hidden) */
+    add(img(PC + 'spam-000.webp'), 12.9, 16.2, [62, 250, 700], [140, 200, 800], TOP).seq = function(t){ var n = clamp(Math.round((t - T(13.0)) / (T(15.7) - T(13.0)) * 195), 0, 195); return PC + 'spam-' + ('00' + n).slice(-3) + '.webp' };
     /* 4. the bedroom: all three sessions in the calendar */
     TT(['All <i>three</i> sessions'], 16.8, 22.2, [62, 56, 1280, 104], [20, 210, 545, 92]);
     add(img(PC + 'cal-btn.png'), 17.2, 22.2, [520, 420, 560], [140, 760, 800], TOP);
-    /* 5. the 7 quick questions: the page's power bar, 0 of 7 */
+    /* 5. the 7 quick questions: the page's own question card (question 2; question 1 prints the dates) */
     TT(['<i>7</i> quick questions'], 22.6, 30.2, [62, 56, 1280, 104], [20, 210, 545, 92]);
-    add(img(PC + 'power.png'), 23.3, 30.2, [450, 300, 700], [100, 700, 880], TOP);
-    /* 6. the bonus: the Exit Number calculator they unlock */
+    add(img(PC + 'survey.png'), 23.3, 30.2, [110, 190, 640], [110, 560, 860], TOP);
+    /* 6. the bonus: the real Exit Number calculator, its three example price cards (the page's own $3,000 example) */
     TT(['Your <i>Exit Number</i>'], 31.4, 38.3, [62, 56, 1280, 104], [20, 210, 545, 92]);
-    add(img(PC + 'calc.png'), 31.8, 38.3, [620, 190, 330], [300, 600, 480], TOP);
+    add(img(PC + 'calc-cards.png'), 31.8, 38.3, [90, 310, 1000], [30, 640, 1020], TOP);
     /* 7. reply with one word: in */
     add('<div style="position:relative">' + GLOW + '<div class="big" style="position:relative;text-align:center"><span class="ln" style="font-size:.6em">Reply with one word:</span><span class="ln"><i>in</i></span></div></div>', 39.5, 43.3, [62, 300, 820, 110], [40, 200, 1000, 110], TOP);
     /* 8. the Head start page */
     TT(['Your <i>Head start</i> page'], 47.5, 53.3, [62, 56, 1280, 104], [20, 210, 545, 92]);
-    add(img(PC + 'sheet-nodate.png'), 47.7, 53.3, [420, 200, 660], [90, 640, 900], {cls: 'top', rot: -2});
+    add(img(PC + 'sheet-card.png'), 47.7, 53.3, [100, 200, 620], [90, 600, 900], TOP);
     /* 9. what you don't need before day one */
     strike('an offer, an audience', 54.0, 57.2, 55.4, [62, 400, 0, 60], [70, 200, 0, 62]);
     /* 10. come live */
