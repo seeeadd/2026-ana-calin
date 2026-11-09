@@ -99,7 +99,7 @@ window.VIDEO = {
     hand.count = function(t){ var i = t < T(78.9) ? 0 : t < T(80.5) ? 1 : 2, st = [T(77.7), T(78.9), T(80.5)][i], g = seg(t, st, st + .7); hand.e.style.transform = 'translate(' + ((g - 1) * (PHONE ? 200 : 300)).toFixed(0) + 'px,' + (i * (PHONE ? 170 : 160) + Math.sin(t * 20) * 3).toFixed(1) + 'px)' };
 
     /* keep going: all four, in colour */
-    tracker(85.34, 87.38, 4, [162, 430, 640], [220, 20, 640]);
+    tracker(85.34, 87.38, 4, [162, 430, 640], [220, 200, 640]);
     add('<div class="big"><i>"Yes, but what about mine?"</i></div>', 88.2, 91, [62, 380, 840, 104], [40, 200, 1000, 72], TOP);
     strike('just three days of watching', 92, 96.64, 94.8, [62, 400, 0, 60], [70, 200, 0, 62]);
 
