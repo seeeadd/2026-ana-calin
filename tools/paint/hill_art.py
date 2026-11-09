@@ -200,7 +200,7 @@ def branch(name, w, h, root, tip, kind):
 </svg>"""
 
 
-vhi_bou = branch('vhi-bou', 520, 300, (0, 6), (430, 210), 'bou')
+vhi_bou = branch('vhi-bou', 520, 300, (0, 6), (430, 210), 'oli')   # olive, not bougainvillea: the pink titles sit over it on the phone
 vhi_oli = branch('vhi-oli', 460, 260, (460, 4), (60, 190), 'oli')
 
 block = '<!-- HILLSCENE start: written by hill_art.py -->\n' + '\n'.join([vhill, vhi_sun, vhi_bou, vhi_oli]) + '\n<!-- HILLSCENE end -->\n'

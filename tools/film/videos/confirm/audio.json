@@ -1,18 +1,14 @@
 {
- "edl_from": "_local/CHANGE-ME/data.js",
+ "edl_from": "_local/confirm/data.js",
  "sfx_dir": "~/Downloads/ana calin sound effects",
- "speed": 1,
+ "speed": 1.2,
  "voice": {
-  "recording": "~/Downloads/CHANGE-ME.MOV",
-  "clean": "~/Downloads/CHANGE-ME Adobe v2.wav",
+  "recording": "~/Downloads/v24044gl0000dbk6gr7og65pqaldhimg.MP4",
+  "clean": "~/AnaVideo/out/kit/confirm-cut.wav",
   "snap_on": "orig",
   "sources": {
-   "alt": {
-    "file": "~/Downloads/CHANGE-ME Adobe v1.wav"
-   },
    "orig": {
-    "file": "~/AnaVideo/out/kit/CHANGE-ME-cut.wav",
-    "filter": "highpass=f=70,afftdn=nf=-34:nr=7"
+    "file": "~/AnaVideo/out/kit/confirm-cut.wav"
    }
   },
   "swaps": [],
@@ -37,16 +33,162 @@
  },
  "sfx": [
   [
-   "kal",
+   "door",
+   [
+    16.36,
+    -0.3
+   ],
+   0.42,
+   1.32,
+   -17,
    {
-    "cut": 1.0
-   },
+    "fout": 0.12
+   }
+  ],
+  [
+   "chime",
+   [
+    16.36,
+    -0.05
+   ],
+   1.2,
+   3.0,
+   -27,
+   {
+    "fin": 0.12,
+    "fout": 0.7
+   }
+  ],
+  [
+   "door",
+   [
+    53.3,
+    -0.3
+   ],
+   2.9,
+   3.72,
+   -17,
+   {
+    "fout": 0.12
+   }
+  ],
+  [
+   "chime",
+   [
+    53.3,
+    -0.05
+   ],
+   1.2,
+   3.0,
+   -27,
+   {
+    "fin": 0.12,
+    "fout": 0.7
+   }
+  ],
+  [
+   "kal",
+   2.7,
    0.06,
    0.9,
-   -19,
+   -20,
+   {
+    "semi": 0,
+    "fout": 0.35
+   }
+  ],
+  [
+   "kal",
+   11.6,
+   0.06,
+   0.9,
+   -22,
    {
     "semi": 2,
     "fout": 0.35
+   }
+  ],
+  [
+   "kal",
+   17.2,
+   0.06,
+   0.9,
+   -20,
+   {
+    "semi": 4,
+    "fout": 0.35
+   }
+  ],
+  [
+   "mar",
+   23.3,
+   0.12,
+   0.72,
+   -21,
+   {
+    "fout": 0.25
+   }
+  ],
+  [
+   "mar",
+   31.8,
+   0.12,
+   0.72,
+   -21,
+   {
+    "semi": 4,
+    "fout": 0.25
+   }
+  ],
+  [
+   "type",
+   [
+    39.5,
+    0
+   ],
+   0.2,
+   0.9,
+   -24,
+   {
+    "fout": 0.1
+   }
+  ],
+  [
+   "kal",
+   47.6,
+   0.06,
+   0.9,
+   -20,
+   {
+    "semi": 7,
+    "fout": 0.35
+   }
+  ],
+  [
+   "pen",
+   [
+    55.4,
+    -0.05
+   ],
+   1.1,
+   1.62,
+   -20,
+   {
+    "fin": 0.02,
+    "fout": 0.1
+   }
+  ],
+  [
+   "ship",
+   [
+    75.1,
+    -0.04
+   ],
+   0.55,
+   3.0,
+   -12,
+   {
+    "fout": 0.9
    }
   ]
  ],
@@ -57,7 +199,10 @@
  },
  "sea": {
   "file": "sea",
-  "loop": [0.2, 61.5],
+  "loop": [
+   0.2,
+   61.5
+  ],
   "xfade": 2,
   "smooth": 0.5,
   "coast_lowpass": 3800,
@@ -65,43 +210,20 @@
   "coast_db": -47,
   "room_db": -52,
   "places": [
-   [0, 1]
+   [
+    0,
+    1
+   ],
+   [
+    16.36,
+    0
+   ],
+   [
+    53.3,
+    1
+   ]
   ],
   "quiet": [],
   "under": null
- },
- "music": {
-  "file": "song",
-  "db": -31.0,
-  "ref": [2, 16],
-  "clips": [
-   [
-    {
-     "at": 0
-    },
-    0.95,
-    15.93,
-    0.7,
-    0.07
-   ]
-  ],
-  "fade_out": [],
-  "silence": [],
-  "carve": [
-   [0, 1],
-   [900, 1],
-   [1500, 0.42],
-   [5000, 0.42],
-   [7500, 0.8],
-   [24000, 0.8]
-  ],
-  "duck": {
-   "threshold_db": -36,
-   "attack": 0.04,
-   "release": 0.28,
-   "gain": 1.6,
-   "amount": 0.5
-  },
-  "boost": []
  }
 }
