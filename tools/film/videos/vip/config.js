@@ -63,42 +63,45 @@ window.VIDEO = {
 
     var BOLD = 'font-family:inherit;font-weight:800;letter-spacing:-.022em;';
     /* the main point of each section: big, centred, one key word marked. Lines are html */
-    function TT(lines, s0, s1, d, p){ return add('<div class="big" style="' + BOLD + 'text-align:center;text-transform:uppercase;line-height:1.04">' + lines.map(function(l){ return '<span class="ln">' + l + '</span>' }).join('') + '</div>', s0, s1, d, p, TOP) }
+    /* a soft cream glow behind the title, no box: the scenes are busy, the title has to rest on something quiet */
+    var GLOW = '<div style="position:absolute;left:-7%;right:-7%;top:-26%;bottom:-26%;border-radius:50%;background:radial-gradient(closest-side,rgba(255,248,238,.9),rgba(255,248,238,.72) 52%,rgba(255,248,238,0));filter:blur(5px)"></div>';
+    function TT(lines, s0, s1, d, p){ return add('<div style="position:relative">' + GLOW + '<div class="big" style="position:relative;text-align:center;line-height:.98">' + lines.map(function(l){ return '<span class="ln">' + l + '</span>' }).join('') + '</div></div>', s0, s1, d, p, TOP) }
     /* recordings: the new pricing slide on her laptop, with a plain player bar */
     function LAP(w){ var f = w * .03; return '<div style="position:relative">' + img(PC + 'lap.png') + '<div style="position:absolute;left:12.02%;width:75.96%;top:56%;height:16.4%;box-sizing:border-box;padding:0 3%;display:flex;align-items:center;gap:' + f + 'px;background:linear-gradient(transparent,rgba(26,20,18,.8) 60%);color:#fff;font-weight:800;font-size:' + f + 'px;letter-spacing:.06em;white-space:nowrap"><svg viewBox="0 0 40 40" style="flex:none;width:' + (f * 2.2) + 'px;height:' + (f * 2.2) + 'px"><circle cx="20" cy="20" r="20" fill="#F72585"/><path d="M15 11 L30 20 L15 29 Z" fill="#fff"/></svg><span>DAY 2 RECORDING</span><div style="flex:1;height:' + (f * .36) + 'px;border-radius:9px;background:rgba(255,255,255,.4);overflow:hidden"><div style="width:34%;height:100%;background:#F72585"></div></div><span style="color:#FFE27A;letter-spacing:.02em">saved</span></div></div>' }
-    TT(PHONE ? ['recordings', '<mark>for life</mark>'] : ['recordings <mark>for life</mark>'], 12.6, 14, [60, 36, 1300, 90], [30, 600, 1020, 88]);
-    add(LAP(PHONE ? 760 : 780), 11.66, 14, [320, 150, 780], [160, 810, 760], TOP);
+    /* section titles: one top band. Desktop: centred in the space left of her tile. Phone: left of her tile, or under it when a screenshot fills the left */
+    TT(PHONE ? ['Recordings', '<i>for life.</i>'] : ['Recordings <i>for life.</i>'], 12.6, 14, [62, 56, 1280, 104], [20, 210, 545, 100]);
+    add(LAP(PHONE ? 760 : 780), 11.66, 14, [320, 190, 780], [160, 810, 760], TOP);
     add('<div style="position:relative">' + cut('notebook-red') + '<div class="big" style="position:absolute;left:10%;top:26%;width:36%;text-align:center;-webkit-text-stroke:0;filter:none;font-size:' + (PHONE ? 46 : 74) + 'px"><i>your own idea</i></div></div>', 15.4, 17.4, [90, 300, 640], [40, 200, 400], {cls: 'top', rot: -3});
     add('<div class="snap">' + img('../../img/slides/s4.webp') + '</div>', 18.2, 21.14, [60, 300, 730], [150, 160, 780], {cls: 'top', rot: -2});
     /* go back: the bar runs backwards and he runs with it */
-    TT(['go', '<mark>back</mark>'], 21.14, 22.84, [40, 160, 330, 96], [20, 180, 545, 120]);
-    add(LAP(PHONE ? 960 : 720), 21.14, 22.84, [370, 10, 720], [60, 610, 960], TOP);
-    var bar = add('<div style="height:26px;border-radius:13px;background:#fff;border:3px solid #1A1412;overflow:hidden"><div class="f" style="height:100%;background:#F72585"></div></div>', 21.14, 22.84, [370, 526, 720], [60, 1300, 960], SET);
+    TT(['Go <i>back.</i>'], 21.14, 22.84, [62, 56, 1280, 104], [20, 250, 545, 120]);
+    add(LAP(PHONE ? 960 : 720), 21.14, 22.84, [370, 190, 720], [60, 610, 960], TOP);
+    var bar = add('<div style="height:26px;border-radius:13px;background:#fff;border:3px solid #1A1412;overflow:hidden"><div class="f" style="height:100%;background:#F72585"></div></div>', 21.14, 22.84, [370, 706, 720], [60, 1300, 960], SET);
     bar.count = function(t){ bar.e.querySelector('.f').style.width = lerp(92, 22, io(seg(t, T(21.14), T(22.7)))).toFixed(1) + '%' };
 
     /* WhatsApp: the page's own chat, building */
     var chat = add(img(PC + 'chat-000.jpg'), 24.85, 32.42, [110, 20, 392], [20, 20, 530], SET);
     chat.seq = function(t){ var n = clamp(Math.round((t - T(24.85)) / (T(32.42) - T(24.85)) * 59), 0, 59); return PC + 'chat-' + ('00' + n).slice(-3) + '.jpg' };
-    add(img('paint/vip/wa.png'), 26.6, 32.42, [860, 36, 160], [740, 600, 140], {cls: 'top', rot: -4});
-    TT(PHONE ? ['private', '<mark>WhatsApp</mark>', 'group'] : ['private', '<mark>WhatsApp</mark> group'], 26.9, 32.42, [520, 200, 860, 84], [560, 750, 515, 60]);
+    add(img('paint/vip/wa.png'), 26.6, 32.42, [870, 290, 130], [750, 630, 120], {cls: 'top', rot: -4});
+    TT(PHONE ? ['Private', '<i>WhatsApp</i>', 'group'] : ['Private', '<i>WhatsApp</i> group'], 26.9, 32.42, [540, 56, 800, 96], [560, 780, 500, 84]);
     add('<div class="rowb" style="white-space:normal;background:#D9FDD3;border-color:#A8DDA0;line-height:1.2">Do I need more subscribers before I sell anything?</div>', 32.8, 35.02, [90, 400, 760, 46], [110, 200, 860, 54], {cls: 'top', rot: -1});
     if (!PHONE) add('<div class="big" style="text-align:center"><span class="ln" style="font-size:.7em">I\'ll be there for</span><span class="ln" style="text-transform:uppercase;font-family:inherit;font-weight:800;letter-spacing:-.022em"><mark>30 minutes</mark></span><span class="ln"><i>after each session,</i></span><span class="ln" style="font-size:.7em">plus one morning slot.</span></div>', 38.3, 41.9, [62, 280, 840, 92], [40, 1400, 1000, 50], TOP);
 
     /* the review */
     add(img(PC + 'qa.png'), 42.98, 48.72, [70, 30, 500], [20, 20, 530], TOP);
-    TT(['<mark>90 minute</mark>', 'group review', '<i>live</i>'], 46.2, 48.72, [610, 150, 760, 88], [30, 900, 1020, 108]);
+    TT(PHONE ? ['<i>90 minute</i>', 'group review,', 'live.'] : ['<i>90 minute</i>', 'group review, live.'], 46.2, 48.72, [600, 160, 760, 96], [560, 620, 500, 80]);   /* desk room: under its wall sign */
     var env = add(P('wk3'), 49.5, 54.68, [230, 320, 460], [40, 200, 320], SET);
     env.count = function(t){ var p = seg(t, T(49.5), T(50.1)); env.e.style.transform = 'translateY(' + (-(1 - p * p) * 700).toFixed(0) + 'px) rotate(' + ((1 - p) * -14).toFixed(2) + 'deg)' };
     add(img(PC + 'review.png'), 55.84, 60.24, [60, 26, 1230], [40, 610, 1000], TOP);
     add('<div style="position:relative">' + img('cut/stamp-red.png') + '<span style="position:absolute;inset:0;display:grid;place-items:center;font-weight:800;letter-spacing:.2em;padding-left:.2em;color:#A5121A">SELECTED</span></div>', 57.66, 60.24, [460, 330, 560, 74], [260, 900, 560, 74], {cls: 'top', rot: -6});
     var em = add(img(PC + 'email-000.png'), 60.24, 63.16, [60, 14, 640], [240, 596, 600], SET);
     em.seq = function(t){ var n = clamp(Math.round((t - T(60.24)) / (T(62.8) - T(60.24)) * 39), 0, 39); return PC + 'email-' + ('00' + n).slice(-3) + '.png' };
-    TT(PHONE ? ['what I would', '<mark>change</mark>', 'and <mark>why</mark>'] : ['what I would', '<mark>change</mark> and <mark>why</mark>'], 61.8, 63.16, [710, 90, 660, 72], [20, 150, 545, 66]);
+    TT(['What I would', '<i>change</i> and <i>why.</i>'], 61.8, 63.16, [720, 160, 620, 92], [20, 210, 545, 76]);
     add('<div class="statc big" style="-webkit-text-stroke:0"><span class="ln" style="font-size:1.45em;font-family:inherit;font-weight:800;letter-spacing:-.022em;text-transform:uppercase;text-align:center"><mark>Selected</mark> submissions</span><span class="ln" style="text-align:center">As many as fit in 90 minutes.</span><span class="ln" style="text-align:center">A personal review isn\'t guaranteed.</span></div>', 64, 68.12, [62, 380, 830, 46], [60, 200, 960, 40], TOP);
 
     /* the Sprint */
-    TT(PHONE ? ['offer', '<mark>clarity</mark>', 'sprint'] : ['offer <mark>clarity</mark> sprint'], 70.52, 76.5, [60, 36, 1300, 88], [20, 205, 545, 80]);
-    add(img(PC + 'lap3.png'), 68.95, 76.5, [200, 130, 1000], [20, 600, 1040], TOP);
+    TT(PHONE ? ['Offer', '<i>Clarity</i>', 'Sprint'] : ['Offer <i>Clarity</i> Sprint'], 70.52, 76.5, [62, 56, 1280, 104], [20, 200, 545, 96]);
+    add(img(PC + 'lap3.png'), 68.95, 76.5, [250, 190, 900], [20, 600, 1040], TOP);
     /* what it helps with, written on the page's paper, top to bottom as she says it */
     add(P('sub-sheet'), 76.5, 81.2, [300, 8, 690], [160, 590, 760], SET).e.style.opacity = 1;
     [['what you\'re selling', 77.7], ['how you explain <i>this value</i>', 78.9], ['what you charge', 80.5]].forEach(function(l, i){ add('<div class="big"><span class="ln">' + l[0] + '</span></div>', l[1], 81.2, [360, 240 + i * 160, 630, 52], [215, 730 + i * 170, 660, 50], {cls: 'top', wipe: 1}) });
@@ -107,7 +110,7 @@ window.VIDEO = {
 
     /* keep going: all four, in colour */
     tracker(85.34, 87.38, 4, [162, 450, 640], [220, 200, 640]);
-    TT(['<mark>keep going</mark>'], 85.34, 87.38, [62, 300, 840, 116], [20, 400, 1040, 112]);
+    TT(['<i>Keep going.</i>'], 85.34, 87.38, [62, 300, 840, 124], [20, 410, 1040, 130]);
     add('<div class="big"><i>"Yes, but what about mine?"</i></div>', 88.2, 91, [62, 380, 840, 104], [40, 200, 1000, 72], TOP);
     strike('just three days of watching', 92, 96.64, 94.8, [62, 400, 0, 60], [70, 200, 0, 62]);
 
