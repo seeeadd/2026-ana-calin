@@ -302,3 +302,11 @@ main [fill="#EC3486"], .vplay [fill="#F72585"] { fill: var(--vblue); }
   .vipc .crown { animation: crownTip 4.8s ease-in-out infinite; }
   @keyframes crownTip { 0%, 80%, 100% { transform: rotate(-16deg); } 86% { transform: rotate(-24deg) translateY(-2px); } 92% { transform: rotate(-12deg); } }
 }
+
+/* Sean, Nov 9: phones play the portrait edit inline, in a thin-bezel phone inside the hero (not full screen) */
+@media (max-width: 640px) {
+  .vh-l .door.wv-port { width: 100% !important; margin-left: 0 !important; }
+  .door.wv-port > img, .door.wv-port .petals { display: none !important; }
+  .door.wv-port .scr { position: absolute; inset: 0; height: 100%; width: 100%; }
+  .door.wv-port .door-v:after { display: none; }
+}

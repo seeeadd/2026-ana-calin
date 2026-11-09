@@ -2000,7 +2000,7 @@ html.wv-lock{overflow:hidden}
   .it2 > .tx > .wac + p{margin-top:16px}
 }
 </style>
-<link rel="stylesheet" href="../assets/vip-theme.css?v=5cbc3c0f0839">
+<link rel="stylesheet" href="../assets/vip-theme.css?v=0ae7a79bc6bf">
 </head>
 <body>
 
@@ -2153,7 +2153,6 @@ html.wv-lock{overflow:hidden}
           <img class="door-art" src="../img/vip/paint/door.webp?v=4" alt="" width="1032" height="620" fetchpriority="high">
           <div class="door-v"><button class="scr" type="button" aria-label="Play Ana's VIP video">
               
-              <img src="img/cover.webp" alt="Ana Calin" width="1280" height="720" fetchpriority="high">
               <video playsinline preload="none"></video>
               <img class="mk" src="../img/mark.png" alt="" width="56" height="56">
               <span class="vplay"><i><svg width="18" height="18" viewBox="0 0 26 26" aria-hidden="true"><path d="M8.6 5.6v14.8c0 .9 1 1.4 1.7 1l11.6-7.4c.7-.4.7-1.4 0-1.9L10.3 4.6c-.7-.5-1.7 0-1.7 1z" fill="#F72585"/></svg></i>tap for sound</span>
@@ -2722,9 +2721,9 @@ html.wv-lock{overflow:hidden}
   var d=nw[0].textContent.replace(/,\s*$/,''),tm=nw[1].textContent.replace(/\s+in\s+.*$/,'').replace(/\s*New York$/,''),nys=tb.querySelector('.tot-ny');
   tb.className='tot-dl';tb.innerHTML='<span>On sale until</span><span class="tot-d">'+esc(d)+' · '+esc(tm)+'</span><span class="tot-loc">'+PIN+(ny?'New York time':'Your time in '+esc(city))+'</span>'+(nys?'<small class="tot-ny">'+esc(nys.textContent)+'</small>':'')});
 }catch(e){}})();</script>
-<script src="../assets/wistia-vsl.js?v=2"></script>
-<script>/* Sean, Nov 4: desktop 5j7jxvhlbz, phone t0jit9k8nm (Wistia) */
-(function(){var b=document.getElementById('vsl');if(!b||!window.WVSL)return;WVSL({box:b,scr:b.querySelector('.scr'),desktop:'5j7jxvhlbz',phone:'t0jit9k8nm',previewSec:8,onPhoneEnd:function(){document.getElementById('order').scrollIntoView({behavior:'smooth', block:'center'})}})})();</script>
+<script src="../assets/wistia-vsl.js?v=4"></script>
+<script>/* Sean, Nov 9: the VIP final, desktop qkrlqlwwcr, phone h1acvjpuks (Wistia) */
+(function(){var b=document.getElementById('vsl');if(!b||!window.WVSL)return;WVSL({box:b,scr:b.querySelector('.scr'),frame:b.querySelector('.door-v'),desktop:'qkrlqlwwcr',phone:'h1acvjpuks',previewSec:8,onPhoneEnd:function(){document.getElementById('order').scrollIntoView({behavior:'smooth', block:'center'})}})})();</script>
 <script>/* the order card beside the page (Sean, Nov 5): a copy of the hero's card, whose buttons press the hero's own */
 (function(){var o=document.getElementById('order'),m=document.querySelector('main'),buy=document.getElementById('buy');if(!o||!m||!buy)return;
  var r=document.createElement('aside');r.className='vrail';r.setAttribute('aria-label','Your VIP order');var w=document.createElement('div');w.className='vrs';
