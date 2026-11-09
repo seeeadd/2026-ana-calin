@@ -461,7 +461,7 @@
     if (!reduce) setInterval(function(){ if (!gxPinned) gxShow(!gxEl.classList.contains('b')) }, 11000);
   }
 
-  /* second chance at VIP: back to the VIP page with the name and email, gone after Tue Dec 8, 11:59 pm New York */
+  /* second chance at VIP: back to the VIP page with the name and email, gone after Wed Dec 9, 1:30 pm New York, when Day 2 ends */
   var now0 = qs.get('now') ? Date.parse(qs.get('now')) : Date.now();
   if (C.CLOSES && now0 >= C.CLOSES) document.body.classList.add('vip-closed');
   document.querySelectorAll('a.vipback').forEach(function(a){

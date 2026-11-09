@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap">
 <link rel="stylesheet" href="../assets/conf.css">
 <link rel="stylesheet" href="../assets/confx.css">
-<link rel="stylesheet" href="../assets/conf-reg.css?v=c273500b8dcd">
+<link rel="stylesheet" href="../assets/conf-reg.css?v=0691f9a1e7bf">
 </head>
 <body class="regc">
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -416,8 +416,8 @@
 </section>
 
 <!-- 8. the free seat next to VIP (Sean, Nov 9: "make them feel like they're going to miss out", "recommended, but don't be too pushy").
-     Every line is from the VIP page's own comparison table, or this page (the 48-hour replays). Gone after Tue Dec 8, 11:59 pm
-     New York, like the VIP page; the deadline is final: no reopening, extending or selling later. -->
+     Every line is from the VIP page's own comparison table, or this page (the 48-hour replays). Gone after Wed Dec 9, 1:30 pm
+     New York (when Day 2 ends; Sean, Nov 9), like the VIP page; the deadline is final: no reopening, extending or selling later. -->
 <section class="vip2 more vx">
   <div class="wrap">
     <div class="vxs" data-r>
@@ -460,7 +460,7 @@
           <a class="btn vx-go" href="../vip/" data-track="vip_from_confirmed">Yes, make me a VIP ($67)</a>
         </div>
       </div>
-      <p class="vx-dl"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M12 7v5.5l3.5 2" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><span>VIP closes <b>Tue Dec 8, 11:59 pm New York</b>. After that, it doesn’t open again.</span></p>
+      <p class="vx-dl"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M12 7v5.5l3.5 2" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><span>VIP closes <b>Wed Dec 9, 1:30 pm New York</b>, when Day 2 ends. After that, it doesn’t open again.</span></p>
       <p class="vx-soft">The three free days are complete on their own. VIP is for when you want me to check your work. <a class="vipback" href="../vip/">See how VIP works &rarr;</a></p>
     </div>
   </div>
@@ -487,7 +487,7 @@
                                  // Fallback: a WhatsApp Community announcement group. VIPs don't join this, they get the VIP group.
     SURVEY_API:   '/api/ana-survey/', // step 3: the 7 quick questions post here; the answers land in the Google Sheet (tools/survey-sheet.gs)
     EXIT_URL:     '../exit-number/', // the exit number calculator the last question opens
-    CLOSES:       Date.UTC(2026, 11, 9, 4, 59)  // VIP closes Tue Dec 8, 11:59 pm New York (?now=2026-12-09T05:00:00Z tests it)
+    CLOSES:       Date.UTC(2026, 11, 9, 18, 30)  // VIP closes Wed Dec 9, 1:30 pm New York, when Day 2 ends (?now=2026-12-09T18:31:00Z tests it)
   };
 </script>
 <script>/* Sean, Nov 9: every date and time follows the visitor (their own day, time and city), the way the VIP page does;
@@ -496,13 +496,13 @@
  var city=tz.split('/').pop().replace(/_/g,' '),M=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
   W=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],WF=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
  var D=[new Date(Date.UTC(2026,11,8,17,0)),new Date(Date.UTC(2026,11,9,17,0)),new Date(Date.UTC(2026,11,10,17,0)),new Date(Date.UTC(2026,11,11,17,0))],
-  END=new Date(Date.UTC(2026,11,8,18,30)),CL=new Date(Date.UTC(2026,11,9,4,59));
+  END=new Date(Date.UTC(2026,11,8,18,30)),CL=new Date(Date.UTC(2026,11,9,18,30));
  var t=function(d){return d.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'}).toLowerCase()};
  var wmd=function(d){return W[d.getDay()]+' '+M[d.getMonth()]+' '+d.getDate()},md=function(d){return M[d.getMonth()]+' '+d.getDate()};
  var t1=t(D[0]),t2=t(END),sameP=t1.slice(-2)===t2.slice(-2),range=(sameP?t1.slice(0,-3):t1)+' to '+t2;
  var R=[
   ['12:00 to 1:30 pm New York',range+' in '+city+' (12:00 to 1:30 pm New York)'],
-  ['Tue Dec 8, 11:59 pm New York',wmd(CL)+', '+t(CL)+' in '+city+' (11:59 pm New York)'],['12:00 PM NEW YORK',(t1+' in '+city).toUpperCase()],['12:00 pm New York',t1+' in '+city+' (12:00 pm New York)'],['12:00 pm NY',t1],['12 pm NY',t1.replace(':00','')],
+  ['Wed Dec 9, 1:30 pm New York',wmd(CL)+', '+t(CL)+' in '+city+' (1:30 pm New York)'],['12:00 PM NEW YORK',(t1+' in '+city).toUpperCase()],['12:00 pm New York',t1+' in '+city+' (12:00 pm New York)'],['12:00 pm NY',t1],['12 pm NY',t1.replace(':00','')],
   ['Tue Dec 8 to Thu Dec 10',wmd(D[0])+' to '+wmd(D[2])],['Tue Dec 8 to Fri Dec 11',wmd(D[0])+' to '+wmd(D[3])],
   ['Tue, Dec 8',W[D[0].getDay()]+', '+md(D[0])],['Fri, Dec 11',W[D[3].getDay()]+', '+md(D[3])],
   ['Tue Dec 8',wmd(D[0])],['Wed Dec 9',wmd(D[1])],['Thu Dec 10',wmd(D[2])],['Fri Dec 11',wmd(D[3])],
@@ -523,7 +523,7 @@
  /* the city, with a pin, in the top bar */
  var tm=document.querySelector('.fb-dt');if(tm)tm.insertAdjacentHTML('beforeend','<span class="fb-loc">'+'<svg class="vpin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s-7-7.1-7-12.2A7 7 0 0 1 19 9.8C19 14.9 12 22 12 22Z"/><circle cx="12" cy="9.6" r="2.6"/></svg>'+city.replace(/[<>&]/g,'')+'</span>');
 }catch(e){}})();</script>
-<script src="../assets/conf.js?v=6"></script>
+<script src="../assets/conf.js?v=7"></script>
 <script>/* Sean, Nov 9: everything that sends them to the questions lights the questions up, so step 4 can't be missed;
    the header link turns into "open my calculator" once the 7 are in (conf.js opens the calculator) */
 (function(){var sv=document.getElementById('survey');if(!sv)return;

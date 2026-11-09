@@ -594,3 +594,6 @@ body.regc .svx-other label small { font-weight: 600; color: var(--ink2); font-si
 body.regc .svx-ot { width: 100%; min-height: 54px; padding: 12px 14px; font: 500 18px/1.3 var(--sans); color: var(--ink); background: #FFFDF6; border: 1.6px solid rgba(26, 20, 18, .3); border-radius: 12px; }
 body.regc .svx-ot:focus { outline: 3px solid #FFD400; outline-offset: 1px; border-color: var(--ink); }
 body.regc .svx-other .svx-act { margin-top: 12px; }
+
+/* the painted pencil in Come live writes past the edge on 320px phones: keep it inside the section */
+body.regc section.show { overflow-x: clip; }
