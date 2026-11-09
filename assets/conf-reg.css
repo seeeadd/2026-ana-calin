@@ -673,3 +673,9 @@ body.regc .ofc-pr{font:800 11px/1 var(--sans);color:var(--ink)}body.regc .ofc-pr
 body.regc .stay .big em{display:block}
 body.regc .stay .big,body.regc .stay .sm{text-wrap:balance}
 body.regc .stay .sm b{white-space:nowrap}
+/* the shutters in sunflower yellow on the free page (Sean, Nov 10) */
+body.regc .iph.win .wn-sh.l { --sm: url("../img/vip/paint/shut-l-y.webp"); }
+body.regc .iph.win .wn-sh.r { --sm: url("../img/vip/paint/shut-r-y.webp"); }
+body.regc .iph.win .wn-sh:before { background: repeating-linear-gradient(180deg, #E0A80E 0 6px, #F2BC18 6px 7px), #E0A80E; }
+body.regc .iph.win .wn-sh.l:after { background: linear-gradient(90deg, rgba(120, 80, 10, .45), rgba(120, 80, 10, .06)); }
+body.regc .iph.win .wn-sh.r:after { background: linear-gradient(270deg, rgba(120, 80, 10, .42), rgba(120, 80, 10, .05)); }
