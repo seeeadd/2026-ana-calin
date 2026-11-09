@@ -633,3 +633,43 @@ body.regc .vx-hd{margin-bottom:64px}
 body.regc .cx .cx-lead{max-width:900px;font-size:21px;line-height:1.55;text-wrap:balance}
 body.regc .cx .cx-lead2{max-width:900px;margin-top:14px}
 @media (max-width:640px){body.regc .cx .cx-lead{font-size:17.5px}}
+
+/* Ana's Offer Flow on the confirmation pages (Sean, Nov 10): the logo, and the preview as an AI app */
+body.regc .ofc-brand{display:inline-flex;align-items:center;gap:10px;margin:2px 0 10px}
+body.regc .ofc-bulb{width:64px;height:auto;flex:none;margin:-6px -4px -6px -6px;transform:rotate(-6deg)}
+body.regc .ofc-wm{position:relative;display:flex;flex-direction:column;line-height:1;padding-top:14px}
+body.regc .ofc-wm i{position:absolute;left:2px;top:-4px;font:400 20px/1 "Nothing You Could Do",cursive;font-style:normal;color:#F72585;transform:rotate(-7deg);white-space:nowrap}
+body.regc .ofc-wm b{font-family:var(--serif);font-weight:400;font-size:28px;letter-spacing:-.01em;color:var(--ink)}
+body.regc .ofc-wm b em{font-style:italic;color:#1F69B0}
+body.regc .ofc-tag{display:inline-flex;align-self:flex-start;align-items:center;gap:5px;margin-top:7px;padding:5px 10px 5px 8px;border-radius:999px;background:#1A1412;color:#FFD400;font:800 10px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase}
+body.regc .ofc-tag svg,body.regc .ofa2-ai svg,body.regc .ofa2-go svg{width:12px;height:12px;fill:#FFD400}
+body.regc .ofc-h{font-size:0 !important;height:0;margin:0;overflow:hidden}
+body.regc .ofapp{display:block;margin:8px auto 4px;max-width:360px;background:#fff;border:1px solid rgba(26,20,18,.18);border-radius:14px;overflow:hidden;box-shadow:0 22px 36px -22px rgba(60,40,20,.45);text-align:left}
+body.regc .ofa2-bar{display:flex;align-items:center;gap:5px;padding:9px 11px;background:linear-gradient(#F7F3EC,#EFE9DF);border-bottom:1px solid rgba(26,20,18,.1)}
+body.regc .ofa2-bar>i{width:9px;height:9px;border-radius:50%;background:#FF5F57}body.regc .ofa2-bar>i:nth-child(2){background:#FEBC2E}body.regc .ofa2-bar>i:nth-child(3){background:#28C840}
+body.regc .ofa2-bar b{flex:1;text-align:center;font-size:12.5px;color:#5A4E46}
+body.regc .ofa2-ai{display:inline-flex;align-items:center;gap:3px;padding:3px 7px;border-radius:999px;background:#1A1412;color:#FFD400;font:800 10px/1 var(--sans)}
+body.regc .ofa2-body{display:block;padding:12px;background:radial-gradient(circle at 1px 1px,rgba(26,20,18,.06) 1px,transparent 1.6px) 0 0/12px 12px,#FFFDF9}
+body.regc .ofa2-q{display:block;padding:10px 11px 9px;border:1px solid rgba(26,20,18,.16);border-radius:10px;background:#fff;box-shadow:0 0 0 3px rgba(255,212,0,.25)}
+body.regc .ofa2-q small{display:block;font:800 9.5px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:#C2185B;margin-bottom:5px}
+body.regc .ofa2-t{display:block;font:500 13px/1.4 var(--sans);color:var(--ink)}
+body.regc .ofa2-cur{display:inline-block;width:1.5px;height:1em;margin-left:1px;vertical-align:-2px;background:var(--ink);animation:ofa2body.regc 1s steps(1) infinite}
+@keyframes ofa2B{50%{opacity:0}}
+body.regc .ofa2-go{display:flex;align-items:center;justify-content:center;gap:4px;margin:8px 0 0 auto;width:max-content;padding:6px 11px;border-radius:999px;background:#FFD400;font:800 11px/1 var(--sans);color:var(--ink)}
+body.regc .ofa2-go svg{fill:var(--ink)}
+body.regc .ofa2-st{display:flex;align-items:center;justify-content:center;gap:6px;margin:10px 0 8px;font:600 11px/1.2 var(--sans);color:#7A6A60}
+body.regc .ofa2-st b{color:var(--ink)}
+body.regc .ofa2-dots{display:inline-flex;gap:3px}body.regc .ofa2-dots i{width:4px;height:4px;border-radius:50%;background:#F72585;animation:ofa2D 1.2s ease-in-out infinite}body.regc .ofa2-dots i:nth-child(2){animation-delay:.15s}body.regc .ofa2-dots i:nth-child(3){animation-delay:.3s}
+@keyframes ofa2D{0%,100%{opacity:.4;transform:translateY(0)}40%{opacity:1;transform:translateY(-3px)}}
+body.regc .ofa2-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+body.regc .ofc-card{display:flex;flex-direction:column;gap:5px;padding:7px 6px;border:1px solid rgba(26,20,18,.14);border-radius:9px;background:#fff}
+body.regc .ofc-card:first-child{border-color:#2E9E57;box-shadow:0 0 0 2px rgba(46,158,87,.18)}
+body.regc .ofc-ic{position:relative;display:block;width:30px;height:30px;border-radius:8px;overflow:hidden}
+body.regc .ofc-ic img{position:absolute;width:160%;max-width:none;height:auto;left:-30%;top:-8%}
+body.regc .ofc-k{font:800 8.5px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--ink)}
+body.regc .ofc-ln{display:grid;gap:3px}body.regc .ofc-ln i{display:block;height:5px;border-radius:2px;background:#E6DED2;filter:blur(.6px)}body.regc .ofc-ln i+i{width:60%}
+body.regc .ofc-pr{font:800 11px/1 var(--sans);color:var(--ink)}body.regc .ofc-pr b{filter:blur(1.8px)}
+/* the draw: two clean lines, the small line balanced (Sean, Nov 10: "fix line of text") */
+body.regc .stay .big em{display:block}
+body.regc .stay .big,body.regc .stay .sm{text-wrap:balance}
+body.regc .stay .sm b{white-space:nowrap}
