@@ -2025,7 +2025,7 @@ html.wv-lock{overflow:hidden}
 .vw-hd p,.vi-hd p{font-family:var(--sans);font-size:clamp(17px,1.45vw,19.5px);line-height:1.55;font-weight:500;color:var(--ink2);max-width:640px;margin-left:auto;margin-right:auto}
 .vw-hd p mark,.vi-hd p mark{font-weight:800}
 </style>
-<link rel="stylesheet" href="../assets/vip-theme.css?v=7cebc9ef904a">
+<link rel="stylesheet" href="../assets/vip-theme.css?v=69f2f99360b6">
 </head>
 <body>
 
@@ -2774,5 +2774,9 @@ html.wv-lock{overflow:hidden}
   if(w.offsetHeight>vh-120)r.classList.add('short');r.style.setProperty('--vtop',Math.max(96,(vh+70-w.offsetHeight)/2)+'px')}
  function on(){var a=o.getBoundingClientRect(),b=buy.getBoundingClientRect(),show=mq.matches&&a.bottom<0&&b.top>innerHeight*.35;r.classList.toggle('on',show);document.documentElement.classList.toggle('vrail-on',show)}
  fit();on();addEventListener('resize',function(){fit();on()});addEventListener('scroll',on,{passive:true});setTimeout(fit,1500)})();</script>
+<script>/* the week's road runs just under the drawings (Sean, Nov 10: "put the line under graphics") */
+(function(){var trk=document.querySelector('.trk'),road=trk&&trk.querySelector('.road'),wk=trk&&trk.querySelector('.stop.s1 .wk');if(!road||!wk)return;
+ function place(){var t=trk.getBoundingClientRect(),w=wk.getBoundingClientRect();if(!w.height)return;road.style.top=Math.round(w.bottom-t.top+13)+'px'}
+ place();addEventListener('resize',place);addEventListener('load',place);if(window.ResizeObserver)new ResizeObserver(place).observe(wk)})();</script>
 </body>
 </html>
