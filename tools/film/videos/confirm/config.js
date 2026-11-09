@@ -3,7 +3,7 @@
 window.VIDEO = {
   id: 'confirm', desktopW: 1792, herH: 1280, cuts: true, still: true, doorTop: true,
   frames: '_local/confirm/frames', data: ['_local/confirm/data.js', '_local/confirm/face.js'], piecesDir: '_local/confirm/pieces/',
-  audio: '~/AnaVideo/out/kit/confirm-mix.wav',
+  audio: '~/AnaVideo/out/kit/confirm-mix-1x.wav',
   hold: 1.6,
   layout: {
     d: {W: 1792, zV: 8, bud: 186, RL: [-190, 0], M: [923, 0, 869, 1008], FA: [947, -21, 1], FB: [1382, 30, .47],
