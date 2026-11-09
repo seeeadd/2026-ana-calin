@@ -230,3 +230,6 @@ main [fill="#EC3486"], .vplay [fill="#F72585"] { fill: var(--vblue); }
   .vh .vspam-demo .gx { margin-left: 0; width: 100%; }
   .vspam-zoom, .vspam-zoom:hover { width: 30px; height: 30px; }
 }
+/* Sean, Nov 9: no lone word on the last line of the spam note */
+.vh .vspam { max-width: 960px; }
+.vh .vspam-t > span:last-child { text-wrap: pretty; }
