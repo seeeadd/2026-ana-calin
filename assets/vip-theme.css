@@ -161,7 +161,7 @@ main [fill="#EC3486"], .vplay [fill="#F72585"] { fill: var(--vblue); }
 .pq:after, .pq-by:before { display: none; }
 .it { background: none; }
 .vi { background-image: none; }
-.trk .road, .lane.free:before, .mv-c1 { display: none; }
+.lane.free:before, .mv-c1 { display: none; }   /* the road through the week stays: it is the timeline (Sean, Nov 10) */
 .cmp td.v, .cmp th.v { border-left: 0; border-right: 0; }
 .how li, .it .how li { border-top: 0; }
 .vh .hiw-lh { border-top: 0; padding-top: 0; }
@@ -310,3 +310,8 @@ main [fill="#EC3486"], .vplay [fill="#F72585"] { fill: var(--vblue); }
   .door.wv-port .scr { position: absolute; inset: 0; height: 100%; width: 100%; }
   .door.wv-port .door-v:after { display: none; }
 }
+
+/* the week's sun, softer (Sean, Nov 10: "make the sun circle a bit more subtle") */
+.trk .sun { opacity: .38; }
+.trk .road { z-index: 0; background: repeating-linear-gradient(90deg, rgba(26, 20, 18, .38) 0 6px, transparent 6px 12px); height: 2px; }
+.trk .stop .wk { position: relative; z-index: 1; }
