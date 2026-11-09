@@ -1,7 +1,7 @@
 {
  "edl_from": "_local/confirm/data.js",
  "sfx_dir": "~/Downloads/ana calin sound effects",
- "speed": 1.2,
+ "speed": 1.1,
  "voice": {
   "recording": "~/Downloads/v24044gl0000dbk6gr7og65pqaldhimg.MP4",
   "clean": "~/AnaVideo/out/kit/confirm-voice-enh.wav",
