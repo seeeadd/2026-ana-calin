@@ -1,0 +1,107 @@
+{
+ "edl_from": "_local/CHANGE-ME/data.js",
+ "sfx_dir": "~/Downloads/ana calin sound effects",
+ "speed": 1,
+ "voice": {
+  "recording": "~/Downloads/CHANGE-ME.MOV",
+  "clean": "~/Downloads/CHANGE-ME Adobe v2.wav",
+  "snap_on": "orig",
+  "sources": {
+   "alt": {
+    "file": "~/Downloads/CHANGE-ME Adobe v1.wav"
+   },
+   "orig": {
+    "file": "~/AnaVideo/out/kit/CHANGE-ME-cut.wav",
+    "filter": "highpass=f=70,afftdn=nf=-34:nr=7"
+   }
+  },
+  "swaps": [],
+  "stretches": []
+ },
+ "files": {
+  "key": "Brass Key Ring Sound Effect.mp3",
+  "sea": "Calm Sea Waves.mp3",
+  "tick": "Clock Ticking Sound Effect (1).mp3",
+  "stamp": "Ink Stamp Sound Effect.mp3",
+  "kal": "Kalimba Octave Pluck Effect.mp3",
+  "mar": "Marimba Sound Effect.mp3",
+  "pen": "Pen on Paper Sound Effect.mp3",
+  "run": "Run on Wood Sound Effect.mp3",
+  "bell": "Small Bell Ringing Sound Effect.mp3",
+  "ship": "Two Small Ship Bells.mp3",
+  "type": "Typewriter Sound Effect.mp3",
+  "chime": "Wind Chimes Sound Effect.mp3",
+  "door": "Wooden Swinging Door Sound Effect (1).mp3",
+  "click": "Magic Mouse Click Sounds Magic Mouse Click Sound fx Magic Mouse Click Sound effects SOUND BUDDY.mp3",
+  "song": "Each Day Gets Better.mp3"
+ },
+ "sfx": [
+  [
+   "kal",
+   {
+    "cut": 1.0
+   },
+   0.06,
+   0.9,
+   -19,
+   {
+    "semi": 2,
+    "fout": 0.35
+   }
+  ]
+ ],
+ "ease_in": {
+  "sec": 2.0,
+  "floor": 0.22,
+  "pow": 1.4
+ },
+ "sea": {
+  "file": "sea",
+  "loop": [0.2, 61.5],
+  "xfade": 2,
+  "smooth": 0.5,
+  "coast_lowpass": 3800,
+  "room_lowpass": 650,
+  "coast_db": -47,
+  "room_db": -52,
+  "places": [
+   [0, 1]
+  ],
+  "quiet": [],
+  "under": null
+ },
+ "music": {
+  "file": "song",
+  "db": -31.0,
+  "ref": [2, 16],
+  "clips": [
+   [
+    {
+     "at": 0
+    },
+    0.95,
+    15.93,
+    0.7,
+    0.07
+   ]
+  ],
+  "fade_out": [],
+  "silence": [],
+  "carve": [
+   [0, 1],
+   [900, 1],
+   [1500, 0.42],
+   [5000, 0.42],
+   [7500, 0.8],
+   [24000, 0.8]
+  ],
+  "duck": {
+   "threshold_db": -36,
+   "attack": 0.04,
+   "release": 0.28,
+   "gain": 1.6,
+   "amount": 0.5
+  },
+  "boost": []
+ }
+}

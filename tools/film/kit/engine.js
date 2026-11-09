@@ -72,11 +72,12 @@
   var RL = L.RL || (PHONE ? [-160, L.capB - 798] : [-200, 0]);
   /* the bay outside: the coast's own painted hills, sea, light and boat, seen only through the glass of the door */
   function tiles(par, src, w, h, top){ var d = document.createElement('div'); d.style.cssText = 'position:absolute;left:0;top:' + top + 'px;width:' + (w * 4) + 'px;height:' + h + 'px'; [0, 1, 2, 3].forEach(function(i){ var m = document.createElement('img'); m.src = src; m.alt = ''; m.style.cssText = 'position:absolute;top:0;left:' + (i * w) + 'px;width:' + w + 'px;height:' + h + 'px;max-width:none;' + (i % 2 ? 'transform:scaleX(-1)' : ''); d.appendChild(m) }); par.appendChild(d); return {e: d, per: w * 2} }
-  function room(id, art, sprites, hor, fx){
+  function room(id, art, sprites, hor, fx, box){
     var e = document.createElement('div'); e.id = id; e.style.cssText = 'position:absolute;left:' + RL[0] + 'px;top:' + RL[1] + 'px;width:2000px;height:1008px;visibility:hidden';
-    var BX = 150, BY = 90, by = document.createElement('div'); by.style.cssText = 'position:absolute;left:' + BX + 'px;top:' + BY + 'px;width:480px;height:650px;overflow:hidden;background:linear-gradient(#6FB6E2 0%,#A9D8EF ' + Math.round((hor - BY) * .62 / 6.5) + '%,#F5E8CF ' + Math.round((hor - BY) / 6.5) + '%)';
-    var h0 = hor - BY, parts = {far: tiles(by, 'paint/vfar.webp', 2400, 240, h0 + 8 - 240), near: tiles(by, 'paint/vnear.webp', 2400, 240, h0 + 8 - 240), sea: tiles(by, 'paint/vsea.webp', 2000, 650 - h0, h0), boat: null, g1: tiles(by, 'paint/vglint.webp', 2000, 650 - h0, h0), g2: tiles(by, 'paint/vglint.webp', 2000, 650 - h0, h0)};
-    var bt = document.createElement('img'); bt.src = 'paint/vboat.webp'; bt.alt = ''; bt.style.cssText = 'position:absolute;left:0;top:0;width:96px;max-width:none'; by.insertBefore(bt, parts.g1.e); parts.boat = bt; parts.h0 = h0;
+    /* box: [x, y, w, h] of the opening the moving bay shows through; a window by default, the whole view from the hill */
+    var BB = box || [150, 90, 480, 650], BX = BB[0], BY = BB[1], BH = BB[3], by = document.createElement('div'); by.style.cssText = 'position:absolute;left:' + BX + 'px;top:' + BY + 'px;width:' + BB[2] + 'px;height:' + BH + 'px;overflow:hidden;background:linear-gradient(#6FB6E2 0%,#A9D8EF ' + Math.round((hor - BY) * .62 / (BH / 100)) + '%,#F5E8CF ' + Math.round((hor - BY) / (BH / 100)) + '%)';
+    var h0 = hor - BY, parts = {far: tiles(by, 'paint/vfar.webp', 2400, 240, h0 + 8 - 240), near: tiles(by, 'paint/vnear.webp', 2400, 240, h0 + 8 - 240), sea: tiles(by, 'paint/vsea.webp', 2000, BH - h0, h0), boat: null, g1: tiles(by, 'paint/vglint.webp', 2000, BH - h0, h0), g2: tiles(by, 'paint/vglint.webp', 2000, BH - h0, h0)};
+    var bt = document.createElement('img'); bt.src = 'paint/vboat.webp'; bt.alt = ''; bt.style.cssText = 'position:absolute;left:0;top:0;width:96px;max-width:none'; by.insertBefore(bt, parts.g1.e); parts.boat = bt; parts.h0 = h0; parts.bw = BB[2];
     e.innerHTML = '<div style="position:absolute;left:0;width:2000px;bottom:100%;height:' + (RL[1] + 10) + 'px;background:#FAF6EE"></div>'; e.appendChild(by);
     var im = document.createElement('img'); im.src = 'paint/' + art + '.webp'; im.alt = ''; im.style.cssText = 'position:absolute;left:0;top:0;width:2000px;height:1008px;max-width:none'; e.appendChild(im);
     parts.sp = sprites.map(function(q){ var wr = document.createElement('div'); wr.style.cssText = 'position:absolute;left:0;top:0;width:2000px;height:1008px;' + (q[7] || ''); var m = document.createElement('img'); m.src = 'paint/' + q[0] + '.webp'; m.alt = ''; m.style.cssText = 'position:absolute;left:' + q[1] + 'px;top:' + q[2] + 'px;width:' + q[3] + 'px;height:' + q[4] + 'px;max-width:none;transform-origin:' + q[5] + 'px ' + q[6] + 'px'; wr.appendChild(m); e.appendChild(wr); return m });
@@ -92,7 +93,7 @@
   var DESK = room('desk', 'vdesk', [['vd-sl', 128, 82, 138, 648, 69, 0], ['vd-sr', 476, 82, 132, 648, 66, 0, 'clip-path:polygon(0 0,100% 0,100% 100%,0 100%,0 0,26.4% 47.4%,26.4% 72%,100% 72%,100% 47.4%,26.4% 47.4%,0 0)'], ['vd-pend', 700, 0, 680, 420, 340, 0]], 430,
     GL('gLamp2', '#FFE9A8') + GL('gFlame', '#FFD27A') + BEAM + '<ellipse class="lamp" cx="1340" cy="630" rx="210" ry="150" fill="url(#gLamp2)"/><circle class="glow" cx="495" cy="726" r="52" fill="url(#gFlame)"/><ellipse class="flame" cx="0" cy="-11" rx="6" ry="12" fill="#FFB84A"/><path class="cursor" d="M0 0 L0 17 L4.6 13 L8 20.6 L11 19.2 L7.8 12 L13.4 12 Z" fill="#191512" stroke="#FFF" stroke-width="1.6"/>' + motes(18));
   var RM = {studio: STUDIO, desk: DESK}, RV = CFG.roomViews || {};  /* roomViews: {room: [x, y, scale, flip, phone x in the room]}: another angle on the same room */
-  (CFG.extraRooms || []).forEach(function(q){ RM[q[0]] = room(q[0], q[1], q[2], q[3], GL('gLampX', '#FFE29A') + BEAM + '<ellipse class="lamp" cx="' + q[4] + '" cy="' + q[5] + '" rx="170" ry="140" fill="url(#gLampX)"/>' + motes(18) + pets) });
+  (CFG.extraRooms || []).forEach(function(q){ RM[q[0]] = room(q[0], q[1], q[2], q[3], GL('gLampX', '#FFE29A') + BEAM + '<ellipse class="lamp" cx="' + q[4] + '" cy="' + q[5] + '" rx="170" ry="140" fill="url(#gLampX)"/>' + motes(18) + pets, q[6]) });
   var SC = CFG.rooms.map(function(k){ return [T(k[0]), k[1]] });
   window.__T = T;
   function roomAt(t){ var cur = SC[0][1]; SC.forEach(function(k){ if (t >= k[0]) cur = k[1] }); return cur }
@@ -102,7 +103,7 @@
     var P = ro.parts, p = pan(t), d = DS[clamp(Math.floor(t * 30), 0, DS.length - 1)] || 0, sn = Math.sin(t * 1.5);
     /* far things drift slower than the room pans, so the glass reads as glass */
     rSlide(P.far, 500 + Math.sin(t * .03) * 90 - p * .3); rSlide(P.near, 230 + Math.sin(t * .05) * 120 - p * .6); rSlide(P.sea, t * 10); rSlide(P.g1, t * 26); rSlide(P.g2, t * 4); P.g1.e.style.opacity = (.6 + .4 * sn).toFixed(3); P.g2.e.style.opacity = (.6 - .4 * sn).toFixed(3);
-    P.boat.style.transform = 'translate(' + (-90 + ((t * 13 + 170) % 560)).toFixed(1) + 'px,' + (P.h0 - 26 + Math.sin(t * 1.3) * 3).toFixed(1) + 'px) rotate(' + (Math.sin(t * 1.1) * 1.8).toFixed(2) + 'deg)';
+    P.boat.style.transform = 'translate(' + (-90 + ((t * 13 + 170) % (P.bw + 80))).toFixed(1) + 'px,' + (P.h0 - 26 + Math.sin(t * 1.3) * 3).toFixed(1) + 'px) rotate(' + (Math.sin(t * 1.1) * 1.8).toFixed(2) + 'deg)';
     /* the curtains lift in the breeze, and billow when he runs past the door */
     var hx = rx(t), hv = Math.abs((rx(t + .02) - rx(t - .02)) / .04), doorX = 355 + RL[0], gust = clamp(1 - Math.abs(hx - doorX) / 340, 0, 1) * clamp(hv / 260, 0, 1);
     var bz = Math.sin(t * .8) * .8 + Math.sin(t * 1.9) * .25;
