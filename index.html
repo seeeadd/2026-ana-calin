@@ -2681,15 +2681,28 @@ html.wv-lock{overflow:hidden}
 .sum .recap p{text-wrap:balance}
 .who .itx p.ilead{font-family:var(--sans);font-size:clamp(19px,1.6vw,22px);line-height:1.5;font-weight:500;color:var(--ink)}
 .who .itx p.ilead b{font-weight:800}
-/* Ana's Offer Flow: its own logo (Sean, Nov 10) */
-.of-brand{display:inline-flex;align-items:center;gap:12px}
-.of-brand .of-mark{width:46px;height:46px;flex:none;filter:drop-shadow(0 4px 6px rgba(26,20,18,.18))}
-.of-wm{display:flex;flex-direction:column;line-height:1}
-.of-wm b{font-family:var(--serif);font-weight:400;font-size:26px;letter-spacing:-.01em;color:var(--ink)}
+/* Ana's Offer Flow: its own logo (Sean, Nov 10: "make it better"): a yellow sticker tile, one stem branching into four
+   coloured buds (what you know, four offers), and "Ana's" in her handwriting over "Offer Flow" */
+.of-brand{display:inline-flex;align-items:center;gap:14px;margin:6px 0 14px}
+.of-brand .of-mark{width:58px;height:58px;flex:none;transform:rotate(-4deg)}
+.of-wm{position:relative;display:flex;flex-direction:column;line-height:1;padding-top:12px}
+.of-wm .of-ana{position:absolute;left:-2px;top:-8px;font:400 22px/1 "Nothing You Could Do",cursive;font-style:normal;color:#F72585;transform:rotate(-6deg);white-space:nowrap}
+.of-wm b{font-family:var(--serif);font-weight:400;font-size:34px;letter-spacing:-.015em;color:var(--ink)}
 .of-wm b em{font-style:italic;color:#1F69B0}
-.of-wm small{margin-top:5px;font:800 11px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--ink3)}
-.ofa-logo2{background:none;box-shadow:none}
+.of-wm small{margin-top:6px;display:inline-flex;align-items:center;gap:6px;font:800 10.5px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--ink3)}
+.of-wm small:before{content:"";width:16px;height:1.5px;background:currentColor;opacity:.5}
+.ofa-logo2{background:none;box-shadow:none;overflow:visible}
 .ofa-logo2 .of-mark{width:100%;height:100%;display:block}
+@media (prefers-reduced-motion:no-preference){
+  html.anim-on .ofcard .of-brand .of-br path{stroke-dasharray:40;stroke-dashoffset:40}
+  html.anim-on .ofcard .of-brand .of-bud circle{transform-box:fill-box;transform-origin:center;transform:scale(0)}
+  html.anim-on .ofcard.in .of-brand .of-br path{animation:ofBr .7s ease .2s forwards}
+  html.anim-on .ofcard.in .of-brand .of-bud circle{animation:ofBud .45s cubic-bezier(.2,1.6,.4,1) forwards}
+  html.anim-on .ofcard.in .of-brand .of-bud circle:nth-child(1){animation-delay:.75s}html.anim-on .ofcard.in .of-brand .of-bud circle:nth-child(2){animation-delay:.85s}
+  html.anim-on .ofcard.in .of-brand .of-bud circle:nth-child(3){animation-delay:.95s}html.anim-on .ofcard.in .of-brand .of-bud circle:nth-child(4){animation-delay:1.05s}
+  @keyframes ofBr{to{stroke-dashoffset:0}}@keyframes ofBud{to{transform:scale(1)}}
+}
+@media (max-width:400px){.of-wm b{font-size:30px}.of-brand .of-mark{width:52px;height:52px}}
 </style>
 <link rel="stylesheet" href="assets/registration-theme.css?v=d3970c488bea">
 </head>
@@ -3181,7 +3194,7 @@ html.wv-lock{overflow:hidden}
   <div class="wrap">
     <div class="ofcard" data-r>
       <div class="oftx">
-        <span class="of-brand" role="img" aria-label="Ana’s Offer Flow, a free AI tool"><svg class="of-mark" viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="13" fill="#1A1412"/><g transform="translate(24 25)"><ellipse cy="-9" rx="6.2" ry="9.4" fill="#FFD400"/><ellipse cy="-9" rx="6.2" ry="9.4" fill="#F72585" transform="rotate(90)"/><ellipse cy="-9" rx="6.2" ry="9.4" fill="#5B8BC6" transform="rotate(180)"/><ellipse cy="-9" rx="6.2" ry="9.4" fill="#FFF3D6" transform="rotate(270)"/><circle r="4.6" fill="#1A1412" stroke="#FFD400" stroke-width="1.6"/></g><path d="M39 6.5c.4 2.6 1.6 3.8 4.2 4.2-2.6.4-3.8 1.6-4.2 4.2-.4-2.6-1.6-3.8-4.2-4.2 2.6-.4 3.8-1.6 4.2-4.2Z" fill="#FFD400"/></svg><span class="of-wm"><b>Ana’s Offer <em>Flow</em></b><small>Free AI tool</small></span></span>
+        <span class="of-brand" role="img" aria-label="Ana’s Offer Flow, a free AI tool"><svg class="of-mark" viewBox="0 0 60 60" aria-hidden="true"><rect x="5" y="5" width="52" height="52" rx="15" fill="#1A1412"/><rect x="2" y="2" width="52" height="52" rx="15" fill="#FFD400" stroke="#1A1412" stroke-width="2.4"/><g fill="none" stroke="#1A1412" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" class="of-br"><path d="M28 47 C28.5 41 27.5 36 28 31"/><path d="M28 31 C24 28 17 26 14.5 18.5"/><path d="M28 31 C26.5 25 24.5 19 23.5 12.5"/><path d="M28 31 C30 25 32 19 33.5 12.5"/><path d="M28 31 C32 28 39 26 42 18.5"/></g><path d="M28 41 C23 40.5 20.5 37.5 20.5 34.5 C24.5 34.5 27.5 37 28 41Z" fill="#6E9A4E" stroke="#1A1412" stroke-width="1.6" stroke-linejoin="round"/><g stroke="#1A1412" stroke-width="1.8" class="of-bud"><circle cx="14.5" cy="17" r="4.6" fill="#F72585"/><circle cx="23.5" cy="11" r="4.6" fill="#5B8BC6"/><circle cx="33.5" cy="11" r="4.6" fill="#FFFDF6"/><circle cx="42" cy="17" r="4.6" fill="#F4C21F"/></g><path d="M46 34c.4 2.4 1.5 3.5 3.9 3.9-2.4.4-3.5 1.5-3.9 3.9-.4-2.4-1.5-3.5-3.9-3.9 2.4-.4 3.5-1.5 3.9-3.9Z" fill="#FFFDF6" stroke="#1A1412" stroke-width="1.2" stroke-linejoin="round"/></svg><span class="of-wm"><i class="of-ana">Ana’s</i><b>Offer <em>Flow</em></b><small>Free AI tool</small></span></span>
         <h2><span class="l">Don’t arrive with</span> <span class="l"><em>“I don’t know what to sell.”</em></span></h2>
         <p class="of-lead">Let’s give you something to work with.</p>
         <p>I built <b>Ana’s Offer Flow</b> around the system we’ll use in The Exit Plan. Tell it about your experience, and it gives you <b>four product suggestions with starting prices.</b></p>
@@ -3195,7 +3208,7 @@ html.wv-lock{overflow:hidden}
           <div class="ofa-win">
             <div class="ofa-bar"><span class="ofa-dots"><i></i><i></i><i></i></span><span class="ofa-title">Ana’s Offer Flow</span><span class="ofa-free">Free</span></div>
             <div class="ofa-app">
-              <nav class="ofa-rail"><span class="ofa-logo ofa-logo2"><svg class="of-mark sm" viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="13" fill="#1A1412"/><g transform="translate(24 25)"><ellipse cy="-9" rx="6.2" ry="9.4" fill="#FFD400"/><ellipse cy="-9" rx="6.2" ry="9.4" fill="#F72585" transform="rotate(90)"/><ellipse cy="-9" rx="6.2" ry="9.4" fill="#5B8BC6" transform="rotate(180)"/><ellipse cy="-9" rx="6.2" ry="9.4" fill="#FFF3D6" transform="rotate(270)"/><circle r="4.6" fill="#1A1412" stroke="#FFD400" stroke-width="1.6"/></g><path d="M39 6.5c.4 2.6 1.6 3.8 4.2 4.2-2.6.4-3.8 1.6-4.2 4.2-.4-2.6-1.6-3.8-4.2-4.2 2.6-.4 3.8-1.6 4.2-4.2Z" fill="#FFD400"/></svg></span><span class="ofa-ni on"><svg viewBox="0 0 24 24"><path d="M12 3c.5 4 2.7 6.2 6.7 6.7-4 .5-6.2 2.7-6.7 6.7-.5-4-2.7-6.2-6.7-6.7 4-.5 6.2-2.7 6.7-6.7Z"/></svg></span><span class="ofa-ni"><svg viewBox="0 0 16 16"><path d="M4 2.5h8v11l-4-2.6-4 2.6Z"/></svg><b class="ofa-cnt">0</b></span><span class="ofa-ni"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2.5"/><path d="M8 7h8M8 11h2M12 11h2M16 11h0M8 15h2M12 15h2M8 18h2M12 18h2"/></svg></span></nav>
+              <nav class="ofa-rail"><span class="ofa-logo ofa-logo2"><svg class="of-mark sm" viewBox="0 0 60 60" aria-hidden="true"><rect x="5" y="5" width="52" height="52" rx="15" fill="#1A1412"/><rect x="2" y="2" width="52" height="52" rx="15" fill="#FFD400" stroke="#1A1412" stroke-width="2.4"/><g fill="none" stroke="#1A1412" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" class="of-br"><path d="M28 47 C28.5 41 27.5 36 28 31"/><path d="M28 31 C24 28 17 26 14.5 18.5"/><path d="M28 31 C26.5 25 24.5 19 23.5 12.5"/><path d="M28 31 C30 25 32 19 33.5 12.5"/><path d="M28 31 C32 28 39 26 42 18.5"/></g><path d="M28 41 C23 40.5 20.5 37.5 20.5 34.5 C24.5 34.5 27.5 37 28 41Z" fill="#6E9A4E" stroke="#1A1412" stroke-width="1.6" stroke-linejoin="round"/><g stroke="#1A1412" stroke-width="1.8" class="of-bud"><circle cx="14.5" cy="17" r="4.6" fill="#F72585"/><circle cx="23.5" cy="11" r="4.6" fill="#5B8BC6"/><circle cx="33.5" cy="11" r="4.6" fill="#FFFDF6"/><circle cx="42" cy="17" r="4.6" fill="#F4C21F"/></g><path d="M46 34c.4 2.4 1.5 3.5 3.9 3.9-2.4.4-3.5 1.5-3.9 3.9-.4-2.4-1.5-3.5-3.9-3.9 2.4-.4 3.5-1.5 3.9-3.9Z" fill="#FFFDF6" stroke="#1A1412" stroke-width="1.2" stroke-linejoin="round"/></svg></span><span class="ofa-ni on"><svg viewBox="0 0 24 24"><path d="M12 3c.5 4 2.7 6.2 6.7 6.7-4 .5-6.2 2.7-6.7 6.7-.5-4-2.7-6.2-6.7-6.7 4-.5 6.2-2.7 6.7-6.7Z"/></svg></span><span class="ofa-ni"><svg viewBox="0 0 16 16"><path d="M4 2.5h8v11l-4-2.6-4 2.6Z"/></svg><b class="ofa-cnt">0</b></span><span class="ofa-ni"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2.5"/><path d="M8 7h8M8 11h2M12 11h2M16 11h0M8 15h2M12 15h2M8 18h2M12 18h2"/></svg></span></nav>
               <div class="ofa-main">
                 <div class="ofa-head"><small>New flow</small><b>What do you know?</b></div>
                 <div class="ofa-comp"><p><span class="ofx-type">I coach mothers going back to work after a career break.</span><i class="ofx-cur"></i></p>
