@@ -247,3 +247,37 @@ main [fill="#EC3486"], .vplay [fill="#F72585"] { fill: var(--vblue); }
 .order .btn, .bb .btn { height: auto; min-height: 58px; white-space: normal; line-height: 1.2; padding-top: 9px; padding-bottom: 9px; }
 .bb .btn { min-height: 62px; }
 .order .btn .bt, .bb .btn .bt { min-width: 0; text-wrap: balance; }
+
+/* ---------- Sean, Nov 9 (round 4): bigger pictures and labels, the lifetime badge, the spam strip ---------- */
+/* the recording bar's play triangle (a later .pl rule for another card had turned it into a white box) */
+.rbar .pl { order: 0; width: 0; height: 0; padding: 0; margin: 0; background: none; border: 0; border-radius: 0; overflow: visible;
+  border-left: 8px solid #fff; border-top: 5px solid transparent; border-bottom: 5px solid transparent; }
+.rbar .pg { min-width: 30px; }
+/* Nº 04: the picture gets the wider column (it sat in the narrow one) */
+@media (min-width: 901px) { .vi .it4.flip { grid-template-columns: minmax(0, .84fr) minmax(0, 1.16fr); column-gap: 44px; } }
+.mv-badge { z-index: 4; transform: rotate(-8deg); filter: drop-shadow(0 12px 14px rgba(60, 35, 15, .28)); }
+/* the labels that say what they get, bigger */
+.live-tag { font-size: 16px; padding: 8px 17px 8px 13px; gap: 10px; margin: 12px 0 8px; }
+.live-tag i { width: 9px; height: 9px; }
+.live-tag.k-tag { padding-left: 17px; }
+.live-tag.k-wa { padding-left: 7px; }
+.live-tag .k-ic { width: 26px; height: 26px; flex: none; }
+@media (max-width: 640px) {
+  .live-tag { font-size: 13.5px; padding: 7px 14px 7px 11px; }
+  .live-tag.k-tag { padding-left: 14px; } .live-tag.k-wa { padding-left: 6px; }
+  .live-tag .k-ic { width: 23px; height: 23px; }
+}
+/* the spam strip: rounder corners, and words at the demo's left that open the same window */
+.vh .vspam { border-radius: 22px; max-width: 1160px; grid-template-columns: 122px 92px minmax(0, 1fr); padding-left: 16px; }
+.vh .vspam-demo .gx { border-radius: 14px; overflow: hidden; }
+.vspam-w { display: flex; align-items: center; gap: 6px; padding: 0; border: 0; background: none; cursor: pointer; text-align: left;
+  font: 800 12.5px/1.25 var(--sans, inherit); color: var(--vblue-d); }
+.vspam-w svg { width: 18px; height: 11px; flex: none; color: var(--vblue); transition: transform .2s; }
+.vspam-w:hover svg { transform: translateX(3px); }
+.vspam-w:focus-visible { outline: 3px solid var(--sun); outline-offset: 4px; border-radius: 6px; }
+@media (max-width: 640px) {
+  .vh .vspam { grid-template-columns: minmax(0, 1fr) 96px; padding: 10px 10px 12px 14px; row-gap: 10px; border-radius: 20px; }
+  .vh .vspam-w { grid-column: 1; grid-row: 1; font-size: 14px; }
+  .vh .vspam-demo { grid-column: 2; grid-row: 1; }
+  .vh .vspam-t { grid-column: 1 / -1; grid-row: 2; }
+}

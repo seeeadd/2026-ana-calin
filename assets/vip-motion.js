@@ -265,7 +265,7 @@
     /* ---------- Nº 04: a meeting runs late; the note slaps onto Wednesday; the recording plays ---------- */
     var rc = $('.art.mv.rec');
     if (rc) {
-      var stk = $('.mv-sticky', rc), plan = $('.mv-plan', rc), play = $('.mv-play', rc), rip = $('.mv-ripple', rc), icon = $('.mv-icon', rc);
+      var stk = $('.mv-sticky', rc), plan = $('.mv-plan', rc), badge = $('.mv-badge', rc), play = $('.mv-play', rc), rip = $('.mv-ripple', rc), icon = $('.mv-icon', rc);
       gsap.set(play, { opacity: 0 });
       var t4 = gsap.timeline();
       t4.from(plan, { y: 30, rotation: -4, opacity: 0, duration: 1, ease: 'power3.out' }, 0)
@@ -275,17 +275,22 @@
         .to(stk, { scaleY: 1, scaleX: 1, rotation: 0, duration: .9, ease: 'elastic.out(1,.35)' }, 1.58)
         .to(plan, { y: 4, duration: .08, yoyo: true, repeat: 1 }, 1.5)
         .from($('.l4', rc), { x: 60, opacity: 0, duration: 1, ease: 'power3.out' }, 1.9)
-        .fromTo(play, { scale: 0, opacity: 1, svgOrigin: '408 330' }, { scale: 1, duration: .5, ease: 'back.out(2.2)', svgOrigin: '408 330' }, 2.7)
-        .to(play, { scale: .84, duration: .12, yoyo: true, repeat: 1, svgOrigin: '408 330' }, 3.4)
+        .fromTo(play, { scale: 0, opacity: 1, transformOrigin: '50% 50%' }, { scale: 1, duration: .5, ease: 'back.out(2.2)', transformOrigin: '50% 50%' }, 2.7)
+        .to(play, { scale: .84, duration: .12, yoyo: true, repeat: 1, transformOrigin: '50% 50%' }, 3.4)
         .fromTo(rip, { attr: { r: 26 }, opacity: .8 }, { attr: { r: 78 }, opacity: 0, duration: .9, ease: 'power2.out' }, 3.45)
         .to(icon, { morphSVG: 'M-11 -12 H-3 V12 H-11 Z M3 -12 H11 V12 H3 Z', duration: .3, ease: 'power2.inOut' }, 3.5)
-        .to(play, { opacity: 0, scale: .7, duration: .5, ease: 'power2.in', svgOrigin: '408 330' }, 4.2);
+        .to(play, { opacity: 0, scale: .7, duration: .5, ease: 'power2.in', transformOrigin: '50% 50%' }, 4.2);
+      /* Sean, Nov 9: the lifetime badge stamps on beside the laptop; the whole scene runs faster */
+      if (badge) t4.fromTo(badge, { scale: 1.8, rotation: -30, opacity: 0 }, { scale: 1, rotation: -8, opacity: 1, duration: .55, ease: 'back.out(1.8)' }, 2.3)
+        .to(badge, { scale: 1.06, duration: .12, yoyo: true, repeat: 1 }, 2.85);
+      t4.timeScale(1.7);
       t4.add(function () { if (reduce) return;
-        gsap.fromTo($('.mv-prog', rc), { width: '6%' }, { width: '100%', duration: 22, ease: 'none', repeat: -1 });
-        gsap.to($('.mv-slide', rc), { scale: 1.08, xPercent: -2, duration: 14, yoyo: true, repeat: -1, ease: 'sine.inOut' });
+        gsap.fromTo($('.mv-prog', rc), { width: '6%' }, { width: '100%', duration: 12, ease: 'none', repeat: -1 });
+        gsap.to($('.mv-slide', rc), { scale: 1.08, xPercent: -2, duration: 8, yoyo: true, repeat: -1, ease: 'sine.inOut' });
         gsap.fromTo($('.replay .ring', rc), { scale: 1, opacity: .7 }, { scale: 1.6, opacity: 0, duration: 1.4, repeat: -1, ease: 'power1.out' });
       }, 3.6);
-      when(rc, t4);
+      if (badge && !reduce) gsap.to(badge, { rotation: -4, y: -4, duration: 2.2, yoyo: true, repeat: -1, ease: 'sine.inOut', delay: 3 });
+      when(rc, t4, 'top 85%');
     }
 
     /* ---------- fit check: your chair comes a little closer to Ana's table ---------- */
