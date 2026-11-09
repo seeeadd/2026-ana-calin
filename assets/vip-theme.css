@@ -30,12 +30,12 @@
 /* The Aegean in gouache: long brush streaks (static), wave crests that drift, and sun glints that
    flicker under the glow. The blue is the sea; the door stands on the shore. */
 .vh:before {
-  content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .36; mix-blend-mode: soft-light;
+  content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .5; mix-blend-mode: soft-light;
   background: url("../img/vip/sea/streaks.webp") 0 0 / 900px 450px;
 }
 .vh .sea { position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 0; }
 .vh .sea:before {
-  content: ""; position: absolute; inset: 0 -1600px 0 0; opacity: .8;
+  content: ""; position: absolute; inset: 0 -1600px 0 0; opacity: 1;
   background: url("../img/vip/sea/waves-a.webp") 0 0 / 1600px 1100px, url("../img/vip/sea/waves-b.webp") 410px 260px / 1130px 760px;
   will-change: transform;
   -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,.45), #000 45%, #000);
@@ -76,13 +76,14 @@
   color: #fff; font-weight: 700;
   background: linear-gradient(transparent 84%, var(--sun) 84%, var(--sun) 94%, transparent 94%);
 }
-/* Calm water behind the title and the line under it, so the words never fight the waves. */
+/* Sean, Nov 9: lighter water in the middle where the words sit (not a dark patch), the texture still shows through */
 .vh h1, .vh .hsub { position: relative; isolation: isolate; }
 .vh h1:before, .vh .hsub:before {
-  content: ""; position: absolute; z-index: -1; inset: -70px -120px; pointer-events: none;
-  background: radial-gradient(closest-side, rgba(28, 96, 164, .94) 0, rgba(28, 96, 164, .82) 55%, rgba(28, 96, 164, 0) 100%);
+  content: ""; position: absolute; z-index: -1; inset: -90px -160px; pointer-events: none;
+  background: radial-gradient(closest-side, rgba(92, 160, 222, .55) 0, rgba(80, 148, 212, .32) 55%, rgba(80, 148, 212, 0) 100%);
 }
-.vh .hsub:before { inset: -40px -90px; background: radial-gradient(closest-side, rgba(27, 93, 159, .9) 0, rgba(27, 93, 159, .75) 55%, rgba(27, 93, 159, 0) 100%); }
+.vh .hsub:before { inset: -50px -110px; background: radial-gradient(closest-side, rgba(86, 152, 216, .5) 0, rgba(80, 148, 212, .28) 55%, rgba(80, 148, 212, 0) 100%); }
+.vh h1, .vh .hsub { text-shadow: 0 1px 14px rgba(10, 40, 80, .35); }
 .vh-grid { margin-top: 64px; gap: 56px; }
 .vh .under { color: rgba(255, 248, 238, .82); margin-top: 10px; }
 .vh .under b { color: #fff; }
@@ -206,8 +207,26 @@ main [fill="#EC3486"], .vplay [fill="#F72585"] { fill: var(--vblue); }
   .vspam-zoom { bottom: 8px; font-size: 12px; }
 }
 .lane-k { display: none; }
-@media (min-width: 641px) {
-  .vspam-zoom { position: static; transform: none; display: flex; width: max-content; margin: 8px auto 0; padding: 6px 10px 6px 6px; font-size: 11.5px; gap: 6px; }
-  .vspam-zoom:hover { transform: translateY(-1px); }
-  .vspam-zoom i { width: 18px; height: 18px; }
+
+/* Sean, Nov 9: the fit check pink, softer (the same gingham under a whiter wash) */
+.vf { background-color: #fff4f7; background-image: linear-gradient(rgba(255, 249, 251, .64), rgba(255, 249, 251, .64)), url(../img/vip/paint/tx-gingham.webp); background-size: auto, 240px; }
+
+/* Sean, Nov 9: the spam note thinner and its demo smaller; the watch button in the demo's corner */
+.vh .vspam { max-width: 900px; grid-template-columns: 92px minmax(0, 1fr); gap: 14px; padding: 5px 16px 5px 5px; margin-top: 18px; }
+.vh .vspam-t { font-size: 13px; line-height: 1.38; gap: 8px; }
+.vh .vspam-t .ib-i { width: 17px; height: 17px; font-size: 10.5px; }
+.vspam-zoom, .vspam-zoom:hover {
+  position: absolute; left: -9px; right: auto; top: -9px; bottom: auto; transform: none; margin: 0;
+  width: 26px; height: 26px; padding: 0; gap: 0; justify-content: center; border: 2px solid #fff; border-radius: 50%;
+  font-size: 0; box-shadow: 0 4px 12px -4px rgba(10, 20, 30, .55);
+}
+.vspam-zoom:hover { background: var(--vblue); transform: scale(1.08); }
+.vspam-zoom i { width: auto; height: auto; background: none; }
+.vspam-zoom i:after { margin-left: 2px; border-left: 7px solid var(--sun); border-top: 4.5px solid transparent; border-bottom: 4.5px solid transparent; }
+.vspam-zoom .vz-t { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+@media (max-width: 640px) {
+  .vh .vspam { grid-template-columns: 84px minmax(0, 1fr); gap: 11px; padding: 6px 10px 6px 6px; align-items: center; }
+  .vh .vspam-t { font-size: 12.5px; line-height: 1.38; }
+  .vh .vspam-demo .gx { margin-left: 0; width: 100%; }
+  .vspam-zoom, .vspam-zoom:hover { width: 30px; height: 30px; }
 }
