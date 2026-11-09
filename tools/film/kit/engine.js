@@ -123,8 +123,8 @@
     Object.keys(RM).forEach(function(k){ var ro = RM[k], v = RV[k]; ro.style.transformOrigin = '0 0'; ro.style.transform = big ? 'translate(' + (-RL[0] - (v && v[4] != null ? v[4] : k === 'desk' ? 170 : 160) * Z + pan(t) * Z).toFixed(1) + 'px,' + (-RL[1]) + 'px) scale(' + Z.toFixed(4) + ')' : pn + (v ? ' translate(' + v[0] + 'px,' + v[1] + 'px) scale(' + (v[3] ? -v[2] : v[2]) + ',' + v[2] + ')' : '') }); if (cur !== 'coast') roomLife(RM[cur], t);
     /* the page's blue shutters swing closed and open on the new place */
     var sl = $('shL'), sr = $('shR'), u = t - tc, on = tc !== null && u > -.26 && u < .32; sl.style.display = sr.style.display = on ? 'block' : 'none'; if (!on) return;
-    var ty = mix(tc + .4).type, W0 = PHONE ? L.W : ty === 'M' ? L.M[0] + 9 : ty === 'F' ? L.FA[0] + 45 : L.W, top = PHONE && ty === 'M' ? (L.shM != null ? L.shM : L.M[3] - 20) : 0, hh = L.H - top, ang = u < 0 ? 88 * (1 - io(seg(u, -.26, 0))) : 88 * io(seg(u, 0, .32));
-    [sl, sr].forEach(function(e, i){ e.style.width = (W0 / 2 + 2) + 'px'; e.style.height = hh + 'px'; e.style.top = top + 'px'; e.style.left = (i ? W0 / 2 - 1 : 0) + 'px'; e.style.transform = 'perspective(1500px) rotateY(' + (i ? ang : -ang).toFixed(2) + 'deg)' });
+    var ty = mix(tc + .4).type, W0 = PHONE || CFG.doorTop ? L.W : ty === 'M' ? L.M[0] + 9 : ty === 'F' ? L.FA[0] + 45 : L.W, top = PHONE && ty === 'M' && !CFG.doorTop ? (L.shM != null ? L.shM : L.M[3] - 20) : 0, hh = L.H - top, ang = u < 0 ? 88 * (1 - io(seg(u, -.26, 0))) : 88 * io(seg(u, 0, .32));
+    [sl, sr].forEach(function(e, i){ if (CFG.doorTop) e.style.zIndex = 40; e.style.width = (W0 / 2 + 2) + 'px'; e.style.height = hh + 'px'; e.style.top = top + 'px'; e.style.left = (i ? W0 / 2 - 1 : 0) + 'px'; e.style.transform = 'perspective(1500px) rotateY(' + (i ? ang : -ang).toFixed(2) + 'deg)' });
   }
 
   /* Ana and her frame */
@@ -302,18 +302,21 @@
   /* ---------- layers: world, actor (the sunflower and shutters), her, graphics, captions. Each paints alone on transparent; ffmpeg stacks them and lays the grain on top ---------- */
   var ROOTS = {
     world: ['#sky', '#world', '#gulls', '#far', '#near', '#sea', '#boat', '#g1', '#g2', '#paper', '#wash', '#rooms', '#wallsvg', '#pieces > .under'],
-    actor: ['#shL', '#shR', '#bud-wrap'],
+    actor: CFG.doorTop ? ['#bud-wrap'] : ['#shL', '#shR', '#bud-wrap'],
+    door: CFG.doorTop ? ['#shL', '#shR'] : [],
     her: ['#vb', '#torn', '#torn2', '#torn3', '#ana', '#fg'],
     graphics: ['#thread', '#pieces > :not(.under)', '#cursor', '#tap'],
     captions: ['#cap'],
     grain: ['#grain']
   };
   var ORDER = L.zV > 10 ? ['world', 'actor', 'her', 'graphics', 'captions'] : ['world', 'her', 'actor', 'graphics', 'captions'];
-  var ALLON = {world: 1, actor: 1, her: 1, under: 1, graphics: 1, captions: 1}, ACT = ALLON, LAYER = null, layerCss = document.createElement('style'); document.head.appendChild(layerCss);
+  /* doorTop: the shutters are their own top layer and close over everything, her, pieces and captions included */
+  if (CFG.doorTop) ORDER.push('door');
+  var ALLON = {world: 1, actor: 1, her: 1, under: 1, graphics: 1, captions: 1, door: 1}, ACT = ALLON, LAYER = null, layerCss = document.createElement('style'); document.head.appendChild(layerCss);
   function setLayer(n){
-    LAYER = n === 'all' ? null : n; ACT = !LAYER ? ALLON : {world: n === 'world', actor: n === 'actor', her: n === 'her', under: n === 'world', graphics: n === 'graphics', captions: n === 'captions'};
+    LAYER = n === 'all' ? null : n; ACT = !LAYER ? ALLON : {world: n === 'world', actor: n === 'actor', her: n === 'her', under: n === 'world', graphics: n === 'graphics', captions: n === 'captions', door: n === 'door'};
     if (!LAYER) { layerCss.textContent = ''; return }
-    var off = Object.keys(ROOTS).filter(function(k){ return k !== n }).map(function(k){ return ROOTS[k].join(',') }).join(',');
+    var off = Object.keys(ROOTS).filter(function(k){ return k !== n && ROOTS[k].length }).map(function(k){ return ROOTS[k].join(',') }).join(',');
     layerCss.textContent = off + '{display:none!important}' + (n === 'world' ? '' : 'html,body,#film{background:' + (n === 'grain' ? '#fff' : 'transparent') + '!important}');
   }
   /* in a plan pass nothing loads or paints: the wanted picture is only noted */
@@ -339,7 +342,7 @@
       $('sky').style.transform = 'scale(1.16) translateX(' + (Math.sin(t * .07) * 5 - 1).toFixed(2) + '%)';
     }
     var mx = ACT.captions && LAYER ? mix(t) : ana(t);
-    if (ACT.world || ACT.actor) scene(t, mx.type);
+    if (ACT.world || ACT.actor || ACT.door) scene(t, mx.type);
     if (ACT.graphics || ACT.under) pieces(t, waits);
     if (ACT.actor) runner(t);
     if (ACT.captions) captions(t, mx.type);

@@ -3,7 +3,7 @@
 var MAP = function(x){ return Math.round(100 + (x - 180) / 1340 * 860) };
 var PATH = [[1.2, 340], [2.3, 310], [2.96, 310], [3.4, 830], [8.4, 830], [8.8, 180], [11.66, 180], [12.3, 1500], [14, 1500], [14.4, 600], [21.14, 600], [22.84, 250], [24.85, 250], [25.3, 760], [35, 760], [35.4, 180], [37.1, 180], [37.6, 500], [42.9, 500], [43.4, 900], [48.6, 900], [49, 760], [55.7, 760], [56.1, 1520], [63.1, 1520], [63.5, 400], [68.9, 400], [69.3, 1520], [74.5, 1520], [75, 1400], [81, 1400], [81.4, 180], [83.7, 180], [87.2, 700], [91, 700], [91.4, 300], [96.5, 300], [97, 1500], [99.1, 1500], [99.6, 520], [102.1, 520], [102.4, 130], [103.5, 288], [120, 288]];
 window.VIDEO = {
-  id: 'vip', desktopW: 1792, herH: 1280, crown: true, cuts: true, still: true,   /* simple editing: clean cuts between layouts, no frame swing */
+  id: 'vip', desktopW: 1792, herH: 1280, crown: true, cuts: true, still: true, doorTop: true,   /* simple editing: clean cuts between layouts, no frame swing */
   frames: '_local/vip/frames', data: ['_local/vip/data.js', '_local/vip/face.js'], piecesDir: '_local/vip/pieces/',
   audio: '~/AnaVideo/out/kit/vip-mix-1x.wav',
   hold: 1.6,
