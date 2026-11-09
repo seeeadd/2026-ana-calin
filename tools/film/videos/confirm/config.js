@@ -19,7 +19,7 @@ window.VIDEO = {
     /* the calm bedroom: limewash, linen, one window on the bay; the curtains breathe, the paper pendant sways */
     ['bedroom', 'vbed', [['vbd-cl', 96, 96, 170, 600, 85, 0], ['vbd-cr', 516, 96, 170, 600, 85, 0], ['vbd-pend', 770, -10, 160, 300, 80, 0]], 330, 1370, 250, [170, 110, 440, 530]]],
   strips: [[0, 'paint/vip/s-hill.webp'], [16.36, 'paint/vip/s-bed.webp'], [53.3, 'paint/vip/s-hill.webp']],
-  pinkWords: [], lastWordKey: true, capEdits: [], titled: [],
+  pinkWords: [], lastWordKey: true, capEdits: [[66.4, 'love', 'love it']], titled: [],
   /* he stands on the terrace wall, runs at each change of place, points at the WhatsApp button, and rests between */
   runner: {
     path: {d: [[0, 300], [2.1, 300], [2.5, 760], [11.0, 760], [11.4, 300], [16.36, 300], [16.8, 200], [31.2, 200], [31.6, 300], [38.9, 300], [47.28, 300], [47.7, 220], [53.3, 220], [53.7, 420], [73.5, 420], [73.9, 300], [200, 300]],
