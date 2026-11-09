@@ -2000,7 +2000,7 @@ html.wv-lock{overflow:hidden}
   .it2 > .tx > .wac + p{margin-top:16px}
 }
 </style>
-<link rel="stylesheet" href="../assets/vip-theme.css?v=5ddc06926be8">
+<link rel="stylesheet" href="../assets/vip-theme.css?v=bed63b54c944">
 </head>
 <body>
 
@@ -2132,9 +2132,12 @@ html.wv-lock{overflow:hidden}
           <span class="gx-cur gy-cur"><i></i><svg viewBox="0 0 30 36"><path d="M3 2l22 16-10 2 6 12-5 2-6-12-7 7Z" fill="#fff" stroke="#1A1412" stroke-width="2.6" stroke-linejoin="round"/></svg></span>
           </div>
         </div>
+        <button class="vspam-zoom" type="button" aria-haspopup="dialog"><i aria-hidden="true"></i>Watch how to do it</button>
       </div>
       <p class="vspam-t"><span class="ib-i" aria-hidden="true">!</span><span><b>Important: check your Spam and Promotions folders.</b> Your confirmation is on its way from <b class="nw">anacalin@howwegrowtoday.com</b>. If it’s there, tap “Not spam” or move it to your inbox, or you’ll miss your Zoom link and reminders.</span></p>
     </div>
+
+    <dialog class="gx-dlg" id="gxDlg" aria-labelledby="gxdH"><div class="gxd-h"><b id="gxdH">Watch how to do it</b><button class="gxd-x" type="button" aria-label="Close">&times;</button></div><div class="gxd-b"><div class="gxd-slot"></div><p class="gxd-t">If it’s there, tap “Not spam” or move it to your inbox, or you’ll miss your Zoom link and reminders.</p></div></dialog>
 
     <!-- a pencil arrow from the note down to the VIP offer; a tap takes you there -->
     <a class="go-vip" href="#vsl" aria-label="Go to the VIP offer"><svg viewBox="0 0 120 92" aria-hidden="true"><g fill="none" stroke="#EC3486" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" filter="url(#pencil)"><path class="gv-l" d="M28 6 C14 30 30 52 60 50 C86 48 92 30 76 24 C60 18 50 44 60 84"/><path class="gv-h" d="M47 72 L60 86 L72 71"/></g></svg></a>
@@ -2533,6 +2536,18 @@ html.wv-lock{overflow:hidden}
   if (first && first.length < 30) document.querySelectorAll('[data-name]').forEach(function(e){ e.textContent = first });
   var gxEl = document.querySelector('.gx');
   if (gxEl && !matchMedia('(prefers-reduced-motion: reduce)').matches) setInterval(function(){ gxEl.classList.toggle('b') }, 11000);
+  /* Sean, Nov 9: an enlarge button on the spam demo; the same demo moves into a dialog and back */
+  (function(){ var d=document.getElementById('gxDlg'), z=document.querySelector('.vspam-zoom'); if(!d||!z||!gxEl) return;
+    if(!d.showModal){ z.hidden=true; return; } var home=gxEl.parentNode, slot=d.querySelector('.gxd-slot');
+    function open(){ gxEl.classList.remove('b'); slot.appendChild(gxEl); d.showModal(); }
+    z.addEventListener('click', open); gxEl.addEventListener('click', function(){ if(!d.open) open(); });
+    d.querySelector('.gxd-x').addEventListener('click', function(){ d.close(); });
+    d.addEventListener('click', function(e){ if(e.target===d) d.close(); });
+    d.addEventListener('close', function(){ home.insertBefore(gxEl, z); });
+  })();
+  /* the sea runs up behind the header: the hero pulls up by the header's height */
+  (function(){ var h=document.querySelector('header.fb'); if(!h) return; function s(){ document.documentElement.style.setProperty('--fbh', h.offsetHeight+'px'); }
+    s(); addEventListener('resize', s); if(window.ResizeObserver) new ResizeObserver(s).observe(h); })();
 
   /* headline A/B: 50/50 per visitor (cookie). ?h=A or ?h=B previews one. */
   function cookie(k){var m=document.cookie.match('(?:^|; )'+k+'=([^;]*)');return m?decodeURIComponent(m[1]):''}
