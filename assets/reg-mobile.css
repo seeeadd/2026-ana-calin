@@ -98,3 +98,7 @@
   .fb{display:block!important}
   .mbar{display:none!important}
 }
+
+/* Sean, Nov 13: "Exit Number calculator" in the hero, a subtle blue highlighter stroke */
+.hcopy mark.hbl{background:linear-gradient(transparent 52%,rgba(27,99,169,.2) 52%,rgba(27,99,169,.2) 92%,transparent 92%);color:inherit;padding:0 .1em;margin:0 -.1em 0 -.04em;
+  -webkit-box-decoration-break:clone;box-decoration-break:clone}
