@@ -287,3 +287,4 @@ correction and every approval-with-reason (SOP section D). The full raw messages
 - 2026-11-12 · Phone rule (promote): on phones nothing sits in a side rail (day badges, plant markers, dates go beside the text, not in a column); buttons go full width with balanced labels and "(free)" never alone; banners in sticky headers are one line; desktop-only hints (⌘ D) get a touch version · `assets/*-mobile.css`
 - 2026-11-12 · "Publish" → main at 40b1646: the mobile pass. Live checked at 320, 390, 820, 1440: phone frame and full-screen button on all four pages, no sideways scroll
 - 2026-11-12 · "dont remove the 1.4m on top of the headline" → "My Newsletter Business Has Made $1.4M." stays as the small line above "Here’s How I’d Build a Newsletter Business to Replace My Salary in 2027." When the headline copy changes, keep the proof line above it unless told otherwise · `index.html`
+- 2026-11-12 · "Publish" → main at e2fc8c8: the $1.4M line above the headline is live
