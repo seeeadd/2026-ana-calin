@@ -3609,11 +3609,8 @@ html.wv-lock{overflow:hidden}
   /* hidden fields */
   var ref = (qs.get('ref') || '').trim().toLowerCase();
   function cookie(k){var m=document.cookie.match('(?:^|; )'+k+'=([^;]*)');return m?decodeURIComponent(m[1]):''}
-  var variant = cookie('ana_sticky');
-  if (variant !== 'on' && variant !== 'off') {
-    variant = Math.random() < .5 ? 'on' : 'off';
-    document.cookie = 'ana_sticky='+variant+'; max-age='+60*60*24*90+'; path=/; SameSite=Lax';
-  }
+  /* Sean, Nov 12: the sticky header and button are on for everyone (the old half-and-half test is over) */
+  var variant = 'on';
   document.documentElement.setAttribute('data-sticky', variant);
   var form = document.getElementById('join');
   var hidden = {ref: ref || 'direct', situation: '', sticky_variant: variant,
