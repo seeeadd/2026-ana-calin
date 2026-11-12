@@ -290,3 +290,4 @@ correction and every approval-with-reason (SOP section D). The full raw messages
 - 2026-11-12 · "Publish" → main at e2fc8c8: the $1.4M line above the headline is live
 - 2026-11-12 · "no sticky header or the button on me" → the registration page had an old A/B test (cookie ana_sticky, 90 days) hiding both sticky bars from half of visitors; Sean landed in "off". Ended it: sticky on for everyone (the sticky_variant field now always says on). Before saying a feature is live, check for A/B switches that hide it · `index.html`
 - 2026-11-12 · "Publish" → main at 440293e: sticky header and button for everyone. Live checked with an old "off" cookie: both bars show
+- 2026-11-13 · "add a blue highlight on the exit calculator in the hero, subtle blue" → "Exit Number calculator" gets a soft blue highlighter stroke (the site blue #1b63a9 at 20%, lower half of the line) · `index.html`, `assets/reg-mobile.css`
