@@ -2058,6 +2058,7 @@ html.wv-lock{overflow:hidden}
 @media (prefers-reduced-motion:no-preference){.wfm-arr{animation:wfmBob 1.5s ease-in-out infinite}@keyframes wfmBob{50%{transform:translateY(3px)}}}
 </style>
 <link rel="stylesheet" href="../assets/vip-theme.css?v=69f2f99360b6">
+<link rel="stylesheet" href="../assets/vip-mobile.css?v=500c071b32f2">
 </head>
 <body>
 
@@ -2793,7 +2794,20 @@ html.wv-lock{overflow:hidden}
   var d=nw[0].textContent.replace(/,\s*$/,''),tm=nw[1].textContent.replace(/\s+in\s+.*$/,'').replace(/\s*New York$/,''),nys=tb.querySelector('.tot-ny');
   tb.className='tot-dl';tb.innerHTML='<span>On sale until</span><span class="tot-d">'+esc(d)+' · '+esc(tm)+'</span><span class="tot-loc">'+PIN+(ny?'New York time':'Your time in '+esc(city))+'</span>'+(nys?'<small class="tot-ny">'+esc(nys.textContent)+'</small>':'')});
 }catch(e){}})();</script>
-<script src="../assets/wistia-vsl.js?v=4"></script>
+<script>/* Sean, Nov 12: on phones the header says when it starts in their own time and city; the week shows the start time */
+(function(){try{
+ var S=new Date(Date.UTC(2026,11,8,17,0)),E=new Date(Date.UTC(2026,11,10,17,0)),M=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+ var tz=(Intl.DateTimeFormat().resolvedOptions().timeZone||''),ny=!tz||tz==='America/New_York'||tz.indexOf('/')<0;
+ var t=S.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'}).toLowerCase();
+ var span=M[S.getMonth()]+' '+S.getDate()+' to '+(E.getMonth()===S.getMonth()?'':M[E.getMonth()]+' ')+E.getDate();
+ var city=ny?'New York time':'Your time in '+tz.split('/').pop().replace(/_/g,' ');
+ var PIN='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5a7 7 0 0 0-7 7c0 5.2 7 12 7 12s7-6.8 7-12a7 7 0 0 0-7-7Z"/><circle cx="12" cy="9.6" r="2.6"/></svg>';
+ var tx=document.querySelector('.fb .fb-tx');
+ if(tx){var w=document.createElement('span');w.className='fb-when';w.innerHTML='<b></b><small>'+PIN+'<span></span></small>';
+  w.querySelector('b').textContent=span+' · '+t;w.querySelector('small span').textContent=city;tx.appendChild(w)}
+ document.querySelectorAll('.trk .stop .dt').forEach(function(d){if(d.querySelector('.dt-tm'))return;var e=document.createElement('em');e.className='dt-tm';e.textContent=t;d.appendChild(e)});
+}catch(e){}})();</script>
+<script src="../assets/wistia-vsl.js?v=5"></script>
 <script>/* Sean, Nov 9: the VIP final, desktop qkrlqlwwcr, phone h1acvjpuks (Wistia) */
 (function(){var b=document.getElementById('vsl');if(!b||!window.WVSL)return;WVSL({box:b,scr:b.querySelector('.scr'),frame:b.querySelector('.door-v'),desktop:'qkrlqlwwcr',phone:'h1acvjpuks',previewSec:8,onPhoneEnd:function(){document.getElementById('order').scrollIntoView({behavior:'smooth', block:'center'})}})})();</script>
 <script>/* the order card beside the page (Sean, Nov 5): a copy of the hero's card, whose buttons press the hero's own */

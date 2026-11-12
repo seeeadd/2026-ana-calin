@@ -1,0 +1,66 @@
+/* VIP page, made for phones (Sean, Nov 12). Loads last, after vip-theme.css. */
+
+/* ---------- the sticky header: slim, with when it starts in their own time and city ---------- */
+.fb-when{display:none}
+@media (max-width:640px){
+  .fb .keep{display:none!important}
+  .fb .fb-card .fb-bar{padding:7px 10px 7px 7px!important;gap:8px!important}
+  .fb .fb-id img{width:38px!important;height:38px!important}
+  .fb .fb-id .fb-tx > small,.fb .fb-id .fb-tx > b{display:none!important}
+  .fb .fb-id .fb-when{display:flex;flex-direction:column;gap:2px;min-width:0;line-height:1.15;font-family:var(--sans)}
+  .fb .fb-id .fb-when b{display:block;margin:0;font-family:var(--sans);font-size:15px;font-weight:800;line-height:1.15;color:#1A1412;white-space:nowrap}
+  .fb .fb-id .fb-when small span{display:inline}
+  .fb .fb-when small{display:flex;align-items:center;gap:3px;font-size:12.5px;font-weight:700;color:#B0124F;white-space:nowrap;letter-spacing:0;text-transform:none}
+  .fb .fb-when small svg{width:13px;height:13px;flex:none;fill:currentColor}
+  .fb .fb-when small svg circle{fill:#fff}
+  .fb .fb-r .fb-n{display:none!important}
+  .fb .fb-id{flex:1 1 auto;min-width:0}
+  .fb .fb-id .fb-when b,.fb .fb-id .fb-when small{overflow:hidden;text-overflow:ellipsis}
+  .fb .steps{flex:none!important;gap:3px!important;padding:3px 5px!important;margin:0!important}
+  .fb .steps .st{padding:0!important;gap:0!important}
+  .fb .steps .st .t{display:none!important}
+  .fb .steps .st i{width:24px!important;height:24px!important;font-size:12px!important}
+  .fb .steps .ln{width:9px!important;min-width:9px!important;margin:0!important}
+}
+@media (max-width:374px){ .fb .fb-when b{font-size:14px} .fb .steps{display:none!important} }
+
+/* ---------- buttons: the label gets the room, one or two balanced lines, never a lone word ---------- */
+@media (max-width:640px){
+  .btn.add{padding-left:8px!important;padding-right:16px!important;gap:10px!important;height:auto!important;min-height:60px}
+  .btn.add .sf-b{width:36px!important;height:36px!important;flex:none}
+  .btn.add .ar{display:none!important}
+  .btn.add .bt{flex:1;min-width:0;text-align:center;font-size:17.5px!important;line-height:1.25;text-wrap:balance}
+  .order .dl .decline,.bb .dl .decline,.it .no,.decline{text-wrap:balance}
+  .bb .meta2,.cx small,.cx .closed{text-wrap:balance}
+}
+
+/* ---------- spacing: no holes under headings, calmer gaps between sections ---------- */
+@media (max-width:760px){
+  .vw-hd,.vi-hd{gap:18px!important}
+  .it{padding-top:44px!important;padding-bottom:44px!important}
+  .it1{margin-top:48px!important}
+}
+
+/* ---------- the week: bigger dates, the start time in their own time beside each, the sun behind it softer ---------- */
+@media (max-width:640px){
+  .trk .dt b{font-size:30px!important}
+  .trk .dt small{font-size:13px!important}
+  .trk .dt .dt-tm{display:inline-flex;align-items:center;margin-left:8px;padding:3px 9px;border-radius:999px;background:#FFE7A3;color:#1A1412;font:800 13px/1.2 var(--sans);font-style:normal;white-space:nowrap;vertical-align:middle}
+  .trk .lb{font-size:13px!important}
+  .trk .stop p{font-size:16.5px}
+  .trk .sun{opacity:.16!important}
+}
+.dt-tm{display:none}
+
+/* ---------- the side-by-side table: no pictures in the first column on a phone, so every row is one height ---------- */
+@media (max-width:640px){
+  .cmp td:first-child img,.cmp th:first-child img{display:none!important}
+  .cmp th{font-size:12px!important;letter-spacing:.06em!important}
+  .cmp td .t{font-size:13px!important}
+}
+
+/* ---------- the letter and the buy block: postmarks off the words and on the screen ---------- */
+@media (max-width:640px){
+  .vb .letter .pm{width:92px!important;top:8px!important;right:6px!important;opacity:.45!important}
+  .bb-pm{display:none!important}
+}

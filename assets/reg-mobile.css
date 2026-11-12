@@ -1,0 +1,100 @@
+/* Registration page, made for phones and iPads (Sean, Nov 12). Loads last, after registration-theme.css.
+   Phones and iPads in portrait stack the hero in one column (index.html, max-width 1060px). */
+
+/* ---------- 1. the hero, in the order a phone reader needs it:
+   headline, the one-line promise, Ana's video, who she is, the calculator, then the form ---------- */
+@media (max-width:1060px){
+  .v2h .hright .hcopy{display:contents}
+  .v2h .hpill{order:1!important}
+  .v2h .hright h1{order:2!important}
+  .v2h .hright .hlead{order:3!important;margin-bottom:0}
+  .v2h #vsl{order:4!important}
+  .v2h .hright .hcopy > .hsub2{order:5!important;margin-top:0}
+  .v2h .hright .hshow{order:6!important}
+  .v2h .htk{order:7!important}
+  .v2h .hnote{order:8!important}
+  .v2h .tstrip{order:9!important}
+}
+@media (max-width:640px){
+  .v2h #vsl.wv-port{margin:22px auto 26px!important;width:100%}
+  .v2h .hright .hlead{font-size:18px;line-height:1.5}
+  .v2h .hright .hcopy > .hsub2,.v2h .hright .hshow .hsub2{font-size:17px;line-height:1.55}
+  .v2h .hright .hshow{margin-top:14px}
+  .v2h .htk{margin-top:22px!important}
+}
+
+/* ---------- 2. the sticky header on phones (iPads keep the laptop header, Sean Nov 12): who, when (in their own time), how long until it starts.
+   It slides in once the headline has scrolled away. No button here: the bottom bar has it ---------- */
+.pbar{display:none}
+@media (max-width:767px){
+  .pbar{display:flex;align-items:center;gap:10px;position:fixed;left:0;right:0;top:0;z-index:60;
+    padding:calc(7px + env(safe-area-inset-top)) max(14px, env(safe-area-inset-right)) 7px max(14px, env(safe-area-inset-left));
+    background:rgba(255,248,238,.95);-webkit-backdrop-filter:blur(12px) saturate(1.2);backdrop-filter:blur(12px) saturate(1.2);
+    border-bottom:1px solid rgba(26,20,18,.1);box-shadow:0 6px 18px -12px rgba(26,20,18,.35);
+    transform:translateY(-110%);transition:transform .32s cubic-bezier(.2,.8,.2,1);font-family:var(--sans)}
+  .pbar.on{transform:none}
+  .pb-ic{flex:none;width:38px;height:38px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 2px #FFD400}
+  .pb-t{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px;line-height:1.15}
+  .pb-t small{font-size:12.5px;font-weight:700;color:#7A6A60;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .pb-t b{font-size:15.5px;font-weight:800;color:#1A1412;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .pb-cd{flex:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;min-width:66px;height:40px;padding:0 10px;border-radius:12px;
+    background:#FFD400;color:#1A1412;line-height:1;box-shadow:inset 0 -2px 0 rgba(26,20,18,.12)}
+  .pb-cd small{font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+  .pb-cd b{font-size:15px;font-weight:800;font-variant-numeric:tabular-nums;white-space:nowrap}
+  html[data-sticky=off] .pbar{display:none}
+}
+@media (max-width:359px){ .pb-cd{display:none} }
+@media (prefers-reduced-motion:reduce){ .pbar{transition:none} }
+
+/* ---------- 3. the bottom bar: one thin, full-width button, big readable label ---------- */
+@media (max-width:767px){
+  .mbar{padding:8px max(12px, env(safe-area-inset-right)) calc(8px + env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left))!important;
+    justify-content:center;gap:0!important;background:rgba(255,248,238,.94)!important}
+  .mbar .mcd{display:none!important}
+  .mbar .btn{flex:1 1 auto;width:100%;max-width:520px;height:50px!important;margin:0 auto!important;padding:0 16px 0 8px!important;gap:10px!important;
+    font-size:17px!important;border-radius:999px}
+  .mbar .btn .bt{white-space:nowrap}
+  .mbar .btn .sf-b{width:34px;height:34px}
+  .ltoast{bottom:78px!important}
+}
+@media (max-width:359px){ .mbar .btn{font-size:16px!important} .mbar .btn .bq{display:none!important} }
+
+/* ---------- 4. phone details ---------- */
+/* the Christmas wreath sits above the video window on desktop; on the phone it would cover the text above */
+@media (max-width:640px){ .iph.win.wv-port .wreath{display:none!important} }
+
+/* the section buttons: full width, the label balanced over two lines when it must wrap, "(free)" never alone */
+@media (max-width:640px){
+  .cta2,.igo,.final .go,.fit .go{width:100%}
+  .cta2 .btn,.igo .btn{width:100%;height:auto!important;min-height:60px;padding:10px 18px 10px 10px!important;font-size:17.5px!important;line-height:1.25}
+  .cta2 .btn .bt,.igo .btn .bt{flex:1;min-width:0;text-align:center;text-wrap:balance}
+  .btn .bq{white-space:nowrap}
+}
+
+/* the three days: one column at full width. The day badge sits beside the date instead of in a side rail */
+@media (max-width:640px){
+  .drow,.drow.flip{grid-template-columns:minmax(0,1fr)!important;gap:16px 0!important;padding-bottom:72px}
+  .drow .rail{display:none}
+  .drow > *{grid-column:1!important}
+  .drow .dbadge{position:absolute;left:auto;right:0;top:2px;margin:0;z-index:2}
+  .drow .dtext{grid-row:1}
+  .drow .art,.drow.flip .art{grid-row:2!important;order:0!important}
+  .dtext li{font-size:17px}
+}
+
+/* the reviews' star pill: the stars above the words, so they never overlap */
+@media (max-width:640px){
+  .rv-ey{flex-direction:column;align-items:center;gap:6px!important;padding:10px 18px 12px!important;border-radius:20px!important;text-align:center;white-space:normal}
+  .rv-ey .rv-mini{margin:0!important;position:static!important}
+}
+
+/* iPads (and big phones on their side): the painted window reaches past the video box, so it gets room above and below */
+@media (min-width:641px) and (max-width:1060px){
+  .v2h #vsl{margin:15% auto 18%!important;width:80%!important;max-width:720px}
+}
+
+/* iPads in portrait (768 to 900): the laptop's sticky header, with its countdown and button. No bottom bar: the header has the button */
+@media (min-width:768px) and (max-width:900px){
+  .fb{display:block!important}
+  .mbar{display:none!important}
+}

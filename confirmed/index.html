@@ -17,6 +17,7 @@
 <link rel="stylesheet" href="../assets/conf.css">
 <link rel="stylesheet" href="../assets/confx.css">
 <link rel="stylesheet" href="../assets/conf-reg.css?v=e30c4ca3f1c0">
+<link rel="stylesheet" href="../assets/conf-mobile.css?v=c6230c929f1e">
 </head>
 <body class="regc">
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -33,7 +34,7 @@
 <!-- the sticky header: the registration page's floating card (Sean, Nov 9). They must not leave before steps 1 to 4 -->
 <header class="fb">
  <div class="fb-card">
-  <p class="keep" role="note"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 4.6v4.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="8" cy="11.2" r="1.05" fill="currentColor"/></svg><span>Your free seat is saved. Your local schedule is shown on this page.</span></p>
+  <p class="keep" role="note"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 4.6v4.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="8" cy="11.2" r="1.05" fill="currentColor"/></svg><span>Your free seat is saved.</span><span class="kp-x"> Your local schedule is shown on this page.</span></p>
   <div class="fb-bar">
     <div class="fb-id"><img src="../img/o/fav/header-ana.webp" alt="" width="44" height="44"><span class="fb-tx"><small>The Exit Plan · a free 3-day live workshop</small><b><span class="fb-tt">Your seat is saved</span><em class="fb-dt">Dec 8 to 10 · 12 pm NY</em></b></span></div>
     <div class="steps" aria-label="Step 2 of 2">
@@ -551,7 +552,7 @@
  var k=document.querySelector('.fbk'),c=document.getElementById('cxt');if(!k||!c)return;
  function upd(){var o=c.classList.contains('open');k.classList.toggle('open',o);var t=k.querySelector('.bt');if(t)t.textContent=o?'open my calculator':'get your calculator';k.setAttribute('href',o?'../exit-number/':'#survey')}
  upd();new MutationObserver(upd).observe(c,{attributes:true,attributeFilter:['class']});})();</script>
-<script src="../assets/wistia-vsl.js?v=4"></script>
+<script src="../assets/wistia-vsl.js?v=5"></script>
 <script>/* Sean, Nov 9: the confirmation video (desktop 7fe006bo2z, phone vy4l2af396), the same on both confirmation pages */
 (function(){var b=document.getElementById('vsl');if(!b||!window.WVSL)return;WVSL({box:b,scr:b.querySelector('.scr'),desktop:'7fe006bo2z',phone:'vy4l2af396',previewSec:8,onPhoneEnd:function(){var t=document.getElementById('steps');if(t)t.scrollIntoView({behavior:'smooth'})}})})();</script>
 <script>/* the session dates in the visitor's own time, New York small underneath (Sean, Nov 10: "why not make this custom to their time") */
