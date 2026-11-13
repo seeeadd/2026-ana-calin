@@ -475,7 +475,7 @@ button.xtile:hover{transform:translateY(-2px);box-shadow:0 5px 0 var(--ink)}
           <div class="xopts three">
             <label class="xopt"><input type="radio" name="gtype" value="extra">Build extra income of my own.</label>
             <label class="xopt"><input type="radio" name="gtype" value="client">Replace a client commitment.</label>
-            <label class="xopt"><input type="radio" name="gtype" value="leave">Work toward leaving my job.</label>
+            <label class="xopt"><input type="radio" name="gtype" value="leave">Work toward matching my salary.</label>
           </div>
           <p class="xgoalhelp" id="gHelp" aria-live="polite"></p>
         </fieldset>
@@ -727,7 +727,7 @@ button.xtile:hover{transform:translateY(-2px);box-shadow:0 5px 0 var(--ink)}
           <p id="evText"></p>
         </div>
 
-        <p class="xfoot">A planning illustration based on the numbers entered. Personal taxes and unentered costs are not included. It can help you plan toward more independence; it can’t tell you when you can afford to leave a job.</p>
+        <p class="xfoot">A planning illustration based on the numbers entered. Personal taxes and unentered costs are not included. It can help you plan toward more independence; it can’t tell you when you’ll reach your goal.</p>
         <details class="xd xhow">
           <summary><span>How this is calculated</span></summary>
           <div class="xdb">
@@ -843,7 +843,7 @@ button.xtile:hover{transform:translateY(-2px);box-shadow:0 5px 0 var(--ink)}
   var GHELP = {
     extra: 'This can be a first useful milestone. It does not have to be your full living income.',
     client: 'Start with the monthly amount you want your own offer to bring in. Add costs later to compare what you would actually keep.',
-    leave: 'Start with a target you want to work toward. This calculation does not establish when you can afford to leave.'
+    leave: 'Start with the salary you want to match. This calculation does not establish when you will get there.'
   };
   function fillStep1(){
     $$('input[name=gtype]').forEach(function(r){ r.checked = r.value === plan.goal.type });
@@ -998,7 +998,7 @@ button.xtile:hover{transform:translateY(-2px);box-shadow:0 5px 0 var(--ink)}
     t.appendChild(el('b', null, M(G)));
     t.appendChild(el('small', null, plan.goal.basis === 'profit' ? 'Before personal tax, after the business costs you enter.' : 'Sales before costs. Add costs below to work out a profit target.'));
     var meta = [];
-    if (plan.goal.type) meta.push({extra: 'Building extra income of your own.', client: 'Replacing a client commitment.', leave: 'Working toward leaving your job.'}[plan.goal.type]);
+    if (plan.goal.type) meta.push({extra: 'Building extra income of your own.', client: 'Replacing a client commitment.', leave: 'Working toward matching your salary.'}[plan.goal.type]);
     if (plan.goal.targetMonth) {
       var mt = X.monthsTo(plan.goal.targetMonth, NOW);
       meta.push('Your target month: ' + monthName(plan.goal.targetMonth) + '.');
