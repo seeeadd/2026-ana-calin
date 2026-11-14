@@ -9,7 +9,9 @@
      playing, so a phone that blocks the silent preview (Low Power Mode, Data Saver, reduced motion, an old iPhone)
      still sees her and the "Tap for sound" button, never an empty or letterboxed frame.
    - Browsers without custom elements (very old phones) get Wistia's plain iframe player instead.
-   WVSL({box, scr, frame, desktop, phone, poster, previewSec, onPhoneEnd}) */
+   - phoneStill (Ana, Nov 14: "stop the frame on a scene in which I don't look this drunk"): phones skip the silent preview
+     and hold the chosen still (poster) until the press, and go back to it when she finishes.
+   WVSL({box, scr, frame, desktop, phone, poster, phoneStill, previewSec, onPhoneEnd}) */
 (function(){
   var me = document.currentScript && document.currentScript.src || '';
   var ROOT = me ? me.replace(/assets\/wistia-vsl\.js.*$/, '') : '/';
@@ -76,7 +78,7 @@
     '.wv-phone>.wv-screen>.wv-glass{position:absolute;inset:0;z-index:5;pointer-events:none;border-radius:inherit;' +
       'background:linear-gradient(118deg,rgba(255,255,255,.16) 0%,rgba(255,255,255,0) 26%,rgba(255,255,255,0) 70%,rgba(255,255,255,.06) 100%)}' +
     /* "Tap for sound" on the phone: one line, low on the screen, clear of her face; the same on every page */
-    '.wv.wv-port .vplay{top:auto!important;bottom:5.5%!important;left:50%!important;right:auto!important;transform:translateX(-50%)!important;width:max-content!important;max-width:90%!important;' +
+    '.wv.wv-port .vplay{top:50%!important;bottom:auto!important;left:50%!important;right:auto!important;transform:translate(-50%,-50%)!important;width:max-content!important;max-width:90%!important;' +
       'height:auto!important;min-height:0!important;padding:8px 15px 8px 8px!important;gap:9px!important;border-radius:16px!important;font-size:17px!important;line-height:1.15!important;white-space:nowrap!important;margin:0!important}' +
     '.wv.wv-port .vplay small{font-size:11.5px!important;margin-top:3px!important;white-space:nowrap!important}' +
     '.wv.wv-port .vplay .sound-symbol,.wv.wv-port .vplay .vs,.wv.wv-port .vplay .snd-s{width:38px!important;height:38px!important;border-radius:11px!important}' +
@@ -128,7 +130,8 @@
       if (post && post.parentNode) post.parentNode.removeChild(post); post = null;
       firstFrame = false; box.classList.remove('wv-ready', 'video-ready', 'playing', 'wv-shown'); if (own) own.hidden = false;
       mode = 'preview'; hit.hidden = false;
-      w = player(id, {muted: true, autoplay: !reduce, 'silent-autoplay': !reduce ? 'allow' : false,
+      var still = reduce || (portrait && !!o.phoneStill);
+      w = player(id, {muted: true, autoplay: !still, 'silent-autoplay': !still ? 'allow' : false,
         'end-video-behavior': 'loop', preload: portrait ? 'metadata' : 'auto', 'controls-visible-on-load': 'false', 'big-play-button': 'false',
         poster: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="9" height="16"%3E%3Cpath fill="%23d9d2c6" d="M0 0h9v16H0z"/%3E%3C/svg%3E'});
       w.className = 'wv-p';
@@ -144,7 +147,9 @@
     }
     build();
 
+    function stillMode(){ return reduce || (portrait && !!o.phoneStill) }
     function toPreview(){ mode = 'preview'; box.classList.remove('playing'); hit.hidden = false;
+      if (portrait && o.phoneStill && post) { firstFrame = false; box.classList.remove('wv-ready', 'video-ready'); safe(function(){ w.muted = true; w.pause(); w.currentTime = 0 }); return }
       safe(function(){ w.muted = true; if (reduce) w.pause(); else { w.currentTime = 0; playP(w) } }) }
     function start(){
       mode = 'full'; last = 0; box.classList.add('playing'); hit.hidden = true; ready();
@@ -153,6 +158,7 @@
     setInterval(function(){
       if (!MODERN) return;
       var t = safe(function(){ return w.currentTime }); if (typeof t !== 'number') return;
+      if (mode === 'preview' && portrait && o.phoneStill && post) { if (!safe(function(){ return w.paused })) safe(function(){ w.pause() }); return }   /* Wistia may start it on its own: keep the still */
       if (t > .05) ready();
       if (mode === 'preview' && t > P) safe(function(){ w.currentTime = 0 });
       if (mode === 'full') {
@@ -165,7 +171,7 @@
     /* crossing the phone width while still previewing: switch to the other edit */
     if (o.phone && phone.addEventListener) phone.addEventListener('change', function(){ if (mode === 'preview') build() });
     /* browsers may suspend a muted preview when it scrolls away: resume only the preview */
-    function resumePreview(){ if (mode !== 'preview' || reduce || document.hidden || !MODERN) return;
+    function resumePreview(){ if (mode !== 'preview' || stillMode() || document.hidden || !MODERN) return;
       var r = box.getBoundingClientRect(); if (r.bottom > 0 && r.top < innerHeight) playP(w) }
     if ('IntersectionObserver' in window) new IntersectionObserver(function(es){ if (es[0].isIntersecting) resumePreview() }, {threshold: .1}).observe(box);
     document.addEventListener('visibilitychange', resumePreview);
