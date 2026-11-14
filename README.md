@@ -56,6 +56,13 @@ or closed, the VIP deadline.
 
 ## Settings inside the pages
 
+WhatsApp buttons on both confirmation pages also apply `ep_wa_click` through `api/ana-whatsapp.js`.
+`assets/whatsapp-tracking.js` uses the registration email already remembered in this browser, or the page's
+`email` parameter. Without either, the button still opens WhatsApp but cannot identify a Kit subscriber.
+The endpoint uses the existing server-only `KIT_API_KEY`, updates only active subscribers already in Kit,
+and never signs anyone up or sends a confirmation again. It records a link click, not group membership.
+Kit's email Link Trigger remains separate; a plain visit to `/whatsapp/` does not identify a subscriber.
+
 Each page has a small settings block near the end of its HTML (Kit form ids, video links, checkout links, the WhatsApp
 link). The offer pages share `assets/offer-settings.js`. An empty value hides that piece or runs it as a demo that
 sends nothing.
