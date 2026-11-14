@@ -2665,6 +2665,11 @@ button.ofa-btn{font-size:max(2.3cqi,14px);padding:max(1.6cqi,9px) max(2.4cqi,14p
 /* Sean, Nov 14: the real recording is wide, so on laptops its window gets more of the card and reaches a little past the padding */
 @media (min-width:1061px){.ofcard{grid-template-columns:minmax(min(390px,100%),.9fr) minmax(0,1.1fr);gap:44px}.ofa{max-width:none;margin-right:-30px}}
 @media (max-width:640px){.v2h .hright h1.h1x{font-size:min(11.6vw,56px)}.h1x .h1b .l{display:block;white-space:nowrap}}
+/* Sean, Nov 14: the headline flows and the browser balances its lines, so no line is left short with a gap beside it */
+.h1x .h1f{display:block;text-wrap:balance;max-width:7.2em}.h1x .h1f em,.h1x .h1f .nw{white-space:nowrap}
+.v2h .hright h1.h1x{font-size:min(15.2cqi,95px)}
+@media (min-width:641px) and (max-width:767px){.v2h .hright h1.h1x{font-size:min(12.4vw,88px)!important}}
+@media (max-width:640px){.v2h .hright h1.h1x{font-size:min(13.1vw,64px)!important}}
 
 /* Sean's updated registration copy (Nov 10, second pass) */
 .itx .ibold2{font-weight:800;font-size:19px;color:var(--ink);margin:0 0 6px}
@@ -2858,7 +2863,7 @@ button.ofa-btn{font-size:max(2.3cqi,14px);padding:max(1.6cqi,9px) max(2.4cqi,14p
 
     <div class="hright">
       <span class="hpill"><span class="dot"></span><span class="hp-name">The Exit Plan</span> <i>·</i> Free 3-day event <span class="hp-lz">live on Zoom</span></span>
-      <h1 id="h1" class="long h1x"><span class="h1a">My Newsletter Business <span class="nb">Has Made <span class="hl">$1.4M</span>.</span></span> <span class="h1b"><span class="l">If I Wanted to</span> <span class="l"><em>5x My Salary</em> in 2027,</span> <span class="l">Here’s What I’d</span> <span class="l">Build&nbsp;First.</span></span></h1>
+      <h1 id="h1" class="long h1x"><span class="h1a">My Newsletter Business <span class="nb">Has Made <span class="hl">$1.4M</span>.</span></span> <span class="h1b h1f">If I Wanted to <em>5x My Salary</em> <span class="nw">in 2027,</span> Here’s What I’d Build&nbsp;First.</span></h1>
       <div class="hcopy">
         <p class="hlead">You’ve spent years getting good at something. I’ll show you how I’d use that experience to <b>find readers, choose what to sell, and start building income of your own,</b> alongside the work you already do.</p>
         <p class="hsub2">I’m Ana Calin. For <b><span class="nn">three (3)</span> free live sessions</b>, I’ll walk you through the exact system I used to go from <b>12 subscribers to a business that crossed $1M</b> + the step I’d move earlier now that AI has changed the work.</p>
@@ -4143,7 +4148,7 @@ button.ofa-btn{font-size:max(2.3cqi,14px);padding:max(1.6cqi,9px) max(2.4cqi,14p
  document.querySelectorAll('h2,h3,p,b,span').forEach(function(el){if(el.children.length===0&&/See you Tuesday, Dec 8\./.test(el.textContent))el.textContent=el.textContent.replace('See you Tuesday, Dec 8.','See you '+WF[S.getDay()]+', '+M[S.getMonth()]+' '+S.getDate()+'.')});
  var bs=q('.fb-id');if(bs)bs.setAttribute('aria-label','The Exit Plan, a free 3-day live event with Ana Calin, '+span+', '+me+': save my seat');
 }catch(e){}})();</script>
-<script src="assets/wistia-vsl.js?v=9"></script>
+<script src="assets/wistia-vsl.js?v=11"></script>
 <script>/* Sean, Nov 4: desktop 995puecipz, phone z5mv5t5sf5 (Wistia) */
 (function(){var b=document.getElementById('vsl');if(!b||!window.WVSL)return;WVSL({box:b,scr:b.querySelector('.scr'),desktop:'995puecipz',phone:'z5mv5t5sf5',poster:'img/vsl/z5mv5t5sf5-smile.jpg',phoneStill:true,pill:'71%',previewSec:8,onPhoneEnd:function(){document.getElementById('hcard').scrollIntoView({behavior:'smooth', block:'center'})}})})();</script>
 <script>/* ep-prefill: the early-invite email links here with ?first_name=...&email=..., so booking takes one confirmation (nothing is submitted for them) */

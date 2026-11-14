@@ -84,6 +84,13 @@
     '.wv.wv-port .vplay .sound-symbol,.wv.wv-port .vplay .vs,.wv.wv-port .vplay .snd-s{width:38px!important;height:38px!important;border-radius:11px!important}' +
     '.wv.wv-port .vplay .sound-symbol svg,.wv.wv-port .vplay .vs svg,.wv.wv-port .vplay .snd-s svg{width:30px!important;height:30px!important}' +
     '.wv.wv-port .vplay .sound-bars,.wv.wv-port .vplay .vb,.wv.wv-port .vplay .snd-b{margin-left:2px!important;height:22px!important}' +
+    /* Sean, Nov 14: a clear play button in the pill on phones (the still could pass for a photo). It takes the speaker's place; the bars still say sound */
+    '.wv .wv-tri{display:none!important}' +
+    '.wv.wv-port .vplay .sound-symbol,.wv.wv-port .vplay .vs,.wv.wv-port .vplay .snd-s{border-radius:50%!important;background:#fff!important;display:flex!important;align-items:center!important;justify-content:center!important;box-shadow:0 0 0 0 rgba(255,255,255,.7);animation:wvPulse 1.8s ease-out infinite}' +
+    '.wv.wv-port .vplay .sound-symbol svg,.wv.wv-port .vplay .vs svg,.wv.wv-port .vplay .snd-s svg{display:none!important}' +
+    '.wv.wv-port .vplay .wv-tri{display:block!important;position:static!important;width:0!important;height:0!important;padding:0!important;background:none!important;border-radius:0!important;box-shadow:none!important;animation:none!important;transform:none!important;opacity:1!important;border-style:solid!important;border-width:9px 0 9px 15px!important;border-color:transparent transparent transparent #E0157D!important;margin:0 0 0 4px!important}' +
+    '@keyframes wvPulse{0%{box-shadow:0 0 0 0 rgba(255,255,255,.75)}70%{box-shadow:0 0 0 10px rgba(255,255,255,0)}100%{box-shadow:0 0 0 0 rgba(255,255,255,0)}}' +
+    '@media (prefers-reduced-motion:reduce){.wv.wv-port .vplay .sound-symbol,.wv.wv-port .vplay .vs,.wv.wv-port .vplay .snd-s{animation:none}}' +
     /* the full-screen button under the phone: big, labelled, easy to hit */
     '.wv-fs{display:flex;align-items:center;justify-content:center;gap:9px;margin:18px auto 0;min-height:48px;padding:0 22px;border-radius:999px;border:1.5px solid rgba(26,20,18,.22);' +
       'background:#fff;color:#1A1412;font:700 16px/1 Manrope,system-ui,sans-serif;cursor:pointer;box-shadow:0 2px 0 rgba(26,20,18,.12);-webkit-tap-highlight-color:transparent}' +
@@ -108,6 +115,7 @@
         [].slice.call(frame.querySelectorAll('.wv-isl, .wv-glass')).forEach(function(e){ if (e.parentNode === frame) frame.removeChild(e) }) }
     }
     box.classList.add('wv'); if (!MODERN) box.classList.add('wv-old');
+    [].slice.call(box.querySelectorAll('.vplay .sound-symbol, .vplay .vs, .vplay .snd-s')).forEach(function(ic){ if (!ic.querySelector('.wv-tri')) { var t = document.createElement('span'); t.className = 'wv-tri'; t.setAttribute('aria-hidden', 'true'); ic.appendChild(t) } });
     if (o.pill) box.style.setProperty('--wv-pill', o.pill);   /* phone: how far down the Tap for sound pill sits (Sean, Nov 14: off her face) */
 
     /* the loader: the page's own, or a light shimmer with a turning sunflower-yellow ring */
