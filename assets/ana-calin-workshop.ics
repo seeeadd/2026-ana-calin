@@ -6,18 +6,20 @@ METHOD:PUBLISH
 X-WR-CALNAME:Ana Calin · free 3-day live workshop
 BEGIN:VEVENT
 UID:ana-calin-20261208@howwegrowtoday.com
-DTSTAMP:20261102T120000Z
+DTSTAMP:20261114T172248Z
+SEQUENCE:1
 DTSTART:20261208T170000Z
 DTEND:20261208T183000Z
 SUMMARY:Free 3-day live workshop · Day 1 with Ana Calin
-DESCRIPTION:Do this first: join Ana's WhatsApp community\, so you don't mis
- s the reminders: https://exitplan.howwegrowtoday.com/whatsapp/\n(Email rem
- inders can land in spam. WhatsApp ones don't.)\n\nDay 1: find what your re
- aders would pay for. By the end\, you'll know who your one reader is and w
- hat she'd pay you to fix.\n\nYour confirmation page (next steps\, the 7 qu
- ick questions and your exit number): https://exitplan.howwegrowtoday.com/c
- onfirmed/\nPrint your Head start page before Day 1: https://exitplan.howwe
- growtoday.com/assets/sheet.pdf
+DESCRIPTION:12:00 pm (noon) New York time. Your calendar shows your local d
+ ate and time.\n\nDo this first: join Ana's WhatsApp community\, so you don
+ 't miss the reminders: https://exitplan.howwegrowtoday.com/whatsapp/\nDay 
+ 1: find your first readers. We'll look at who you want to reach\, what you
+  want to be known for\, and where to start finding readers even if nobody 
+ knows your name yet.\n\nYour confirmation page (next steps\, the 7 quick q
+ uestions and your exit number): https://exitplan.howwegrowtoday.com/confir
+ med/\nPrint your Head start page before Day 1: https://exitplan.howwegrowt
+ oday.com/assets/sheet.pdf
 LOCATION:Your Zoom link is in your email from Ana
 BEGIN:VALARM
 ACTION:DISPLAY
@@ -27,18 +29,20 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:ana-calin-20261209@howwegrowtoday.com
-DTSTAMP:20261102T120000Z
+DTSTAMP:20261114T172248Z
+SEQUENCE:1
 DTSTART:20261209T170000Z
 DTEND:20261209T183000Z
 SUMMARY:Free 3-day live workshop · Day 2 with Ana Calin
-DESCRIPTION:Do this first: join Ana's WhatsApp community\, so you don't mis
- s the reminders: https://exitplan.howwegrowtoday.com/whatsapp/\n(Email rem
- inders can land in spam. WhatsApp ones don't.)\n\nDay 2: turn it into an o
- ffer\, with a price. By the end\, your offer and its price are written dow
- n.\n\nYour confirmation page (next steps\, the 7 quick questions and your 
- exit number): https://exitplan.howwegrowtoday.com/confirmed/\nPrint your H
- ead start page before Day 1: https://exitplan.howwegrowtoday.com/assets/sh
- eet.pdf
+DESCRIPTION:12:00 pm (noon) New York time. Your calendar shows your local d
+ ate and time.\n\nDo this first: join Ana's WhatsApp community\, so you don
+ 't miss the reminders: https://exitplan.howwegrowtoday.com/whatsapp/\nDay 
+ 2: choose a product worth building a business around. Bring your Exit Numb
+ er and Offer Flow ideas. We'll work on a product direction\, a starting pr
+ ice\, and what to check before you spend time building.\n\nYour confirmati
+ on page (next steps\, the 7 quick questions and your exit number): https:/
+ /exitplan.howwegrowtoday.com/confirmed/\nPrint your Head start page before
+  Day 1: https://exitplan.howwegrowtoday.com/assets/sheet.pdf
 LOCATION:Your Zoom link is in your email from Ana
 BEGIN:VALARM
 ACTION:DISPLAY

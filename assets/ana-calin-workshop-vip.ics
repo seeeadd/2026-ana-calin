@@ -6,17 +6,20 @@ METHOD:PUBLISH
 X-WR-CALNAME:Ana Calin · workshop + VIP Q&A
 BEGIN:VEVENT
 UID:ana-calin-20261208@howwegrowtoday.com
-DTSTAMP:20261102T120000Z
+DTSTAMP:20261114T172248Z
+SEQUENCE:1
 DTSTART:20261208T170000Z
 DTEND:20261208T183000Z
 SUMMARY:Free 3-day live workshop · Day 1 with Ana Calin
-DESCRIPTION:Do this first: join the VIP WhatsApp group\, so you don't miss 
- the reminders and the Zoom links: https://exitplan.howwegrowtoday.com/vip-
- whatsapp/\n\nDay 1: find what your readers would pay for. By the end\, you
- 'll know who your one reader is and what she'd pay you to fix.\n\nYour VIP
-  page (next steps and your bonus): https://exitplan.howwegrowtoday.com/vip
- -confirmed/\nPrint your Head start page before Day 1: https://exitplan.how
- wegrowtoday.com/assets/sheet.pdf
+DESCRIPTION:12:00 pm (noon) New York time. Your calendar shows your local d
+ ate and time.\n\nDo this first: join the VIP WhatsApp group\, so you don't
+  miss the reminders and the Zoom links: https://exitplan.howwegrowtoday.co
+ m/vip-whatsapp/\n\nDay 1: find your first readers. We'll look at who you w
+ ant to reach\, what you want to be known for\, and where to start finding 
+ readers even if nobody knows your name yet.\n\nYour VIP page (next steps a
+ nd your bonus): https://exitplan.howwegrowtoday.com/vip-confirmed/\nPrint 
+ your Head start page before Day 1: https://exitplan.howwegrowtoday.com/ass
+ ets/sheet.pdf
 LOCATION:Your Zoom link is in your email from Ana
 BEGIN:VALARM
 ACTION:DISPLAY
@@ -26,17 +29,20 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:ana-calin-20261209@howwegrowtoday.com
-DTSTAMP:20261102T120000Z
+DTSTAMP:20261114T172248Z
+SEQUENCE:1
 DTSTART:20261209T170000Z
 DTEND:20261209T183000Z
 SUMMARY:Free 3-day live workshop · Day 2 with Ana Calin
-DESCRIPTION:Do this first: join the VIP WhatsApp group\, so you don't miss 
- the reminders and the Zoom links: https://exitplan.howwegrowtoday.com/vip-
- whatsapp/\n\nDay 2: turn it into an offer\, with a price. By the end\, you
- r offer and its price are written down.\n\nYour VIP page (next steps and y
- our bonus): https://exitplan.howwegrowtoday.com/vip-confirmed/\nPrint your
-  Head start page before Day 1: https://exitplan.howwegrowtoday.com/assets/
- sheet.pdf
+DESCRIPTION:12:00 pm (noon) New York time. Your calendar shows your local d
+ ate and time.\n\nDo this first: join the VIP WhatsApp group\, so you don't
+  miss the reminders and the Zoom links: https://exitplan.howwegrowtoday.co
+ m/vip-whatsapp/\n\nDay 2: choose a product worth building a business aroun
+ d. Bring your Exit Number and Offer Flow ideas. We'll work on a product di
+ rection\, a starting price\, and what to check before you spend time build
+ ing.\n\nYour VIP page (next steps and your bonus): https://exitplan.howweg
+ rowtoday.com/vip-confirmed/\nPrint your Head start page before Day 1: http
+ s://exitplan.howwegrowtoday.com/assets/sheet.pdf
 LOCATION:Your Zoom link is in your email from Ana
 BEGIN:VALARM
 ACTION:DISPLAY
@@ -66,16 +72,20 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:ana-calin-20261211@howwegrowtoday.com
-DTSTAMP:20261102T120000Z
+DTSTAMP:20261114T172248Z
+SEQUENCE:1
 DTSTART:20261211T170000Z
 DTEND:20261211T183000Z
 SUMMARY:VIP Q&A with Ana Calin
-DESCRIPTION:Do this first: join the VIP WhatsApp group\, so you don't miss 
- the reminders and the Zoom links: https://exitplan.howwegrowtoday.com/vip-
- whatsapp/\n\nBring your offer\, your price or your ask. Ana works on it wi
- th you live.\n\nYour VIP page (next steps and your bonus): https://exitpla
- n.howwegrowtoday.com/vip-confirmed/\nPrint your Head start page before Day
-  1: https://exitplan.howwegrowtoday.com/assets/sheet.pdf
+DESCRIPTION:12:00 pm (noon) New York time. Your calendar shows your local d
+ ate and time.\n\nDo this first: join the VIP WhatsApp group\, so you don't
+  miss the reminders and the Zoom links: https://exitplan.howwegrowtoday.co
+ m/vip-whatsapp/\n\nBring your product idea\, price\, sales message or the 
+ decision you're stuck on. Ana reviews selected submissions live and explai
+ ns what she'd change and why. Individual reviews are not guaranteed.\n\nYo
+ ur VIP page (next steps and your bonus): https://exitplan.howwegrowtoday.c
+ om/vip-confirmed/\nPrint your Head start page before Day 1: https://exitpl
+ an.howwegrowtoday.com/assets/sheet.pdf
 LOCATION:Your Zoom link is in your email from Ana
 BEGIN:VALARM
 ACTION:DISPLAY

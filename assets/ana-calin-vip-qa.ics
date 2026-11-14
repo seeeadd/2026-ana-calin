@@ -6,16 +6,20 @@ METHOD:PUBLISH
 X-WR-CALNAME:Ana Calin · VIP Q&A
 BEGIN:VEVENT
 UID:ana-calin-20261211@howwegrowtoday.com
-DTSTAMP:20261102T120000Z
+DTSTAMP:20261114T172248Z
+SEQUENCE:1
 DTSTART:20261211T170000Z
 DTEND:20261211T183000Z
 SUMMARY:VIP Q&A with Ana Calin
-DESCRIPTION:Do this first: join the VIP WhatsApp group\, so you don't miss 
- the reminders and the Zoom links: https://exitplan.howwegrowtoday.com/vip-
- whatsapp/\n\nBring your offer\, your price or your ask. Ana works on it wi
- th you live.\n\nYour VIP page (next steps and your bonus): https://exitpla
- n.howwegrowtoday.com/vip-confirmed/\nPrint your Head start page before Day
-  1: https://exitplan.howwegrowtoday.com/assets/sheet.pdf
+DESCRIPTION:12:00 pm (noon) New York time. Your calendar shows your local d
+ ate and time.\n\nDo this first: join the VIP WhatsApp group\, so you don't
+  miss the reminders and the Zoom links: https://exitplan.howwegrowtoday.co
+ m/vip-whatsapp/\n\nBring your product idea\, price\, sales message or the 
+ decision you're stuck on. Ana reviews selected submissions live and explai
+ ns what she'd change and why. Individual reviews are not guaranteed.\n\nYo
+ ur VIP page (next steps and your bonus): https://exitplan.howwegrowtoday.c
+ om/vip-confirmed/\nPrint your Head start page before Day 1: https://exitpl
+ an.howwegrowtoday.com/assets/sheet.pdf
 LOCATION:Your Zoom link is in your email from Ana
 BEGIN:VALARM
 ACTION:DISPLAY
