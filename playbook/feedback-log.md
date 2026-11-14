@@ -297,3 +297,4 @@ correction and every approval-with-reason (SOP section D). The full raw messages
 - 2026-11-14 · "Publish" → main at 043eb91: the 5x headline, meta and link preview are live (the Nov 13 "alongside work" copy was already on main)
 - 2026-11-14 · "Yes, match it" (waitlist headline) → waitlist h1 now "If I Wanted to Earn 5x My Salary in 2027, Here’s the Newsletter Business I’d Build.", "5x My Salary" pink italic and kept on one line (nowrap), "Has Already Made $1.4M" line kept. No sideways scroll at 320 to 1440 · `waitlist/index.html`
 - 2026-11-14 · "Publish" → main at 8204850: the waitlist 5x headline is live
+- 2026-11-14 · "this is Ana’s AI offer flow, put it in the confirmation pages" + https://www.monetisesubstack.com/ana-ai-offer-flow → set OFFERFLOW_URL on both confirmations; the "Open Ana’s Offer Flow" buttons now open it in a new tab · `confirmed/index.html`, `vip-confirmed/index.html`
