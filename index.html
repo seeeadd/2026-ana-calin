@@ -10,17 +10,17 @@
      in Ana's skin: cream #FFF8EE, sand (now a sunflower cream) #FFF1C9, ink #1A1412, sunflower #FFD400, hot pink #365F8A, ink 3 #7A6A60.
      Type: Instrument Serif + Manrope (Google Fonts). Drawings: thick ink outlines + flat sunflower fills, her logo's style.
      Every "save my seat (free)" button opens the one registration popup: first name and email (Oct 29: name and email only, per SOP 3A). -->
-<meta name="description" content="Ana Calin’s newsletter business has made $1.4M. Discover the newsletter business she’d build for 5x her salary in 2027. Free live workshop, Dec 8 to 10, 12 pm New York.">
+<meta name="description" content="Ana Calin’s newsletter business has made $1.4M. Discover the newsletter business she’d build to 5x her salary in 2027. Free live workshop, Dec 8 to 10, 12 pm New York.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="The Exit Plan · a free 3-day live event with Ana Calin · Dec 8 to 10">
-<meta property="og:description" content="Ana Calin’s newsletter business has made $1.4M. Discover the newsletter business she’d build for 5x her salary in 2027. Free live workshop, Dec 8 to 10, 12 pm New York.">
+<meta property="og:description" content="Ana Calin’s newsletter business has made $1.4M. Discover the newsletter business she’d build to 5x her salary in 2027. Free live workshop, Dec 8 to 10, 12 pm New York.">
 <meta property="og:url" content="https://exitplan.howwegrowtoday.com/">
-<meta property="og:image" content="https://exitplan.howwegrowtoday.com/img/share-exit-plan-5x-b-20261114.jpg">
+<meta property="og:image" content="https://exitplan.howwegrowtoday.com/img/share-exit-plan-5x-c-20261114.jpg">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="The Exit Plan with Ana Calin. If she wanted 5x her salary in 2027, here’s the newsletter business she’d build. Free live workshop, Dec 8 to 10 at 12 pm New York.">
-<meta name="twitter:image" content="https://exitplan.howwegrowtoday.com/img/share-exit-plan-5x-b-20261114.jpg">
+<meta property="og:image:alt" content="The Exit Plan with Ana Calin. If she wanted to 5x her salary in 2027, here’s the newsletter business she’d build. Free live workshop, Dec 8 to 10 at 12 pm New York.">
+<meta name="twitter:image" content="https://exitplan.howwegrowtoday.com/img/share-exit-plan-5x-c-20261114.jpg">
 <meta name="twitter:image:alt" content="The Exit Plan, a free three-day live event with Ana Calin, Dec 8–10 at 12 pm New York.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#FFF8EE">
@@ -2615,6 +2615,15 @@ html.wv-lock{overflow:hidden}
 .ofa-vid{position:relative;background:#fff;aspect-ratio:800/388}
 .ofv{display:block;width:100%;height:100%;object-fit:cover}
 .ofa-foot2{margin:0;padding:2.4cqi 3.2cqi;background:#FFFDF9}
+/* Sean, Nov 14: the window's "Save my offer stack" works like the big button (opens the sign-up); a 44px tap area around the small label */
+button.ofa-btn{position:relative;border:0;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:transform .15s ease,background .15s ease}
+button.ofa-btn:after{content:"";position:absolute;left:-10px;right:-10px;top:50%;height:44px;transform:translateY(-50%)}
+button.ofa-btn:hover{background:#000;transform:translateY(-1px)}
+button.ofa-btn:focus-visible{outline:3px solid #1b63a9;outline-offset:3px}
+.ofa-foot2 .ofa-lock{font-size:max(2.1cqi,12.5px)}.ofa-foot2 .ofa-lock svg{width:max(2.4cqi,13px);height:max(2.4cqi,13px)}
+button.ofa-btn{font-size:max(2.3cqi,14px);padding:max(1.6cqi,9px) max(2.4cqi,14px);border-radius:max(1.6cqi,9px)}button.ofa-btn svg{width:max(2.4cqi,14px);height:max(2.4cqi,14px)}
+/* small windows (phones): the lock line on top, the button full width below it */
+@container (max-width:460px){.ofa-foot2{flex-wrap:wrap;justify-content:center;gap:10px;padding:12px 12px 14px}button.ofa-btn{flex:1 1 100%;justify-content:center;min-height:44px}button.ofa-btn:after{display:none}}
 .ofa-cur{position:absolute;z-index:5;width:4.4cqi;height:4.4cqi;left:28cqi;bottom:12cqi;fill:#1A1412;stroke:#fff;stroke-width:1.4;stroke-linejoin:round;filter:drop-shadow(0 2px 2px rgba(0,0,0,.25));opacity:0}
 .ofa-can{position:absolute;z-index:2;right:-5cqi;top:-6cqi;width:19cqi;transform:rotate(-22deg) scaleX(-1);pointer-events:none}
 .ofa-can img{display:block;width:100%;height:auto}
@@ -2849,7 +2858,7 @@ html.wv-lock{overflow:hidden}
 
     <div class="hright">
       <span class="hpill"><span class="dot"></span><span class="hp-name">The Exit Plan</span> <i>·</i> Free 3-day event <span class="hp-lz">live on Zoom</span></span>
-      <h1 id="h1" class="long h1x"><span class="h1a">My Newsletter Business <span class="nb">Has Made <span class="hl">$1.4M</span>.</span></span> <span class="h1b"><span class="l">If I Wanted</span> <span class="l"><em>5x My Salary</em> in 2027,</span> <span class="l">Here’s the Newsletter</span> <span class="l">Business I’d Build.</span></span></h1>
+      <h1 id="h1" class="long h1x"><span class="h1a">My Newsletter Business <span class="nb">Has Made <span class="hl">$1.4M</span>.</span></span> <span class="h1b"><span class="l">If I Wanted to</span> <span class="l"><em>5x My Salary</em> in 2027,</span> <span class="l">Here’s the Newsletter</span> <span class="l">Business I’d Build.</span></span></h1>
       <div class="hcopy">
         <p class="hlead">You’ve spent years getting good at something. I’ll show you how I’d use that experience to <b>find readers, choose what to sell, and start building income of your own,</b> alongside the work you already do.</p>
         <p class="hsub2">I’m Ana Calin. For <b><span class="nn">three (3)</span> free live sessions</b>, I’ll walk you through the exact system I used to go from <b>12 subscribers to a business that crossed $1M</b> + the step I’d move earlier now that AI has changed the work.</p>
@@ -3215,12 +3224,12 @@ html.wv-lock{overflow:hidden}
         <p>Use the Exit Number Calculator alongside it to see what those starting prices would mean for your income goal.</p>
         <div class="cta2"><button class="btn open" type="button" data-cta="offerflow"><span class="sf-b" aria-hidden="true"><svg><use href="#sf"/></svg></span><span class="bt">Get my offer stack <small class="bq">(free)!</small></span><svg class="ar"><use href="#arr"/></svg></button><small>Included when you register. Optional preparation. You’re still welcome if you arrive without an idea.</small></div>
       </div>
-      <div class="ofart" aria-hidden="true">
+      <div class="ofart">
         <div class="ofa">
           <div class="ofa-win">
-            <div class="ofa-bar"><span class="ofa-dots"><i></i><i></i><i></i></span><span class="ofa-title">Ana’s Offer Flow</span><span class="ofa-free"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5c.6 4.6 2.9 6.9 7.5 7.5-4.6.6-6.9 2.9-7.5 7.5-.6-4.6-2.9-6.9-7.5-7.5 4.6-.6 6.9-2.9 7.5-7.5Z"/><path d="M19 15.5c.3 2 1.2 2.9 3.2 3.2-2 .3-2.9 1.2-3.2 3.2-.3-2-1.2-2.9-3.2-3.2 2-.3 2.9-1.2 3.2-3.2Z"/></svg>AI</span></div>
-            <div class="ofa-vid"><video class="ofv" muted loop playsinline preload="none" width="800" height="388" poster="img/offerflow/of-demo.jpg" data-src="img/offerflow/of-demo.mp4"></video></div>
-            <div class="ofa-foot ofa-foot2"><span class="ofa-lock"><svg viewBox="0 0 20 20"><rect x="4" y="9" width="12" height="9" rx="2"/><path d="M7 9V6.5a3 3 0 0 1 6 0V9"/></svg>Opens after you register</span><span class="ofa-btn">Save my offer stack<svg viewBox="0 0 16 16"><path d="M4 8h8M8.5 4.5 12 8l-3.5 3.5"/></svg></span></div>
+            <div class="ofa-bar" aria-hidden="true"><span class="ofa-dots"><i></i><i></i><i></i></span><span class="ofa-title">Ana’s Offer Flow</span><span class="ofa-free"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5c.6 4.6 2.9 6.9 7.5 7.5-4.6.6-6.9 2.9-7.5 7.5-.6-4.6-2.9-6.9-7.5-7.5 4.6-.6 6.9-2.9 7.5-7.5Z"/><path d="M19 15.5c.3 2 1.2 2.9 3.2 3.2-2 .3-2.9 1.2-3.2 3.2-.3-2-1.2-2.9-3.2-3.2 2-.3 2.9-1.2 3.2-3.2Z"/></svg>AI</span></div>
+            <div class="ofa-vid" aria-hidden="true"><video class="ofv" muted loop playsinline preload="none" width="800" height="388" poster="img/offerflow/of-demo.jpg" data-src="img/offerflow/of-demo.mp4"></video></div>
+            <div class="ofa-foot ofa-foot2"><span class="ofa-lock"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="4" y="9" width="12" height="9" rx="2"/><path d="M7 9V6.5a3 3 0 0 1 6 0V9"/></svg>Opens after you register</span><button class="ofa-btn open" type="button" data-cta="offerflow_mock">Save my offer stack<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 8h8M8.5 4.5 12 8l-3.5 3.5"/></svg></button></div>
           </div>
         </div>
       </div>
