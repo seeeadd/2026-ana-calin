@@ -59,3 +59,8 @@
   .bmk .bm-key{display:none}
   .bmk .bm-touch{display:inline}
 }
+
+/* Sean, Nov 14: Ana's real Offer Flow screen recording inside the app window (both confirmations, all sizes) */
+.ofapp{max-width:none!important;width:100%}
+.ofa2-vid{display:block;position:relative;aspect-ratio:800/388;background:#fff}
+.ofv{display:block;width:100%;height:100%;object-fit:cover}
