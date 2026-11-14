@@ -11,7 +11,7 @@
    - Browsers without custom elements (very old phones) get Wistia's plain iframe player instead.
    - phoneStill (Ana, Nov 14: "stop the frame on a scene in which I don't look this drunk"): phones skip the silent preview
      and hold the chosen still (poster) until the press, and go back to it when she finishes.
-   WVSL({box, scr, frame, desktop, phone, poster, phoneStill, previewSec, onPhoneEnd}) */
+   WVSL({box, scr, frame, desktop, phone, poster, phoneStill, pill, previewSec, onPhoneEnd}) */
 (function(){
   var me = document.currentScript && document.currentScript.src || '';
   var ROOT = me ? me.replace(/assets\/wistia-vsl\.js.*$/, '') : '/';
@@ -78,7 +78,7 @@
     '.wv-phone>.wv-screen>.wv-glass{position:absolute;inset:0;z-index:5;pointer-events:none;border-radius:inherit;' +
       'background:linear-gradient(118deg,rgba(255,255,255,.16) 0%,rgba(255,255,255,0) 26%,rgba(255,255,255,0) 70%,rgba(255,255,255,.06) 100%)}' +
     /* "Tap for sound" on the phone: one line, low on the screen, clear of her face; the same on every page */
-    '.wv.wv-port .vplay{top:50%!important;bottom:auto!important;left:50%!important;right:auto!important;transform:translate(-50%,-50%)!important;width:max-content!important;max-width:90%!important;' +
+    '.wv.wv-port .vplay{top:var(--wv-pill,63%)!important;bottom:auto!important;left:50%!important;right:auto!important;transform:translate(-50%,-50%)!important;width:max-content!important;max-width:90%!important;' +
       'height:auto!important;min-height:0!important;padding:8px 15px 8px 8px!important;gap:9px!important;border-radius:16px!important;font-size:17px!important;line-height:1.15!important;white-space:nowrap!important;margin:0!important}' +
     '.wv.wv-port .vplay small{font-size:11.5px!important;margin-top:3px!important;white-space:nowrap!important}' +
     '.wv.wv-port .vplay .sound-symbol,.wv.wv-port .vplay .vs,.wv.wv-port .vplay .snd-s{width:38px!important;height:38px!important;border-radius:11px!important}' +
@@ -108,6 +108,7 @@
         [].slice.call(frame.querySelectorAll('.wv-isl, .wv-glass')).forEach(function(e){ if (e.parentNode === frame) frame.removeChild(e) }) }
     }
     box.classList.add('wv'); if (!MODERN) box.classList.add('wv-old');
+    if (o.pill) box.style.setProperty('--wv-pill', o.pill);   /* phone: how far down the Tap for sound pill sits (Sean, Nov 14: off her face) */
 
     /* the loader: the page's own, or a light shimmer with a turning sunflower-yellow ring */
     var own = scr.querySelector('.vsl-loading'), ld = own;
