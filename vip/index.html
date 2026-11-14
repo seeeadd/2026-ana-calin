@@ -2657,12 +2657,14 @@ html.wv-lock{overflow:hidden}
     if (PROMO_CODE) p.push('prefilled_promo_code=' + encodeURIComponent(PROMO_CODE));
     p.push('utm_content=vip_headline_' + v);
     if (at) p.push('utm_term=' + encodeURIComponent(at));
+    var bb = e && e.currentTarget; if (bb && window.AnaBusy) { var small = bb.classList.contains('fbc'); AnaBusy.on(bb, small ? 'Opening' : 'Opening secure checkout', small ? '' : 'Loading the payment page') }   /* Sean, Nov 15 */
     location.href = CHECKOUT_URL + (CHECKOUT_URL.indexOf('?') < 0 ? '?' : '&') + p.join('&');
   }
   document.querySelectorAll('.add').forEach(function(b){ b.addEventListener('click', checkout) });
 
   /* decline: popup 1, then "are you sure", then the confirmation page. They stay registered either way. */
-  function leave(){
+  function leave(e){
+    var lb = e && e.currentTarget; if (lb && window.AnaBusy) AnaBusy.on(lb, 'One moment', 'Taking you to your seat');
     var u = CONFIRM_URL || '../', p = [];
     if (first) p.push('first=' + encodeURIComponent(first));
     if (email) p.push('email=' + encodeURIComponent(email));
@@ -2672,7 +2674,7 @@ html.wv-lock{overflow:hidden}
   var pop1 = document.getElementById('pop1'), pop2 = document.getElementById('pop2'), lastFocus = null;
   function openPop(el){ closePops(true); el.classList.add('open'); el.setAttribute('aria-hidden','false'); document.body.classList.add('noscroll'); var b = el.querySelector('.pbox'); b.setAttribute('tabindex','-1'); setTimeout(function(){ b.focus({preventScroll:true}) }, 60) }
   function closePops(keep){ [pop1, pop2].forEach(function(p){ p.classList.remove('open'); p.setAttribute('aria-hidden','true') }); if (!keep) { document.body.classList.remove('noscroll'); if (lastFocus) lastFocus.focus({preventScroll:true}) } }
-  document.querySelectorAll('.decline').forEach(function(b){ b.addEventListener('click', function(){ if (closed) { leave(); return } lastFocus = b; openPop(pop1) }) });
+  document.querySelectorAll('.decline').forEach(function(b){ b.addEventListener('click', function(ev){ if (closed) { leave(ev); return } lastFocus = b; openPop(pop1) }) });
   document.getElementById('no1').addEventListener('click', function(){ openPop(pop2) });
   document.getElementById('no2').addEventListener('click', leave);
   pop1.querySelector('.px').addEventListener('click', function(){ closePops() });
@@ -2825,5 +2827,6 @@ html.wv-lock{overflow:hidden}
 (function(){var trk=document.querySelector('.trk'),road=trk&&trk.querySelector('.road'),wk=trk&&trk.querySelector('.stop.s1 .wk');if(!road||!wk)return;
  function place(){var t=trk.getBoundingClientRect(),w=wk.getBoundingClientRect();if(!w.height)return;road.style.top=Math.round(w.bottom-t.top+13)+'px'}
  place();addEventListener('resize',place);addEventListener('load',place);if(window.ResizeObserver)new ResizeObserver(place).observe(wk)})();</script>
+<script src="../assets/busy.js?v=1"></script>
 </body>
 </html>

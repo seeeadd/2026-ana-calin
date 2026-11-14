@@ -572,13 +572,13 @@ h1 .hl{background:linear-gradient(transparent 14%,var(--sun) 14%,var(--sun) 94%,
     var okName = f.value.trim().length > 0, okMail = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
     bad(f, !okName); bad(m, !okMail); document.getElementById('wErr').textContent = 'Almost. Check that email once more.';
     if (!okName || !okMail) { (okName ? m : f).focus(); return }
-    go.disabled = true; email = v;
+    if (window.AnaBusy) AnaBusy.on(go, 'Saving your spot', 'Almost there'); else go.disabled = true; email = v;
     post({ first_name: f.value.trim(), email_address: v, ep_check: form.elements.ep_check.value }).then(function(j){
-      if (j.ok) { card.classList.add('done'); document.body.classList.add('done'); var fn = f.value.trim().split(/\s+/)[0]; if (fn && fn.length < 30) document.querySelectorAll('[data-name]').forEach(function(e){ e.textContent = fn }); try { card.scrollIntoView({ block: 'nearest', behavior: 'smooth' }) } catch (x) {} return }
-      go.disabled = false;
+      if (j.ok) { if (window.AnaBusy) AnaBusy.off(go); card.classList.add('done'); document.body.classList.add('done'); var fn = f.value.trim().split(/\s+/)[0]; if (fn && fn.length < 30) document.querySelectorAll('[data-name]').forEach(function(e){ e.textContent = fn }); try { card.scrollIntoView({ block: 'nearest', behavior: 'smooth' }) } catch (x) {} return }
+      if (window.AnaBusy) AnaBusy.off(go); go.disabled = false;
       if (j.error === 'email' || j.error === 'email_domain') { bad(m, true); document.getElementById('wErr').textContent = 'That email doesn’t look right. Check it once more.'; m.focus() }
       else fail.style.display = 'block';
-    }).catch(function(){ go.disabled = false; fail.style.display = 'block' });
+    }).catch(function(){ if (window.AnaBusy) AnaBusy.off(go); go.disabled = false; fail.style.display = 'block' });
   });
   [form.elements.first_name, form.elements.email_address].forEach(function(i){ i.addEventListener('input', function(){ bad(i, false) }) });
   /* the pulse: the first name lights up first; once a name is in, the email lights up; focusing a field stops its pulse */
@@ -597,13 +597,15 @@ h1 .hl{background:linear-gradient(transparent 14%,var(--sun) 14%,var(--sun) 94%,
   wq.addEventListener('submit', function(e){
     e.preventDefault();
     var t = document.getElementById('wBq').value.trim(); if (!t) { document.getElementById('wBq').focus(); return }
-    qgo.disabled = true;
+    if (window.AnaBusy) AnaBusy.on(qgo, 'Sending your question', 'Almost there'); else qgo.disabled = true;
     post({ email_address: email, business_question: t, permission_to_discuss_live: document.getElementById('wOk').checked }).then(function(j){
+      if (window.AnaBusy) AnaBusy.off(qgo);
       if (j.ok) { q.classList.add('sent'); return }
       qgo.disabled = false; document.getElementById('wBq').focus();
-    }).catch(function(){ qgo.disabled = false });
+    }).catch(function(){ if (window.AnaBusy) AnaBusy.off(qgo); qgo.disabled = false });
   });
 })();
 </script>
+<script src="../assets/busy.js?v=1"></script>
 </body>
 </html>

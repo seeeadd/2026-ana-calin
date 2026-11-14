@@ -3896,11 +3896,11 @@ button.ofa-btn{font-size:max(2.3cqi,14px);padding:max(1.6cqi,9px) max(2.4cqi,14p
     if (chk.bad) { emSay(chk.bad, chk.fix); ok = false }
     else if (chk.fix && emAsked !== chk.v) { emAsked = chk.v; emSay('maybe', chk.fix); ok = false }
     if (!ok) {form.querySelector('.bad input').focus();return}
-    form.querySelector('.send').disabled = true;
+    var sendB = form.querySelector('.send'); if (window.AnaBusy) AnaBusy.on(sendB, 'Saving your seat', 'Taking you to your next step'); else sendB.disabled = true;   /* Sean, Nov 15: show it's working */
     var name = fn.value.trim(), mail = em.value.trim();
     function next(){
       if (VIP_URL) {location.href = VIP_URL + (VIP_URL.indexOf('?')<0?'?':'&') + 'first_name=' + encodeURIComponent(name) + '&email=' + encodeURIComponent(mail) + (ref ? '&ref=' + encodeURIComponent(ref) : ''); return}
-      dlg.classList.add('done');
+      if (window.AnaBusy) AnaBusy.off(sendB); dlg.classList.add('done');
     }
     /* remembered in this tab and in this browser, so the VIP and confirmation pages can greet them by name later too */
     var regJ = JSON.stringify({first_name:name,email:mail,ref:ref});
@@ -3913,7 +3913,7 @@ button.ofa-btn{font-size:max(2.3cqi,14px);padding:max(1.6cqi,9px) max(2.4cqi,14p
     fetch(REG_URL,{method:'POST',body:data,headers:{'Accept':'application/json'}})
       .then(function(r){
         if (r.ok) return r;
-        if (r.status === 400) return r.json().then(function(j){ if (j && (j.error === 'email_domain' || j.error === 'email')) { emSay(j.error === 'email' ? 'format' : 'domain'); form.querySelector('.send').disabled = false; em.focus(); return stop } return direct() }, direct);
+        if (r.status === 400) return r.json().then(function(j){ if (j && (j.error === 'email_domain' || j.error === 'email')) { emSay(j.error === 'email' ? 'format' : 'domain'); if (window.AnaBusy) AnaBusy.off(sendB); form.querySelector('.send').disabled = false; em.focus(); return stop } return direct() }, direct);
         return direct() }, direct)
       .then(function(x){ if (x !== stop) next() }, next);
   });
@@ -4158,5 +4158,6 @@ button.ofa-btn{font-size:max(2.3cqi,14px);padding:max(1.6cqi,9px) max(2.4cqi,14p
  if(n||e){fill();document.addEventListener('DOMContentLoaded',fill);addEventListener('load',fill)}}catch(x){}})();</script>
 <script src="assets/registration-details.js?v=20261107d"></script>
 <script src="assets/ofv.js?v=e8a09f36b5a8" defer></script>
+<script src="assets/busy.js?v=1"></script>
 </body>
 </html>

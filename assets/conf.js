@@ -203,14 +203,14 @@
     f.addEventListener('submit', function(e){
       e.preventDefault();
       if (!f.reportValidity()) return;
-      var b = f.querySelector('button[type=submit]'); b.disabled = true;
-      function done(){ box.classList.add('done'); track('question_' + box.getAttribute('data-form').toLowerCase()) }
+      var b = f.querySelector('button[type=submit]'); if (window.AnaBusy) AnaBusy.on(b, 'Sending', 'Almost there'); else b.disabled = true;
+      function done(){ if (window.AnaBusy) AnaBusy.off(b); box.classList.add('done'); track('question_' + box.getAttribute('data-form').toLowerCase()) }
       /* the VIP review form: to the Google Sheet (tab "VIP review") through the survey API; on failure their words stay and they can retry */
       if (box.getAttribute('data-sheet')) {
         var err = box.querySelector('.qf-err'); if (err) err.hidden = true;
         var work = (f.querySelector('[name=work]') || {}).value || '', tz = '';
         try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '' } catch (x) {}
-        var fail = function(){ b.disabled = false; if (err) err.hidden = false };
+        var fail = function(){ if (window.AnaBusy) AnaBusy.off(b); b.disabled = false; if (err) err.hidden = false };
         fetch(C.SURVEY_API || '/api/ana-survey/', {method:'POST', headers:{'Content-Type':'application/json'},
           body: JSON.stringify({kind: box.getAttribute('data-sheet'), page: isVip ? 'vip' : 'reg', first: first, email: em.value, ref: ref, tz: tz,
             answers: {work: work, link: (f.querySelector('[name=link]') || {}).value || '', show: /skip\s*me/i.test(work) ? 'no (skip me)' : 'yes'}})})
