@@ -14,7 +14,7 @@ One engine, one small config per video. Every video is `kit.html?video=<id>`. St
 6. Notes: edit the config, run `draft.sh` again. Only what changed is painted. A one-word caption note is `capEdits` in the config.
 7. `tools/film/kit/final.sh <id>` for full size, both shapes, plus web copies. Output goes to `~/AnaVideo/out/kit/`. One review pass, then publish only on Sean's word.
 
-The local server `ana-render` (port 8768) starts by itself if it is down. Add `--from s --to s --shape d` to any render for a piece of the film. For a sped-up delivery set `"speed": 1.25` in `audio.json`, run `mix`, then add `--speed 1.25 --audio <that mix>` to the render: her voice and the picture speed up, music and effects don't. The renderer retries a stalled browser and uses fewer workers on a busy machine; still, don't run two renders at once.
+The local server `ana-render` (127.0.0.1, port 8768) starts by itself if it is down. Add `--from s --to s --shape d` to any render for a piece of the film. For a sped-up delivery set `"speed": 1.25` in `audio.json`, run `words` and `mix` again (each speed needs its own `words`), then add `--speed 1.25 --audio <that mix>` to the render: her voice and the picture speed up, music and effects don't. The renderer retries a stalled browser and uses fewer workers on a busy machine; still, don't run two renders at once.
 
 ## Added for the VIP video (see `videos/vip/config.js`)
 

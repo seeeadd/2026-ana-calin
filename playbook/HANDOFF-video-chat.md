@@ -291,5 +291,15 @@ The playbook files hold these as rules; this is the full list in one place.
 ## 10. Nov 9 VIP round and the confirmation video (short handover)
 
 - **VIP final (Nov 9, approved "absolutely love it"):** `~/AnaVideo/out/kit/vip-final-{desktop,phone}-1.2x-web.mp4` (14/15 MB, 1:23). Sean uploads to Wistia; another chat puts it on the page. Changes: one piece per beat, titles in her serif with a soft cream glow on one band, clean cuts (`cuts`), no swing (`still`), one crop, no punch-ins, captions centred on her, shutters on a top layer (`doorTop`). Rules in the playbook `video-editing.md`.
-- **Confirmation video (next):** raw `~/Downloads/v24044gl0000dbk6gr7og65pqaldhimg.MP4` (720x1280, 76 s, outdoors, sky behind, no burned captions). Sean sends the script and new audio (Ana's version has piano on it; work with what's there for now).
+- **Confirmation video (brief, now done, see §11):** raw `~/Downloads/v24044gl0000dbk6gr7og65pqaldhimg.MP4` (720x1280, 76 s, outdoors, sky behind, no burned captions). Sean sends the script and new audio (Ana's version has piano on it; work with what's there for now).
 - **Sean's brief:** same style; a new view of the bay: POV from the mountain, Greek village houses all around, the bay far away; and a calmer bedroom ("last time it was too loud"). Ideas first, then 2 make-and-judge cycles, stills before any render. Keep tokens low.
+
+## 11. Confirmation video final (Nov 9 to 10)
+
+- **Delivered:** `~/AnaVideo/out/kit/confirm-final-{desktop,phone}-1.1x-web.mp4` (8.7 / 10.5 MB, 1:08). Config `tools/film/videos/confirm/`, last commit 3a235b0. Sean uploads to Wistia.
+- **Speed 1.1x** for Ana now (1.2x was too fast). Voice is Sean's enhanced audio, `~/AnaVideo/out/kit/confirm-voice-enh.wav`. The config `audio` is the 1x mix (`confirm-mix-1x.wav`); renders take `--speed 1.1 --audio confirm-mix.wav`. Run `audio.py words` again for each speed before `mix`.
+- **Pieces** (local, `tools/film/_local/confirm/pieces/`, not in git): live-page cut-outs (WhatsApp button, survey card, calculator cards, head-start sheet card), frame sets for the spam demo, Sean's Google Calendar (name and private bits blurred, New York dates and times repainted in Google Sans, VIP title fixed, click on Save), a WhatsApp group chat, and a Gmail reply where "in" is typed and sent. Build scripts were in the session scratchpad; the method is in `video-editing.md` §5 (page pieces are cut-outs).
+- **Zoom overlay** on her live section (64.7 to 73.45): her video in a Zoom window, green speaker border, LIVE pill, "Ana Calin" tag, a "You" tile with the sunflower, rising reactions. Phone: no bottom toolbar (it covered the sunflower), Leave sits in the top bar.
+- **Holds:** WhatsApp, Reply in and Zoom stay up until the next layout change. Mockups centre under the titles (x 702 desktop).
+- **Gotcha:** the kit talks to the render server on `127.0.0.1:8768`; another session's server once answered `localhost` over IPv6 and the draft hung. Never kill other sessions' servers.
+- **Open:** around 0:27 the caption says "the Exit Number calculator"; both transcripts hear "the number calculator". Sean to check by ear. Loudness is -16.5 LUFS; -14 offered, not asked for.
