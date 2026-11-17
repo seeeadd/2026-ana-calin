@@ -1,3 +1,6 @@
+> Generic rules for every client. Client specifics (colours, fonts, world, assets) live in `clients/<client>.md`;
+> examples below come from Ana Calin's pages, where these rules were learned.
+
 # Motion: how things move (pages and films)
 
 Source: Sean's corrections, his 12 motion references (studied in `tools/paint/MOTION.md`), and the VIP page he

@@ -50,11 +50,16 @@ after every video round.
 - Her words from the first word, including the opening seconds on phones. The first frame is her speaking plus a
   readable caption. No logo intro.
 - One short thought at a time, two lines max, each word inking in as she says it.
+- **Captions sit where the eye already is: on her.** On desktop with her video beside the scene, centre them under her
+  face on the lower part of her video (as on the phone), not in a far corner of the free column; on cut-aways centre them
+  along the bottom.
 - **No paper behind captions.** Straight on the scene: bold ink with a thick cream sticker outline and a soft glow,
   key words larger, soft yellow highlight on key phrases, the client's accent colour on one word at most.
 - Readable on the busiest background it crosses, in every shape. Two-line captions on phones rise so they never run
   off the bottom.
 - **Font:** a sans at 700 to 800 for body captions (Ana: Manrope), the serif for single big words or numbers.
+- **Section titles** are in the client's page headline style, not the caption font (Ana: Instrument Serif, sentence
+  case, key words pink italic), on one band per shape, with a soft cream glow behind when the scene is busy (no box).
 - Key numbers get their own caption ($1.4M; 16,000; 771 likes vs 82).
 - Captions must match what she actually says. When the audio is cleaned, check the words again (section 7).
 
@@ -79,6 +84,21 @@ after every video round.
 - **Every object has a job or it comes out.** No props to fill space. No thin generic arrows: arrows are painted
   objects. No pink on pink. No decorative sparkles. Cut-out hands reach in from the frame edge.
 - No dates baked into the core video.
+- **Breathing room:** the viewer needs beats to digest. One lead piece per beat (the real piece plus at most its title);
+  captions already carry her words, so don't repeat them as stickers. Every 10 to 15 seconds leave a quiet stretch of a
+  few seconds: her, the caption and the character resting, nothing arriving. The character hops only on real moments
+  (Ana's VIP went from 19 hops to 9), and a sound goes with a piece, so cutting a piece cuts its sound.
+  Breathing room is a picture job first: fewer layout changes, no progress strip on every section (only its payoff),
+  real piece over its mockup. Keep the section titles (Sean wants them, even when the caption says the same words).
+  "Too many zooms" meant the layout changes themselves: every switch between her full, framed and small resized her
+  over 0.45 s. Ana's VIP fix: one steady layout for her, cut-aways only for proof pieces, clean cuts between them
+  (kit config `cuts: true`), no frame swing (`still: true`), one crop for her face.
+- **Few camera moves:** no punch-ins on words and no slow push-in during shots; her picture holds still. Keep one
+  showpiece move (Ana's VIP: the door push in the opening). Pieces land and stay still: no bobbing, wobble or big slams.
+- **Text placement is balanced across the video:** every text piece sits on one band per shape, clear of the caption
+  (desktop: the free column, about 300 to 400 px down under a top-left caption; phone: a set top band at y 200 on her
+  full shot, under the caption on framed shots), never pinned to the frame edge, never over her frame, never over the
+  character.
 - No generic AI visuals ("AI changed the order" shows her real material, not a glowing brain).
 
 - **Page pieces are cut-outs of the live page, never rectangular crops.** Shoot the element with Playwright on a transparent background (omitBackground; hide the rest of the page with visibility so the element keeps its real shadow and rounded corners; a 30 to 40px margin). Where the page animates (a demo, a gif), freeze it frame by frame (Web Animations currentTime) and play it with `it.seq`, never a still. Show the real tool (the questions, the calculator itself), not its locked teaser or progress bar. Check every frame for dates. (2026-11-09)
@@ -93,6 +113,8 @@ after every video round.
   on her last frame so it can be read.
 - **Transitions are objects in the story:** shutters or a door swinging to the next place, a page turn, the
   character running across as a wipe, a red thread, an iris on her face. Never a stock crossfade or slide.
+- **A door or shutter transition covers everything when it closes:** her video, the pieces and the captions go under
+  it, never on top. Anything on top of a closed door looks cheap (kit: `doorTop`).
 
 ## 7. Sound
 
@@ -138,6 +160,12 @@ after every video round.
   all its frames before joining.
 - **Web copy:** H.264, `-movflags +faststart`, about 30 MB for a 2 to 3 minute video (1200 wide desktop, 720 wide
   phone).
+- **Installed helpers (Nov 9, vetted, read before install):** the `rossark-motion-skill` skill (calm idle motion for the
+  character and scenes; project rules win over it) and the `video-director` skill, used only for its
+  `scripts/qa_video.py` (flashes, freezes, loudness, contact sheet) and `check_timeline.py`; `librosa` in
+  `~/LoomAutomation/.venv` for beat and onset points in a music bed. Skipped for now: earshot (pip plus model
+  downloads; revisit for audio review), take-one (read its watercolor style notes instead), huashu-motion, reanimate,
+  argo, explainroo.
 - **Checks before sending:** an OCR scan for dates on every second; her words against the captions; a contact sheet of
   both shapes for clipped pieces, hidden character, covered face and readability.
 
