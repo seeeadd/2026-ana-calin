@@ -187,16 +187,24 @@ h1 .hl{background:linear-gradient(transparent 14%,var(--sun) 14%,var(--sun) 94%,
 .done .pg{align-items:center;padding-top:calc(var(--awn) + 6px);padding-bottom:calc(var(--bay) * .55)}
 .done .card{animation:rise .5s var(--ease)}
 @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-.wall{display:none;position:fixed;inset:0;z-index:-2;pointer-events:none}
-.wall img{width:min(250px,calc((100vw - 920px) / 2 - 18px));height:auto;justify-self:center;align-self:center;border-radius:12px;box-shadow:0 18px 34px -16px rgba(70,45,25,.5),0 0 0 1px rgba(26,20,18,.08);filter:blur(2.4px) saturate(1.08)}
-.wall img:nth-child(1){grid-area:1/1;transform:rotate(-2.5deg)}.wall img:nth-child(2){grid-area:2/1;transform:rotate(1.8deg)}.wall img:nth-child(3){grid-area:3/1;transform:rotate(-1.5deg)}
-.wall img:nth-child(4){grid-area:1/3;transform:rotate(2.4deg)}.wall img:nth-child(5){grid-area:2/3;transform:rotate(-1.8deg)}.wall img:nth-child(6){grid-area:3/3;transform:rotate(1.4deg)}
-.wall-k{display:none;position:fixed;z-index:2;left:0;right:0;width:max-content;margin:0 auto;bottom:calc(var(--bay) * .3);padding:6px 14px;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1.6px var(--ink),0 3px 0 var(--ink);font-weight:800;font-size:12.5px}
+/* her slides after sign-up: printed on white with an ink edge so they stand off the cream sky, a Day tag each, and as big as the
+   screen allows. Where the side space is narrow they tuck under the card like a stack, so they stay big instead of shrinking to strips */
+.wall{display:none;position:fixed;inset:0;z-index:-2;pointer-events:none;--gut:calc((100vw - 900px) / 2);
+  --sw:min(clamp(330px,21vw,440px),calc(var(--gut) + 100px),calc((100vh - var(--awn) - var(--bay) * .9 - 100px) / 3 * 1.778));--tuck:clamp(0px,calc(var(--sw) - var(--gut) + 30px),130px)}
+.wall figure{position:relative;width:var(--sw);margin:0;align-self:center;padding:5px;background:#fff;border-radius:14px;
+  box-shadow:0 0 0 1.6px var(--ink),0 4px 0 var(--ink),0 24px 38px -18px rgba(70,45,25,.55)}
+.wall .sl{display:block;overflow:hidden;border-radius:9px}
+.wall img{display:block;width:100%;height:auto;filter:blur(calc(var(--sw) * .014)) saturate(1.12);transform:scale(1.03)}
+.wall figcaption{position:absolute;top:-10px;padding:3px 10px;border-radius:999px;background:var(--pink);color:#fff;font-weight:800;font-size:11px;letter-spacing:.08em;text-transform:uppercase;line-height:1.3;box-shadow:0 0 0 2px #fff}
+.wall figure:nth-child(-n+3){grid-column:1;justify-self:end;margin-right:calc(-1 * var(--tuck))}.wall figure:nth-child(-n+3) figcaption{left:12px}
+.wall figure:nth-child(n+4){grid-column:3;justify-self:start;margin-left:calc(-1 * var(--tuck))}.wall figure:nth-child(n+4) figcaption{right:12px}
+.wall figure:nth-child(1){grid-row:1;rotate:-2.5deg}.wall figure:nth-child(2){grid-row:2;rotate:1.8deg}.wall figure:nth-child(3){grid-row:3;rotate:-1.5deg}
+.wall figure:nth-child(4){grid-row:1;rotate:2.4deg}.wall figure:nth-child(5){grid-row:2;rotate:-1.8deg}.wall figure:nth-child(6){grid-row:3;rotate:1.4deg}
+@keyframes wrise{from{opacity:0;translate:0 12px}to{opacity:1;translate:0 0}}
 @media (min-width:1200px) and (min-height:600px){
-  .done .wall{display:grid;grid-template-columns:1fr minmax(860px,900px) 1fr;grid-template-rows:repeat(3,auto);align-content:center;gap:14px 0;padding:calc(var(--awn) + 10px) 0 calc(var(--bay) * .8)}
-  .done .wall img{animation:rise .6s var(--ease) both}
-  .done .wall img:nth-child(2),.done .wall img:nth-child(5){animation-delay:.12s}.done .wall img:nth-child(3),.done .wall img:nth-child(6){animation-delay:.24s}
-  .done .wall-k{display:block;animation:rise .6s .4s var(--ease) both}
+  .done .wall{display:grid;grid-template-columns:1fr minmax(860px,900px) 1fr;grid-template-rows:repeat(3,auto);align-content:center;gap:14px 0;padding:calc(var(--awn) + 10px) 0 calc(var(--bay) * .9)}
+  .done .wall figure{animation:wrise .6s var(--ease) both}
+  .done .wall figure:nth-child(2),.done .wall figure:nth-child(5){animation-delay:.12s}.done .wall figure:nth-child(3),.done .wall figure:nth-child(6){animation-delay:.24s}
   .done .sky .rays{opacity:.4}
 }
 
@@ -291,7 +299,6 @@ h1 .hl{background:linear-gradient(transparent 14%,var(--sun) 14%,var(--sun) 94%,
   .qf textarea{min-height:64px}
   .chk{margin:6px 0 7px;font-size:13px}.qbtn{height:48px}.qn{margin-top:5px;font-size:12px}
   .card.done{padding:12px 20px 16px}.thx h2{font-size:clamp(36px,3.6vw,46px);line-height:1.02}.thx .sub{font-size:15.5px;margin-top:4px}
-  .done .wall-k{display:none}
   .thx-l{grid-template-columns:minmax(0,1fr) 275px;gap:16px}.spamnote{font-size:12.5px;margin-top:6px}
   .tut{font-size:10.5px;padding:5px 8px;gap:5px}
   .card.done .thx .gift{margin-top:36px}
@@ -371,8 +378,7 @@ h1 .hl{background:linear-gradient(transparent 14%,var(--sun) 14%,var(--sun) 94%,
 
 <div class="sky" aria-hidden="true"><i class="rays"></i></div>
 <div class="awn" aria-hidden="true"></div>
-<div class="wall" aria-hidden="true"><img src="../img/slides/s1.webp" alt="" width="1280" height="720"><img src="../img/slides/s4.webp" alt="" width="1280" height="720"><img src="../img/slides/s6.webp" alt="" width="1280" height="720"><img src="../img/slides/s2.webp" alt="" width="1280" height="720"><img src="../img/slides/s3.webp" alt="" width="1280" height="720"><img src="../img/slides/s5.webp" alt="" width="1280" height="720"></div>
-<p class="wall-k" aria-hidden="true">From my slides for the three days</p>
+<div class="wall" aria-hidden="true"><figure><span class="sl"><img src="../img/slides/s1.webp" alt="" width="1280" height="720"></span><figcaption>Day 1</figcaption></figure><figure><span class="sl"><img src="../img/slides/s4.webp" alt="" width="1280" height="720"></span><figcaption>Day 2</figcaption></figure><figure><span class="sl"><img src="../img/slides/s6.webp" alt="" width="1280" height="720"></span><figcaption>Day 3</figcaption></figure><figure><span class="sl"><img src="../img/slides/s2.webp" alt="" width="1280" height="720"></span><figcaption>Day 1</figcaption></figure><figure><span class="sl"><img src="../img/slides/s3.webp" alt="" width="1280" height="720"></span><figcaption>Day 2</figcaption></figure><figure><span class="sl"><img src="../img/slides/s5.webp" alt="" width="1280" height="720"></span><figcaption>Day 3</figcaption></figure></div>
 
 <main class="pg">
   <section class="cp">
