@@ -1,5 +1,7 @@
 # Claude in this repo
 
+**Fresh chat about Ana's pages? Read `playbook/HANDOFF-pages-chat.md` first** (the Nov 9 to Nov 22 pages chat: the site as it is now, the shared video player, loading states, phones and iPads, Kit and the Sheet, every rule it added, how to test, open items; Sean's messages are in `playbook/transcripts/`). The two handoffs below still hold for their periods.
+
 **Fresh chat about Ana's videos? Read `playbook/HANDOFF-video-chat.md` first** (the Nov 4 to Nov 9 video chat: the registration and VIP videos, the video kit, every video preference, hosting, open items; Sean's messages are in `playbook/transcripts/`).
 
 **Fresh chat? Read `playbook/HANDOFF-main-chat.md` first** (full context of the Oct 25 to Nov 8 main chat: pages, repos, rules, Sean's preferences, the waitlist, open items; the evidence is `playbook/transcripts/`).
@@ -17,7 +19,7 @@ Standing rules:
 - Push to main only when Sean says "publish".
 - Don't create PRs unless asked.
 - No em dashes in copy.
-- No model names in commits.
+- No model names in commits (the trailer is `Co-Authored-By: Claude <noreply@anthropic.com>`, without a model name).
 - Never send anything to leads.
 - Never put keys or secrets in chat.
 - Never invent numbers, names or testimonials.
