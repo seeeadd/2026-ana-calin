@@ -5,3 +5,4 @@ tools/paint/layers/
 tools/paint/out/
 # page videos are added once, at publish; drafts stay out of Git
 assets/video/
+tools/paint/slides/layers/
